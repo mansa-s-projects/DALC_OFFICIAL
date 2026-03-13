@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --color-bg: #050607;
+  --color-surface: #101215;
+  --color-text: #f4f5f6;
+  --color-text-muted: #b2b8bf;
+  --color-gold: #d6b574;
+  --color-gold-soft: #efd7a4;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Custom gradient radial for the glow effect */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* DALC Utility Tokens */
+@layer utilities {
+  .text-dalc-primary {
+    color: var(--color-text);
+  }
+  
+  .text-dalc-gold {
+    color: var(--color-gold);
+  }
+  
+  .bg-dalc-base {
+    background-color: var(--color-bg);
+  }
+  
+  .bg-dalc-surface {
+    background-color: var(--color-surface);
+  }
+  
+  .border-dalc-gold\/30 {
+    border-color: rgba(214, 181, 116, 0.3);
+  }
+}
+
+/* Glass Panel (original - kept for other pages) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Scrollbar - DALC Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6b574;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e2c894;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color for dark pages (kept for compatibility) */
+.selection-luxury ::selection {
+  background-color: #D4AF37;
+  color: #0A0A0A;
+}

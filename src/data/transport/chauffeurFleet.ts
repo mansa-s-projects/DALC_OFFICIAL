@@ -1,0 +1,42 @@
+export const chauffeurFleet = [
+  {
+    id: "mercedes-s-class",
+    name: "Mercedes S Class",
+    category: "Executive Sedan",
+    passengers: 4,
+    description: "Professional chauffeur driven sedan suitable for airport and business transfers",
+    image: "/images/transport/mercedes-s-class.jpg",
+  },
+  {
+    id: "mercedes-v-class",
+    name: "Mercedes V Class",
+    category: "Executive Van",
+    passengers: 6,
+    description: "Comfortable group transport for airport pickups and city transfers",
+    image: "/images/transport/mercedes-v-class.jpg",
+  },
+  {
+    id: "bmw-7-series",
+    name: "BMW 7 Series",
+    category: "Executive Sedan",
+    passengers: 4,
+    description: "Premium sedan for business travel and city transport",
+    image: "/images/transport/bmw-7-series.jpg",
+  },
+  {
+    id: "range-rover",
+    name: "Range Rover",
+    category: "SUV",
+    passengers: 4,
+    description: "Spacious premium SUV for city movement and client transport",
+    image: "/images/transport/range-rover.jpg",
+  },
+  {
+    id: "cadillac-escalade",
+    name: "Cadillac Escalade",
+    category: "SUV",
+    passengers: 6,
+    description: "Large premium SUV for family or group transfers",
+    image: "/images/transport/cadillac-escalade.jpg",
+  },
+];
