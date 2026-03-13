@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vite build)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(mkdir -p /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/supabase/migrations)",
+      "Bash(mkdir -p /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/src/types)",
+      "Bash(mkdir -p /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/src/pages/business)",
+      "Bash(mkdir -p /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/src/components/business)",
+      "Bash(grep -l \"useAppStore\" /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/src/store/*.ts)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(npm run:*)",
+      "Bash(start cmd:*)"
+    ]
+  }
+}

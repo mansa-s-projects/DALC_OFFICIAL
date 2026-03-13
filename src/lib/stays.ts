@@ -1,0 +1,656 @@
+import { supabase, isMockMode } from './supabase';
+import type {
+  StaysProperty,
+  StaysBooking,
+  StaysAvailability,
+  StaysFilters,
+  StaysBookingInput,
+  PriceBreakdown,
+  PropertyStatus,
+  SeasonalPricing,
+} from '../types/stays';
+
+// ─── Mock Data ────────────────────────────────────────────────────────────────
+
+const MOCK_PROPERTIES: StaysProperty[] = [
+  // Hotels (2)
+  {
+    id: 'mock-stay-1',
+    subcategory: 'hotels',
+    name: 'Burj Al Arab Jumeirah',
+    slug: 'burj-al-arab-jumeirah',
+    description_short: 'The world\'s most luxurious hotel, an icon of Dubai.',
+    description_long: 'Rising on its own man-made island, Burj Al Arab is the pinnacle of luxury. With butler service, private beach access, and opulent suites, it defines Arabian hospitality at its finest.',
+    location: 'Dubai',
+    area: 'Jumeirah Beach',
+    address: 'Jumeirah Beach Road',
+    hero_image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2525&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2670&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    max_guests: 2,
+    square_meters: 170,
+    star_rating: 5,
+    hotel_chain: 'Jumeirah',
+    amenities: ['WiFi', 'Pool', 'Spa', 'Restaurant', 'Bar', 'Room Service', 'Concierge', 'Beach Access', 'Helipad', 'Butler Service'],
+    amenities_highlight: ['Butler Service', 'Private Beach', 'Helipad', 'Spa'],
+    pricing_model: 'nightly',
+    base_price: 8500,
+    price_currency: 'AED',
+    price_display: 'From AED 8,500/night',
+    seasonal_pricing: [
+      { season: 'peak', start_month: 11, end_month: 3, multiplier: 1.4, label: 'Peak Season' },
+      { season: 'summer', start_month: 6, end_month: 8, multiplier: 0.7, label: 'Summer Special' },
+    ],
+    cleaning_fee: 0,
+    service_fee: 850,
+    security_deposit: 5000,
+    min_stay_nights: 1,
+    instant_booking: true,
+    check_in_time: '15:00',
+    check_out_time: '12:00',
+    is_featured: true,
+    popularity_score: 98,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 'mock-stay-2',
+    subcategory: 'hotels',
+    name: 'Armani Hotel Dubai',
+    slug: 'armani-hotel-dubai',
+    description_short: 'Refined elegance in the heart of Burj Khalifa.',
+    description_long: 'Designed by Giorgio Armani, this sophisticated hotel occupies concourse levels to floors 8 and 38-39 of Burj Khalifa. Every detail reflects the Armani lifestyle philosophy.',
+    location: 'Dubai',
+    area: 'Downtown Dubai',
+    address: 'Burj Khalifa, Sheikh Mohammed bin Rashid Boulevard',
+    hero_image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2670&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    max_guests: 2,
+    square_meters: 65,
+    star_rating: 5,
+    hotel_chain: 'Armani',
+    amenities: ['WiFi', 'Pool', 'Spa', 'Restaurant', 'Bar', 'Room Service', 'Concierge', 'Gym', 'Business Center'],
+    amenities_highlight: ['Designer Interiors', 'Burj Khalifa Access', 'Spa', 'Fine Dining'],
+    pricing_model: 'nightly',
+    base_price: 3200,
+    price_currency: 'AED',
+    price_display: 'From AED 3,200/night',
+    seasonal_pricing: [
+      { season: 'peak', start_month: 12, end_month: 2, multiplier: 1.3, label: 'Peak Season' },
+    ],
+    cleaning_fee: 0,
+    service_fee: 320,
+    security_deposit: 2000,
+    min_stay_nights: 1,
+    instant_booking: true,
+    check_in_time: '15:00',
+    check_out_time: '12:00',
+    is_featured: true,
+    popularity_score: 92,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  // Villas (2)
+  {
+    id: 'mock-stay-3',
+    subcategory: 'villas',
+    name: 'Palm Jumeirah Signature Villa',
+    slug: 'palm-jumeirah-signature-villa',
+    description_short: 'Stunning beachfront villa on the iconic Palm Jumeirah.',
+    description_long: 'Experience ultimate luxury in this 5-bedroom signature villa with private beach, infinity pool, and panoramic views of the Dubai skyline. Perfect for families or groups seeking privacy.',
+    location: 'Dubai',
+    area: 'Palm Jumeirah',
+    address: 'Frond N, Palm Jumeirah',
+    hero_image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2671&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop',
+    ],
+    bedrooms: 5,
+    bathrooms: 6,
+    max_guests: 10,
+    square_meters: 750,
+    beachfront: true,
+    private_pool: true,
+    staff_included: true,
+    amenities: ['WiFi', 'Private Pool', 'Beach Access', 'Kitchen', 'BBQ', 'Garden', 'Security', 'Parking', 'Housekeeping', 'Air Conditioning', 'Balcony', 'Sea View'],
+    amenities_highlight: ['Private Beach', 'Infinity Pool', 'Housekeeping', 'Security'],
+    pricing_model: 'nightly',
+    base_price: 15000,
+    price_currency: 'AED',
+    price_display: 'From AED 15,000/night',
+    seasonal_pricing: [
+      { season: 'peak', start_month: 12, end_month: 2, multiplier: 1.5, label: 'Peak Season' },
+      { season: 'summer', start_month: 6, end_month: 8, multiplier: 0.6, label: 'Summer Special' },
+    ],
+    cleaning_fee: 1500,
+    service_fee: 1500,
+    security_deposit: 20000,
+    min_stay_nights: 3,
+    instant_booking: false,
+    check_in_time: '16:00',
+    check_out_time: '11:00',
+    is_featured: true,
+    popularity_score: 95,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 'mock-stay-4',
+    subcategory: 'villas',
+    name: 'Emirates Hills Luxury Estate',
+    slug: 'emirates-hills-luxury-estate',
+    description_short: 'Prestigious address in Dubai\'s most exclusive neighborhood.',
+    description_long: 'This magnificent 7-bedroom estate sits on the fairways of the Montgomerie Golf Course. Features include a private cinema, gym, spa room, and staff quarters.',
+    location: 'Dubai',
+    area: 'Emirates Hills',
+    address: 'Sector E, Emirates Hills',
+    hero_image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2670&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 7,
+    bathrooms: 8,
+    max_guests: 14,
+    square_meters: 1200,
+    private_pool: true,
+    staff_included: true,
+    amenities: ['WiFi', 'Private Pool', 'Gym', 'Spa', 'Cinema', 'Kitchen', 'Garden', 'Security', 'Parking', 'Air Conditioning', 'Elevator', 'BBQ'],
+    amenities_highlight: ['Golf Course View', 'Private Cinema', 'Spa Room', 'Elevator'],
+    pricing_model: 'nightly',
+    base_price: 25000,
+    price_currency: 'AED',
+    price_display: 'From AED 25,000/night',
+    seasonal_pricing: [
+      { season: 'peak', start_month: 12, end_month: 3, multiplier: 1.4, label: 'Peak Season' },
+    ],
+    cleaning_fee: 2500,
+    service_fee: 2500,
+    security_deposit: 50000,
+    min_stay_nights: 5,
+    instant_booking: false,
+    check_in_time: '15:00',
+    check_out_time: '12:00',
+    is_featured: true,
+    popularity_score: 90,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  // Residences (2)
+  {
+    id: 'mock-stay-5',
+    subcategory: 'residences',
+    name: 'Downtown Dubai Luxury Apartment',
+    slug: 'downtown-dubai-luxury-apartment',
+    description_short: 'Stylish furnished apartment with Burj Khalifa views.',
+    description_long: 'Live in the heart of Downtown Dubai in this fully furnished 2-bedroom apartment. Walk to Dubai Mall, enjoy fountain views, and experience the city\'s vibrant energy.',
+    location: 'Dubai',
+    area: 'Downtown Dubai',
+    address: 'Boulevard Point, Sheikh Mohammed bin Rashid Boulevard',
+    hero_image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2680&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 2,
+    bathrooms: 2,
+    max_guests: 4,
+    square_meters: 120,
+    floor: 25,
+    furnished: true,
+    lease_terms: ['6_months', '12_months'],
+    amenities: ['WiFi', 'Pool', 'Gym', 'Parking', 'Security', 'Air Conditioning', 'Kitchen', 'Balcony', 'City View', '24/7 Reception'],
+    amenities_highlight: ['Burj Khalifa View', 'Furnished', 'Gym & Pool', 'Central Location'],
+    pricing_model: 'monthly',
+    base_price: 35000,
+    price_currency: 'AED',
+    price_display: 'AED 35,000/month',
+    seasonal_pricing: [],
+    cleaning_fee: 0,
+    service_fee: 3500,
+    security_deposit: 70000,
+    min_stay_nights: 180,
+    instant_booking: true,
+    check_in_time: '14:00',
+    check_out_time: '12:00',
+    is_featured: true,
+    popularity_score: 88,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 'mock-stay-6',
+    subcategory: 'residences',
+    name: 'Dubai Marina Waterfront Residence',
+    slug: 'dubai-marina-waterfront-residence',
+    description_short: 'Modern 3-bedroom residence with marina views.',
+    description_long: 'Stunning waterfront living in one of Dubai Marina\'s premium towers. This spacious 3-bedroom residence offers panoramic marina views, modern finishes, and resort-style amenities.',
+    location: 'Dubai',
+    area: 'Dubai Marina',
+    address: 'Marina Gate, Dubai Marina',
+    hero_image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2670&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 3,
+    bathrooms: 3,
+    max_guests: 6,
+    square_meters: 180,
+    floor: 42,
+    furnished: true,
+    lease_terms: ['12_months', '24_months'],
+    amenities: ['WiFi', 'Pool', 'Gym', 'Parking', 'Security', 'Air Conditioning', 'Kitchen', 'Balcony', 'Sea View', '24/7 Reception', 'Concierge'],
+    amenities_highlight: ['Marina View', 'Furnished', 'Concierge', 'Resort Pool'],
+    pricing_model: 'monthly',
+    base_price: 28000,
+    price_currency: 'AED',
+    price_display: 'AED 28,000/month',
+    seasonal_pricing: [],
+    cleaning_fee: 0,
+    service_fee: 2800,
+    security_deposit: 56000,
+    min_stay_nights: 365,
+    instant_booking: true,
+    check_in_time: '14:00',
+    check_out_time: '12:00',
+    is_featured: false,
+    popularity_score: 85,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  // Additional property for variety
+  {
+    id: 'mock-stay-7',
+    subcategory: 'hotels',
+    name: 'Atlantis The Royal',
+    slug: 'atlantis-the-royal',
+    description_short: 'The newest icon of Dubai, where luxury reaches new heights.',
+    description_long: 'Atlantis The Royal redefines the meaning of luxury with sky pools, world-class dining by celebrity chefs, and breathtaking views of the Arabian Sea and Dubai skyline.',
+    location: 'Dubai',
+    area: 'Palm Jumeirah',
+    address: 'Crescent Road, Palm Jumeirah',
+    hero_image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2680&auto=format&fit=crop',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2670&auto=format&fit=crop',
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    max_guests: 2,
+    square_meters: 85,
+    star_rating: 5,
+    hotel_chain: 'Atlantis',
+    amenities: ['WiFi', 'Pool', 'Spa', 'Restaurant', 'Bar', 'Room Service', 'Concierge', 'Beach Access', 'Gym', 'Sky Pool'],
+    amenities_highlight: ['Sky Pool', 'Celebrity Dining', 'Private Beach', 'Aquaventure'],
+    pricing_model: 'nightly',
+    base_price: 4500,
+    price_currency: 'AED',
+    price_display: 'From AED 4,500/night',
+    seasonal_pricing: [
+      { season: 'peak', start_month: 11, end_month: 3, multiplier: 1.35, label: 'Peak Season' },
+    ],
+    cleaning_fee: 0,
+    service_fee: 450,
+    security_deposit: 3000,
+    min_stay_nights: 1,
+    instant_booking: true,
+    check_in_time: '15:00',
+    check_out_time: '11:00',
+    is_featured: true,
+    popularity_score: 96,
+    status: 'published',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+];
+
+// ─── Helper Functions ─────────────────────────────────────────────────────────
+
+function getSeasonalMultiplier(date: Date, seasonalPricing?: SeasonalPricing[]): number {
+  if (!seasonalPricing || seasonalPricing.length === 0) return 1;
+  
+  const month = date.getMonth() + 1; // 1-12
+  
+  for (const season of seasonalPricing) {
+    if (season.start_month <= season.end_month) {
+      // Normal case (e.g., Nov-Mar)
+      if (month >= season.start_month && month <= season.end_month) {
+        return season.multiplier;
+      }
+    } else {
+      // Wrap around case (e.g., Dec-Feb)
+      if (month >= season.start_month || month <= season.end_month) {
+        return season.multiplier;
+      }
+    }
+  }
+  
+  return 1;
+}
+
+function generateMockAvailability(propertyId: string, startDate: string, endDate: string): StaysAvailability[] {
+  const availability: StaysAvailability[] = [];
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const dateStr = d.toISOString().split('T')[0];
+    // Randomly assign availability with 80% available
+    const rand = Math.random();
+    let status: PropertyStatus = 'available';
+    if (rand > 0.95) status = 'booked';
+    else if (rand > 0.85) status = 'limited';
+    
+    availability.push({
+      property_id: propertyId,
+      date: dateStr,
+      status,
+    });
+  }
+  
+  return availability;
+}
+
+// ─── Service Functions ────────────────────────────────────────────────────────
+
+export async function getProperties(filters?: StaysFilters): Promise<StaysProperty[]> {
+  if (isMockMode) {
+    let results = [...MOCK_PROPERTIES];
+    
+    if (filters?.subcategory) {
+      results = results.filter(p => p.subcategory === filters.subcategory);
+    }
+    if (filters?.location) {
+      results = results.filter(p => p.location.toLowerCase().includes(filters.location!.toLowerCase()));
+    }
+    if (filters?.area) {
+      results = results.filter(p => p.area.toLowerCase().includes(filters.area!.toLowerCase()));
+    }
+    if (filters?.bedrooms) {
+      results = results.filter(p => (p.bedrooms ?? 0) >= filters.bedrooms!);
+    }
+    if (filters?.bathrooms) {
+      results = results.filter(p => (p.bathrooms ?? 0) >= filters.bathrooms!);
+    }
+    if (filters?.price_min != null) {
+      results = results.filter(p => p.base_price >= filters.price_min!);
+    }
+    if (filters?.price_max != null) {
+      results = results.filter(p => p.base_price <= filters.price_max!);
+    }
+    if (filters?.star_rating) {
+      results = results.filter(p => p.star_rating === filters.star_rating);
+    }
+    if (filters?.beachfront != null) {
+      results = results.filter(p => p.beachfront === filters.beachfront);
+    }
+    if (filters?.private_pool != null) {
+      results = results.filter(p => p.private_pool === filters.private_pool);
+    }
+    if (filters?.furnished != null) {
+      results = results.filter(p => p.furnished === filters.furnished);
+    }
+    if (filters?.instant_booking != null) {
+      results = results.filter(p => p.instant_booking === filters.instant_booking);
+    }
+    if (filters?.is_featured != null) {
+      results = results.filter(p => p.is_featured === filters.is_featured);
+    }
+    
+    return results;
+  }
+
+  let query = supabase!
+    .from('stays_properties')
+    .select('*')
+    .eq('status', 'published')
+    .order('popularity_score', { ascending: false });
+
+  if (filters?.subcategory) query = query.eq('subcategory', filters.subcategory);
+  if (filters?.location) query = query.ilike('location', `%${filters.location}%`);
+  if (filters?.area) query = query.ilike('area', `%${filters.area}%`);
+  if (filters?.bedrooms) query = query.gte('bedrooms', filters.bedrooms);
+  if (filters?.bathrooms) query = query.gte('bathrooms', filters.bathrooms);
+  if (filters?.price_min != null) query = query.gte('base_price', filters.price_min);
+  if (filters?.price_max != null) query = query.lte('base_price', filters.price_max);
+  if (filters?.star_rating) query = query.eq('star_rating', filters.star_rating);
+  if (filters?.beachfront != null) query = query.eq('beachfront', filters.beachfront);
+  if (filters?.private_pool != null) query = query.eq('private_pool', filters.private_pool);
+  if (filters?.furnished != null) query = query.eq('furnished', filters.furnished);
+  if (filters?.instant_booking != null) query = query.eq('instant_booking', filters.instant_booking);
+  if (filters?.is_featured != null) query = query.eq('is_featured', filters.is_featured);
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return (data ?? []) as StaysProperty[];
+}
+
+export async function getPropertyBySlug(slug: string): Promise<StaysProperty | null> {
+  if (isMockMode) {
+    return MOCK_PROPERTIES.find(p => p.slug === slug) ?? null;
+  }
+
+  const { data, error } = await supabase!
+    .from('stays_properties')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single();
+
+  if (error) throw error;
+  return data as StaysProperty | null;
+}
+
+export async function getFeaturedProperties(subcategory?: string): Promise<StaysProperty[]> {
+  if (isMockMode) {
+    let results = MOCK_PROPERTIES.filter(p => p.is_featured);
+    if (subcategory) results = results.filter(p => p.subcategory === subcategory);
+    return results.slice(0, 6);
+  }
+
+  let query = supabase!
+    .from('stays_properties')
+    .select('*')
+    .eq('status', 'published')
+    .eq('is_featured', true)
+    .order('popularity_score', { ascending: false })
+    .limit(6);
+
+  if (subcategory) query = query.eq('subcategory', subcategory);
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return (data ?? []) as StaysProperty[];
+}
+
+export async function getAvailability(
+  propertyId: string,
+  startDate: string,
+  endDate: string
+): Promise<StaysAvailability[]> {
+  if (isMockMode) {
+    return generateMockAvailability(propertyId, startDate, endDate);
+  }
+
+  const { data, error } = await supabase!
+    .from('stays_availability')
+    .select('*')
+    .eq('property_id', propertyId)
+    .gte('date', startDate)
+    .lte('date', endDate)
+    .order('date', { ascending: true });
+
+  if (error) throw error;
+  return (data ?? []) as StaysAvailability[];
+}
+
+export async function checkAvailability(
+  propertyId: string,
+  checkIn: string,
+  checkOut: string
+): Promise<{ available: boolean; message?: string }> {
+  const availability = await getAvailability(propertyId, checkIn, checkOut);
+  
+  const unavailable = availability.filter(a => a.status === 'booked');
+  
+  if (unavailable.length > 0) {
+    return {
+      available: false,
+      message: 'Some dates in your selection are not available.',
+    };
+  }
+  
+  const limited = availability.filter(a => a.status === 'limited');
+  if (limited.length > 0) {
+    return {
+      available: true,
+      message: 'Limited availability - book soon!',
+    };
+  }
+  
+  return { available: true };
+}
+
+export async function calculatePrice(
+  propertyId: string,
+  checkIn: string,
+  checkOut: string
+): Promise<PriceBreakdown | null> {
+  const property = isMockMode
+    ? MOCK_PROPERTIES.find(p => p.id === propertyId)
+    : await getPropertyBySlug(propertyId);
+    
+  if (!property) return null;
+
+  const start = new Date(checkIn);
+  const end = new Date(checkOut);
+  const nights = Math.max(1, Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
+
+  let basePriceTotal = 0;
+  let seasonalAdjustment = 0;
+
+  for (let i = 0; i < nights; i++) {
+    const date = new Date(start);
+    date.setDate(date.getDate() + i);
+    const multiplier = getSeasonalMultiplier(date, property.seasonal_pricing);
+    const nightlyRate = property.base_price * multiplier;
+    basePriceTotal += property.base_price;
+    seasonalAdjustment += (nightlyRate - property.base_price);
+  }
+
+  const cleaningFee = property.cleaning_fee ?? 0;
+  const serviceFee = property.service_fee ?? Math.round(basePriceTotal * 0.1);
+  const securityDeposit = property.security_deposit ?? 0;
+  const discountAmount = 0; // Future: apply promo codes
+
+  const totalPrice = basePriceTotal + seasonalAdjustment + cleaningFee + serviceFee + discountAmount;
+  const pricePerNightAvg = Math.round(totalPrice / nights);
+
+  return {
+    nights,
+    nightly_rate: property.base_price,
+    base_price_total: basePriceTotal,
+    seasonal_adjustment: seasonalAdjustment,
+    cleaning_fee: cleaningFee,
+    service_fee: serviceFee,
+    security_deposit: securityDeposit,
+    discount_amount: discountAmount,
+    total_price: totalPrice,
+    currency: property.price_currency,
+    price_per_night_avg: pricePerNightAvg,
+  };
+}
+
+export async function createStaysBooking(input: StaysBookingInput): Promise<StaysBooking> {
+  const property = isMockMode
+    ? MOCK_PROPERTIES.find(p => p.id === input.property_id)
+    : await getPropertyBySlug(input.property_id);
+
+  if (!property) throw new Error('Property not found');
+
+  const priceBreakdown = await calculatePrice(input.property_id, input.check_in, input.check_out);
+  if (!priceBreakdown) throw new Error('Could not calculate price');
+
+  if (isMockMode) {
+    return {
+      id: `mock-stay-booking-${Date.now()}`,
+      property_id: input.property_id,
+      user_id: input.user_id,
+      check_in: input.check_in,
+      check_out: input.check_out,
+      guests: input.guests,
+      guest_name: input.guest_name,
+      guest_email: input.guest_email,
+      guest_phone: input.guest_phone,
+      special_requests: input.special_requests,
+      nights: priceBreakdown.nights,
+      base_price_total: priceBreakdown.base_price_total,
+      seasonal_adjustment: priceBreakdown.seasonal_adjustment,
+      cleaning_fee: priceBreakdown.cleaning_fee,
+      service_fee: priceBreakdown.service_fee,
+      security_deposit: priceBreakdown.security_deposit,
+      discount_amount: priceBreakdown.discount_amount,
+      total_price: priceBreakdown.total_price,
+      currency: priceBreakdown.currency,
+      status: 'pending',
+      confirmation_code: `DALC${Date.now().toString(36).toUpperCase()}`,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    } as StaysBooking;
+  }
+
+  const { data, error } = await supabase!
+    .from('stays_bookings')
+    .insert({
+      property_id: input.property_id,
+      user_id: input.user_id,
+      check_in: input.check_in,
+      check_out: input.check_out,
+      guests: input.guests,
+      guest_name: input.guest_name,
+      guest_email: input.guest_email,
+      guest_phone: input.guest_phone,
+      special_requests: input.special_requests,
+      nights: priceBreakdown.nights,
+      base_price_total: priceBreakdown.base_price_total,
+      seasonal_adjustment: priceBreakdown.seasonal_adjustment,
+      cleaning_fee: priceBreakdown.cleaning_fee,
+      service_fee: priceBreakdown.service_fee,
+      security_deposit: priceBreakdown.security_deposit,
+      discount_amount: priceBreakdown.discount_amount,
+      total_price: priceBreakdown.total_price,
+      currency: priceBreakdown.currency,
+      status: 'pending',
+    })
+    .select('*, property:stays_properties(*)')
+    .single();
+
+  if (error) throw error;
+  return data as StaysBooking;
+}
+
+export async function getUserBookings(userId: string): Promise<StaysBooking[]> {
+  if (isMockMode) return [] as StaysBooking[];
+
+  const { data, error } = await supabase!
+    .from('stays_bookings')
+    .select('*, property:stays_properties(*)')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return (data ?? []) as StaysBooking[];
+}
