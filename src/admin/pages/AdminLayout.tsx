@@ -1,38 +1,45 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, MapPin, Inbox, Truck, ArrowLeft } from 'lucide-react';
+import { LayoutDashboard, MapPin, Inbox, Truck, Star, ArrowLeft, Car, Compass, Briefcase, Hotel } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const NAV_ITEMS = [
-  { to: '/admin', icon: LayoutDashboard, label: 'Overview', end: true },
-  { to: '/admin/requests', icon: Inbox, label: 'Requests', end: false },
-  { to: '/admin/venues', icon: MapPin, label: 'Venues', end: false },
-  { to: '/admin/suppliers', icon: Truck, label: 'Suppliers', end: false },
+  { to: '/admin/overview',     icon: LayoutDashboard, label: 'Overview',     end: false },
+  { to: '/admin/requests',     icon: Inbox,           label: 'All Requests', end: false },
+  { to: '/admin/concierge',    icon: Star,            label: 'Concierge',    end: false },
+  { to: '/admin/transport',    icon: Car,             label: 'Transport',    end: false },
+  { to: '/admin/experiences',  icon: Compass,         label: 'Experiences',  end: false },
+  { to: '/admin/business',     icon: Briefcase,       label: 'Business',     end: false },
+  { to: '/admin/stays',        icon: Hotel,           label: 'Stays',        end: false },
+  { to: '/admin/venues',       icon: MapPin,          label: 'Venues',       end: false },
+  { to: '/admin/suppliers',    icon: Truck,           label: 'Suppliers',    end: false },
 ];
 
 export default function AdminLayout() {
   return (
-    <div className="min-h-screen bg-luxury-black flex">
+    <div className="relative flex min-h-screen bg-[#050607] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(200,164,107,0.09),transparent_28%),radial-gradient(circle_at_85%_12%,rgba(142,168,194,0.09),transparent_24%)]" />
       {/* Sidebar */}
-      <aside className="w-64 border-r border-white/5 bg-[#0D0D0D] flex flex-col shrink-0">
-        <div className="p-6 border-b border-white/5">
-          <Link to="/" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs uppercase tracking-widest transition-colors mb-4">
+      <aside className="relative z-10 flex w-72 shrink-0 flex-col border-r border-[#C8A46B]/12 bg-[linear-gradient(180deg,rgba(10,10,10,0.98),rgba(17,18,20,0.92))] backdrop-blur-xl">
+        <div className="border-b border-[#C8A46B]/12 p-6">
+          <Link to="/" className="mb-5 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gray-400 transition-colors hover:text-[#EFD7A4]">
             <ArrowLeft className="w-3 h-3" /> Back to Site
           </Link>
-          <h1 className="text-xl font-display text-white">Admin</h1>
-          <p className="text-gray-600 text-xs mt-1">Dubai À La Carte</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-[#C8A46B]/75">Control Room</p>
+          <h1 className="mt-2 text-2xl font-display text-[#F2DFB8]">Admin</h1>
+          <p className="mt-1 text-xs text-gray-500">Dubai A La Carte</p>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1">
+        <nav className="flex-1 space-y-2 p-4">
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.end}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-sm text-sm font-medium transition-colors ${
+                `flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-luxury-gold/10 text-luxury-gold border border-luxury-gold/20'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'
+                    ? 'border-[#C8A46B]/35 bg-[#C8A46B]/10 text-[#EFD7A4] shadow-[0_10px_30px_rgba(200,164,107,0.08)]'
+                    : 'border-transparent text-gray-400 hover:border-white/8 hover:bg-white/[0.03] hover:text-white'
                 }`
               }
             >
@@ -44,8 +51,8 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
-        <div className="p-8 max-w-7xl">
+      <main className="relative z-10 flex-1 overflow-auto">
+        <div className="max-w-7xl p-8 lg:p-10">
           <Outlet />
         </div>
       </main>

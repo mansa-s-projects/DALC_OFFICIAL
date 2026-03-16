@@ -76,7 +76,7 @@ export default function Documents() {
       <section className="pt-28 pb-12 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <Link
-            to="/relocation/dashboard"
+            to="/move-to-dubai/dashboard"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-luxury-gold transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

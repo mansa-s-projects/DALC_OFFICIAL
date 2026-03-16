@@ -103,14 +103,14 @@ export default function MoveToDubai() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/relocation/intake"
+              to="/move-to-dubai/intake"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Start Your Journey
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/relocation/dashboard"
+              to="/move-to-dubai/dashboard"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Building2 className="w-4 h-4" />
@@ -267,7 +267,7 @@ export default function MoveToDubai() {
               your personalised roadmap within minutes.
             </p>
             <Link
-              to="/relocation/intake"
+              to="/move-to-dubai/intake"
               className="inline-flex items-center gap-3 px-10 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
             >
               Get Started

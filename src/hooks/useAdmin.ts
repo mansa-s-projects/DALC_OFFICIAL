@@ -14,8 +14,22 @@ export function useAdminStats() {
         supabase!.from('suppliers').select('id', { count: 'exact' }),
       ]);
 
+      // Schema-sync views are optional until the migration is applied.
+      const [serviceCatalogRes, bookingSyncRes] = await Promise.all([
+        supabase!.from('v_service_catalog').select('source_id', { count: 'exact', head: true }),
+        supabase!.from('v_booking_sync').select('booking_source_id', { count: 'exact', head: true }),
+      ]);
+
       const requests = requestsRes.data ?? [];
-      const pending = requests.filter((r: any) => ['submitted', 'assigned', 'supplier_contacted'].includes(r.status)).length;
+      const pending = requests.filter((r: any) => [
+        'pending',
+        'acknowledged',
+        'submitted',
+        'assigned',
+        'supplier_contacted',
+        'in_progress',
+        'quoted',
+      ].includes(r.status)).length;
       const confirmed = requests.filter((r: any) => r.status === 'confirmed').length;
       const completed = requests.filter((r: any) => r.status === 'completed').length;
 
@@ -26,6 +40,8 @@ export function useAdminStats() {
         completedRequests: completed,
         totalVenues: venuesRes.count ?? 0,
         totalSuppliers: suppliersRes.count ?? 0,
+        syncedServices: serviceCatalogRes.error ? null : (serviceCatalogRes.count ?? 0),
+        syncedBookings: bookingSyncRes.error ? null : (bookingSyncRes.count ?? 0),
       };
     },
   });

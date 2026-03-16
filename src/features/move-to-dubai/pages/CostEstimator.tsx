@@ -227,7 +227,7 @@ export default function CostEstimator() {
       <section className="pt-28 pb-12 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <Link
-            to="/relocation/dashboard"
+            to="/move-to-dubai/dashboard"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-luxury-gold transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -297,7 +297,7 @@ export default function CostEstimator() {
                 based on your specific situation.
               </p>
               <Link
-                to="/relocation/intake"
+                to="/move-to-dubai/intake"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
               >
                 Start Intake

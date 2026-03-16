@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, LogOut, User } from 'lucide-react';
+import { Menu, X, LogOut, User, Search } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { useAppStore } from '../../store/useAppStore';
 import { signOut } from '../../lib/auth';
@@ -89,10 +89,20 @@ export default function Navbar() {
 
           {session ? (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-gray-300 text-sm">
+              <Link
+                to="/search"
+                className="p-2 text-gray-400 hover:text-luxury-gold transition-colors"
+                title="Search"
+              >
+                <Search className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/profile"
+                className="flex items-center gap-2 text-gray-300 text-sm hover:text-luxury-gold transition-colors"
+              >
                 <User className="w-4 h-4 text-luxury-gold" />
                 <span className="tracking-wider">{displayName}</span>
-              </div>
+              </Link>
               <button
                 onClick={handleSignOut}
                 className="p-2 text-gray-400 hover:text-luxury-gold transition-colors"
@@ -102,11 +112,20 @@ export default function Navbar() {
               </button>
             </div>
           ) : (
-            <Link to="/login">
-              <button className="px-6 py-2 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300">
-                Sign In
-              </button>
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                to="/search"
+                className="p-2 text-gray-400 hover:text-luxury-gold transition-colors"
+                title="Search"
+              >
+                <Search className="w-4 h-4" />
+              </Link>
+              <Link to="/login">
+                <button className="px-6 py-2 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300">
+                  Sign In
+                </button>
+              </Link>
+            </div>
           )}
         </div>
 
@@ -131,18 +150,26 @@ export default function Navbar() {
               {item}
             </Link>
           ))}
+          <Link to="/search" className="text-lg font-display text-white border-b border-white/5 pb-2">
+            Search
+          </Link>
           {isAdmin && (
             <Link to="/admin" className="text-lg font-display text-luxury-gold border-b border-white/5 pb-2">
               Admin Dashboard
             </Link>
           )}
           {session ? (
-            <button
-              onClick={handleSignOut}
-              className="text-lg font-display text-gray-400 text-left border-b border-white/5 pb-2"
-            >
-              Sign Out
-            </button>
+            <>
+              <Link to="/profile" className="text-lg font-display text-white border-b border-white/5 pb-2">
+                My Profile
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="text-lg font-display text-gray-400 text-left border-b border-white/5 pb-2"
+              >
+                Sign Out
+              </button>
+            </>
           ) : (
             <Link to="/login" className="text-lg font-display text-luxury-gold border-b border-white/5 pb-2">
               Sign In

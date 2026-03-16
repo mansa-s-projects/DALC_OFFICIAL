@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Request, RequestStatus } from '../types';
 import { supabase, isMockMode } from '../lib/supabase';
+import { transitionRequestStatus } from '../platform/requests/lifecycle';
 
 export interface CreateRequestInput {
   venue_id?: string;
@@ -17,6 +18,19 @@ export interface CreateRequestInput {
 interface MutationContext {
   previous?: Request[];
   cacheKey: (string | undefined)[];
+}
+
+export interface RequestDetailResult {
+  request: Request | null;
+  statusLog: Array<{
+    id: string;
+    request_id: string;
+    old_status?: string;
+    new_status: string;
+    changed_by?: string;
+    notes?: string;
+    created_at: string;
+  }>;
 }
 
 export function useRequests(userId?: string) {
@@ -94,6 +108,18 @@ export function useRequests(userId?: string) {
         queryClient.setQueryData(context.cacheKey, context.previous);
       }
     },
+    onSuccess: async (created: Request) => {
+      // Write the initial status log entry so the timeline has a starting point
+      if (!isMockMode && supabase) {
+        await supabase.from('request_status_log').insert({
+          request_id: created.id,
+          old_status: null,
+          new_status: 'submitted',
+          changed_by: userId ?? null,
+          notes: null,
+        });
+      }
+    },
     onSettled: (_data: Request | undefined, _error: unknown, _payload: CreateRequestInput, context: MutationContext | undefined) => {
       if (context?.cacheKey) {
         queryClient.invalidateQueries({ queryKey: context.cacheKey });
@@ -136,6 +162,62 @@ export function useRequests(userId?: string) {
   };
 }
 
+export function useRequestDetail(requestId?: string, userId?: string, initialRequest?: Request | null) {
+  return useQuery({
+    queryKey: ['requests', 'detail', requestId, userId ?? 'anonymous'],
+    enabled: Boolean(requestId),
+    queryFn: async (): Promise<RequestDetailResult> => {
+      if (!requestId) {
+        return { request: null, statusLog: [] };
+      }
+
+      if (isMockMode) {
+        const mockRequest = initialRequest ?? null;
+        const mockLog = mockRequest?.created_at
+          ? [{
+              id: `mock-log-${mockRequest.id}`,
+              request_id: mockRequest.id,
+              new_status: mockRequest.status,
+              created_at: mockRequest.created_at,
+              notes: mockRequest.notes,
+            }]
+          : [];
+
+        return {
+          request: mockRequest,
+          statusLog: mockLog,
+        };
+      }
+
+      let requestQuery = supabase!
+        .from('requests')
+        .select('*')
+        .eq('id', requestId);
+
+      if (userId) {
+        requestQuery = requestQuery.eq('user_id', userId);
+      }
+
+      const [{ data: requestData, error: requestError }, { data: logData, error: logError }] = await Promise.all([
+        requestQuery.single(),
+        supabase!
+          .from('request_status_log')
+          .select('*')
+          .eq('request_id', requestId)
+          .order('created_at', { ascending: true }),
+      ]);
+
+      if (requestError) throw requestError;
+      if (logError) throw logError;
+
+      return {
+        request: (requestData ?? null) as Request | null,
+        statusLog: (logData ?? []) as RequestDetailResult['statusLog'],
+      };
+    },
+  });
+}
+
 // Admin: fetch all requests
 export function useAllRequests(enabled = true) {
   return useQuery({
@@ -152,29 +234,34 @@ export function useAllRequests(enabled = true) {
   });
 }
 
-// Admin: update request status
+export interface UpdateRequestStatusInput {
+  id: string;
+  status: RequestStatus;
+  fromStatus: RequestStatus;
+  notes?: string;
+  changedBy?: string;
+}
+
+// Admin: update request status with lifecycle validation + log entry
 export function useUpdateRequestStatus() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: RequestStatus }) => {
+    mutationFn: async ({ id, status, fromStatus, notes, changedBy }: UpdateRequestStatusInput) => {
       if (isMockMode) return { id, status } as Request;
 
-      const updates: Record<string, unknown> = { status };
-      if (status === 'confirmed') updates.confirmed_at = new Date().toISOString();
-      if (status === 'completed') updates.completed_at = new Date().toISOString();
-
-      const { data, error } = await supabase!
-        .from('requests')
-        .update(updates)
-        .eq('id', id)
-        .select('*')
-        .single();
-      if (error) throw error;
-      return data as Request;
+      const { request } = await transitionRequestStatus({
+        requestId: id,
+        fromStatus,
+        toStatus: status,
+        changedBy,
+        notes,
+      });
+      return request;
     },
-    onSuccess: () => {
+    onSuccess: (_data: Request, variables: UpdateRequestStatusInput) => {
       queryClient.invalidateQueries({ queryKey: ['requests'] });
+      queryClient.invalidateQueries({ queryKey: ['requests', 'detail', variables.id] });
     },
   });
 }

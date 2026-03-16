@@ -166,7 +166,7 @@ export default function IntakeForm() {
     });
 
     // Navigate to dashboard on success
-    navigate('/relocation/dashboard');
+    navigate('/move-to-dubai/dashboard');
   };
 
   // Update form data

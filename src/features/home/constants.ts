@@ -1,21 +1,26 @@
 import { Bell, Briefcase, Hotel, Martini, Plane, Sun, Ticket, Waves } from 'lucide-react';
 import type { CategoryItem, RequestItem, ServiceItem, VenueItem } from './types';
 
-export const CATEGORIES: CategoryItem[] = [
+export const ROW_ONE_CATEGORIES: CategoryItem[] = [
   { title: 'Move To Dubai', subtitle: 'Relocation and life setup', icon: Plane, href: '/move-to-dubai' },
   { title: 'Experiences', subtitle: 'Things to do in Dubai', icon: Sun, href: '/experiences' },
   { title: 'Nightlife', subtitle: 'Clubs and reservations', icon: Martini, href: '/nightlife' },
-  { title: 'Travel', subtitle: 'Flights and stays', icon: Hotel, href: '/stays' },
-  { title: 'Business Setup', subtitle: 'Launch in Dubai', icon: Briefcase, href: '/business' },
+];
+
+// Backward-compatible alias for any existing imports.
+export const CATEGORIES: CategoryItem[] = ROW_ONE_CATEGORIES;
+
+export const ROW_TWO_CATEGORIES: CategoryItem[] = [
+  { title: 'Travel', subtitle: 'Flights and stays', icon: Hotel, href: '/travel' },
+  { title: 'Business', subtitle: 'Launch in Dubai', icon: Briefcase, href: '/business' },
   { title: 'Concierge', subtitle: 'Special requests', icon: Bell, href: '/concierge' },
 ];
 
 export const EDITORS_PICKS: ServiceItem[] = [
   { title: 'Desert Safari', subtitle: 'Golden-hour convoy and private guide', tag: 'Adventure' },
+  { title: 'VIP Table', subtitle: 'Prime floor placement and host support', tag: 'Nightlife' },
   { title: 'Helicopter Tour', subtitle: 'Skyline circuit over Palm and Marina', tag: 'Sky' },
-  { title: 'VIP Club Table', subtitle: 'Prime floor placement and host support', tag: 'Nightlife' },
   { title: 'Jet Ski', subtitle: 'Open-water ride near Burj Al Arab', tag: 'Water' },
-  { title: 'Hot Air Balloon', subtitle: 'Sunrise ascent with desert breakfast', tag: 'Signature' },
 ];
 
 export const FEATURED_VENUES: VenueItem[] = [

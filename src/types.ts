@@ -10,6 +10,7 @@ export type Category =
   | 'wellness'
   | 'shopping'
   | 'business'
+  | 'concierge'
   | 'events'
   | 'sports';
 
@@ -139,9 +140,13 @@ export interface FeedItem {
 // --- Request ---
 
 export type RequestStatus =
+  | 'pending'
+  | 'acknowledged'
   | 'submitted'
   | 'assigned'
   | 'supplier_contacted'
+  | 'in_progress'
+  | 'quoted'
   | 'confirmed'
   | 'declined'
   | 'completed'
@@ -150,9 +155,13 @@ export type RequestStatus =
 export type RequestType = 'booking' | 'inquiry' | 'concierge';
 
 export const REQUEST_STATUS_LABELS: Record<RequestStatus, string> = {
+  pending: 'Pending',
+  acknowledged: 'Acknowledged',
   submitted: 'Submitted',
   assigned: 'Assigned',
   supplier_contacted: 'Contacting Venue',
+  in_progress: 'In Progress',
+  quoted: 'Quote Ready',
   confirmed: 'Confirmed',
   declined: 'Declined',
   completed: 'Completed',
@@ -160,9 +169,13 @@ export const REQUEST_STATUS_LABELS: Record<RequestStatus, string> = {
 };
 
 export const REQUEST_STATUS_COLORS: Record<RequestStatus, string> = {
+  pending: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  acknowledged: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
   submitted: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
   assigned: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
   supplier_contacted: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20',
+  in_progress: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+  quoted: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
   confirmed: 'text-green-400 bg-green-400/10 border-green-400/20',
   declined: 'text-red-400 bg-red-400/10 border-red-400/20',
   completed: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
@@ -176,7 +189,15 @@ export interface Request {
   venue_name?: string;
   category: Category;
   request_type: RequestType;
-  date_time: string;
+  concierge_request_type?: string;
+  title?: string;
+  description?: string;
+  urgency?: 'standard' | 'urgent' | 'asap';
+  preferred_date?: string;
+  preferred_time?: string;
+  budget_range?: string;
+  special_instructions?: string;
+  date_time?: string | null;
   party_size: number;
   status: RequestStatus;
   priority_score: number;
@@ -185,6 +206,7 @@ export interface Request {
   contact_info?: string;
   notes?: string;
   internal_notes?: string;
+  concierge_notes?: string;
   supplier_response?: string;
   confirmed_at?: string;
   completed_at?: string;
