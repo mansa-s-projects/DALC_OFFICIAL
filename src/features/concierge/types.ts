@@ -21,7 +21,9 @@ export type ConciergeUrgency = 'standard' | 'urgent' | 'asap';
 export interface ConciergeRequest {
   id: string;
   user_id: string;
-  request_type: ConciergeRequestType;
+  category: 'concierge';
+  request_type: 'concierge';
+  concierge_request_type: ConciergeRequestType;
   urgency: ConciergeUrgency;
   title: string;
   description: string;

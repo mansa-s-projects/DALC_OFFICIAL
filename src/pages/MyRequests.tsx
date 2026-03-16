@@ -6,6 +6,7 @@ import Footer from '../components/navigation/Footer';
 import RequestCard from '../components/requests/RequestCard';
 import { useRequests } from '../hooks/useRequests';
 import { useAppStore } from '../store/useAppStore';
+import ErrorState from '../components/error/ErrorState';
 
 export default function MyRequests() {
   const session = useAppStore((s) => s.session);
@@ -40,7 +41,14 @@ export default function MyRequests() {
           </div>
         )}
 
-        {!requestsQuery.isLoading && requests.length === 0 && (
+        {requestsQuery.error && (
+          <ErrorState
+            message={requestsQuery.error instanceof Error ? requestsQuery.error.message : 'Failed to load your requests.'}
+            retry={() => requestsQuery.refetch()}
+          />
+        )}
+
+        {!requestsQuery.isLoading && !requestsQuery.error && requests.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -62,7 +70,7 @@ export default function MyRequests() {
           </motion.div>
         )}
 
-        {requests.length > 0 && (
+        {!requestsQuery.error && requests.length > 0 && (
           <div className="space-y-4">
             {requests.map((request, i) => (
               <motion.div
@@ -71,7 +79,9 @@ export default function MyRequests() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
               >
-                <RequestCard request={request} />
+                <Link to={`/my-requests/${request.id}`} state={{ request }} className="block">
+                  <RequestCard request={request} />
+                </Link>
               </motion.div>
             ))}
           </div>

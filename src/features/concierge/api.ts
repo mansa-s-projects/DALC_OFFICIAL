@@ -10,24 +10,35 @@ import type {
 export async function submitConciergeRequest(
   userId: string,
   input: ConciergeRequestInput
-): Promise<ConciergeRequest | null> {
+): Promise<ConciergeRequest> {
   if (isMockMode || !supabase) {
     // Mock response for development
     return {
       id: `mock-concierge-${Date.now()}`,
       user_id: userId,
-      ...input,
+      category: 'concierge',
+      request_type: 'concierge',
+      concierge_request_type: input.request_type,
+      urgency: input.urgency,
+      title: input.title,
+      description: input.description,
+      preferred_date: input.preferred_date,
+      preferred_time: input.preferred_time,
+      budget_range: input.budget_range,
+      special_instructions: input.special_instructions,
       status: 'pending',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-    } as ConciergeRequest;
+    };
   }
 
   const { data, error } = await supabase
     .from('requests')
     .insert({
       user_id: userId,
-      request_type: input.request_type,
+      category: 'concierge',
+      request_type: 'concierge',
+      concierge_request_type: input.request_type,
       title: input.title,
       description: input.description,
       urgency: input.urgency,
@@ -36,14 +47,13 @@ export async function submitConciergeRequest(
       budget_range: input.budget_range,
       special_instructions: input.special_instructions,
       status: 'pending',
-      source: 'concierge',
+      party_size: 1,
     })
     .select()
     .single();
 
   if (error) {
-    console.error('submitConciergeRequest error:', error);
-    return null;
+    throw error;
   }
 
   return data as ConciergeRequest;
@@ -62,7 +72,7 @@ export async function getMyConciergeRequests(
     .from('requests')
     .select('*')
     .eq('user_id', userId)
-    .eq('source', 'concierge')
+    .eq('request_type', 'concierge')
     .order('created_at', { ascending: false });
 
   if (error) {

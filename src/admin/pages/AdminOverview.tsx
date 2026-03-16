@@ -27,6 +27,18 @@ export default function AdminOverview() {
     { label: 'Completed', value: stats?.completedRequests ?? 0, icon: TrendingUp, color: 'text-emerald-400' },
     { label: 'Venues', value: stats?.totalVenues ?? 0, icon: MapPin, color: 'text-luxury-gold' },
     { label: 'Suppliers', value: stats?.totalSuppliers ?? 0, icon: Truck, color: 'text-purple-400' },
+    {
+      label: 'Synced Services',
+      value: stats?.syncedServices ?? 'N/A',
+      icon: Inbox,
+      color: stats?.syncedServices == null ? 'text-gray-400' : 'text-cyan-400',
+    },
+    {
+      label: 'Synced Bookings',
+      value: stats?.syncedBookings ?? 'N/A',
+      icon: CheckCircle,
+      color: stats?.syncedBookings == null ? 'text-gray-400' : 'text-emerald-400',
+    },
   ];
 
   return (
@@ -41,7 +53,7 @@ export default function AdminOverview() {
         }
       />
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         {statCards.map((stat, i) => (
           <AdminStatCard
             key={stat.label}

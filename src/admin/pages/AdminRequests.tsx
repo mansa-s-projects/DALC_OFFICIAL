@@ -3,12 +3,23 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';
+import { getAllowedNextStatuses } from '../../platform/requests/lifecycle';
 import RequestStatusBadge from '../../components/requests/RequestStatusBadge';
 import { AdminEmptyState, AdminLoadingRows, AdminPageHeader, AdminSearchInput, AdminSelectFilter } from '../components';
 import { useAdminDisclosure } from '../hooks';
 
 const STATUS_OPTIONS: RequestStatus[] = [
-  'submitted', 'assigned', 'supplier_contacted', 'confirmed', 'declined', 'completed', 'cancelled',
+  'pending',
+  'acknowledged',
+  'submitted',
+  'assigned',
+  'supplier_contacted',
+  'in_progress',
+  'quoted',
+  'confirmed',
+  'declined',
+  'completed',
+  'cancelled',
 ];
 
 export default function AdminRequests() {
@@ -23,6 +34,8 @@ export default function AdminRequests() {
     if (search) {
       const q = search.toLowerCase();
       return (
+        (r.title ?? '').toLowerCase().includes(q) ||
+        (r.description ?? '').toLowerCase().includes(q) ||
         (r.venue_name ?? '').toLowerCase().includes(q) ||
         (r.contact_name ?? '').toLowerCase().includes(q) ||
         (r.contact_info ?? '').toLowerCase().includes(q)
@@ -32,7 +45,9 @@ export default function AdminRequests() {
   });
 
   const handleStatusChange = (requestId: string, newStatus: RequestStatus) => {
-    updateStatus.mutate({ id: requestId, status: newStatus });
+    const current = requests.find((r) => r.id === requestId);
+    if (!current) return;
+    updateStatus.mutate({ id: requestId, status: newStatus, fromStatus: current.status });
   };
 
   return (
@@ -78,10 +93,10 @@ export default function AdminRequests() {
                 <div className="flex items-center gap-6 flex-1 min-w-0">
                   <div className="min-w-0 flex-1">
                     <p className="text-white font-bold truncate">
-                      {request.venue_name || request.category}
+                      {request.title || request.venue_name || request.category}
                     </p>
                     <p className="text-gray-500 text-xs">
-                      {request.contact_name} &middot; {request.party_size} guests &middot;{' '}
+                      {request.contact_name || 'No contact'} &middot; {Math.max(request.party_size || 0, 1)} guests &middot;{' '}
                       {request.date_time ? new Date(request.date_time).toLocaleDateString() : 'TBD'}
                     </p>
                   </div>
@@ -104,16 +119,16 @@ export default function AdminRequests() {
                     </div>
                     <div>
                       <span className="text-gray-500 text-xs uppercase tracking-wider block mb-1">Type</span>
-                      <span className="text-white capitalize">{request.request_type ?? 'booking'}</span>
+                      <span className="text-white capitalize">{request.concierge_request_type ?? request.request_type ?? 'booking'}</span>
                     </div>
                     <div>
                       <span className="text-gray-500 text-xs uppercase tracking-wider block mb-1">Priority</span>
                       <span className="text-white">{request.priority_score}</span>
                     </div>
-                    {request.notes && (
+                    {(request.description || request.notes) && (
                       <div className="col-span-2">
-                        <span className="text-gray-500 text-xs uppercase tracking-wider block mb-1">Notes</span>
-                        <span className="text-white">{request.notes}</span>
+                        <span className="text-gray-500 text-xs uppercase tracking-wider block mb-1">Details</span>
+                        <span className="text-white">{request.description || request.notes}</span>
                       </div>
                     )}
                   </div>
@@ -122,7 +137,7 @@ export default function AdminRequests() {
                   <div>
                     <span className="text-gray-500 text-xs uppercase tracking-wider block mb-3">Update Status</span>
                     <div className="flex flex-wrap gap-2">
-                      {STATUS_OPTIONS.filter((s) => s !== request.status).map((s) => (
+                      {getAllowedNextStatuses(request.status).map((s) => (
                         <button
                           key={s}
                           onClick={() => handleStatusChange(request.id, s)}

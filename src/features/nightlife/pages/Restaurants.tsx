@@ -2,15 +2,15 @@ import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
-import { MOCK_VENUES } from '../../../data/mockData';
+import { useVenues } from '../hooks/useVenues';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 
 export default function Restaurants() {
-  // Filter for Restaurants (including Dining & Entertainment as they are dining venues)
-  const restaurants = MOCK_VENUES.filter(v => 
-    v.category === 'dining' || v.category === 'dining-entertainment'
-  );
+  const { data: diningVenues = [], isLoading: l1 } = useVenues({ category: 'dining' });
+  const { data: diningEntVenues = [], isLoading: l2 } = useVenues({ category: 'dining-entertainment' });
+  const restaurants = [...diningVenues, ...diningEntVenues];
+  const isLoading = l1 || l2;
 
   return (
     <div className="min-h-screen bg-luxury-black">
@@ -39,18 +39,31 @@ export default function Restaurants() {
 
       {/* Editorial Grid */}
       <section className="pb-24 px-4 md:px-8 max-w-[1600px] mx-auto">
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-            {restaurants.map((venue, index) => (
-               <React.Fragment key={venue.id}>
-                  <EditorialCard venue={venue} index={index} />
-               </React.Fragment>
-            ))}
-         </div>
-
-         {restaurants.length === 0 && (
-            <div className="text-center py-20 border-t border-white/10 mt-20">
-               <p className="text-gray-500 italic">More curated venues coming soon.</p>
+         {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+               {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="animate-pulse">
+                     <div className="aspect-[4/5] bg-white/5 mb-4" />
+                     <div className="h-4 bg-white/5 w-3/4 mb-2" />
+                     <div className="h-3 bg-white/5 w-1/2" />
+                  </div>
+               ))}
             </div>
+         ) : (
+            <>
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                  {restaurants.map((venue, index) => (
+                     <React.Fragment key={venue.id}>
+                        <EditorialCard venue={venue} index={index} />
+                     </React.Fragment>
+                  ))}
+               </div>
+               {restaurants.length === 0 && (
+                  <div className="text-center py-20 border-t border-white/10 mt-20">
+                     <p className="text-gray-500 italic">More curated venues coming soon.</p>
+                  </div>
+               )}
+            </>
          )}
       </section>
 

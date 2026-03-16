@@ -1,0 +1,1146 @@
+{
+  "generatedAt": "2026-03-15T03:32:45.107Z",
+  "summary": {
+    "total": 79,
+    "matchedToVenueId": 53,
+    "unmatchedNewVenues": 26,
+    "parseErrors": 0
+  },
+  "venues": [
+    {
+      "name": "African Queen",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "African Queen Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "african_queen_SEO.md"
+    },
+    {
+      "name": "Baoli",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Baoli Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "baoli_SEO.md"
+    },
+    {
+      "name": "BCH",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "BCH Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "bch_SEO.md"
+    },
+    {
+      "name": "Casablanca Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Atlantis The Palm",
+      "primary_keyword": "Casablanca Beach Dubai",
+      "secondary_keyword": "Atlantis The Palm luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "casablanca_beach_SEO.md"
+    },
+    {
+      "name": "Casa Amor",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Mandarin Oriental",
+      "primary_keyword": "Casa Amor Dubai",
+      "secondary_keyword": "Mandarin Oriental luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "casa_amor_SEO.md"
+    },
+    {
+      "name": "Drift Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Dubai Marina",
+      "primary_keyword": "Drift Beach Dubai",
+      "secondary_keyword": "Dubai Marina luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "drift_beach_SEO.md"
+    },
+    {
+      "name": "Gallery 7/40",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Gallery 7/40 Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "gallery_7-40_SEO.md"
+    },
+    {
+      "name": "Gigi",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Gigi Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "gigi_SEO.md"
+    },
+    {
+      "name": "Gitano",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Gitano Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "gitano_SEO.md"
+    },
+    {
+      "name": "Ina",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Ina Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "ina_SEO.md"
+    },
+    {
+      "name": "Kyma",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "bc-kyma"
+      ],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Kyma Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "kyma_SEO.md"
+    },
+    {
+      "name": "Lucky Fish",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm West Beach",
+      "primary_keyword": "Lucky Fish Dubai",
+      "secondary_keyword": "Palm West Beach luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "lucky_fish_SEO.md"
+    },
+    {
+      "name": "Maison De La Plage",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Maison De La Plage Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "maison_de_la_plage_SEO.md"
+    },
+    {
+      "name": "Maison Revka",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Bluewaters",
+      "primary_keyword": "Maison Revka Dubai",
+      "secondary_keyword": "Bluewaters luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "maison_revka_SEO.md"
+    },
+    {
+      "name": "Nikki Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "bc-nikki"
+      ],
+      "location": "Pearl Jumeirah",
+      "primary_keyword": "Nikki Beach Dubai",
+      "secondary_keyword": "Pearl Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "nikki_beach_SEO.md"
+    },
+    {
+      "name": "Ninive Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Ninive Beach Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "ninive_beach_SEO.md"
+    },
+    {
+      "name": "Nobu by the Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "bc-nobu"
+      ],
+      "location": "Atlantis The Royal",
+      "primary_keyword": "Nobu by the Beach Dubai",
+      "secondary_keyword": "Atlantis The Royal luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "nobu_by_the_beach_SEO.md"
+    },
+    {
+      "name": "O Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "JBR",
+      "primary_keyword": "O Beach Dubai",
+      "secondary_keyword": "JBR luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "o_beach_SEO.md"
+    },
+    {
+      "name": "Playa",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Playa Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "playa_SEO.md"
+    },
+    {
+      "name": "Sakhalin",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "J1",
+      "primary_keyword": "Sakhalin Dubai",
+      "secondary_keyword": "J1 luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "sakhalin_SEO.md"
+    },
+    {
+      "name": "Surf",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Palm West Beach",
+      "primary_keyword": "Surf Dubai",
+      "secondary_keyword": "Palm West Beach luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "surf_SEO.md"
+    },
+    {
+      "name": "Terra Solis",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Jebel Ali Desert",
+      "primary_keyword": "Terra Solis Dubai",
+      "secondary_keyword": "Jebel Ali Desert luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "terra_solis_SEO.md"
+    },
+    {
+      "name": "Verde Beach",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "bc-verde"
+      ],
+      "location": "Umm Suqeim",
+      "primary_keyword": "Verde Beach Dubai",
+      "secondary_keyword": "Umm Suqeim luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "verde_beach_SEO.md"
+    },
+    {
+      "name": "Zetta Pool",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [],
+      "location": "Address JBR",
+      "primary_keyword": "Zetta Pool Dubai",
+      "secondary_keyword": "Address JBR luxury dining",
+      "seo_category": "Beach Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "zetta_pool_SEO.md"
+    },
+    {
+      "name": "Adaline",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [],
+      "location": "DIFC",
+      "primary_keyword": "Adaline Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "adaline_SEO.md"
+    },
+    {
+      "name": "Aretha",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Aretha Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "aretha_SEO.md"
+    },
+    {
+      "name": "Billionaire",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [
+        "de-billionaire"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Billionaire Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "billionaire_SEO.md"
+    },
+    {
+      "name": "Dream",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [],
+      "location": "JBR",
+      "primary_keyword": "Dream Dubai",
+      "secondary_keyword": "JBR luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "dream_SEO.md"
+    },
+    {
+      "name": "Gatsby",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [],
+      "location": "The Palm",
+      "primary_keyword": "Gatsby Dubai",
+      "secondary_keyword": "The Palm luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "gatsby_SEO.md"
+    },
+    {
+      "name": "Theater",
+      "categories": [
+        "dining-entertainment"
+      ],
+      "venue_ids": [
+        "de-theater"
+      ],
+      "location": "Fairmont SZR",
+      "primary_keyword": "Theater Dubai",
+      "secondary_keyword": "Fairmont SZR luxury dining",
+      "seo_category": "Dining Entertainment",
+      "hero_image_status": "Linked",
+      "source_file": "theater_SEO.md"
+    },
+    {
+      "name": "Avenue",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-avenue"
+      ],
+      "location": "Shangri-La Hotel SZR",
+      "primary_keyword": "Avenue Dubai",
+      "secondary_keyword": "Shangri-La Hotel SZR luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "avenue_SEO.md"
+    },
+    {
+      "name": "Babylon",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-babylon-club"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Babylon Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "babylon_SEO.md"
+    },
+    {
+      "name": "Bund Lounge, By Shanghai Me",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-bund"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Bund Lounge, By Shanghai Me Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "bund_lounge_by_shanghai_me_SEO.md"
+    },
+    {
+      "name": "Code, By Soho Garden",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-code"
+      ],
+      "location": "Meydan",
+      "primary_keyword": "Code, By Soho Garden Dubai",
+      "secondary_keyword": "Meydan luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "code_by_soho_garden_SEO.md"
+    },
+    {
+      "name": "Epik",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-epik"
+      ],
+      "location": "Meydan",
+      "primary_keyword": "Epik Dubai",
+      "secondary_keyword": "Meydan luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "epik_SEO.md"
+    },
+    {
+      "name": "Iris",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-iris"
+      ],
+      "location": "Meydan",
+      "primary_keyword": "Iris Dubai",
+      "secondary_keyword": "Meydan luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "iris_SEO.md"
+    },
+    {
+      "name": "Litt",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-litt"
+      ],
+      "location": "KIRA",
+      "primary_keyword": "Litt Dubai",
+      "secondary_keyword": "KIRA luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "litt_SEO.md"
+    },
+    {
+      "name": "Ly-La, By Alaya",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-ly-la"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Ly-La, By Alaya Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "ly-la_by_alaya_SEO.md"
+    },
+    {
+      "name": "Nyx, By Gaia",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-nyx"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Nyx, By Gaia Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "nyx_by_gaia_SEO.md"
+    },
+    {
+      "name": "Ongaku by Clap",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-ongaku"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Ongaku by Clap Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "ongaku_by_clap_SEO.md"
+    },
+    {
+      "name": "Ora",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-ora"
+      ],
+      "location": "Habtoor City",
+      "primary_keyword": "Ora Dubai",
+      "secondary_keyword": "Habtoor City luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "ora_SEO.md"
+    },
+    {
+      "name": "Paraiso Rooftop, By Amazonico",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-paraiso"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Paraiso Rooftop, By Amazonico Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "paraiso_rooftop_by_amazonico_SEO.md"
+    },
+    {
+      "name": "Raspoutine",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-raspoutine"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Raspoutine Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "raspoutine_SEO.md"
+    },
+    {
+      "name": "Secret Room",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-secret-room"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Secret Room Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "secret_room_SEO.md"
+    },
+    {
+      "name": "Socialista",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-socialista"
+      ],
+      "location": "Cipriani",
+      "primary_keyword": "Socialista Dubai",
+      "secondary_keyword": "Cipriani luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "socialista_SEO.md"
+    },
+    {
+      "name": "Soho Garden",
+      "categories": [
+        "nightlife"
+      ],
+      "venue_ids": [
+        "nc-soho-meydan",
+        "nc-soho-palm"
+      ],
+      "location": "Meydan / Palm Jumeirah",
+      "primary_keyword": "Soho Garden Dubai",
+      "secondary_keyword": "Meydan / Palm Jumeirah luxury dining",
+      "seo_category": "Night Clubs",
+      "hero_image_status": "Linked",
+      "source_file": "soho_garden_SEO.md"
+    },
+    {
+      "name": "1920",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-1920"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "1920 Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Speakeasy/Dining",
+      "hero_image_status": "Linked",
+      "source_file": "1920_SEO.md"
+    },
+    {
+      "name": "Amazonico",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-amazonico"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Amazonico Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Latin American",
+      "hero_image_status": "Linked",
+      "source_file": "amazonico_SEO.md"
+    },
+    {
+      "name": "Amelia",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-amelia"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Amelia Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Nikkei",
+      "hero_image_status": "Linked",
+      "source_file": "amelia_SEO.md"
+    },
+    {
+      "name": "Bagatelle",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-bagatelle"
+      ],
+      "location": "Fairmont SZR",
+      "primary_keyword": "Bagatelle Dubai",
+      "secondary_keyword": "Fairmont SZR luxury dining",
+      "seo_category": "Fine Dining",
+      "hero_image_status": "Linked",
+      "source_file": "bagatelle_SEO.md"
+    },
+    {
+      "name": "Bar de Pres",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-bar-de-pres"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Bar de Pres Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Asian Fusion",
+      "hero_image_status": "Linked",
+      "source_file": "bar_de_pres_SEO.md"
+    },
+    {
+      "name": "Ce La Vi",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-ce-la-vi"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Ce La Vi Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Asian Fusion",
+      "hero_image_status": "Linked",
+      "source_file": "ce_la_vi_SEO.md"
+    },
+    {
+      "name": "Clap",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-clap"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Clap Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Japanese",
+      "hero_image_status": "Linked",
+      "source_file": "clap_SEO.md"
+    },
+    {
+      "name": "CouCou",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-coucou"
+      ],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "CouCou Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Rooftop Dining",
+      "hero_image_status": "Linked",
+      "source_file": "coucou_SEO.md"
+    },
+    {
+      "name": "Coya",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-coya"
+      ],
+      "location": "Four Seasons",
+      "primary_keyword": "Coya Dubai",
+      "secondary_keyword": "Four Seasons luxury dining",
+      "seo_category": "Peruvian",
+      "hero_image_status": "Linked",
+      "source_file": "coya_SEO.md"
+    },
+    {
+      "name": "Gal",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [],
+      "location": "Downtown",
+      "primary_keyword": "Gal Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Mediterranean/Turkish",
+      "hero_image_status": "Linked",
+      "source_file": "gal_SEO.md"
+    },
+    {
+      "name": "Hakkasan",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-hakkasan"
+      ],
+      "location": "Atlantis The Palm",
+      "primary_keyword": "Hakkasan Dubai",
+      "secondary_keyword": "Atlantis The Palm luxury dining",
+      "seo_category": "Cantonese",
+      "hero_image_status": "Linked",
+      "source_file": "hakkasan_SEO.md"
+    },
+    {
+      "name": "Il Gattopardo",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-il-gattopardo"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Il Gattopardo Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Italian",
+      "hero_image_status": "Linked",
+      "source_file": "il_gattopardo_SEO.md"
+    },
+    {
+      "name": "Krasota",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "de-krasota"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Krasota Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Immersive Dining",
+      "hero_image_status": "Linked",
+      "source_file": "krasota_SEO.md"
+    },
+    {
+      "name": "La Mar",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-la-mar"
+      ],
+      "location": "Atlantis The Royal",
+      "primary_keyword": "La Mar Dubai",
+      "secondary_keyword": "Atlantis The Royal luxury dining",
+      "seo_category": "Peruvian",
+      "hero_image_status": "Linked",
+      "source_file": "la_mar_SEO.md"
+    },
+    {
+      "name": "La Niña",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-la-nina"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "La Niña Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Iberian/Latino",
+      "hero_image_status": "Linked",
+      "source_file": "la_niña_SEO.md"
+    },
+    {
+      "name": "Ling Ling",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-ling-ling"
+      ],
+      "location": "Atlantis The Royal",
+      "primary_keyword": "Ling Ling Dubai",
+      "secondary_keyword": "Atlantis The Royal luxury dining",
+      "seo_category": "Asian",
+      "hero_image_status": "Linked",
+      "source_file": "ling_ling_SEO.md"
+    },
+    {
+      "name": "MamaBella",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-mamabello"
+      ],
+      "location": "Kempinski Hotel",
+      "primary_keyword": "MamaBella Dubai",
+      "secondary_keyword": "Kempinski Hotel luxury dining",
+      "seo_category": "Italian",
+      "hero_image_status": "Linked",
+      "source_file": "mamabella_SEO.md"
+    },
+    {
+      "name": "Nahate",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-nahate"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Nahate Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Fine Dining",
+      "hero_image_status": "Linked",
+      "source_file": "nahate_SEO.md"
+    },
+    {
+      "name": "Nammos",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-nammos"
+      ],
+      "location": "Four Seasons Jumeirah",
+      "primary_keyword": "Nammos Dubai",
+      "secondary_keyword": "Four Seasons Jumeirah luxury dining",
+      "seo_category": "Mediterranean",
+      "hero_image_status": "Linked",
+      "source_file": "nammos_SEO.md"
+    },
+    {
+      "name": "Nazcaa",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-nazcaa"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Nazcaa Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Japanese-Peruvian",
+      "hero_image_status": "Linked",
+      "source_file": "nazcaa_SEO.md"
+    },
+    {
+      "name": "Nobu",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-nobu"
+      ],
+      "location": "Atlantis The Palm",
+      "primary_keyword": "Nobu Dubai",
+      "secondary_keyword": "Atlantis The Palm luxury dining",
+      "seo_category": "Japanese",
+      "hero_image_status": "Linked",
+      "source_file": "nobu_SEO.md"
+    },
+    {
+      "name": "Opa",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-opa"
+      ],
+      "location": "Fairmont SZR",
+      "primary_keyword": "Opa Dubai",
+      "secondary_keyword": "Fairmont SZR luxury dining",
+      "seo_category": "Greek",
+      "hero_image_status": "Linked",
+      "source_file": "opa_SEO.md"
+    },
+    {
+      "name": "Ram & Roll",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-ram-roll"
+      ],
+      "location": "Kempinski Hotel",
+      "primary_keyword": "Ram & Roll Dubai",
+      "secondary_keyword": "Kempinski Hotel luxury dining",
+      "seo_category": "Dining",
+      "hero_image_status": "Linked",
+      "source_file": "ram_&_roll_SEO.md"
+    },
+    {
+      "name": "Salvaje",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-salvaje"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Salvaje Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Japanese",
+      "hero_image_status": "Linked",
+      "source_file": "salvaje_SEO.md"
+    },
+    {
+      "name": "Sexy Fish",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-sexy-fish"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Sexy Fish Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Asian",
+      "hero_image_status": "Linked",
+      "source_file": "sexy_fish_SEO.md"
+    },
+    {
+      "name": "Shanghai Me",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-shanghai-me"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Shanghai Me Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Asian",
+      "hero_image_status": "Linked",
+      "source_file": "shanghai_me_SEO.md"
+    },
+    {
+      "name": "Sushi Samba",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-sushisamba"
+      ],
+      "location": "Palm Jumeirah",
+      "primary_keyword": "Sushi Samba Dubai",
+      "secondary_keyword": "Palm Jumeirah luxury dining",
+      "seo_category": "Japanese/Brazilian",
+      "hero_image_status": "Linked",
+      "source_file": "sushi_samba_SEO.md"
+    },
+    {
+      "name": "Tang",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-tang"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Tang Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Asian",
+      "hero_image_status": "Linked",
+      "source_file": "tang_SEO.md"
+    },
+    {
+      "name": "Tattu",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-tattu"
+      ],
+      "location": "Ciel Dubai Marina",
+      "primary_keyword": "Tattu Dubai",
+      "secondary_keyword": "Ciel Dubai Marina luxury dining",
+      "seo_category": "Chinese",
+      "hero_image_status": "Linked",
+      "source_file": "tattu_SEO.md"
+    },
+    {
+      "name": "Urla",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-urla"
+      ],
+      "location": "Downtown",
+      "primary_keyword": "Urla Dubai",
+      "secondary_keyword": "Downtown luxury dining",
+      "seo_category": "Aegean",
+      "hero_image_status": "Linked",
+      "source_file": "urla_SEO.md"
+    },
+    {
+      "name": "Verde",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-verde-fs"
+      ],
+      "location": "Four Seasons",
+      "primary_keyword": "Verde Dubai",
+      "secondary_keyword": "Four Seasons luxury dining",
+      "seo_category": "Fine Dining",
+      "hero_image_status": "Linked",
+      "source_file": "verde_SEO.md"
+    },
+    {
+      "name": "Villa Coconut",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [
+        "r-villa-coconut"
+      ],
+      "location": "DIFC",
+      "primary_keyword": "Villa Coconut Dubai",
+      "secondary_keyword": "DIFC luxury dining",
+      "seo_category": "Mediterranean",
+      "hero_image_status": "Linked",
+      "source_file": "villa_coconut_SEO.md"
+    },
+    {
+      "name": "Woohoo",
+      "categories": [
+        "dining"
+      ],
+      "venue_ids": [],
+      "location": "Kempinski Hotel",
+      "primary_keyword": "Woohoo Dubai",
+      "secondary_keyword": "Kempinski Hotel luxury dining",
+      "seo_category": "Dining",
+      "hero_image_status": "Linked",
+      "source_file": "woohoo_SEO.md"
+    }
+  ],
+  "errors": []
+}

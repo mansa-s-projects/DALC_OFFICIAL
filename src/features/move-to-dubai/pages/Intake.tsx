@@ -19,11 +19,11 @@ export default function Intake() {
           <motion.button
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => navigate('/relocation')}
+            onClick={() => navigate('/move-to-dubai')}
             className="flex items-center gap-2 text-gray-400 hover:text-luxury-gold transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm uppercase tracking-widest">Back to Relocation</span>
+            <span className="text-sm uppercase tracking-widest">Back to Move to Dubai</span>
           </motion.button>
 
           <motion.div

@@ -13,17 +13,21 @@ export default function RequestCard({ request }: RequestCardProps) {
         month: 'short',
         day: 'numeric',
       })
-    : 'TBD';
+    : request.preferred_date || 'TBD';
+
+  const requestTitle = request.title || request.venue_name || request.category;
+  const guestCount = Math.max(request.party_size || 0, 1);
+  const description = request.description || request.notes;
 
   return (
     <div className="glass-panel p-6 rounded-sm border border-white/5 hover:border-luxury-gold/20 transition-colors">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-white font-display text-lg">
-            {request.venue_name || request.category}
+            {requestTitle}
           </h3>
           <p className="text-gray-500 text-xs uppercase tracking-wider mt-1">
-            {request.request_type ?? 'booking'}
+            {request.concierge_request_type ?? request.request_type ?? 'booking'}
           </p>
         </div>
         <RequestStatusBadge status={request.status} />
@@ -36,7 +40,7 @@ export default function RequestCard({ request }: RequestCardProps) {
         </div>
         <div className="flex items-center gap-1.5">
           <Users className="w-3.5 h-3.5 text-luxury-gold" />
-          <span>{request.party_size} guests</span>
+          <span>{guestCount} guests</span>
         </div>
         {request.venue_name && (
           <div className="flex items-center gap-1.5">
@@ -46,8 +50,8 @@ export default function RequestCard({ request }: RequestCardProps) {
         )}
       </div>
 
-      {request.notes && (
-        <p className="text-gray-500 text-sm mt-3 line-clamp-2">{request.notes}</p>
+      {description && (
+        <p className="text-gray-500 text-sm mt-3 line-clamp-2">{description}</p>
       )}
 
       {request.created_at && (

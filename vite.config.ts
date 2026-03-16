@@ -11,6 +11,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@map': path.resolve(__dirname, './src/features/live-map'),
     },
+  },
+  define: {
+    'process.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(
+      process.env.VITE_GOOGLE_MAPS_API_KEY
+    ),
   },
 });

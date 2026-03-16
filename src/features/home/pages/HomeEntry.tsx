@@ -1,16 +1,27 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../../lib/supabase';
-import AccessCard from '../components/AccessCard';
-import CategoryCard from '../components/CategoryCard';
+import AccessCard from '../../../components/cards/AccessCard';
+import CategoryCard from '../../../components/cards/CategoryCard';
+import EditorsPicks from '../../../components/layout/EditorsPicks';
+import HeroSection from '../../../components/layout/HeroSection';
 import ExploreGrid from '../components/ExploreGrid';
-import HeroSection from '../components/HeroSection';
 import RequestCard from '../components/RequestCard';
-import ServiceCard from '../components/ServiceCard';
 import VenueCard from '../components/VenueCard';
-import { CATEGORIES, EDITORS_PICKS, EAGLE_PATH, FEATURED_VENUES, SAMPLE_REQUESTS } from '../constants';
+import { EDITORS_PICKS, EAGLE_PATH, FEATURED_VENUES, ROW_ONE_CATEGORIES, ROW_TWO_CATEGORIES, SAMPLE_REQUESTS } from '../constants';
+
+const MAIN_NAV_ITEMS = [
+  { label: 'Move To Dubai', to: '/move-to-dubai' },
+  { label: 'Home', to: '/' },
+  { label: 'Experiences', to: '/experiences' },
+  { label: 'Nightlife', to: '/nightlife' },
+  { label: 'Travel', to: '/travel' },
+  { label: 'Business', to: '/business' },
+  { label: 'Concierge', to: '/concierge' },
+  { label: 'Explore', to: '/explore' },
+] as const;
 
 export default function HomeEntry() {
   const [email, setEmail] = useState('');
@@ -73,85 +84,98 @@ export default function HomeEntry() {
           </linearGradient>
         </defs>
         <path d={EAGLE_PATH} stroke="url(#skyStroke)" strokeWidth="1.5" />
-        <motion.g initial={{ x: -120, y: 16 }} animate={{ x: 1120, y: -8 }} transition={{ duration: 11, ease: 'easeInOut', repeat: Infinity, repeatDelay: 1.5 }}>
-          <path d="M10 10 Q 26 0 42 10" stroke="#ead9ad" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M42 10 Q 58 20 74 10" stroke="#ead9ad" strokeWidth="1.5" strokeLinecap="round" />
-        </motion.g>
       </motion.svg>
 
-      <header className="relative z-30 flex items-center justify-between px-6 py-6 md:px-12">
-        <div className="flex items-center gap-2 text-[#EBD2A0]">
-          <Compass className="h-4 w-4" />
-          <span className="font-display text-lg">DALC</span>
-        </div>
-        <div className="hidden items-center gap-6 md:flex">
-          <Link to="/concierge" className="text-xs uppercase tracking-[0.1em] text-white/60 hover:text-white">Concierge</Link>
-          <Link to="/login" className="rounded-md border border-[#D6B574]/40 px-4 py-2 text-xs uppercase tracking-[0.12em] text-[#EBD2A0] hover:bg-[#D6B574]/12">Sign In</Link>
+      <header className="relative z-30 px-6 py-6 md:px-12">
+        <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center gap-2 text-[#EBD2A0]">
+            <Compass className="h-4 w-4" />
+            <span className="font-display text-lg">DALC</span>
+          </div>
+
+          <nav className="hidden flex-1 items-center gap-5 md:flex lg:gap-6">
+            {MAIN_NAV_ITEMS.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                className="text-xs uppercase tracking-[0.1em] text-white/60 transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-4 md:flex">
+            <Link to="/concierge" className="text-xs uppercase tracking-[0.1em] text-white/70 hover:text-white">Concierge</Link>
+            <Link to="/login" className="rounded-md border border-[#D6B574]/40 px-4 py-2 text-xs uppercase tracking-[0.12em] text-[#EBD2A0] hover:bg-[#D6B574]/12">Sign In</Link>
+          </div>
         </div>
       </header>
 
       <main className="relative z-20 px-6 pb-16 md:px-12">
-        <section className="relative mx-auto flex min-h-[62vh] max-w-6xl items-center justify-center">
-          <AnimatePresence mode="wait">
-            {!isAccessGranted ? (
-              <motion.div key="entry" className="w-full">
-                {showCard && <AccessCard email={email} onEmailChange={setEmail} onSubmit={handleAccess} isSaving={isSaving} />}
+        <section className="relative mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full"
+          >
+            <HeroSection />
+
+            {!isAccessGranted && showCard ? (
+              <div className="mx-auto mt-8 max-w-2xl">
+                <AccessCard email={email} onEmailChange={setEmail} onSubmit={handleAccess} isSaving={isSaving} />
                 {error ? <p className="mt-3 text-center text-sm text-red-300">{error}</p> : null}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full"
-              >
-                <HeroSection />
-                <motion.div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {CATEGORIES.map((item, index) => (
-                    <CategoryCard key={item.title} item={item} index={index} />
-                  ))}
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              </div>
+            ) : null}
+
+            <motion.div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {ROW_ONE_CATEGORIES.map((item, index) => (
+                <CategoryCard key={item.title} item={item} index={index} />
+              ))}
+            </motion.div>
+          </motion.div>
         </section>
 
-        {isAccessGranted ? (
-          <section className="mx-auto mt-4 max-w-6xl">
-            <div className="mb-6 flex items-end justify-between">
-              <h2 className="font-display text-3xl text-[#EBD2A0] md:text-4xl">Editor's Picks</h2>
-              <span className="text-xs uppercase tracking-[0.12em] text-white/45">Curated Now</span>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-              {EDITORS_PICKS.map((item, index) => (
-                <ServiceCard key={item.title} item={item} index={index} />
+        <section className="mx-auto mt-4 max-w-6xl">
+          <div className="mb-8">
+            <div className="grid gap-4 md:grid-cols-3">
+              {ROW_TWO_CATEGORIES.map((item, index) => (
+                <CategoryCard key={item.title} item={item} index={index} />
               ))}
             </div>
+          </div>
 
-            <div className="mt-10 grid gap-4 lg:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5">
-                <h3 className="font-display text-2xl text-[#EFD7A4]">Venues</h3>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {FEATURED_VENUES.map((item) => (
-                    <VenueCard key={item.title} item={item} />
-                  ))}
-                </div>
-              </div>
+          <EditorsPicks items={EDITORS_PICKS} />
 
-              <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5">
-                <h3 className="font-display text-2xl text-[#EFD7A4]">Request Updates</h3>
-                <div className="mt-4 grid gap-3">
-                  {SAMPLE_REQUESTS.map((item) => (
-                    <RequestCard key={item.title} item={item} />
-                  ))}
-                </div>
+          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5">
+              <h3 className="font-display text-2xl text-[#EFD7A4]">Venues</h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {FEATURED_VENUES.map((item) => (
+                  <VenueCard key={item.title} item={item} />
+                ))}
               </div>
             </div>
 
+            <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5">
+              <h3 className="font-display text-2xl text-[#EFD7A4]">Request Updates</h3>
+              <div className="mt-4 grid gap-3">
+                {SAMPLE_REQUESTS.map((item) => (
+                  <RequestCard key={item.title} item={item} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <section className="mt-12">
+            <div className="mb-4 flex items-end justify-between">
+              <h2 className="font-display text-3xl text-[#EBD2A0] md:text-4xl">Explore</h2>
+              <span className="text-xs uppercase tracking-[0.12em] text-white/45">Browse all services</span>
+            </div>
             <ExploreGrid />
           </section>
-        ) : null}
+        </section>
       </main>
     </div>
   );

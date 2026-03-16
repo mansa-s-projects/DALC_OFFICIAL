@@ -17,6 +17,7 @@ const CATEGORY_SKILLS: Record<Category, UserSkill[]> = {
   wellness: ['WELLNESS'],
   shopping: ['LUXURY'],
   business: ['NETWORKING', 'DEAL_MAKING'],
+  concierge: ['LUXURY', 'NETWORKING'],
   events: ['SOCIALITE', 'NETWORKING'],
   sports: ['ADVENTURE'],
 };
