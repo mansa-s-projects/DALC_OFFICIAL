@@ -191,8 +191,8 @@ export default function ProfilePage() {
   const QUICK_LINKS = [
     { icon: ClipboardList, label: 'My Requests', desc: 'Track all your bookings', to: '/my-requests' },
     { icon: Bookmark, label: 'Saved Venues', desc: `${savedVenues.length} saved`, to: '/explore' },
-    { icon: Shield, label: 'Privacy & Security', desc: 'Manage your data', to: '#' },
-    { icon: Settings, label: 'Preferences', desc: 'Notifications & settings', to: '#' },
+    { icon: Shield, label: 'Privacy & Security', desc: 'Manage your data', to: '/profile/security' },
+    { icon: Settings, label: 'Preferences', desc: 'Notifications & settings', to: '/profile/settings' },
   ];
 
   return (

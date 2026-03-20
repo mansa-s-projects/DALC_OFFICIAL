@@ -4,6 +4,7 @@ import { Menu, X, LogOut, User, Search } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { useAppStore } from '../../store/useAppStore';
 import { signOut } from '../../lib/auth';
+import NotificationBell from '../notifications/NotificationBell';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -96,6 +97,7 @@ export default function Navbar() {
               >
                 <Search className="w-4 h-4" />
               </Link>
+              <NotificationBell />
               <Link
                 to="/profile"
                 className="flex items-center gap-2 text-gray-300 text-sm hover:text-luxury-gold transition-colors"

@@ -6,8 +6,8 @@ import Footer from '../../components/navigation/Footer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Utensils, Palmtree, Music, Mic2 } from 'lucide-react';
-import { MOCK_VENUES } from '../../data/mockData';
-import VenueCard from '../../components/cards/VenueCard';
+import { useVenues } from '../../features/nightlife/hooks/useVenues';
+import EditorialCard from '../../components/cards/EditorialCard';
 
 const NIGHTLIFE_CATEGORIES = [
   {
@@ -40,7 +40,8 @@ const NIGHTLIFE_CATEGORIES = [
 ];
 
 export default function Nightlife() {
-  const diningEntertainmentVenues = MOCK_VENUES.filter(v => v.category === 'dining-entertainment').slice(0, 2);
+  const { data: nightlifeVenues = [], isLoading } = useVenues({ category: 'nightlife' });
+  const featuredVenues = nightlifeVenues.slice(0, 2);
 
   return (
     <div className="min-h-screen bg-luxury-black">
@@ -154,19 +155,29 @@ export default function Nightlife() {
                  </Link>
               </div>
 
-              {/* Mini Venue Preview */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 {diningEntertainmentVenues.map((venue) => (
-                    <motion.div
-                       key={venue.id}
-                       initial={{ opacity: 0, x: 20 }}
-                       whileInView={{ opacity: 1, x: 0 }}
-                       viewport={{ once: true }}
-                    >
-                       <VenueCard venue={venue} />
-                    </motion.div>
-                 ))}
-              </div>
+               {/* Mini Venue Preview */}
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {isLoading ? (
+                    Array.from({ length: 2 }).map((_, i) => (
+                      <div key={i} className="animate-pulse">
+                        <div className="aspect-[4/5] bg-white/5 mb-4" />
+                        <div className="h-4 bg-white/5 w-3/4 mb-2" />
+                        <div className="h-3 bg-white/5 w-1/2" />
+                      </div>
+                    ))
+                  ) : (
+                    featuredVenues.map((venue) => (
+                      <motion.div
+                        key={venue.id}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                      >
+                        <EditorialCard venue={venue} index={0} />
+                      </motion.div>
+                    ))
+                  )}
+               </div>
            </div>
         </div>
       </section>

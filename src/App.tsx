@@ -5,6 +5,7 @@ import AppRouter from './app/router';
 import { supabase } from './lib/supabase';
 import { getProfile } from './lib/auth';
 import { useAppStore } from './store/useAppStore';
+import { NotificationsProvider } from './features/notifications/context/NotificationsContext';
 
 const queryClient = new QueryClient();
 
@@ -50,7 +51,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AuthListener />
-        <AppRouter />
+        <NotificationsProvider>
+          <AppRouter />
+        </NotificationsProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );
