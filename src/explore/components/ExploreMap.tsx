@@ -13,6 +13,18 @@ interface ExploreMapProps {
 const UAE_CENTER: [number, number] = [54.3773, 24.4539];
 const DEFAULT_ZOOM = 6;
 
+function getMapboxToken() {
+  if (typeof process !== 'undefined' && process.env) {
+    return process.env.NEXT_PUBLIC_MAPBOX_TOKEN || process.env.VITE_MAPBOX_TOKEN;
+  }
+
+  const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined) as
+    | Record<string, string | undefined>
+    | undefined;
+
+  return viteEnv?.VITE_MAPBOX_TOKEN;
+}
+
 // XSS-safe HTML string escaping for map popup content
 function esc(str: string): string {
   return str
@@ -138,7 +150,7 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
 
   onSelectRef.current = onLocationSelect;
 
-  const token = (import.meta as any).env.VITE_MAPBOX_TOKEN as string | undefined;
+  const token = getMapboxToken();
 
   // Inject styles once
   useEffect(() => {
@@ -246,7 +258,7 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
         <p className="max-w-[200px] text-center text-xs leading-relaxed text-[#B6B6B6]/40">
           Add{' '}
           <code className="rounded bg-[rgba(200,164,107,0.1)] px-1 py-0.5 font-mono text-[#C8A46B]/70">
-            VITE_MAPBOX_TOKEN
+            NEXT_PUBLIC_MAPBOX_TOKEN
           </code>{' '}
           to your .env file
         </p>

@@ -1,7 +1,24 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = (import.meta as any).env.VITE_SUPABASE_URL as string | undefined;
-const supabaseAnonKey = (import.meta as any).env.VITE_SUPABASE_ANON_KEY as string | undefined;
+function getEnv(name: string): string | undefined {
+  if (typeof process !== 'undefined' && process.env?.[name]) {
+    return process.env[name];
+  }
+
+  const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined) as
+    | Record<string, string | undefined>
+    | undefined;
+
+  return viteEnv?.[name];
+}
+
+const supabaseUrl =
+  getEnv('NEXT_PUBLIC_SUPABASE_URL') ??
+  getEnv('VITE_SUPABASE_URL');
+
+const supabaseAnonKey =
+  getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY') ??
+  getEnv('VITE_SUPABASE_ANON_KEY');
 
 function isValidConfig(url?: string, key?: string): boolean {
   if (!url || !key) return false;

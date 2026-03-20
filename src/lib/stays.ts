@@ -12,7 +12,7 @@ import type {
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-const MOCK_PROPERTIES: StaysProperty[] = [
+export const MOCK_PROPERTIES: StaysProperty[] = [
   // Hotels (2)
   {
     id: 'mock-stay-1',
