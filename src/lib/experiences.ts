@@ -11,7 +11,7 @@ import type {
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-const MOCK_EXPERIENCES: ExperienceService[] = [
+export const MOCK_EXPERIENCES: ExperienceService[] = [
   // ─── Nightlife ───────────────────────────────────────────────────────────────
   {
     id: 'mock-exp-1',
@@ -822,3 +822,4 @@ export async function getUserExperienceBookings(userId: string): Promise<Experie
   if (error) throw error;
   return (data ?? []) as ExperienceBooking[];
 }
+

@@ -54,9 +54,14 @@ export default function BookingForm({
     if (!canSubmit) return;
 
     // Combine date and time
+    // Parse time directly from ISO string to avoid timezone offset issues
     const pickupDateTime = new Date(selectedDate);
-    const timeDate = new Date(selectedTime);
-    pickupDateTime.setHours(timeDate.getHours(), timeDate.getMinutes());
+    const timeMatch = selectedTime.match(/T(\d{2}):(\d{2})/);
+    if (timeMatch) {
+      const hours = parseInt(timeMatch[1], 10);
+      const minutes = parseInt(timeMatch[2], 10);
+      pickupDateTime.setHours(hours, minutes, 0, 0);
+    }
 
     // Calculate return date for hourly bookings
     let returnDateTime: Date | undefined;
@@ -75,6 +80,7 @@ export default function BookingForm({
       pickup_location: location,
       duration_hours: duration,
       quoted_price: estimatedPrice || undefined,
+      special_requests: specialRequests || undefined,
     });
   };
 

@@ -16,6 +16,7 @@ export default function Request() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     venueName: searchParams.get('venueName') || '',
+    category: (searchParams.get('category') as Category) || 'dining',
     date: '',
     guests: '2',
     name: '',
@@ -37,7 +38,7 @@ export default function Request() {
       await createRequest.mutateAsync({
         venue_id: venueId,
         venue_name: formData.venueName,
-        category: 'dining' as Category,
+        category: formData.category,
         request_type: 'booking',
         date_time: `${formData.date}T20:00:00`,
         party_size: Number(formData.guests) || 2,
@@ -91,7 +92,7 @@ export default function Request() {
                   required
                 />
               </div>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-3 gap-6">
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-500 mb-2">Date</label>
                   <input
@@ -112,6 +113,21 @@ export default function Request() {
                      {[1,2,3,4,5,6,7,8,9,10, '10+'].map(n => (
                        <option key={n} value={n}>{n} Guests</option>
                      ))}
+                   </select>
+                </div>
+                <div>
+                   <label className="block text-xs font-bold uppercase text-gray-500 mb-2">Category</label>
+                   <select
+                     value={formData.category}
+                     onChange={e => setFormData({...formData, category: e.target.value as Category})}
+                     className="w-full bg-luxury-black/50 border border-white/10 rounded p-4 text-white focus:border-luxury-gold outline-none"
+                   >
+                     <option value="dining">Dining</option>
+                     <option value="nightlife">Nightlife</option>
+                     <option value="beach-clubs">Beach Clubs</option>
+                     <option value="experiences">Experiences</option>
+                     <option value="events">Events</option>
+                     <option value="wellness">Wellness</option>
                    </select>
                 </div>
               </div>

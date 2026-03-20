@@ -6,6 +6,15 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Category, Venue } from '../../types';
 import { useAdminForm } from '../hooks';
 
+// Generate a UUID v4 for unique venue IDs
+function generateUUID(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 const CATEGORIES: Category[] = [
   'dining', 'nightlife', 'beach-clubs', 'dining-entertainment',
   'yachts', 'travel', 'car-rental', 'experiences',
@@ -120,7 +129,7 @@ export default function AdminVenueForm() {
 
     try {
       if (isNew) {
-        const venueId = form.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        const venueId = generateUUID();
         const { error: err } = await supabase
           .from('venues')
           .insert({ id: venueId, ...payload });

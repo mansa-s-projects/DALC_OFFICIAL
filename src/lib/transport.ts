@@ -10,7 +10,7 @@ import type {
 
 // ─── Mock Data ──────────────────────────────────────────────────────────────────
 
-const MOCK_SERVICES: TransportService[] = [
+export const MOCK_SERVICES: TransportService[] = [
   // ─── CARS ─────────────────────────────────────────────────────────────────────
   {
     id: 'mock-car-1',
@@ -570,7 +570,9 @@ export async function checkAvailability(
     });
 
   if (error) {
-    // Fallback if RPC doesn't exist
+    // RPC not available - log error but return available to allow booking
+    // The backend will validate availability when processing the booking
+    console.error('Availability check failed:', error);
     return { available: true };
   }
   
@@ -644,3 +646,4 @@ export function generateTransportSlug(name: string, area?: string): string {
   
   return base;
 }
+
