@@ -57,6 +57,9 @@ const ConciergeHub = lazy(() => import('../pages/concierge/ConciergeHub'));
 const ConciergeRequest = lazy(() => import('../pages/concierge/RequestPage'));
 const SearchResults = lazy(() => import('../pages/explore/SearchResults'));
 const ProfilePage = lazy(() => import('../pages/profile/ProfilePage'));
+const NotificationsPage = lazy(() => import('../pages/notifications/NotificationsPage'));
+const ProfileSecurityPage = lazy(() => import('../pages/profile/ProfileSecurityPage'));
+const ProfileSettingsPage = lazy(() => import('../pages/profile/ProfileSettingsPage'));
 
 function RouteLoader() {
   return (
@@ -167,6 +170,13 @@ export default function AppRouter() {
 
       {/* ── Profile ───────────────────────────────────────────────────────── */}
       <Route path="/profile" element={<AuthGuard><ProfilePage /></AuthGuard>} />
+
+      {/* ── Notifications ────────────────────────────────────────────────── */}
+      <Route path="/notifications" element={<AuthGuard><NotificationsPage /></AuthGuard>} />
+
+      {/* ── Profile Pages ───────────────────────────────────────────────── */}
+      <Route path="/profile/security" element={<AuthGuard><ProfileSecurityPage /></AuthGuard>} />
+      <Route path="/profile/settings" element={<AuthGuard><ProfileSettingsPage /></AuthGuard>} />
 
       {/* ── Live Map ──────────────────────────────────────────────────────── */}
       <Route path="/live-map" element={<LiveMapPage />} />

@@ -5,7 +5,8 @@ import { Map3D, Map3DCameraProps } from './components/map-3d';
 import { MapController } from './lib/map-controller';
 import { DALC_VENUES, VENUE_CATEGORIES, MapVenue } from './lib/venue-data';
 
-const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
+// Next.js compatible env var access
+const MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
 const DUBAI_VIEW: Map3DCameraProps = {
   center: { lat: 25.1845, lng: 55.2708, altitude: 0 },

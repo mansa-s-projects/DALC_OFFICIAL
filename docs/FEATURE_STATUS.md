@@ -13,11 +13,11 @@
 | AuthGuard | ✅ | Zustand session, redirects with `state.from` |
 | AdminGuard | ✅ | Checks `profile.role` in Zustand |
 | Profile view | ✅ | Reads from Zustand profile state |
-| Profile edit (save) | 🔴 | Writes to `users` table; auth reads `profiles` |
+| Profile edit (save) | ✅ | Writes to `profiles` table correctly |
 | `useAuth.ts` hook | 🔴 | Dead stub — always returns null. Delete. |
-| `/profile/security` | ⬛ | Linked in UI, no route |
-| `/profile/settings` | ⬛ | Linked in UI, no route |
-| Password reset | ⬛ | No UI or flow |
+| `/profile/security` | ✅ | Privacy & security page with password change |
+| `/profile/settings` | ✅ | Notification preferences page |
+| Password reset | ✅ | Available in security page |
 | Avatar upload | ⬛ | Field in schema, no upload flow |
 
 ---
@@ -85,7 +85,7 @@
 | My Requests (user) | ✅ | Real Supabase query, status display |
 | Request detail | ✅ | Timeline, status badge |
 | Admin request management | ✅ | Status updates, filtering |
-| Request notifications | ⬛ | All `console.info`, no delivery |
+| Request notifications | 🟡 | Foundation exists (notifications table + hooks), not yet integrated |
 
 ---
 
@@ -155,7 +155,7 @@
 | Mock fallback mode | ✅ | `isMockMode` pattern — clean |
 | Email notifications | ⬛ | Not started |
 | Push notifications | ⬛ | Not started |
-| In-app notifications | ⬛ | Not started |
+| In-app notifications | ✅ | Bell in navbar + /notifications page + real-time |
 | Payment processing | ⬛ | Zero implementation |
 | Error boundaries | 🟡 | `ErrorBoundary.tsx` exists, not applied to all routes |
 | RLS policies | ❓ | Migrations define them — cannot verify enforcement from client |

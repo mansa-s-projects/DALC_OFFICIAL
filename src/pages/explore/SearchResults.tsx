@@ -9,6 +9,20 @@ import type { SearchResult } from '../../features/search/useSearch';
 
 const PRICE_MARKERS = ['', '$', '$$', '$$$', '$$$$'] as const;
 
+const TYPE_COLORS: Record<string, string> = {
+  venue: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  experience: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  transport: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+  business: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+};
+
+const TYPE_LABELS: Record<string, string> = {
+  venue: 'Venue',
+  experience: 'Experience',
+  transport: 'Transport',
+  business: 'Business',
+};
+
 function ResultCard({ result }: { result: SearchResult }) {
   return (
     <motion.div
@@ -34,6 +48,10 @@ function ResultCard({ result }: { result: SearchResult }) {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          {/* Type badge */}
+          <span className={`absolute top-1 left-1 px-1.5 py-0.5 text-[10px] font-medium border rounded ${TYPE_COLORS[result.type] || TYPE_COLORS.venue}`}>
+            {TYPE_LABELS[result.type] || 'Venue'}
+          </span>
         </div>
         <div className="flex flex-1 flex-col justify-between min-w-0">
           <div>
