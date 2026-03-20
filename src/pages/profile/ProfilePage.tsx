@@ -177,7 +177,7 @@ export default function ProfilePage() {
   const handleEditSave = async (first: string, last: string, phone: string) => {
     if (!supabase || !session?.user) return;
     await supabase
-      .from('users')
+      .from('profiles')
       .update({ first_name: first, last_name: last, phone })
       .eq('id', session.user.id);
   };
@@ -191,8 +191,8 @@ export default function ProfilePage() {
   const QUICK_LINKS = [
     { icon: ClipboardList, label: 'My Requests', desc: 'Track all your bookings', to: '/my-requests' },
     { icon: Bookmark, label: 'Saved Venues', desc: `${savedVenues.length} saved`, to: '/explore' },
-    { icon: Shield, label: 'Privacy & Security', desc: 'Manage your data', to: '/profile/security' },
-    { icon: Settings, label: 'Preferences', desc: 'Notifications & settings', to: '/profile/settings' },
+    { icon: Shield, label: 'Privacy & Security', desc: 'Manage your data', to: '#' },
+    { icon: Settings, label: 'Preferences', desc: 'Notifications & settings', to: '#' },
   ];
 
   return (

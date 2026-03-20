@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { Venue } from '../../types';
 
@@ -11,7 +11,7 @@ interface EditorialCardProps {
 
 export default function EditorialCard({ venue, index }: EditorialCardProps) {
   return (
-    <Link to={`/venue/${venue.id}`} className="block group w-full">
+    <Link href={`/venue/${venue.id}`} className="block group w-full">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -12,7 +12,8 @@
       "Bash(grep -l \"useAppStore\" /c/Users/mehdi/Desktop/02_PROJECTS/dalc_new/src/store/*.ts)",
       "Bash(taskkill /F /IM node.exe)",
       "Bash(npm run:*)",
-      "Bash(start cmd:*)"
+      "Bash(start cmd:*)",
+      "Bash(find c:/Users/mehdi/Desktop/02_PROJECTS/active/DALC_OFFICIAL -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type f -o -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type d)"
     ]
   }
 }

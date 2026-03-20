@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, MapPin, ArrowRight, TrendingUp, Heart } from 'lucide-react';
 import { Venue } from '../../types';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useAppStore } from '../../store/useAppStore';
 
 interface VenueCardProps {
@@ -134,7 +134,7 @@ export default function VenueCard({
             </div>
           )}
 
-          <Link to={`/venue/${venue.id}`} className="inline-block w-full">
+          <Link href={`/venue/${venue.id}`} className="inline-block w-full">
             <button className="w-full py-3 bg-white/10 hover:bg-luxury-gold hover:text-black border border-white/20 hover:border-luxury-gold text-white uppercase text-xs font-bold tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-aura">
               View Details <ArrowRight className="w-4 h-4" />
             </button>

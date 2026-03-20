@@ -134,6 +134,7 @@ export interface TransportBookingInput {
   relocation_profile_id?: string;
   workflow_step_id?: string;
   quoted_price?: number;
+  special_requests?: string;
 }
 
 // ─── Availability Types ─────────────────────────────────────────────────────────
