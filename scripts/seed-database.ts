@@ -1,97 +1,109 @@
 import { supabase } from '../src/lib/supabase';
 import { MOCK_VENUES } from '../src/data/mockData';
-import { MOCK_SERVICES } from '../src/lib/transport';
+import { MOCK_SERVICES as MOCK_TRANSPORT_SERVICES } from '../src/lib/transport';
 import { MOCK_EXPERIENCES } from '../src/lib/experiences';
+import { MOCK_PROPERTIES } from '../src/lib/stays';
+import { MOCK_SERVICES as MOCK_BUSINESS_SERVICES } from '../src/lib/business';
 
-// Parse Venues.txt for additional data
-const VENUES_DATA = {
-  "partners": {
-    "restaurants": [
-      { "name": "Bagatelle", "location": "Fairmont SZR", "category": "Fine Dining" },
-      { "name": "Verde", "location": "Four Seasons", "category": "Fine Dining" },
-      { "name": "CouCou", "location": "Palm Jumeirah", "category": "Rooftop Dining" },
-      { "name": "Amazonico", "location": "DIFC", "category": "Latin American" },
-      { "name": "Il Gattopardo", "location": "DIFC", "category": "Italian" },
-      { "name": "Bar de Pres", "location": "DIFC", "category": "Asian Fusion" },
-      { "name": "1920", "location": "DIFC", "category": "Speakeasy/Dining" },
-      { "name": "Nahate", "location": "DIFC", "category": "Fine Dining" },
-      { "name": "Nobu", "location": "Atlantis The Palm", "category": "Japanese" },
-      { "name": "Ling Ling", "location": "Atlantis The Royal", "category": "Asian" },
-      { "name": "La Mar", "location": "Atlantis The Royal", "category": "Peruvian" },
-      { "name": "Hakkasan", "location": "Atlantis The Palm", "category": "Cantonese" },
-      { "name": "MamaBella", "location": "Kempinski Hotel", "category": "Italian" },
-      { "name": "Woohoo", "location": "Kempinski Hotel", "category": "Dining" },
-      { "name": "Ram & Roll", "location": "Kempinski Hotel", "category": "Dining" },
-      { "name": "Tang", "location": "Downtown", "category": "Asian" },
-      { "name": "Nazcaa", "location": "Downtown", "category": "Japanese-Peruvian" },
-      { "name": "Krasota", "location": "Downtown", "category": "Immersive Dining" },
-      { "name": "Salvaje", "location": "Downtown", "category": "Japanese" },
-      { "name": "Villa Coconut", "location": "DIFC", "category": "Mediterranean" },
-      { "name": "Shanghai Me", "location": "DIFC", "category": "Asian" },
-      { "name": "Gal", "location": "Downtown", "category": "Mediterranean/Turkish" },
-      { "name": "Urla", "location": "Downtown", "category": "Aegean" },
-      { "name": "Coya", "location": "Four Seasons", "category": "Peruvian" },
-      { "name": "Amelia", "location": "Downtown", "category": "Nikkei" },
-      { "name": "Ce La Vi", "location": "Downtown", "category": "Asian Fusion" },
-      { "name": "Sushi Samba", "location": "Palm Jumeirah", "category": "Japanese/Brazilian" },
-      { "name": "La Niña", "location": "DIFC", "category": "Iberian/Latino" },
-      { "name": "Opa", "location": "Fairmont SZR", "category": "Greek" },
-      { "name": "Clap", "location": "DIFC", "category": "Japanese" },
-      { "name": "Sexy Fish", "location": "DIFC", "category": "Asian" },
-      { "name": "Nammos", "location": "Four Seasons Jumeirah", "category": "Mediterranean" },
-      { "name": "Tattu", "location": "Ciel Dubai Marina", "category": "Chinese" }
-    ],
-    "beach_clubs": [
-      { "name": "Verde Beach", "location": "Umm Suqeim" },
-      { "name": "African Queen", "location": "J1" },
-      { "name": "Sakhalin", "location": "J1" },
-      { "name": "Gigi", "location": "J1" },
-      { "name": "Baoli", "location": "J1" },
-      { "name": "Ina", "location": "J1" },
-      { "name": "Maison Revka", "location": "Bluewaters" },
-      { "name": "Nikki Beach", "location": "Pearl Jumeirah" },
-      { "name": "Nobu by the Beach", "location": "Atlantis The Royal" },
-      { "name": "Casablanca Beach", "location": "Atlantis The Palm" },
-      { "name": "Drift Beach", "location": "Dubai Marina" },
-      { "name": "Playa", "location": "Palm Jumeirah" },
-    ]
-  }
+type SeedVenue = {
+  id: string;
+  name: string;
+  category: string;
+  subcategory: string;
+  location: string;
+  area: string;
+  vibe_tags: string[];
+  price_tier: number;
+  hero_image: string;
+  gallery_images: string[];
+  description_short: string;
+  description_long: string;
+  highlights: string[];
+  recommend_score: number;
+  opening_hours: string;
+  dress_code: string;
+  booking_policy: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
 };
 
-// Transform Venues.txt data into venue format
-function transformVenuesTxtData() {
-  const venues = [];
+const PARTNER_VENUES = {
+  restaurants: [
+    { name: 'Bagatelle', location: 'Fairmont SZR', category: 'Fine Dining' },
+    { name: 'Verde', location: 'Four Seasons', category: 'Fine Dining' },
+    { name: 'CouCou', location: 'Palm Jumeirah', category: 'Rooftop Dining' },
+    { name: 'Amazonico', location: 'DIFC', category: 'Latin American' },
+    { name: 'Il Gattopardo', location: 'DIFC', category: 'Italian' },
+    { name: 'Bar de Pres', location: 'DIFC', category: 'Asian Fusion' },
+    { name: 'Nahate', location: 'DIFC', category: 'Fine Dining' },
+    { name: 'Nobu', location: 'Atlantis The Palm', category: 'Japanese' },
+    { name: 'Ling Ling', location: 'Atlantis The Royal', category: 'Asian' },
+    { name: 'La Mar', location: 'Atlantis The Royal', category: 'Peruvian' },
+    { name: 'Hakkasan', location: 'Atlantis The Palm', category: 'Cantonese' },
+    { name: 'Tang', location: 'Downtown', category: 'Asian' },
+    { name: 'Nazcaa', location: 'Downtown', category: 'Japanese-Peruvian' },
+    { name: 'Krasota', location: 'Downtown', category: 'Immersive Dining' },
+    { name: 'Salvaje', location: 'Downtown', category: 'Japanese' },
+    { name: 'Shanghai Me', location: 'DIFC', category: 'Asian' },
+    { name: 'Coya', location: 'Four Seasons', category: 'Peruvian' },
+    { name: 'Amelia', location: 'Downtown', category: 'Nikkei' },
+    { name: 'Ce La Vi', location: 'Downtown', category: 'Asian Fusion' },
+    { name: 'Sushi Samba', location: 'Palm Jumeirah', category: 'Japanese/Brazilian' },
+    { name: 'La Nina', location: 'DIFC', category: 'Iberian/Latino' },
+    { name: 'Clap', location: 'DIFC', category: 'Japanese' },
+    { name: 'Sexy Fish', location: 'DIFC', category: 'Asian' },
+    { name: 'Nammos', location: 'Four Seasons Jumeirah', category: 'Mediterranean' },
+    { name: 'Tattu', location: 'Ciel Dubai Marina', category: 'Chinese' },
+  ],
+  beachClubs: [
+    { name: 'Verde Beach', location: 'Umm Suqeim' },
+    { name: 'African Queen', location: 'J1' },
+    { name: 'Sakhalin', location: 'J1' },
+    { name: 'Gigi', location: 'J1' },
+    { name: 'Baoli', location: 'J1' },
+    { name: 'Ina', location: 'J1' },
+    { name: 'Maison Revka', location: 'Bluewaters' },
+    { name: 'Nikki Beach', location: 'Pearl Jumeirah' },
+    { name: 'Nobu by the Beach', location: 'Atlantis The Royal' },
+    { name: 'Casablanca Beach', location: 'Atlantis The Palm' },
+    { name: 'Drift Beach', location: 'Dubai Marina' },
+    { name: 'Playa', location: 'Palm Jumeirah' },
+  ],
+};
 
-  // Transform restaurants
-  VENUES_DATA.partners.restaurants.forEach((restaurant, index) => {
+function transformPartnerVenues(): SeedVenue[] {
+  const now = new Date().toISOString();
+  const venues: SeedVenue[] = [];
+
+  PARTNER_VENUES.restaurants.forEach((restaurant, index) => {
     venues.push({
-      id: `txt-rest-${index}`,
+      id: `seed-rest-${index}`,
       name: restaurant.name,
       category: 'dining',
       subcategory: restaurant.category,
       location: restaurant.location,
-      area: restaurant.location.split(' ')[0], // Extract area from location
+      area: restaurant.location.split(' ')[0],
       vibe_tags: ['Fine Dining', 'Curated'],
       price_tier: 4,
       hero_image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop',
       gallery_images: [],
       description_short: `${restaurant.category} at ${restaurant.location}`,
       description_long: `Experience exceptional ${restaurant.category.toLowerCase()} at ${restaurant.name}, located in ${restaurant.location}.`,
-      highlights: ['Michelin-quality', 'Prime location'],
+      highlights: ['Prime location', 'Curated by DALC'],
       recommend_score: 90,
       opening_hours: 'Daily: 6:00 PM - 12:00 AM',
       dress_code: 'Smart Casual',
       booking_policy: 'Reservations recommended',
       status: 'published',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      created_at: now,
+      updated_at: now,
     });
   });
 
-  // Transform beach clubs
-  VENUES_DATA.partners.beach_clubs.forEach((club, index) => {
+  PARTNER_VENUES.beachClubs.forEach((club, index) => {
     venues.push({
-      id: `txt-club-${index}`,
+      id: `seed-beach-${index}`,
       name: club.name,
       category: 'beach-clubs',
       subcategory: 'Beach Club',
@@ -99,91 +111,63 @@ function transformVenuesTxtData() {
       area: club.location,
       vibe_tags: ['Beach', 'Day to Night', 'Swim'],
       price_tier: 3,
-      hero_image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2670&auto=format&fit=crop',
+      hero_image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2670&auto=format&fit=crop',
       gallery_images: [],
       description_short: `Beach club experience at ${club.location}`,
       description_long: `Enjoy a full day and night at ${club.name}, featuring beach access, dining, and entertainment.`,
       highlights: ['Beach Access', 'Pool', 'Dining'],
-      recommend_score: 85,
+      recommend_score: 86,
       opening_hours: 'Daily: 10:00 AM - 2:00 AM',
       dress_code: 'Beachwear',
       booking_policy: 'Day passes available',
       status: 'published',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      created_at: now,
+      updated_at: now,
     });
   });
 
   return venues;
 }
 
+async function upsertRows<T extends { id: string; name?: string }>(
+  table: string,
+  rows: T[],
+  label: string,
+) {
+  for (const row of rows) {
+    const { error } = await supabase!
+      .from(table)
+      .upsert(row, { onConflict: 'id' });
+
+    if (error) {
+      console.error(`Failed to seed ${label} ${row.name ?? row.id}:`, error);
+    } else {
+      console.log(`Seeded ${label}: ${row.name ?? row.id}`);
+    }
+  }
+}
+
 async function seedDatabase() {
-  console.log('🚀 Starting DALC database seeding...');
+  console.log('Starting DALC database seeding...');
 
   if (!supabase) {
-    console.error('❌ Supabase not configured. Check your environment variables.');
+    console.error('Supabase is not configured. Check your environment variables.');
     return;
   }
 
   try {
-    // 1. Seed Venues (from mockData.ts + Venues.txt)
-    console.log('📍 Seeding venues...');
-    const allVenues = [...MOCK_VENUES, ...transformVenuesTxtData()];
+    const allVenues = [...MOCK_VENUES, ...transformPartnerVenues()];
 
-    for (const venue of allVenues) {
-      const { error } = await supabase
-        .from('venues')
-        .upsert(venue, { onConflict: 'id' });
+    await upsertRows('venues', allVenues, 'venue');
+    await upsertRows('transport_services', MOCK_TRANSPORT_SERVICES, 'transport service');
+    await upsertRows('experience_services', MOCK_EXPERIENCES, 'experience');
+    await upsertRows('stays_properties', MOCK_PROPERTIES, 'stay');
+    await upsertRows('business_services', MOCK_BUSINESS_SERVICES, 'business service');
 
-      if (error) {
-        console.error(`❌ Failed to seed venue ${venue.name}:`, error);
-      } else {
-        console.log(`✅ Seeded venue: ${venue.name}`);
-      }
-    }
-
-    // 2. Seed Transport Services
-    console.log('🚗 Seeding transport services...');
-    for (const service of MOCK_SERVICES) {
-      const { error } = await supabase
-        .from('transport_services')
-        .upsert(service, { onConflict: 'id' });
-
-      if (error) {
-        console.error(`❌ Failed to seed transport ${service.name}:`, error);
-      } else {
-        console.log(`✅ Seeded transport: ${service.name}`);
-      }
-    }
-
-    // 3. Seed Experience Services
-    console.log('🎯 Seeding experience services...');
-    for (const experience of MOCK_EXPERIENCES) {
-      const { error } = await supabase
-        .from('experience_services')
-        .upsert(experience, { onConflict: 'id' });
-
-      if (error) {
-        console.error(`❌ Failed to seed experience ${experience.name}:`, error);
-      } else {
-        console.log(`✅ Seeded experience: ${experience.name}`);
-      }
-    }
-
-    // 4. Seed Stays Properties (placeholder for now)
-    console.log('🏨 Seeding stays properties...');
-    // Add your stays mock data here when ready
-
-    // 5. Seed Business Services (placeholder for now)
-    console.log('💼 Seeding business services...');
-    // Add your business mock data here when ready
-
-    console.log('🎉 Database seeding complete!');
-
+    console.log('Database seeding complete.');
   } catch (error) {
-    console.error('💥 Seeding failed:', error);
+    console.error('Seeding failed:', error);
   }
 }
 
-// Run the seeder
 seedDatabase();

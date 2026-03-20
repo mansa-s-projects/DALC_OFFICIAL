@@ -12,7 +12,7 @@ import type {
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-const MOCK_SERVICES: BusinessService[] = [
+export const MOCK_SERVICES: BusinessService[] = [
   {
     id: 'mock-svc-1',
     subcategory: 'company-formation',
