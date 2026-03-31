@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Users, AlertCircle, CheckCircle2, XCircle } from 'lucide-react';
 import type { CapacityResult } from '../../types/experiences';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Edit2, Trash2, Upload, CheckCircle, AlertCircle, Eye } from 'lucide-react';
 import { useSuppliers } from '../../hooks/useSuppliers';
 import { useSupplierRegistry } from '../../shared/hooks/useSupplierRegistry';
@@ -235,7 +235,7 @@ export default function AdminSuppliers() {
               <Upload className="w-4 h-4" /> Bulk Import
             </button>
             <Link
-              to="/admin/suppliers/new"
+              href="/admin/suppliers/new"
               className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
             >
               <Plus className="w-4 h-4" /> Add Supplier
@@ -330,7 +330,7 @@ export default function AdminSuppliers() {
                       <td className="p-4">
                         <div className="flex justify-end gap-2">
                           <Link
-                            to={`/admin/suppliers/${supplier.id}`}
+                            href={`/admin/suppliers/${supplier.id}`}
                             className="p-2 text-gray-500 hover:text-luxury-gold transition-colors"
                             title="Edit"
                           >

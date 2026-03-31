@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Calendar, Users, ChevronDown, Check, Loader2 } from 'lucide-react';
 import type { StaysProperty } from '../../types/stays';
 import { usePriceCalculation } from '../../hooks/useStaysBooking';

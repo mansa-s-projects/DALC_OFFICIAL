@@ -1,39 +1,25 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 
-function getEnv(name: string): string | undefined {
-  if (typeof process !== 'undefined' && process.env?.[name]) {
-    return process.env[name];
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+let warnedMissingEnv = false;
+
+function reportMissingSupabaseEnv() {
+  if (warnedMissingEnv) return;
+  warnedMissingEnv = true;
+  if (typeof window !== 'undefined') {
+    console.error('[DALC] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. Configure them in Vercel Project Settings > Environment Variables and redeploy.');
   }
-
-  const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined) as
-    | Record<string, string | undefined>
-    | undefined;
-
-  return viteEnv?.[name];
 }
 
-const supabaseUrl =
-  getEnv('NEXT_PUBLIC_SUPABASE_URL') ??
-  getEnv('VITE_SUPABASE_URL');
+const _supabase =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : (reportMissingSupabaseEnv(), null);
 
-const supabaseAnonKey =
-  getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY') ??
-  getEnv('VITE_SUPABASE_ANON_KEY');
-
-function isValidConfig(url?: string, key?: string): boolean {
-  if (!url || !key) return false;
-  // Reject placeholder / dummy values
-  if (url.includes('PLACEHOLDER') || key.includes('PLACEHOLDER')) return false;
-  // Must look like a real Supabase URL
-  try { new URL(url); } catch { return false; }
-  return true;
-}
-
-const hasValidConfig = isValidConfig(supabaseUrl, supabaseAnonKey);
-
-// Fallback for development without env vars
-export const supabase = hasValidConfig
-  ? createClient(supabaseUrl!, supabaseAnonKey!)
-  : null;
-
-export const isMockMode = !supabase;
+// Non-null assertion: supabase is always initialised in production (env vars
+// are required). Call sites that need graceful degradation can check
+// `process.env.NEXT_PUBLIC_SUPABASE_URL` directly before calling.
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+export const supabase = _supabase!;

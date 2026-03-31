@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 type MobileMenuItem = {
   label: string;
@@ -16,7 +16,7 @@ export default function MobileMenu({ items, onNavigate }: MobileMenuProps) {
       {items.map((item) => (
         <Link
           key={item.label}
-          to={item.to}
+          href={item.to}
           onClick={onNavigate}
           className="rounded-md px-3 py-2 text-sm uppercase tracking-[0.08em] text-white/80 hover:bg-white/10"
         >

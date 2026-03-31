@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   Building2,
   FileText,
@@ -117,14 +117,14 @@ export default function BusinessHub() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/business/company-formation"
+              href="/business/company-formation"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Explore Services
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/business/consultation/new"
+              href="/business/consultation/new"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <CalendarCheck className="w-4 h-4" />
@@ -174,7 +174,7 @@ export default function BusinessHub() {
               transition={{ delay: idx * 0.08, duration: 0.5 }}
             >
               <Link
-                to={`/business/${cat.subcategory}`}
+                href={`/business/${cat.subcategory}`}
                 className="group relative block h-60 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
                 {/* BG Image */}
@@ -225,7 +225,7 @@ export default function BusinessHub() {
             <h2 className="text-3xl md:text-4xl font-display text-white">Featured Services</h2>
           </div>
           <Link
-            to="/business/company-formation"
+            href="/business/company-formation"
             className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
           >
             View all <ArrowRight className="w-3.5 h-3.5" />
@@ -277,7 +277,7 @@ export default function BusinessHub() {
               We'll map out the right structure for your goals.
             </p>
             <Link
-              to="/business/consultation/new"
+              href="/business/consultation/new"
               className="inline-flex items-center gap-3 px-10 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
             >
               <CalendarCheck className="w-5 h-5" />

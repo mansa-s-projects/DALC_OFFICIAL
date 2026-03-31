@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAppStore } from '../../store/useAppStore';
 
 interface AuthGuardProps {
@@ -7,11 +7,18 @@ interface AuthGuardProps {
 }
 
 export default function AuthGuard({ children }: AuthGuardProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const session = useAppStore((s) => s.session);
-  const location = useLocation();
+
+  useEffect(() => {
+    if (!session) {
+      router.push(`/auth/login?from=${encodeURIComponent(pathname ?? '/')}`);
+    }
+  }, [session, pathname, router]);
 
   if (!session) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return null;
   }
 
   return <>{children}</>;

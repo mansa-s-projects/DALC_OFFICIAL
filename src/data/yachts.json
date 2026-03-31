@@ -1,0 +1,193 @@
+{
+  "small": [
+    {
+      "name": "Blue Yonder",
+      "length": "40.68ft",
+      "capacity": 8,
+      "price_per_hour_aed": 1200
+    },
+    {
+      "name": "Azimut SP",
+      "length": "15ft",
+      "capacity": 4,
+      "price_per_hour_aed": 800
+    }
+  ],
+  "medium": [
+    {
+      "name": "VOLARE",
+      "length": "60ft",
+      "capacity": 40,
+      "price_per_hour_aed": 1200,
+      "category": "medium"
+    },
+    {
+      "name": "Java Sunseeker 64",
+      "length": "64ft",
+      "capacity": 15,
+      "price_per_hour_aed": 1000,
+      "category": "medium"
+    },
+    {
+      "name": "CALIENTE",
+      "length": "96ft",
+      "capacity": 60,
+      "price_per_hour_aed": 1800,
+      "category": "medium"
+    },
+    {
+      "name": "BAIA 100 ASTRO",
+      "length": "100ft",
+      "capacity": 10,
+      "_note_capacity": "Confirmed: low capacity is intentional for luxury configuration",
+      "price_per_hour_aed": 1500
+    },
+    {
+      "name": "Fazimut Sky 52",
+      "length": "52ft",
+      "capacity": 15,
+      "price_per_hour_aed": 900,
+      "category": "medium"
+    },
+    {
+      "name": "Azimut Sky 62",
+      "length": "62ft",
+      "capacity": 15,
+      "price_per_hour_aed": 1000,
+      "category": "medium"
+    },
+    {
+      "name": "Azimut 63",
+      "length": "63ft",
+      "capacity": 25,
+      "price_per_hour_aed": 1300,
+      "category": "medium"
+    },
+    {
+      "name": "Azimut 65",
+      "length": "65ft",
+      "capacity": 25,
+      "price_per_hour_aed": 1400,
+      "category": "medium"
+    },
+    {
+      "name": "SAN LORENZO 82",
+      "length": "82ft",
+      "capacity": 25,
+      "price_per_hour_aed": 1700,
+      "category": "medium"
+    },
+    {
+      "name": "ASTRA 76",
+      "length": "76ft",
+      "capacity": 20,
+      "price_per_hour_aed": 1500,
+      "category": "medium"
+    },
+    {
+      "name": "BABBAR II",
+      "length": "50ft",
+      "capacity": 15,
+      "price_per_hour_aed": 900,
+      "category": "medium"
+    },
+    {
+      "name": "BABBAR",
+      "length": "70ft",
+      "capacity": 20,
+      "price_per_hour_aed": 1300,
+      "category": "medium"
+    }
+  ],
+  "large": [
+    {
+      "name": "THUNDER",
+      "length": "164ft",
+      "capacity": 35,
+      "price_per_hour_aed": 3500,
+      "category": "large"
+    },
+    {
+      "name": "Sunseeker 116",
+      "length": "116ft",
+      "capacity": 20,
+      "_note_capacity": "Design-specific: lower capacity than Nedship 107 is intentional per spec",
+      "price_per_hour_aed": 2200
+    },
+    {
+      "name": "Nedship 107",
+      "length": "107ft",
+      "capacity": 30,
+      "price_per_hour_aed": 2000,
+      "category": "large"
+    },
+    {
+      "name": "AK YACHT",
+      "length": "138ft",
+      "capacity": 50,
+      "price_per_hour_aed": 4000
+    }
+  ],
+  "unknown": [
+    {
+      "name": "Sunseeker Manhattan yacht",
+      "length": null,
+      "capacity": 15,
+      "price_per_hour_aed": 1500
+    },
+    {
+      "name": "Azimut Magellano yacht",
+      "length": null,
+      "capacity": 25,
+      "price_per_hour_aed": 1600
+    },
+    {
+      "name": "Azimut Magellano",
+      "length": null,
+      "capacity": 12,
+      "price_per_hour_aed": 1200
+    },
+    {
+      "name": "SanLorenzo yacht",
+      "length": null,
+      "capacity": 50,
+      "price_per_hour_aed": 1800
+    },
+    {
+      "name": "Princess yacht",
+      "length": null,
+      "capacity": 30,
+      "price_per_hour_aed": 1900
+    },
+    {
+      "name": "Azimut Amie yacht",
+      "length": null,
+      "capacity": 50,
+      "price_per_hour_aed": 3200
+    },
+    {
+      "name": "Kona yacht",
+      "length": null,
+      "capacity": 60,
+      "price_per_hour_aed": 4500
+    },
+    {
+      "name": "LANA",
+      "length": null,
+      "capacity": 40,
+      "price_per_hour_aed": 2200
+    },
+    {
+      "name": "BLACK PEARL",
+      "length": null,
+      "capacity": 35,
+      "price_per_hour_aed": 2400
+    },
+    {
+      "name": "TIBERIAS",
+      "length": null,
+      "capacity": 40,
+      "price_per_hour_aed": 1600
+    }
+  ]
+}

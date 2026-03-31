@@ -15,14 +15,13 @@ const EMIRATES = [
 
 const CATEGORIES = [
   'All Categories',
-  'Nature',
-  'Historic',
-  'Adventure',
-  'Culture',
-  'Wellness',
-  'Urban',
-  'Desert',
-  'Coastal',
+  'Landmarks',
+  'Hidden Gems',
+  'Attractions',
+  'Museums',
+  'Parks',
+  'Cultural Sites',
+  'Viewpoints',
 ];
 
 interface ExploreFiltersProps {
@@ -51,6 +50,7 @@ function FilterSelect({
     <div className="relative">
       <label className="sr-only">{label}</label>
       <select
+        aria-label={label}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={[
@@ -170,6 +170,7 @@ export default function ExploreFilters({
           {/* Hidden Gems */}
           <div className="relative flex-shrink-0">
             <select
+              aria-label="Hidden Gems Filter"
               value={filters.hiddenGems}
               onChange={(e) => set('hiddenGems', e.target.value as ExploreFilterState['hiddenGems'])}
               className={cn(

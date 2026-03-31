@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { TrendingUp, ArrowRight, Clock, Flame } from 'lucide-react';
 import { useTrendingExperiences } from '../../hooks/useExperiences';
 import type { ExperienceService } from '../../types/experiences';
@@ -23,7 +23,7 @@ function TrendingCard({ experience, index }: TrendingCardProps) {
       className="flex-shrink-0 w-72"
     >
       <Link
-        to={`/experiences/${subcategory}/${slug}`}
+        href={`/experiences/${subcategory}/${slug}`}
         className="group block relative h-40 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
       >
         {/* Background Image */}
@@ -112,7 +112,7 @@ export default function TrendingStrip() {
             </div>
           </div>
           <Link
-            to="/experiences"
+            href="/experiences"
             className="hidden sm:flex items-center gap-1 text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors"
           >
             View All <ArrowRight className="w-3.5 h-3.5" />

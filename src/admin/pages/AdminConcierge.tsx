@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ChevronDown, Clock, AlertCircle, Zap, Star } from 'lucide-react';
 import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';

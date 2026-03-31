@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   FileText,
   ArrowLeft,
@@ -76,7 +76,7 @@ export default function Documents() {
       <section className="pt-28 pb-12 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <Link
-            to="/move-to-dubai/dashboard"
+            href="/move-to-dubai/dashboard"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-luxury-gold transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -289,7 +289,7 @@ export default function Documents() {
                     the requirements.
                   </p>
                   <Link
-                    to="/business/consultation/new"
+                    href="/business/consultation/new"
                     className="inline-flex items-center gap-2 text-luxury-gold text-sm hover:underline"
                   >
                     Book a Consultation

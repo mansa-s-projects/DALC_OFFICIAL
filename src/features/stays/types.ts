@@ -205,7 +205,7 @@ export const SUBCATEGORY_LABELS: Record<StaysSubcategory, string> = {
 };
 
 export const SUBCATEGORY_DESCRIPTIONS: Record<StaysSubcategory, string> = {
-  hotels: 'Luxury hotels and resorts with world-class amenities and service.',
+  hotels: 'Premium hotels and resorts with world-class amenities and service.',
   villas: 'Private villas with pools, beach access, and exclusive privacy.',
   residences: 'Furnished apartments and long-term rentals for extended stays.',
 };

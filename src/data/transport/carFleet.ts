@@ -7,7 +7,7 @@ export const carFleet = [
     topSpeed: "325 km/h",
     acceleration: "3.2s",
     description: "High performance sports car available for rental in Dubai",
-    image: "/images/transport/lamborghini-huracan.jpg",
+    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "ferrari-f8",
@@ -17,7 +17,7 @@ export const carFleet = [
     topSpeed: "340 km/h",
     acceleration: "2.9s",
     description: "Performance focused coupe suitable for premium rentals",
-    image: "/images/transport/ferrari-f8.jpg",
+    image: "https://images.unsplash.com/photo-1621135802920-133df287f89c?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "porsche-911",
@@ -27,7 +27,7 @@ export const carFleet = [
     topSpeed: "308 km/h",
     acceleration: "3.4s",
     description: "Iconic sports car with balanced everyday drive experience",
-    image: "/images/transport/porsche-911.jpg",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "mercedes-g-wagon",
@@ -37,7 +37,7 @@ export const carFleet = [
     topSpeed: "220 km/h",
     acceleration: "4.5s",
     description: "Recognizable performance SUV for city rental",
-    image: "/images/transport/mercedes-g-wagon.jpg",
+    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "range-rover-sport",
@@ -47,6 +47,6 @@ export const carFleet = [
     topSpeed: "250 km/h",
     acceleration: "4.5s",
     description: "Comfortable premium SUV for short term rental",
-    image: "/images/transport/range-rover-sport.jpg",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=900&auto=format&fit=crop",
   },
 ];

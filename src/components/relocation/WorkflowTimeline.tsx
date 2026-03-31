@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { CheckCircle2, Circle, Loader2, Lock, Minus } from 'lucide-react';
 import type { UserWorkflowStep, StepStatus } from '../../types/relocation';
 import { STEP_STATUS_LABELS } from '../../types/relocation';

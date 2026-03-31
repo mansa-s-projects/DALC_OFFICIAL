@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   Building2,
   Home,
@@ -96,20 +96,20 @@ export default function StaysHub() {
             <span className="text-luxury-gold">Dubai</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">
-            From luxury hotels to beachfront villas and furnished residences — 
+            From premium hotels to beachfront villas and furnished residences — 
             discover the perfect stay for your Dubai journey, whether for a night or a year.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/stays/hotels"
+              href="/stays/hotels"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Explore Stays
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/stays/villas"
+              href="/stays/villas"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default function StaysHub() {
               transition={{ delay: idx * 0.1, duration: 0.5 }}
             >
               <Link
-                to={`/stays/${cat.subcategory}`}
+                href={`/stays/${cat.subcategory}`}
                 className="group relative block h-80 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
                 {/* BG Image */}
@@ -211,13 +211,13 @@ export default function StaysHub() {
           </div>
           <div className="flex gap-4">
             <Link
-              to="/stays/hotels"
+              href="/stays/hotels"
               className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
             >
               Hotels <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
-              to="/stays/villas"
+              href="/stays/villas"
               className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
             >
               Villas <ArrowRight className="w-3.5 h-3.5" />
@@ -320,7 +320,7 @@ export default function StaysHub() {
               Tell us your preferences and we'll curate options just for you.
             </p>
             <Link
-              to="/request"
+              href="/request"
               className="inline-flex items-center gap-3 px-10 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
             >
               <Calendar className="w-5 h-5" />

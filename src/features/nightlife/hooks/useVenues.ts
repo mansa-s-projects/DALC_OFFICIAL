@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Category, Venue } from '../../../types';
-import { supabase, isMockMode } from '../../../lib/supabase';
+import { supabase } from '../../../lib/supabase';
+import { applyLocalImages } from '../../../data/venueImages';
 import { MOCK_VENUES } from '../../../data/mockData';
 
 export interface UseVenuesFilters {
@@ -15,7 +16,7 @@ const VENUE_DEFAULTS: Omit<Venue, 'id' | 'name' | 'category'> = {
   area: 'Dubai',
   vibe_tags: [],
   price_tier: 2,
-  hero_image: 'https://images.unsplash.com/photo-1512453979798-5ea904ac6686?q=80&w=2663&auto=format&fit=crop',
+  hero_image: '/images/restaurants/Bagatelle/image1.jpg',
   gallery_images: [],
   description_short: 'Curated by Dubai A La Carte.',
   description_long: 'This venue is available through our concierge experience.',
@@ -31,7 +32,7 @@ function normalizeVenue(raw: any): Venue {
   const category = (raw.category ?? 'dining') as Category;
   const priceTier = Number(raw.price_tier ?? 2);
 
-  return {
+  const base = {
     id: String(raw.id),
     name: String(raw.name ?? 'Untitled Venue'),
     category,
@@ -59,24 +60,27 @@ function normalizeVenue(raw: any): Venue {
     insider_tip: raw.insider_tip,
     coordinates: raw.coordinates,
   };
+
+  // Apply local images if available
+  const localImages = applyLocalImages(base);
+  return {
+    ...base,
+    hero_image: localImages.hero_image,
+    gallery_images: localImages.gallery_images,
+  };
 }
 
-function filterMockVenues(filters: UseVenuesFilters): Venue[] {
-  let venues: Venue[] = [...MOCK_VENUES];
+function getMockFallback(category?: Category | 'all', location?: string, priceRange?: [number, number]): Venue[] {
+  let venues = [...MOCK_VENUES];
 
-  if (filters.category && filters.category !== 'all') {
-    venues = venues.filter((v) => v.category === filters.category);
+  if (category && category !== 'all') {
+    venues = venues.filter(v => v.category === category);
   }
-
-  if (filters.location) {
-    const loc = filters.location.toLowerCase();
-    venues = venues.filter((v) => v.area.toLowerCase().includes(loc));
+  if (location) {
+    venues = venues.filter(v => v.area.toLowerCase().includes(location.toLowerCase()));
   }
-
-  if (filters.priceRange) {
-    venues = venues.filter(
-      (v) => v.price_tier >= filters.priceRange![0] && v.price_tier <= filters.priceRange![1]
-    );
+  if (priceRange) {
+    venues = venues.filter(v => v.price_tier >= priceRange[0] && v.price_tier <= priceRange[1]);
   }
 
   return venues;
@@ -89,31 +93,34 @@ export function useVenues(filters: UseVenuesFilters = {}) {
     queryKey: ['venues', category ?? 'all', location ?? '', priceRange ?? null],
     staleTime: 5 * 60 * 1000,
     queryFn: async () => {
-      // Mock mode fallback
-      if (isMockMode) {
-        return filterMockVenues(filters);
+      try {
+        let query = supabase.from('venues').select('*');
+
+        if (category && category !== 'all') {
+          query = query.eq('category', category);
+        }
+
+        if (location) {
+          query = query.ilike('area', `%${location}%`);
+        }
+
+        if (priceRange) {
+          query = query.gte('price_tier', priceRange[0]).lte('price_tier', priceRange[1]);
+        }
+
+        query = query.eq('status', 'published');
+
+        const { data, error } = await query;
+        if (error) throw error;
+
+        const supabaseVenues = (data ?? []).map(normalizeVenue);
+        // If Supabase returns results, use them; otherwise fallback
+        return supabaseVenues.length > 0 ? supabaseVenues : getMockFallback(category, location, priceRange);
+      } catch {
+        // Supabase unavailable — use mock data
+        return getMockFallback(category, location, priceRange);
       }
-
-      let query = supabase!.from('venues').select('*');
-
-      if (category && category !== 'all') {
-        query = query.eq('category', category);
-      }
-
-      if (location) {
-        query = query.ilike('area', `%${location}%`);
-      }
-
-      if (priceRange) {
-        query = query.gte('price_tier', priceRange[0]).lte('price_tier', priceRange[1]);
-      }
-
-      query = query.eq('status', 'published');
-
-      const { data, error } = await query;
-      if (error) throw error;
-
-      return (data ?? []).map(normalizeVenue);
     },
   });
 }
+

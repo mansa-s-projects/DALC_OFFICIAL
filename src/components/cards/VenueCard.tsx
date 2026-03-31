@@ -1,9 +1,84 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Star, MapPin, ArrowRight, TrendingUp, Heart } from 'lucide-react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { Star, MapPin, ArrowRight, TrendingUp, Heart, ImageOff } from 'lucide-react';
 import { Venue } from '../../types';
 import Link from 'next/link';
 import { useAppStore } from '../../store/useAppStore';
+
+// ─── Image Component with Error Handling ────────────────────────────────────
+
+function VenueImage({ src, alt }: { src: string; alt: string }) {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  if (error) {
+    return (
+      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+        <ImageOff className="w-16 h-16 text-gray-600" />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {loading && (
+        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+        onError={() => setError(true)}
+        onLoad={() => setLoading(false)}
+      />
+    </>
+  );
+}
+
+// ─── Save Button Component ───────────────────────────────────────────────────
+
+interface SaveButtonProps {
+  isSaved: boolean;
+  onToggle: () => void;
+}
+
+function SaveButton({ isSaved, onToggle }: SaveButtonProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="p-2 rounded-full bg-white/10 text-white/60 border border-white/10">
+        <Heart className="w-4 h-4" />
+      </div>
+    );
+  }
+
+  return (
+    <button
+      aria-label={isSaved ? 'Remove from saved' : 'Save venue'}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onToggle();
+      }}
+      className={`p-2 rounded-full backdrop-blur-sm transition-all duration-300 ${
+        isSaved
+          ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
+          : 'bg-white/10 text-white/60 border border-white/10 hover:text-white hover:bg-white/20'
+      }`}
+    >
+      <Heart className={`w-4 h-4 ${isSaved ? 'fill-luxury-gold' : ''}`} />
+    </button>
+  );
+}
 
 interface VenueCardProps {
   venue: Venue;
@@ -31,13 +106,8 @@ export default function VenueCard({
       className="group relative h-[420px] w-full rounded-sm overflow-hidden bg-luxury-charcoal"
     >
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={venue.hero_image}
-          alt={venue.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy"
-        />
+      <div className="absolute inset-0 bg-gray-900">
+        <VenueImage src={venue.hero_image} alt={venue.name} />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
       </div>
 
@@ -64,20 +134,7 @@ export default function VenueCard({
             )}
           </div>
 
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleSaved(venue.id);
-            }}
-            className={`p-2 rounded-full backdrop-blur-sm transition-all duration-300 ${
-              isSaved
-                ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
-                : 'bg-white/10 text-white/60 border border-white/10 hover:text-white hover:bg-white/20'
-            }`}
-          >
-            <Heart className={`w-4 h-4 ${isSaved ? 'fill-luxury-gold' : ''}`} />
-          </button>
+          <SaveButton isSaved={isSaved} onToggle={() => toggleSaved(venue.id)} />
         </div>
 
         {/* Bottom Content */}

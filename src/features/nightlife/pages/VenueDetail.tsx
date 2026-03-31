@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useVenue } from '../hooks/useVenue';
 import { useVenues } from '../hooks/useVenues';
 import { useRequests } from '../../../hooks/useRequests';
@@ -7,22 +9,25 @@ import { useAppStore } from '../../../store/useAppStore';
 import Navbar from '../../../components/navigation/Navbar';
 import {
   MapPin, Clock, Check, ArrowLeft, ShieldAlert,
-  Calendar, Shirt, X, ChevronLeft, ChevronRight, Maximize2, Sparkles, Users, ArrowDown
+  Calendar, Shirt, X, ChevronLeft, ChevronRight, Maximize2, Sparkles, Users, ArrowDown, BookOpen, UtensilsCrossed
 } from 'lucide-react';
 import Footer from '../../../components/navigation/Footer';
 import PremiumMap from '../../../components/map/PremiumMap';
 import VenueCard from '../../../components/cards/VenueCard';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
+import { getVenueMenuImage, getVenueBlogPath } from '../../../data/venueImages';
 
 export default function VenueDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string;
+  const router = useRouter();
   const { data: venue, isLoading } = useVenue(id);
   const { data: allVenues = [] } = useVenues();
   const session = useAppStore((s) => s.session);
   const { createRequest } = useRequests(session?.user?.id);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Booking Modal State
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -140,11 +145,15 @@ export default function VenueDetail() {
   // Keyboard navigation for Lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (isMenuOpen) setIsMenuOpen(false);
+        if (selectedImageIndex !== null) setSelectedImageIndex(null);
+        return;
+      }
       if (selectedImageIndex === null) return;
 
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'Escape') setSelectedImageIndex(null);
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -186,7 +195,7 @@ export default function VenueDetail() {
     <div className="min-h-screen bg-luxury-black flex items-center justify-center">
       <div className="text-white text-center">
         <h2 className="text-2xl font-display">Venue not found</h2>
-        <Link to="/explore" className="text-luxury-gold mt-4 block hover:underline">Return to Explore</Link>
+        <Link href="/explore" className="text-luxury-gold mt-4 block hover:underline">Return to Explore</Link>
       </div>
     </div>
   );
@@ -238,7 +247,7 @@ export default function VenueDetail() {
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 max-w-7xl mx-auto z-10">
-          <Link to={`/explore/${venue.category}`} className="flex items-center gap-2 text-white/60 hover:text-luxury-gold mb-8 transition-colors w-fit">
+          <Link href={`/explore/${venue.category}`} className="flex items-center gap-2 text-white/60 hover:text-luxury-gold mb-8 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Collection
           </Link>
 
@@ -408,6 +417,130 @@ export default function VenueDetail() {
                     <VenueCard venue={similar} />
                   </div>
                 ))}
+              </div>
+            </motion.section>
+          )}
+
+          {/* Menu Image */}
+          {venue && getVenueMenuImage(venue.id) && (
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-sm"
+            >
+              <h2 className="text-xl font-display text-white mb-6 flex items-center gap-3">
+                <UtensilsCrossed className="w-5 h-5 text-luxury-gold" />
+                Menu
+              </h2>
+              <div
+                className="relative overflow-hidden rounded-sm border border-white/10 group cursor-pointer"
+                onClick={() => setIsMenuOpen(true)}
+              >
+                <img
+                  src={getVenueMenuImage(venue.id)}
+                  alt={`${venue.name} Menu`}
+                  className="w-full h-auto object-contain bg-white/5 transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                {/* Always-visible expand button */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-center justify-center">
+                  <div className="p-4 rounded-full bg-black/50 backdrop-blur-md border border-luxury-gold/40 text-luxury-gold hover:bg-luxury-gold hover:text-black transition-all duration-300 shadow-lg shadow-luxury-gold/10 group-hover:scale-110">
+                    <Maximize2 className="w-7 h-7" />
+                  </div>
+                </div>
+                {/* Bottom label */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p className="text-white/80 text-xs font-bold uppercase tracking-widest text-center">
+                    Tap to expand
+                  </p>
+                </div>
+              </div>
+            </motion.section>
+          )}
+
+          {/* Menu 3D Lightbox Modal */}
+          <AnimatePresence>
+            {isMenuOpen && venue && getVenueMenuImage(venue.id) && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ perspective: '1200px' }}
+              >
+                {/* Close button */}
+                <button
+                  className="absolute top-6 right-6 z-20 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm border border-white/10"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <X className="w-6 h-6" />
+                </button>
+
+                {/* Title */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="absolute top-6 left-6 z-20"
+                >
+                  <p className="text-luxury-gold text-xs font-bold uppercase tracking-widest mb-1">
+                    <UtensilsCrossed className="w-3 h-3 inline mr-2" />
+                    {venue.name}
+                  </p>
+                  <h3 className="text-white text-xl font-display">Menu</h3>
+                </motion.div>
+
+                {/* 3D Card */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.7, rotateX: 25, rotateY: -10 }}
+                  animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.7, rotateX: -15, rotateY: 10 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 0.8 }}
+                  className="relative max-w-4xl max-h-[85vh] overflow-auto rounded-sm border border-white/20 shadow-2xl shadow-luxury-gold/5"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <img
+                    src={getVenueMenuImage(venue.id)}
+                    alt={`${venue.name} Menu`}
+                    className="w-full h-auto object-contain bg-[#0a0a0a]"
+                  />
+                </motion.div>
+
+                {/* Bottom hint */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-500 text-xs tracking-widest uppercase"
+                >
+                  Click anywhere to close
+                </motion.p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Insider Blog */}
+          {venue && getVenueBlogPath(venue.id) && (
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-xl font-display text-white mb-6 flex items-center gap-3">
+                <BookOpen className="w-5 h-5 text-luxury-gold" />
+                Insider Guide
+              </h2>
+              <div className="rounded-sm overflow-hidden border border-white/10">
+                <iframe
+                  src={getVenueBlogPath(venue.id)}
+                  title={`${venue.name} Guide`}
+                  className="w-full border-0 bg-white rounded-sm"
+                  style={{ minHeight: '600px' }}
+                  loading="lazy"
+                />
               </div>
             </motion.section>
           )}
@@ -641,7 +774,7 @@ export default function VenueDetail() {
                          Close
                        </button>
                        <button
-                         onClick={() => navigate('/my-requests')}
+                         onClick={() => router.push('/my-requests')}
                          className="px-6 py-3 bg-luxury-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-colors text-xs"
                        >
                          View My Requests

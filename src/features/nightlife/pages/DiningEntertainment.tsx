@@ -3,7 +3,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
 import { useVenues } from '../hooks/useVenues';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function DiningEntertainment() {
   const { data: venues = [], isLoading } = useVenues({ category: 'dining-entertainment' });
@@ -17,7 +17,7 @@ export default function DiningEntertainment() {
          {/* Background video or image suggestion */}
          <div className="absolute inset-0 z-0">
             <img 
-               src="https://images.unsplash.com/photo-1514525253440-b393452e3726?q=80&w=2574&auto=format&fit=crop" 
+               src="/images/dining_entertainment/Gatsby/image1.jpg" 
                alt="Dining Entertainment"
                className="w-full h-full object-cover opacity-30"
             />

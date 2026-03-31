@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Car, ChevronDown, Waves, Plane, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
+import { Car, ChevronDown, Waves, Plane, CheckCircle, Plus } from 'lucide-react';
 import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';
 import { getAllowedNextStatuses } from '../../platform/requests/lifecycle';
@@ -68,7 +69,17 @@ export default function AdminTransport() {
 
   return (
     <div>
-      <AdminPageHeader title="Transport Queue" />
+      <AdminPageHeader 
+        title="Transport Queue"
+        actions={
+          <Link
+            href="/admin/transport/new"
+            className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
+          >
+            <Plus className="w-4 h-4" /> Add Transport
+          </Link>
+        }
+      />
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
         <AdminStatCard label="Total" value={transportRequests.length} icon={Car} colorClass="text-[#C8A46B]" delay={0} />

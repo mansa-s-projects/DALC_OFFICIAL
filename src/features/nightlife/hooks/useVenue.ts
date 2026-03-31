@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { Venue } from '../../../types';
-import { supabase, isMockMode } from '../../../lib/supabase';
-import { MOCK_VENUES } from '../../../data/mockData';
+import { supabase } from '../../../lib/supabase';
+import { applyLocalImages } from '../../../data/venueImages';
 
 function normalizeVenue(raw: any): Venue {
   const priceTier = Number(raw.price_tier ?? 2);
 
-  return {
+  const base = {
     id: String(raw.id),
     name: String(raw.name ?? 'Untitled Venue'),
     category: raw.category ?? 'dining',
@@ -15,7 +15,7 @@ function normalizeVenue(raw: any): Venue {
     area: raw.area ?? 'Dubai',
     vibe_tags: Array.isArray(raw.vibe_tags) ? raw.vibe_tags : [],
     price_tier: (Math.min(Math.max(priceTier, 1), 4) as 1 | 2 | 3 | 4),
-    hero_image: raw.hero_image ?? 'https://images.unsplash.com/photo-1512453979798-5ea904ac6686?q=80&w=2663&auto=format&fit=crop',
+    hero_image: raw.hero_image ?? '/images/restaurants/Bagatelle/image1.jpg',
     gallery_images: Array.isArray(raw.gallery_images) ? raw.gallery_images : [],
     description_short: raw.description_short ?? 'Curated by Dubai A La Carte.',
     description_long: raw.description_long ?? 'This venue is available through our concierge experience.',
@@ -34,6 +34,13 @@ function normalizeVenue(raw: any): Venue {
     insider_tip: raw.insider_tip,
     coordinates: raw.coordinates,
   };
+
+  const localImages = applyLocalImages(base);
+  return {
+    ...base,
+    hero_image: localImages.hero_image,
+    gallery_images: localImages.gallery_images,
+  };
 }
 
 export function useVenue(id?: string | null) {
@@ -44,21 +51,22 @@ export function useVenue(id?: string | null) {
     queryFn: async () => {
       if (!id) throw new Error('Venue id is required.');
 
-      // Mock mode fallback
-      if (isMockMode) {
-        const venue = MOCK_VENUES.find((v) => v.id === id);
-        if (!venue) throw new Error('Venue not found.');
-        return venue;
+      try {
+        const { data, error } = await supabase
+          .from('venues')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error) throw error;
+        return normalizeVenue(data);
+      } catch {
+        // Fallback to mock data
+        const { MOCK_VENUES } = await import('../../../data/mockData');
+        const mockVenue = MOCK_VENUES.find(v => v.id === id);
+        if (mockVenue) return mockVenue;
+        throw new Error('Venue not found');
       }
-
-      const { data, error } = await supabase!
-        .from('venues')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-      if (error) throw error;
-      return normalizeVenue(data);
     },
   });
 }

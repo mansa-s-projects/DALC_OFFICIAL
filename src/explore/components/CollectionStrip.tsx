@@ -1,5 +1,5 @@
 import { useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import CollectionCard, { type CollectionItem } from './CollectionCard';
 import type { ExploreFilterState } from '../types';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Locate, Plus, Minus, RotateCw, Map as MapIcon, Layers, ArrowUpRight } from 'lucide-react';
 import { Venue } from '../../types';
 

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { MapPin, AlertCircle, WifiOff } from 'lucide-react';
 import LocationCard from './LocationCard';
 import type { ExploreLocation } from '../types';
@@ -69,7 +69,7 @@ function ErrorBlock({ noClient }: { noClient?: boolean }) {
       </p>
       <p className="mt-2 max-w-xs text-sm text-[#B6B6B6]/60">
         {noClient
-          ? 'Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.'
+          ? 'Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your .env file.'
           : 'There was a problem loading locations. Please try again.'}
       </p>
     </motion.div>

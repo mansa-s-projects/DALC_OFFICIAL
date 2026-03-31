@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   Car,
-  Anchor,
-  Plane,
   ArrowRight,
   Star,
   TrendingUp,
@@ -35,20 +33,6 @@ const CATEGORIES: CategoryConfig[] = [
     icon: <Car className="w-7 h-7" />,
     gradient: 'from-amber-900/60 to-luxury-black',
     image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
-  },
-  {
-    subcategory: 'yachts',
-    label: 'Yacht Charter',
-    icon: <Anchor className="w-7 h-7" />,
-    gradient: 'from-blue-900/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
-  },
-  {
-    subcategory: 'jets',
-    label: 'Private Jets',
-    icon: <Plane className="w-7 h-7" />,
-    gradient: 'from-zinc-800/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop',
   },
 ];
 
@@ -128,18 +112,17 @@ export default function TransportHub() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/transport/cars"
+              href="/transport/cars"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              Explore Fleet
+              Explore Cars
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/transport/yachts"
+              href="/travel"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <Anchor className="w-4 h-4" />
-              Yacht Charters
+              All Travel Options
             </Link>
           </div>
         </motion.div>
@@ -177,7 +160,7 @@ export default function TransportHub() {
           <h2 className="text-3xl md:text-4xl font-display text-white">Choose Your Ride</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CATEGORIES.map((cat, idx) => (
             <motion.div
               key={cat.subcategory}
@@ -187,7 +170,7 @@ export default function TransportHub() {
               transition={{ delay: idx * 0.1, duration: 0.5 }}
             >
               <Link
-                to={`/transport/${cat.subcategory}`}
+                href={`/transport/${cat.subcategory}`}
                 className="group relative block h-80 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
                 {/* BG Image */}
@@ -238,7 +221,7 @@ export default function TransportHub() {
             <h2 className="text-3xl md:text-4xl font-display text-white">Featured Fleet</h2>
           </div>
           <Link
-            to="/transport/cars"
+            href="/transport/cars"
             className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
           >
             View all <ArrowRight className="w-3.5 h-3.5" />
@@ -280,7 +263,7 @@ export default function TransportHub() {
           <h2 className="text-3xl md:text-4xl font-display text-white">The DALC Difference</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {FEATURES.map((feature, idx) => (
             <motion.div
               key={feature.title}
@@ -310,7 +293,7 @@ export default function TransportHub() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08),transparent_70%)]" />
 
           <div className="relative z-10">
-            <Plane className="w-8 h-8 text-luxury-gold mx-auto mb-6 opacity-60" />
+            <Star className="w-8 h-8 text-luxury-gold mx-auto mb-6 opacity-60" />
             <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-4">
               Bespoke Charters
             </p>
@@ -322,7 +305,7 @@ export default function TransportHub() {
               can arrange transport experiences tailored to your exact requirements.
             </p>
             <Link
-              to="/contact"
+              href="/request"
               className="inline-flex items-center gap-3 px-10 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
             >
               <Star className="w-5 h-5" />

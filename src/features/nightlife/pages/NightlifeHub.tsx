@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import Link from 'next/link';
 import { ArrowRight, Utensils, Palmtree, Music, Mic2 } from 'lucide-react';
 import { MOCK_VENUES } from '../../../data/mockData';
 import VenueCard from '../../../components/cards/VenueCard';
@@ -12,7 +12,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'dining',
     label: 'Restaurants',
     sub: 'Fine Dining & Culinary Excellence',
-    image: 'https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?q=80&w=2670&auto=format&fit=crop',
+    image: '/images/restaurants/Bagatelle/image1.jpg',
     icon: Utensils,
     desc: 'Michelin restaurants, rooftop dining, and chef-driven concepts.',
     path: '/nightlife/restaurants'
@@ -21,7 +21,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'beach-clubs',
     label: 'Beach Clubs',
     sub: 'Day to Night Sanctuaries',
-    image: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=2670&auto=format&fit=crop',
+    image: '/images/beach_clubs/Nikki_Beach/image1.jpg',
     icon: Palmtree,
     desc: 'Sunset lounges, pool clubs, and seaside luxury.',
     path: '/nightlife/beach-clubs'
@@ -30,7 +30,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'nightclubs',
     label: 'Night Clubs',
     sub: 'The After Dark Elite',
-    image: 'https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=2670&auto=format&fit=crop',
+    image: '/images/nightclubs/Iris/image1.jpg',
     icon: Music,
     desc: 'VIP table service, international DJs, and late-night access.',
     path: '/nightlife/clubs'
@@ -48,7 +48,7 @@ export default function Nightlife() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2670&auto=format&fit=crop" 
+            src="/images/nightclubs/Soho_Garden/image1.jpg" 
             alt="Dubai Nightlife" 
             className="w-full h-full object-cover opacity-40"
           />
@@ -78,7 +78,7 @@ export default function Nightlife() {
       <section className="py-20 max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8">
           {NIGHTLIFE_CATEGORIES.map((category, index) => (
-            <Link to={category.path} key={category.id} className="group">
+            <Link href={category.path} key={category.id} className="group">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function Nightlife() {
         <div className="relative w-full rounded-sm overflow-hidden bg-luxury-charcoal border border-white/5 group">
            <div className="absolute inset-0">
               <img 
-                src="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=2574&auto=format&fit=crop" 
+                src="/images/dining_entertainment/Billionaire/image1.jpg" 
                 alt="Dining & Entertainment"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-30"
               />
@@ -145,7 +145,7 @@ export default function Nightlife() {
                  <p className="text-gray-300 text-lg font-light leading-relaxed mb-8 max-w-md">
                     Dinner shows, live performances, and themed experiences. Discover the venues where dinner comes with a spectacle.
                  </p>
-                 <Link to="/nightlife/dining">
+                 <Link href="/nightlife/dining">
                     <button className="px-8 py-4 bg-white/5 hover:bg-white hover:text-black border border-white/10 text-white font-bold uppercase tracking-widest transition-all duration-300">
                        Explore Collection
                     </button>

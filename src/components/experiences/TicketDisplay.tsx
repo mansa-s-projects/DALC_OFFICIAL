@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { QrCode, CheckCircle2, Calendar, Clock, MapPin, Users, Copy, Download } from 'lucide-react';
 import type { ExperienceBooking } from '../../types/experiences';
 import { TICKET_STATUS_LABELS } from '../../types/experiences';

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Gem, MapPin, ArrowUpRight } from 'lucide-react';
 import type { ExploreLocation } from '../types';
 

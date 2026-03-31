@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+'use client';
+
+import React, { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ChevronRight,
   ChevronLeft,
@@ -95,10 +97,10 @@ const INITIAL_FORM_DATA: IntakeFormData = {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function IntakeForm() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { data: userData } = useUser();
   const user = userData?.session?.user;
-  const createProfile = useCreateRelocationProfile();
+  const createProfileMutation = useCreateRelocationProfile();
 
   const [currentPhase, setCurrentPhase] = useState<PhaseId>('purpose');
   const [formData, setFormData] = useState<IntakeFormData>(INITIAL_FORM_DATA);
@@ -107,7 +109,7 @@ export default function IntakeForm() {
   const currentPhaseIndex = PHASES.findIndex((p) => p.id === currentPhase);
 
   // Validation
-  const validatePhase = (phase: PhaseId): boolean => {
+  const validatePhase = useCallback((phase: PhaseId): boolean => {
     const newErrors: typeof errors = {};
 
     switch (phase) {
@@ -133,53 +135,70 @@ export default function IntakeForm() {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData.purpose, formData.current_country, formData.family_size, formData.target_move_date]);
 
   // Navigation
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!validatePhase(currentPhase)) return;
 
     const nextIndex = currentPhaseIndex + 1;
     if (nextIndex < PHASES.length) {
       setCurrentPhase(PHASES[nextIndex].id);
     }
-  };
+  }, [currentPhase, currentPhaseIndex, validatePhase]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     const prevIndex = currentPhaseIndex - 1;
     if (prevIndex >= 0) {
       setCurrentPhase(PHASES[prevIndex].id);
     }
-  };
+  }, [currentPhaseIndex]);
+
+  // Clear all errors
+  const clearErrors = useCallback(() => {
+    setErrors({});
+  }, []);
 
   // Submit
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
+    // Clear previous errors
+    clearErrors();
+
     if (!user?.id) {
       setErrors({ purpose: 'Please log in to submit' });
       return;
     }
 
-    await createProfile.mutateAsync({
+    // Final validation before submit
+    if (!validatePhase('review')) {
+      return;
+    }
+
+    await createProfileMutation.mutateAsync({
       ...formData,
       user_id: user.id,
       status: 'active',
     });
 
     // Navigate to dashboard on success
-    navigate('/move-to-dubai/dashboard');
-  };
+    router.push('/move-to-dubai/dashboard');
+  }, [clearErrors, user?.id, validatePhase, formData, createProfileMutation, router]);
 
   // Update form data
-  const updateField = <K extends keyof IntakeFormData>(
+  const updateField = useCallback(<K extends keyof IntakeFormData>(
     field: K,
     value: IntakeFormData[K]
   ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error for this field
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
-  };
+    // Clear error for this field immediately
+    setErrors((prev) => {
+      if (prev[field]) {
+        const { [field]: _, ...rest } = prev;
+        return rest;
+      }
+      return prev;
+    });
+  }, []);
 
   // ─── Phase Renderers ─────────────────────────────────────────────────────────
 
@@ -211,7 +230,7 @@ export default function IntakeForm() {
         ))}
       </div>
       {errors.purpose && (
-        <p className="text-red-400 text-sm text-center">{errors.purpose}</p>
+        <p className="text-red-400 text-sm text-center" role="alert">{errors.purpose}</p>
       )}
     </div>
   );
@@ -220,7 +239,7 @@ export default function IntakeForm() {
     <div className="space-y-6">
       <div>
         <label className="block text-gray-400 text-sm uppercase tracking-widest mb-3">
-          Current Country
+          Current Country <span className="text-luxury-gold">*</span>
         </label>
         <div className="relative">
           <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
@@ -230,10 +249,12 @@ export default function IntakeForm() {
             onChange={(e) => updateField('current_country', e.target.value)}
             placeholder="e.g., United Kingdom"
             className="w-full bg-white/5 border border-white/20 pl-12 pr-4 py-3 text-white placeholder:text-gray-600 focus:border-luxury-gold focus:outline-none transition-colors"
+            aria-invalid={!!errors.current_country}
+            aria-describedby={errors.current_country ? 'country-error' : undefined}
           />
         </div>
         {errors.current_country && (
-          <p className="text-red-400 text-xs mt-2">{errors.current_country}</p>
+          <p id="country-error" className="text-red-400 text-xs mt-2" role="alert">{errors.current_country}</p>
         )}
       </div>
 
@@ -243,8 +264,10 @@ export default function IntakeForm() {
         </label>
         <div className="flex items-center gap-4">
           <button
+            type="button"
             onClick={() => updateField('family_size', Math.max(1, formData.family_size - 1))}
             className="w-12 h-12 border border-white/20 text-white hover:border-luxury-gold hover:text-luxury-gold transition-colors"
+            aria-label="Decrease family size"
           >
             -
           </button>
@@ -255,8 +278,10 @@ export default function IntakeForm() {
             </span>
           </div>
           <button
+            type="button"
             onClick={() => updateField('family_size', formData.family_size + 1)}
             className="w-12 h-12 border border-white/20 text-white hover:border-luxury-gold hover:text-luxury-gold transition-colors"
+            aria-label="Increase family size"
           >
             +
           </button>
@@ -271,6 +296,7 @@ export default function IntakeForm() {
           {BUDGET_OPTIONS.map((budget) => (
             <button
               key={budget}
+              type="button"
               onClick={() => updateField('budget_range', budget)}
               className={`p-4 border text-left transition-all duration-300 ${
                 formData.budget_range === budget
@@ -313,7 +339,7 @@ export default function IntakeForm() {
     <div className="space-y-6">
       <div>
         <label className="block text-gray-400 text-sm uppercase tracking-widest mb-3">
-          Target Move Date
+          Target Move Date <span className="text-luxury-gold">*</span>
         </label>
         <div className="relative">
           <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
@@ -323,10 +349,12 @@ export default function IntakeForm() {
             onChange={(e) => updateField('target_move_date', e.target.value)}
             min={new Date().toISOString().split('T')[0]}
             className="w-full bg-white/5 border border-white/20 pl-12 pr-4 py-3 text-white focus:border-luxury-gold focus:outline-none transition-colors [color-scheme:dark]"
+            aria-invalid={!!errors.target_move_date}
+            aria-describedby={errors.target_move_date ? 'date-error' : undefined}
           />
         </div>
         {errors.target_move_date && (
-          <p className="text-red-400 text-xs mt-2">{errors.target_move_date}</p>
+          <p id="date-error" className="text-red-400 text-xs mt-2" role="alert">{errors.target_move_date}</p>
         )}
       </div>
 
@@ -338,6 +366,7 @@ export default function IntakeForm() {
           {PROPERTY_OPTIONS.map((option) => (
             <button
               key={option.value}
+              type="button"
               onClick={() => updateField('property_preference', option.value)}
               className={`p-4 border text-center transition-all duration-300 ${
                 formData.property_preference === option.value
@@ -368,6 +397,7 @@ export default function IntakeForm() {
           {VISA_OPTIONS.map((status) => (
             <button
               key={status}
+              type="button"
               onClick={() => updateField('visa_status', status)}
               className={`p-4 border text-left transition-all duration-300 ${
                 formData.visa_status === status
@@ -464,10 +494,10 @@ export default function IntakeForm() {
 
       <button
         onClick={handleSubmit}
-        disabled={createProfile.isPending}
+        disabled={createProfileMutation.isPending}
         className="w-full py-4 bg-luxury-gold text-luxury-black font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
       >
-        {createProfile.isPending ? (
+        {createProfileMutation.isPending ? (
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
             Submitting...
@@ -516,6 +546,7 @@ export default function IntakeForm() {
             return (
               <button
                 key={phase.id}
+                type="button"
                 onClick={() => {
                   if (isCompleted) setCurrentPhase(phase.id);
                 }}
@@ -575,6 +606,7 @@ export default function IntakeForm() {
       {currentPhase !== 'review' && (
         <div className="border-t border-white/10 p-6 flex justify-between">
           <button
+            type="button"
             onClick={handleBack}
             disabled={currentPhaseIndex === 0}
             className="flex items-center gap-2 px-6 py-3 border border-white/20 text-gray-400 text-sm uppercase tracking-widest hover:border-luxury-gold/50 hover:text-luxury-gold transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
@@ -583,6 +615,7 @@ export default function IntakeForm() {
             Back
           </button>
           <button
+            type="button"
             onClick={handleNext}
             className="flex items-center gap-2 px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-colors"
           >

@@ -147,6 +147,7 @@ export const useAppStore = create<AppState>()(
         onboardingData: state.onboardingData,
         user: state.user,
         savedVenues: state.savedVenues,
+        profile: state.profile,
       }),
     }
   )

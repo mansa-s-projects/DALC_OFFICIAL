@@ -1,4 +1,4 @@
-import { supabase, isMockMode } from './supabase';
+import { supabase } from './supabase';
 import type {
   BusinessService,
   BusinessBooking,
@@ -222,19 +222,7 @@ export const MOCK_SERVICES: BusinessService[] = [
 // ─── Service Functions ────────────────────────────────────────────────────────
 
 export async function getBusinessServices(filters?: BusinessFilters): Promise<BusinessService[]> {
-  if (isMockMode) {
-    let results = [...MOCK_SERVICES];
-    if (filters?.subcategory) results = results.filter(s => s.subcategory === filters.subcategory);
-    if (filters?.sub_subcategory) results = results.filter(s => s.sub_subcategory === filters.sub_subcategory);
-    if (filters?.service_type) results = results.filter(s => s.service_type === filters.service_type);
-    if (filters?.pricing_model) results = results.filter(s => s.pricing_model === filters.pricing_model);
-    if (filters?.price_min != null) results = results.filter(s => (s.price_from ?? 0) >= filters.price_min!);
-    if (filters?.price_max != null) results = results.filter(s => (s.price_from ?? 0) <= filters.price_max!);
-    if (filters?.is_featured != null) results = results.filter(s => s.is_featured === filters.is_featured);
-    return results;
-  }
-
-  let query = supabase!
+  let query = supabase
     .from('business_services')
     .select('*')
     .eq('status', 'published')
@@ -254,29 +242,19 @@ export async function getBusinessServices(filters?: BusinessFilters): Promise<Bu
 }
 
 export async function getServiceBySlug(slug: string): Promise<BusinessService | null> {
-  if (isMockMode) {
-    return MOCK_SERVICES.find(s => s.slug === slug) ?? null;
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_services')
     .select('*')
     .eq('slug', slug)
     .eq('status', 'published')
-    .single();
+    .maybeSingle();
 
   if (error) throw error;
   return data as BusinessService | null;
 }
 
 export async function getFeaturedServices(subcategory?: string): Promise<BusinessService[]> {
-  if (isMockMode) {
-    let results = MOCK_SERVICES.filter(s => s.is_featured);
-    if (subcategory) results = results.filter(s => s.subcategory === subcategory);
-    return results;
-  }
-
-  let query = supabase!
+  let query = supabase
     .from('business_services')
     .select('*')
     .eq('status', 'published')
@@ -292,31 +270,7 @@ export async function getFeaturedServices(subcategory?: string): Promise<Busines
 }
 
 export async function createBusinessBooking(input: BusinessBookingInput): Promise<BusinessBooking> {
-  if (isMockMode) {
-    const service = MOCK_SERVICES.find(s => s.id === input.service_id);
-    return {
-      id: `mock-booking-${Date.now()}`,
-      service_id: input.service_id,
-      user_id: input.user_id,
-      package_selected: input.package_selected,
-      documents_submitted: [],
-      documents_required: input.documents_required ?? service?.required_documents ?? [],
-      documents_complete: false,
-      compliance_status: service?.compliance_checklist ?? [],
-      current_step: 1,
-      total_steps: service?.estimated_steps ?? 1,
-      workflow_status: 'not_started',
-      quoted_price: input.quoted_price,
-      government_fees: input.government_fees,
-      total_price: input.total_price,
-      currency: 'AED',
-      status: 'pending',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    } as BusinessBooking;
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_bookings')
     .insert({
       service_id: input.service_id,
@@ -339,9 +293,7 @@ export async function createBusinessBooking(input: BusinessBookingInput): Promis
 }
 
 export async function getUserBusinessBookings(userId: string): Promise<BusinessBooking[]> {
-  if (isMockMode) return [] as BusinessBooking[];
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_bookings')
     .select('*, service:business_services(*)')
     .eq('user_id', userId)
@@ -352,23 +304,7 @@ export async function getUserBusinessBookings(userId: string): Promise<BusinessB
 }
 
 export async function scheduleConsultation(input: ConsultationInput): Promise<BusinessConsultation> {
-  if (isMockMode) {
-    return {
-      id: `mock-consult-${Date.now()}`,
-      service_id: input.service_id,
-      user_id: input.user_id,
-      consultation_type: input.consultation_type ?? 'initial',
-      scheduled_at: input.scheduled_at,
-      duration_minutes: input.duration_minutes ?? 60,
-      meeting_type: input.meeting_type ?? 'online',
-      agenda: input.agenda,
-      status: 'scheduled',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    } as BusinessConsultation;
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_consultations')
     .insert({
       service_id: input.service_id,
@@ -388,9 +324,7 @@ export async function scheduleConsultation(input: ConsultationInput): Promise<Bu
 }
 
 export async function getUserConsultations(userId: string): Promise<BusinessConsultation[]> {
-  if (isMockMode) return [] as BusinessConsultation[];
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_consultations')
     .select('*, service:business_services(*)')
     .eq('user_id', userId)
@@ -400,23 +334,28 @@ export async function getUserConsultations(userId: string): Promise<BusinessCons
   return (data ?? []) as BusinessConsultation[];
 }
 
-export async function getAvailableSlots(serviceId: string, date: string): Promise<TimeSlot[]> {
-  // In mock mode (and currently always) generate slots — real impl would query a calendar API
-  if (isMockMode || serviceId) {
-    const slots: TimeSlot[] = [];
-    const base = new Date(date);
-    const hours = [9, 10, 11, 14, 15, 16, 17];
-    const unavailable = [10, 15]; // mock some as taken
+const BUSINESS_HOURS = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
-    for (const h of hours) {
-      base.setHours(h, 0, 0, 0);
-      const label = base.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-      slots.push({
-        time: base.toISOString(),
-        label,
+export async function getAvailableSlots(serviceId: string, date: string): Promise<TimeSlot[]> {
+  if (serviceId) {
+    const { data: bookings } = await supabase
+      .from('business_bookings')
+      .select('time')
+      .eq('service_id', serviceId)
+      .eq('date', date);
+
+    const unavailable = (bookings ?? []).map((b: { time: string }) => new Date(b.time).getHours());
+    const slots: TimeSlot[] = BUSINESS_HOURS.map(h => {
+      const dt = new Date(date);
+      dt.setHours(h, 0, 0, 0);
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      const displayH = h > 12 ? h - 12 : h === 0 ? 12 : h;
+      return {
+        time: dt.toISOString(),
+        label: `${displayH}:00 ${ampm}`,
         available: !unavailable.includes(h),
-      });
-    }
+      };
+    });
     return slots;
   }
 
@@ -424,12 +363,7 @@ export async function getAvailableSlots(serviceId: string, date: string): Promis
 }
 
 export async function getComplianceChecklist(serviceId: string): Promise<ComplianceItem[]> {
-  if (isMockMode) {
-    const service = MOCK_SERVICES.find(s => s.id === serviceId);
-    return service?.compliance_checklist ?? [];
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('business_services')
     .select('compliance_checklist')
     .eq('id', serviceId)
@@ -444,9 +378,7 @@ export async function updateComplianceItem(
   item: ComplianceItem,
   completed: boolean
 ): Promise<void> {
-  if (isMockMode) return;
-
-  const { data: booking, error: fetchError } = await supabase!
+  const { data: booking, error: fetchError } = await supabase
     .from('business_bookings')
     .select('compliance_status')
     .eq('id', bookingId)
@@ -460,10 +392,17 @@ export async function updateComplianceItem(
       : c
   );
 
-  const { error: updateError } = await supabase!
+  const { error: updateError } = await supabase
     .from('business_bookings')
     .update({ compliance_status: updated })
     .eq('id', bookingId);
 
   if (updateError) throw updateError;
+
+  const { error } = await supabase.rpc('update_compliance_item', {
+    booking_id: bookingId,
+    item_id: item.id,
+    completed,
+  });
+  if (error) throw error;
 }

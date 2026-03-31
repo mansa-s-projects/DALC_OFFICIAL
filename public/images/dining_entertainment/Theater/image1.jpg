@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js no-svg print">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.bbcgoodfoodme.com/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.bbcgoodfoodme.com/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.bbcgoodfoodme.com/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="https://www.bbcgoodfoodme.com/assets/icon/site.webmanifest">
+<link rel="mask-icon" href="https://www.bbcgoodfoodme.com/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="alternate" href="https://www.bbcgoodfood.com/" hreflang="x-default" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="ar-ae" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-ae" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-bh" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-cy" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-eg" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-ir" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-iq" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-il" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-jo" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-kw" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-lb" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-om" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-ps" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-qa" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-sa" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-sy" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-tr" />
+<link rel="alternate" href="https://www.bbcgoodfoodme.com/" hreflang="en-ye" />
+
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<meta name="google-site-verification" content="1SJ8Mc2MWlktNIMP5Bb4hT5fG4rUYquC74qj9moG4FY" />
+<!--<script data-ad-client="ca-pub-4200108722666520" async async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+<script async async defer src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+  <link href="https://vjs.zencdn.net/7.15.0/video-js.css" rel="stylesheet">
+  <script src="https://vjs.zencdn.net/7.15.0/video.js"></script>
+<script>
+    var eyeblasterStatus = '';
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/7216334/BBCGFME_Website_Leaderboard', [728, 90], 'div-gpt-ad-1548942033763-0').addService(googletag.pubads());
+        googletag.defineSlot('/7216334/BBCGFME_Website_MPU1', [300, 250], 'div-gpt-ad-1548942233526-1').addService(googletag.pubads());
+        googletag.defineSlot('/7216334/BBCGFME_Website_MPU2', [300, 250], 'div-gpt-ad-1548942233526-2').addService(googletag.pubads());
+        googletag.defineSlot('/7216334/BBCGFME_Website_MPU3', [300, 250], 'div-gpt-ad-1548942233526-3').addService(googletag.pubads());
+        
+        var bbcgfeyeblastermapping = googletag.sizeMapping().addSize([300, 300], [300, 225]).addSize([640, 500], [640, 480]).build();
+        window.bbcgfeyeblasterslot= googletag.defineSlot('/7216334/Eyeblaster_640x480', [640,480], 'div-gpt-ad-1488202634348-30').defineSizeMapping(bbcgfeyeblastermapping).addService(googletag.pubads());
+
+        
+        googletag.pubads().setTargeting("roadblock",["no"]);    
+        //googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+        
+        googletag.pubads().addEventListener('slotRenderEnded', function(event) {         
+            //console.log('renderx');
+            //console.log(event);
+            if (event.slot.L === '/7216334/Eyeblaster_640x480') {
+                if(event.isEmpty){
+                    eyeblasterStatus = 'empty';
+                }   
+            }
+        });
+
+    });
+</script>
+
+<script>
+  window.googletag = window.googletag || { cmd: [] };
+
+  googletag.cmd.push(function() {
+    // Define all ad slots
+    googletag.defineSlot('/7216334/talabat-lb', [728, 90], 'div-gpt-ad-1753778166988-0').addService(googletag.pubads());
+    googletag.defineSlot('/7216334/talabat-mpu1', [300, 250], 'div-gpt-ad-1753778317788-0').addService(googletag.pubads());
+    googletag.defineSlot('/7216334/talabat-mpu2', [300, 250], 'div-gpt-ad-1753778373173-0').addService(googletag.pubads());
+
+    // Enable single request mode and activate GPT
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+<!-- EXPERIMENT
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4200108722666520",
+          enable_page_level_ads: true
+     });
+</script>-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script> setInterval(function(){googletag.pubads().refresh();},600000); </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-34227365-7"></script>
+
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-34227365-7');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PRPN7S');</script>
+<!-- End Google Tag Manager -->
+
+<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v27.2 (Yoast SEO v27.2) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>Page not found - Good Food Middle East</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found - Good Food Middle East" />
+	<meta property="og:site_name" content="Good Food Middle East" />
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//cdn.jwplayer.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='preconnect' href='//c0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="Good Food Middle East &raquo; Feed" href="https://www.bbcgoodfoodme.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Good Food Middle East &raquo; Comments Feed" href="https://www.bbcgoodfoodme.com/comments/feed/" />
+<script type="text/javascript" id="wpp-js" src="https://www.bbcgoodfoodme.com/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.js?ver=7.3.6" data-sampling="0" data-sampling-rate="100" data-api-url="https://www.bbcgoodfoodme.com/wp-json/wordpress-popular-posts" data-post-id="0" data-token="3e6dd17987" data-lang="0" data-debug="1"></script>
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='sbi_styles-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/instagram-feed/css/sbi-styles.css?ver=6.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl.carousel-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/owl-carousel-wp/vendors/owl-carousel/assets/owl.carousel.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='tc-owmcarousel-style-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/owl-carousel-wp/vendors/custom/style.custom.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='taxonomymanager-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/taxonomy-thumbnail-widget/css/taxonomymanager.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/widget-post-slider/assets/css/slick.css?ver=all' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/widget-post-slider/assets/css/font-awesome.min.css?ver=all' type='text/css' media='all' />
+<link rel='stylesheet' id='widget-post-slider-style-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/widget-post-slider/assets/css/style.css?ver=all' type='text/css' media='all' />
+<link rel='stylesheet' id='cff-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/custom-facebook-feed/assets/css/cff-style.min.css?ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='sb-font-awesome-css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='ivory-search-styles-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/add-search-to-menu/public/css/ivory-search.min.css?ver=5.5.12' type='text/css' media='all' />
+<link rel='stylesheet' id='if-menu-site-css-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/if-menu/assets/if-menu-site.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=7.3.6' type='text/css' media='all' />
+<link rel='stylesheet' id='jwppp-widget-style-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/jw-player-7-for-wp/jw-widget/css/jw-widget-min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://www.bbcgoodfoodme.com/assets/css/bootstrap.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-select-css' href='https://www.bbcgoodfoodme.com/assets/css/bootstrap-select.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-fonts-css' href='https://www.bbcgoodfoodme.com/assets/css/font.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='load-fa-css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='parsley-css' href='https://www.bbcgoodfoodme.com/assets/css/parsley.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='toastr-css' href='https://www.bbcgoodfoodme.com/assets/vendor/toastr/toastr.min.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='mobilemenu-css' href='https://www.bbcgoodfoodme.com/assets/vendor/mobile-menu/jquery-simple-mobilemenu.css?ver=b59411be4ccf79b266e5c45c8f78ea3a' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css' href='https://www.bbcgoodfoodme.com/assets/css/application.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='addtoany-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' type='text/css' media='all' />
+<link rel='stylesheet' id='cf7cf-style-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/cf7-conditional-fields/style.css?ver=2.6.6' type='text/css' media='all' />
+<!--n2css--><!--n2js--><script type="text/javascript" id="addtoany-core-js-before">
+/* <![CDATA[ */
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+
+//# sourceURL=addtoany-core-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" defer src="https://static.addtoany.com/menu/page.js" id="addtoany-core-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery-migrate.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" defer src="https://www.bbcgoodfoodme.com/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1" id="addtoany-jquery-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/jw-player-7-for-wp/js/jwppp.js?ver=b59411be4ccf79b266e5c45c8f78ea3a" id="jwppp-js"></script>
+<script type="text/javascript" src="https://cdn.jwplayer.com/libraries/2wTT3K1H.js?ver=b59411be4ccf79b266e5c45c8f78ea3a" id="jwppp-library-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/jw-player-7-for-wp/jw-widget/js/jw-widget-min.js?ver=b59411be4ccf79b266e5c45c8f78ea3a" id="jwppp-widget-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=GT-WVGDLVZ" id="google_gtagjs-js" async></script>
+<script type="text/javascript" id="google_gtagjs-js-after">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["www.bbcgoodfoodme.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-WVGDLVZ");
+//# sourceURL=google_gtagjs-js-after
+/* ]]> */
+</script>
+<link rel="https://api.w.org/" href="https://www.bbcgoodfoodme.com/wp-json/" /><meta name="generator" content="Site Kit by Google 1.166.0" />	<style>img#wpstats{display:none}</style>
+		            <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-block-placeholder,.wpp-shortcode-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
+            <link rel="canonical" href="" />		<style type="text/css" id="wp-custom-css">
+			.mob-search a:before {
+    font-family: FontAwesome;
+	content: "\f002";
+   display: inline-block;
+   padding-right: 5px;
+   vertical-align: middle;
+    
+   
+}
+.post-42613 textarea.form-control {
+    height: 30px !important;
+}
+.mobile-search-list{
+	display:block !important;
+/*	background-color:#ffffff !important;*/
+}
+.no-results {
+	margin-bottom:10px;
+} 
+   .mobile-search-list .navbar-nav > li.active {
+        display: block !important;
+    }
+
+element.style {
+}
+.top-nav .navbar-nav > li > a {
+    padding: 11px 8px 11px !important;
+    height: 43px;
+}
+li.talabat-tab a {
+	background-color: #f55905;
+	color:#ffffff !important;
+}
+li.eid-guide-tab a {
+	background-color: #b08b45;
+	color:#ffffff !important;
+}
+.mobile-search-list {
+    display: block !important;
+    /* background-color: #ffffff !important; */
+}
+
+@media screen and (max-width: 1199px){
+.mobile-search-list { position: initial; top: 40px; z-index: 100; left: 0; background: #ffffff; width: 100%; height: 100%; overflow-y: auto; }
+}		</style>
+		
+ 
+
+<!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4200108722666520" crossorigin="anonymous"></script>-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5E780R27L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S5E780R27L');
+</script>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link rel='stylesheet' id='rpwe-style-css' href='https://www.bbcgoodfoodme.com/wp-content/plugins/recent-posts-widget-extended/assets/css/rpwe-frontend.css?ver=2.0.2' type='text/css' media='all' />
+<style id='core-block-supports-inline-css' type='text/css'>
+/**
+ * Core styles: block-supports
+ */
+
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+
+</head>
+
+<body class="error404 wp-theme-bbcgoodfoodme bbcgoodfoodme group-blog hfeed has-header-image colors-light modula-best-grid-gallery">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRPN7S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--<div style="position:absolute;"><img src="https://ad.doubleclick.net/ddm/trackimp/N4406.2234701BBCGOODFOODME/B23523288.262899567;dc_trk_aid=458232897;dc_trk_cid=103092907;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=?" border="0" height="1" width="1" alt="Advertisement" /><script type="application/javascript" src="https://pixel.adsafeprotected.com/rjss/st/367360/41388940/skeleton.js"></script><noscript><img src="https://pixel.adsafeprotected.com/rfw/st/367360/41388939/skeleton.gif" border="0" width="1" height="1" alt="" /></noscript></div>-->
+<div class="page-header-touch mm-fixed-top">
+    <a class="touch-btn" href="#mmenu">
+
+        <div class="btn-text">Menu</div>
+    </a>
+    <a href="https://www.bbcgoodfoodme.com" class="logo"><img alt="Good Food ME logo" src="https://www.bbcgoodfoodme.com/assets/images/goodfoodME-logo-inline-220320240852.png">
+    </a><span class="touch-btn-right" id="search-icon-id"><div class="search-after"></div></span>
+</div>
+<form accept-charset="UTF-8" action="https://www.bbcgoodfoodme.com/search-results" class="search-form is-open" id="views-exposed-form-bbcgf-search-recipes" method="get" style="display: none;">
+    <div style="margin:0;padding:0;display:inline">
+        <div class="input-group">
+            <input class="form-control search-input" name="q" placeholder="ingredient, dish, keyword" value="" type="text">
+            <span class="input-group-btn">
+                <button class="btn basic-search-control" id="cancel-search" type="button">Cancel</button>
+            </span>
+        </div>
+    </div>
+</form>    
+    
+<div id="page" class="site mm-page mm-slideout">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    
+    
+    <div class="container">
+     <!------------------------------------------ Conditional LB ------------------------------------------->   
+       
+            <!------------------------------------------ Conditional LB Ends-------------------------------------------> 
+        
+    
+        
+        <div class="header test">
+            <div class="head clearfix">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4 clearfix">
+                        <a href="https://www.bbcgoodfoodme.com" class="branding pull-left"><img alt="Good Food ME logo Image" src="https://www.bbcgoodfoodme.com/assets/images/goodfoodME-logo-inline-220320240852.png">
+                           <!-- <img alt="Exclusive Middle East content" class="starburst" src="https://www.bbcgoodfoodme.com/assets/images/starburst-b8a01d0578de1f3385ab66f0956d5c43.png" />-->
+                            <span>
+                                Visit Homepage &gt;
+                            </span>
+                        </a>
+                        
+                                          
+                    </div>
+                    <div class="col-xs-6 col-sm-5 clearfix">
+                        <div class="search-area-container">
+                            <div class="search-recipes">
+                                <!-- /%input.form-control{type: "text", placeholder: "ingredients, dish, keyword..."} -->
+                                <form accept-charset="UTF-8" action="https://www.bbcgoodfoodme.com/search-results" method="get">
+                                    <div class="input-group">
+                                        <input class="form-control search-input" name="q" placeholder="ingredient, dish, keyword" value="" type="text">
+                                        <span class="input-group-btn">
+                                            <button class="btn basic-search-control" type="submit">Search</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6 col-sm-3 clearfix">
+                        <div class="social-media clearfix">
+                            <a href="https://www.facebook.com/GoodFoodMiddleEast/" target="_blank">
+                                <img alt="Icon-sm-facebook" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-facebook-26033b452cdc0a9a67b48c1d0c91914c.png">
+                            </a>
+                            <a href="https://twitter.com/GoodFoodME" target="_blank">
+                                <img alt="Icon-sm-twitter" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-twitter-79dd52ebad06158edcce8fd44a210604.png">
+                            </a>
+                            <a href="https://www.pinterest.com/goodfoodmiddleeast/" target="_blank">
+                                <img alt="Icon-sm-pinterest" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-pinterest-e66ea008ac74f3ae68e5914085318b90.png">
+                            </a>
+                            <a href="https://www.instagram.com/goodfoodmiddleeast/" target="_blank">
+                                <img alt="Icon-sm-instagram" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-instagram-f7a81fef7327393bda08ba0bf5188be4.png">
+                            </a>
+                               <a href="https://www.tiktok.com/@goodfoodmiddleeast" target="_blank">
+                                <img alt="Icon-sm-tiktok" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-tiktok-87riygf798r98ubf898u8383828.png">
+                            </a>
+                            <a href="https://bbcgoodfoodme.com/contactus">
+                                <img alt="Icon-sm-contactus" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-contactus-a386b6b5d239137042c6df416b281819.png">
+                            </a>
+                        </div>
+                                                <div class="account-management pull-right dropdown">
+                            <a href="https://www.bbcgoodfoodme.com/signup">Create an account</a>
+                            <a class="dropdown-toggle" href="https://www.bbcgoodfoodme.com/login">
+                                Sign in
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+                       <div class="menu-wrapper">
+                <nav class="navbar navbar-default top-nav yamm" role="navigation">
+   
+
+	<pre style="display:none;">Array
+(
+    [90] => <a href="https://www.bbcgoodfoodme.com/collections/biscuit-recipes">Biscuit</a><a href="https://www.bbcgoodfoodme.com/collections/bread-recipes">Bread</a><a href="https://www.bbcgoodfoodme.com/collections/cake-sale">Cake sale</a><a href="https://www.bbcgoodfoodme.com/collections/caramel">Caramel</a>
+    [88] => <a href="https://www.bbcgoodfoodme.com/collections/jubilee">Jubilee</a><a href="https://www.bbcgoodfoodme.com/collections/mothers-day">Mother's Day</a><a href="https://www.bbcgoodfoodme.com/collections/fathers-day">Father's Day</a><a href="https://www.bbcgoodfoodme.com/collections/valentines-day">Valentine's Day</a>
+    [85] => <a href="https://www.bbcgoodfoodme.com/collections/cheap-eat">Cheap eat</a><a href="https://www.bbcgoodfoodme.com/collections/comfort-food">Comfort food</a><a href="https://www.bbcgoodfoodme.com/collections/five-ingredients-or-less">Five ingredients or less</a><a href="https://www.bbcgoodfoodme.com/collections/batch-cooking">Batch cooking</a>
+    [84] => <a href="https://www.bbcgoodfoodme.com/collections/british-recipes">British</a><a href="https://www.bbcgoodfoodme.com/collections/american">American</a><a href="https://www.bbcgoodfoodme.com/collections/caribbean-recipes">Caribbean recipes</a><a href="https://www.bbcgoodfoodme.com/collections/chinese">Chinese</a>
+    [77] => <a href="https://www.bbcgoodfoodme.com/collections/christmas-dinner">Christmas dinner</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-cheeseboard">Christmas cheeseboard</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-pudding">Christmas pudding</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-trimmings">Christmas trimmings</a>
+    [61] => <a href="https://www.bbcgoodfoodme.com/collections/courses">Courses</a><a href="https://www.bbcgoodfoodme.com/collections/buffet-recipes">Buffet</a><a href="https://www.bbcgoodfoodme.com/collections/all-time-top-20-recipes">All-time top 20 recipes</a><a href="https://www.bbcgoodfoodme.com/collections/food-to-get-you-in-the-mood">Food to get you in the mood</a>
+    [56] => <a href="https://www.bbcgoodfoodme.com/collections/seasonal">Seasonal September</a><a href="https://www.bbcgoodfoodme.com/collections/summer-drink">Summer drink</a><a href="https://www.bbcgoodfoodme.com/collections/summer-dessert">Summer dessert</a><a href="https://www.bbcgoodfoodme.com/collections/easy-summer">Easy summer</a>
+    [53] => <a href="https://www.bbcgoodfoodme.com/collections/fruit">Fruit</a><a href="https://www.bbcgoodfoodme.com/collections/vegetables">Vegetables</a><a href="https://www.bbcgoodfoodme.com/collections/meat">Meat</a><a href="https://www.bbcgoodfoodme.com/collections/dairy">Dairy</a>
+    [52] => <a href="https://www.bbcgoodfoodme.com/collections/iftar">Iftar recipes</a><a href="https://www.bbcgoodfoodme.com/collections/ramadan-with-children">Ramadan with children</a><a href="https://www.bbcgoodfoodme.com/collections/suhoor">Suhoor recipes</a><a href="https://www.bbcgoodfoodme.com/collections/ramadan-desserts">Ramadan desserts</a>
+    [48] => <a href="https://www.bbcgoodfoodme.com/collections/low-fat">Low-fat</a><a href="https://www.bbcgoodfoodme.com/collections/egg-free">Egg-free</a><a href="https://www.bbcgoodfoodme.com/collections/low-gi">Low GI</a>
+    [47] => <a href="https://www.bbcgoodfoodme.com/collections/easy-entertaining">Easy entertaining</a><a href="https://www.bbcgoodfoodme.com/collections/friday-lunch">Friday lunch</a><a href="https://www.bbcgoodfoodme.com/collections/big-match-recipes">Big match</a><a href="https://www.bbcgoodfoodme.com/collections/fabulous-fish">Fabulous fish</a>
+    [46] => <a href="https://www.bbcgoodfoodme.com/collections/quick-and-healthy">Quick and healthy</a><a href="https://www.bbcgoodfoodme.com/collections/easter-baking">Easter baking</a><a href="https://www.bbcgoodfoodme.com/collections/easy">Easy</a><a href="https://www.bbcgoodfoodme.com/collections/easy-pudding">Easy pudding</a>
+    [39] => <a href="https://www.bbcgoodfoodme.com/collections/roast-turkey">Roast turkey</a><a href="https://www.bbcgoodfoodme.com/collections/freezable-christmas">Freezable Christmas</a><a href="https://www.bbcgoodfoodme.com/collections/smoked-dishes">Smoked dishes</a><a href="https://www.bbcgoodfoodme.com/collections/pastry">Pastry</a>
+    [38] => <a href="https://www.bbcgoodfoodme.com/collections/student">Student</a><a href="https://www.bbcgoodfoodme.com/collections/healthy-kids">Healthy recipes for kids</a><a href="https://www.bbcgoodfoodme.com/collections/kids-baking">Kids baking</a><a href="https://www.bbcgoodfoodme.com/collections/speedy-suppers">Speedy suppers</a>
+    [30] => <a href="https://www.bbcgoodfoodme.com/collections/cheap-and-healthy">Cheap and healthy</a><a href="https://www.bbcgoodfoodme.com/collections/clean-eating-recipes">Clean eating</a><a href="https://www.bbcgoodfoodme.com/collections/healthy-lunch">Healthy lunch</a><a href="https://www.bbcgoodfoodme.com/collections/200-400-calories">200-400 calories</a>
+)
+</pre><div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="top-menu" class="nav navbar-nav">	<li id="menu-item-13373" class="visible-laptop visible-mobile menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="https://www.bbcgoodfoodme.com/">Home<span class="caret"></span></a></li>
+	<li id="menu-item-11573" class="dropdown yamm-fullwidth menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="/recipes/">Recipes<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li id="menu-item-13374" class="visible-laptop visible-mobile menu-item menu-item-type-custom menu-item-object-custom"><a href="/recipes/">All Recipes</a></li>
+	<li id="menu-item-11574" class="menu-item menu-item-type-gs_sim menu-item-object-gs_sim"><div class="yamm-content">
+
+        <div class="row">
+
+            <div class="col-md-2 menu-description">
+
+                <div>
+
+                    <h3>Not sure what to cook?</h3>
+
+                    <p>We&rsquo;ve pulled together our most popular recipes additions and our editor&rsquo;s picks, so there&rsquo;s sure to be something tempting for you to try</p>
+
+                    <a href="https://www.bbcgoodfoodme.com/inspire-me" class="btn btn-flat-orange">Inspire me</a>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-10">
+
+                <div class="link-list clearfix">
+
+                    <div class="row">
+                            <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/ramadan-recipes">Ramadan</a>
+
+                            </h4>
+                           <a href="https://www.bbcgoodfoodme.com/collections/eid-cooking/">Eid Feast</a>
+                           <a href="https://www.bbcgoodfoodme.com/collections/iftar">Iftar</a>
+                           <a href="https://www.bbcgoodfoodme.com/collections/suhoor">Suhoor</a>
+                           <a href="https://www.bbcgoodfoodme.com/collections/ramadan-desserts">Ramadan Desserts</a>
+                           <a href="https://www.bbcgoodfoodme.com/collections/ramadan-with-children">Ramadan with Children</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/ramadan-recipes">see more...</a>
+
+                        </div>
+						
+
+            
+                        
+
+                        <div class="col-md-3">
+
+                            <h4><a href="https://www.bbcgoodfoodme.com/categories/dishes">Dishes</a></h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/roast-turkey">Roast turkey</a><a href="https://www.bbcgoodfoodme.com/collections/freezable-christmas">Freezable Christmas</a><a href="https://www.bbcgoodfoodme.com/collections/smoked-dishes">Smoked dishes</a><a href="https://www.bbcgoodfoodme.com/collections/pastry">Pastry</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/dishes">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/cuisines">Cuisines</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/british-recipes">British</a><a href="https://www.bbcgoodfoodme.com/collections/american">American</a><a href="https://www.bbcgoodfoodme.com/collections/caribbean-recipes">Caribbean recipes</a><a href="https://www.bbcgoodfoodme.com/collections/chinese">Chinese</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/cuisines">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/healthy">Healthy</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/cheap-and-healthy">Cheap and healthy</a><a href="https://www.bbcgoodfoodme.com/collections/clean-eating-recipes">Clean eating</a><a href="https://www.bbcgoodfoodme.com/collections/healthy-lunch">Healthy lunch</a><a href="https://www.bbcgoodfoodme.com/collections/200-400-calories">200-400 calories</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/healthy">see more...</a>
+
+                        </div>                        
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/family-kids">Family &amp; Kids</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/student">Student</a><a href="https://www.bbcgoodfoodme.com/collections/healthy-kids">Healthy recipes for kids</a><a href="https://www.bbcgoodfoodme.com/collections/kids-baking">Kids baking</a><a href="https://www.bbcgoodfoodme.com/collections/speedy-suppers">Speedy suppers</a>
+                            <a href="https://www.bbcgoodfoodme.com/collections/afternoon-tea-recipes/">Afternoon Tea Recipes</a>
+                            
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/family-kids">see more...</a>
+
+                        </div>
+
+                        
+
+                        
+
+                    </div>
+
+                    <div class="row">
+
+                    
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/quick-easy">Quick And Easy</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/quick-and-healthy">Quick and healthy</a><a href="https://www.bbcgoodfoodme.com/collections/easter-baking">Easter baking</a><a href="https://www.bbcgoodfoodme.com/collections/easy">Easy</a><a href="https://www.bbcgoodfoodme.com/collections/easy-pudding">Easy pudding</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/quick-easy">see more...</a>
+
+                        </div>
+
+                        
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/occasions">Occasions</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/easy-entertaining">Easy entertaining</a><a href="https://www.bbcgoodfoodme.com/collections/friday-lunch">Friday lunch</a><a href="https://www.bbcgoodfoodme.com/collections/big-match-recipes">Big match</a><a href="https://www.bbcgoodfoodme.com/collections/fabulous-fish">Fabulous fish</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/occasions">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/special-diets">Special Diets</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/low-fat">Low-fat</a><a href="https://www.bbcgoodfoodme.com/collections/egg-free">Egg-free</a><a href="https://www.bbcgoodfoodme.com/collections/low-gi">Low GI</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/special-diets">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/ingredients">Ingredients</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/fruit">Fruit</a><a href="https://www.bbcgoodfoodme.com/collections/vegetables">Vegetables</a><a href="https://www.bbcgoodfoodme.com/collections/meat">Meat</a><a href="https://www.bbcgoodfoodme.com/collections/dairy">Dairy</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/ingredients">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/seasonal">Seasonal</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/seasonal">Seasonal September</a><a href="https://www.bbcgoodfoodme.com/collections/summer-drink">Summer drink</a><a href="https://www.bbcgoodfoodme.com/collections/summer-dessert">Summer dessert</a><a href="https://www.bbcgoodfoodme.com/collections/easy-summer">Easy summer</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/seasonal">see more...</a>
+
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/more-recipe-ideas">More Recipe Ideas</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/courses">Courses</a><a href="https://www.bbcgoodfoodme.com/collections/buffet-recipes">Buffet</a><a href="https://www.bbcgoodfoodme.com/collections/all-time-top-20-recipes">All-time top 20 recipes</a><a href="https://www.bbcgoodfoodme.com/collections/food-to-get-you-in-the-mood">Food to get you in the mood</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/more-recipe-ideas">see more...</a>
+
+                        </div>
+
+                        
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/everyday">Everyday</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/cheap-eat">Cheap eat</a><a href="https://www.bbcgoodfoodme.com/collections/comfort-food">Comfort food</a><a href="https://www.bbcgoodfoodme.com/collections/five-ingredients-or-less">Five ingredients or less</a><a href="https://www.bbcgoodfoodme.com/collections/batch-cooking">Batch cooking</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/everyday">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/events">Events</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/jubilee">Jubilee</a><a href="https://www.bbcgoodfoodme.com/collections/mothers-day">Mother's Day</a><a href="https://www.bbcgoodfoodme.com/collections/fathers-day">Father's Day</a><a href="https://www.bbcgoodfoodme.com/collections/valentines-day">Valentine's Day</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/events">see more...</a>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <h4>
+
+                                <a href="https://www.bbcgoodfoodme.com/categories/cakes-baking">Cakes &amp; Baking</a>
+
+                            </h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/biscuit-recipes">Biscuit</a><a href="https://www.bbcgoodfoodme.com/collections/bread-recipes">Bread</a><a href="https://www.bbcgoodfoodme.com/collections/cake-sale">Cake sale</a><a href="https://www.bbcgoodfoodme.com/collections/caramel">Caramel</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/cakes-baking">see more...</a>
+
+                        </div>
+                        
+                            <div class="col-md-3">
+
+                            <h4><a href="https://www.bbcgoodfoodme.com/categories/christmas">Christmas</a></h4>
+
+                            <a href="https://www.bbcgoodfoodme.com/collections/christmas-dinner">Christmas dinner</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-cheeseboard">Christmas cheeseboard</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-pudding">Christmas pudding</a><a href="https://www.bbcgoodfoodme.com/collections/christmas-trimmings">Christmas trimmings</a>
+
+                            <a href="https://www.bbcgoodfoodme.com/categories/christmas">see more...</a>
+
+                        </div>
+
+						
+						
+	
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div></li>
+</ul>
+</li>
+	<li id="menu-item-40969" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://www.bbcgoodfoodme.com/video-recipe/">Videos<span class="caret"></span></a></li>
+	<li id="menu-item-27238" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://www.bbcgoodfoodme.com/restaurants-review/">Reviews<span class="caret"></span></a></li>
+	<li id="menu-item-13037" class="dropdown menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.bbcgoodfoodme.com/staycations/">Lifestyle<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li id="menu-item-11555" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/staycations/">Staycations</a></li>
+	<li id="menu-item-11554" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/international-travel/">International Travel</a></li>
+</ul>
+</li>
+	<li id="menu-item-11556" class="dropdown menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.bbcgoodfoodme.com/news/">Food news<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li id="menu-item-11557" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/news/">News</a></li>
+	<li id="menu-item-11558" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/health/">Health</a></li>
+	<li id="menu-item-11559" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/chef-interviews/">Interviews</a></li>
+	<li id="menu-item-11560" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/how-to/">How To</a></li>
+	<li id="menu-item-11561" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/videos/">Videos</a></li>
+</ul>
+</li>
+	<li id="menu-item-11567" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/competitions/">Competitions<span class="caret"></span></a></li>
+	<li id="menu-item-11568" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/magazines/">Magazines<span class="caret"></span></a></li>
+	<li id="menu-item-12055" class="dropdown menu-item menu-item-type-taxonomy menu-item-object-bbc_foodclub_categories menu-item-has-children"><a href="https://www.bbcgoodfoodme.com/food-club-event/food-festivals/">Events<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li id="menu-item-12056" class="dropdown menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a target="_blank" href="https://awards.bbcgoodfoodme.com">BBC Good Food ME Awards</a>
+	<ul class="dropdown-menu">
+		<li id="menu-item-55941" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://bbcgoodfoodme.com/awards/2025/">2025 Awards</a></li>
+		<li id="menu-item-46443" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://awards.bbcgoodfoodme.com/2024/">2024 Awards</a></li>
+		<li id="menu-item-40855" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://awards.bbcgoodfoodme.com/2023/">2023 Awards</a></li>
+		<li id="menu-item-32556" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://awards.bbcgoodfoodme.com/2022/">2022 Awards</a></li>
+		<li id="menu-item-27237" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://awards.bbcgoodfoodme.com/2021">2021 Awards</a></li>
+		<li id="menu-item-16464" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://awards.bbcgoodfoodme.com/2020">2020 Awards</a></li>
+		<li id="menu-item-13381" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.bbcgoodfoodme.com/awards/2019/">2019 Awards</a></li>
+		<li id="menu-item-12057" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.bbcgoodfoodme.com/awards/2018/">2018 Awards</a></li>
+		<li id="menu-item-12058" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.bbcgoodfoodme.com/awards/2017/">2017 Awards</a></li>
+		<li id="menu-item-12059" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.bbcgoodfoodme.com/awards/2016/">2016 Awards</a></li>
+		<li id="menu-item-12064" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.bbcgoodfoodme.com/awards/2015/">2015 Awards</a></li>
+	</ul>
+</li>
+	<li id="menu-item-52547" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.bbcgoodfoodme.com/award-videos/">Award Videos</a></li>
+	<li id="menu-item-12061" class="hidden-xs hidden-sm hidden-md hidden-lg menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://www.cpimediagroup.com/public_sites/_sites/tgfawards/">The Great Flavour Awards</a></li>
+	<li id="menu-item-45402" class="menu-item menu-item-type-post_type menu-item-object-page"><a target="_blank" href="https://www.bbcgoodfoodme.com/holiday-calendar/">Holiday Calendar</a></li>
+	<li id="menu-item-20648" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://www.bbcgoodfoodme.com/food-club-events/">Food Club Events</a></li>
+</ul>
+</li>
+	<li id="menu-item-13324" class="visible-laptop visible-mobile menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a>My Account<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li id="menu-item-13320" class="visible-laptop visible-mobile menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.bbcgoodfoodme.com/signup/">Sign Up</a></li>
+	<li id="menu-item-13323" class="visible-laptop visible-mobile menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.bbcgoodfoodme.com/login/">Login</a></li>
+</ul>
+</li>
+</ul></div>
+	</nav><!-- #site-navigation -->
+            </div>            
+        </div>
+    </div>
+    
+
+    
+
+    <div class="container">
+        <div id="content" class="site-content">
+
+<div class="content-area-container no-bottom-padding wrap">
+    <div class="row">
+         <div class="col-md-8 no-right-padding">
+            <main id="main" class="site-main" role="main">
+
+                    <section class="error-404 not-found">
+                            <header class="page-header">
+                                    <h1 class="page-title">Oops! That page can&rsquo;t be found.</h1>
+                            </header><!-- .page-header -->
+                            <div class="page-content">
+                                    <p>It looks like nothing was found at this location. Maybe try a search?</p>
+
+                                    
+
+<form accept-charset="UTF-8" action="https://www.bbcgoodfoodme.com/search-results" method="get">
+    <div class="input-group">
+        <input class="form-control search-input" name="q" placeholder="ingredient, dish, keyword" value="" type="text">
+        <span class="input-group-btn">
+            <button class="btn basic-search-control" type="submit">Search</button>
+        </span>
+    </div>
+</form>
+
+                            </div><!-- .page-content -->
+                    </section><!-- .error-404 -->
+            </main><!-- #main -->
+        </div>
+        <div class="col-md-4 col-xs-12">
+            
+
+
+<aside id="secondary" class="widget-area" role="complementary">
+
+    <div class="sidebar">
+   <div class="account-management1 dropdown">
+                            <a href="https://www.bbcgoodfoodme.com/become-a-food-club-member/" class="food-club" target="_blank">Become a Food Club Member</a>
+                            
+                        </div>
+        
+                <section id="custom_html-2" class="widget_text widget widget_custom_html mpu-placeholder"><span style="display:none;">MPU 1</span><div class="textwidget custom-html-widget"><div id='div-gpt-ad-1548942233526-1' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1548942233526-1'); });
+</script>
+</div>
+</div></section>
+                <div class="widget dish-of-the-month" style="border-bottom: dashed 1px;margin-bottom: 10px;">
+    <h3 style="padding-top:6px">
+        <div class="span">Homegrown Tables</div>
+    </h3>
+    <hr style="border-top: dashed 1px;margin-bottom:9px;margin-top:9px">
+    <section id="sp_widget_post_slider-2" class="widget widget_sp_widget_post_slider mpu-placeholder"><span style="display:none;">Widget Post Slider</span>
+        <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("#sp-widget-post-slider-69cb8d76a9909").slick({
+                dots: false,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                speed: 600,
+                autoplaySpeed: 4000,
+                arrows: true,
+                prevArrow: "<div class='slick-prev'><i class='fa fa-angle-left'></i></div>",
+                nextArrow: "<div class='slick-next'><i class='fa fa-angle-right'></i></div>",
+            });
+        });
+        </script><div id="sp-widget-post-slider-69cb8d76a9909" class="sp-widget-post-slider-section"><div class="widget-post-slider"><a href="https://www.bbcgoodfoodme.com/chef-interviews/homegrown-tables-juns-852bakery-kelvincheung/"><img width="360" height="250" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/03/Kelvin-Cheung-5-scaled-e1773841743143-360x250.jpg" class="wps-image wp-post-image" alt="" decoding="async" fetchpriority="high" sizes="100vw" /></a><div class="wps-caption"><a href="https://www.bbcgoodfoodme.com/chef-interviews/homegrown-tables-juns-852bakery-kelvincheung/">Homegrown Tables: A Seat at Jun’s with Kelvin Cheung</a></div></div><div class="widget-post-slider"><a href="https://www.bbcgoodfoodme.com/chef-interviews/homegrown-tables-tashas-cafe-natasha-sideris/"><img width="360" height="250" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/03/tash102870-360x250.jpg" class="wps-image wp-post-image" alt="" decoding="async" sizes="100vw" /></a><div class="wps-caption"><a href="https://www.bbcgoodfoodme.com/chef-interviews/homegrown-tables-tashas-cafe-natasha-sideris/">Homegrown Tables: A Seat at Tashas Cafe with Natasha Sideris</a></div></div></div></section></div>        <div class="widget dish-of-the-month" style="border-bottom: dashed 1px;margin-bottom: 10px;">
+    <h3 style="padding-top:6px">
+        <div class="span">Staycations to Book Now</div>
+    </h3>
+    <hr style="border-top: dashed 1px;margin-bottom:9px;margin-top:9px">
+    <section id="sp_widget_post_slider-3" class="widget widget_sp_widget_post_slider mpu-placeholder"><span style="display:none;">Widget Post Slider</span>
+        <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("#sp-widget-post-slider-69cb8d76aa360").slick({
+                dots: false,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                speed: 600,
+                autoplaySpeed: 4000,
+                arrows: true,
+                prevArrow: "<div class='slick-prev'><i class='fa fa-angle-left'></i></div>",
+                nextArrow: "<div class='slick-next'><i class='fa fa-angle-right'></i></div>",
+            });
+        });
+        </script><div id="sp-widget-post-slider-69cb8d76aa360" class="sp-widget-post-slider-section"><div class="widget-post-slider"><a href="https://www.bbcgoodfoodme.com/staycations/best-staycations-uae-residents/"><img width="360" height="250" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/03/The-Westin-Dubai-Mina-Seyahi-Family-360x250.jpg" class="wps-image wp-post-image" alt="" decoding="async" sizes="100vw" /></a><div class="wps-caption"><a href="https://www.bbcgoodfoodme.com/staycations/best-staycations-uae-residents/">26 UAE staycations you can&#8217;t miss out on</a></div></div><div class="widget-post-slider"><a href="https://www.bbcgoodfoodme.com/staycations/best-staycations-dubai-residents-can-book-this-season/"><img width="360" height="250" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2024/04/Anantara_The_Palm_Dubai_Resort_Designer_Dining-360x250.jpg" class="wps-image wp-post-image" alt="dubai staycation deals" decoding="async" sizes="100vw" /></a><div class="wps-caption"><a href="https://www.bbcgoodfoodme.com/staycations/best-staycations-dubai-residents-can-book-this-season/">Best staycations Dubai residents can book this season</a></div></div></div></section></div>        <div class="widget trending-this-week" style="border-bottom: dashed 1px;margin-bottom: 10px;">
+    <h3 style="padding-top:6px">
+        <div class="span">Restaurant Reviews</div>
+    </h3>
+    <hr style="border-top: dashed 1px;margin-bottom:9px;margin-top:9px">
+    <section id="rpwe_widget-2" class="widget rpwe_widget recent-posts-extended  mpu-placeholder"><div  class="rpwe-block"><ul class="rpwe-ul"><li class="rpwe-li rpwe-clearfix"><a class="rpwe-img" href="https://www.bbcgoodfoodme.com/restaurants-review/review-girl-the-goose/" target="_self"><img class="rpwe-alignleft rpwe-thumb" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/03/Girl-the-Goose-1-scaled-125x113.jpg" alt="Review: Girl &#038; the Goose" height="113" width="125" loading="lazy" decoding="async"></a><h3 class="rpwe-title"><a href="https://www.bbcgoodfoodme.com/restaurants-review/review-girl-the-goose/" target="_self">Review: Girl &#038; the Goose</a></h3><div class="rpwe-summary">From cabin crew to chef-restaurateur, Gabriela Chamorro first launched Girl &hellip;</div></li><li class="rpwe-li rpwe-clearfix"><a class="rpwe-img" href="https://www.bbcgoodfoodme.com/restaurants-review/review-tezukuri/" target="_self"><img class="rpwe-alignleft rpwe-thumb" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/03/Tezukuri0001-scaled-125x113.jpg" alt="Review: Tezukuri" height="113" width="125" loading="lazy" decoding="async"></a><h3 class="rpwe-title"><a href="https://www.bbcgoodfoodme.com/restaurants-review/review-tezukuri/" target="_self">Review: Tezukuri</a></h3><div class="rpwe-summary">In the shadow of Dubai Opera, a new Japanese dining &hellip;</div></li><li class="rpwe-li rpwe-clearfix"><a class="rpwe-img" href="https://www.bbcgoodfoodme.com/restaurants-review/review-iftar-at-the-ritz-carlton-abu-dhabi-grand-canal/" target="_self"><img class="rpwe-alignleft rpwe-thumb" src="https://www.bbcgoodfoodme.com/wp-content/uploads/2026/02/Ramadan-Giornotte-Station-1-scaled-125x113.jpg" alt="Review: Iftar at The Ritz-Carlton Abu Dhabi, Grand Canal" height="113" width="125" loading="lazy" decoding="async"></a><h3 class="rpwe-title"><a href="https://www.bbcgoodfoodme.com/restaurants-review/review-iftar-at-the-ritz-carlton-abu-dhabi-grand-canal/" target="_self">Review: Iftar at The Ritz-Carlton Abu Dhabi, Grand Canal</a></h3><div class="rpwe-summary">At Giornotte, the Iftar buffet brings together Middle Eastern and &hellip;</div></li></ul></div><!-- Generated by http://wordpress.org/plugins/recent-posts-widget-extended/ --></section></div>
+        
+                <section id="custom_html-3" class="widget_text widget widget_custom_html mpu-placeholder"><span style="display:none;">MPU 2</span><div class="textwidget custom-html-widget"><div id='div-gpt-ad-1548942233526-2' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1548942233526-2'); });
+</script>
+</div></div></section>
+        
+        
+                <section id="custom_html-4" class="widget_text widget widget_custom_html mpu-placeholder"><span style="display:none;">MPU 3</span><div class="textwidget custom-html-widget"><div class="test" id='div-gpt-ad-1548942233526-3' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1548942233526-3'); });
+</script>
+</div></div></section>
+        
+
+
+        <!-- BBCGFME ADSENSE EXPERIMENT ADS START -->
+        <!--
+        <section id="custom_html-5" class="widget_text widget widget_custom_html mpu-placeholder">
+            <div class="textwidget custom-html-widget">
+
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-4200108722666520"
+                     data-ad-slot="4310524413"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+            </div>
+        </section>
+        
+        -->
+
+
+    </div>
+
+</aside><!-- #secondary -->
+
+        </div>
+    </div><!-- #primary -->
+</div><!-- .wrap -->
+
+
+
+
+        </div><!-- #content -->                
+
+    </div><!-- .site-content-contain -->
+
+    <div class="footer-subscribe">
+
+        <div class="container">
+
+            <div class="footer-subscribe-container">
+
+                <div class="page_title">
+
+                    <h1 class="stay-informed">Join the community</h1>
+
+                </div>
+
+                <div class="subscribe-outer">
+
+                    <div class="subscribe-text">
+
+                        Subscribe to our newsletter for recipes, competitions, magazines and videos.
+                    </div>
+
+                    <div class="subscribe-form">
+
+                        <a href="https://www.bbcgoodfoodme.com/newsletter-subscription/" class="btn btn-default" id="es_txt_button">Subscribe Now</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer id="colophon" class="site-footer" role="contentinfo">
+
+        <div class="footer-layer-two">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-8 info">
+
+                        <div class="clearfix">
+
+                            <a href="https://www.bbcgoodfoodme.com" class="pull-left f-brand"><img alt="Good Food Middle East" src="https://www.bbcgoodfoodme.com/assets/images/bbc-logo-footer-d4a6849f0e8bb36eae00e18863ccaacd.png">
+
+                            </a><div class="social-media clearfix">
+
+                                <a href="https://www.facebook.com/GoodFoodMiddleEast/" target="_blank">
+
+                                    <img alt="Icon-sm-facebook" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-facebook-26033b452cdc0a9a67b48c1d0c91914c.png">
+
+                                </a>
+
+                                <a href="https://twitter.com/GoodFoodME" target="_blank">
+
+                                    <img alt="Icon-sm-twitter" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-twitter-79dd52ebad06158edcce8fd44a210604.png">
+
+                                </a>
+
+                                <a href="https://www.pinterest.com/goodfoodmiddleeast/" target="_blank">
+
+                                    <img alt="Icon-sm-pinterest" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-pinterest-e66ea008ac74f3ae68e5914085318b90.png">
+
+                                </a>
+
+                                <a href="https://www.instagram.com/goodfoodmiddleeast/" target="_blank">
+
+                                    <img alt="Icon-sm-instagram" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-instagram-f7a81fef7327393bda08ba0bf5188be4.png">
+
+                                </a>
+                                <a href="https://www.tiktok.com/@goodfoodmiddleeast" target="_blank"> 
+                                <img alt="Icon-sm-tiktok" src="https://www.bbcgoodfoodme.com/assets/images/icon-sm-tiktok-87riygf798r98ubf898u8383828.png"> 
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <p>
+
+                           
+                            © Immediate Media Company London Limited 2026                            <br>
+                            Good Food and the Good Food logo are unregistered trade marks of Immediate Media Company London Limited and used under licence.  All rights reserved. 
+                        </p>
+
+                        <p>
+
+                            For more information e-mail us at
+                            <a href="mailto:webmaster@cpimediagroup.com" style="color: #fff">webmaster@cpimediagroup.com</a>
+
+                        </p>
+
+                        <p>
+
+                            <a href="/privacy-policy" style="color: #fff">Privacy Policy</a>
+
+                            |
+
+                            <a href="http://www.cpimediagroup.com/" style="color: #fff" target="_blank">More from CPI Websites</a>
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4 sitemap">
+
+                        <div class="row">
+
+                        
+                                <div class="widget col-sm-6">
+
+                                        <section id="nav_menu-2" class="widget widget_nav_menu"><div class="menu-footer-menu-1-container"><ul id="menu-footer-menu-1" class="menu"><li id="menu-item-11580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11580"><a href="https://www.bbcgoodfoodme.com/">Home</a></li>
+<li id="menu-item-11581" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11581"><a href="/recipes/">Recipes</a></li>
+</ul></div></section>
+                                </div>
+
+                        
+                                <div class="widget col-sm-6">
+
+                                        <section id="nav_menu-3" class="widget widget_nav_menu"><div class="menu-footer-menu-2-container"><ul id="menu-footer-menu-2" class="menu"><li id="menu-item-11583" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11583"><a href="/competitions/">Competitions</a></li>
+<li id="menu-item-11584" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11584"><a href="/magazines/">Magazine</a></li>
+<li id="menu-item-11587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11587"><a href="https://www.bbcgoodfoodme.com/contactus/">Contact Good Food Middle East</a></li>
+</ul></div></section>
+                                </div>
+
+                        
+                        </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer><!-- #colophon -->
+
+</div><!-- #page -->
+
+
+<script> var bodyImageURL = 'https://www.bbcgoodfoodme.com/assets/var/app/current/common_wallpaper/1/original/may2018background.jpg'; </script>
+<!--<script> var bodyImageURL = 'https://www.bbcgoodfoodme.com/assets/var/app/current/common_wallpaper/1/original/Valentines--Day-2024-bg.jpg'; </script>-->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("Hello world 123!");
+  var li = document.querySelector('li.geo-uk-link');
+  if (li) {
+    var link = li.querySelector('a');
+    if (link) {
+      link.setAttribute('hreflang', 'en-gb');
+      link.setAttribute('rel', 'nofollow');
+    }
+  }
+});
+</script>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/bbcgoodfoodme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<!-- Custom Facebook Feed JS -->
+<script type="text/javascript">var cffajaxurl = "https://www.bbcgoodfoodme.com/wp-admin/admin-ajax.php";
+var cfflinkhashtags = "true";
+</script>
+<style media="screen">
+
+/* Navigation */
+.tcowl-wrap  .owl-theme .owl-nav [class*='owl-'] {
+ background-color: #000;
+}
+ .tcowl-wrap  .owl-theme .owl-nav [class*='owl-']:hover {
+  background-color: #343434;
+
+ }
+/* Dots */
+.tcowl-wrap  .owl-theme .owl-dots .owl-dot span {
+ background:#000;
+}
+.tcowl-wrap  .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+ background:#343434;
+}
+</style>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+    jQuery(".owl-carousel").owlCarousel({
+      // control
+          autoplay:true,
+          autoplayHoverPause:true,
+          autoplayTimeout:1000,
+          autoplaySpeed:3000,
+          navSpeed:3000,
+          dotsSpeed:3000,
+          loop:true,
+        // Advances
+          slideBy:1,
+          slideTransition:'linear',
+         
+          margin:5,
+          nav:true,
+          navText:["&lt;","&gt;"],
+          autoHeight:false,
+          autoWidth:false,
+          center:false,
+          stagePadding:false,
+          rtl:false,
+          dots:false,
+          responsiveClass:true,
+          responsive:{
+              0:{
+                  items:1,
+              },
+              600:{
+                  items:3,
+
+              },
+              1000:{
+                  items:4,
+
+              }
+
+          }
+
+  });
+
+});
+
+
+</script>
+
+<!-- YouTube Feeds JS -->
+<script type="text/javascript">
+
+</script>
+<!-- Instagram Feed JS -->
+<script type="text/javascript">
+var sbiajaxurl = "https://www.bbcgoodfoodme.com/wp-admin/admin-ajax.php";
+</script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.9.4/wp-includes/js/dist/hooks.js" id="wp-hooks-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.9.4/wp-includes/js/dist/i18n.js" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.3" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-before">
+/* <![CDATA[ */
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.bbcgoodfoodme.com\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    },
+    "cached": 1
+};
+//# sourceURL=contact-form-7-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.3" id="contact-form-7-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/owl-carousel-wp/vendors/owl-carousel/owl.carousel.min.js?ver=1" id="owl-carousel-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/widget-post-slider/assets/js/slick.min.js?ver=1.6.0" id="slick-min-js-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/custom-facebook-feed/assets/js/cff-scripts.min.js?ver=4.3.3" id="cffscripts-js"></script>
+<script type="text/javascript" id="bbcgoodfood_me-skip-link-focus-fix-js-extra">
+/* <![CDATA[ */
+var bbcgoodfood_meScreenReaderText = {"quote":"\u003Csvg class=\"icon icon-quote-right\" aria-hidden=\"true\" role=\"img\"\u003E \u003Cuse href=\"#icon-quote-right\" xlink:href=\"#icon-quote-right\"\u003E\u003C/use\u003E \u003C/svg\u003E","expand":"Expand child menu","collapse":"Collapse child menu","icon":"\u003Csvg class=\"icon icon-angle-down\" aria-hidden=\"true\" role=\"img\"\u003E \u003Cuse href=\"#icon-angle-down\" xlink:href=\"#icon-angle-down\"\u003E\u003C/use\u003E \u003Cspan class=\"svg-fallback icon-angle-down\"\u003E\u003C/span\u003E\u003C/svg\u003E"};
+//# sourceURL=bbcgoodfood_me-skip-link-focus-fix-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/skip-link-focus-fix.js?ver=1.0" id="bbcgoodfood_me-skip-link-focus-fix-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/navigation.js?ver=1.0" id="bbcgoodfood_me-navigation-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/bootstrap.min.js?ver=1.0" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/bootstrap-select.min.js?ver=1.0" id="bootstrap-select-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/slick.min.js?ver=1.0" id="slick-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/jquery.scrollTo.js?ver=2.1.2" id="jquery-scrollto-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/parsley.min.js?ver=1.0.0" id="parsley-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/vendor/toastr/toastr.min.js?ver=1.0" id="toastr-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/vendor/mobile-menu/jquery-simple-mobilemenu.min.js?ver=1.0" id="mobilemenu-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/vendor/svgmagic/jquery.svgmagic.js?ver=1.0" id="svgmagic-js"></script>
+<script type="text/javascript" id="bbcgoodfood_me-global-js-extra">
+/* <![CDATA[ */
+var city_ajax_obj = {"ajaxurl":"https://www.bbcgoodfoodme.com/wp-admin/admin-ajax.php"};
+var rating_ajax_obj = {"ajaxurl":"https://www.bbcgoodfoodme.com/wp-admin/admin-ajax.php"};
+//# sourceURL=bbcgoodfood_me-global-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/global.js?ver=1.1.0" id="bbcgoodfood_me-global-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/js/outbond-links.js?ver=1.0.0" id="outbond-js"></script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/assets/vendor/jquery.cookie.js?ver=1.4.1" id="cookie-js"></script>
+<script type="text/javascript" id="wpcf7cf-scripts-js-extra">
+/* <![CDATA[ */
+var wpcf7cf_global_settings = {"ajaxurl":"https://www.bbcgoodfoodme.com/wp-admin/admin-ajax.php"};
+//# sourceURL=wpcf7cf-scripts-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/cf7-conditional-fields/js/scripts.js?ver=2.6.6" id="wpcf7cf-scripts-js"></script>
+<script type="text/javascript" id="jetpack-stats-js-before">
+/* <![CDATA[ */
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"193886178","post":"0","tz":"4","srv":"www.bbcgoodfoodme.com","arch_err":"/wp-content/uploads/2021/09/T5.jpg","j":"1:15.6"} ]);
+_stq.push([ "clickTrackerInit", "193886178", "0" ]);
+//# sourceURL=jetpack-stats-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://stats.wp.com/e-202614.js" id="jetpack-stats-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="ivory-search-scripts-js-extra">
+/* <![CDATA[ */
+var IvorySearchVars = {"is_analytics_enabled":"1"};
+//# sourceURL=ivory-search-scripts-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.bbcgoodfoodme.com/wp-content/plugins/add-search-to-menu/public/js/ivory-search.min.js?ver=5.5.12" id="ivory-search-scripts-js"></script>
+
+
+
+
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+
+
+  ga('create', 'UA-34227365-7', 'auto');
+
+  
+
+
+  ga('require', 'displayfeatures');
+
+  //ga('require', 'GTM-W4BQH4H');
+
+  ga('send', 'pageview');
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
+

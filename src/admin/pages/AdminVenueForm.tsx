@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Save } from 'lucide-react';
-import { supabase, isMockMode } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { Category, Venue } from '../../types';
 import { useAdminForm } from '../hooks';
 
-// Generate a UUID v4 for unique venue IDs
+// Generate a UUID v4 for unique venue IDs using crypto API
 function generateUUID(): string {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  // Fallback for older browsers (still better than Math.random() for UUID v4)
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
+    const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16 | 0;
     const v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
 }
 
 const CATEGORIES: Category[] = [
-  'dining', 'nightlife', 'beach-clubs', 'dining-entertainment',
-  'yachts', 'travel', 'car-rental', 'experiences',
-  'wellness', 'shopping', 'business', 'events', 'sports',
+  'restaurants', 'beach-clubs', 'night-clubs', 'dining-entertainment'
 ];
 
 const EMPTY_FORM = {
   name: '',
-  category: 'dining' as Category,
-  subcategory: 'Curated Venue',
+  category: 'restaurants' as Category,
+  subcategory: '',
   location: 'Dubai',
   area: '',
   vibe_tags: '',
@@ -45,8 +47,9 @@ const EMPTY_FORM = {
 };
 
 export default function AdminVenueForm() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string | undefined;
+  const router = useRouter();
   const queryClient = useQueryClient();
   const isNew = !id || id === 'new';
   const { form, setForm, update } = useAdminForm(EMPTY_FORM);
@@ -55,9 +58,10 @@ export default function AdminVenueForm() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (isNew || isMockMode || !supabase) return;
+    if (isNew) return;
 
     (async () => {
+      if (!supabase) { setError('Database not available.'); setLoading(false); return; }
       const { data, error: err } = await supabase
         .from('venues')
         .select('*')
@@ -99,8 +103,6 @@ export default function AdminVenueForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isMockMode || !supabase) return;
-
     setSaving(true);
     setError('');
 
@@ -128,6 +130,7 @@ export default function AdminVenueForm() {
     };
 
     try {
+      if (!supabase) throw new Error('Database not available');
       if (isNew) {
         const venueId = generateUUID();
         const { error: err } = await supabase
@@ -144,7 +147,7 @@ export default function AdminVenueForm() {
 
       queryClient.invalidateQueries({ queryKey: ['admin', 'venues'] });
       queryClient.invalidateQueries({ queryKey: ['venues'] });
-      navigate('/admin/venues');
+      router.push('/admin/venues');
     } catch (err: any) {
       setError(err.message ?? 'Failed to save venue.');
     } finally {
@@ -158,7 +161,7 @@ export default function AdminVenueForm() {
 
   return (
     <div>
-      <button onClick={() => navigate('/admin/venues')} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+      <button onClick={() => router.push('/admin/venues')} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" /> Back to Venues
       </button>
 
@@ -178,26 +181,26 @@ export default function AdminVenueForm() {
           <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-white/5 pb-2">Basic Info</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Name *</label>
-              <input required value={form.name} onChange={(e) => update('name', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="name" className="block text-xs font-bold uppercase text-gray-500 mb-1">Name *</label>
+              <input id="name" required value={form.name} onChange={(e) => update('name', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Category *</label>
-              <select value={form.category} onChange={(e) => update('category', e.target.value as Category)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
+              <label htmlFor="category" className="block text-xs font-bold uppercase text-gray-500 mb-1">Category *</label>
+              <select id="category" value={form.category} onChange={(e) => update('category', e.target.value as Category)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
                 {CATEGORIES.map((c) => <option key={c} value={c}>{c.replace('-', ' ')}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Subcategory</label>
-              <input value={form.subcategory} onChange={(e) => update('subcategory', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="subcategory" className="block text-xs font-bold uppercase text-gray-500 mb-1">Subcategory</label>
+              <input id="subcategory" value={form.subcategory} onChange={(e) => update('subcategory', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Area *</label>
-              <input required value={form.area} onChange={(e) => update('area', e.target.value)} placeholder="e.g. DIFC, JBR, Downtown" className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="area" className="block text-xs font-bold uppercase text-gray-500 mb-1">Area *</label>
+              <input id="area" required value={form.area} onChange={(e) => update('area', e.target.value)} placeholder="e.g. DIFC, JBR, Downtown" className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Price Tier</label>
-              <select value={form.price_tier} onChange={(e) => update('price_tier', Number(e.target.value))} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
+              <label htmlFor="price_tier" className="block text-xs font-bold uppercase text-gray-500 mb-1">Price Tier</label>
+              <select id="price_tier" value={form.price_tier} onChange={(e) => update('price_tier', Number(e.target.value))} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
                 <option value={1}>$ (Budget)</option>
                 <option value={2}>$$ (Moderate)</option>
                 <option value={3}>$$$ (Premium)</option>
@@ -205,16 +208,16 @@ export default function AdminVenueForm() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Status</label>
-              <select value={form.status} onChange={(e) => update('status', e.target.value as 'draft' | 'published' | 'archived')} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
+              <label htmlFor="status" className="block text-xs font-bold uppercase text-gray-500 mb-1">Status</label>
+              <select id="status" value={form.status} onChange={(e) => update('status', e.target.value as 'draft' | 'published' | 'archived')} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
                 <option value="draft">Draft</option>
                 <option value="published">Published</option>
                 <option value="archived">Archived</option>
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Vibe Tags (comma-separated)</label>
-              <input value={form.vibe_tags} onChange={(e) => update('vibe_tags', e.target.value)} placeholder="Elegant, Rooftop, Vibrant" className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="vibe_tags" className="block text-xs font-bold uppercase text-gray-500 mb-1">Vibe Tags (comma-separated)</label>
+              <input id="vibe_tags" value={form.vibe_tags} onChange={(e) => update('vibe_tags', e.target.value)} placeholder="Elegant, Rooftop, Vibrant" className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
           </div>
         </section>
@@ -223,12 +226,12 @@ export default function AdminVenueForm() {
         <section className="space-y-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-white/5 pb-2">Images</h2>
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Hero Image URL</label>
-            <input value={form.hero_image} onChange={(e) => update('hero_image', e.target.value)} placeholder="https://..." className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+            <label htmlFor="hero_image" className="block text-xs font-bold uppercase text-gray-500 mb-1">Hero Image URL</label>
+            <input id="hero_image" value={form.hero_image} onChange={(e) => update('hero_image', e.target.value)} placeholder="https://..." className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Gallery Image URLs (one per line)</label>
-            <textarea value={form.gallery_images} onChange={(e) => update('gallery_images', e.target.value)} rows={4} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
+            <label htmlFor="gallery_images" className="block text-xs font-bold uppercase text-gray-500 mb-1">Gallery Image URLs (one per line)</label>
+            <textarea id="gallery_images" value={form.gallery_images} onChange={(e) => update('gallery_images', e.target.value)} rows={4} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
           </div>
         </section>
 
@@ -236,16 +239,16 @@ export default function AdminVenueForm() {
         <section className="space-y-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-white/5 pb-2">Descriptions</h2>
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Short Description</label>
-            <input value={form.description_short} onChange={(e) => update('description_short', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+            <label htmlFor="description_short" className="block text-xs font-bold uppercase text-gray-500 mb-1">Short Description</label>
+            <input id="description_short" value={form.description_short} onChange={(e) => update('description_short', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Long Description</label>
-            <textarea value={form.description_long} onChange={(e) => update('description_long', e.target.value)} rows={5} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
+            <label htmlFor="description_long" className="block text-xs font-bold uppercase text-gray-500 mb-1">Long Description</label>
+            <textarea id="description_long" value={form.description_long} onChange={(e) => update('description_long', e.target.value)} rows={5} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Highlights (one per line)</label>
-            <textarea value={form.highlights} onChange={(e) => update('highlights', e.target.value)} rows={4} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
+            <label htmlFor="highlights" className="block text-xs font-bold uppercase text-gray-500 mb-1">Highlights (one per line)</label>
+            <textarea id="highlights" value={form.highlights} onChange={(e) => update('highlights', e.target.value)} rows={4} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
           </div>
         </section>
 
@@ -254,32 +257,32 @@ export default function AdminVenueForm() {
           <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-white/5 pb-2">Venue Details</h2>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Opening Hours</label>
-              <input value={form.opening_hours} onChange={(e) => update('opening_hours', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="opening_hours" className="block text-xs font-bold uppercase text-gray-500 mb-1">Opening Hours</label>
+              <input id="opening_hours" value={form.opening_hours} onChange={(e) => update('opening_hours', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Dress Code</label>
-              <input value={form.dress_code} onChange={(e) => update('dress_code', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="dress_code" className="block text-xs font-bold uppercase text-gray-500 mb-1">Dress Code</label>
+              <input id="dress_code" value={form.dress_code} onChange={(e) => update('dress_code', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Cuisine</label>
-              <input value={form.cuisine} onChange={(e) => update('cuisine', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="cuisine" className="block text-xs font-bold uppercase text-gray-500 mb-1">Cuisine</label>
+              <input id="cuisine" value={form.cuisine} onChange={(e) => update('cuisine', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Best Time</label>
-              <input value={form.best_time} onChange={(e) => update('best_time', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="best_time" className="block text-xs font-bold uppercase text-gray-500 mb-1">Best Time</label>
+              <input id="best_time" value={form.best_time} onChange={(e) => update('best_time', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Who It's For</label>
-              <input value={form.who_its_for} onChange={(e) => update('who_its_for', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="who_its_for" className="block text-xs font-bold uppercase text-gray-500 mb-1">Who It's For</label>
+              <input id="who_its_for" value={form.who_its_for} onChange={(e) => update('who_its_for', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Booking Policy</label>
-              <input value={form.booking_policy} onChange={(e) => update('booking_policy', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
+              <label htmlFor="booking_policy" className="block text-xs font-bold uppercase text-gray-500 mb-1">Booking Policy</label>
+              <input id="booking_policy" value={form.booking_policy} onChange={(e) => update('booking_policy', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none" />
             </div>
             <div className="col-span-2">
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Insider Tip</label>
-              <textarea value={form.insider_tip} onChange={(e) => update('insider_tip', e.target.value)} rows={2} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
+              <label htmlFor="insider_tip" className="block text-xs font-bold uppercase text-gray-500 mb-1">Insider Tip</label>
+              <textarea id="insider_tip" value={form.insider_tip} onChange={(e) => update('insider_tip', e.target.value)} rows={2} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none resize-none" />
             </div>
           </div>
         </section>

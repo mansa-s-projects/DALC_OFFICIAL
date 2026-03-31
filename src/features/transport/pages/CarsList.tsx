@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowRight, X, Car } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -78,7 +78,7 @@ export default function CarsList() {
           className="relative z-10"
         >
           <nav className="flex items-center justify-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-8">
-            <Link to="/transport" className="hover:text-luxury-gold transition-colors">
+            <Link href="/transport" className="hover:text-luxury-gold transition-colors">
               Transport
             </Link>
             <span>/</span>
@@ -219,7 +219,7 @@ export default function CarsList() {
             </h3>
           </div>
           <Link
-            to="/contact"
+            href="/contact"
             className="flex-shrink-0 flex items-center gap-2 px-8 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
           >
             Contact Us <ArrowRight className="w-4 h-4" />

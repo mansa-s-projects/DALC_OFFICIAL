@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   Video,
   Phone,
@@ -36,13 +37,14 @@ const MEETING_LABELS: Record<MeetingType, string> = {
 };
 
 export default function ConsultationPage() {
-  const { id } = useParams<{ id: string }>();
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string;
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const session = useAppStore(s => s.session);
 
   const isNew = id === 'new';
-  const serviceIdFromQuery = searchParams.get('service') ?? undefined;
+  const serviceIdFromQuery = searchParams?.get('service') ?? undefined;
 
   // For new consultation — use scheduler
   const { data: service } = useBusinessService(
@@ -76,7 +78,7 @@ export default function ConsultationPage() {
     agenda: string;
   }) => {
     if (!session?.user) {
-      navigate('/login');
+      router.push('/auth/login');
       return;
     }
 
@@ -144,13 +146,13 @@ export default function ConsultationPage() {
 
             <div className="flex flex-col gap-3">
               <Link
-                to="/business"
+                href="/business"
                 className="px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-colors"
               >
                 Back to Business Hub
               </Link>
               <Link
-                to="/my-requests"
+                href="/my-requests"
                 className="px-6 py-3 border border-white/20 text-gray-300 text-sm uppercase tracking-widest hover:border-luxury-gold/40 hover:text-luxury-gold transition-colors"
               >
                 View My Requests
@@ -208,7 +210,7 @@ export default function ConsultationPage() {
           </div>
 
           <Link
-            to="/business"
+            href="/business"
             className="flex items-center gap-2 mt-6 text-gray-500 hover:text-luxury-gold text-xs uppercase tracking-widest transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -229,7 +231,7 @@ export default function ConsultationPage() {
         <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Consultation not found.</p>
-          <Link to="/business" className="text-luxury-gold text-sm underline">
+          <Link href="/business" className="text-luxury-gold text-sm underline">
             Back to Business Hub
           </Link>
         </div>
@@ -249,7 +251,7 @@ export default function ConsultationPage() {
       {/* Header */}
       <section className="pt-32 pb-12 px-4 md:px-8 max-w-4xl mx-auto">
         <Link
-          to="/business"
+          href="/business"
           className="flex items-center gap-2 text-gray-500 hover:text-luxury-gold text-xs uppercase tracking-widest transition-colors mb-8"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back
@@ -449,7 +451,7 @@ export default function ConsultationPage() {
 
           {consultation.service && (
             <Link
-              to={`/business/${consultation.service.subcategory}/${consultation.service.slug}`}
+              href={`/business/${consultation.service.subcategory}/${consultation.service.slug}`}
               className="block border border-white/10 p-4 hover:border-luxury-gold/30 transition-colors group"
             >
               <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Related Service</p>

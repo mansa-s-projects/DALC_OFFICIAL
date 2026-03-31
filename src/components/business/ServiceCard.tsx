@@ -1,9 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowRight, Clock, FileText, Building2 } from 'lucide-react';
 import type { BusinessService } from '../../types/business';
 import { SUBCATEGORY_LABELS, SERVICE_TYPE_LABELS } from '../../types/business';
+
+// ─── Image Component with Error Handling ────────────────────────────────────
+
+function ServiceImage({ src, alt }: { src: string; alt: string }) {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  if (error) {
+    return (
+      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+        <Building2 className="w-16 h-16 text-gray-600" />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {loading && (
+        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+        loading="lazy"
+        onError={() => setError(true)}
+        onLoad={() => setLoading(false)}
+      />
+    </>
+  );
+}
 
 interface ServiceCardProps {
   service: BusinessService;
@@ -45,12 +78,13 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       className="group relative bg-white/[0.03] border border-white/10 hover:border-luxury-gold/40 transition-all duration-500 overflow-hidden"
     >
       {/* Image */}
-      <div className="relative h-52 overflow-hidden">
+      <div className="relative h-52 overflow-hidden bg-gray-900">
         {hero_image ? (
-          <img
-            src={hero_image}
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img 
+            src={hero_image} 
             alt={name}
-            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         ) : (
           <div className="w-full h-full bg-white/5 flex items-center justify-center">
@@ -117,7 +151,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           </div>
 
           <Link
-            to={`/business/${subcategory}/${slug}`}
+            href={`/business/${subcategory}/${slug}`}
             className="flex items-center gap-2 px-4 py-2 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300"
           >
             View

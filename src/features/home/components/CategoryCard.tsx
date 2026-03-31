@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import type { CategoryItem } from '../types';
 
 type CategoryCardProps = {
@@ -20,7 +20,7 @@ export default function CategoryCard({ item, index }: CategoryCardProps) {
       className="group"
     >
       <Link
-        to={item.href}
+        href={item.href}
         className="relative block overflow-hidden rounded-2xl border border-[#D6B574]/30 bg-[linear-gradient(170deg,rgba(23,23,23,0.9),rgba(10,10,10,0.86))] p-5 transition-colors duration-300 hover:border-[#D6B574]/60"
       >
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D6B574]/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

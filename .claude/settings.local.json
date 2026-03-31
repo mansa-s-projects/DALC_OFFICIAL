@@ -13,7 +13,13 @@
       "Bash(taskkill /F /IM node.exe)",
       "Bash(npm run:*)",
       "Bash(start cmd:*)",
-      "Bash(find c:/Users/mehdi/Desktop/02_PROJECTS/active/DALC_OFFICIAL -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type f -o -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type d)"
+      "Bash(find c:/Users/mehdi/Desktop/02_PROJECTS/active/DALC_OFFICIAL -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type f -o -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -not -path */dist/* -type d)",
+      "Bash(find /c/Users/mehdi/Desktop/02_PROJECTS/01_ACTIVE/DALC_OFFICIAL/src/features/nightlife -name *.tsx)",
+      "Bash(where:*)",
+      "Bash(python:*)",
+      "Bash(node -e \"console.log\\(require\\(''./node_modules/react-map-gl/package.json''\\).version\\)\")",
+      "Bash(ls \"c:\\\\Users\\\\mehdi\\\\Desktop\\\\DESKTOP\\\\02_PROJECTS\\\\01_ACTIVE\\\\DALC_OFFICIAL\\\\src\\\\pages\\\\live-map\"\" && echo \"---\" && ls \"c:UsersmehdiDesktopDESKTOP02_PROJECTS01_ACTIVEDALC_OFFICIALsrcfeatureslive-map\"\")",
+      "Bash(grep -v \"^$\")"
     ]
   }
 }

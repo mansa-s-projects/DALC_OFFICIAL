@@ -1,4 +1,4 @@
-import { supabase, isMockMode } from './supabase';
+import { supabase } from './supabase';
 import type {
   TransportService,
   TransportBooking,
@@ -378,45 +378,7 @@ export const MOCK_SERVICES: TransportService[] = [
 // ─── Service Functions ──────────────────────────────────────────────────────────
 
 export async function getTransportServices(filters?: TransportFilters): Promise<TransportService[]> {
-  if (isMockMode) {
-    let results = [...MOCK_SERVICES];
-    
-    if (filters?.subcategory) {
-      results = results.filter(s => s.subcategory === filters.subcategory);
-    }
-    if (filters?.sub_subcategory) {
-      results = results.filter(s => s.sub_subcategory === filters.sub_subcategory);
-    }
-    if (filters?.pricing_model) {
-      results = results.filter(s => s.pricing_model === filters.pricing_model);
-    }
-    if (filters?.price_min != null) {
-      results = results.filter(s => (s.price_from ?? 0) >= filters.price_min!);
-    }
-    if (filters?.price_max != null) {
-      results = results.filter(s => (s.price_from ?? 0) <= filters.price_max!);
-    }
-    if (filters?.availability_type) {
-      results = results.filter(s => s.availability_type === filters.availability_type);
-    }
-    if (filters?.featured_only) {
-      results = results.filter(s => s.is_featured);
-    }
-    if (filters?.capacity_min) {
-      results = results.filter(s => (s.max_capacity ?? 0) >= filters.capacity_min!);
-    }
-    if (filters?.search) {
-      const term = filters.search.toLowerCase();
-      results = results.filter(s => 
-        s.name.toLowerCase().includes(term) ||
-        s.description_short?.toLowerCase().includes(term)
-      );
-    }
-    
-    return results;
-  }
-
-  let query = supabase!
+  let query = supabase
     .from('transport_services')
     .select('*')
     .eq('status', 'published')
@@ -433,36 +395,61 @@ export async function getTransportServices(filters?: TransportFilters): Promise<
   if (filters?.capacity_min) query = query.gte('max_capacity', filters.capacity_min);
 
   const { data, error } = await query;
+  
+  // If table doesn't exist or is empty, fall back to mock data
+  if (error?.code === '42P01' || !data || data.length === 0) {
+    let mockData = MOCK_SERVICES;
+    if (filters?.subcategory) {
+      mockData = mockData.filter(s => s.subcategory === filters.subcategory);
+    }
+    if (filters?.sub_subcategory) {
+      mockData = mockData.filter(s => s.sub_subcategory === filters.sub_subcategory);
+    }
+    if (filters?.pricing_model) {
+      mockData = mockData.filter(s => s.pricing_model === filters.pricing_model);
+    }
+    if (filters?.price_min != null) {
+      mockData = mockData.filter(s => s.price_from != null && s.price_from >= filters.price_min!);
+    }
+    if (filters?.price_max != null) {
+      mockData = mockData.filter(s => s.price_from != null && s.price_from <= filters.price_max!);
+    }
+    if (filters?.availability_type) {
+      mockData = mockData.filter(s => s.availability_type === filters.availability_type);
+    }
+    if (filters?.featured_only) {
+      mockData = mockData.filter(s => s.is_featured);
+    }
+    if (filters?.capacity_min != null) {
+      mockData = mockData.filter(s => s.max_capacity != null && s.max_capacity >= filters.capacity_min!);
+    }
+    return mockData;
+  }
+  
   if (error) throw error;
   return (data ?? []) as TransportService[];
 }
 
 export async function getTransportServiceBySlug(slug: string): Promise<TransportService | null> {
-  if (isMockMode) {
-    return MOCK_SERVICES.find(s => s.slug === slug) ?? null;
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('transport_services')
     .select('*')
     .eq('slug', slug)
     .eq('status', 'published')
     .single();
 
+  // Fallback to mock data if table doesn't exist or item not found
+  if (error?.code === '42P01' || !data) {
+    const mockService = MOCK_SERVICES.find(s => s.slug === slug);
+    if (mockService) return mockService;
+  }
+  
   if (error) throw error;
   return data as TransportService | null;
 }
 
 export async function getFeaturedTransport(subcategory?: string): Promise<TransportService[]> {
-  if (isMockMode) {
-    let results = MOCK_SERVICES.filter(s => s.is_featured);
-    if (subcategory) {
-      results = results.filter(s => s.subcategory === subcategory);
-    }
-    return results;
-  }
-
-  let query = supabase!
+  let query = supabase
     .from('transport_services')
     .select('*')
     .eq('status', 'published')
@@ -473,34 +460,22 @@ export async function getFeaturedTransport(subcategory?: string): Promise<Transp
   if (subcategory) query = query.eq('subcategory', subcategory);
 
   const { data, error } = await query;
+  
+  // Fallback to mock data
+  if (error?.code === '42P01' || !data || data.length === 0) {
+    let mockData = MOCK_SERVICES.filter(s => s.is_featured);
+    if (subcategory) {
+      mockData = mockData.filter(s => s.subcategory === subcategory);
+    }
+    return mockData.slice(0, 6);
+  }
+  
   if (error) throw error;
   return (data ?? []) as TransportService[];
 }
 
 export async function createTransportBooking(input: TransportBookingInput): Promise<TransportBooking> {
-  if (isMockMode) {
-    const service = MOCK_SERVICES.find(s => s.id === input.service_id);
-    return {
-      id: `mock-transport-booking-${Date.now()}`,
-      service_id: input.service_id,
-      user_id: input.user_id,
-      pickup_date: input.pickup_date,
-      return_date: input.return_date,
-      pickup_location: input.pickup_location,
-      dropoff_location: input.dropoff_location,
-      duration_hours: input.duration_hours,
-      relocation_profile_id: input.relocation_profile_id,
-      workflow_step_id: input.workflow_step_id,
-      quoted_price: input.quoted_price,
-      final_price: input.quoted_price,
-      currency: 'AED',
-      status: 'pending',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    } as TransportBooking;
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('transport_bookings')
     .insert({
       service_id: input.service_id,
@@ -524,9 +499,7 @@ export async function createTransportBooking(input: TransportBookingInput): Prom
 }
 
 export async function getUserTransportBookings(userId: string): Promise<TransportBooking[]> {
-  if (isMockMode) return [] as TransportBooking[];
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('transport_bookings')
     .select('*, service:transport_services(*)')
     .eq('user_id', userId)
@@ -537,95 +510,87 @@ export async function getUserTransportBookings(userId: string): Promise<Transpor
 }
 
 export async function checkAvailability(
-  serviceId: string, 
+  serviceId: string,
   date: Date
 ): Promise<AvailabilityResult> {
-  if (isMockMode) {
-    // Simulate some random availability
-    const day = date.getDay();
-    const isWeekend = day === 5 || day === 6; // Fri, Sat in UAE
-    
-    // 20% chance unavailable on weekends
-    if (isWeekend && Math.random() < 0.2) {
-      return {
-        available: false,
-        reason: 'High demand — fully booked',
-        alternative_dates: [
-          new Date(date.getTime() + 24 * 60 * 60 * 1000).toISOString(),
-          new Date(date.getTime() + 48 * 60 * 60 * 1000).toISOString(),
-        ],
-      };
-    }
-    
-    return {
-      available: true,
-      price_estimate: undefined, // Would be calculated based on date/service
-    };
-  }
+  const startOfDay = new Date(date);
+  startOfDay.setHours(0, 0, 0, 0);
+  const endOfDay = new Date(date);
+  endOfDay.setHours(23, 59, 59, 999);
 
-  const { data, error } = await supabase!
-    .rpc('check_transport_availability', {
-      p_service_id: serviceId,
-      p_date: date.toISOString(),
-    });
+  const { count, error } = await supabase
+    .from('transport_bookings')
+    .select('id', { count: 'exact', head: true })
+    .eq('service_id', serviceId)
+    .neq('status', 'cancelled')
+    .lt('pickup_date', endOfDay.toISOString())
+    // Check for overlapping bookings:
+    // - Return date after start of day (normal round trip)
+    // - OR return_date is null (one-way trip - still blocks until pickup)
+    .or(`return_date.gt.${startOfDay.toISOString()},return_date.is.null`);
 
   if (error) {
-    // RPC not available - log error but return available to allow booking
-    // The backend will validate availability when processing the booking
     console.error('Availability check failed:', error);
     return { available: true };
   }
-  
-  return data as AvailabilityResult;
+
+  if (count && count > 0) {
+    return { 
+      available: false, 
+      reason: 'Fully booked on this date' 
+    };
+  }
+
+  return { available: true, price_estimate: undefined };
 }
 
 export async function getAvailableTimeSlots(serviceId: string, date: string): Promise<TimeSlot[]> {
-  if (isMockMode) {
-    const service = MOCK_SERVICES.find(s => s.id === serviceId);
-    const slots: TimeSlot[] = [];
-    const base = new Date(date);
-    
-    // Generate slots based on service type
-    let hours: number[] = [];
-    
-    if (service?.subcategory === 'jets') {
-      hours = [6, 8, 10, 12, 14, 16, 18]; // Flight hours
-    } else if (service?.subcategory === 'yachts') {
-      hours = [9, 10, 11, 14, 15, 16, 17, 18]; // Yacht charter hours
-    } else {
-      hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; // Car rental hours
-    }
-    
-    // Randomly mark some slots as unavailable
-    const unavailable = hours.filter(() => Math.random() < 0.2);
-    
-    for (const h of hours) {
-      base.setHours(h, 0, 0, 0);
-      const label = base.toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        hour12: true 
-      });
-      slots.push({
-        time: base.toISOString(),
-        label,
-        available: !unavailable.includes(h),
-      });
-    }
-    return slots;
-  }
+  const startOfDay = new Date(date);
+  startOfDay.setHours(0, 0, 0, 0);
+  const endOfDay = new Date(date);
+  endOfDay.setHours(23, 59, 59, 999);
 
-  const { data, error } = await supabase!
-    .rpc('get_transport_time_slots', {
-      p_service_id: serviceId,
-      p_date: date,
-    });
+  const { data: bookings, error } = await supabase
+    .from('transport_bookings')
+    .select('pickup_date, return_date')
+    .eq('service_id', serviceId)
+    .neq('status', 'cancelled')
+    .lt('pickup_date', endOfDay.toISOString())
+    .or(`return_date.gt.${startOfDay.toISOString()},return_date.is.null`);
 
   if (error) {
     return [] as TimeSlot[];
   }
-  
-  return (data ?? []) as TimeSlot[];
+
+  const { data: service } = await supabase
+    .from('transport_services')
+    .select('subcategory')
+    .eq('id', serviceId)
+    .single();
+
+  const slots: TimeSlot[] = [];
+  const base = new Date(date);
+  let hours: number[] = [];
+  if (service?.subcategory === 'jets') hours = [6, 8, 10, 12, 14, 16, 18];
+  else if (service?.subcategory === 'yachts') hours = [9, 10, 11, 14, 15, 16, 17, 18];
+  else hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+  for (const h of hours) {
+    base.setHours(h, 0, 0, 0);
+    const slotTime = base.toISOString();
+    const isBooked = bookings?.some(b => {
+      // Assuming minimum booking is 1 hour for overlap check
+      const bStart = new Date(b.pickup_date).getTime();
+      const bEnd = b.return_date ? new Date(b.return_date).getTime() : bStart + 60 * 60 * 1000;
+      const sTime = base.getTime();
+      return sTime >= bStart && sTime < bEnd;
+    });
+
+    const label = base.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    slots.push({ time: slotTime, label, available: !isBooked });
+  }
+
+  return slots;
 }
 
 // ─── Slug Generation Utility ────────────────────────────────────────────────────

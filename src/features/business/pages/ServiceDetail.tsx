@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   ArrowLeft,
   Clock,
@@ -24,8 +25,10 @@ import { useAppStore } from '../../../store/useAppStore';
 import { SUBCATEGORY_LABELS, SERVICE_TYPE_LABELS } from '../types';
 
 export default function ServiceDetail() {
-  const { subcategory, slug } = useParams<{ subcategory: string; slug: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const subcategory = params?.subcategory as string;
+  const slug = params?.slug as string;
+  const router = useRouter();
   const session = useAppStore(s => s.session);
 
   const { data: service, isLoading, error } = useBusinessService(slug);
@@ -36,7 +39,7 @@ export default function ServiceDetail() {
 
   const handleEngage = async () => {
     if (!session?.user) {
-      navigate('/login');
+      router.push('/auth/login');
       return;
     }
     if (!service) return;
@@ -76,7 +79,7 @@ export default function ServiceDetail() {
         <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Service not found.</p>
-          <Link to={`/business/${subcategory}`} className="text-luxury-gold text-sm underline">
+          <Link href={`/business/${subcategory}`} className="text-luxury-gold text-sm underline">
             Back to {subcategory}
           </Link>
         </div>
@@ -115,9 +118,9 @@ export default function ServiceDetail() {
         {/* Breadcrumb */}
         <div className="absolute top-24 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto">
           <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
-            <Link to="/business" className="hover:text-luxury-gold transition-colors">Business</Link>
+            <Link href="/business" className="hover:text-luxury-gold transition-colors">Business</Link>
             <span>/</span>
-            <Link to={`/business/${subcategory}`} className="hover:text-luxury-gold transition-colors">
+            <Link href={`/business/${subcategory}`} className="hover:text-luxury-gold transition-colors">
               {subcategory ? SUBCATEGORY_LABELS[subcategory as keyof typeof SUBCATEGORY_LABELS] ?? subcategory : ''}
             </Link>
             <span>/</span>
@@ -300,7 +303,7 @@ export default function ServiceDetail() {
                     {createBooking.isPending ? 'Processing…' : 'Engage Service'}
                   </motion.button>
                   <Link
-                    to={`/business/consultation/new?service=${service.id}`}
+                    href={`/business/consultation/new?service=${service.id}`}
                     className="flex items-center justify-center gap-2 w-full py-3 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300"
                   >
                     <CalendarCheck className="w-4 h-4" />
@@ -335,7 +338,7 @@ export default function ServiceDetail() {
 
             {/* Back link */}
             <Link
-              to={`/business/${subcategory}`}
+              href={`/business/${subcategory}`}
               className="flex items-center gap-2 text-gray-500 hover:text-luxury-gold text-xs uppercase tracking-widest transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -357,7 +360,7 @@ export default function ServiceDetail() {
             </h3>
           </div>
           <Link
-            to="/business/consultation/new"
+            href="/business/consultation/new"
             className="flex-shrink-0 flex items-center gap-2 px-8 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
           >
             Book Free Call <ArrowRight className="w-4 h-4" />

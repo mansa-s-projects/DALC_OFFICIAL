@@ -1,5 +1,5 @@
 import type { Supplier } from '../../types';
-import { isMockMode, supabase } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 
 export interface SupplierWithVenues extends Supplier {
   venue_ids: string[];
@@ -23,19 +23,17 @@ async function attachVenueIds(suppliers: Supplier[]): Promise<SupplierWithVenues
   const ids = suppliers.map((s) => s.id);
   const venueMap = new Map<string, string[]>();
 
-  if (!isMockMode && supabase) {
-    const { data, error } = await supabase
-      .from('venues')
-      .select('id, supplier_id')
-      .in('supplier_id', ids);
-    if (error) throw error;
+  const { data, error } = await supabase
+    .from('venues')
+    .select('id, supplier_id')
+    .in('supplier_id', ids);
+  if (error) throw error;
 
-    for (const row of data ?? []) {
-      if (!row.supplier_id) continue;
-      const list = venueMap.get(row.supplier_id) ?? [];
-      list.push(row.id);
-      venueMap.set(row.supplier_id, list);
-    }
+  for (const row of data ?? []) {
+    if (!row.supplier_id) continue;
+    const list = venueMap.get(row.supplier_id) ?? [];
+    list.push(row.id);
+    venueMap.set(row.supplier_id, list);
   }
 
   return suppliers.map((supplier) => ({
@@ -45,16 +43,12 @@ async function attachVenueIds(suppliers: Supplier[]): Promise<SupplierWithVenues
 }
 
 export async function fetchSuppliersWithVenues(): Promise<SupplierWithVenues[]> {
-  if (isMockMode || !supabase) return [];
-
   const { data, error } = await supabase.from('suppliers').select('*').order('name');
   if (error) throw error;
   return attachVenueIds((data ?? []) as Supplier[]);
 }
 
 async function assignSupplierToVenues(supplierId: string, venueIds: string[]) {
-  if (isMockMode || !supabase) return;
-
   const { data: currentRows, error: currentError } = await supabase
     .from('venues')
     .select('id')
@@ -77,14 +71,6 @@ async function assignSupplierToVenues(supplierId: string, venueIds: string[]) {
 }
 
 export async function createSupplierWithVenues(input: SupplierUpsertInput, venueIds: string[]): Promise<SupplierWithVenues> {
-  if (isMockMode || !supabase) {
-    return {
-      id: crypto.randomUUID(),
-      ...input,
-      venue_ids: venueIds,
-    } as SupplierWithVenues;
-  }
-
   const { data, error } = await supabase.from('suppliers').insert(input).select('*').single();
   if (error) throw error;
 
@@ -102,22 +88,6 @@ export async function updateSupplierWithVenues(
   updates: Partial<SupplierUpsertInput>,
   venueIds: string[]
 ): Promise<SupplierWithVenues> {
-  if (isMockMode || !supabase) {
-    return {
-      id,
-      name: updates.name ?? '',
-      contact_person: updates.contact_person,
-      email: updates.email,
-      phone: updates.phone,
-      whatsapp: updates.whatsapp,
-      categories: updates.categories ?? [],
-      commission_rate: updates.commission_rate ?? 0,
-      notes: updates.notes,
-      status: updates.status ?? 'active',
-      venue_ids: venueIds,
-    } as SupplierWithVenues;
-  }
-
   const { data, error } = await supabase.from('suppliers').update(updates).eq('id', id).select('*').single();
   if (error) throw error;
 
@@ -158,36 +128,20 @@ export interface BulkImportResult {
  * Runs venue assignment sync for each row that has venue_ids.
  */
 export async function bulkUpsertSuppliers(rows: BulkImportRow[]): Promise<BulkImportResult> {
-  if (isMockMode || !supabase) {
-    return { created: rows.length, updated: 0, errors: [] };
-  }
-
   const result: BulkImportResult = { created: 0, updated: 0, errors: [] };
 
   for (const row of rows) {
     try {
-      const { data: existing, error: fetchError } = await supabase
+      const { data: existingRows } = await supabase
         .from('suppliers')
         .select('id, name, categories, notes')
         .ilike('name', row.name)
-        .maybeSingle();
+        .limit(1);
 
-      if (fetchError) throw fetchError;
-
+      const existing = existingRows && existingRows.length > 0 ? existingRows[0] : null;
       let supplierId: string;
 
-      if (existing) {
-        const mergedCategories = Array.from(
-          new Set([...(existing.categories ?? []), ...row.categories])
-        );
-        const { error: updateError } = await supabase
-          .from('suppliers')
-          .update({ categories: mergedCategories })
-          .eq('id', existing.id);
-        if (updateError) throw updateError;
-        supplierId = existing.id;
-        result.updated++;
-      } else {
+      if (!existing) {
         const { data: created, error: createError } = await supabase
           .from('suppliers')
           .insert({
@@ -200,8 +154,19 @@ export async function bulkUpsertSuppliers(rows: BulkImportRow[]): Promise<BulkIm
           .select('id')
           .single();
         if (createError) throw createError;
-        supplierId = created.id;
+        supplierId = (created as { id: string }).id;
         result.created++;
+      } else {
+        const mergedCategories = Array.from(
+          new Set([...(existing.categories ?? []), ...row.categories])
+        );
+        const { error: updateError } = await supabase
+          .from('suppliers')
+          .update({ categories: mergedCategories })
+          .eq('id', existing.id);
+        if (updateError) throw updateError;
+        supplierId = existing.id;
+        result.updated++;
       }
 
       if (row.venue_ids.length > 0) {

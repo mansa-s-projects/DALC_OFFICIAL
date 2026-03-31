@@ -1,24 +1,9 @@
 import { Inbox, MapPin, Truck, CheckCircle, Clock, TrendingUp } from 'lucide-react';
 import { useAdminStats } from '../../hooks/useAdmin';
-import { isMockMode } from '../../lib/supabase';
 import { AdminPageHeader, AdminStatCard } from '../components';
 
 export default function AdminOverview() {
   const { data: stats, isLoading } = useAdminStats();
-
-  if (isMockMode) {
-    return (
-      <div>
-        <AdminPageHeader title="Dashboard" />
-        <div className="p-8 border border-yellow-500/20 bg-yellow-500/5 rounded-sm">
-          <p className="text-yellow-400 font-bold mb-2">Mock Mode Active</p>
-          <p className="text-gray-400 text-sm">
-            Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY environment variables to connect to your Supabase project and see live data.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   const statCards = [
     { label: 'Total Requests', value: stats?.totalRequests ?? 0, icon: Inbox, color: 'text-blue-400' },

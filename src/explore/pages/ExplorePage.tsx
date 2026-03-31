@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'next/navigation';
 import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
 import { supabase } from '../../lib/supabase';
@@ -19,19 +19,18 @@ type MobileView = 'grid' | 'map';
 
 // Map URL filter params to category names
 const FILTER_MAP: Record<string, string> = {
-  'sports': 'Activities',
-  'shopping': 'Lifestyle',
-  'experiences': 'Experiences',
-  'car-rental': 'Car Rental',
-  'business': 'Business and Legal',
-  'travel': 'Travel',
-  'yachts': 'Yachts',
-  'nightlife': 'Nightlife',
-  'nightlife-hub': 'Nightlife',
+  'landmarks': 'Landmarks',
+  'hidden-gems': 'Hidden Gems',
+  'attractions': 'Attractions',
+  'museums': 'Museums',
+  'parks': 'Parks',
+  'cultural-sites': 'Cultural Sites',
+  'viewpoints': 'Viewpoints',
 };
 
 export default function ExplorePage() {
-  const { filter } = useParams<{ filter?: string }>();
+  const params = useParams();
+  const filter = params?.filter as string | undefined;
   const [filters, setFilters] = useState<ExploreFilterState>(DEFAULT_FILTERS);
   const [selectedLocation, setSelectedLocation] = useState<ExploreLocation | null>(null);
   const [mobileView, setMobileView] = useState<MobileView>('grid');

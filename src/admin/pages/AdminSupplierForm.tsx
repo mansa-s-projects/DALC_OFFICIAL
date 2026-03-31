@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { useSupplierRegistry } from '../../shared/hooks/useSupplierRegistry';
 import SupplierRegistryForm from '../../shared/components/SupplierRegistryForm';
 import {
@@ -22,8 +22,9 @@ const EMPTY_FORM: SupplierFormValues = {
 };
 
 export default function AdminSupplierForm() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string | undefined;
+  const router = useRouter();
   const isNew = !id || id === 'new';
   const { suppliers, createSupplier, updateSupplier } = useSupplierRegistry();
   const [form, setForm] = useState<SupplierFormValues>(EMPTY_FORM);
@@ -90,7 +91,7 @@ export default function AdminSupplierForm() {
           previous,
         });
       }
-      navigate('/admin/suppliers');
+      router.push('/admin/suppliers');
     } catch (err: any) {
       setError(err.message ?? 'Failed to save supplier.');
     } finally {
@@ -104,7 +105,7 @@ export default function AdminSupplierForm() {
       values={form}
       onChange={update}
       onSubmit={handleSubmit}
-      onBack={() => navigate('/admin/suppliers')}
+      onBack={() => router.push('/admin/suppliers')}
       submitLabel={isNew ? 'Create Supplier' : 'Save Changes'}
       saving={saving}
       error={error}
