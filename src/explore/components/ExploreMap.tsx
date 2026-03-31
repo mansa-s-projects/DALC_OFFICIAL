@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-// @ts-ignore – Vite handles CSS side-effect imports at build time
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin, WifiOff } from 'lucide-react';
 import type { ExploreLocation } from '../types';
@@ -14,15 +13,7 @@ const UAE_CENTER: [number, number] = [54.3773, 24.4539];
 const DEFAULT_ZOOM = 6;
 
 function getMapboxToken() {
-  if (typeof process !== 'undefined' && process.env) {
-    return process.env.NEXT_PUBLIC_MAPBOX_TOKEN || process.env.VITE_MAPBOX_TOKEN;
-  }
-
-  const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined) as
-    | Record<string, string | undefined>
-    | undefined;
-
-  return viteEnv?.VITE_MAPBOX_TOKEN;
+  return process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 }
 
 // XSS-safe HTML string escaping for map popup content

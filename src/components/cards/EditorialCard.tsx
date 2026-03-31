@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { Venue } from '../../types';

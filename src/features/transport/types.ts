@@ -192,8 +192,12 @@ export const STATUS_LABELS: Record<TransportStatus, string> = {
 // ─── Sub-subcategory Maps ───────────────────────────────────────────────────────
 
 export const CAR_SUBCATEGORIES = [
+  { value: 'economy', label: 'Economy' },
+  { value: 'standard', label: 'Standard' },
   { value: 'luxury-sedans', label: 'Luxury Sedans' },
+  { value: 'business', label: 'Business' },
   { value: 'sports-cars', label: 'Sports Cars' },
+  { value: 'electric', label: 'Electric' },
   { value: 'suvs', label: 'SUVs' },
   { value: 'chauffeur-service', label: 'Chauffeur Service' },
   { value: 'long-term-rental', label: 'Long Term Rental' },

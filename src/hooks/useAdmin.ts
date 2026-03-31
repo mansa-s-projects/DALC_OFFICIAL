@@ -1,23 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
-import { supabase, isMockMode } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 import { Venue } from '../types';
 
 export function useAdminStats() {
   return useQuery({
     queryKey: ['admin', 'stats'],
-    enabled: !isMockMode,
     staleTime: 30 * 1000,
     queryFn: async () => {
       const [requestsRes, venuesRes, suppliersRes] = await Promise.all([
-        supabase!.from('requests').select('id, status, created_at', { count: 'exact' }),
-        supabase!.from('venues').select('id', { count: 'exact' }),
-        supabase!.from('suppliers').select('id', { count: 'exact' }),
+        supabase.from('requests').select('id, status, created_at', { count: 'exact' }),
+        supabase.from('venues').select('id', { count: 'exact' }),
+        supabase.from('suppliers').select('id', { count: 'exact' }),
       ]);
 
       // Schema-sync views are optional until the migration is applied.
       const [serviceCatalogRes, bookingSyncRes] = await Promise.all([
-        supabase!.from('v_service_catalog').select('source_id', { count: 'exact', head: true }),
-        supabase!.from('v_booking_sync').select('booking_source_id', { count: 'exact', head: true }),
+        supabase.from('v_service_catalog').select('source_id', { count: 'exact', head: true }),
+        supabase.from('v_booking_sync').select('booking_source_id', { count: 'exact', head: true }),
       ]);
 
       const requests = requestsRes.data ?? [];
@@ -51,9 +50,8 @@ export function useAdminStats() {
 export function useAdminVenues() {
   return useQuery({
     queryKey: ['admin', 'venues'],
-    enabled: !isMockMode,
     queryFn: async () => {
-      const { data, error } = await supabase!
+      const { data, error } = await supabase
         .from('venues')
         .select('*')
         .order('name');

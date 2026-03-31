@@ -7,6 +7,7 @@ import {
   Briefcase,
   Car,
   Compass,
+  FileCheck,
   Hotel,
   Inbox,
   LayoutDashboard,
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { href: '/admin/stays', icon: Hotel, label: 'Stays' },
   { href: '/admin/venues', icon: MapPin, label: 'Venues' },
   { href: '/admin/suppliers', icon: Truck, label: 'Suppliers' },
+  { href: '/admin/visas', icon: FileCheck, label: 'Visa Applications' },
 ];
 
 export default function AdminLayout({

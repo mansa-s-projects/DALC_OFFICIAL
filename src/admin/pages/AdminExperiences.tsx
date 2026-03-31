@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, Compass, Waves, Heart, CheckCircle, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
+import { ChevronDown, Compass, Waves, Heart, CheckCircle, TrendingUp, Plus } from 'lucide-react';
 import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';
 import { getAllowedNextStatuses } from '../../platform/requests/lifecycle';
@@ -69,7 +70,17 @@ export default function AdminExperiences() {
 
   return (
     <div>
-      <AdminPageHeader title="Experiences Queue" />
+      <AdminPageHeader 
+        title="Experiences Queue"
+        actions={
+          <Link
+            href="/admin/experiences/new"
+            className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
+          >
+            <Plus className="w-4 h-4" /> Add Experience
+          </Link>
+        }
+      />
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
         <AdminStatCard label="Total" value={expRequests.length} icon={Compass} colorClass="text-[#C8A46B]" delay={0} />

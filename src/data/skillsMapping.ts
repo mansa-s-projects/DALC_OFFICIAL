@@ -1,4 +1,5 @@
 import { Category, UserSkill, Venue } from '../types';
+import { applyLocalImages } from './venueImages';
 
 /**
  * Infer skills for a venue based on its category, vibe_tags, price_tier, and other fields.
@@ -6,6 +7,8 @@ import { Category, UserSkill, Venue } from '../types';
  */
 
 const CATEGORY_SKILLS: Record<Category, UserSkill[]> = {
+  restaurants: ['FOODIE', 'NETWORKING'],
+  'night-clubs': ['NIGHTLIFE', 'SOCIALITE'],
   dining: ['FOODIE', 'NETWORKING'],
   nightlife: ['NIGHTLIFE', 'SOCIALITE'],
   'beach-clubs': ['WELLNESS', 'SOCIALITE'],
@@ -20,6 +23,7 @@ const CATEGORY_SKILLS: Record<Category, UserSkill[]> = {
   concierge: ['LUXURY', 'NETWORKING'],
   events: ['SOCIALITE', 'NETWORKING'],
   sports: ['ADVENTURE'],
+  transport: ['LUXURY'],
 };
 
 const VIBE_SKILL_MAP: Record<string, UserSkill> = {
@@ -154,8 +158,11 @@ const TRENDING_OVERRIDES: Record<string, { is_trending: boolean; trending_score:
  */
 export function enrichVenue(venue: Omit<Venue, 'skills'> & { skills?: UserSkill[] }): Venue {
   const trending = TRENDING_OVERRIDES[venue.id];
+  const localImages = applyLocalImages(venue as any);
   return {
     ...venue,
+    hero_image: localImages.hero_image,
+    gallery_images: localImages.gallery_images,
     skills: venue.skills?.length ? venue.skills : inferSkills(venue),
     is_trending: trending?.is_trending ?? venue.is_trending ?? false,
     trending_score: trending?.trending_score ?? venue.trending_score ?? Math.round(venue.recommend_score * 0.8),

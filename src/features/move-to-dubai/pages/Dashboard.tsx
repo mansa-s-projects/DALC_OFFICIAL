@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   LayoutDashboard,
   FileText,
@@ -149,7 +149,7 @@ export default function Dashboard() {
                 and begin tracking your progress.
               </p>
               <Link
-                to="/move-to-dubai/intake"
+                href="/move-to-dubai/intake"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
               >
                 Get Started
@@ -188,7 +188,7 @@ export default function Dashboard() {
                   <h3 className="text-white font-display text-base mb-4">Quick Access</h3>
                   <div className="space-y-3">
                     <Link
-                      to="/move-to-dubai/documents"
+                      href="/move-to-dubai/documents"
                       className="flex items-center gap-3 p-3 border border-white/10 hover:border-luxury-gold/40 hover:bg-white/[0.03] transition-all group"
                     >
                       <FileText className="w-5 h-5 text-luxury-gold/70 group-hover:text-luxury-gold" />
@@ -198,7 +198,7 @@ export default function Dashboard() {
                       <ChevronRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-luxury-gold" />
                     </Link>
                     <Link
-                      to="/move-to-dubai/cost"
+                      href="/move-to-dubai/cost"
                       className="flex items-center gap-3 p-3 border border-white/10 hover:border-luxury-gold/40 hover:bg-white/[0.03] transition-all group"
                     >
                       <Calculator className="w-5 h-5 text-luxury-gold/70 group-hover:text-luxury-gold" />

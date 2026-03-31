@@ -1,5 +1,4 @@
-import { supabase, isMockMode } from '../../lib/supabase';
-import { MOCK_VENUES } from '../../data/mockData';
+import { supabase } from '../../lib/supabase';
 import type { Venue } from '../../types';
 
 export interface SearchResult {
@@ -34,20 +33,6 @@ function venueToResult(v: Venue): SearchResult {
 
 // Search venues
 async function searchVenues(q: string): Promise<SearchResult[]> {
-  if (isMockMode) {
-    return MOCK_VENUES
-      .filter((v) =>
-        v.name.toLowerCase().includes(q) ||
-        v.description_short.toLowerCase().includes(q) ||
-        v.area.toLowerCase().includes(q) ||
-        v.subcategory.toLowerCase().includes(q) ||
-        v.category.toLowerCase().includes(q)
-      )
-      .map(venueToResult);
-  }
-
-  if (!supabase) return [];
-
   const { data, error } = await supabase
     .from('venues')
     .select('id, name, category, subcategory, area, hero_image, description_short, price_tier, recommend_score')
@@ -73,12 +58,11 @@ async function searchVenues(q: string): Promise<SearchResult[]> {
 
 // Search experiences
 async function searchExperiences(q: string): Promise<SearchResult[]> {
-  if (!supabase || isMockMode) return [];
 
   const { data, error } = await supabase
     .from('experiences')
-    .select('id, title, description, category, location, hero_image, price_tier')
-    .or(`title.ilike.%${q}%,description.ilike.%${q}%,category.ilike.%${q}%`)
+    .select('id, name, description_short, subcategory, location, hero_image, price_tier')
+    .or(`name.ilike.%${q}%,description_short.ilike.%${q}%,subcategory.ilike.%${q}%`)
     .limit(6);
 
   if (error || !data) return [];
@@ -86,20 +70,19 @@ async function searchExperiences(q: string): Promise<SearchResult[]> {
   return data.map((v: any): SearchResult => ({
     id: String(v.id),
     type: 'experience',
-    title: v.title,
-    subtitle: v.description ?? '',
-    category: v.category ?? '',
+    title: v.name,
+    subtitle: v.description_short ?? '',
+    category: v.subcategory ?? '',
     area: v.location ?? 'Dubai',
     image: v.hero_image ?? '',
     slug: String(v.id),
-    href: `/experiences/${v.category}/${v.id}`,
+    href: `/experiences/${v.subcategory}/${v.id}`,
     price_tier: v.price_tier,
   }));
 }
 
 // Search transport
 async function searchTransport(q: string): Promise<SearchResult[]> {
-  if (!supabase || isMockMode) return [];
 
   const { data, error } = await supabase
     .from('transport_vehicles')
@@ -125,12 +108,11 @@ async function searchTransport(q: string): Promise<SearchResult[]> {
 
 // Search business services
 async function searchBusiness(q: string): Promise<SearchResult[]> {
-  if (!supabase || isMockMode) return [];
 
   const { data, error } = await supabase
     .from('business_services')
-    .select('id, name, category, description, image')
-    .or(`name.ilike.%${q}%,category.ilike.%${q}%`)
+    .select('id, name, subcategory, description_short, hero_image')
+    .or(`name.ilike.%${q}%,subcategory.ilike.%${q}%`)
     .limit(6);
 
   if (error || !data) return [];
@@ -139,17 +121,18 @@ async function searchBusiness(q: string): Promise<SearchResult[]> {
     id: String(v.id),
     type: 'business',
     title: v.name,
-    subtitle: v.description ?? '',
-    category: v.category ?? '',
+    subtitle: v.description_short ?? '',
+    category: v.subcategory ?? '',
     area: 'Dubai',
-    image: v.image ?? '',
+    image: v.hero_image ?? '',
     slug: String(v.id),
-    href: `/business#${v.category}`,
+    href: `/business#${v.subcategory}`,
   }));
 }
 
 export async function searchAll(query: string): Promise<SearchResult[]> {
-  const q = query.trim().toLowerCase();
+  // Strip PostgREST filter-special chars to prevent filter injection
+  const q = query.trim().toLowerCase().replace(/[%(),.:{}\\]/g, '');
   if (!q) return [];
 
   // Run all searches in parallel

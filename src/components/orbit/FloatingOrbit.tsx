@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import { 
   Utensils, Music, Palmtree, Ship, Car, Star, 
   ShoppingBag, Briefcase, Plane, ArrowUpRight, Wine, Trophy 
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const SERVICES = [
   { 
@@ -147,7 +147,7 @@ export default function FloatingOrbit() {
               Your desires, our expertise.
             </p>
 
-            <Link to="/explore">
+            <Link href="/explore">
               <button className="px-8 py-3 border border-luxury-gold/30 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-luxury-gold hover:text-black transition-all duration-300 flex items-center gap-2 group-hover:shadow-aura">
                 Explore Concierge <ArrowUpRight className="w-3 h-3" />
               </button>
@@ -166,7 +166,7 @@ export default function FloatingOrbit() {
               animate={{ opacity: 1, x: pos.x, y: pos.y }}
               transition={{ delay: i * 0.1, duration: 0.8, type: "spring", stiffness: 50 }}
             >
-              <Link to={service.path}>
+              <Link href={service.path}>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="group relative w-[280px] h-[140px] rounded-xl bg-luxury-black border border-white/10 hover:border-luxury-gold/60 hover:shadow-aura transition-all duration-300 overflow-hidden"
@@ -214,7 +214,7 @@ export default function FloatingOrbit() {
             <h3 className="relative font-display text-3xl text-luxury-gold mb-1">ELEVATED</h3>
             <h3 className="relative font-display text-3xl text-white mb-4">LIVING</h3>
             <p className="relative text-gray-400 text-sm mb-6">Curated experiences beyond expectation.</p>
-            <Link to="/explore" className="inline-block relative">
+            <Link href="/explore" className="inline-block relative">
               <button className="px-6 py-3 bg-luxury-gold text-black text-xs font-bold uppercase tracking-widest">
                 Explore Concierge
               </button>
@@ -224,7 +224,7 @@ export default function FloatingOrbit() {
          {/* Mobile Grid */}
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {SERVICES.map((service) => (
-              <Link key={service.id} to={service.path}>
+              <Link key={service.id} href={service.path}>
                 <div className="group relative h-32 rounded-xl bg-luxury-charcoal border border-white/10 p-5 flex flex-col justify-between active:scale-[0.98] transition-all overflow-hidden">
                    {/* Bg Image Mobile */}
                    <div className="absolute inset-0 opacity-20">

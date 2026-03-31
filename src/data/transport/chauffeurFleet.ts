@@ -5,7 +5,7 @@ export const chauffeurFleet = [
     category: "Executive Sedan",
     passengers: 4,
     description: "Professional chauffeur driven sedan suitable for airport and business transfers",
-    image: "/images/transport/mercedes-s-class.jpg",
+    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "mercedes-v-class",
@@ -13,7 +13,7 @@ export const chauffeurFleet = [
     category: "Executive Van",
     passengers: 6,
     description: "Comfortable group transport for airport pickups and city transfers",
-    image: "/images/transport/mercedes-v-class.jpg",
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "bmw-7-series",
@@ -21,7 +21,7 @@ export const chauffeurFleet = [
     category: "Executive Sedan",
     passengers: 4,
     description: "Premium sedan for business travel and city transport",
-    image: "/images/transport/bmw-7-series.jpg",
+    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "range-rover",
@@ -29,7 +29,7 @@ export const chauffeurFleet = [
     category: "SUV",
     passengers: 4,
     description: "Spacious premium SUV for city movement and client transport",
-    image: "/images/transport/range-rover.jpg",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=900&auto=format&fit=crop",
   },
   {
     id: "cadillac-escalade",
@@ -37,6 +37,6 @@ export const chauffeurFleet = [
     category: "SUV",
     passengers: 6,
     description: "Large premium SUV for family or group transfers",
-    image: "/images/transport/cadillac-escalade.jpg",
+    image: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=900&auto=format&fit=crop",
   },
 ];

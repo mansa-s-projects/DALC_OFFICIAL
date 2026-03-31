@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Flame, Sparkles, MapPin, Heart } from 'lucide-react';
 import { Venue, FeedItem, UserSkill } from '../../types';
 import { buildSmartFeed } from '../../utils/recommendations';

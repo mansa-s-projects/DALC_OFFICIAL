@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, Users, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import type { TransportService, TransportBookingInput } from '../../types/transport';
 import { PRICING_MODEL_LABELS } from '../../types/transport';
@@ -47,11 +49,34 @@ export default function BookingForm({
 
   const estimatedPrice = calculatePrice();
 
+  // Validation
+  const [formErrors, setFormErrors] = useState<{[key: string]: string}>({});
+
+  const validateForm = (): boolean => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!selectedDate) {
+      errors.date = 'Please select a date';
+    }
+    if (!selectedTime) {
+      errors.time = 'Please select a time';
+    }
+    if (!pickupLocation && !customLocation.trim()) {
+      errors.location = 'Please select or enter a pickup location';
+    }
+    if (duration < service.min_booking_hours) {
+      errors.duration = `Minimum booking is ${service.min_booking_hours} hours`;
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const canSubmit = selectedDate && selectedTime && (pickupLocation || customLocation) && !isSubmitting;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!canSubmit) return;
+    if (!canSubmit || !validateForm()) return;
 
     // Combine date and time
     // Parse time directly from ISO string to avoid timezone offset issues

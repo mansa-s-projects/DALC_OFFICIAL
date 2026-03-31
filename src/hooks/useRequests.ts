@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Request, RequestStatus } from '../types';
-import { supabase, isMockMode } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 import { transitionRequestStatus } from '../platform/requests/lifecycle';
 
 export interface CreateRequestInput {
@@ -40,9 +40,7 @@ export function useRequests(userId?: string) {
     queryKey: ['requests', userId ?? 'all'],
     enabled: Boolean(userId),
     queryFn: async () => {
-      if (isMockMode) return [] as Request[];
-
-      let query = supabase!.from('requests').select('*').order('created_at', { ascending: false });
+      let query = supabase.from('requests').select('*').order('created_at', { ascending: false });
       if (userId) {
         query = query.eq('user_id', userId);
       }
@@ -54,19 +52,7 @@ export function useRequests(userId?: string) {
 
   const createMutation = useMutation({
     mutationFn: async (payload: CreateRequestInput) => {
-      if (isMockMode) {
-        return {
-          id: `mock-${Date.now()}`,
-          ...payload,
-          request_type: payload.request_type ?? 'booking',
-          status: 'submitted' as const,
-          priority_score: 0,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        } as Request;
-      }
-
-      const { data, error } = await supabase!
+      const { data, error } = await supabase
         .from('requests')
         .insert({
           ...payload,
@@ -109,8 +95,7 @@ export function useRequests(userId?: string) {
       }
     },
     onSuccess: async (created: Request) => {
-      // Write the initial status log entry so the timeline has a starting point
-      if (!isMockMode && supabase) {
+      try {
         await supabase.from('request_status_log').insert({
           request_id: created.id,
           old_status: null,
@@ -118,6 +103,8 @@ export function useRequests(userId?: string) {
           changed_by: userId ?? null,
           notes: null,
         });
+      } catch (error) {
+        console.error('Failed to insert into request_status_log:', error);
       }
     },
     onSettled: (_data: Request | undefined, _error: unknown, _payload: CreateRequestInput, context: MutationContext | undefined) => {
@@ -129,9 +116,7 @@ export function useRequests(userId?: string) {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, updates }: { id: string; updates: Partial<Request> }) => {
-      if (isMockMode) return { id, ...updates } as Request;
-
-      const { data, error } = await supabase!.from('requests').update(updates).eq('id', id).select('*').single();
+      const { data, error } = await supabase.from('requests').update(updates).eq('id', id).select('*').single();
       if (error) throw error;
       return data as Request;
     },
@@ -142,9 +127,7 @@ export function useRequests(userId?: string) {
 
   const removeMutation = useMutation({
     mutationFn: async (id: string) => {
-      if (isMockMode) return id;
-
-      const { error } = await supabase!.from('requests').delete().eq('id', id);
+      const { error } = await supabase.from('requests').delete().eq('id', id);
       if (error) throw error;
       return id;
     },
@@ -171,25 +154,7 @@ export function useRequestDetail(requestId?: string, userId?: string, initialReq
         return { request: null, statusLog: [] };
       }
 
-      if (isMockMode) {
-        const mockRequest = initialRequest ?? null;
-        const mockLog = mockRequest?.created_at
-          ? [{
-              id: `mock-log-${mockRequest.id}`,
-              request_id: mockRequest.id,
-              new_status: mockRequest.status,
-              created_at: mockRequest.created_at,
-              notes: mockRequest.notes,
-            }]
-          : [];
-
-        return {
-          request: mockRequest,
-          statusLog: mockLog,
-        };
-      }
-
-      let requestQuery = supabase!
+      let requestQuery = supabase
         .from('requests')
         .select('*')
         .eq('id', requestId);
@@ -200,7 +165,7 @@ export function useRequestDetail(requestId?: string, userId?: string, initialReq
 
       const [{ data: requestData, error: requestError }, { data: logData, error: logError }] = await Promise.all([
         requestQuery.single(),
-        supabase!
+        supabase
           .from('request_status_log')
           .select('*')
           .eq('request_id', requestId)
@@ -222,9 +187,9 @@ export function useRequestDetail(requestId?: string, userId?: string, initialReq
 export function useAllRequests(enabled = true) {
   return useQuery({
     queryKey: ['requests', 'admin-all'],
-    enabled: enabled && !isMockMode,
+    enabled: enabled,
     queryFn: async () => {
-      const { data, error } = await supabase!
+      const { data, error } = await supabase
         .from('requests')
         .select('*')
         .order('created_at', { ascending: false });
@@ -248,8 +213,6 @@ export function useUpdateRequestStatus() {
 
   return useMutation({
     mutationFn: async ({ id, status, fromStatus, notes, changedBy }: UpdateRequestStatusInput) => {
-      if (isMockMode) return { id, status } as Request;
-
       const { request } = await transitionRequestStatus({
         requestId: id,
         fromStatus,

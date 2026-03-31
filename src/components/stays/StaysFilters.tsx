@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Star, Home, Bed, Waves, Umbrella, Check, DollarSign } from 'lucide-react';
 import type { StaysSubcategory, StaysFilters as StaysFiltersType } from '../../types/stays';
 

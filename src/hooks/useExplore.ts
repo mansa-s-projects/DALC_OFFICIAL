@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { CATEGORIES } from '../data/mockData';
 import type { Category } from '../types';
 import { useVenues } from './useVenues';
@@ -8,8 +8,9 @@ const PRIMARY_CATEGORY_IDS = ['dining', 'beach-clubs', 'nightlife', 'experiences
 
 export function useExplore() {
   const params = useParams();
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const navigate = (p: string) => router.push(p);
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,8 +18,8 @@ export function useExplore() {
 
   const categoryIds = useMemo(() => new Set(CATEGORIES.map((c) => c.id)), []);
 
-  const routeCategory = (params.filter || params.category || '').toLowerCase();
-  const queryCategory = (searchParams.get('category') || '').toLowerCase();
+  const routeCategory = ((params?.filter || params?.category || '') as string).toLowerCase();
+  const queryCategory = (searchParams?.get('category') || '').toLowerCase();
 
   const resolvedCategory = useMemo(() => {
     const candidate = routeCategory || queryCategory || 'all';

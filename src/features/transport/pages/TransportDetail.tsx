@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowLeft,
   ArrowRight,
@@ -30,8 +32,10 @@ import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from '../types';
 // ─── Component ──────────────────────────────────────────────────────────────────
 
 export default function TransportDetail() {
-  const { subcategory, slug } = useParams<{ subcategory: string; slug: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const subcategory = params?.subcategory as string;
+  const slug = params?.slug as string;
+  const router = useRouter();
   const session = useAppStore((s) => s.session);
 
   const { data: service, isLoading, error } = useTransportService(slug);
@@ -45,7 +49,7 @@ export default function TransportDetail() {
 
   const handleBookingSubmit = async (data: any) => {
     if (!session?.user) {
-      navigate('/login');
+      router.push('/auth/login');
       return;
     }
     
@@ -99,7 +103,7 @@ export default function TransportDetail() {
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Service not found.</p>
           <Link
-            to={`/transport/${subcategory}`}
+            href={`/transport/${subcategory}`}
             className="text-luxury-gold text-sm underline"
           >
             Back to {SUBCATEGORY_LABELS[sub as TransportSubcategory]}
@@ -186,12 +190,12 @@ export default function TransportDetail() {
         {/* Breadcrumb */}
         <div className="absolute top-24 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto z-10">
           <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
-            <Link to="/transport" className="hover:text-luxury-gold transition-colors">
+            <Link href="/transport" className="hover:text-luxury-gold transition-colors">
               Transport
             </Link>
             <span>/</span>
             <Link
-              to={`/transport/${service.subcategory}`}
+              href={`/transport/${service.subcategory}`}
               className="hover:text-luxury-gold transition-colors"
             >
               {SUBCATEGORY_LABELS[service.subcategory]}
@@ -403,7 +407,7 @@ export default function TransportDetail() {
 
             {/* Back Link */}
             <Link
-              to={`/transport/${service.subcategory}`}
+              href={`/transport/${service.subcategory}`}
               className="flex items-center gap-2 text-gray-500 hover:text-luxury-gold text-xs uppercase tracking-widest transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -450,7 +454,7 @@ export default function TransportDetail() {
             </h3>
           </div>
           <Link
-            to="/contact"
+            href="/contact"
             className="flex-shrink-0 flex items-center gap-2 px-8 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
           >
             Contact Us <ArrowRight className="w-4 h-4" />

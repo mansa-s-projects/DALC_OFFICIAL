@@ -1,4 +1,4 @@
-import { supabase, isMockMode } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import type {
   ConciergeRequest,
   ConciergeRequestInput,
@@ -11,27 +11,6 @@ export async function submitConciergeRequest(
   userId: string,
   input: ConciergeRequestInput
 ): Promise<ConciergeRequest> {
-  if (isMockMode || !supabase) {
-    // Mock response for development
-    return {
-      id: `mock-concierge-${Date.now()}`,
-      user_id: userId,
-      category: 'concierge',
-      request_type: 'concierge',
-      concierge_request_type: input.request_type,
-      urgency: input.urgency,
-      title: input.title,
-      description: input.description,
-      preferred_date: input.preferred_date,
-      preferred_time: input.preferred_time,
-      budget_range: input.budget_range,
-      special_instructions: input.special_instructions,
-      status: 'pending',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    };
-  }
-
   const { data, error } = await supabase
     .from('requests')
     .insert({
@@ -64,10 +43,6 @@ export async function submitConciergeRequest(
 export async function getMyConciergeRequests(
   userId: string
 ): Promise<ConciergeRequest[]> {
-  if (isMockMode || !supabase) {
-    return [];
-  }
-
   const { data, error } = await supabase
     .from('requests')
     .select('*')
@@ -90,8 +65,6 @@ export async function updateConciergeStatus(
   status: ConciergeStatus,
   notes?: string
 ): Promise<boolean> {
-  if (isMockMode || !supabase) return true;
-
   const { error } = await supabase
     .from('requests')
     .update({

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import {
   ArrowLeft,
   MapPin,
@@ -34,8 +35,8 @@ const SUBCATEGORY_ICONS = {
 };
 
 export default function PropertyDetail() {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const slug = params?.slug as string;
   const { data: property, isLoading, error } = useProperty(slug);
   const [selectedImage, setSelectedImage] = useState(0);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
@@ -67,7 +68,7 @@ export default function PropertyDetail() {
           <h2 className="text-2xl font-display text-white mb-4">Property Not Found</h2>
           <p className="text-gray-400 mb-8">The property you're looking for doesn't exist.</p>
           <Link 
-            to="/stays" 
+            href="/stays"
             className="inline-flex items-center gap-2 px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -96,12 +97,12 @@ export default function PropertyDetail() {
       <div className="pt-24 pb-4 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 text-sm">
-            <Link to="/stays" className="text-gray-400 hover:text-luxury-gold transition-colors">
+            <Link href="/stays" className="text-gray-400 hover:text-luxury-gold transition-colors">
               Stays
             </Link>
             <span className="text-gray-600">/</span>
             <Link 
-              to={`/stays/${property.subcategory}`} 
+              href={`/stays/${property.subcategory}`}
               className="text-gray-400 hover:text-luxury-gold transition-colors"
             >
               {SUBCATEGORY_LABELS[property.subcategory]}

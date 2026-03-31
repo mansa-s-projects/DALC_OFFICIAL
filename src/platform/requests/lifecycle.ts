@@ -7,7 +7,7 @@
  */
 
 import type { Request, RequestStatus } from '../../types';
-import { isMockMode, supabase } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { notifyRequestEvent } from '../notifications/requestNotifications';
 
 // ── Valid transitions ─────────────────────────────────────────────────────────
@@ -50,8 +50,6 @@ export interface StatusLogEntry {
  * Fetch the full status log for a request, oldest-first.
  */
 export async function fetchStatusLog(requestId: string): Promise<StatusLogEntry[]> {
-  if (isMockMode || !supabase) return [];
-
   const { data, error } = await supabase
     .from('request_status_log')
     .select('*')
@@ -94,45 +92,47 @@ export async function transitionRequestStatus(input: TransitionInput): Promise<T
     );
   }
 
-  if (isMockMode || !supabase) {
-    const mockRequest = {
-      id: requestId,
-      status: toStatus,
-    } as Request;
-    return { request: mockRequest, logEntry: null };
-  }
-
   // Build request update payload
   const requestUpdate: Record<string, unknown> = { status: toStatus };
   if (toStatus === 'confirmed') requestUpdate.confirmed_at = new Date().toISOString();
   if (toStatus === 'completed') requestUpdate.completed_at = new Date().toISOString();
 
-  const [{ data: requestData, error: requestError }, { data: logData, error: logError }] =
-    await Promise.all([
-      supabase
-        .from('requests')
-        .update(requestUpdate)
-        .eq('id', requestId)
-        .select('*')
-        .single(),
-      supabase
-        .from('request_status_log')
-        .insert({
-          request_id: requestId,
-          old_status: fromStatus,
-          new_status: toStatus,
-          changed_by: changedBy ?? null,
-          notes: notes ?? null,
-        })
-        .select('*')
-        .single(),
-    ]);
+  let requestData: Request | null = null;
 
-  if (requestError) throw requestError;
-  if (logError) throw logError;
+  try {
+    const { data } = await supabase
+      .from('requests')
+      .update(requestUpdate)
+      .eq('id', requestId)
+      .eq('status', fromStatus)
+      .select('*')
+      .single();
+
+    requestData = data as Request | null;
+
+    const { error: logError } = await supabase
+      .from('request_status_log')
+      .insert({
+        request_id: requestId,
+        old_status: fromStatus,
+        new_status: toStatus,
+        changed_by: changedBy ?? null,
+        notes: notes ?? null,
+      });
+
+    if (logError) {
+      // Rollback the first update
+      await supabase
+        .from('requests')
+        .update({ status: fromStatus })
+        .eq('id', requestId);
+      throw logError;
+    }
+  } catch (error) {
+    throw new Error(`Failed to update request lifecycle: ${(error as Error).message}`);
+  }
 
   const request = requestData as Request;
-  const logEntry = logData as StatusLogEntry;
 
   await notifyRequestEvent({
     requestId,
@@ -143,5 +143,5 @@ export async function transitionRequestStatus(input: TransitionInput): Promise<T
     toStatus,
   });
 
-  return { request, logEntry };
+  return { request, logEntry: null };
 }

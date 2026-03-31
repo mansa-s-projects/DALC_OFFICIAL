@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown, Map } from 'lucide-react';
 
 interface Particle {

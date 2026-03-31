@@ -1,6 +1,6 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { LayoutDashboard, MapPin, Inbox, Truck, Star, ArrowLeft, Car, Compass, Briefcase, Hotel } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { to: '/admin/overview',     icon: LayoutDashboard, label: 'Overview',     end: false },
@@ -14,14 +14,16 @@ const NAV_ITEMS = [
   { to: '/admin/suppliers',    icon: Truck,           label: 'Suppliers',    end: false },
 ];
 
-export default function AdminLayout() {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <div className="relative flex min-h-screen bg-[#050607] text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(200,164,107,0.09),transparent_28%),radial-gradient(circle_at_85%_12%,rgba(142,168,194,0.09),transparent_24%)]" />
       {/* Sidebar */}
       <aside className="relative z-10 flex w-72 shrink-0 flex-col border-r border-[#C8A46B]/12 bg-[linear-gradient(180deg,rgba(10,10,10,0.98),rgba(17,18,20,0.92))] backdrop-blur-xl">
         <div className="border-b border-[#C8A46B]/12 p-6">
-          <Link to="/" className="mb-5 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gray-400 transition-colors hover:text-[#EFD7A4]">
+          <Link href="/" className="mb-5 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gray-400 transition-colors hover:text-[#EFD7A4]">
             <ArrowLeft className="w-3 h-3" /> Back to Site
           </Link>
           <p className="text-[11px] uppercase tracking-[0.18em] text-[#C8A46B]/75">Control Room</p>
@@ -30,30 +32,30 @@ export default function AdminLayout() {
         </div>
 
         <nav className="flex-1 space-y-2 p-4">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) =>
-                `flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all ${
+          {NAV_ITEMS.map((item) => {
+            const isActive = (pathname ?? '').startsWith(item.to);
+            return (
+              <Link
+                key={item.to}
+                href={item.to}
+                className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all ${
                   isActive
                     ? 'border-[#C8A46B]/35 bg-[#C8A46B]/10 text-[#EFD7A4] shadow-[0_10px_30px_rgba(200,164,107,0.08)]'
                     : 'border-transparent text-gray-400 hover:border-white/8 hover:bg-white/[0.03] hover:text-white'
-                }`
-              }
-            >
-              <item.icon className="w-4 h-4" />
-              {item.label}
-            </NavLink>
-          ))}
+                }`}
+              >
+                <item.icon className="w-4 h-4" />
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </aside>
 
       {/* Main Content */}
       <main className="relative z-10 flex-1 overflow-auto">
         <div className="max-w-7xl p-8 lg:p-10">
-          <Outlet />
+          {children}
         </div>
       </main>
     </div>

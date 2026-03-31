@@ -1,8 +1,10 @@
 export type Category =
+  | 'restaurants'
+  | 'beach-clubs'
+  | 'night-clubs'
+  | 'dining-entertainment'
   | 'dining'
   | 'nightlife'
-  | 'beach-clubs'
-  | 'dining-entertainment'
   | 'yachts'
   | 'travel'
   | 'car-rental'
@@ -12,7 +14,8 @@ export type Category =
   | 'business'
   | 'concierge'
   | 'events'
-  | 'sports';
+  | 'sports'
+  | 'transport';
 
 export const USER_SKILLS = [
   'NETWORKING',

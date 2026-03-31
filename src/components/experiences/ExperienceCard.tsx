@@ -1,6 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowRight, Clock, Users, MapPin, Star, TrendingUp } from 'lucide-react';
 import type { ExperienceService } from '../../types/experiences';
 import {
@@ -8,6 +10,37 @@ import {
   SERVICE_TYPE_LABELS,
   PRICING_MODEL_LABELS,
 } from '../../types/experiences';
+
+// ─── Image Component with Error Handling ────────────────────────────────────
+
+function ExperienceImage({ src, alt }: { src: string; alt: string }) {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  if (error) {
+    return (
+      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+        <MapPin className="w-16 h-16 text-gray-600" />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {loading && (
+        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
+        loading="lazy"
+        onError={() => setError(true)}
+        onLoad={() => setLoading(false)}
+      />
+    </>
+  );
+}
 
 interface ExperienceCardProps {
   experience: ExperienceService;
@@ -64,13 +97,9 @@ export default function ExperienceCard({
       className="group relative bg-white/[0.03] border border-white/10 hover:border-luxury-gold/40 transition-all duration-500 overflow-hidden"
     >
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-56 overflow-hidden bg-gray-900">
         {hero_image ? (
-          <img
-            src={hero_image}
-            alt={name}
-            className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
-          />
+          <ExperienceImage src={hero_image} alt={name} />
         ) : (
           <div className="w-full h-full bg-white/5 flex items-center justify-center">
             <MapPin className="w-12 h-12 text-luxury-gold/30" />
@@ -153,7 +182,7 @@ export default function ExperienceCard({
           </div>
 
           <Link
-            to={`/experiences/${subcategory}/${slug}`}
+            href={`/experiences/${subcategory}/${slug}`}
             className="flex items-center gap-2 px-4 py-2 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300"
           >
             View

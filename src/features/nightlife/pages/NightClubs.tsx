@@ -3,7 +3,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
 import { useVenues } from '../hooks/useVenues';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function NightClubs() {
   const { data: clubs = [], isLoading } = useVenues({ category: 'nightlife' });
@@ -16,7 +16,7 @@ export default function NightClubs() {
       <section className="relative h-[60vh] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
          <div className="absolute inset-0 z-0">
             <img 
-               src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2670&auto=format&fit=crop" 
+               src="/images/nightclubs/Nyx/image1.jpg" 
                alt="Dubai Night Clubs"
                className="w-full h-full object-cover opacity-40"
             />

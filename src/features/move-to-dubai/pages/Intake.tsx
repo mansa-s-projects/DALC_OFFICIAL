@@ -1,13 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { motion } from 'motion/react';
 import { ArrowLeft, FileQuestion } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import IntakeForm from '../../../components/relocation/IntakeForm';
 
 export default function Intake() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-luxury-black">
@@ -19,7 +19,7 @@ export default function Intake() {
           <motion.button
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => navigate('/move-to-dubai')}
+            onClick={() => router.push('/move-to-dubai')}
             className="flex items-center gap-2 text-gray-400 hover:text-luxury-gold transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

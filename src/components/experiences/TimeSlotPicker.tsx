@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Clock, ChevronLeft, ChevronRight, Check, AlertCircle } from 'lucide-react';
 import { format, addDays, isSameDay, isBefore, startOfToday } from 'date-fns';
 import { useAvailableSlots } from '../../hooks/useExperienceBooking';

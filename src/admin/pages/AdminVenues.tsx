@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { Plus, Edit2, Trash2, Eye, EyeOff } from 'lucide-react';
 import { useAdminVenues } from '../../hooks/useAdmin';
-import { supabase, isMockMode } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { AdminEmptyState, AdminLoadingRows, AdminPageHeader, AdminSearchInput, AdminSelectFilter } from '../components';
 import { useAdminFilters } from '../hooks';
@@ -24,7 +24,7 @@ export default function AdminVenues() {
   });
 
   const toggleStatus = async (venueId: string, currentStatus: string) => {
-    if (isMockMode || !supabase) return;
+    if (!supabase) throw new Error('Database not available');
     const newStatus = currentStatus === 'published' ? 'archived' : 'published';
     await supabase.from('venues').update({ status: newStatus }).eq('id', venueId);
     queryClient.invalidateQueries({ queryKey: ['admin', 'venues'] });
@@ -32,8 +32,8 @@ export default function AdminVenues() {
   };
 
   const deleteVenue = async (venueId: string) => {
-    if (isMockMode || !supabase) return;
     if (!confirm('Are you sure you want to delete this venue?')) return;
+    if (!supabase) throw new Error('Database not available');
     await supabase.from('venues').delete().eq('id', venueId);
     queryClient.invalidateQueries({ queryKey: ['admin', 'venues'] });
     queryClient.invalidateQueries({ queryKey: ['venues'] });
@@ -45,7 +45,7 @@ export default function AdminVenues() {
         title="Venues"
         actions={
           <Link
-            to="/admin/venues/new"
+            href="/admin/venues/new"
             className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
           >
             <Plus className="w-4 h-4" /> Add Venue
@@ -117,7 +117,7 @@ export default function AdminVenues() {
                   <td className="p-4">
                     <div className="flex justify-end gap-2">
                       <Link
-                        to={`/admin/venues/${venue.id}`}
+                        href={`/admin/venues/${venue.id}`}
                         className="p-2 text-gray-500 hover:text-luxury-gold transition-colors"
                         title="Edit"
                       >

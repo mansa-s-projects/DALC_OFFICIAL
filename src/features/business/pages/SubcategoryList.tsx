@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { SlidersHorizontal, ChevronDown, X, ArrowRight } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -80,7 +81,8 @@ const FAQ_DATA: Record<string, { q: string; a: string }[]> = {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function SubcategoryList() {
-  const { subcategory } = useParams<{ subcategory: string }>();
+  const params = useParams();
+  const subcategory = params?.subcategory as string;
   const sub = subcategory as BusinessSubcategory;
 
   // Filters state
@@ -131,7 +133,7 @@ export default function SubcategoryList() {
           className="relative z-10"
         >
           <nav className="flex items-center justify-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-8">
-            <Link to="/business" className="hover:text-luxury-gold transition-colors">Business</Link>
+            <Link href="/business" className="hover:text-luxury-gold transition-colors">Business</Link>
             <span>/</span>
             <span className="text-luxury-gold">{label}</span>
           </nav>
@@ -323,7 +325,7 @@ export default function SubcategoryList() {
             </h3>
           </div>
           <Link
-            to="/business/consultation/new"
+            href="/business/consultation/new"
             className="flex-shrink-0 flex items-center gap-2 px-8 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300"
           >
             Get Started <ArrowRight className="w-4 h-4" />

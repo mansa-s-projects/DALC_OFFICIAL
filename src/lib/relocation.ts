@@ -1,4 +1,4 @@
-import { supabase, isMockMode } from './supabase';
+import { supabase } from './supabase';
 import type {
   RelocationProfile,
   UserWorkflow,
@@ -135,9 +135,7 @@ export function generateDefaultWorkflow(profile: RelocationProfile): DefaultWork
 // ─── Profile ─────────────────────────────────────────────────────────────────
 
 export async function getRelocationProfile(userId: string): Promise<RelocationProfile | null> {
-  if (isMockMode) return MOCK_PROFILE;
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('relocation_profiles')
     .select('*')
     .eq('user_id', userId)
@@ -150,9 +148,7 @@ export async function getRelocationProfile(userId: string): Promise<RelocationPr
 export async function createRelocationProfile(
   input: CreateRelocationProfileInput
 ): Promise<RelocationProfile> {
-  if (isMockMode) return { ...MOCK_PROFILE, ...input, id: 'mock-profile-001' };
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('relocation_profiles')
     .upsert(input, { onConflict: 'user_id' })
     .select()
@@ -166,9 +162,7 @@ export async function updateRelocationProfile(
   id: string,
   updates: UpdateRelocationProfileInput
 ): Promise<RelocationProfile> {
-  if (isMockMode) return { ...MOCK_PROFILE, ...updates, id };
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('relocation_profiles')
     .update({ ...updates, updated_at: new Date().toISOString() })
     .eq('id', id)
@@ -182,9 +176,7 @@ export async function updateRelocationProfile(
 // ─── Workflows ────────────────────────────────────────────────────────────────
 
 export async function getUserWorkflows(userId: string): Promise<UserWorkflow[]> {
-  if (isMockMode) return [MOCK_WORKFLOW];
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_workflows')
     .select('*')
     .eq('user_id', userId)
@@ -195,9 +187,7 @@ export async function getUserWorkflows(userId: string): Promise<UserWorkflow[]> 
 }
 
 export async function createWorkflow(input: CreateWorkflowInput): Promise<UserWorkflow> {
-  if (isMockMode) return { ...MOCK_WORKFLOW, ...input, id: `mock-workflow-${Date.now()}` };
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_workflows')
     .insert(input)
     .select()
@@ -208,9 +198,7 @@ export async function createWorkflow(input: CreateWorkflowInput): Promise<UserWo
 }
 
 export async function getWorkflowSteps(workflowId: string): Promise<UserWorkflowStep[]> {
-  if (isMockMode) return MOCK_STEPS;
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_workflow_steps')
     .select('*')
     .eq('workflow_id', workflowId)
@@ -224,10 +212,7 @@ export async function updateWorkflowStep(
   stepId: string,
   status: UserWorkflowStep['status']
 ): Promise<UserWorkflowStep> {
-  const mockStep = MOCK_STEPS.find((s) => s.id === stepId);
-  if (isMockMode) return { ...(mockStep ?? MOCK_STEPS[0]), status };
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_workflow_steps')
     .update({
       status,
@@ -245,9 +230,7 @@ export async function updateWorkflowStep(
 // ─── Documents ────────────────────────────────────────────────────────────────
 
 export async function getUserDocuments(userId: string): Promise<UserDocument[]> {
-  if (isMockMode) return MOCK_DOCUMENTS;
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_documents')
     .select('*')
     .eq('user_id', userId)
@@ -258,16 +241,7 @@ export async function getUserDocuments(userId: string): Promise<UserDocument[]> 
 }
 
 export async function uploadDocument(input: CreateDocumentInput): Promise<UserDocument> {
-  if (isMockMode) {
-    return {
-      ...input,
-      id: `mock-doc-${Date.now()}`,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    };
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_documents')
     .insert(input)
     .select()
@@ -281,10 +255,7 @@ export async function updateDocumentStatus(
   docId: string,
   status: UserDocument['status']
 ): Promise<UserDocument> {
-  const mockDoc = MOCK_DOCUMENTS.find((d) => d.id === docId);
-  if (isMockMode) return { ...(mockDoc ?? MOCK_DOCUMENTS[0]), status };
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('user_documents')
     .update({ status, updated_at: new Date().toISOString() })
     .eq('id', docId)
@@ -298,9 +269,7 @@ export async function updateDocumentStatus(
 // ─── Cost Estimates ───────────────────────────────────────────────────────────
 
 export async function getCostEstimates(profileId: string): Promise<RelocationCostEstimate[]> {
-  if (isMockMode) return MOCK_COSTS;
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('relocation_cost_estimates')
     .select('*')
     .eq('relocation_profile_id', profileId)
@@ -313,11 +282,7 @@ export async function getCostEstimates(profileId: string): Promise<RelocationCos
 export async function addCostEstimate(
   input: AddCostEstimateInput
 ): Promise<RelocationCostEstimate> {
-  if (isMockMode) {
-    return { ...input, id: `mock-cost-${Date.now()}`, created_at: new Date().toISOString() };
-  }
-
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('relocation_cost_estimates')
     .insert(input)
     .select()

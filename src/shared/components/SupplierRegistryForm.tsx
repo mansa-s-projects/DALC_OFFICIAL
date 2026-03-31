@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import { Save } from 'lucide-react';
 import type { SupplierFormValues } from '../utils/supplier';
 

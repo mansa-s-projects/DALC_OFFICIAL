@@ -1,9 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowRight, Users, Clock, Gauge } from 'lucide-react';
 import type { TransportService, TransportSubcategory } from '../../types/transport';
 import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from '../../types/transport';
+
+// ─── Image Component with Error Handling ────────────────────────────────────
+
+function TransportImage({ src, alt, fallbackIcon }: { src: string; alt: string; fallbackIcon?: React.ReactNode }) {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  if (error) {
+    return (
+      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+        {fallbackIcon || <span className="text-4xl text-gray-600">🚗</span>}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {loading && (
+        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+        loading="lazy"
+        onError={() => setError(true)}
+        onLoad={() => setLoading(false)}
+      />
+    </>
+  );
+}
 
 interface ServiceCardProps {
   service: TransportService;
@@ -69,13 +102,9 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       className="group relative bg-white/[0.03] border border-white/10 hover:border-luxury-gold/40 transition-all duration-500 overflow-hidden"
     >
       {/* Image */}
-      <div className="relative h-52 overflow-hidden">
+      <div className="relative h-52 overflow-hidden bg-gray-900">
         {hero_image ? (
-          <img
-            src={hero_image}
-            alt={name}
-            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
-          />
+          <TransportImage src={hero_image} alt={name} fallbackIcon={SUBCATEGORY_ICONS[subcategory]} />
         ) : (
           <div className="w-full h-full bg-white/5 flex items-center justify-center">
             <div className="text-luxury-gold/30 text-4xl">
@@ -158,7 +187,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           </div>
 
           <Link
-            to={`/transport/${subcategory}/${slug}`}
+            href={`/transport/${subcategory}/${slug}`}
             className="flex items-center gap-2 px-4 py-2 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300"
           >
             View

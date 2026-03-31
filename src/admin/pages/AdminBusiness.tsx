@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ChevronDown, Briefcase, Building2, TrendingUp, CheckCircle } from 'lucide-react';
 import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';

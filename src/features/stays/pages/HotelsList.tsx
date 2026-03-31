@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowLeft, Star, Filter, X } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -85,7 +85,7 @@ export default function HotelsList() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2670&auto=format&fit=crop"
-            alt="Luxury hotels in Dubai"
+            alt="Premium hotels in Dubai"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/60 via-luxury-black/40 to-luxury-black" />
@@ -98,14 +98,14 @@ export default function HotelsList() {
             transition={{ duration: 0.6 }}
           >
             <Link 
-              to="/stays" 
+              href="/stays"
               className="inline-flex items-center gap-2 text-luxury-gold hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm uppercase tracking-widest">Back to Stays</span>
             </Link>
             <h1 className="text-4xl md:text-6xl font-display text-white mb-4">
-              Luxury Hotels
+              Premium Hotels
             </h1>
             <p className="text-gray-300 text-lg max-w-2xl">
               Experience world-class hospitality at Dubai's finest hotels and resorts. 
@@ -157,6 +157,7 @@ export default function HotelsList() {
               {filteredProperties.length} properties
             </span>
             <select
+              title="Sort properties"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
               className="bg-white/5 border border-white/20 text-white text-sm px-4 py-2 focus:outline-none focus:border-luxury-gold"
@@ -183,7 +184,7 @@ export default function HotelsList() {
               >
                 <Star className="w-3 h-3 fill-current" />
                 {star} Star
-                <button onClick={() => toggleStar(star)} className="ml-1 hover:text-white">
+                <button title={`Remove ${star} star filter`} onClick={() => toggleStar(star)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -194,6 +195,7 @@ export default function HotelsList() {
                   ? `AED ${selectedPriceRange.min.toLocaleString()}+`
                   : `AED ${selectedPriceRange.min.toLocaleString()} - ${selectedPriceRange.max.toLocaleString()}`}
                 <button 
+                  title="Remove price range filter"
                   onClick={() => setSelectedPriceRange(null)} 
                   className="ml-1 hover:text-white"
                 >

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import type { SeasonalPricing, PropertyStatus } from '../../types/stays';
 

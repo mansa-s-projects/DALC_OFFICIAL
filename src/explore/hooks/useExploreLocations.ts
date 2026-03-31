@@ -6,7 +6,8 @@ export function useExploreLocations() {
   return useQuery<ExploreLocation[]>({
     queryKey: ['explore_locations'],
     queryFn: async () => {
-      const { data, error } = await supabase!
+      if (!supabase) return [];
+      const { data, error } = await supabase
         .from('explore_locations')
         .select('*')
         .order('created_at', { ascending: false });

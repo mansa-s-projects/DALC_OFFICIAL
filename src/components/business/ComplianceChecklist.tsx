@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Circle, AlertCircle } from 'lucide-react';
 import type { ComplianceItem } from '../../types/business';
 

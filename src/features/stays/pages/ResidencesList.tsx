@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowLeft, Building2, Clock, Check, Filter, X } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -82,7 +82,7 @@ export default function ResidencesList() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2670&auto=format&fit=crop"
-            alt="Luxury residences in Dubai"
+            alt="Premium residences in Dubai"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/60 via-luxury-black/40 to-luxury-black" />
@@ -95,7 +95,7 @@ export default function ResidencesList() {
             transition={{ duration: 0.6 }}
           >
             <Link 
-              to="/stays" 
+              href="/stays"
               className="inline-flex items-center gap-2 text-luxury-gold hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -167,6 +167,7 @@ export default function ResidencesList() {
               {filteredProperties.length} residences
             </span>
             <select
+              title="Sort properties"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
               className="bg-white/5 border border-white/20 text-white text-sm px-4 py-2 focus:outline-none focus:border-luxury-gold"
@@ -189,7 +190,7 @@ export default function ResidencesList() {
             {selectedBedrooms && (
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 {selectedBedrooms} Bedroom{selectedBedrooms > 1 ? 's' : ''}
-                <button onClick={() => setSelectedBedrooms(null)} className="ml-1 hover:text-white">
+                <button title="Remove bedroom filter" onClick={() => setSelectedBedrooms(null)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -198,7 +199,7 @@ export default function ResidencesList() {
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 <Clock className="w-3 h-3" />
                 {LEASE_TERMS.find(t => t.value === selectedLeaseTerm)?.label}
-                <button onClick={() => setSelectedLeaseTerm(null)} className="ml-1 hover:text-white">
+                <button title="Remove lease term filter" onClick={() => setSelectedLeaseTerm(null)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -207,7 +208,7 @@ export default function ResidencesList() {
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 <Check className="w-3 h-3" />
                 Furnished
-                <button onClick={() => setFurnishedOnly(false)} className="ml-1 hover:text-white">
+                <button title="Remove furnished filter" onClick={() => setFurnishedOnly(false)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>

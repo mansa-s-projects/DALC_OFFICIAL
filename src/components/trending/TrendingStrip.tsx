@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { TrendingUp, ChevronLeft, ChevronRight, Flame } from 'lucide-react';
 import { Venue, UserSkill } from '../../types';
 import { getMatchPercentage } from '../../utils/recommendations';
 import { useAppStore } from '../../store/useAppStore';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface TrendingStripProps {
   venues: Venue[];
@@ -84,7 +84,7 @@ export default function TrendingStrip({ venues, userSkills = [] }: TrendingStrip
             return (
               <Link
                 key={venue.id}
-                to={`/venue/${venue.id}`}
+                href={`/venue/${venue.id}`}
                 className="flex-shrink-0 w-full md:w-[calc(33.333%-0.75rem)] group"
               >
                 <motion.div

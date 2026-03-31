@@ -3,7 +3,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
 import { useVenues } from '../hooks/useVenues';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
 
 export default function Restaurants() {

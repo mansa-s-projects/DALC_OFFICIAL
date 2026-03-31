@@ -225,6 +225,7 @@ export const SUB_SUBCATEGORIES: Record<ExperienceSubcategory, { value: string; l
   water: [
     { value: 'scuba-diving', label: 'Scuba Diving' },
     { value: 'jet-ski', label: 'Jet Ski' },
+    { value: 'water-car', label: 'Water Car' },
     { value: 'parasailing', label: 'Parasailing' },
     { value: 'kayaking', label: 'Kayaking' },
   ],

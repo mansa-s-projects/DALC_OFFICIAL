@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { X, MapPin, ExternalLink, Gem, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
 import type { ExploreLocation } from '../types';

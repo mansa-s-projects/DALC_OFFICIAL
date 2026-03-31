@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gigi Dubai — Beach Club</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; color: #1a1a1a; background: #fff; }
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.2);
+      border: 1px solid gold;
+      color: gold;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 52px; font-weight: normal; letter-spacing: 3px; margin-bottom: 16px; }
+    .hero .location { font-size: 16px; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 20px; }
+    .hero .tagline { font-size: 18px; color: rgba(255,255,255,0.85); font-style: italic; max-width: 600px; margin: 0 auto; }
+    .images { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 480px; overflow: hidden; }
+    .images img { width: 100%; height: 240px; object-fit: cover; display: block; }
+    .content { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+    .content h2 { font-size: 28px; font-weight: normal; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a2e; border-bottom: 2px solid gold; padding-bottom: 10px; display: inline-block; }
+    .content p { font-size: 17px; line-height: 1.9; color: #444; margin-bottom: 30px; }
+    .expect { background: #f9f7f2; padding: 40px; margin: 40px 0; border-left: 4px solid gold; }
+    .expect h3 { font-size: 20px; margin-bottom: 20px; color: #1a1a2e; letter-spacing: 1px; }
+    .expect ul { list-style: none; }
+    .expect ul li { padding: 8px 0; font-size: 16px; color: #555; border-bottom: 1px solid #e8e4d9; }
+    .expect ul li:last-child { border-bottom: none; }
+    .menu-section { text-align: center; margin: 40px 0; }
+    .menu-section h3 { font-size: 22px; font-weight: normal; margin-bottom: 20px; color: #1a1a2e; }
+    .menu-section img { max-width: 100%; border: 1px solid #e0e0e0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .cta { text-align: center; padding: 60px 40px; background: #1a1a2e; }
+    .cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 16px; }
+    .cta a {
+      display: inline-block;
+      background: gold;
+      color: #1a1a2e;
+      text-decoration: none;
+      padding: 16px 48px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .cta a:hover { background: #ffd700; }
+    footer { text-align: center; padding: 20px; font-size: 13px; color: #999; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="badge">Dubai · Beach Club</div>
+    <h1>Gigi</h1>
+    <div class="location">📍 J1, Dubai</div>
+    <div class="tagline">Sun, sea, and luxury — Gigi is Dubai's ultimate beach escape.</div>
+  </div>
+
+  <div class="images">
+    <img src="image1.jpg" alt="Gigi Dubai - Interior" onerror="this.style.display='none'">
+    <img src="image2.jpg" alt="Gigi Dubai - Atmosphere" onerror="this.style.display='none'">
+  </div>
+
+  <div class="content">
+    <h2>About Gigi</h2>
+    <p>Gigi is one of Dubai's most celebrated beach club destinations, located at J1. Known for its exceptional atmosphere, world-class service, and unforgettable experiences, it stands as a landmark in the city's vibrant social scene. Whether you're looking for an intimate evening or a night to remember, Gigi delivers.</p>
+
+    <div class="expect">
+      <h3>What To Expect</h3>
+      <ul>
+        <li>☀️ Stunning beachfront or pool setting</li>
+<li>🍹 Signature cocktails and beach bites</li>
+<li>👙 Relaxed beach-chic dress code</li>
+<li>📅 Busiest on Fridays and weekends</li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3>Our Menu</h3>
+      <img src="menu.jpg" alt="Gigi Menu" onerror="this.parentElement.style.display='none'">
+    </div>
+  </div>
+
+  <div class="cta">
+    <p>Ready for an unforgettable experience?</p>
+    <a href="#">Reserve Your Table</a>
+  </div>
+
+  <footer>© 2024 Gigi Dubai · J1</footer>
+
+</body>
+</html>

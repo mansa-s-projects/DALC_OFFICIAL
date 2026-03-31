@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { ArrowLeft, Home, Waves, Umbrella, Filter, X } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -75,7 +75,7 @@ export default function VillasList() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2671&auto=format&fit=crop"
-            alt="Luxury villas in Dubai"
+            alt="Premium villas in Dubai"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/60 via-luxury-black/40 to-luxury-black" />
@@ -88,7 +88,7 @@ export default function VillasList() {
             transition={{ duration: 0.6 }}
           >
             <Link 
-              to="/stays" 
+              href="/stays"
               className="inline-flex items-center gap-2 text-luxury-gold hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -155,6 +155,7 @@ export default function VillasList() {
               {filteredProperties.length} villas
             </span>
             <select
+              title="Sort properties"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
               className="bg-white/5 border border-white/20 text-white text-sm px-4 py-2 focus:outline-none focus:border-luxury-gold"
@@ -177,7 +178,7 @@ export default function VillasList() {
             {selectedBedrooms && (
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 {selectedBedrooms}+ Bedrooms
-                <button onClick={() => setSelectedBedrooms(null)} className="ml-1 hover:text-white">
+                <button title="Remove bedroom filter" onClick={() => setSelectedBedrooms(null)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -186,7 +187,7 @@ export default function VillasList() {
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 <Umbrella className="w-3 h-3" />
                 Beachfront
-                <button onClick={() => setBeachfrontOnly(false)} className="ml-1 hover:text-white">
+                <button title="Remove beachfront filter" onClick={() => setBeachfrontOnly(false)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -195,7 +196,7 @@ export default function VillasList() {
               <span className="flex items-center gap-1 px-3 py-1 bg-luxury-gold/20 text-luxury-gold text-sm">
                 <Waves className="w-3 h-3" />
                 Private Pool
-                <button onClick={() => setPoolOnly(false)} className="ml-1 hover:text-white">
+                <button title="Remove pool filter" onClick={() => setPoolOnly(false)} className="ml-1 hover:text-white">
                   <X className="w-3 h-3" />
                 </button>
               </span>

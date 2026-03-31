@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Check, Users, Sparkles } from 'lucide-react';
 import type { PricingTier, PricingModel } from '../../types/experiences';
 

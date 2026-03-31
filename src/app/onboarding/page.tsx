@@ -1,109 +1,296 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, ArrowLeft, Utensils, Music, Sunset, Palette, Briefcase, Shield, Users, Heart, Sparkles, Mountain, Crown, Globe, Baby } from 'lucide-react';
-import { USER_SKILLS, UserSkill, SKILL_LABELS, SKILL_DESCRIPTIONS } from '../../types';
+import { 
+  Check, 
+  ArrowRight, 
+  ArrowLeft, 
+  Briefcase, 
+  Plane, 
+  Sparkles, 
+  Building,
+  Compass,
+  Crown,
+  Star,
+  Zap,
+  Gem,
+  Plane as PlaneIcon,
+  Home,
+  User
+} from 'lucide-react';
 import { useAppStore } from '../../store/useAppStore';
+import { supabase } from '../../lib/supabase';
+import type { UserSkill, UserTier } from '../../types';
 
-const SKILL_ICONS: Record<UserSkill, React.ElementType> = {
-  NETWORKING: Briefcase,
-  DEAL_MAKING: Shield,
-  SOCIALITE: Users,
-  FOODIE: Utensils,
-  WELLNESS: Heart,
-  ADVENTURE: Mountain,
-  LUXURY: Crown,
-  CULTURAL: Globe,
-  NIGHTLIFE: Music,
-  FAMILY: Baby,
-};
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-const SCENE_OPTIONS = [
-  { id: 'INTIMATE' as const, label: 'Intimate dinner', icon: Utensils, desc: 'Quiet, refined, personal' },
-  { id: 'HIGH_ENERGY' as const, label: 'High-energy scene', icon: Music, desc: 'Dancing, DJs, energy' },
-  { id: 'ROOFTOP' as const, label: 'Rooftop cocktails', icon: Sunset, desc: 'Skyline views, sunset vibes' },
-  { id: 'CULTURAL' as const, label: 'Cultural experience', icon: Palette, desc: 'Art, heritage, local' },
+type OnboardingStep = 'intent' | 'interests' | 'profile' | 'membership' | 'complete';
+
+interface IntentOption {
+  id: string;
+  label: string;
+  icon: typeof Plane;
+  description: string;
+}
+
+interface InterestOption {
+  id: UserSkill;
+  label: string;
+  description: string;
+}
+
+interface TierOption {
+  id: UserTier;
+  label: string;
+  price: string;
+  color: string;
+  features: string[];
+  notIncluded?: string[];
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const INTENTS: IntentOption[] = [
+  { 
+    id: 'relocating', 
+    label: 'Relocating to Dubai', 
+    icon: Plane,
+    description: 'Moving here for work or lifestyle'
+  },
+  { 
+    id: 'business', 
+    label: 'Business Setup', 
+    icon: Briefcase,
+    description: 'Starting or expanding a company'
+  },
+  { 
+    id: 'leisure', 
+    label: 'Leisure & Experiences', 
+    icon: Sparkles,
+    description: 'Visiting for vacation and fun'
+  },
+  { 
+    id: 'investment', 
+    label: 'Property Investment', 
+    icon: Building,
+    description: 'Buying real estate in Dubai'
+  },
+  { 
+    id: 'exploring', 
+    label: 'Just Exploring', 
+    icon: Compass,
+    description: 'Getting to know what\'s possible'
+  },
 ];
 
-const TIMING_OPTIONS = [
-  { id: 'WEEKDAY_BUSINESS', label: 'Weekday business' },
-  { id: 'WEEKEND_SOCIAL', label: 'Weekend social' },
-  { id: 'LATE_NIGHT', label: 'Late night' },
-  { id: 'SUNSET_EARLY', label: 'Sunset / early evening' },
+const INTERESTS: InterestOption[] = [
+  { id: 'NIGHTLIFE', label: 'Nightlife', description: 'Clubs, lounges, parties' },
+  { id: 'FOODIE', label: 'Fine Dining', description: 'Michelin restaurants, chef tables' },
+  { id: 'ADVENTURE', label: 'Water Sports', description: 'Jet ski, diving, yachting' },
+  { id: 'WELLNESS', label: 'Yoga & Wellness', description: 'Spas, retreats, fitness' },
+  { id: 'LUXURY', label: 'Golf', description: 'World-class courses' },
+  { id: 'CULTURAL', label: 'Art & Culture', description: 'Museums, galleries, heritage' },
+  { id: 'ADVENTURE', label: 'Fast Cars', description: 'Supercar experiences' },
+  { id: 'LUXURY', label: 'Luxury Yachts', description: 'Private charters' },
+  { id: 'ADVENTURE', label: 'Skydiving', description: 'Thrill experiences' },
+  { id: 'ADVENTURE', label: 'Desert Safaris', description: 'Dune bashing, camping' },
 ];
 
-const STEPS = [
+const TIERS: TierOption[] = [
   {
-    id: 'skills',
-    title: 'What brings you to Dubai?',
-    subtitle: 'Select your priorities — we use this to curate your experience',
+    id: 'gold',
+    label: 'Gold',
+    price: 'Free',
+    color: 'from-[#C8A46B] to-[#EFD7A4]',
+    features: [
+      'Standard bookings',
+      'Concierge requests',
+      'Member rates',
+      'Priority support',
+    ],
+    notIncluded: ['Jet charter', 'Residency services'],
   },
   {
-    id: 'scene',
-    title: 'What is your ideal evening?',
-    subtitle: 'This helps us find the right atmosphere',
+    id: 'platinum',
+    label: 'Platinum',
+    price: 'AED 500/yr',
+    color: 'from-[#A8B8D0] to-[#D0D8E8]',
+    features: [
+      'Everything in Gold',
+      'Jet charter access',
+      'Residency by Investment',
+      'Private villa bookings',
+      'VIP concierge line',
+    ],
+    notIncluded: ['Dedicated concierge'],
   },
   {
-    id: 'timing',
-    title: 'When do you typically go out?',
-    subtitle: 'We use this for timely recommendations',
+    id: 'black',
+    label: 'Black',
+    price: 'AED 2,500/yr',
+    color: 'from-white to-gray-400',
+    features: [
+      'Everything in Platinum',
+      'Dedicated concierge',
+      'Black Card exclusives',
+      'Priority jet access',
+      'Private event invites',
+      'Bespoke experiences',
+    ],
   },
 ];
 
-export default function Onboarding() {
+// ─── Component ───────────────────────────────────────────────────────────────
+
+export default function OnboardingPage() {
   const router = useRouter();
-  const step = useAppStore((s) => s.onboardingStep);
-  const data = useAppStore((s) => s.onboardingData);
-  const setStep = useAppStore((s) => s.setOnboardingStep);
-  const updateData = useAppStore((s) => s.updateOnboardingData);
-  const complete = useAppStore((s) => s.completeOnboarding);
+  const [step, setStep] = useState<OnboardingStep>('intent');
+  const [selectedIntents, setSelectedIntents] = useState<string[]>([]);
+  const [selectedInterests, setSelectedInterests] = useState<UserSkill[]>([]);
+  const [selectedTier, setSelectedTier] = useState<UserTier>('gold');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const session = useAppStore((s) => s.session);
+  const setProfile = useAppStore((s) => s.setProfile);
+  const profile = useAppStore((s) => s.profile);
 
-  const currentStep = STEPS[step];
-  const canProceed =
-    (step === 0 && data.skills.length > 0) ||
-    (step === 1 && data.scene !== null) ||
-    (step === 2 && data.timing.length > 0);
-
-  const toggleSkill = (skill: UserSkill) => {
-    const current = data.skills;
-    if (current.includes(skill)) {
-      updateData({ skills: current.filter((s) => s !== skill) });
-    } else if (current.length < 5) {
-      updateData({ skills: [...current, skill] });
-    }
+  const toggleIntent = (id: string) => {
+    setSelectedIntents(prev => 
+      prev.includes(id) 
+        ? prev.filter(i => i !== id)
+        : [...prev, id]
+    );
   };
 
-  const toggleTiming = (id: string) => {
-    const current = data.timing;
-    if (current.includes(id)) {
-      updateData({ timing: current.filter((t) => t !== id) });
-    } else {
-      updateData({ timing: [...current, id] });
-    }
+  const toggleInterest = (id: UserSkill) => {
+    setSelectedInterests(prev => 
+      prev.includes(id) 
+        ? prev.filter(i => i !== id)
+        : prev.length < 5 ? [...prev, id] : prev
+    );
   };
 
-  const handleNext = () => {
-    if (step < STEPS.length - 1) {
-      setStep(step + 1);
-    } else {
-      complete();
-      router.push('/');
+  const handleNext = async () => {
+    if (step === 'intent') setStep('interests');
+    else if (step === 'interests') setStep('profile');
+    else if (step === 'profile') setStep('membership');
+    else if (step === 'membership') {
+      await completeOnboarding();
+      setStep('complete');
     }
   };
 
   const handleBack = () => {
-    if (step > 0) setStep(step - 1);
+    if (step === 'interests') setStep('intent');
+    else if (step === 'profile') setStep('interests');
+    else if (step === 'membership') setStep('profile');
   };
 
+  const completeOnboarding = async () => {
+    if (!session?.user) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Update profile in Supabase
+      const updates = {
+        first_name: firstName || profile?.first_name,
+        last_name: lastName || profile?.last_name,
+        phone: phone || profile?.phone,
+        skills: selectedInterests,
+        tier: selectedTier,
+        onboarding_completed: true,
+        intents: selectedIntents,
+        updated_at: new Date().toISOString(),
+      };
+
+      const { error } = await supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', session.user.id);
+
+      if (error) throw error;
+
+      // Update local state
+      if (profile) {
+        setProfile({
+          ...profile,
+          ...updates,
+          skills: selectedInterests,
+          tier: selectedTier,
+        });
+      }
+    } catch (error) {
+      console.error('Onboarding error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const canProceed = () => {
+    switch (step) {
+      case 'intent': return selectedIntents.length > 0;
+      case 'interests': return selectedInterests.length > 0;
+      case 'profile': return true; // Optional
+      case 'membership': return true;
+      default: return false;
+    }
+  };
+
+  const getStepNumber = () => {
+    const steps: OnboardingStep[] = ['intent', 'interests', 'profile', 'membership', 'complete'];
+    return steps.indexOf(step) + 1;
+  };
+
+  const totalSteps = 4;
+
+  // Render complete state
+  if (step === 'complete') {
+    return (
+      <div className="min-h-screen bg-[#050607] flex items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center max-w-md"
+        >
+          <div className="w-20 h-20 rounded-full bg-[#C8A46B]/20 flex items-center justify-center mx-auto mb-6">
+            <Check className="w-10 h-10 text-[#C8A46B]" />
+          </div>
+          <h1 className="text-3xl font-display text-white mb-3">Welcome to Dubai À La Carte</h1>
+          <p className="text-white/50 mb-8">
+            Your profile is set up and we&apos;re ready to curate your Dubai experience.
+          </p>
+          <div className="space-y-3">
+            <button
+              onClick={() => router.push('/explore')}
+              className="w-full py-4 px-6 bg-[#C8A46B] text-black font-semibold rounded-xl hover:bg-[#EFD7A4] transition-colors"
+            >
+              Start Exploring
+            </button>
+            <button
+              onClick={() => router.push('/profile')}
+              className="w-full py-3 px-6 border border-white/10 text-white/60 rounded-xl hover:text-white hover:border-white/20 transition-colors"
+            >
+              View My Profile
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-luxury-black flex flex-col">
+    <div className="min-h-screen bg-[#050607] flex flex-col">
       {/* Progress Bar */}
       <div className="w-full h-1 bg-white/5">
         <motion.div
-          className="h-full bg-luxury-gold"
-          animate={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
+          className="h-full bg-[#C8A46B]"
+          animate={{ width: `${(getStepNumber() / totalSteps) * 100}%` }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         />
       </div>
@@ -111,18 +298,15 @@ export default function Onboarding() {
       {/* Skip */}
       <div className="flex justify-end p-6">
         <button
-          onClick={() => {
-            complete();
-            router.push('/');
-          }}
-          className="text-gray-500 text-sm hover:text-white transition-colors uppercase tracking-wider"
+          onClick={() => router.push('/')}
+          className="text-white/30 text-sm hover:text-white/60 transition-colors"
         >
-          Skip
+          Skip for now
         </button>
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 max-w-2xl mx-auto w-full">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 max-w-4xl mx-auto w-full pb-24">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -134,102 +318,176 @@ export default function Onboarding() {
           >
             {/* Step Header */}
             <div className="text-center mb-10">
-              <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.3em] mb-3">
-                Step {step + 1} of {STEPS.length}
+              <p className="text-[#C8A46B] text-xs font-bold uppercase tracking-[0.3em] mb-3">
+                Step {getStepNumber()} of {totalSteps}
               </p>
               <h1 className="text-3xl md:text-4xl font-display text-white mb-3">
-                {currentStep.title}
+                {step === 'intent' && 'What are you here for?'}
+                {step === 'interests' && 'Personalize your experience'}
+                {step === 'profile' && 'Complete your profile'}
+                {step === 'membership' && 'Choose your membership'}
               </h1>
-              <p className="text-gray-400 text-sm">{currentStep.subtitle}</p>
+              <p className="text-white/40 text-sm">
+                {step === 'intent' && 'Select all that apply'}
+                {step === 'interests' && 'Pick up to 5 interests'}
+                {step === 'profile' && 'Help us personalize your experience'}
+                {step === 'membership' && 'Upgrade anytime as your needs grow'}
+              </p>
             </div>
 
-            {/* Step 1: Skills */}
-            {step === 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {USER_SKILLS.map((skill) => {
-                  const Icon = SKILL_ICONS[skill];
-                  const isSelected = data.skills.includes(skill);
+            {/* Step 1: Intents */}
+            {step === 'intent' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {INTENTS.map((intent) => {
+                  const isSelected = selectedIntents.includes(intent.id);
                   return (
                     <motion.button
-                      key={skill}
-                      onClick={() => toggleSkill(skill)}
+                      key={intent.id}
+                      onClick={() => toggleIntent(intent.id)}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`p-6 rounded-xl border text-left transition-all duration-300 ${
+                        isSelected
+                          ? 'bg-[#C8A46B]/10 border-[#C8A46B]/50'
+                          : 'bg-white/5 border-white/10 hover:border-white/20'
+                      }`}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                          isSelected ? 'bg-[#C8A46B]/20' : 'bg-white/5'
+                        }`}>
+                          <intent.icon className={`w-6 h-6 ${isSelected ? 'text-[#C8A46B]' : 'text-white/40'}`} />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <p className={`font-medium ${isSelected ? 'text-white' : 'text-white/80'}`}>
+                              {intent.label}
+                            </p>
+                            {isSelected && <Check className="w-4 h-4 text-[#C8A46B]" />}
+                          </div>
+                          <p className="text-sm text-white/40 mt-1">{intent.description}</p>
+                        </div>
+                      </div>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Step 2: Interests */}
+            {step === 'interests' && (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {INTERESTS.map((interest) => {
+                  const isSelected = selectedInterests.includes(interest.id);
+                  return (
+                    <motion.button
+                      key={interest.label}
+                      onClick={() => toggleInterest(interest.id)}
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
-                      className={`relative p-4 rounded-lg border transition-all duration-300 text-left ${
+                      className={`p-4 rounded-xl border text-center transition-all duration-300 ${
                         isSelected
-                          ? 'bg-luxury-gold/10 border-luxury-gold/50 text-white'
-                          : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white'
+                          ? 'bg-[#C8A46B]/10 border-[#C8A46B]/50'
+                          : 'bg-white/5 border-white/10 hover:border-white/20'
                       }`}
                     >
                       {isSelected && (
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          className="absolute top-2 right-2 w-5 h-5 bg-luxury-gold rounded-full flex items-center justify-center"
+                          className="w-5 h-5 bg-[#C8A46B] rounded-full flex items-center justify-center mx-auto mb-2"
                         >
                           <Check className="w-3 h-3 text-black" />
                         </motion.div>
                       )}
-                      <Icon className={`w-5 h-5 mb-2 ${isSelected ? 'text-luxury-gold' : ''}`} />
-                      <p className="text-sm font-bold">{SKILL_LABELS[skill]}</p>
-                      <p className="text-[10px] text-gray-500 mt-0.5">{SKILL_DESCRIPTIONS[skill]}</p>
+                      <p className={`text-sm font-medium ${isSelected ? 'text-white' : 'text-white/70'}`}>
+                        {interest.label}
+                      </p>
+                      <p className="text-[10px] text-white/40 mt-1">{interest.description}</p>
                     </motion.button>
                   );
                 })}
               </div>
             )}
 
-            {/* Step 2: Scene */}
-            {step === 1 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {SCENE_OPTIONS.map((option) => {
-                  const isSelected = data.scene === option.id;
+            {/* Step 3: Profile */}
+            {step === 'profile' && (
+              <div className="max-w-md mx-auto space-y-5">
+                <div>
+                  <label className="block text-xs text-white/40 uppercase tracking-wider mb-2">First Name</label>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder={profile?.first_name || 'John'}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:border-[#C8A46B]/50 focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-white/40 uppercase tracking-wider mb-2">Last Name</label>
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder={profile?.last_name || 'Doe'}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:border-[#C8A46B]/50 focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-white/40 uppercase tracking-wider mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder={profile?.phone || '+971 50 000 0000'}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:border-[#C8A46B]/50 focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Step 4: Membership */}
+            {step === 'membership' && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {TIERS.map((tier) => {
+                  const isSelected = selectedTier === tier.id;
                   return (
                     <motion.button
-                      key={option.id}
-                      onClick={() => updateData({ scene: option.id })}
+                      key={tier.id}
+                      onClick={() => setSelectedTier(tier.id)}
                       whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`p-6 rounded-lg border transition-all duration-300 text-left ${
+                      className={`relative p-6 rounded-xl border text-left transition-all duration-300 ${
                         isSelected
-                          ? 'bg-luxury-gold/10 border-luxury-gold/50'
+                          ? 'bg-gradient-to-b from-white/10 to-transparent border-white/40'
                           : 'bg-white/5 border-white/10 hover:border-white/20'
                       }`}
                     >
-                      <option.icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-luxury-gold' : 'text-gray-500'}`} />
-                      <p className={`text-lg font-display ${isSelected ? 'text-white' : 'text-gray-300'}`}>{option.label}</p>
-                      <p className="text-xs text-gray-500 mt-1">{option.desc}</p>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Step 3: Timing */}
-            {step === 2 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {TIMING_OPTIONS.map((option) => {
-                  const isSelected = data.timing.includes(option.id);
-                  return (
-                    <motion.button
-                      key={option.id}
-                      onClick={() => toggleTiming(option.id)}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className={`p-5 rounded-lg border transition-all duration-300 text-left flex items-center gap-4 ${
-                        isSelected
-                          ? 'bg-luxury-gold/10 border-luxury-gold/50'
-                          : 'bg-white/5 border-white/10 hover:border-white/20'
-                      }`}
-                    >
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                        isSelected ? 'border-luxury-gold bg-luxury-gold' : 'border-gray-600'
-                      }`}>
-                        {isSelected && <Check className="w-3.5 h-3.5 text-black" />}
+                      {isSelected && (
+                        <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#C8A46B] flex items-center justify-center">
+                          <Check className="w-4 h-4 text-black" />
+                        </div>
+                      )}
+                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center mb-4`}>
+                        {tier.id === 'gold' && <Star className="w-5 h-5 text-black" />}
+                        {tier.id === 'platinum' && <Zap className="w-5 h-5 text-black" />}
+                        {tier.id === 'black' && <Crown className="w-5 h-5 text-black" />}
                       </div>
-                      <span className={`text-sm font-medium ${isSelected ? 'text-white' : 'text-gray-400'}`}>
-                        {option.label}
-                      </span>
+                      <p className="text-lg font-display text-white mb-1">{tier.label}</p>
+                      <p className="text-[#C8A46B] font-semibold mb-4">{tier.price}</p>
+                      <ul className="space-y-2">
+                        {tier.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm text-white/70">
+                            <Check className="w-3 h-3 text-[#C8A46B]" />
+                            {feature}
+                          </li>
+                        ))}
+                        {tier.notIncluded?.map((item, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm text-white/30 line-through">
+                            <span className="w-3 h-3 rounded-full border border-white/20" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </motion.button>
                   );
                 })}
@@ -240,30 +498,43 @@ export default function Onboarding() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="p-6 flex justify-between items-center max-w-2xl mx-auto w-full">
-        <button
-          onClick={handleBack}
-          disabled={step === 0}
-          className={`flex items-center gap-2 text-sm uppercase tracking-widest transition-colors ${
-            step === 0 ? 'text-gray-700 cursor-not-allowed' : 'text-gray-400 hover:text-white'
-          }`}
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back
-        </button>
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#050607] to-transparent">
+        <div className="max-w-4xl mx-auto flex justify-between items-center">
+          <button
+            onClick={handleBack}
+            disabled={step === 'intent'}
+            className={`flex items-center gap-2 text-sm transition-colors ${
+              step === 'intent' ? 'text-white/20 cursor-not-allowed' : 'text-white/40 hover:text-white'
+            }`}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </button>
 
-        <button
-          onClick={handleNext}
-          disabled={!canProceed}
-          className={`flex items-center gap-2 px-8 py-3 font-bold uppercase tracking-widest text-sm transition-all duration-300 ${
-            canProceed
-              ? 'bg-luxury-gold text-black hover:bg-white'
-              : 'bg-white/10 text-gray-600 cursor-not-allowed'
-          }`}
-        >
-          {step === STEPS.length - 1 ? 'Get Started' : 'Continue'}
-          <ArrowRight className="w-4 h-4" />
-        </button>
+          <button
+            onClick={handleNext}
+            disabled={!canProceed() || isSubmitting}
+            className={`flex items-center gap-2 px-8 py-3 font-semibold text-sm rounded-xl transition-all ${
+              canProceed() && !isSubmitting
+                ? 'bg-[#C8A46B] text-black hover:bg-[#EFD7A4]'
+                : 'bg-white/10 text-white/30 cursor-not-allowed'
+            }`}
+          >
+            {isSubmitting ? (
+              'Saving...'
+            ) : step === 'membership' ? (
+              <>
+                Complete Setup
+                <Check className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                Continue
+                <ArrowRight className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

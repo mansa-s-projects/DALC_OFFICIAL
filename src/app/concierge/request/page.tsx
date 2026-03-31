@@ -1,3 +1,5 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-export { default } from '@/pages/concierge/ConciergeRequest';
+export default function ConciergeRequestRedirectPage() {
+  redirect('/request');
+}

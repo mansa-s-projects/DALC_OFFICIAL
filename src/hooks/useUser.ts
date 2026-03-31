@@ -16,10 +16,6 @@ export function useUser() {
   return useQuery({
     queryKey: ['current-user'],
     queryFn: async () => {
-      if (!supabase) {
-        throw new Error('Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.');
-      }
-
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
       if (sessionError) {
         throw sessionError;

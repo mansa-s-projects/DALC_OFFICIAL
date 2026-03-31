@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Calendar, Video, MapPin, Phone, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useAvailableSlots } from '../../hooks/useConsultation';
 import type { MeetingType, TimeSlot } from '../../types/business';

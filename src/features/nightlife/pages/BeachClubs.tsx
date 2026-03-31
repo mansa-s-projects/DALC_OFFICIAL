@@ -3,7 +3,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
 import { useVenues } from '../hooks/useVenues';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function BeachClubs() {
   const { data: beachClubs = [], isLoading } = useVenues({ category: 'beach-clubs' });
@@ -17,7 +17,7 @@ export default function BeachClubs() {
          {/* Background video or image suggestion */}
          <div className="absolute inset-0 z-0">
             <img 
-               src="https://images.unsplash.com/photo-1544957992-20516f265fb2?q=80&w=2670&auto=format&fit=crop" 
+               src="/images/beach_clubs/Verde_Beach/image1.jpg" 
                alt="Dubai Beach Club"
                className="w-full h-full object-cover opacity-40"
             />

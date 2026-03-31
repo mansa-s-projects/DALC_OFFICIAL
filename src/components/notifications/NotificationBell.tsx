@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'motion/react';
 import { Bell, Check, X, Clock, ExternalLink } from 'lucide-react';
 import { useNotifications, useUnreadCount, useMarkAsRead, useMarkAllAsRead, useDeleteNotification } from '../../features/notifications/hooks/useNotifications';
 import { useAppStore } from '../../store/useAppStore';
@@ -59,7 +59,7 @@ function NotificationItem({ notification, onRead, onDelete }: {
             <span className="text-[10px] text-gray-600">{timeAgo(notification.created_at)}</span>
             {notification.action_url && (
               <Link
-                to={notification.action_url}
+                href={notification.action_url}
                 onClick={onRead}
                 className="flex items-center gap-1 text-[10px] text-luxury-gold hover:text-white ml-auto"
               >
@@ -187,7 +187,7 @@ export default function NotificationBell() {
             {notifications.length > 0 && (
               <div className="p-3 border-t border-white/10 bg-white/5">
                 <Link
-                  to="/notifications"
+                  href="/notifications"
                   onClick={() => setIsOpen(false)}
                   className="block text-center text-xs text-luxury-gold hover:text-white"
                 >
