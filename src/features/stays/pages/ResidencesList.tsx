@@ -6,7 +6,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import PropertyCard from '../../../components/stays/PropertyCard';
 import StaysFilters from '../../../components/stays/StaysFilters';
-import { useProperties } from '../hooks/useStays';
+import { MOCK_PROPERTIES } from '../../../lib/stays';
 
 const LEASE_TERMS = [
   { value: '6_months', label: '6+ Months' },
@@ -21,7 +21,11 @@ const BEDROOM_OPTIONS = [
 ];
 
 export default function ResidencesList() {
-  const { data: properties = [], isLoading } = useProperties({ subcategory: 'residences' });
+  const properties = useMemo(
+    () => MOCK_PROPERTIES.filter((p) => p.subcategory === 'residences'),
+    []
+  );
+  const isLoading = false;
   const [showFilters, setShowFilters] = useState(false);
   const [selectedBedrooms, setSelectedBedrooms] = useState<number | null>(null);
   const [selectedLeaseTerm, setSelectedLeaseTerm] = useState<string | null>(null);

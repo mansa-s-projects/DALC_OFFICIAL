@@ -21,5 +21,8 @@
       "Bash(ls \"c:\\\\Users\\\\mehdi\\\\Desktop\\\\DESKTOP\\\\02_PROJECTS\\\\01_ACTIVE\\\\DALC_OFFICIAL\\\\src\\\\pages\\\\live-map\"\" && echo \"---\" && ls \"c:UsersmehdiDesktopDESKTOP02_PROJECTS01_ACTIVEDALC_OFFICIALsrcfeatureslive-map\"\")",
       "Bash(grep -v \"^$\")"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
 }

@@ -19,7 +19,7 @@ import Footer from '../../../components/navigation/Footer';
 import ProcessTimeline from '../../../components/business/ProcessTimeline';
 import DocumentRequirements from '../../../components/business/DocumentRequirements';
 import ComplianceChecklist from '../../../components/business/ComplianceChecklist';
-import { useBusinessService } from '../hooks/useBusiness';
+import { MOCK_SERVICES } from '../../../lib/business';
 import { useCreateBusinessBooking } from '../hooks/useBusinessBooking';
 import { useAppStore } from '../../../store/useAppStore';
 import { SUBCATEGORY_LABELS, SERVICE_TYPE_LABELS } from '../types';
@@ -31,7 +31,9 @@ export default function ServiceDetail() {
   const router = useRouter();
   const session = useAppStore(s => s.session);
 
-  const { data: service, isLoading, error } = useBusinessService(slug);
+  const service = MOCK_SERVICES.find((s) => s.slug === slug);
+  const isLoading = false;
+  const error = null;
   const createBooking = useCreateBusinessBooking();
 
   const [bookingStarted, setBookingStarted] = useState(false);

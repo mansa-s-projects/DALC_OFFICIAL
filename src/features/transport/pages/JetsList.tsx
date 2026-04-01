@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { ArrowRight, X, Car } from 'lucide-react';
+import { ArrowRight, X, Plane } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/transport/ServiceCard';
@@ -12,71 +12,69 @@ import type { TransportFilters as FilterType, TransportService } from '../types'
 
 const FAQS = [
   {
-    q: 'What documents do I need to rent a luxury car?',
-    a: 'You\'ll need a valid passport, international driving permit (or UAE license), and a credit card for the security deposit. Minimum age is typically 25 for supercars.',
+    q: 'How far in advance do I need to book a private jet?',
+    a: 'While we can sometimes accommodate flights with as little as 4 hours notice, we recommend booking at least 48 hours in advance to ensure your preferred aircraft is available.',
   },
   {
-    q: 'Is insurance included?',
-    a: 'Yes, comprehensive insurance is included with all our rentals. Options for zero excess are available for an additional fee.',
+    q: 'Which airports do you operate from?',
+    a: 'We primarily operate from VIP terminals at Al Maktoum International (DWC) and Dubai International (DXB). Global destinations will utilize executive terminals where available.',
   },
   {
-    q: 'Can I get the car delivered to my hotel?',
-    a: 'Absolutely. We offer complimentary delivery and collection within Dubai for rentals of 24 hours or more.',
+    q: 'Is catering included on the flights?',
+    a: 'Yes, VIP catering tailored to your preferences is included on all private jet charters.',
   },
   {
-    q: 'Are chauffeur services available?',
-    a: 'Yes, all our luxury sedans include professional chauffeur service. For sports cars, self-drive is standard but chauffeurs can be arranged.',
+    q: 'Are pets allowed on board?',
+    a: 'Yes, most of our operators are pet-friendly. Please inform us ahead of time so we can make the necessary arrangements.',
   },
 ];
 
-// ─── Cars Data ──────────────────────────────────────────────────────────────────
-const CARS_DATA: TransportService[] = [
+// ─── Jets Data ──────────────────────────────────────────────────────────────────
+const JETS_DATA: TransportService[] = [
   {
-    id: 'mock-car-1',
+    id: 'mock-jet-1',
     category: 'transport',
-    subcategory: 'cars',
-    sub_subcategory: 'luxury-sedans',
-    name: 'Rolls-Royce Ghost',
-    slug: 'rolls-royce-ghost-dubai',
-    description_short: 'Experience ultimate luxury in the iconic Rolls-Royce Ghost with professional chauffeur.',
-    description_long: 'The Rolls-Royce Ghost represents the pinnacle of automotive luxury. With its whisper-quiet cabin, handcrafted leather interior, and effortless performance, this is the perfect choice for weddings, corporate events, or simply experiencing Dubai in unparalleled style. Includes professional chauffeur service.',
-    hero_image: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?q=80&w=2670&auto=format&fit=crop',
+    subcategory: 'jets',
+    sub_subcategory: 'private-charter',
+    name: 'Gulfstream G650',
+    slug: 'gulfstream-g650-private-charter',
+    description_short: 'Ultra-long-range business jet seating 14 — Dubai to London non-stop.',
+    description_long: 'The Gulfstream G650 is the gold standard in business aviation. With a range of 13,000 km and a cabin altitude of just 4,000 feet at cruise, you\'ll arrive refreshed anywhere in the world. Features include a full galley, private stateroom, and high-speed WiFi.',
+    hero_image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [
-      'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=2670&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=2574&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2670&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1590073242678-cfea534351a5?q=80&w=2670&auto=format&fit=crop',
     ],
     highlights: [
-      'Professional chauffeur included',
-      'Starlight headliner',
-      'Premium sound system',
-      'Rear entertainment',
-      'Complimentary refreshments',
+      'Range: 13,000 km',
+      '14 passengers',
+      'Cruise speed: Mach 0.90',
+      'Full stand-up cabin',
+      'Private stateroom',
+      'Global coverage',
     ],
-    pricing_model: 'hourly',
-    price_from: 1200,
+    pricing_model: 'per_trip',
+    price_from: 185000,
     price_currency: 'AED',
-    price_display: 'AED 1,200/hour',
-    availability_type: 'on_demand',
+    price_display: 'From AED 185,000',
+    availability_type: 'by_request',
     available_days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    max_capacity: 4,
-    min_booking_hours: 4,
-    advance_booking_hours: 4,
+    max_capacity: 14,
+    min_booking_hours: 48,
+    advance_booking_hours: 48,
     specifications: {
-      make: 'Rolls-Royce',
-      model: 'Ghost',
-      year: 2023,
-      seats: 4,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      color: 'Arctic White',
-      engine: '6.75L V12',
-      horsepower: '563 hp',
-      acceleration_0_100: '4.8s',
-      top_speed: '250 km/h',
+      aircraft_type: 'Ultra Long Range',
+      range_km: 13000,
+      seats: 14,
+      luggage_capacity: '195 cu ft',
+      cruising_speed: 'Mach 0.90',
+      max_altitude: '51,000 ft',
+      year_manufactured: 2022,
+      operator: 'ExecuJet Middle East',
     },
     location: 'Dubai',
-    area: 'Downtown Dubai',
-    pickup_locations: ['Burj Khalifa', 'Dubai Mall', 'Palm Jumeirah', 'Dubai Marina'],
+    area: 'Al Maktoum International',
+    pickup_locations: ['Al Maktoum International (DWC)', 'Dubai International (DXB)'],
     is_featured: true,
     is_trending: true,
     status: 'published',
@@ -84,102 +82,48 @@ const CARS_DATA: TransportService[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'mock-car-2',
+    id: 'mock-jet-2',
     category: 'transport',
-    subcategory: 'cars',
-    sub_subcategory: 'sports-cars',
-    name: 'Lamborghini Huracán EVO',
-    slug: 'lamborghini-huracan-evo-dubai',
-    description_short: 'Unleash the bull — experience the raw power of the Huracán EVO on Dubai\'s roads.',
-    description_long: 'The Lamborghini Huracán EVO delivers an adrenaline-pumping driving experience with its naturally aspirated V10 engine and advanced aerodynamics. Feel the roar of 640 horsepower as you cruise down Sheikh Zayed Road or take a scenic drive to Hatta. Available for self-drive or with instructor.',
-    hero_image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2574&auto=format&fit=crop',
+    subcategory: 'jets',
+    sub_subcategory: 'helicopter-tours',
+    name: 'Helicopter Tour — Dubai Skyline',
+    slug: 'helicopter-tour-dubai-skyline',
+    description_short: 'Breathtaking 25-minute helicopter tour over Dubai\'s iconic landmarks.',
+    description_long: 'Take to the skies and witness Dubai\'s architectural wonders from above. This 25-minute tour covers the Palm Jumeirah, Burj Al Arab, Burj Khalifa, and the World Islands. Professional pilot with thousands of flight hours ensures a safe and memorable experience.',
+    hero_image: 'https://images.unsplash.com/photo-1506467493604-25d7861a67c5?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [
-      'https://images.unsplash.com/photo-1614200187524-dc411f8f105c?q=80&w=2574&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2670&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2670&auto=format&fit=crop',
     ],
     highlights: [
-      '640 hp V10 engine',
-      '0-100 km/h in 2.9s',
-      'All-wheel drive',
-      'LDVI supercomputer',
-      'Full insurance included',
+      '25-minute flight',
+      '5 passengers max',
+      'Professional pilot',
+      'Bird\'s eye views',
+      'Photo opportunities',
+      'Hotel pickup available',
     ],
-    pricing_model: 'daily',
-    price_from: 3500,
+    pricing_model: 'fixed',
+    price_from: 4500,
     price_currency: 'AED',
-    price_display: 'From AED 3,500/day',
-    availability_type: 'on_demand',
-    available_days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    max_capacity: 2,
-    min_booking_hours: 24,
-    advance_booking_hours: 12,
-    specifications: {
-      make: 'Lamborghini',
-      model: 'Huracán EVO',
-      year: 2023,
-      seats: 2,
-      transmission: '7-speed DCT',
-      fuel: 'Petrol',
-      color: 'Verde Mantis',
-      engine: '5.2L V10',
-      horsepower: '640 hp',
-      acceleration_0_100: '2.9s',
-      top_speed: '325 km/h',
-    },
-    location: 'Dubai',
-    area: 'Dubai Marina',
-    pickup_locations: ['Dubai Marina', 'Palm Jumeirah', 'Downtown Dubai'],
-    is_featured: true,
-    is_trending: true,
-    status: 'published',
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: 'mock-car-3',
-    category: 'transport',
-    subcategory: 'cars',
-    sub_subcategory: 'suvs',
-    name: 'Range Rover Autobiography',
-    slug: 'range-rover-autobiography-dubai',
-    description_short: 'Supreme comfort meets off-road capability in the flagship Range Rover.',
-    description_long: 'The Range Rover Autobiography offers the perfect blend of luxury and versatility. Whether you\'re attending a business meeting or exploring the desert dunes, this SUV delivers exceptional comfort with its executive rear seats, Meridian sound system, and air suspension.',
-    hero_image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=2670&auto=format&fit=crop',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1568844293986-8d0400bd4745?q=80&w=2574&auto=format&fit=crop',
-    ],
-    highlights: [
-      'Executive class rear seats',
-      'Terrain Response 2',
-      'Panoramic roof',
-      'Meridian Signature audio',
-      'Air suspension',
-    ],
-    pricing_model: 'daily',
-    price_from: 2200,
-    price_currency: 'AED',
-    price_display: 'From AED 2,200/day',
-    availability_type: 'on_demand',
+    price_display: 'AED 4,500 (whole helicopter)',
+    availability_type: 'scheduled',
     available_days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     max_capacity: 5,
-    min_booking_hours: 24,
-    advance_booking_hours: 6,
+    min_booking_hours: 4,
+    advance_booking_hours: 12,
     specifications: {
-      make: 'Land Rover',
-      model: 'Range Rover Autobiography',
-      year: 2023,
+      aircraft_type: 'AW139 Helicopter',
+      range_km: 500,
       seats: 5,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      color: 'Santorini Black',
-      engine: '4.4L V8',
-      horsepower: '530 hp',
-      acceleration_0_100: '4.6s',
-      top_speed: '250 km/h',
+      luggage_capacity: 'Limited',
+      cruising_speed: '165 knots',
+      max_altitude: '15,000 ft',
+      year_manufactured: 2021,
+      operator: 'Falcon Aviation',
     },
     location: 'Dubai',
-    area: 'Business Bay',
-    pickup_locations: ['Business Bay', 'Downtown Dubai', 'Dubai Airport'],
+    area: 'Dubai Helipad',
+    pickup_locations: ['Dubai Helipad (Atlantis)', 'Dubai Helipad (Burj Al Arab)'],
     is_featured: false,
     is_trending: true,
     status: 'published',
@@ -190,22 +134,22 @@ const CARS_DATA: TransportService[] = [
 
 // ─── Component ──────────────────────────────────────────────────────────────────
 
-export default function CarsList() {
+export default function JetsList() {
   const [showFilters, setShowFilters] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const [filters, setFilters] = useState<FilterType>({
-    subcategory: 'cars',
+    subcategory: 'jets',
   });
 
   const services = useMemo(() => {
-    return CARS_DATA.filter((car) => {
-      if (filters.sub_subcategory && car.sub_subcategory !== filters.sub_subcategory) return false;
-      if (filters.pricing_model && car.pricing_model !== filters.pricing_model) return false;
-      if (filters.price_min != null && (car.price_from == null || car.price_from < filters.price_min)) return false;
-      if (filters.price_max != null && (car.price_from == null || car.price_from > filters.price_max)) return false;
-      if (filters.availability_type && car.availability_type !== filters.availability_type) return false;
-      if (filters.capacity_min != null && (car.max_capacity == null || car.max_capacity < filters.capacity_min)) return false;
+    return JETS_DATA.filter((jet) => {
+      if (filters.sub_subcategory && jet.sub_subcategory !== filters.sub_subcategory) return false;
+      if (filters.pricing_model && jet.pricing_model !== filters.pricing_model) return false;
+      if (filters.price_min != null && (jet.price_from == null || jet.price_from < filters.price_min)) return false;
+      if (filters.price_max != null && (jet.price_from == null || jet.price_from > filters.price_max)) return false;
+      if (filters.availability_type && jet.availability_type !== filters.availability_type) return false;
+      if (filters.capacity_min != null && (jet.max_capacity == null || jet.max_capacity < filters.capacity_min)) return false;
       return true;
     });
   }, [filters]);
@@ -221,7 +165,7 @@ export default function CarsList() {
   );
 
   const clearFilters = () => {
-    setFilters({ subcategory: 'cars' });
+    setFilters({ subcategory: 'jets' });
   };
 
   return (
@@ -233,8 +177,8 @@ export default function CarsList() {
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2670&auto=format&fit=crop"
-            alt="Luxury cars Dubai"
+            src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2670&auto=format&fit=crop"
+            alt="Private jets and helicopters Dubai"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-luxury-black via-luxury-black/70 to-luxury-black" />
@@ -252,14 +196,13 @@ export default function CarsList() {
               Transport
             </Link>
             <span>/</span>
-            <span className="text-luxury-gold">Luxury Cars</span>
+            <span className="text-luxury-gold">Private Jets & Helicopters</span>
           </nav>
           <h1 className="text-4xl md:text-6xl font-display text-white mb-4">
-            Luxury Cars
+            Private Aviation
           </h1>
           <p className="text-gray-300 text-base max-w-xl mx-auto leading-relaxed">
-            From elegant sedans to adrenaline-pumping supercars — 
-            experience Dubai\'s roads in extraordinary style.
+            From scenic helicopter tours over Dubai to ultra-long-range global business jets — elevate your journey.
           </p>
         </motion.div>
       </section>
@@ -272,7 +215,7 @@ export default function CarsList() {
             <TransportFilters
               filters={filters}
               onFilterChange={setFilters}
-              subcategory="cars"
+              subcategory="jets"
               isOpen={showFilters}
               onToggle={() => setShowFilters(!showFilters)}
             />
@@ -287,7 +230,7 @@ export default function CarsList() {
                   'Loading...'
                 ) : (
                   <>
-                    <span className="text-white font-medium">{services.length}</span> vehicle
+                    <span className="text-white font-medium">{services.length}</span> aircraft
                     {services.length !== 1 ? 's' : ''} available
                   </>
                 )}
@@ -317,8 +260,8 @@ export default function CarsList() {
               </div>
             ) : (
               <div className="text-center py-24 border border-white/10">
-                <Car className="w-12 h-12 text-gray-700 mx-auto mb-4" />
-                <p className="text-gray-400 text-lg mb-2">No vehicles found</p>
+                <Plane className="w-12 h-12 text-gray-700 mx-auto mb-4" />
+                <p className="text-gray-400 text-lg mb-2">No aircraft found</p>
                 <p className="text-gray-600 text-sm mb-6">Try adjusting your filters</p>
                 {hasFilters && (
                   <button
@@ -385,7 +328,7 @@ export default function CarsList() {
               Need Assistance?
             </p>
             <h3 className="text-white font-display text-xl md:text-2xl">
-              Our transport concierge is available 24/7
+              Our aviation concierge is available 24/7
             </h3>
           </div>
           <Link

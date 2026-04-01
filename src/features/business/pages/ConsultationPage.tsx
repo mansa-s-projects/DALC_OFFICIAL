@@ -20,7 +20,6 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ConsultationScheduler from '../../../components/business/ConsultationScheduler';
 import { useUserConsultations, useScheduleConsultation } from '../hooks/useConsultation';
-import { useBusinessService } from '../hooks/useBusiness';
 import { useAppStore } from '../../../store/useAppStore';
 import type { MeetingType, TimeSlot } from '../types';
 
@@ -47,9 +46,7 @@ export default function ConsultationPage() {
   const serviceIdFromQuery = searchParams?.get('service') ?? undefined;
 
   // For new consultation — use scheduler
-  const { data: service } = useBusinessService(
-    isNew ? undefined : undefined // loaded per consultation lookup in real app
-  );
+  const service = undefined;
 
   const { data: consultations = [] } = useUserConsultations(
     !isNew ? session?.user?.id : undefined

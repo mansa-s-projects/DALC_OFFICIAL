@@ -2,11 +2,12 @@ import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
-import { useVenues } from '../hooks/useVenues';
+import { MOCK_VENUES } from '../../../data/mockData';
 import { motion } from 'motion/react';
 
 export default function BeachClubs() {
-  const { data: beachClubs = [], isLoading } = useVenues({ category: 'beach-clubs' });
+  const beachClubs = React.useMemo(() => MOCK_VENUES.filter(v => v.category === 'beach-clubs'), []);
+  const isLoading = false;
 
   return (
     <div className="min-h-screen bg-luxury-black">

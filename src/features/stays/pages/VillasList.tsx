@@ -6,7 +6,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import PropertyCard from '../../../components/stays/PropertyCard';
 import StaysFilters from '../../../components/stays/StaysFilters';
-import { useProperties } from '../hooks/useStays';
+import { MOCK_PROPERTIES } from '../../../lib/stays';
 
 const BEDROOM_OPTIONS = [
   { value: 3, label: '3+ Bedrooms' },
@@ -16,7 +16,11 @@ const BEDROOM_OPTIONS = [
 ];
 
 export default function VillasList() {
-  const { data: properties = [], isLoading } = useProperties({ subcategory: 'villas' });
+  const properties = useMemo(
+    () => MOCK_PROPERTIES.filter((p) => p.subcategory === 'villas'),
+    []
+  );
+  const isLoading = false;
   const [showFilters, setShowFilters] = useState(false);
   const [selectedBedrooms, setSelectedBedrooms] = useState<number | null>(null);
   const [beachfrontOnly, setBeachfrontOnly] = useState(false);

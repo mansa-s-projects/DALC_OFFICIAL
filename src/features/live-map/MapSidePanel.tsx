@@ -11,6 +11,10 @@ export type Venue = {
   description?: string | null;
   latitude: number;
   longitude: number;
+  locationStr?: string;
+  tags?: string[];
+  priceRange?: string;
+  vibe?: string;
 };
 
 // ─── Category config ──────────────────────────────────────────────────────────
@@ -237,7 +241,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                   letterSpacing: '0.04em',
                 }}
               >
-                Dubai
+                {displayVenue.locationStr || 'Dubai'}
               </p>
             </div>
 
@@ -265,7 +269,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                     color: 'rgba(255,255,255,0.55)',
                     fontSize: 13,
                     lineHeight: 1.7,
-                    margin: 0,
+                    margin: '0 0 16px',
                   }}
                 >
                   {displayVenue.description}
@@ -276,12 +280,47 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                     color: 'rgba(255,255,255,0.2)',
                     fontSize: 12,
                     fontStyle: 'italic',
-                    margin: 0,
+                    margin: '0 0 16px',
                   }}
                 >
                   No description available.
                 </p>
               )}
+
+              {/* Extra Details */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {displayVenue.vibe && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, minWidth: 60 }}>Vibe:</span>
+                    <span style={{ color: '#fff', fontSize: 13 }}>{displayVenue.vibe}</span>
+                  </div>
+                )}
+                {displayVenue.priceRange && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, minWidth: 60 }}>Price:</span>
+                    <span style={{ color: color, fontSize: 13, fontWeight: 600 }}>{displayVenue.priceRange}</span>
+                  </div>
+                )}
+                {displayVenue.tags && displayVenue.tags.length > 0 && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
+                    {displayVenue.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        style={{
+                          background: 'rgba(255,255,255,0.05)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          color: 'rgba(255,255,255,0.6)',
+                          fontSize: 11,
+                          padding: '3px 8px',
+                          borderRadius: 6,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Footer CTAs */}
