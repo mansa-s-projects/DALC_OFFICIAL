@@ -6,7 +6,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import PropertyCard from '../../../components/stays/PropertyCard';
 import StaysFilters from '../../../components/stays/StaysFilters';
-import { useProperties } from '../hooks/useStays';
+import { MOCK_PROPERTIES } from '../../../lib/stays';
 
 const STAR_RATINGS = [
   { value: 5, label: '5 Star' },
@@ -22,7 +22,11 @@ const PRICE_RANGES = [
 ];
 
 export default function HotelsList() {
-  const { data: properties = [], isLoading } = useProperties({ subcategory: 'hotels' });
+  const properties = useMemo(
+    () => MOCK_PROPERTIES.filter((p) => p.subcategory === 'hotels'),
+    []
+  );
+  const isLoading = false;
   const [showFilters, setShowFilters] = useState(false);
   const [selectedStars, setSelectedStars] = useState<number[]>([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState<{min: number, max: number} | null>(null);

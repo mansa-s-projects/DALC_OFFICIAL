@@ -2,11 +2,12 @@ import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
-import { useVenues } from '../hooks/useVenues';
+import { MOCK_VENUES } from '../../../data/mockData';
 import { motion } from 'motion/react';
 
 export default function DiningEntertainment() {
-  const { data: venues = [], isLoading } = useVenues({ category: 'dining-entertainment' });
+  const venues = React.useMemo(() => MOCK_VENUES.filter(v => v.category === 'dining-entertainment'), []);
+  const isLoading = false;
 
   return (
     <div className="min-h-screen bg-luxury-black">

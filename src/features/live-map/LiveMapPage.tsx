@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Map, { MapRef, Marker, type MapMouseEvent } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { supabase } from '@/lib/supabase';
 import { MapSidePanel, getCategoryColor, type Venue } from './MapSidePanel';
+import { getAllVenues } from '@/data/venuesData';
 import { MapCategoryFilter, matchesFilter, type FilterId } from './MapCategoryFilter';
 import { MapSearchOverlay } from './MapSearchOverlay';
 
@@ -94,34 +94,26 @@ export default function LiveMapPage() {
   const [activeFilter, setActiveFilter] = useState<FilterId>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch venues from Supabase once
+  // Load venues from local robust data
   useEffect(() => {
-    let cancelled = false;
+    const rawData = getAllVenues();
+    
+    const mapped: Venue[] = rawData
+      .filter((v) => v.coordinates && typeof v.coordinates.lat === 'number' && typeof v.coordinates.lng === 'number' && isFinite(v.coordinates.lat) && isFinite(v.coordinates.lng))
+      .map((v) => ({
+        id: v.id,
+        name: v.name,
+        category: v.categoryId,
+        description: v.seoDescription || null,
+        latitude: v.coordinates!.lat,
+        longitude: v.coordinates!.lng,
+        locationStr: v.location,
+        tags: v.tags,
+        priceRange: v.priceRange,
+        vibe: v.vibe,
+      }));
 
-    async function load() {
-      try {
-        const { data, error } = await supabase
-          .from('venues')
-          .select('id, name, category, description, latitude, longitude');
-
-        if (error || !data || cancelled) return;
-
-        const valid = data.filter(
-          (v) =>
-            typeof v.latitude === 'number' &&
-            typeof v.longitude === 'number' &&
-            isFinite(v.latitude) &&
-            isFinite(v.longitude),
-        );
-
-        setVenues(valid as Venue[]);
-      } catch {
-        // Supabase unavailable — map loads empty
-      }
-    }
-
-    load();
-    return () => { cancelled = true; };
+    setVenues(mapped);
   }, []);
 
   // Combine category filter + search query — no refetch

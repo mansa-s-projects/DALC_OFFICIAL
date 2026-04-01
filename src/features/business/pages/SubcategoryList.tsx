@@ -6,7 +6,7 @@ import { SlidersHorizontal, ChevronDown, X, ArrowRight } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/business/ServiceCard';
-import { useBusinessServices } from '../hooks/useBusiness';
+import { MOCK_SERVICES } from '../../../lib/business';
 import type {
   BusinessSubcategory,
   ServiceType,
@@ -102,7 +102,17 @@ export default function SubcategoryList() {
     [sub, serviceType, pricingModel, priceMax]
   );
 
-  const { data: services = [], isLoading } = useBusinessServices(filters);
+  const services = useMemo(() => {
+    return MOCK_SERVICES.filter(svc => {
+      if (svc.subcategory !== sub) return false;
+      if (serviceType && svc.service_type !== serviceType) return false;
+      if (pricingModel && svc.pricing_model !== pricingModel) return false;
+      if (priceMax !== '' && svc.price_from !== undefined && svc.price_from > Number(priceMax)) return false;
+      return true;
+    });
+  }, [sub, serviceType, pricingModel, priceMax]);
+
+  const isLoading = false;
 
   const label = SUBCATEGORY_LABELS[sub] ?? sub;
   const description = SUBCATEGORY_DESCRIPTIONS[sub] ?? '';

@@ -14,7 +14,7 @@ import {
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/business/ServiceCard';
-import { useFeaturedBusinessServices } from '../hooks/useBusiness';
+import { MOCK_SERVICES } from '../../../lib/business';
 import type { BusinessSubcategory } from '../types';
 import { SUBCATEGORY_DESCRIPTIONS } from '../types';
 
@@ -78,7 +78,8 @@ const STATS = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function BusinessHub() {
-  const { data: featured = [], isLoading } = useFeaturedBusinessServices();
+  const featured = MOCK_SERVICES.filter(s => s.is_featured).slice(0, 6);
+  const isLoading = false;
 
   return (
     <div className="min-h-screen bg-luxury-black">
