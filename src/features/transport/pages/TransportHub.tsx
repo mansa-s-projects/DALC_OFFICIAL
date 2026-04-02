@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import {
   Car,
+  Plane,
+  Ship,
   ArrowRight,
   Star,
   TrendingUp,
@@ -33,6 +35,20 @@ const CATEGORIES: CategoryConfig[] = [
     icon: <Car className="w-7 h-7" />,
     gradient: 'from-amber-900/60 to-luxury-black',
     image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    subcategory: 'yachts',
+    label: 'Super Yachts',
+    icon: <Ship className="w-7 h-7" />,
+    gradient: 'from-blue-900/60 to-luxury-black',
+    image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    subcategory: 'jets',
+    label: 'Private Jets',
+    icon: <Plane className="w-7 h-7" />,
+    gradient: 'from-zinc-800/60 to-luxury-black',
+    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop',
   },
 ];
 
