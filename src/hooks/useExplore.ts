@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
-import { CATEGORIES } from '../data/mockData';
+import { CATEGORIES } from '../data/venues/mockData';
 import type { Category } from '../types';
 import { useVenues } from './useVenues';
 

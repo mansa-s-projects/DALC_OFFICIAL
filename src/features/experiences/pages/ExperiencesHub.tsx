@@ -8,39 +8,35 @@ import Footer from '../../../components/navigation/Footer';
 import { DALC_EXPERIENCE_CATEGORIES } from '../catalog';
 import UpcomingEventsStrip from '../components/UpcomingEventsStrip';
 
-// Premium hero images per category
+// Premium hero images per category - using reliable Unsplash URLs
 const CATEGORY_HERO_IMAGES: Record<string, string> = {
-  marine:
-    'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=2070&auto=format&fit=crop',
+  'desert-adventures':
+    'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=2070&auto=format&fit=crop',
   'water-activities':
-    'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=2070&auto=format&fit=crop',
   'aerial-and-adrenaline':
     'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2070&auto=format&fit=crop',
-  'desert-and-adventure':
-    'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2070&auto=format&fit=crop',
   wellness:
-    'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop',
   'tickets-and-culture':
-    'https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2070&auto=format&fit=crop',
   'luxury-leisure':
-    'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop',
 };
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
-  marine: Anchor,
+  'desert-adventures': Mountain,
   'water-activities': Waves,
   'aerial-and-adrenaline': Wind,
-  'desert-and-adventure': Mountain,
   wellness: Sparkles,
   'tickets-and-culture': Ticket,
   'luxury-leisure': Crown,
 };
 
 const CATEGORY_ACCENTS: Record<string, string> = {
-  marine: 'from-cyan-500/30 to-blue-600/20',
+  'desert-adventures': 'from-amber-500/30 to-yellow-600/20',
   'water-activities': 'from-sky-400/30 to-cyan-500/20',
   'aerial-and-adrenaline': 'from-orange-500/30 to-red-600/20',
-  'desert-and-adventure': 'from-amber-500/30 to-yellow-600/20',
   wellness: 'from-emerald-500/30 to-teal-600/20',
   'tickets-and-culture': 'from-purple-500/30 to-pink-600/20',
   'luxury-leisure': 'from-luxury-gold/30 to-amber-600/20',
@@ -72,8 +68,8 @@ export default function ExperiencesHub() {
             Curated by Intent
           </h1>
           <p className="text-gray-400 leading-relaxed max-w-xl mx-auto">
-            Six pillars of extraordinary. From the depths of the Arabian Gulf to the skies above the
-            desert, each category unlocks a world of premium bookable moments.
+            Six pillars of extraordinary. From yacht charters and jet skis on the Gulf to the skies above
+            the desert, each category unlocks a world of premium bookable moments.
           </p>
         </motion.div>
       </section>

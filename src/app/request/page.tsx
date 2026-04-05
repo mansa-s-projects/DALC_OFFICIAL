@@ -1,22 +1,13 @@
-'use client';
+import RequestPage from '@/features/concierge/pages/RequestPage';
+import { buildPageMetadata } from '@/lib/metadata';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+export const metadata = buildPageMetadata({
+  title: 'Request Concierge Support | Dubai À La Carte',
+  description: 'Submit one DALC concierge brief for nightlife, stays, travel, business setup, reservations, and bespoke Dubai requests.',
+  path: '/request',
+  keywords: ['Dubai concierge request', 'Dubai personal concierge', 'luxury request Dubai', 'DALC request'],
+});
 
-export default function RequestRedirect() {
-  const router = useRouter();
-  
-  useEffect(() => {
-    // Redirect to services page where users can make requests
-    router.replace('/services');
-  }, [router]);
-  
-  return (
-    <div className="min-h-screen bg-luxury-black flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-12 h-12 border-2 border-luxury-gold border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <p className="text-gray-400 text-sm uppercase tracking-widest">Redirecting...</p>
-      </div>
-    </div>
-  );
+export default function RequestRoute() {
+  return <RequestPage />;
 }

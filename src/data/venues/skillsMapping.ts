@@ -1,4 +1,4 @@
-import { Category, UserSkill, Venue } from '../types';
+import { Category, UserSkill, Venue } from '../../types';
 import { applyLocalImages } from './venueImages';
 
 /**

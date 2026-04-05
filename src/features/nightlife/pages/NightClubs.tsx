@@ -1,8 +1,10 @@
+"use client";
+
 import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
-import { MOCK_VENUES } from '../../../data/mockData';
+import { MOCK_VENUES } from '../../../data/venues/mockData';
 import { motion } from 'motion/react';
 
 export default function NightClubs() {

@@ -5,8 +5,8 @@ import { motion } from 'motion/react';
 import { Heart, Fuel, Zap, Calendar, Users, Car } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
-import type { CarItem } from '@/data/carsData';
-import { getCarImage, getCarWhatsAppUrl } from '@/data/carsData';
+import type { CarItem } from '@/data/transport/carsData';
+import { getCarImage, getCarWhatsAppUrl } from '@/data/transport/carsData';
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 

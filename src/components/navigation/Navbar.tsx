@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -51,10 +53,10 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Move To Dubai", path: "/move-to-dubai" },
-    { label: "Explore", path: "/explore" },
+    { label: "Nightlife", path: "/nightlife" },
     { label: "Experiences", path: "/experiences" },
     { label: "Travel", path: "/travel" },
-    { label: "Concierge", path: "/concierge" },
+    { label: "Concierge", path: "/request" },
   ];
 
   return (

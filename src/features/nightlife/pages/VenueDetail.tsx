@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -7,6 +9,7 @@ import { useVenues } from '../hooks/useVenues';
 import { useRequests } from '../../../hooks/useRequests';
 import { useAppStore } from '../../../store/useAppStore';
 import Navbar from '../../../components/navigation/Navbar';
+import { getVenueCategoryHref, getVenueRecommendations } from '../lib/venueDiscovery';
 import {
   MapPin, Clock, Check, ArrowLeft, ShieldAlert,
   Calendar, Shirt, X, ChevronLeft, ChevronRight, Maximize2, Sparkles, Users, ArrowDown, BookOpen, UtensilsCrossed
@@ -15,7 +18,7 @@ import Footer from '../../../components/navigation/Footer';
 import PremiumMap from '../../../components/map/PremiumMap';
 import VenueCard from '../../../components/cards/VenueCard';
 import { motion, AnimatePresence } from 'motion/react';
-import { getVenueMenuImage, getVenueBlogPath } from '../../../data/venueImages';
+import { getVenueMenuImage, getVenueBlogPath } from '../../../data/venues/venueImages';
 
 export default function VenueDetail() {
   const params = useParams();
@@ -24,6 +27,7 @@ export default function VenueDetail() {
   const { data: venue, isLoading } = useVenue(id);
   const { data: allVenues = [] } = useVenues();
   const session = useAppStore((s) => s.session);
+  const profileSkills = useAppStore((s) => s.profile?.skills ?? s.user?.skills ?? []);
   const { createRequest } = useRequests(session?.user?.id);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
@@ -45,44 +49,6 @@ export default function VenueDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // Dynamic SEO Meta Tags
-  useEffect(() => {
-    if (!venue) return;
-
-    document.title = `${venue.name} | Dubai À La Carte`;
-
-    const metaTags = [
-      { name: 'description', content: venue.description_short },
-      { property: 'og:title', content: `${venue.name} | Dubai À La Carte` },
-      { property: 'og:description', content: venue.description_short },
-      { property: 'og:image', content: venue.hero_image },
-      { property: 'og:url', content: window.location.href },
-      { property: 'og:type', content: 'business.business' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: venue.name },
-      { name: 'twitter:description', content: venue.description_short },
-      { name: 'twitter:image', content: venue.hero_image }
-    ];
-
-    metaTags.forEach(tag => {
-      const key = tag.name ? 'name' : 'property';
-      const tagId = tag.name || tag.property;
-      let element = document.querySelector(`meta[${key}="${tagId}"]`);
-
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(key, tagId!);
-        document.head.appendChild(element);
-      }
-
-      element.setAttribute('content', tag.content!);
-    });
-
-    return () => {
-      document.title = 'Dubai À La Carte';
-    };
-  }, [venue]);
-
   // Reset booking form when modal closes
   useEffect(() => {
     if (!isBookingModalOpen) {
@@ -98,10 +64,7 @@ export default function VenueDetail() {
 
   // Similar Venues
   const similarVenues = venue
-    ? allVenues.filter(v =>
-        v.id !== venue.id &&
-        (v.category === venue.category || v.vibe_tags.some(t => venue.vibe_tags.includes(t)))
-      ).slice(0, 4)
+    ? getVenueRecommendations(venue, allVenues, profileSkills, 4)
     : [];
 
   // Hero Carousel Navigation
@@ -247,7 +210,7 @@ export default function VenueDetail() {
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 max-w-7xl mx-auto z-10">
-          <Link href={`/explore/${venue.category}`} className="flex items-center gap-2 text-white/60 hover:text-luxury-gold mb-8 transition-colors w-fit">
+          <Link href={getVenueCategoryHref(venue.category)} className="flex items-center gap-2 text-white/60 hover:text-luxury-gold mb-8 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Collection
           </Link>
 
@@ -410,11 +373,19 @@ export default function VenueDetail() {
               viewport={{ once: true }}
               className="border-t border-white/5 pt-12"
             >
-              <h2 className="text-xl font-display text-white mb-6">Similar Venues</h2>
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.28em] text-luxury-gold/70">DALC Matchmaking</p>
+                  <h2 className="text-xl font-display text-white">Recommended Next Stops</h2>
+                </div>
+                <p className="max-w-md text-right text-sm text-white/45">
+                  Ranked by scene, area, spend, vibe overlap, and your profile preferences.
+                </p>
+              </div>
               <div className="flex gap-6 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x">
-                {similarVenues.map(similar => (
+                {similarVenues.map(({ venue: similar, matchScore, matchExplanation }) => (
                   <div key={similar.id} className="min-w-[280px] w-[280px] snap-center">
-                    <VenueCard venue={similar} />
+                    <VenueCard venue={similar} matchScore={matchScore} matchExplanation={matchExplanation} />
                   </div>
                 ))}
               </div>
@@ -439,7 +410,7 @@ export default function VenueDetail() {
               >
                 <img
                   src={getVenueMenuImage(venue.id)}
-                  alt={`${venue.name} Menu`}
+                  alt={`${venue.name} menu preview`}
                   className="w-full h-auto object-contain bg-white/5 transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 {/* Always-visible expand button */}
@@ -504,7 +475,7 @@ export default function VenueDetail() {
                 >
                   <img
                     src={getVenueMenuImage(venue.id)}
-                    alt={`${venue.name} Menu`}
+                    alt={`${venue.name} full menu`}
                     className="w-full h-auto object-contain bg-[#0a0a0a]"
                   />
                 </motion.div>
@@ -561,7 +532,7 @@ export default function VenueDetail() {
                 >
                   <img
                     src={img}
-                    alt={`Gallery ${i}`}
+                    alt={`${venue.name} gallery image ${i + 1}`}
                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">

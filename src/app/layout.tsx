@@ -27,7 +27,7 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: 'DALC - Dubai À La Carte',
-  description: 'Your premier destination for Dubai experiences, transport, and more',
+  description: 'Your premier destination for Dubai experiences, nightlife, travel, and concierge services',
 };
 
 export default function RootLayout({

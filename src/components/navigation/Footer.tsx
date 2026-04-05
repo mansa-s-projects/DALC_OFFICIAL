@@ -56,7 +56,7 @@ export default function Footer() {
                 label: 'Explore',
                 links: [
                   { label: 'Move To Dubai', href: '/move-to-dubai' },
-                  { label: 'Venues',        href: '/explore' },
+                  { label: 'Nightlife',     href: '/nightlife' },
                   { label: 'Experiences',   href: '/experiences' },
                   { label: 'Travel',        href: '/travel' },
                 ],
@@ -64,7 +64,7 @@ export default function Footer() {
               {
                 label: 'Service',
                 links: [
-                  { label: 'Concierge', href: '/concierge' },
+                  { label: 'Concierge', href: '/request' },
                   { label: 'Business',  href: '/business' },
                   { label: 'Live Map',  href: '/live-map' },
                 ],

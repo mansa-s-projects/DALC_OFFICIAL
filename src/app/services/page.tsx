@@ -57,7 +57,7 @@ const SERVICES = [
     icon: Plane,
     label: 'Personal Concierge',
     description: 'Your private command centre — any request, any time, with total discretion.',
-    href: '/concierge',
+    href: '/request',
     accent: 'from-rose-900/40 to-luxury-black',
     tag: 'Lifestyle',
   },
@@ -172,7 +172,7 @@ export default function ServicesHub() {
                 <ArrowRight className="w-4 h-4" />
               </a>
               <Link
-                href="/concierge"
+                href="/request"
                 className="inline-flex items-center justify-center gap-2.5 px-9 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300"
               >
                 Personal Concierge

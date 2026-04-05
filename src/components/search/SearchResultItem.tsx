@@ -15,6 +15,10 @@ const typeColors: Record<string, string> = {
   stay: "#B89AD4",
 };
 
+const TYPE_LABELS: Record<string, string> = {
+  transport: 'Travel',
+};
+
 interface SearchResultItemProps {
   result: SearchResult;
   isActive?: boolean;
@@ -99,7 +103,7 @@ export default function SearchResultItem({
               fontFamily: "var(--font-mono)",
             }}
           >
-            {SEARCH_RESULT_TYPE_LABELS[result.type]}
+            {TYPE_LABELS[result.type] || SEARCH_RESULT_TYPE_LABELS[result.type]}
           </span>
           {result.area && (
             <span

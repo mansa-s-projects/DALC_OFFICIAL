@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin, WifiOff } from 'lucide-react';
-import type { VenueItem } from '../../data/venuesData';
+import type { VenueItem } from '../../data/venues/venuesData';
 
 interface VenuesMapProps {
   venues: (VenueItem & { categoryId: string })[];

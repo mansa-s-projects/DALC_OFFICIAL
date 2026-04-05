@@ -305,7 +305,7 @@ export default function MoveToDubai() {
                 Prefer to talk it through first?
               </p>
               <Link
-                href="/concierge"
+                href="/request"
                 className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-luxury-gold transition-colors duration-300 group"
               >
                 Speak to Concierge

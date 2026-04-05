@@ -3,7 +3,7 @@ import { getFeaturedExperiences } from '../../lib/experiences';
 import { getFeaturedTransport } from '../../lib/transport';
 import { getFeaturedProperties } from '../../lib/stays';
 import { getFeaturedServices } from '../../lib/business';
-import { MOCK_VENUES } from '../../data/mockData';
+import { MOCK_VENUES } from '../../data/venues/mockData';
 import type { ExperienceService } from '../../types/experiences';
 import type { TransportService } from '../../types/transport';
 import type { StaysProperty } from '../../types/stays';

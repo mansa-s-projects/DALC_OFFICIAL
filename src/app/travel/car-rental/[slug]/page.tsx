@@ -11,7 +11,7 @@ import {
   getAllCars,
   getCarImage,
   getCarWhatsAppUrl,
-} from '../../../../data/carsData';
+} from '../../../../data/transport/carsData';
 
 // ─── Component ────────────────────────────────────────────────────────────────
 

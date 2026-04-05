@@ -41,7 +41,7 @@ const SERVICES = [
     desc: 'Unique adventures, curated for you',
     image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=2670&auto=format&fit=crop',
     position: 'top-right',
-    path: '/explore/experiences'
+    path: '/experiences'
   },
   { 
     id: 'car-rental', 
@@ -50,7 +50,7 @@ const SERVICES = [
     desc: 'Luxury fleet & chauffeurs',
     image: 'https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2670&auto=format&fit=crop',
     position: 'mid-right',
-    path: '/explore/car-rental'
+    path: '/travel/car-rental'
   },
   { 
     id: 'business', 
@@ -68,16 +68,16 @@ const SERVICES = [
     desc: 'Private jets & transfers',
     image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2576&auto=format&fit=crop',
     position: 'extra',
-    path: '/explore/travel'
+    path: '/travel'
   },
   { 
     id: 'yachts', 
     icon: Ship, 
-    label: 'Yachts', 
-    desc: 'Private charters & marine',
+    label: 'Yacht Charters', 
+    desc: 'Water activities & private charters',
     image: 'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=2670&auto=format&fit=crop',
     position: 'extra',
-    path: '/explore/yachts'
+    path: '/experiences/water-activities'
   }
 ];
 

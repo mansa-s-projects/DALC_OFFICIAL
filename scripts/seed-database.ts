@@ -1,5 +1,5 @@
 import { supabase } from '../src/lib/supabase';
-import { MOCK_VENUES } from '../src/data/mockData';
+import { MOCK_VENUES } from '../src/data/venues/mockData';
 import { MOCK_SERVICES as MOCK_TRANSPORT_SERVICES } from '../src/lib/transport';
 import { MOCK_EXPERIENCES } from '../src/lib/experiences';
 import { MOCK_PROPERTIES } from '../src/lib/stays';

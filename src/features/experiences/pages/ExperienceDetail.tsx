@@ -18,7 +18,8 @@ import {
   ChevronDown,
   ChevronUp,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  ImageOff
 } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -36,6 +37,16 @@ interface ExperienceDetailPageProps {
   params: Promise<{ category: string; item: string }>;
 }
 
+// Category fallback images for error handling
+const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
+  'desert-adventures': 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop',
+  'water-activities': 'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=800&auto=format&fit=crop',
+  'aerial-and-adrenaline': 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop',
+  wellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
+  'tickets-and-culture': 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
+  'luxury-leisure': 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop',
+};
+
 export default function ExperienceDetailPage({ params }: ExperienceDetailPageProps) {
   const { category: categorySlug, item: itemSlug } = use(params);
   const category = getExperienceCategory(categorySlug);
@@ -52,11 +63,16 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
   const [showTierComparison, setShowTierComparison] = useState(false);
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showGroupBooking, setShowGroupBooking] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     included: true,
     requirements: false,
     highlights: true,
   });
+  
+  // Image fallback logic
+  const fallbackImage = category ? CATEGORY_FALLBACK_IMAGES[category.slug] : '';
+  const imageSrc = imgError ? fallbackImage : (item?.image || fallbackImage);
   
   const createBooking = useCreateExperienceBooking();
   
@@ -133,11 +149,16 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
           <div>
             {/* Hero Image */}
             <div className="border border-white/10 overflow-hidden bg-white/[0.02] mb-6">
-              {item.image ? (
-                <img src={item.image} alt={item.title} className="w-full h-[420px] object-cover" />
+              {imageSrc ? (
+                <img 
+                  src={imageSrc} 
+                  alt={item.title} 
+                  className="w-full h-[420px] object-cover"
+                  onError={() => setImgError(true)}
+                />
               ) : (
                 <div className="w-full h-[420px] bg-white/5 flex items-center justify-center">
-                  <span className="text-white/20">No image available</span>
+                  <ImageOff className="w-12 h-12 text-white/20" />
                 </div>
               )}
             </div>
@@ -396,7 +417,7 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
 
               {/* Concierge Link */}
               <Link
-                href="/concierge/request"
+                href="/request"
                 className="block mt-4 text-center text-sm text-white/40 hover:text-luxury-gold transition-colors"
               >
                 Questions? Contact Concierge

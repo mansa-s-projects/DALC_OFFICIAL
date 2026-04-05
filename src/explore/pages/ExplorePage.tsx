@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Navbar from '../../components/navigation/Navbar';
@@ -49,6 +51,7 @@ export default function ExplorePage() {
     filters.emirate !== 'All Emirates' ||
     filters.category !== 'All Categories' ||
     filters.hiddenGems !== 'all' ||
+    filters.featured !== 'all' ||
     filters.search.trim() !== '';
 
   const handleLocationSelect = useCallback((loc: ExploreLocation) => {

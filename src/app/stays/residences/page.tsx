@@ -1,3 +1,5 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-export { default } from '@/features/stays/pages/ResidencesList';
+export default function StaysResidencesRedirectPage() {
+	redirect('/travel/residences');
+}

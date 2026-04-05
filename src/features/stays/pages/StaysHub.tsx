@@ -102,14 +102,14 @@ export default function StaysHub() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/stays/hotels"
+              href="/travel/hotels"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              Explore Stays
+              Explore Travel Stays
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/stays/villas"
+              href="/travel/villas"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default function StaysHub() {
               transition={{ delay: idx * 0.1, duration: 0.5 }}
             >
               <Link
-                href={`/stays/${cat.subcategory}`}
+                href={`/travel/${cat.subcategory}`}
                 className="group relative block h-80 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
                 {/* BG Image */}
@@ -211,13 +211,13 @@ export default function StaysHub() {
           </div>
           <div className="flex gap-4">
             <Link
-              href="/stays/hotels"
+              href="/travel/hotels"
               className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
             >
               Hotels <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
-              href="/stays/villas"
+              href="/travel/villas"
               className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
             >
               Villas <ArrowRight className="w-3.5 h-3.5" />

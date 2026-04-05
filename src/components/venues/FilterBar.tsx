@@ -4,7 +4,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SlidersHorizontal, X, LayoutGrid, Map as MapIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { LOCATIONS, PRICE_FILTERS, VIBE_FILTERS } from '@/data/venuesData';
+import { LOCATIONS, PRICE_FILTERS, VIBE_FILTERS } from '@/data/venues/venuesData';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

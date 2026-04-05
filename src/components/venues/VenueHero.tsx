@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { VENUE_CATEGORIES } from '@/data/venuesData';
+import { VENUE_CATEGORIES } from '@/data/venues/venuesData';
 import type { CategoryTabId } from './CategoryTabs';
 
 // ─── Hero Images ──────────────────────────────────────────────────────────────

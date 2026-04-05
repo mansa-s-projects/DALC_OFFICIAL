@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Locate, Plus, Minus, RotateCw, Map as MapIcon, Layers, ArrowUpRight } from 'lucide-react';

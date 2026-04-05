@@ -729,7 +729,7 @@ export default function VenuesDiscovery() {
             <p className="text-gray-600 text-[10px] uppercase tracking-widest mb-5 font-medium">
               Looking for something specific?
             </p>
-            <Link href="/concierge">
+            <Link href="/request">
               <button className="px-10 py-4 bg-transparent hover:bg-luxury-gold hover:text-black border border-white/15 hover:border-luxury-gold text-white font-bold uppercase text-[10px] tracking-widest transition-all duration-300">
                 Speak with a Concierge
               </button>

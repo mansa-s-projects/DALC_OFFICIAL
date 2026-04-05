@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Map, { MapRef, Marker, type MapMouseEvent } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MapSidePanel, getCategoryColor, type Venue } from './MapSidePanel';
-import { getAllVenues } from '@/data/venuesData';
+import { MapSidePanel, getCategoryColor, type MapLocation } from './MapSidePanel';
+import { ALL_EXPLORE_LOCATIONS } from '@/explore/data/exploreLocations';
 import { MapCategoryFilter, matchesFilter, type FilterId } from './MapCategoryFilter';
 import { MapSearchOverlay } from './MapSearchOverlay';
 
@@ -12,10 +12,10 @@ import { MapSearchOverlay } from './MapSearchOverlay';
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
 
-const DUBAI_CENTER = {
-  longitude: 55.2708,
-  latitude: 25.2048,
-  zoom: 11,
+const UAE_CENTER = {
+  longitude: 54.3773,
+  latitude: 24.4539,
+  zoom: 6.5,
 };
 
 // ─── Custom marker ────────────────────────────────────────────────────────────
@@ -75,12 +75,14 @@ function VenueMarker({
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function matchesSearch(venue: Venue, query: string): boolean {
+function matchesSearch(venue: MapLocation, query: string): boolean {
   if (!query) return true;
   const q = query.toLowerCase();
   return (
     venue.name.toLowerCase().includes(q) ||
-    venue.category.toLowerCase().includes(q)
+    venue.category.toLowerCase().includes(q) ||
+    venue.locationStr?.toLowerCase().includes(q) ||
+    venue.tags?.some((tag) => tag.toLowerCase().includes(q)) || false
   );
 }
 
@@ -88,29 +90,32 @@ function matchesSearch(venue: Venue, query: string): boolean {
 
 export default function LiveMapPage() {
   const mapRef = useRef<MapRef>(null);
-  const [viewState, setViewState] = useState(DUBAI_CENTER);
-  const [venues, setVenues] = useState<Venue[]>([]);
-  const [selected, setSelected] = useState<Venue | null>(null);
+  const [viewState, setViewState] = useState(UAE_CENTER);
+  const [venues, setVenues] = useState<MapLocation[]>([]);
+  const [selected, setSelected] = useState<MapLocation | null>(null);
   const [activeFilter, setActiveFilter] = useState<FilterId>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Load venues from local robust data
+  // Load Explore locations for the map experience.
   useEffect(() => {
-    const rawData = getAllVenues();
-    
-    const mapped: Venue[] = rawData
-      .filter((v) => v.coordinates && typeof v.coordinates.lat === 'number' && typeof v.coordinates.lng === 'number' && isFinite(v.coordinates.lat) && isFinite(v.coordinates.lng))
-      .map((v) => ({
-        id: v.id,
-        name: v.name,
-        category: v.categoryId,
-        description: v.seoDescription || null,
-        latitude: v.coordinates!.lat,
-        longitude: v.coordinates!.lng,
-        locationStr: v.location,
-        tags: v.tags,
-        priceRange: v.priceRange,
-        vibe: v.vibe,
+    const mapped: MapLocation[] = ALL_EXPLORE_LOCATIONS
+      .filter((location) => isFinite(location.latitude) && isFinite(location.longitude))
+      .map((location) => ({
+        id: location.id,
+        name: location.name,
+        category: location.category,
+        description: location.long_description || location.short_description,
+        latitude: location.latitude,
+        longitude: location.longitude,
+        locationStr: `${location.area}, ${location.emirate}`,
+        tags: location.tags,
+        priceRange: 'AED ' + '$'.repeat(location.price_tier),
+        vibe: location.vibe,
+        bestTime: location.best_time,
+        insiderTip: location.insider_tip,
+        detailHref: '/explore',
+        requestHref: `/request?location=${encodeURIComponent(location.name)}`,
+        requestLabel: 'Plan with Concierge',
       }));
 
     setVenues(mapped);
@@ -146,7 +151,7 @@ export default function LiveMapPage() {
     setSearchQuery(v);
   }, []);
 
-  const handleMarkerClick = useCallback((venue: Venue) => {
+  const handleMarkerClick = useCallback((venue: MapLocation) => {
     setSelected((prev) => (prev?.id === venue.id ? null : venue));
   }, []);
 

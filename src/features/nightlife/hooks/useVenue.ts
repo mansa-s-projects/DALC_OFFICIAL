@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Venue } from '../../../types';
 import { supabase } from '../../../lib/supabase';
-import { applyLocalImages } from '../../../data/venueImages';
+import { applyLocalImages } from '../../../data/venues/venueImages';
 
 function normalizeVenue(raw: any): Venue {
   const priceTier = Number(raw.price_tier ?? 2);
@@ -62,7 +62,7 @@ export function useVenue(id?: string | null) {
         return normalizeVenue(data);
       } catch {
         // Fallback to mock data
-        const { MOCK_VENUES } = await import('../../../data/mockData');
+        const { MOCK_VENUES } = await import('../../../data/venues/mockData');
         const mockVenue = MOCK_VENUES.find(v => v.id === id);
         if (mockVenue) return mockVenue;
         throw new Error('Venue not found');

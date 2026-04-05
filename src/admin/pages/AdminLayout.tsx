@@ -6,10 +6,10 @@ const NAV_ITEMS = [
   { to: '/admin/overview',     icon: LayoutDashboard, label: 'Overview',     end: false },
   { to: '/admin/requests',     icon: Inbox,           label: 'All Requests', end: false },
   { to: '/admin/concierge',    icon: Star,            label: 'Concierge',    end: false },
-  { to: '/admin/transport',    icon: Car,             label: 'Transport',    end: false },
+  { to: '/admin/transport',    icon: Car,             label: 'Travel & Mobility',    end: false },
   { to: '/admin/experiences',  icon: Compass,         label: 'Experiences',  end: false },
   { to: '/admin/business',     icon: Briefcase,       label: 'Business',     end: false },
-  { to: '/admin/stays',        icon: Hotel,           label: 'Stays',        end: false },
+  { to: '/admin/stays',        icon: Hotel,           label: 'Travel Stays', end: false },
   { to: '/admin/venues',       icon: MapPin,          label: 'Venues',       end: false },
   { to: '/admin/suppliers',    icon: Truck,           label: 'Suppliers',    end: false },
 ];

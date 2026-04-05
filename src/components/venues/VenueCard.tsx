@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Heart, TrendingUp, Sparkles, Navigation, ExternalLink, X, Map as MapIcon, ImageOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
-import type { VenueItem } from '@/data/venuesData';
-import { getVenueImage, getWhatsAppUrl, getGoogleMapsUrl, getAppleMapsUrl, getWazeUrl } from '@/data/venuesData';
+import type { VenueItem } from '@/data/venues/venuesData';
+import { getVenueImage, getWhatsAppUrl, getGoogleMapsUrl, getAppleMapsUrl, getWazeUrl } from '@/data/venues/venuesData';
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 

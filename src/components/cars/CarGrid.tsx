@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import CarCard from './CarCard';
-import type { CarItem } from '@/data/carsData';
+import type { CarItem } from '@/data/transport/carsData';
 
 // ─── Animation ────────────────────────────────────────────────────────────────
 

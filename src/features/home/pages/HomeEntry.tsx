@@ -33,9 +33,9 @@ const CATEGORIES = [
   },
   {
     title: 'Yacht Charter',
-    subtitle: 'Private yachts from 800 AED / hour',
+    subtitle: 'Private yacht charters and marina departures',
     image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
-    href: '/transport/yachts',
+    href: '/experiences/water-activities',
     featured: true,
   },
   {
@@ -54,7 +54,7 @@ const CATEGORIES = [
     title: 'Villa Experience',
     subtitle: 'Private pools and luxury stays',
     image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
-    href: '/stays/villas',
+    href: '/travel/villas',
   },
   {
     title: 'Abu Dhabi Tours',
@@ -71,7 +71,7 @@ const CATEGORIES = [
   {
     title: 'Wellness & Spa',
     subtitle: 'Massage, hammam, relaxation',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbec6d?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop',
     href: '/experiences',
   },
   {
@@ -262,7 +262,7 @@ export default function HomeEntry() {
             </h1>
 
             <p className="font-body font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-14" style={{ color: C.muted }}>
-              Luxury cars, private yachts, desert adventures, and VIP experiences —
+              Luxury travel, yacht charters, desert adventures, and VIP experiences —
               curated and delivered with precision.
             </p>
 
@@ -604,7 +604,7 @@ export default function HomeEntry() {
                 <WhatsAppIcon className="w-4 h-4" /> Message on WhatsApp
               </a>
               <Link
-                href="/concierge"
+                href="/request"
                 className="w-full sm:w-auto px-10 py-4 font-mono text-[11px] uppercase tracking-[0.18em] transition-all duration-200"
                 style={{ border: `1px solid ${C.rim2}`, color: C.muted }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = C.rim3; e.currentTarget.style.color = C.white; }}

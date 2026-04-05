@@ -5,7 +5,6 @@ export type TravelSubcategory =
   | "villas"
   | "residences"
   | "car-rental"
-  | "yachts"
   | "jets";
 
 export type TravelSortBy =
@@ -50,7 +49,6 @@ export const TRAVEL_SUBCATEGORY_LABELS: Record<TravelSubcategory, string> = {
   villas: "Villas",
   residences: "Residences",
   "car-rental": "Car Rental",
-  yachts: "Yachts",
   jets: "Private Jets",
 };
 
@@ -62,6 +60,5 @@ export const TRAVEL_SUBCATEGORY_DESCRIPTIONS: Record<
   villas: "Private luxury villas with exclusive amenities.",
   residences: "Furnished apartments for extended stays.",
   "car-rental": "Luxury and exotic car rentals.",
-  yachts: "Private yacht charters across the Arabian Gulf.",
   jets: "Private jet and helicopter charters.",
 };
