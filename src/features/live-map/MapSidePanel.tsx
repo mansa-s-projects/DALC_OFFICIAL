@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 
 // ─── Shared type (imported by LiveMapPage) ────────────────────────────────────
 
-export type Venue = {
+export type MapLocation = {
   id: string;
   name: string;
   category: string;
@@ -15,18 +15,31 @@ export type Venue = {
   tags?: string[];
   priceRange?: string;
   vibe?: string;
+  bestTime?: string;
+  insiderTip?: string;
+  detailHref?: string;
+  requestHref?: string;
+  requestLabel?: string;
 };
 
 // ─── Category config ──────────────────────────────────────────────────────────
 
 const CATEGORY_CONFIG: Record<string, { color: string; label: string }> = {
-  nightlife:     { color: '#A855F7', label: 'Nightlife'  },
-  clubs:         { color: '#A855F7', label: 'Nightlife'  },
-  'night-clubs': { color: '#A855F7', label: 'Nightclub'  },
-  dining:        { color: '#F59E0B', label: 'Dining'     },
-  restaurants:   { color: '#F59E0B', label: 'Restaurant' },
-  'beach-clubs': { color: '#3B82F6', label: 'Beach Club' },
-  beach:         { color: '#3B82F6', label: 'Beach Club' },
+  landmark: { color: '#C8A46B', label: 'Landmark' },
+  attraction: { color: '#EAB308', label: 'Attraction' },
+  'beach club': { color: '#3B82F6', label: 'Beach Club' },
+  restaurant: { color: '#F59E0B', label: 'Restaurant' },
+  nightlife: { color: '#EC4899', label: 'Nightlife' },
+  museum: { color: '#8B5CF6', label: 'Museum' },
+  park: { color: '#22C55E', label: 'Park' },
+  'cultural site': { color: '#A855F7', label: 'Cultural Site' },
+  viewpoint: { color: '#06B6D4', label: 'Viewpoint' },
+  'hidden gem': { color: '#14B8A6', label: 'Hidden Gem' },
+  shopping: { color: '#F97316', label: 'Shopping' },
+  desert: { color: '#D97706', label: 'Desert' },
+  mountain: { color: '#64748B', label: 'Mountain' },
+  coastal: { color: '#0EA5E9', label: 'Coastal' },
+  nature: { color: '#10B981', label: 'Nature' },
 };
 
 export function getCategoryColor(category: string): string {
@@ -36,20 +49,20 @@ export function getCategoryColor(category: string): string {
 export function getCategoryLabel(category: string): string {
   const cfg = CATEGORY_CONFIG[category?.toLowerCase()];
   if (cfg) return cfg.label;
-  if (!category) return 'Venue';
+  if (!category) return 'Location';
   return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
 }
 
 // ─── MapSidePanel ─────────────────────────────────────────────────────────────
 
 interface MapSidePanelProps {
-  venue: Venue | null;
+  venue: MapLocation | null;
   onClose: () => void;
 }
 
 export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
   const isOpen = venue !== null;
-  const prevVenueRef = useRef<Venue | null>(null);
+  const prevVenueRef = useRef<MapLocation | null>(null);
 
   // Keep previous venue during close animation so content doesn't vanish
   if (venue) prevVenueRef.current = venue;
@@ -146,7 +159,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
         className={`dalc-panel${isOpen ? ' open' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Venue details"
+        aria-label="Location details"
       >
         {displayVenue && (
           <>
@@ -218,7 +231,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                 </button>
               </div>
 
-              {/* Venue name */}
+              {/* Location name */}
               <h2
                 style={{
                   color: '#fff',
@@ -301,6 +314,18 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                     <span style={{ color: color, fontSize: 13, fontWeight: 600 }}>{displayVenue.priceRange}</span>
                   </div>
                 )}
+                {displayVenue.bestTime && (
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, minWidth: 60 }}>Best:</span>
+                    <span style={{ color: '#fff', fontSize: 13 }}>{displayVenue.bestTime}</span>
+                  </div>
+                )}
+                {displayVenue.insiderTip && (
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, minWidth: 60 }}>Tip:</span>
+                    <span style={{ color: 'rgba(255,255,255,0.72)', fontSize: 13, lineHeight: 1.6 }}>{displayVenue.insiderTip}</span>
+                  </div>
+                )}
                 {displayVenue.tags && displayVenue.tags.length > 0 && (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
                     {displayVenue.tags.map((tag, idx) => (
@@ -337,7 +362,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
             >
               {/* View Details */}
               <a
-                href={`/venue/${displayVenue.id}`}
+                href={displayVenue.detailHref ?? '/explore'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -364,7 +389,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
 
               {/* Request */}
               <a
-                href={`/concierge/request?venue=${displayVenue.id}`}
+                href={displayVenue.requestHref ?? '/request'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -397,7 +422,7 @@ export function MapSidePanel({ venue, onClose }: MapSidePanelProps) {
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
-                Request a Table
+                {displayVenue.requestLabel ?? 'Request with Concierge'}
               </a>
             </div>
           </>

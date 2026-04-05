@@ -22,12 +22,12 @@ import { cn } from "@/lib/utils";
 // ─── Constants ──────────────────────────────────────────────────────────────────
 
 const QUICK_LINKS = [
-  { label: "Venues", href: "/venues", color: "#C9A84C" },
+  { label: "Nightlife", href: "/nightlife", color: "#C9A84C" },
   { label: "Experiences", href: "/experiences", color: "#7EB8A0" },
-  { label: "Transport", href: "/transport", color: "#8BA4D4" },
-  { label: "Stays", href: "/stays", color: "#B89AD4" },
+  { label: "Travel", href: "/travel", color: "#8BA4D4" },
+  { label: "Travel Stays", href: "/travel/hotels", color: "#B89AD4" },
   { label: "Business", href: "/business", color: "#C4917D" },
-  { label: "Concierge", href: "/concierge", color: "#C9A84C" },
+  { label: "Concierge", href: "/request", color: "#C9A84C" },
 ];
 
 // ─── Component ───────────────────────────────────────────────────────────────────

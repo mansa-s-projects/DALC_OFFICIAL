@@ -165,7 +165,7 @@ export default function AdminStaysForm() {
   return (
     <div>
       <button onClick={() => navigate('/admin/stays')} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Stays
+        <ArrowLeft className="w-4 h-4" /> Back to Travel Stays
       </button>
 
       <h1 className="text-3xl font-display text-white mb-8">

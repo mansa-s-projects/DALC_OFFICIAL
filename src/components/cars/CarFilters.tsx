@@ -4,7 +4,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { PRICE_RANGES, FUEL_TYPES } from '@/data/carsData';
+import { PRICE_RANGES, FUEL_TYPES } from '@/data/transport/carsData';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

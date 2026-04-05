@@ -24,7 +24,7 @@ const NAV_ITEMS = [
   { href: '/admin/transport', icon: Car, label: 'Transport' },
   { href: '/admin/experiences', icon: Compass, label: 'Experiences' },
   { href: '/admin/business', icon: Briefcase, label: 'Business' },
-  { href: '/admin/stays', icon: Hotel, label: 'Stays' },
+  { href: '/admin/stays', icon: Hotel, label: 'Travel Stays' },
   { href: '/admin/venues', icon: MapPin, label: 'Venues' },
   { href: '/admin/suppliers', icon: Truck, label: 'Suppliers' },
   { href: '/admin/visas', icon: FileCheck, label: 'Visa Applications' },

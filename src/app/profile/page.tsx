@@ -322,7 +322,7 @@ function RequestsSection({ userId }: { userId: string }) {
         <h3 className="text-lg text-white mb-2">No requests yet</h3>
         <p className="text-white/40 text-sm mb-6">Submit a concierge request for personalized assistance</p>
         <Link
-          href="/concierge"
+          href="/request"
           className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A46B] text-black rounded-xl font-medium hover:bg-[#EFD7A4] transition-colors"
         >
           Make a Request

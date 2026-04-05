@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { CAR_CATEGORIES } from '@/data/carsData';
+import { CAR_CATEGORIES } from '@/data/transport/carsData';
 import type { CarTabId } from './CarTabs';
 
 // ─── Component ────────────────────────────────────────────────────────────────

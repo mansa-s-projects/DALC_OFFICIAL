@@ -1,15 +1,15 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Edit2, Trash2, Upload, CheckCircle, AlertCircle, Eye } from 'lucide-react';
 import { useSuppliers } from '../../hooks/useSuppliers';
 import { useSupplierRegistry } from '../../shared/hooks/useSupplierRegistry';
-import { lookupVenueIds } from '../../data/venueAliasMap';
+import { lookupVenueIds } from '../../data/venues/venueAliasMap';
 import { AdminEmptyState, AdminPageHeader, AdminSearchInput, AdminSelectFilter } from '../components';
 import { useAdminFilters } from '../hooks';
 import type { BulkImportRow } from '../../platform/requests/suppliers';
 
-// ── Bulk import tab ─────────────────────────────────────────────────────────
+// â”€â”€ Bulk import tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface ParsedPreviewRow extends BulkImportRow {
   resolvedVenueIds: string[];
@@ -109,7 +109,7 @@ function BulkImportTab() {
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-white font-display text-lg">Preview — {preview.length} rows</h3>
+            <h3 className="text-white font-display text-lg">Preview â€” {preview.length} rows</h3>
             <p className="text-gray-500 text-xs mt-1">Review the data below, then click Import to apply.</p>
           </div>
           <div className="flex gap-3">
@@ -124,7 +124,7 @@ function BulkImportTab() {
               disabled={bulkImport.isPending}
               className="flex items-center gap-2 px-5 py-2 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors disabled:opacity-50"
             >
-              {bulkImport.isPending ? 'Importing…' : `Import ${preview.length} suppliers`}
+              {bulkImport.isPending ? 'Importingâ€¦' : `Import ${preview.length} suppliers`}
             </button>
           </div>
         </div>
@@ -145,9 +145,9 @@ function BulkImportTab() {
                 <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02]">
                   <td className="p-3 text-white font-medium">{row.name}</td>
                   <td className="p-3 text-gray-400">{row.categories.join(', ')}</td>
-                  <td className="p-3 text-gray-500 text-xs">{row.location || '—'}</td>
+                  <td className="p-3 text-gray-500 text-xs">{row.location || 'â€”'}</td>
                   <td className="p-3 text-gray-400 text-xs font-mono">
-                    {row.resolvedVenueIds.length > 0 ? row.resolvedVenueIds.join(', ') : '—'}
+                    {row.resolvedVenueIds.length > 0 ? row.resolvedVenueIds.join(', ') : 'â€”'}
                   </td>
                   <td className="p-3">
                     {row.resolvedVenueIds.length > 0 ? (
@@ -203,7 +203,7 @@ function BulkImportTab() {
   );
 }
 
-// ── Main page ────────────────────────────────────────────────────────────────
+// â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function AdminSuppliers() {
   const [activeTab, setActiveTab] = useState<'list' | 'import'>('list');
@@ -308,13 +308,13 @@ export default function AdminSuppliers() {
                         <span className="text-white font-medium">{supplier.name}</span>
                       </td>
                       <td className="p-4 text-gray-400 text-sm">
-                        <div>{supplier.contact_person || '—'}</div>
+                        <div>{supplier.contact_person || 'â€”'}</div>
                         <div className="text-gray-500 text-xs">{supplier.email || supplier.phone || ''}</div>
                       </td>
                       <td className="p-4 text-gray-400 text-sm">
                         {supplier.categories.length > 0
                           ? supplier.categories.slice(0, 3).join(', ')
-                          : '—'}
+                          : 'â€”'}
                       </td>
                       <td className="p-4 text-luxury-gold text-sm">
                         {supplier.commission_rate}%
@@ -357,3 +357,4 @@ export default function AdminSuppliers() {
     </div>
   );
 }
+

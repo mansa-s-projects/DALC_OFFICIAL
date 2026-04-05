@@ -1,4 +1,4 @@
-import { Search, X, ChevronDown, LayoutGrid, Map as MapIcon } from 'lucide-react';
+import { Search, X, ChevronDown, LayoutGrid, Map as MapIcon, Star, Gem, DollarSign } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import type { ExploreFilterState } from '../types';
 
@@ -15,13 +15,23 @@ const EMIRATES = [
 
 const CATEGORIES = [
   'All Categories',
-  'Landmarks',
-  'Hidden Gems',
-  'Attractions',
-  'Museums',
-  'Parks',
-  'Cultural Sites',
-  'Viewpoints',
+  'Landmark',
+  'Restaurant',
+  'Beach Club',
+  'Night Club',
+  'Dining Entertainment',
+  'Culture',
+  'Nature',
+  'Viewpoint',
+  'Adventure',
+];
+
+const PRICE_TIERS = [
+  { value: 'all', label: 'Any Price' },
+  { value: '1', label: '$' },
+  { value: '2', label: '$$' },
+  { value: '3', label: '$$$' },
+  { value: '4', label: '$$$$' },
 ];
 
 interface ExploreFiltersProps {
@@ -92,6 +102,7 @@ export default function ExploreFilters({
     filters.emirate !== 'All Emirates' ||
     filters.category !== 'All Categories' ||
     filters.hiddenGems !== 'all' ||
+    filters.featured !== 'all' ||
     filters.search.trim() !== '';
 
   return (
@@ -192,6 +203,21 @@ export default function ExploreFilters({
             />
           </div>
 
+          {/* Featured Toggle */}
+          <button
+            onClick={() => set('featured', filters.featured === 'all' ? 'true' : 'all')}
+            aria-label="Toggle featured locations"
+            className={cn(
+              'flex flex-shrink-0 items-center gap-1.5 rounded-xl border py-2.5 px-4 text-sm font-medium transition-all duration-200',
+              filters.featured === 'true'
+                ? 'border-[rgba(200,164,107,0.6)] bg-[rgba(200,164,107,0.1)] text-[#C8A46B] shadow-[0_0_14px_rgba(200,164,107,0.12)]'
+                : 'border-[rgba(200,164,107,0.2)] bg-[#111214] text-[#B6B6B6] hover:border-[rgba(200,164,107,0.4)] hover:text-white',
+            )}
+          >
+            <Star className={cn('h-3.5 w-3.5', filters.featured === 'true' ? 'fill-[#C8A46B]' : '')} />
+            Featured
+          </button>
+
           {/* Spacer */}
           <div className="flex-1" />
 
@@ -200,7 +226,13 @@ export default function ExploreFilters({
             {hasActive && (
               <button
                 onClick={() =>
-                  onChange({ emirate: 'All Emirates', category: 'All Categories', hiddenGems: 'all', search: '' })
+                  onChange({ 
+                    emirate: 'All Emirates', 
+                    category: 'All Categories', 
+                    hiddenGems: 'all', 
+                    featured: 'all',
+                    search: '' 
+                  })
                 }
                 className="text-xs text-[#C8A46B]/70 underline underline-offset-2 transition-colors hover:text-[#C8A46B]"
               >

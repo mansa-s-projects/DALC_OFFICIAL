@@ -6,11 +6,11 @@ import React from 'react';
 
 export type FilterId =
   | 'all'
-  | 'nightlife'
-  | 'beach-clubs'
-  | 'restaurants'
+  | 'landmarks'
+  | 'culture'
   | 'dining'
-  | 'experiences';
+  | 'nightlife'
+  | 'nature';
 
 type FilterDef = {
   id: FilterId;
@@ -28,38 +28,38 @@ export const FILTERS: FilterDef[] = [
     matches: [], // special-cased in matchesFilter
   },
   {
-    id: 'nightlife',
-    label: 'Nightlife',
-    color: '#A855F7',
-    matches: ['nightlife', 'clubs', 'night-clubs', 'nightclub'],
+    id: 'landmarks',
+    label: 'Landmarks',
+    color: '#C8A46B',
+    matches: ['landmark', 'attraction', 'viewpoint', 'shopping'],
   },
   {
-    id: 'beach-clubs',
-    label: 'Beach Clubs',
-    color: '#3B82F6',
-    matches: ['beach-clubs', 'beach', 'beach club'],
-  },
-  {
-    id: 'restaurants',
-    label: 'Restaurants',
-    color: '#F59E0B',
-    matches: ['restaurants', 'restaurant'],
+    id: 'culture',
+    label: 'Culture',
+    color: '#8B5CF6',
+    matches: ['museum', 'cultural site', 'hidden gem'],
   },
   {
     id: 'dining',
     label: 'Dining',
     color: '#F59E0B',
-    matches: ['dining'],
+    matches: ['restaurant', 'beach club'],
   },
   {
-    id: 'experiences',
-    label: 'Experiences',
+    id: 'nightlife',
+    label: 'Nightlife',
+    color: '#EC4899',
+    matches: ['nightlife'],
+  },
+  {
+    id: 'nature',
+    label: 'Nature',
     color: '#10B981',
-    matches: ['experiences', 'experience', 'activity', 'activities'],
+    matches: ['park', 'desert', 'mountain', 'coastal', 'nature'],
   },
 ];
 
-/** Returns true if a venue's category passes the given filter */
+/** Returns true if a location's category passes the given filter */
 export function matchesFilter(category: string, filterId: FilterId): boolean {
   if (filterId === 'all') return true;
   const def = FILTERS.find((f) => f.id === filterId);
@@ -148,7 +148,7 @@ export function MapCategoryFilter({ active, onChange }: MapCategoryFilterProps) 
       `}</style>
 
       <div className="dalc-filter-bar">
-        <div className="dalc-filter-scroll" role="tablist" aria-label="Filter venues by category">
+        <div className="dalc-filter-scroll" role="tablist" aria-label="Filter map locations by category">
           {FILTERS.map((filter) => {
             const isActive = active === filter.id;
             return (

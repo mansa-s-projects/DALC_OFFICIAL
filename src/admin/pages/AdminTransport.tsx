@@ -20,7 +20,7 @@ const TRANSPORT_CATEGORIES = ['car-rental', 'yachts', 'travel'] as const;
 
 const CATEGORY_LABELS: Record<string, string> = {
   'car-rental': 'Car Rental',
-  yachts: 'Yachts',
+  yachts: 'Yacht Charters (Legacy)',
   travel: 'Private Jets',
 };
 
@@ -70,13 +70,13 @@ export default function AdminTransport() {
   return (
     <div>
       <AdminPageHeader 
-        title="Transport Queue"
+        title="Travel & Mobility Queue"
         actions={
           <Link
             href="/admin/transport/new"
             className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
           >
-            <Plus className="w-4 h-4" /> Add Transport
+            <Plus className="w-4 h-4" /> Add Travel Service
           </Link>
         }
       />
@@ -89,7 +89,7 @@ export default function AdminTransport() {
       </div>
 
       <div className="flex flex-wrap gap-3 mb-8">
-        <AdminSearchInput value={search} onChange={setSearch} placeholder="Search transport requests..." />
+        <AdminSearchInput value={search} onChange={setSearch} placeholder="Search travel and mobility requests..." />
         <AdminSelectFilter
           value={filterStatus}
           onChange={setFilterStatus}
@@ -111,7 +111,7 @@ export default function AdminTransport() {
       {isLoading ? (
         <AdminLoadingRows rowClassName="h-20" />
       ) : filtered.length === 0 ? (
-        <AdminEmptyState message="No transport requests found." />
+        <AdminEmptyState message="No travel or mobility requests found." />
       ) : (
         <div className="space-y-2">
           {filtered.map((request) => {

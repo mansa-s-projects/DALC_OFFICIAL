@@ -13,7 +13,7 @@ import {
   CAR_CATEGORIES,
   getAllCars,
   priceInRange,
-} from '../../data/carsData';
+} from '../../data/transport/carsData';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 

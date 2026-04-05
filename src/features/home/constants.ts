@@ -13,7 +13,7 @@ export const CATEGORIES: CategoryItem[] = ROW_ONE_CATEGORIES;
 export const ROW_TWO_CATEGORIES: CategoryItem[] = [
   { title: 'Travel', subtitle: 'Flights and stays', icon: Hotel, href: '/travel' },
   { title: 'Business', subtitle: 'Launch in Dubai', icon: Briefcase, href: '/business' },
-  { title: 'Concierge', subtitle: 'Special requests', icon: Bell, href: '/concierge' },
+  { title: 'Concierge', subtitle: 'Special requests', icon: Bell, href: '/request' },
 ];
 
 export const EDITORS_PICKS: ServiceItem[] = [

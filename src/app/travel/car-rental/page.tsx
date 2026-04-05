@@ -10,7 +10,7 @@ import {
   CAR_CATEGORIES,
   getCarImage,
   type CarItem,
-} from '../../../data/carsData';
+} from '../../../data/transport/carsData';
 
 const RENTAL_CATEGORIES = CAR_CATEGORIES;
 

@@ -66,7 +66,7 @@ export default function AdminStays() {
   return (
     <div>
       <AdminPageHeader 
-        title="Stays Queue"
+        title="Travel Stays Queue"
         actions={
           <Link
             href="/admin/stays/new"
@@ -85,7 +85,7 @@ export default function AdminStays() {
       </div>
 
       <div className="flex flex-wrap gap-3 mb-8">
-        <AdminSearchInput value={search} onChange={setSearch} placeholder="Search stays requests..." />
+        <AdminSearchInput value={search} onChange={setSearch} placeholder="Search travel stay requests..." />
         <AdminSelectFilter
           value={filterStatus}
           onChange={setFilterStatus}
@@ -99,7 +99,7 @@ export default function AdminStays() {
       {isLoading ? (
         <AdminLoadingRows rowClassName="h-20" />
       ) : filtered.length === 0 ? (
-        <AdminEmptyState message="No stays requests found." />
+        <AdminEmptyState message="No travel stay requests found." />
       ) : (
         <div className="space-y-2">
           {filtered.map((request) => {

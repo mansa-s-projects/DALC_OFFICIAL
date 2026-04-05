@@ -69,7 +69,7 @@ export default function AdminTransportForm() {
         .single();
 
       if (err || !data) {
-        setError('Transport service not found.');
+        setError('Travel service not found.');
         setLoading(false);
         return;
       }
@@ -156,7 +156,7 @@ export default function AdminTransportForm() {
       queryClient.invalidateQueries({ queryKey: ['transport'] });
       navigate('/admin/transport');
     } catch (err: any) {
-      setError(err.message ?? 'Failed to save transport service.');
+      setError(err.message ?? 'Failed to save travel service.');
     } finally {
       setSaving(false);
     }
@@ -169,11 +169,11 @@ export default function AdminTransportForm() {
   return (
     <div>
       <button onClick={() => navigate('/admin/transport')} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Transport
+        <ArrowLeft className="w-4 h-4" /> Back to Travel & Mobility
       </button>
 
       <h1 className="text-3xl font-display text-white mb-8">
-        {isNew ? 'Add Transport Service' : `Edit: ${form.name}`}
+        {isNew ? 'Add Travel Service' : `Edit: ${form.name}`}
       </h1>
 
       {error && (
@@ -194,7 +194,7 @@ export default function AdminTransportForm() {
               <label htmlFor="subcategory" className="block text-xs font-bold uppercase text-gray-500 mb-1">Subcategory *</label>
               <select id="subcategory" aria-label="Subcategory" value={form.subcategory} onChange={(e) => update('subcategory', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-luxury-gold outline-none">
                 <option value="cars">Cars</option>
-                <option value="yachts">Yachts</option>
+                <option value="yachts">Yacht Charters (Legacy)</option>
                 <option value="jets">Jets</option>
               </select>
             </div>

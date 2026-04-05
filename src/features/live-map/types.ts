@@ -41,5 +41,5 @@ export const MAP_FILTER_OPTIONS: MapFilterOption[] = [
   { id: "night-clubs", label: "Nightlife", color: "#9B59B6" },
   { id: "experiences", label: "Experiences", color: "#2ECC71" },
   { id: "transport", label: "Transport", color: "#F39C12" },
-  { id: "stays", label: "Stays", color: "#1ABC9C" },
+  { id: "stays", label: "Travel Stays", color: "#1ABC9C" },
 ];

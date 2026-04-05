@@ -107,59 +107,6 @@ const PROCESS_STEPS = [
   { num: '06', title: 'Banking & Setup', desc: 'Corporate bank account opened, visas processed, and your team can start operating.' },
 ];
 
-const PACKAGES = [
-  {
-    name: 'Starter',
-    price: 'AED 4,500',
-    subtitle: 'Service fee, excl. government fees',
-    desc: 'Ideal for entrepreneurs setting up their first UAE company.',
-    features: [
-      'Free zone license setup',
-      'Company name reservation',
-      'Document preparation',
-      'Shareholder visa (1 person)',
-      'Registered address (1 year)',
-      'Email support',
-    ],
-    featured: false,
-    cta: 'Get Started',
-  },
-  {
-    name: 'Professional',
-    price: 'AED 9,500',
-    subtitle: 'Service fee, excl. government fees',
-    desc: 'Full-service setup including banking and PRO support.',
-    features: [
-      'Mainland or Free Zone license',
-      'All document preparation',
-      'Up to 3 investor visas',
-      'Corporate bank account opening',
-      'Virtual office (1 year)',
-      'PRO services (6 months)',
-      'Dedicated case manager',
-    ],
-    featured: true,
-    cta: 'Most Popular',
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    subtitle: 'Quoted based on requirements',
-    desc: 'Multi-entity structures, regulated activities, and global setups.',
-    features: [
-      'Multi-entity structuring',
-      'Regulated activity licensing (DIFC, DMCC)',
-      'Full PRO service (12 months)',
-      'Team visa processing (up to 10)',
-      'Accounting & compliance setup',
-      'Legal advisory included',
-      'C-suite introduction service',
-    ],
-    featured: false,
-    cta: 'Enquire',
-  },
-];
-
 const FAQS = [
   { q: 'Can a foreigner own 100% of a UAE business?', a: 'Yes. The 2021 Commercial Companies Law amendment allows 100% foreign ownership in most mainland activities. Free zones have always permitted 100% foreign ownership.' },
   { q: 'What is the difference between mainland and free zone?', a: 'Mainland companies can trade freely across the UAE including with government entities. Free zone companies operate within a designated zone and may need a local distributor for UAE market access, but benefit from tax exemptions.' },
@@ -437,54 +384,6 @@ export default function BusinessSetupPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Pricing ────────────────────────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
-        <motion.div {...fade()} className="mb-16 text-center">
-          <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Packages</p>
-          <h2 className="text-3xl md:text-5xl font-display text-white">Pricing</h2>
-          <p className="text-gray-500 text-sm mt-3">Service fees only. Government and licensing fees quoted separately.</p>
-        </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PACKAGES.map((pkg, idx) => (
-            <motion.div key={idx} {...fade(idx * 0.1)}>
-              <div className={`relative h-full border p-8 flex flex-col ${
-                pkg.featured ? 'border-luxury-gold/60 bg-luxury-gold/[0.04]' : 'border-white/[0.07] hover:border-luxury-gold/30'
-              } transition-all duration-300`}>
-                {pkg.featured && <div className="absolute -top-px left-0 right-0 h-[1px] bg-luxury-gold" />}
-                {pkg.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-luxury-gold text-luxury-black text-[9px] font-bold uppercase tracking-widest px-3 py-1">
-                    Recommended
-                  </div>
-                )}
-                <p className="text-luxury-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-2">{pkg.name}</p>
-                <p className="font-display text-4xl text-white mb-1">{pkg.price}</p>
-                <p className="text-gray-600 text-xs mb-4">{pkg.subtitle}</p>
-                <p className="text-gray-500 text-sm mb-8 leading-relaxed">{pkg.desc}</p>
-                <ul className="space-y-3 flex-1 mb-10">
-                  {pkg.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
-                      <Check className="w-4 h-4 text-luxury-gold flex-shrink-0 mt-0.5" />{f}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="https://wa.me/971585987600?text=Hi%20DALC%20%E2%80%94%20I%27m%20interested%20in%20business%20setup%20in%20Dubai."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
-                    pkg.featured
-                      ? 'bg-luxury-gold text-luxury-black hover:bg-luxury-gold/90'
-                      : 'border border-luxury-gold/40 text-luxury-gold hover:bg-luxury-gold/10'
-                  }`}
-                >
-                  {pkg.cta} <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </section>
 

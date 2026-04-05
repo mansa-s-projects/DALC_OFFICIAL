@@ -99,11 +99,11 @@ export default function ResidencesList() {
             transition={{ duration: 0.6 }}
           >
             <Link 
-              href="/stays"
+              href="/travel"
               className="inline-flex items-center gap-2 text-luxury-gold hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm uppercase tracking-widest">Back to Stays</span>
+              <span className="text-sm uppercase tracking-widest">Back to Travel</span>
             </Link>
             <h1 className="text-4xl md:text-6xl font-display text-white mb-4">
               Furnished Residences

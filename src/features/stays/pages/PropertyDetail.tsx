@@ -68,11 +68,11 @@ export default function PropertyDetail() {
           <h2 className="text-2xl font-display text-white mb-4">Property Not Found</h2>
           <p className="text-gray-400 mb-8">The property you're looking for doesn't exist.</p>
           <Link 
-            href="/stays"
+            href="/travel"
             className="inline-flex items-center gap-2 px-6 py-3 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Stays
+            Back to Travel
           </Link>
         </div>
       </div>
@@ -97,12 +97,12 @@ export default function PropertyDetail() {
       <div className="pt-24 pb-4 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 text-sm">
-            <Link href="/stays" className="text-gray-400 hover:text-luxury-gold transition-colors">
-              Stays
+            <Link href="/travel" className="text-gray-400 hover:text-luxury-gold transition-colors">
+              Travel
             </Link>
             <span className="text-gray-600">/</span>
             <Link 
-              href={`/stays/${property.subcategory}`}
+              href={`/travel/${property.subcategory}`}
               className="text-gray-400 hover:text-luxury-gold transition-colors"
             >
               {SUBCATEGORY_LABELS[property.subcategory]}

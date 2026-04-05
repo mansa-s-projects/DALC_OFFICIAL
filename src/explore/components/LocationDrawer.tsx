@@ -1,11 +1,104 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { X, MapPin, ExternalLink, Gem, Calendar } from 'lucide-react';
+import { 
+  X, MapPin, ExternalLink, Gem, Calendar, Star, Clock, 
+  DollarSign, Sparkles, ChevronRight, Navigation, Share2,
+  ChevronLeft, ImageIcon
+} from 'lucide-react';
 import { format } from 'date-fns';
+import { useState, useCallback } from 'react';
+import Image from 'next/image';
 import type { ExploreLocation } from '../types';
 
 interface LocationDrawerProps {
   location: ExploreLocation | null;
   onClose: () => void;
+}
+
+function PriceTierIndicator({ tier }: { tier: number }) {
+  return (
+    <div className="flex items-center gap-0.5">
+      {[1, 2, 3, 4].map((i) => (
+        <DollarSign
+          key={i}
+          className={`h-3.5 w-3.5 ${i <= tier ? 'text-[#C8A46B]' : 'text-[#B6B6B6]/20'}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function GalleryCarousel({ images, name }: { images: string[]; name: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const next = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const prev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  if (images.length === 0) return null;
+
+  return (
+    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`${name} - Image ${currentIndex + 1}`}
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-[#111214]/60 via-transparent to-transparent" />
+
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white/80 transition-all hover:bg-black/70 hover:text-white"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-2 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white/80 transition-all hover:bg-black/70 hover:text-white"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-1.5 rounded-full transition-all ${
+                  idx === currentIndex 
+                    ? 'w-4 bg-[#C8A46B]' 
+                    : 'w-1.5 bg-white/40 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
+      <div className="absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-black/50 backdrop-blur-sm px-2 py-1">
+        <ImageIcon className="h-3 w-3 text-white/70" />
+        <span className="text-[10px] text-white/70">{currentIndex + 1}/{images.length}</span>
+      </div>
+    </div>
+  );
 }
 
 export default function LocationDrawer({ location, onClose }: LocationDrawerProps) {
@@ -16,6 +109,28 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
   const mapsDirectionsUrl = location
     ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(location.latitude)},${encodeURIComponent(location.longitude)}`
     : '#';
+
+  const allImages = location ? [
+    ...(location.hero_image ? [location.hero_image] : []),
+    ...(location.gallery_images || [])
+  ].filter(Boolean) : [];
+
+  const handleShare = useCallback(async () => {
+    if (!location) return;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: location.name,
+          text: location.short_description || `Discover ${location.name} in ${location.emirate}`,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+      }
+    } catch (err) {
+      console.error('Share failed:', err);
+    }
+  }, [location]);
 
   return (
     <AnimatePresence>
@@ -40,7 +155,7 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 260, mass: 0.9 }}
-            className="fixed right-0 top-0 z-[70] flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-[rgba(200,164,107,0.18)] bg-[#111214] shadow-[-32px_0_80px_rgba(0,0,0,0.7)]"
+            className="fixed right-0 top-0 z-[70] flex h-full w-full max-w-lg flex-col overflow-y-auto border-l border-[rgba(200,164,107,0.18)] bg-[#111214] shadow-[-32px_0_80px_rgba(0,0,0,0.7)]"
             role="dialog"
             aria-modal="true"
             aria-label={`Details for ${location.name}`}
@@ -48,29 +163,89 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
             {/* Subtle top glow */}
             <div className="pointer-events-none absolute left-0 top-0 h-32 w-full bg-gradient-to-b from-[rgba(200,164,107,0.04)] to-transparent" />
 
-            {/* Header */}
-            <div className="relative flex items-start justify-between border-b border-[rgba(200,164,107,0.12)] p-6">
-              <div className="flex-1 pr-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.45em] text-[#C8A46B]">
-                  {location.emirate ?? 'UAE Location'}
-                </p>
-                <h2 className="mt-1.5 font-display text-2xl font-bold leading-tight text-white">
-                  {location.name}
-                </h2>
-                {location.category && (
-                  <span className="mt-2 inline-block rounded-md border border-white/8 bg-white/5 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#B6B6B6]/70">
-                    {location.category}
-                  </span>
-                )}
-              </div>
+            {/* Hero Image or Placeholder */}
+            <div className="relative">
+              {allImages.length > 0 ? (
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src={allImages[0]}
+                    alt={location.name}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111214] via-[#111214]/30 to-transparent" />
+                  
+                  {/* Badges on image */}
+                  <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
+                    {location.is_featured && (
+                      <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#C8A46B] to-[#E0C87F] px-3 py-1.5 shadow-lg">
+                        <Star className="h-3 w-3 fill-[#0a0800] text-[#0a0800]" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#0a0800]">Featured</span>
+                      </div>
+                    )}
+                    {location.category && (
+                      <span className="rounded-md border border-white/15 bg-black/60 backdrop-blur-md px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/90">
+                        {location.category}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="relative aspect-[16/10] w-full bg-gradient-to-br from-[#1a1a28] via-[#151520] to-[#111118]">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-20 w-20 rounded-full border border-[rgba(200,164,107,0.2)] bg-[rgba(200,164,107,0.05)] flex items-center justify-center">
+                      <MapPin className="h-8 w-8 text-[#C8A46B]/30" />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111214] via-transparent to-transparent" />
+                </div>
+              )}
 
+              {/* Close button */}
               <button
                 onClick={onClose}
-                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[rgba(200,164,107,0.2)] text-[#B6B6B6] transition-all duration-200 hover:border-[rgba(200,164,107,0.55)] hover:bg-[rgba(200,164,107,0.07)] hover:text-white"
+                className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/50 backdrop-blur-sm text-white/80 transition-all duration-200 hover:bg-black/70 hover:text-white"
                 aria-label="Close drawer"
               >
                 <X className="h-4 w-4" />
               </button>
+
+              {/* Share button */}
+              <button
+                onClick={handleShare}
+                className="absolute top-4 right-16 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/50 backdrop-blur-sm text-white/80 transition-all duration-200 hover:bg-black/70 hover:text-white"
+                aria-label="Share location"
+              >
+                <Share2 className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Header section */}
+            <div className="relative -mt-12 z-10 px-6 pt-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.45em] text-[#C8A46B]">
+                {location.area || location.emirate || 'UAE Location'}
+              </p>
+              <h2 className="mt-1.5 font-display text-2xl font-bold leading-tight text-white">
+                {location.name}
+              </h2>
+              
+              {/* Vibe tagline */}
+              {location.vibe && (
+                <p className="mt-2 text-sm italic text-[#C8A46B]/70">{location.vibe}</p>
+              )}
+
+              {/* Quick stats row */}
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                {location.price_tier && <PriceTierIndicator tier={location.price_tier} />}
+                
+                {location.best_time && (
+                  <span className="flex items-center gap-1.5 text-xs text-[#B6B6B6]/60">
+                    <Clock className="h-3.5 w-3.5" />
+                    {location.best_time}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Body */}
@@ -81,25 +256,84 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
                   initial={{ opacity: 0, scale: 0.93 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.15 }}
-                  className="flex items-center gap-2.5 rounded-xl border border-[rgba(200,164,107,0.28)] bg-[rgba(200,164,107,0.06)] px-4 py-3"
+                  className="flex items-center gap-2.5 rounded-xl border border-[rgba(139,92,246,0.3)] bg-[rgba(139,92,246,0.08)] px-4 py-3"
                 >
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[rgba(200,164,107,0.15)]">
-                    <Gem className="h-3.5 w-3.5 text-[#C8A46B]" />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[rgba(139,92,246,0.2)]">
+                    <Gem className="h-3.5 w-3.5 text-[#8B5CF6]" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-[#C8A46B]">Hidden Gem</p>
+                    <p className="text-xs font-semibold text-[#8B5CF6]">Hidden Gem</p>
                     <p className="text-[11px] text-[#B6B6B6]/60">Off the beaten path</p>
                   </div>
                 </motion.div>
               )}
 
+              {/* Tags */}
+              {location.tags && location.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {location.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md border border-white/8 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-[#B6B6B6]/80"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               {/* Description */}
-              {location.short_description && (
+              {(location.long_description || location.short_description) && (
                 <div>
                   <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.35em] text-[#B6B6B6]/55">
                     About
                   </p>
-                  <p className="leading-relaxed text-[#B6B6B6]">{location.short_description}</p>
+                  <p className="leading-relaxed text-[#B6B6B6]">
+                    {location.long_description || location.short_description}
+                  </p>
+                </div>
+              )}
+
+              {/* Insider Tip */}
+              {location.insider_tip && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="rounded-xl border border-[rgba(200,164,107,0.2)] bg-[rgba(200,164,107,0.04)] p-4"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-[rgba(200,164,107,0.12)]">
+                      <Sparkles className="h-3.5 w-3.5 text-[#C8A46B]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[#C8A46B]">Insider Tip</p>
+                      <p className="mt-1 text-sm leading-relaxed text-[#B6B6B6]/80">{location.insider_tip}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Opening Hours */}
+              {location.opening_hours && (
+                <div>
+                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.35em] text-[#B6B6B6]/55">
+                    Opening Hours
+                  </p>
+                  <div className="flex items-center gap-2 rounded-xl border border-[rgba(200,164,107,0.15)] bg-[#0B0B0C] px-4 py-3">
+                    <Clock className="h-4 w-4 text-[#C8A46B]/60" />
+                    <span className="text-sm text-[#B6B6B6]">{location.opening_hours}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Gallery */}
+              {allImages.length > 1 && (
+                <div>
+                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.35em] text-[#B6B6B6]/55">
+                    Gallery
+                  </p>
+                  <GalleryCarousel images={allImages} name={location.name} />
                 </div>
               )}
 
@@ -132,25 +366,37 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
 
               {/* CTA buttons */}
               <div className="space-y-3 pt-2">
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-[rgba(200,164,107,0.35)] bg-[rgba(200,164,107,0.09)] px-6 py-3.5 text-sm font-semibold text-[#C8A46B] transition-all duration-300 hover:border-[rgba(200,164,107,0.6)] hover:bg-[rgba(200,164,107,0.15)] hover:shadow-[0_0_24px_rgba(200,164,107,0.14)]"
-                >
-                  <MapPin className="h-4 w-4" />
-                  View on Google Maps
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-                </a>
+                {location.booking_url && (
+                  <a
+                    href={location.booking_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#C8A46B] to-[#D4B87A] px-6 py-4 text-sm font-bold text-[#0a0800] transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,164,107,0.3)]"
+                  >
+                    Book Now
+                    <ChevronRight className="h-4 w-4" />
+                  </a>
+                )}
 
                 <a
                   href={mapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-[rgba(200,164,107,0.35)] bg-[rgba(200,164,107,0.09)] px-6 py-3.5 text-sm font-semibold text-[#C8A46B] transition-all duration-300 hover:border-[rgba(200,164,107,0.6)] hover:bg-[rgba(200,164,107,0.15)] hover:shadow-[0_0_24px_rgba(200,164,107,0.14)]"
+                >
+                  <Navigation className="h-4 w-4" />
+                  Get Directions
+                </a>
+
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/8 bg-white/5 px-6 py-3.5 text-sm font-semibold text-[#B6B6B6] transition-all duration-200 hover:border-white/15 hover:text-white"
                 >
-                  Get Directions
-                  <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+                  <MapPin className="h-4 w-4" />
+                  View on Google Maps
+                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
                 </a>
               </div>
             </div>

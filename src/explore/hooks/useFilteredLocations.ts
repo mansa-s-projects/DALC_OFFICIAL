@@ -13,6 +13,7 @@ export function useFilteredLocations(
     return locations.filter((loc) => {
       if (filters.hiddenGems === 'true' && !loc.is_hidden_gem) return false;
       if (filters.hiddenGems === 'false' && loc.is_hidden_gem) return false;
+      if (filters.featured === 'true' && !loc.is_featured) return false;
       if (
         filters.emirate !== 'All Emirates' &&
         loc.emirate?.toLowerCase() !== filters.emirate.toLowerCase()
@@ -28,7 +29,10 @@ export function useFilteredLocations(
           loc.name.toLowerCase().includes(q) ||
           (loc.short_description?.toLowerCase().includes(q) ?? false) ||
           (loc.emirate?.toLowerCase().includes(q) ?? false) ||
-          (loc.category?.toLowerCase().includes(q) ?? false);
+          (loc.category?.toLowerCase().includes(q) ?? false) ||
+          (loc.tags?.some(tag => tag.toLowerCase().includes(q)) ?? false) ||
+          (loc.vibe?.toLowerCase().includes(q) ?? false) ||
+          (loc.area?.toLowerCase().includes(q) ?? false);
         if (!hit) return false;
       }
       return true;

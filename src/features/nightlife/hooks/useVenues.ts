@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { Category, Venue } from '../../../types';
 import { supabase } from '../../../lib/supabase';
-import { applyLocalImages } from '../../../data/venueImages';
-import { MOCK_VENUES } from '../../../data/mockData';
+import { applyLocalImages } from '../../../data/venues/venueImages';
+import { MOCK_VENUES } from '../../../data/venues/mockData';
 
 export interface UseVenuesFilters {
   category?: Category | 'all';

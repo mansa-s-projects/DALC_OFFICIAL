@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import VenueCard from './VenueCard';
-import type { VenueItem } from '@/data/venuesData';
+import type { VenueItem } from '@/data/venues/venuesData';
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 

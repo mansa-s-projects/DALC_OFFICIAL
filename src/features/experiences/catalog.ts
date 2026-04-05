@@ -1,12 +1,11 @@
-import { CAR_CATEGORIES, getCarImage } from '../../data/carsData';
-import { YACHT_CATEGORIES, getYachtImage } from '../../data/yachtsData';
+import { CAR_CATEGORIES, getCarImage } from '../../data/transport/carsData';
+import { YACHT_CATEGORIES, getYachtImage } from '../../data/transport/yachtsData';
 import { MOCK_EXPERIENCES } from '../../lib/experiences';
 
 export type ExperienceCategorySlug =
   | 'desert-adventures'
   | 'water-activities'
   | 'aerial-and-adrenaline'
-  | 'desert-and-adventure'
   | 'wellness'
   | 'tickets-and-culture'
   | 'luxury-leisure';
@@ -42,57 +41,80 @@ function toSlug(value: string): string {
     .replace(/-+/g, '-');
 }
 
+// Fallback images by subcategory for reliable rendering
+const SUBCATEGORY_FALLBACK_IMAGES: Record<string, string> = {
+  nightlife: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop',
+  dining: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
+  adventure: 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop',
+  sky: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop',
+  wellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
+  culture: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
+  water: 'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=800&auto=format&fit=crop',
+};
+
 function fromMockSubcategory(subcategory: string): ExperienceCatalogItem[] {
   return MOCK_EXPERIENCES.filter((item) => item.subcategory === subcategory).map((item) => ({
     slug: item.slug,
     title: normalizeText(item.name),
     description: normalizeText(item.description_short || item.description_long || ''),
-    image: item.hero_image || '',
+    image: item.hero_image || SUBCATEGORY_FALLBACK_IMAGES[subcategory] || '',
     ctaLabel: 'Request Booking',
   }));
 }
 
-// Water Activities - Jet Skis
+// Water Activities - Jet Skis with reliable images
 function getWaterActivityItems(): ExperienceCatalogItem[] {
   return [
     {
       slug: 'yamaha-vx-deluxe',
       title: 'Yamaha VX Deluxe 1050cc',
       description: 'Jet Ski Ride in Dubai • Reliable performance with comfort',
-      image: '/images/water-activities/yamaha-vx-deluxe.jpg',
+      image: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=800&auto=format&fit=crop',
       ctaLabel: 'Book Ride',
     },
     {
       slug: 'yamaha-jetblaster',
       title: 'Yamaha JetBlaster',
       description: 'Jet Ski Ride in Dubai • Compact, agile, and built for fun - the ultimate play machine on the water',
-      image: '/images/water-activities/yamaha-jetblaster.jpg',
+      image: 'https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=800&auto=format&fit=crop',
       ctaLabel: 'Book Ride',
     },
     {
       slug: 'yamaha-gp-ho',
       title: 'Yamaha GP HO 1900cc',
       description: 'Jet Ski Ride in Dubai • High-output performance for thrill seekers',
-      image: '/images/water-activities/yamaha-gp-ho.jpg',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop',
       ctaLabel: 'Book Ride',
     },
     {
       slug: 'yamaha-fx-svho',
       title: 'Yamaha FX SVHO 260HP',
       description: 'Premium Jet Ski in Dubai • Supercharged luxury performance',
-      image: '/images/water-activities/yamaha-fx-svho.jpg',
+      image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=800&auto=format&fit=crop',
       ctaLabel: 'Book Ride',
     },
   ];
 }
 
-// Desert Adventures - Dune Buggies and ATVs
+function getYachtCharterItems(): ExperienceCatalogItem[] {
+  return YACHT_CATEGORIES.flatMap((category) =>
+    category.items.slice(0, category.id === 'luxury-collection' ? 4 : 2).map((yacht) => ({
+      slug: `yacht-${yacht.id}`,
+      title: normalizeText(yacht.name),
+      description: `${yacht.length} • Up to ${yacht.capacity} guests • From AED ${yacht.pricePerHour.toLocaleString()}/hour`,
+      image: getYachtImage(yacht.name),
+      ctaLabel: 'Request Charter',
+    }))
+  );
+}
+
+// Desert Adventures - Dune Buggies and ATVs with reliable images
 function getDesertAdventureItems(): ExperienceCatalogItem[] {
   const desertImages = [
-    'https://images.unsplash.com/photo-1547234935-80c7142ee969?w=800&q=80', // Dubai desert dunes
-    'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&q=80', // Desert sunset
-    'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=800&q=80', // Desert safari
-    'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80', // Desert landscape
+    'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop', // Dubai desert dunes
+    'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop', // Desert sunset
+    'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop', // Desert safari
+    'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop', // Desert landscape
   ];
 
   const vehicles: ExperienceCatalogItem[] = [
@@ -307,26 +329,23 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
   {
     slug: 'desert-adventures',
     title: 'Desert Adventures',
-    description: 'Dune buggies, ATVs, and off-road adventures in the Dubai desert.',
-    items: getDesertAdventureItems(),
+    description: 'Dune buggies, ATVs, and off-road safaris in the Dubai desert.',
+    items: [
+      ...getDesertAdventureItems(),
+      ...fromMockSubcategory('adventure').filter((i) => !i.title.toLowerCase().includes('skydive')),
+    ],
   },
   {
     slug: 'water-activities',
     title: 'Water Activities',
-    description: 'Jet skis, jetcars, and high-speed water sports along the Dubai coastline.',
-    items: getWaterActivityItems(),
+    description: 'Jet skis, yacht charters, and high-speed water experiences along the Dubai coastline.',
+    items: [...getWaterActivityItems(), ...getYachtCharterItems()],
   },
   {
     slug: 'aerial-and-adrenaline',
     title: 'Aerial & Adrenaline',
     description: 'Sky-focused and adrenaline-led experiences.',
     items: [...fromMockSubcategory('sky'), ...fromMockSubcategory('adventure').filter((i) => i.title.toLowerCase().includes('skydive'))],
-  },
-  {
-    slug: 'desert-and-adventure',
-    title: 'Desert & Adventure',
-    description: 'Desert safaris and adventure-led outdoor moments.',
-    items: fromMockSubcategory('adventure').filter((i) => !i.title.toLowerCase().includes('skydive')),
   },
   {
     slug: 'wellness',
