@@ -1,7 +1,7 @@
-import nextPlugin from "eslint-config-next";
+import nextConfig from "eslint-config-next";
 
 const eslintConfig = [
-  ...nextPlugin.configs["recommended"],
+  ...nextConfig,
   {
     ignores: ["dist/**", ".next/**"],
   },
