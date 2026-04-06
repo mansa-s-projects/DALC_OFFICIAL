@@ -1,0 +1,1 @@
+export { handleIntent } from "./intentService";
