@@ -156,9 +156,9 @@ export function getCarWhatsAppUrl(brand: string, model: string, year: number): s
 export const PRICE_RANGES = [
   { id: 'all', label: 'All Prices', min: 0, max: Infinity },
   { id: 'under-100', label: 'Under 100 AED', min: 0, max: 99 },
-  { id: '100-200', label: '100–200 AED', min: 100, max: 200 },
-  { id: '200-500', label: '200–500 AED', min: 200, max: 500 },
-  { id: '500-1000', label: '500–1,000 AED', min: 500, max: 1000 },
+  { id: '100-200', label: '100–200 AED', min: 100, max: 199 },
+  { id: '200-500', label: '200–500 AED', min: 200, max: 499 },
+  { id: '500-1000', label: '500–1,000 AED', min: 500, max: 999 },
   { id: '1000-plus', label: '1,000+ AED', min: 1000, max: Infinity },
 ] as const;
 

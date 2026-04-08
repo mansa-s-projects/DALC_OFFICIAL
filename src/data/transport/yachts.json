@@ -8,17 +8,17 @@
     },
     {
       "name": "Azimut SP",
-      "length": "15ft",
-      "capacity": 4,
-      "price_per_hour_aed": 800
+      "length": "48ft",
+      "capacity": 10,
+      "price_per_hour_aed": 750
     }
   ],
   "medium": [
     {
-      "name": "VOLARE",
-      "length": "60ft",
-      "capacity": 40,
-      "price_per_hour_aed": 1200,
+      "name": "Volare",
+      "length": "55ft",
+      "capacity": 12,
+      "price_per_hour_aed": 950,
       "category": "medium"
     },
     {
@@ -29,18 +29,18 @@
       "category": "medium"
     },
     {
-      "name": "CALIENTE",
-      "length": "96ft",
-      "capacity": 60,
-      "price_per_hour_aed": 1800,
+      "name": "Caliente",
+      "length": "62ft",
+      "capacity": 14,
+      "price_per_hour_aed": 1100,
       "category": "medium"
     },
     {
-      "name": "BAIA 100 ASTRO",
+      "name": "Baia 100 Astro",
       "length": "100ft",
-      "capacity": 10,
-      "_note_capacity": "Confirmed: low capacity is intentional for luxury configuration",
-      "price_per_hour_aed": 1500
+      "capacity": 20,
+      "price_per_hour_aed": 1800,
+      "category": "medium"
     },
     {
       "name": "Fazimut Sky 52",

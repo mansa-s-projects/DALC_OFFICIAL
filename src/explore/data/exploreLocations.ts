@@ -993,8 +993,8 @@ export const VIEWPOINT_LOCATIONS: ExploreLocationData[] = [
     id: 'view-at-the-palm',
     name: 'The View at The Palm',
     short_description: 'A 360-degree observation deck on the 52nd floor of The Palm Tower.',
-    latitude: 25.1124,
-    longitude: 55.1390,
+    latitude: 25.1096,
+    longitude: 55.1388,
     emirate: 'Dubai',
     area: 'Palm Jumeirah',
     category: 'Viewpoint',
@@ -1171,7 +1171,7 @@ export function generateSeedSQL(): string {
 
   const escapeArr = (arr: string[]): string => {
     if (!arr.length) return "'{}'";
-    return `'{${arr.map((s) => `"${s.replace(/"/g, '\\"')}"`).join(',')}}'`;
+    return `'{${arr.map((s) => `"${s.replace(/"/g, '""')}"`).join(',')}}'`;
   };
 
   const lines = ALL_EXPLORE_LOCATIONS.map((loc) => {

@@ -6,32 +6,35 @@ import { ArrowLeft, ArrowRight, ImageOff } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { getExperienceCategory, type ExperienceCatalogItem } from '../catalog';
-
-// Category fallback images
-const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
-  'desert-adventures': 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop',
-  'water-activities': 'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=800&auto=format&fit=crop',
-  'aerial-and-adrenaline': 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop',
-  wellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
-  'tickets-and-culture': 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
-  'luxury-leisure': 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop',
-};
+import { EXPERIENCE_CATEGORY_FALLBACK_IMAGES } from '../constants';
 
 // Experience card with image error handling
 function ExperienceCard({ item, categorySlug }: { item: ExperienceCatalogItem; categorySlug: string }) {
   const [imgError, setImgError] = useState(false);
-  const fallbackImage = CATEGORY_FALLBACK_IMAGES[categorySlug];
-  const imageSrc = imgError ? fallbackImage : (item.image || fallbackImage);
+  const [fallbackError, setFallbackError] = useState(false);
+  const fallbackImage = EXPERIENCE_CATEGORY_FALLBACK_IMAGES[categorySlug];
+  const primaryImage = item.image || '';
+  const usingFallback = imgError || !primaryImage;
+  const imageSrc = usingFallback ? fallbackImage : primaryImage;
+  const showPlaceholder = !imageSrc || fallbackError;
 
   return (
     <article className="border border-white/10 bg-white/[0.02] overflow-hidden group hover:border-luxury-gold/30 transition-all duration-300">
       <div className="relative w-full h-48 bg-white/5 overflow-hidden">
-        {imageSrc ? (
+        {!showPlaceholder && imageSrc ? (
           <img 
             src={imageSrc} 
             alt={item.title} 
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImgError(true)}
+            onError={() => {
+              if (!usingFallback && fallbackImage) {
+                setImgError(true);
+                setFallbackError(false);
+                return;
+              }
+
+              setFallbackError(true);
+            }}
             loading="lazy"
           />
         ) : (

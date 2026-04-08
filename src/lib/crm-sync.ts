@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 export interface CrmAdapter {
   createLead(payload: Record<string, unknown>): Promise<{ externalId?: string }>;

@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { queryPublished } from './supabase-query';
 import type {
   TransportService,
   TransportBooking,
@@ -375,59 +376,55 @@ export const MOCK_SERVICES: TransportService[] = [
   },
 ];
 
+// ─── In-Memory Filter Helper ────────────────────────────────────────────────────
+
+function applyFiltersInMemory(services: TransportService[], filters?: TransportFilters): TransportService[] {
+  if (!filters) return services;
+  let result = services;
+  if (filters.subcategory) result = result.filter(s => s.subcategory === filters.subcategory);
+  if (filters.sub_subcategory) result = result.filter(s => s.sub_subcategory === filters.sub_subcategory);
+  if (filters.pricing_model) result = result.filter(s => s.pricing_model === filters.pricing_model);
+  if (filters.price_min != null) result = result.filter(s => s.price_from != null && s.price_from >= filters.price_min!);
+  if (filters.price_max != null) result = result.filter(s => s.price_from != null && s.price_from <= filters.price_max!);
+  if (filters.availability_type) result = result.filter(s => s.availability_type === filters.availability_type);
+  if (filters.featured_only) result = result.filter(s => s.is_featured);
+  if (filters.capacity_min != null) result = result.filter(s => s.max_capacity != null && s.max_capacity >= filters.capacity_min!);
+  return result;
+}
+
 // ─── Service Functions ──────────────────────────────────────────────────────────
 
 export async function getTransportServices(filters?: TransportFilters): Promise<TransportService[]> {
-  let query = supabase
-    .from('transport_services')
-    .select('*')
-    .eq('status', 'published')
-    .order('is_featured', { ascending: false })
-    .order('created_at', { ascending: false });
+  try {
+    const data = await queryPublished<TransportService>({
+      table: 'transport_services',
+      orderBy: { column: 'is_featured', ascending: false },
+      secondaryOrderBy: { column: 'created_at', ascending: false },
+      filters: {
+        subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
+        sub_subcategory: filters?.sub_subcategory ? { op: 'eq', value: filters.sub_subcategory } : undefined,
+        pricing_model: filters?.pricing_model ? { op: 'eq', value: filters.pricing_model } : undefined,
+        price_from_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'price_from' } : undefined,
+        price_from_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'price_from' } : undefined,
+        availability_type: filters?.availability_type ? { op: 'eq', value: filters.availability_type } : undefined,
+        is_featured: filters?.featured_only ? { op: 'eq', value: true } : undefined,
+        max_capacity: filters?.capacity_min != null ? { op: 'gte', value: filters.capacity_min } : undefined,
+      },
+    });
 
-  if (filters?.subcategory) query = query.eq('subcategory', filters.subcategory);
-  if (filters?.sub_subcategory) query = query.eq('sub_subcategory', filters.sub_subcategory);
-  if (filters?.pricing_model) query = query.eq('pricing_model', filters.pricing_model);
-  if (filters?.price_min != null) query = query.gte('price_from', filters.price_min);
-  if (filters?.price_max != null) query = query.lte('price_from', filters.price_max);
-  if (filters?.availability_type) query = query.eq('availability_type', filters.availability_type);
-  if (filters?.featured_only) query = query.eq('is_featured', true);
-  if (filters?.capacity_min) query = query.gte('max_capacity', filters.capacity_min);
+    // Fall back to mock data if table is empty
+    if (!data || data.length === 0) {
+      return applyFiltersInMemory(MOCK_SERVICES, filters);
+    }
 
-  const { data, error } = await query;
-  
-  // If table doesn't exist or is empty, fall back to mock data
-  if (error?.code === '42P01' || !data || data.length === 0) {
-    let mockData = MOCK_SERVICES;
-    if (filters?.subcategory) {
-      mockData = mockData.filter(s => s.subcategory === filters.subcategory);
+    return data;
+  } catch (err: unknown) {
+    // If table doesn't exist, fall back to mock data
+    if (err && typeof err === 'object' && 'code' in err && (err as { code: string }).code === '42P01') {
+      return applyFiltersInMemory(MOCK_SERVICES, filters);
     }
-    if (filters?.sub_subcategory) {
-      mockData = mockData.filter(s => s.sub_subcategory === filters.sub_subcategory);
-    }
-    if (filters?.pricing_model) {
-      mockData = mockData.filter(s => s.pricing_model === filters.pricing_model);
-    }
-    if (filters?.price_min != null) {
-      mockData = mockData.filter(s => s.price_from != null && s.price_from >= filters.price_min!);
-    }
-    if (filters?.price_max != null) {
-      mockData = mockData.filter(s => s.price_from != null && s.price_from <= filters.price_max!);
-    }
-    if (filters?.availability_type) {
-      mockData = mockData.filter(s => s.availability_type === filters.availability_type);
-    }
-    if (filters?.featured_only) {
-      mockData = mockData.filter(s => s.is_featured);
-    }
-    if (filters?.capacity_min != null) {
-      mockData = mockData.filter(s => s.max_capacity != null && s.max_capacity >= filters.capacity_min!);
-    }
-    return mockData;
+    throw err;
   }
-  
-  if (error) throw error;
-  return (data ?? []) as TransportService[];
 }
 
 export async function getTransportServiceBySlug(slug: string): Promise<TransportService | null> {
@@ -531,7 +528,7 @@ export async function checkAvailability(
 
   if (error) {
     console.error('Availability check failed:', error);
-    return { available: true };
+    return { available: false, reason: 'Unable to check availability at this time' };
   }
 
   if (count && count > 0) {
@@ -595,20 +592,15 @@ export async function getAvailableTimeSlots(serviceId: string, date: string): Pr
 
 // ─── Slug Generation Utility ────────────────────────────────────────────────────
 
-export function generateTransportSlug(name: string, area?: string): string {
-  const base = name
+function toSlugPart(s: string): string {
+  return s
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
-  
-  if (area) {
-    const areaSlug = area
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-    return `${base}-${areaSlug}`;
-  }
-  
-  return base;
+}
+
+export function generateTransportSlug(name: string, area?: string): string {
+  const base = toSlugPart(name);
+  return area ? `${base}-${toSlugPart(area)}` : base;
 }
 

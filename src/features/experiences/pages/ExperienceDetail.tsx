@@ -31,21 +31,12 @@ import WaitlistModal from '../components/WaitlistModal';
 import TierComparisonModal from '../components/TierComparisonModal';
 import GiftExperienceModal from '../components/GiftExperienceModal';
 import ExperienceReviews from '../components/ExperienceReviews';
-import type { PricingTier } from '../types';
+import type { PricingTier, ExperienceService } from '../types';
+import { EXPERIENCE_CATEGORY_FALLBACK_IMAGES } from '../constants';
 
 interface ExperienceDetailPageProps {
   params: Promise<{ category: string; item: string }>;
 }
-
-// Category fallback images for error handling
-const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
-  'desert-adventures': 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop',
-  'water-activities': 'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=800&auto=format&fit=crop',
-  'aerial-and-adrenaline': 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop',
-  wellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
-  'tickets-and-culture': 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
-  'luxury-leisure': 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop',
-};
 
 export default function ExperienceDetailPage({ params }: ExperienceDetailPageProps) {
   const { category: categorySlug, item: itemSlug } = use(params);
@@ -63,7 +54,9 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
   const [showTierComparison, setShowTierComparison] = useState(false);
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showGroupBooking, setShowGroupBooking] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
   const [imgError, setImgError] = useState(false);
+  const [fallbackImgError, setFallbackImgError] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     included: true,
     requirements: false,
@@ -71,8 +64,11 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
   });
   
   // Image fallback logic
-  const fallbackImage = category ? CATEGORY_FALLBACK_IMAGES[category.slug] : '';
-  const imageSrc = imgError ? fallbackImage : (item?.image || fallbackImage);
+  const fallbackImage = category ? EXPERIENCE_CATEGORY_FALLBACK_IMAGES[category.slug] : '';
+  const primaryImage = item?.image || '';
+  const usingFallback = imgError || !primaryImage;
+  const imageSrc = usingFallback ? fallbackImage : primaryImage;
+  const showImagePlaceholder = !imageSrc || fallbackImgError;
   
   const createBooking = useCreateExperienceBooking();
   
@@ -93,19 +89,23 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
 
   const handleBook = async () => {
     if (!session?.user?.id || !selectedTier || !item) return;
-    
-    const totalPrice = selectedTier.price * guestCount;
-    
-    await createBooking.mutateAsync({
-      service_id: item.slug,
-      user_id: session.user.id,
-      booking_date: selectedDate,
-      time_slot: selectedTimeSlot,
-      party_size: guestCount,
-      tier: selectedTier.tier,
-      unit_price: selectedTier.price,
-      total_price: totalPrice,
-    });
+    setBookingError(null);
+    try {
+      const totalPrice = selectedTier.price * guestCount;
+      await createBooking.mutateAsync({
+        service_id: item.slug,
+        user_id: session.user.id,
+        booking_date: selectedDate,
+        time_slot: selectedTimeSlot,
+        party_size: guestCount,
+        tier: selectedTier.tier,
+        unit_price: selectedTier.price,
+        total_price: totalPrice,
+      });
+    } catch (err) {
+      console.error('Booking failed:', err);
+      setBookingError('Booking failed. Please try again or contact concierge.');
+    }
   };
 
   const toggleSection = (section: string) => {
@@ -126,6 +126,35 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
       </div>
     );
   }
+
+  // Typed ExperienceService shape for modals — derived from the catalog item
+  const experienceService: ExperienceService = {
+    id: item.slug,
+    name: item.title,
+    slug: item.slug,
+    subcategory: 'adventure',
+    description_short: item.description,
+    gallery_images: [],
+    highlights: [],
+    vibe_tags: [],
+    service_type: 'on_demand',
+    pricing_model: 'per_person',
+    pricing_tiers: [],
+    current_bookings: 0,
+    availability_type: 'by_request',
+    time_slots: [],
+    is_recurring: false,
+    location: 'Dubai',
+    requirements: [],
+    included: [],
+    excluded: [],
+    is_featured: false,
+    is_trending: false,
+    trending_score: 0,
+    booking_count: 0,
+    price_currency: 'AED',
+    status: 'published',
+  };
 
   // Parse item description for capacity/pricing info
   const itemPrice = item.description.match(/AED ([\d,]+)/)?.[1];
@@ -149,12 +178,20 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
           <div>
             {/* Hero Image */}
             <div className="border border-white/10 overflow-hidden bg-white/[0.02] mb-6">
-              {imageSrc ? (
+              {!showImagePlaceholder && imageSrc ? (
                 <img 
                   src={imageSrc} 
                   alt={item.title} 
                   className="w-full h-[420px] object-cover"
-                  onError={() => setImgError(true)}
+                  onError={() => {
+                    if (!usingFallback && fallbackImage) {
+                      setImgError(true);
+                      setFallbackImgError(false);
+                      return;
+                    }
+
+                    setFallbackImgError(true);
+                  }}
                 />
               ) : (
                 <div className="w-full h-[420px] bg-white/5 flex items-center justify-center">
@@ -196,7 +233,7 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
                   onClick={() => toggleSection('included')}
                   className="w-full flex items-center justify-between p-4 text-left"
                 >
-                  <span className="text-white font-medium">What's Included</span>
+                  <span className="text-white font-medium">What&apos;s Included</span>
                   {expandedSections.included ? <ChevronUp className="w-4 h-4 text-white/40" /> : <ChevronDown className="w-4 h-4 text-white/40" />}
                 </button>
                 {expandedSections.included && (
@@ -397,6 +434,10 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
                   </button>
                 )}
 
+                {bookingError && (
+                  <p className="text-red-400 text-sm mt-2">{bookingError}</p>
+                )}
+
                 {/* Secondary Actions */}
                 <div className="grid grid-cols-2 gap-3">
                   <button
@@ -431,7 +472,7 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
       <WaitlistModal
         isOpen={showWaitlistModal}
         onClose={() => setShowWaitlistModal(false)}
-        experience={{ id: item.slug, name: item.title } as any}
+        experience={experienceService}
         selectedDate={selectedDate}
         selectedTimeSlot={selectedTimeSlot}
       />
@@ -446,7 +487,7 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
       <GiftExperienceModal
         isOpen={showGiftModal}
         onClose={() => setShowGiftModal(false)}
-        experience={{ id: item.slug, name: item.title, slug: item.slug } as any}
+        experience={experienceService}
         selectedTier={selectedTier}
       />
 

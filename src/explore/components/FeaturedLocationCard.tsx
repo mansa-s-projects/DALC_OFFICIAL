@@ -26,6 +26,13 @@ export default function FeaturedLocationCard({ location, index, onClick }: Featu
   const heroImage = location.hero_image;
   const hasValidImage = heroImage && !heroImage.includes('placeholder');
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onClick(location);
+    }
+  };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
@@ -33,6 +40,9 @@ export default function FeaturedLocationCard({ location, index, onClick }: Featu
       transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
       whileHover={{ y: -6 }}
       onClick={() => onClick(location)}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
       className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[rgba(200,164,107,0.2)] bg-gradient-to-br from-[#111214] via-[#111214] to-[#0f100f] transition-all duration-300 hover:border-[rgba(200,164,107,0.6)] hover:shadow-[0_12px_48px_-12px_rgba(200,164,107,0.28)]"
       aria-label={`View featured location ${location.name}`}
     >

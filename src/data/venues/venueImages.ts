@@ -190,6 +190,7 @@ const ID_TO_IMAGE_SET: Record<string, VenueImageSet> = {
   'la-mar':        rs('La_Mar'),
   'hakkasan':      rs('Hakkasan'),
   'mambaella':     rs('Mambaella'),
+  'mamabello':     rs('Mambaella'),
   'woohoo':        rs('Woohoo'),
   'ram-and-roll':  rs('Ram___Roll'),
   'tang':          rs('Tang'),
@@ -199,6 +200,7 @@ const ID_TO_IMAGE_SET: Record<string, VenueImageSet> = {
   'villa-coconut': rs('Villa_Coconut'),
   'shanghai-me':   rs('Shanghai_Me'),
   'gal':           rs('Gal'),
+  'gaia':          rs('Gal'),
   'urla':          rs('Urla'),
   'coya':          rs('Coya'),
   'amelia':        rs('Amelia'),
@@ -360,14 +362,14 @@ export function getVenueImageSet(id: string): VenueImageSet | undefined {
  * Apply local images to a venue object. Call this during normalization.
  * Returns the venue with hero_image and gallery_images replaced with local paths.
  */
-export function applyLocalImages(venue: { id: string; name: string; hero_image: string; gallery_images: string[] }): {
+export function applyLocalImages(venue: { id: string; name: string; hero_image: string; gallery_images?: string[] | null }): {
   hero_image: string;
   gallery_images: string[];
 } {
   // Try ID first, then name
   const set = ID_TO_IMAGE_SET[venue.id] ?? getImageSetByName(venue.name);
   if (!set) {
-    return { hero_image: venue.hero_image, gallery_images: venue.gallery_images };
+    return { hero_image: venue.hero_image, gallery_images: venue.gallery_images ?? [] };
   }
   return {
     hero_image: set.hero,

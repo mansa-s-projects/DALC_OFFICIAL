@@ -96,13 +96,17 @@ export function useRequests(userId?: string) {
     },
     onSuccess: async (created: Request) => {
       try {
-        await supabase.from('request_status_log').insert({
+        const { error } = await supabase.from('request_status_log').insert({
           request_id: created.id,
           old_status: null,
           new_status: 'submitted',
           changed_by: userId ?? null,
           notes: null,
         });
+
+        if (error) {
+          console.error('Failed to insert into request_status_log:', error);
+        }
       } catch (error) {
         console.error('Failed to insert into request_status_log:', error);
       }
@@ -145,7 +149,7 @@ export function useRequests(userId?: string) {
   };
 }
 
-export function useRequestDetail(requestId?: string, userId?: string, initialRequest?: Request | null) {
+export function useRequestDetail(requestId?: string, userId?: string) {
   return useQuery({
     queryKey: ['requests', 'detail', requestId, userId ?? 'anonymous'],
     enabled: Boolean(requestId),

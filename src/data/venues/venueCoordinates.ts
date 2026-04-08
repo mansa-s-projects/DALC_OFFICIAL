@@ -38,6 +38,7 @@ export const VENUE_COORDINATES: Record<string, VenueCoords> = {
   'r-hakkasan':        { lat: 25.0761, lng: 55.1340 },  // Atlantis The Royal
   'hakkasan':          { lat: 25.0761, lng: 55.1340 },
   'r-mamabello':       { lat: 25.0816, lng: 55.1431 },  // Marina
+  'mamabello':         { lat: 25.0816, lng: 55.1431 },
   'mambaella':         { lat: 25.0816, lng: 55.1431 },
   'r-ram-roll':        { lat: 25.2127, lng: 55.2707 },  // DIFC
   'ram-and-roll':      { lat: 25.2127, lng: 55.2707 },
@@ -52,6 +53,7 @@ export const VENUE_COORDINATES: Record<string, VenueCoords> = {
   'r-shanghai-me':     { lat: 25.2178, lng: 55.2815 },  // DIFC
   'shanghai-me':       { lat: 25.2178, lng: 55.2815 },
   'r-gaia':            { lat: 25.2178, lng: 55.2820 },  // DIFC Gate Village
+  'gaia':              { lat: 25.2178, lng: 55.2820 },
   'gal':               { lat: 25.2178, lng: 55.2820 },
   'r-urla':            { lat: 25.1124, lng: 55.1395 },  // Palm Jumeirah
   'urla':              { lat: 25.1124, lng: 55.1395 },

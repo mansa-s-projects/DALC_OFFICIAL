@@ -123,10 +123,10 @@ export const VENUE_SEO_DESCRIPTIONS: Record<string, string> = {
   'bagatelle': 'Experience the ultimate French-Mediterranean dining at Bagatelle Dubai. World-class cuisine, electric atmosphere, and unforgettable nights in the heart of Fairmont Sheikh Zayed Road.',
   'verde': 'Discover Verde at Four Seasons Dubai — where Italian sophistication meets Mediterranean charm. An elegant garden dining experience with impeccable service and stunning ambiance.',
   'coucou': 'Escape to CouCou Palm Jumeirah, a French seaside haven offering exquisite seafood and rosé sunsets. The ultimate beachfront dining destination for the discerning palate.',
-  'amazonico': 'Journey through the Amazon at Amazonico DIFC — a rainforest-inspired culinary adventure blending Latin and Asian flavors. Dubai most vibrant tropical dining experience.',
+  'amazonico': 'Journey through the Amazon at Amazonico DIFC — a rainforest-inspired culinary adventure blending Latin and Asian flavors. Dubai\'s most vibrant tropical dining experience.',
   'il-gattopardo': 'Savor authentic Italian luxury at Il Gattopardo DIFC. Timeless elegance, exceptional pasta, and an intimate setting perfect for business dinners and romantic evenings.',
   'bar-de-pres': 'Indulge in French-Japanese fusion at Bar de Prés DIFC. Craft cocktails meet innovative cuisine in this intimate, design-forward dining sanctuary.',
-  '1920': 'Step into the secret world of 1920 DIFC — Dubai premier speakeasy experience. Prohibition-era glamour, artisan cocktails, and an air of mystery await.',
+  '1920': 'Step into the secret world of 1920 DIFC — Dubai\'s premier speakeasy experience. Prohibition-era glamour, artisan cocktails, and an air of mystery await.',
   'nahate': 'Experience premium Japanese dining at Nahate DIFC. Impeccable omakase, rare sake selections, and a serene atmosphere for the ultimate culinary journey.',
   'nobu': 'Dine at the legendary Nobu Atlantis The Palm. World-renowned Japanese-Peruvian fusion, celebrity chef cuisine, and an iconic Dubai dining destination.',
   'ling-ling': 'Ascend to Ling Ling at Atlantis The Royal — vibrant Asian dining with panoramic views. A high-energy destination where cuisine meets nightlife in spectacular fashion.',
@@ -178,7 +178,7 @@ export const VENUE_SEO_DESCRIPTIONS: Record<string, string> = {
   'maison-de-la-plage': 'Escape to French Riviera vibes at Maison De La Plage Palm Jumeirah. Chic beach sophistication, exceptional dining, and stylish coastal living.',
   'lucky-fish': 'Enjoy fun beach seafood at Lucky Fish Palm West Beach. Casual elegance, fresh catches, and a relaxed atmosphere perfect for seaside dining.',
   'gallery-740': 'Experience art-inspired beach living at Gallery 7/40 Palm Jumeirah. Creative atmosphere, unique design, and a beach club that doubles as an artistic escape.',
-  'o-beach': 'Party Ibiza-style at O Beach JBR. High-energy beach club, international DJs, and the ultimate party atmosphere on Dubai vibrant coastline.',
+  'o-beach': 'Party Ibiza-style at O Beach JBR. High-energy beach club, international DJs, and the ultimate party atmosphere on Dubai\'s vibrant coastline.',
   'zetta-pool': 'Discover modern pool lifestyle at Zetta Pool Address JBR. Contemporary design, sophisticated lounging, and a fresh approach to beach club culture.',
 
   // Night Clubs
@@ -192,7 +192,7 @@ export const VENUE_SEO_DESCRIPTIONS: Record<string, string> = {
   'rasputine': 'Enter Parisian nightlife elegance at Rasputine DIFC. Exclusive atmosphere, refined crowd, and the ultimate VIP nightlife experience in Dubai.',
   'avenue': 'Discover classic Dubai clubbing at Avenue Shangri-La Hotel. R&B rhythms, elegant crowd, and a timeless nightlife institution on Sheikh Zayed Road.',
   'ora': 'Explore modern underground at Ora Habtoor City. Contemporary beats, stylish crowd, and a fresh approach to Dubai nightlife scene.',
-  'secret-room': 'Find hidden exclusivity at Secret Room Downtown. VIP entrance, intimate setting, and Dubai most coveted nightlife secret.',
+  'secret-room': 'Find hidden exclusivity at Secret Room Downtown. VIP entrance, intimate setting, and Dubai\'s most coveted nightlife secret.',
   'socialista': 'Experience Cuban-inspired glamour at Socialista Cipriani. Latin energy, sophisticated crowd, and a nightlife celebration of Cuban culture.',
   'soho-garden': 'Join the festival at Soho Garden Meydan. Multi-venue experience, world-class DJs, and the ultimate nightlife destination for music lovers.',
   'code': 'Enter electronic underground at Code by Soho Garden Meydan. Underground beats, dedicated dance floor, and the ultimate destination for electronic music enthusiasts.',
@@ -230,7 +230,7 @@ export function getWhatsAppUrl(venueName: string): string {
 
 export function getGoogleMapsUrl(venueName: string, coordinates?: { lat: number; lng: number }): string {
   if (coordinates) {
-    return `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}&destination_place_id=${encodeURIComponent(venueName)}`;
+    return `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}`;
   }
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueName + ' Dubai')}`;
 }

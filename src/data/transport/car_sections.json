@@ -167,133 +167,152 @@
       "model": "Corolla",
       "year": 2023,
       "daily_price_aed": 110,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Toyota",
       "model": "Corolla",
       "year": 2024,
       "daily_price_aed": 120,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Toyota",
       "model": "Corolla",
       "year": 2025,
       "daily_price_aed": 130,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Honda",
       "model": "Civic",
       "year": 2023,
       "daily_price_aed": 120,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Honda",
       "model": "Civic",
       "year": 2024,
       "daily_price_aed": 130,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Honda",
       "model": "Civic",
       "year": 2025,
       "daily_price_aed": 140,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Hyundai",
       "model": "Elantra",
       "year": 2023,
       "daily_price_aed": 110,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Hyundai",
       "model": "Elantra",
       "year": 2024,
       "daily_price_aed": 120,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Hyundai",
       "model": "Elantra",
       "year": 2025,
       "daily_price_aed": 130,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Kia",
       "model": "Cerato",
       "year": 2023,
       "daily_price_aed": 105,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Kia",
       "model": "Cerato",
       "year": 2024,
       "daily_price_aed": 115,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Kia",
       "model": "Cerato",
       "year": 2025,
       "daily_price_aed": 125,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mazda",
-      "model": 3,
+      "model": "3",
       "year": 2023,
       "daily_price_aed": 120,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mazda",
-      "model": 3,
+      "model": "3",
       "year": 2024,
       "daily_price_aed": 130,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mazda",
-      "model": 3,
+      "model": "3",
       "year": 2025,
       "daily_price_aed": 140,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Nissan",
       "model": "Altima",
       "year": 2023,
       "daily_price_aed": 130,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Nissan",
       "model": "Altima",
       "year": 2024,
       "daily_price_aed": 140,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Nissan",
       "model": "Altima",
       "year": 2025,
       "daily_price_aed": 150,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "VW",
       "model": "Jetta",
       "year": 2025,
       "daily_price_aed": 150,
-      "fuel": "Petrol"
+      "fuel": "Petrol",
+      "seats": 5
     }
   ],
   "LUXURY CARS": [
@@ -301,91 +320,121 @@
       "brand": "Mercedes",
       "model": "C200",
       "year": 2023,
-      "daily_price_aed": 350
+      "daily_price_aed": 350,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mercedes",
       "model": "C200",
       "year": 2024,
-      "daily_price_aed": 400
+      "daily_price_aed": 400,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mercedes",
       "model": "C200",
       "year": 2025,
-      "daily_price_aed": 450
+      "daily_price_aed": 450,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "520i",
       "year": 2023,
-      "daily_price_aed": 400
+      "daily_price_aed": 400,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "520i",
       "year": 2024,
-      "daily_price_aed": 450
+      "daily_price_aed": 450,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "520i",
       "year": 2025,
-      "daily_price_aed": 500
+      "daily_price_aed": 500,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A6",
       "year": 2023,
-      "daily_price_aed": 420
+      "daily_price_aed": 420,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A6",
       "year": 2024,
-      "daily_price_aed": 470
+      "daily_price_aed": 470,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A6",
       "year": 2025,
-      "daily_price_aed": 520
+      "daily_price_aed": 520,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Lexus",
       "model": "ES350",
       "year": 2023,
-      "daily_price_aed": 380
+      "daily_price_aed": 380,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Lexus",
       "model": "ES350",
       "year": 2024,
-      "daily_price_aed": 420
+      "daily_price_aed": 420,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Lexus",
       "model": "ES350",
       "year": 2025,
-      "daily_price_aed": 470
+      "daily_price_aed": 470,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Genesis",
       "model": "G80",
       "year": 2024,
-      "daily_price_aed": 450
+      "daily_price_aed": 450,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Genesis",
       "model": "G80",
       "year": 2025,
-      "daily_price_aed": 500
+      "daily_price_aed": 500,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Volvo",
       "model": "S90",
       "year": 2025,
-      "daily_price_aed": 480
+      "daily_price_aed": 480,
+      "fuel": "Petrol",
+      "seats": 5
     }
   ],
   "BUSINESS CARS": [
@@ -393,67 +442,89 @@
       "brand": "Mercedes",
       "model": "E300",
       "year": 2023,
-      "daily_price_aed": 500
+      "daily_price_aed": 500,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mercedes",
       "model": "E300",
       "year": 2024,
-      "daily_price_aed": 550
+      "daily_price_aed": 550,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Mercedes",
       "model": "E300",
       "year": 2025,
-      "daily_price_aed": 600
+      "daily_price_aed": 600,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "730Li",
       "year": 2023,
-      "daily_price_aed": 600
+      "daily_price_aed": 600,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "730Li",
       "year": 2024,
-      "daily_price_aed": 650
+      "daily_price_aed": 650,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "730Li",
       "year": 2025,
-      "daily_price_aed": 700
+      "daily_price_aed": 700,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A8",
       "year": 2023,
-      "daily_price_aed": 650
+      "daily_price_aed": 650,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A8",
       "year": 2024,
-      "daily_price_aed": 700
+      "daily_price_aed": 700,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Audi",
       "model": "A8",
       "year": 2025,
-      "daily_price_aed": 750
+      "daily_price_aed": 750,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Lexus",
       "model": "LS500",
       "year": 2024,
-      "daily_price_aed": 650
+      "daily_price_aed": 650,
+      "fuel": "Petrol",
+      "seats": 5
     },
     {
       "brand": "Lexus",
       "model": "LS500",
       "year": 2025,
-      "daily_price_aed": 700
+      "daily_price_aed": 700,
+      "fuel": "Petrol",
+      "seats": 5
     }
   ],
   "SPORT CARS": [
@@ -461,73 +532,97 @@
       "brand": "Lamborghini",
       "model": "Huracan",
       "year": 2023,
-      "daily_price_aed": 2800
+      "daily_price_aed": 2800,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Lamborghini",
       "model": "Huracan",
       "year": 2024,
-      "daily_price_aed": 3000
+      "daily_price_aed": 3000,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Lamborghini",
       "model": "Huracan",
       "year": 2025,
-      "daily_price_aed": 3200
+      "daily_price_aed": 3200,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Ferrari",
       "model": "F8",
       "year": 2023,
-      "daily_price_aed": 3000
+      "daily_price_aed": 3000,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Ferrari",
       "model": "F8",
       "year": 2024,
-      "daily_price_aed": 3200
+      "daily_price_aed": 3200,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Ferrari",
       "model": "F8",
       "year": 2025,
-      "daily_price_aed": 3500
+      "daily_price_aed": 3500,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "McLaren",
       "model": "720S",
       "year": 2023,
-      "daily_price_aed": 2800
+      "daily_price_aed": 2800,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "McLaren",
       "model": "720S",
       "year": 2024,
-      "daily_price_aed": 3000
+      "daily_price_aed": 3000,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "McLaren",
       "model": "720S",
       "year": 2025,
-      "daily_price_aed": 3300
+      "daily_price_aed": 3300,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Porsche",
       "model": "911 Turbo",
       "year": 2023,
-      "daily_price_aed": 1800
+      "daily_price_aed": 1800,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Porsche",
       "model": "911 Turbo",
       "year": 2024,
-      "daily_price_aed": 2000
+      "daily_price_aed": 2000,
+      "fuel": "Petrol",
+      "seats": 2
     },
     {
       "brand": "Porsche",
       "model": "911 Turbo",
       "year": 2025,
-      "daily_price_aed": 2200
+      "daily_price_aed": 2200,
+      "fuel": "Petrol",
+      "seats": 2
     }
   ],
   "ELECTRIC": [
@@ -535,61 +630,81 @@
       "brand": "Tesla",
       "model": "Model 3",
       "year": 2023,
-      "daily_price_aed": 300
+      "daily_price_aed": 300,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model 3",
       "year": 2024,
-      "daily_price_aed": 350
+      "daily_price_aed": 350,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model 3",
       "year": 2025,
-      "daily_price_aed": 400
+      "daily_price_aed": 400,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model Y",
       "year": 2023,
-      "daily_price_aed": 350
+      "daily_price_aed": 350,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model Y",
       "year": 2024,
-      "daily_price_aed": 400
+      "daily_price_aed": 400,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model Y",
       "year": 2025,
-      "daily_price_aed": 450
+      "daily_price_aed": 450,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model S",
       "year": 2024,
-      "daily_price_aed": 600
+      "daily_price_aed": 600,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Tesla",
       "model": "Model S",
       "year": 2025,
-      "daily_price_aed": 650
+      "daily_price_aed": 650,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "BMW",
       "model": "i4",
       "year": 2024,
-      "daily_price_aed": 500
+      "daily_price_aed": 500,
+      "fuel": "Electric",
+      "seats": 5
     },
     {
       "brand": "Mercedes",
       "model": "EQE",
       "year": 2025,
-      "daily_price_aed": 600
+      "daily_price_aed": 600,
+      "fuel": "Electric",
+      "seats": 5
     }
   ]
 }

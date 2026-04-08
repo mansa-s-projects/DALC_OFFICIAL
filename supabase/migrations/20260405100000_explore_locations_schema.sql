@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS public.explore_locations (
   name TEXT NOT NULL,
   short_description TEXT,
   long_description TEXT,
-  latitude NUMERIC(10,7) NOT NULL,
-  longitude NUMERIC(10,7) NOT NULL,
+  latitude NUMERIC(10,7) NOT NULL CHECK (latitude BETWEEN -90 AND 90),
+  longitude NUMERIC(10,7) NOT NULL CHECK (longitude BETWEEN -180 AND 180),
   emirate TEXT DEFAULT 'Dubai',
   area TEXT,
   category TEXT DEFAULT 'Landmark',
@@ -51,10 +51,12 @@ CREATE INDEX IF NOT EXISTS idx_explore_locations_coords ON public.explore_locati
 ALTER TABLE public.explore_locations ENABLE ROW LEVEL SECURITY;
 
 -- Public read access for all locations
+DROP POLICY IF EXISTS "Anyone can view explore locations" ON public.explore_locations;
 CREATE POLICY "Anyone can view explore locations" ON public.explore_locations
   FOR SELECT USING (true);
 
 -- Admin-only write access
+DROP POLICY IF EXISTS "Admins can manage explore locations" ON public.explore_locations;
 CREATE POLICY "Admins can manage explore locations" ON public.explore_locations
   FOR ALL USING (
     EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin')

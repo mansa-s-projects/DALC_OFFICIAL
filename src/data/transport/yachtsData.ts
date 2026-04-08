@@ -208,7 +208,10 @@ export function priceInRange(price: number, rangeId: string): boolean {
   if (rangeId === 'all') return true;
   const r = PRICE_RANGES.find((p) => p.id === rangeId);
   if (!r) return true;
-  return price >= r.min && price <= r.max;
+  if (Number.isFinite(r.max)) {
+    return price >= r.min && price < r.max;
+  }
+  return price >= r.min;
 }
 
 // ─── Capacity Filter ──────────────────────────────────────────────────────────
@@ -220,6 +223,6 @@ export function capacityInRange(capacity: number, range: string): boolean {
   if (range === '1–15') return capacity >= 1 && capacity <= 15;
   if (range === '16–30') return capacity >= 16 && capacity <= 30;
   if (range === '31–50') return capacity >= 31 && capacity <= 50;
-  if (range === '50+') return capacity > 50;
+  if (range === '50+') return capacity >= 50;
   return true;
 }

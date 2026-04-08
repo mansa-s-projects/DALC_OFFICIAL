@@ -8,6 +8,48 @@ export type AvailabilityType = 'on_demand' | 'scheduled' | 'seasonal' | 'by_requ
 
 export type TransportStatus = 'pending' | 'confirmed' | 'in_progress' | 'completed' | 'cancelled';
 
+// ─── Specification Types ─────────────────────────────────────────────────────────
+
+interface CarSpecifications {
+  make?: string;
+  model?: string;
+  year?: number;
+  seats?: number;
+  transmission?: string;
+  fuel?: string;
+  color?: string;
+  engine?: string;
+  horsepower?: string;
+  acceleration_0_100?: string;
+  top_speed?: string;
+}
+
+interface YachtSpecifications {
+  length_ft?: number;
+  cabins?: number;
+  crew_size?: number;
+  max_guests?: number;
+  builder?: string;
+  year_built?: number;
+  beam_ft?: number;
+  draft_ft?: number;
+  cruising_speed?: string;
+  range_nm?: number;
+}
+
+interface JetSpecifications {
+  aircraft_type?: string;
+  range_km?: number;
+  seats?: number;
+  luggage_capacity?: string;
+  cruising_speed?: string;
+  max_altitude?: string;
+  year_manufactured?: number;
+  operator?: string;
+}
+
+export type TransportSpecifications = CarSpecifications | YachtSpecifications | JetSpecifications;
+
 // ─── Core Transport Service Interface ───────────────────────────────────────────
 
 export interface TransportService {
@@ -37,10 +79,7 @@ export interface TransportService {
   advance_booking_hours: number;
   
   // Specifications (flexible JSONB for vehicle/vessel/aircraft details)
-  // Cars: { make, model, year, seats, transmission, fuel, color, engine }
-  // Yachts: { length_ft, cabins, crew_size, max_guests, builder, year_built }
-  // Jets: { aircraft_type, range_km, seats, luggage_capacity, cruising_speed }
-  specifications: Record<string, any>;
+  specifications: TransportSpecifications;
   
   // Location
   location: string;

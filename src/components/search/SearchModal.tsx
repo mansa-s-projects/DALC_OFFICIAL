@@ -27,7 +27,7 @@ const QUICK_LINKS = [
   { label: "Travel", href: "/travel", color: "#8BA4D4" },
   { label: "Travel Stays", href: "/travel/hotels", color: "#B89AD4" },
   { label: "Business", href: "/business", color: "#C4917D" },
-  { label: "Concierge", href: "/request", color: "#C9A84C" },
+  { label: "Concierge", href: "/request", color: "#6FB0C8" },
 ];
 
 // ─── Component ───────────────────────────────────────────────────────────────────
@@ -41,6 +41,16 @@ export default function SearchModal() {
 
   const { query, setQuery, results, isSearching, clearSearch, hasQuery } =
     useSearch();
+
+  const openModal = useCallback(() => {
+    setActiveIndex(-1);
+    setIsOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+    clearSearch();
+  }, [clearSearch]);
 
   // Group results by type
   const groupedResults = useMemo(() => {
@@ -60,25 +70,28 @@ export default function SearchModal() {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsOpen((v) => !v);
+        if (isOpen) {
+          closeModal();
+        } else {
+          openModal();
+        }
       }
       if (e.key === "Escape" && isOpen) {
-        setIsOpen(false);
+        closeModal();
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [isOpen]);
+  }, [closeModal, isOpen, openModal]);
 
   // Focus input on open
   useEffect(() => {
-    if (isOpen) {
-      setActiveIndex(-1);
-      requestAnimationFrame(() => inputRef.current?.focus());
-    } else {
-      clearSearch();
+    if (!isOpen) {
+      return;
     }
-  }, [isOpen, clearSearch]);
+
+    requestAnimationFrame(() => inputRef.current?.focus());
+  }, [isOpen]);
 
   // Lock body scroll
   useEffect(() => {
@@ -105,15 +118,15 @@ export default function SearchModal() {
         e.preventDefault();
         if (activeIndex >= 0 && activeIndex < flatResults.length) {
           const result = flatResults[activeIndex];
-          setIsOpen(false);
+          closeModal();
           router.push(result.href);
         } else if (query.trim().length >= 2) {
-          setIsOpen(false);
+          closeModal();
           router.push(`/search?q=${encodeURIComponent(query.trim())}`);
         }
       }
     },
-    [activeIndex, flatResults, query, router],
+    [activeIndex, closeModal, flatResults, query, router],
   );
 
   // Scroll active item into view
@@ -130,17 +143,17 @@ export default function SearchModal() {
   };
 
   const handleViewAll = () => {
-    setIsOpen(false);
+    closeModal();
     router.push(`/search?q=${encodeURIComponent(query.trim())}`);
   };
 
   // Expose open function globally
   useEffect(() => {
-    (window as any).__openSearchModal = () => setIsOpen(true);
+    (window as any).__openSearchModal = openModal;
     return () => {
       delete (window as any).__openSearchModal;
     };
-  }, []);
+  }, [openModal]);
 
   return (
     <AnimatePresence>
@@ -157,7 +170,7 @@ export default function SearchModal() {
               background: "rgba(8,7,6,0.85)",
               backdropFilter: "blur(8px)",
             }}
-            onClick={() => setIsOpen(false)}
+            onClick={closeModal}
           />
 
           {/* Modal */}
@@ -268,7 +281,7 @@ export default function SearchModal() {
                               <SearchResultItem
                                 result={result}
                                 isActive={idx === activeIndex}
-                                onClick={() => setIsOpen(false)}
+                                onClick={closeModal}
                               />
                             </div>
                           );
@@ -355,7 +368,7 @@ export default function SearchModal() {
                           <a
                             key={link.href}
                             href={link.href}
-                            onClick={() => setIsOpen(false)}
+                            onClick={closeModal}
                             className="flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-cipher-surface group"
                           >
                             <div

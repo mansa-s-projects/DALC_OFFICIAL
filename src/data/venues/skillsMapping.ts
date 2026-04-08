@@ -111,7 +111,7 @@ export function inferSkills(venue: Omit<Venue, 'skills'>): UserSkill[] {
   categorySkills.forEach((s) => skillSet.add(s));
 
   // Add vibe-based skills
-  for (const vibe of venue.vibe_tags) {
+  for (const vibe of venue.vibe_tags || []) {
     const skill = VIBE_SKILL_MAP[vibe];
     if (skill) skillSet.add(skill);
   }

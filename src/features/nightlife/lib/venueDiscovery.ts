@@ -52,9 +52,20 @@ export function getStaticVenueById(id: string): Venue | undefined {
 }
 
 export function getVenueSeoDescription(venue: Venue): string {
-  const categoryLabel = venue.category.replace(/-/g, ' ');
-  const location = venue.area || venue.location;
-  return `${venue.name} in ${location}, Dubai. ${venue.description_short} Discover ${categoryLabel} details, images, insider tips, and concierge booking with Dubai A La Carte.`;
+  const categoryLabel = (venue.category || '').replace(/-/g, ' ').trim() || 'venue';
+  const location = venue.area || venue.location || 'Dubai';
+  const locationLabel = location === 'Dubai' ? 'Dubai' : `${location}, Dubai`;
+  const shortDescription = typeof venue.description_short === 'string' ? venue.description_short.trim() : '';
+
+  return [
+    `${venue.name} in ${locationLabel}.`,
+    shortDescription,
+    `Discover ${categoryLabel} details, images, insider tips, and concierge booking with Dubai A La Carte.`,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function getVenueRecommendations(
@@ -88,7 +99,8 @@ export function getVenueRecommendations(
         });
       }
 
-      const sharedSkills = candidate.skills.filter((skill) => audienceSkills.includes(skill));
+      const candidateSkills = candidate.skills ?? [];
+      const sharedSkills = candidateSkills.filter((skill) => audienceSkills.includes(skill));
       if (sharedSkills.length > 0) {
         reasons.push({
           label: `Aligned with ${sharedSkills.slice(0, 2).map((skill) => SKILL_LABELS[skill]).join(' & ')}`,
@@ -100,14 +112,17 @@ export function getVenueRecommendations(
         reasons.push({ label: `${candidate.cuisine} culinary match`, score: 1.2 });
       }
 
-      const priceDelta = Math.abs(candidate.price_tier - venue.price_tier);
+      const candidateTier = Number(candidate.price_tier ?? 1) || 1;
+      const venueTier = Number(venue.price_tier ?? 1) || 1;
+      const priceDelta = Math.abs(candidateTier - venueTier);
       reasons.push({ label: 'Comparable spend level', score: Math.max(0.4, 1.2 - priceDelta * 0.25) });
 
       if (candidate.is_trending) {
         reasons.push({ label: 'Trending right now', score: 0.8 });
       }
 
-      const rawScore = reasons.reduce((total, reason) => total + reason.score, 0) + candidate.recommend_score / 100;
+      const recommendScore = Number(candidate.recommend_score ?? 0) || 0;
+      const rawScore = reasons.reduce((total, reason) => total + reason.score, 0) + recommendScore / 100;
       const matchScore = Math.min(9.9, rawScore);
       const sortedReasons = reasons.sort((left, right) => right.score - left.score);
 

@@ -1,8 +1,7 @@
 import { getSupabaseAdminClient } from '@/lib/supabase-admin';
 import { assignLeadOwner, createFollowUpTask } from '@/lib/lead-commands';
 import { enqueueWhatsAppJob } from '@/lib/whatsapp-automation';
-
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 async function snapshotPredictionAudit(supabaseAdmin: SupabaseAdmin, limit = 200) {
   const { data: rows, error } = await supabaseAdmin

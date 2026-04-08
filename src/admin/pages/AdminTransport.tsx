@@ -76,7 +76,7 @@ export default function AdminTransport() {
             href="/admin/transport/new"
             className="flex items-center gap-2 px-5 py-3 bg-luxury-gold text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
           >
-            <Plus className="w-4 h-4" /> Add Travel Service
+            <Plus className="w-4 h-4" /> Add Transport Service
           </Link>
         }
       />
