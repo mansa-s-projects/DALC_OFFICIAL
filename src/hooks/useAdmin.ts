@@ -1,6 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '../lib/supabase';
-import { Venue } from '../types';
+import { supabase } from '@/lib/supabase';
+import { Venue } from '@/types';
+
+interface RequestRow {
+  id: string;
+  status: string;
+  created_at: string;
+}
+
+const PENDING_STATUSES = [
+  'pending',
+  'acknowledged',
+  'submitted',
+  'assigned',
+  'supplier_contacted',
+  'in_progress',
+  'quoted',
+] as const;
 
 export function useAdminStats() {
   return useQuery({
@@ -19,18 +35,10 @@ export function useAdminStats() {
         supabase.from('v_booking_sync').select('booking_source_id', { count: 'exact', head: true }),
       ]);
 
-      const requests = requestsRes.data ?? [];
-      const pending = requests.filter((r: any) => [
-        'pending',
-        'acknowledged',
-        'submitted',
-        'assigned',
-        'supplier_contacted',
-        'in_progress',
-        'quoted',
-      ].includes(r.status)).length;
-      const confirmed = requests.filter((r: any) => r.status === 'confirmed').length;
-      const completed = requests.filter((r: any) => r.status === 'completed').length;
+      const requests = (requestsRes.data ?? []) as RequestRow[];
+      const pending = requests.filter((r) => (PENDING_STATUSES as readonly string[]).includes(r.status)).length;
+      const confirmed = requests.filter((r) => r.status === 'confirmed').length;
+      const completed = requests.filter((r) => r.status === 'completed').length;
 
       return {
         totalRequests: requestsRes.count ?? 0,

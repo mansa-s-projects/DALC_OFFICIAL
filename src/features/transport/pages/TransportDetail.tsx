@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -26,7 +26,7 @@ import ServiceCard from '../../../components/transport/ServiceCard';
 import { useTransportService, useFeaturedTransport } from '../hooks/useTransport';
 import { useCreateTransportBooking } from '../hooks/useTransportBooking';
 import { useAppStore } from '../../../store/useAppStore';
-import type { TransportSubcategory } from '../types';
+import type { TransportSubcategory, TransportBookingInput } from '../types';
 import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from '../types';
 
 // ─── Component ──────────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ export default function TransportDetail() {
 
   const sub = subcategory as TransportSubcategory;
 
-  const handleBookingSubmit = async (data: any) => {
+  const handleBookingSubmit = async (data: TransportBookingInput) => {
     if (!session?.user) {
       router.push('/auth/login');
       return;

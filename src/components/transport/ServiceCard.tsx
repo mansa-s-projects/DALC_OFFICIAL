@@ -80,14 +80,16 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
 
   // Get key spec based on subcategory
   const getKeySpec = () => {
+    const specs = specifications as Record<string, unknown>;
     if (subcategory === 'cars') {
-      return specifications.horsepower ? `${specifications.horsepower}` : null;
+      return specs['horsepower'] ? `${specs['horsepower']}` : null;
     }
     if (subcategory === 'yachts') {
-      return specifications.length_ft ? `${specifications.length_ft} ft` : null;
+      return specs['length_ft'] ? `${specs['length_ft']} ft` : null;
     }
     if (subcategory === 'jets') {
-      return specifications.range_km ? `${(specifications.range_km / 1000).toFixed(0)}k km` : null;
+      const rangeKm = specs['range_km'];
+      return typeof rangeKm === 'number' ? `${(rangeKm / 1000).toFixed(0)}k km` : null;
     }
     return null;
   };

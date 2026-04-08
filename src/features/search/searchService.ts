@@ -1,5 +1,45 @@
 import { supabase } from '../../lib/supabase';
-import type { Venue } from '../../types';
+
+// ─── DB Row Types ──────────────────────────────────────────────────────────────
+
+interface VenueSearchRow {
+  id: string | number;
+  name: string;
+  category: string;
+  subcategory?: string;
+  area?: string;
+  hero_image?: string | null;
+  description_short?: string | null;
+  price_tier?: number | null;
+  recommend_score?: number | null;
+}
+
+interface ExperienceSearchRow {
+  id: string | number;
+  name: string;
+  description_short?: string | null;
+  subcategory?: string | null;
+  location?: string | null;
+  hero_image?: string | null;
+  price_tier?: number | null;
+}
+
+interface TransportSearchRow {
+  id: string | number;
+  name: string;
+  subcategory?: string | null;
+  description_short?: string | null;
+  hero_image?: string | null;
+  area?: string | null;
+}
+
+interface BusinessSearchRow {
+  id: string | number;
+  name: string;
+  subcategory?: string | null;
+  description_short?: string | null;
+  hero_image?: string | null;
+}
 
 export interface SearchResult {
   id: string;
@@ -15,23 +55,6 @@ export interface SearchResult {
   score?: number;
 }
 
-function venueToResult(v: Venue): SearchResult {
-  return {
-    id: v.id,
-    type: 'venue',
-    title: v.name,
-    subtitle: v.description_short,
-    category: v.category,
-    area: v.area,
-    image: v.hero_image,
-    slug: v.id,
-    href: `/venue/${v.id}`,
-    price_tier: v.price_tier,
-    score: v.recommend_score,
-  };
-}
-
-// Search venues
 async function searchVenues(q: string): Promise<SearchResult[]> {
   const { data, error } = await supabase
     .from('venues')
@@ -41,7 +64,7 @@ async function searchVenues(q: string): Promise<SearchResult[]> {
 
   if (error || !data) return [];
 
-  return data.map((v: any): SearchResult => ({
+  return (data as VenueSearchRow[]).map((v): SearchResult => ({
     id: String(v.id),
     type: 'venue',
     title: v.name,
@@ -51,14 +74,12 @@ async function searchVenues(q: string): Promise<SearchResult[]> {
     image: v.hero_image ?? '',
     slug: String(v.id),
     href: `/venue/${v.id}`,
-    price_tier: v.price_tier,
-    score: v.recommend_score,
+    price_tier: v.price_tier ?? undefined,
+    score: v.recommend_score ?? undefined,
   }));
 }
 
-// Search experiences
 async function searchExperiences(q: string): Promise<SearchResult[]> {
-
   const { data, error } = await supabase
     .from('experiences')
     .select('id, name, description_short, subcategory, location, hero_image, price_tier')
@@ -67,7 +88,7 @@ async function searchExperiences(q: string): Promise<SearchResult[]> {
 
   if (error || !data) return [];
 
-  return data.map((v: any): SearchResult => ({
+  return (data as ExperienceSearchRow[]).map((v): SearchResult => ({
     id: String(v.id),
     type: 'experience',
     title: v.name,
@@ -77,38 +98,34 @@ async function searchExperiences(q: string): Promise<SearchResult[]> {
     image: v.hero_image ?? '',
     slug: String(v.id),
     href: `/experiences/${v.subcategory}/${v.id}`,
-    price_tier: v.price_tier,
+    price_tier: v.price_tier ?? undefined,
   }));
 }
 
-// Search transport
 async function searchTransport(q: string): Promise<SearchResult[]> {
-
   const { data, error } = await supabase
-    .from('transport_vehicles')
-    .select('id, name, type, category, location, image, hourly_rate')
-    .or(`name.ilike.%${q}%,type.ilike.%${q}%,category.ilike.%${q}%`)
+    .from('transport_services')
+    .select('id, name, subcategory, description_short, hero_image, area')
+    .or(`name.ilike.%${q}%,description_short.ilike.%${q}%,subcategory.ilike.%${q}%`)
+    .eq('status', 'published')
     .limit(6);
 
   if (error || !data) return [];
 
-  return data.map((v: any): SearchResult => ({
+  return (data as TransportSearchRow[]).map((v): SearchResult => ({
     id: String(v.id),
     type: 'transport',
     title: v.name,
-    subtitle: v.type ?? '',
-    category: v.category ?? '',
-    area: v.location ?? 'Dubai',
-    image: v.image ?? '',
+    subtitle: v.description_short ?? '',
+    category: v.subcategory ?? '',
+    area: v.area ?? 'Dubai',
+    image: v.hero_image ?? '',
     slug: String(v.id),
-    href: `/transport/${v.category}/${v.id}`,
-    price_tier: v.hourly_rate ? Math.min(4, Math.ceil(v.hourly_rate / 250)) : undefined,
+    href: `/transport/${v.subcategory}/${v.id}`,
   }));
 }
 
-// Search business services
 async function searchBusiness(q: string): Promise<SearchResult[]> {
-
   const { data, error } = await supabase
     .from('business_services')
     .select('id, name, subcategory, description_short, hero_image')
@@ -117,7 +134,7 @@ async function searchBusiness(q: string): Promise<SearchResult[]> {
 
   if (error || !data) return [];
 
-  return data.map((v: any): SearchResult => ({
+  return (data as BusinessSearchRow[]).map((v): SearchResult => ({
     id: String(v.id),
     type: 'business',
     title: v.name,
@@ -135,7 +152,6 @@ export async function searchAll(query: string): Promise<SearchResult[]> {
   const q = query.trim().toLowerCase().replace(/[%(),.:{}\\]/g, '');
   if (!q) return [];
 
-  // Run all searches in parallel
   const [venues, experiences, transport, business] = await Promise.all([
     searchVenues(q),
     searchExperiences(q),
@@ -143,6 +159,5 @@ export async function searchAll(query: string): Promise<SearchResult[]> {
     searchBusiness(q),
   ]);
 
-  // Combine and prioritize venues, then others
   return [...venues, ...experiences, ...transport, ...business];
 }

@@ -39,12 +39,17 @@ function SearchPageContent() {
 
   useEffect(() => {
     const q = query.trim();
+    const params = new URLSearchParams(searchParams.toString());
+
     if (q.length >= 2) {
-      const params = new URLSearchParams();
       params.set("q", q);
-      router.replace(`/search?${params.toString()}`, { scroll: false });
+    } else {
+      params.delete("q");
     }
-  }, [query, router]);
+
+    const nextQuery = params.toString();
+    router.replace(nextQuery ? `/search?${nextQuery}` : '/search', { scroll: false });
+  }, [query, router, searchParams]);
 
   const filteredResults = useMemo(() => {
     if (activeFilter === "all") return results;
@@ -339,11 +344,11 @@ function SearchPageContent() {
                     { label: "Business", desc: "Formation, licensing, banking", href: "/business", color: "#C4917D" },
                     { label: "Concierge", desc: "Personal assistance and bespoke requests", href: "/request", color: "#C9A84C" },
                   ].map((cat) => (
-                    <a key={cat.href} href={cat.href} className="group p-4 rounded-xl transition-all duration-300 hover:bg-cipher-surface" style={{ background: "rgba(18,15,10,0.6)", border: "1px solid rgba(212,195,150,0.06)" }}>
+                    <Link key={cat.href} href={cat.href} className="group p-4 rounded-xl transition-all duration-300 hover:bg-cipher-surface" style={{ background: "rgba(18,15,10,0.6)", border: "1px solid rgba(212,195,150,0.06)" }}>
                       <div className="w-2 h-2 rounded-full mb-3" style={{ background: cat.color }} />
                       <h4 className="text-sm mb-1 group-hover:text-cipher-gold transition-colors" style={{ color: "rgba(245,237,216,0.85)", fontFamily: "var(--font-body)", fontWeight: 500 }}>{cat.label}</h4>
                       <p className="text-[10px]" style={{ color: "rgba(212,195,150,0.35)", fontFamily: "var(--font-body)" }}>{cat.desc}</p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

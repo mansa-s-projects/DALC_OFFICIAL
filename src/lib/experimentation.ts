@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 function hashToUnitInterval(input: string) {
   let hash = 2166136261;

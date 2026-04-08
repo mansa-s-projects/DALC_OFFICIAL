@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 import { assignLeadOwner, createFollowUpTask } from './lead-commands';
 import { processNotificationEvent } from './notification-engine';
 import { enqueueWhatsAppJob } from './whatsapp-automation';
@@ -228,10 +228,11 @@ async function applyLeadPatch(
 async function runAction(
   supabaseAdmin: SupabaseAdmin,
   context: AutomationContext,
+  workflowHistory: Array<Record<string, unknown>>,
   triggerName: string,
   triggerKey: string,
   actionName: AutomationActionName
-) {
+): Promise<Array<Record<string, unknown>>> {
   const actionInserted = await insertActionLog(supabaseAdmin, {
     leadId: context.lead.id,
     triggerName,
@@ -246,12 +247,10 @@ async function runAction(
     },
   });
 
-  if (!actionInserted) return;
+  if (!actionInserted) return workflowHistory;
 
   const existingNotifications =
     (context.lead.notifications_sent as Record<string, unknown> | null) ?? {};
-  // Always read from context.lead so sequential runAction calls see each other's appends
-  const existingHistory = context.lead.workflow_history;
 
   const historyEntry: Record<string, unknown> = {
     timestamp: context.nowIso,
@@ -260,7 +259,7 @@ async function runAction(
   };
 
   if (actionName === 'send_internal_sales_alert') {
-    const newHistory = appendHistory(existingHistory, { ...historyEntry, reason: 'intent_threshold_triggered' });
+    const newHistory = appendHistory(workflowHistory, { ...historyEntry, reason: 'intent_threshold_triggered' });
     await applyLeadPatch(supabaseAdmin, context.lead.id, {
       automation_status: 'alerted',
       notifications_sent: {
@@ -269,8 +268,7 @@ async function runAction(
       },
       workflow_history: newHistory,
     });
-    (context.lead as LeadRecord).workflow_history = newHistory;
-    return;
+    return newHistory;
   }
 
   if (actionName === 'assign_lead_to_salesperson') {
@@ -289,25 +287,23 @@ async function runAction(
       }
     );
 
-    const newHistory = appendHistory(existingHistory, { ...historyEntry, owner });
+    const newHistory = appendHistory(workflowHistory, { ...historyEntry, owner });
     await applyLeadPatch(supabaseAdmin, context.lead.id, {
       automation_status: 'assigned',
       workflow_history: newHistory,
     });
-    (context.lead as LeadRecord).workflow_history = newHistory;
-    return;
+    return newHistory;
   }
 
   if (actionName === 'mark_lead_urgent') {
-    const newHistory = appendHistory(existingHistory, historyEntry);
+    const newHistory = appendHistory(workflowHistory, historyEntry);
     await applyLeadPatch(supabaseAdmin, context.lead.id, {
       priority: 'urgent',
       follow_up_state: 'immediate',
       automation_status: 'urgent',
       workflow_history: newHistory,
     });
-    (context.lead as LeadRecord).workflow_history = newHistory;
-    return;
+    return newHistory;
   }
 
   if (actionName === 'schedule_follow_up_task') {
@@ -336,14 +332,13 @@ async function runAction(
       }
     );
 
-    const newHistory = appendHistory(existingHistory, historyEntry);
+    const newHistory = appendHistory(workflowHistory, historyEntry);
     await applyLeadPatch(supabaseAdmin, context.lead.id, {
       follow_up_state: context.nextTier === 'hot' ? 'scheduled_15m' : 'scheduled_2h',
       next_follow_up_at: dueAt,
       workflow_history: newHistory,
     });
-    (context.lead as LeadRecord).workflow_history = newHistory;
-    return;
+    return newHistory;
   }
 
   const webhookUrl = process.env.LEAD_AUTOMATION_WEBHOOK_URL;
@@ -363,12 +358,14 @@ async function runAction(
       console.warn(`[lead-automation] Webhook responded ${webhookResp.status} for lead ${context.lead.id}`);
     }
 
-    const newHistory = appendHistory(existingHistory, historyEntry);
+    const newHistory = appendHistory(workflowHistory, historyEntry);
     await applyLeadPatch(supabaseAdmin, context.lead.id, {
       workflow_history: newHistory,
     });
-    (context.lead as LeadRecord).workflow_history = newHistory;
+    return newHistory;
   }
+
+  return workflowHistory;
 }
 
 export async function processLeadAutomation(input: {
@@ -495,12 +492,15 @@ export async function processLeadAutomation(input: {
     });
   }
 
+  let workflowHistory: Array<Record<string, unknown>> = context.lead.workflow_history
+    ? [...context.lead.workflow_history]
+    : [];
   for (const rule of AUTOMATION_RULES) {
     if (!rule.shouldRun(context)) continue;
 
     const triggerKey = rule.buildTriggerKey(context);
     for (const action of rule.actions) {
-      await runAction(supabaseAdmin, context, rule.id, triggerKey, action);
+      workflowHistory = await runAction(supabaseAdmin, context, workflowHistory, rule.id, triggerKey, action);
     }
   }
 }

@@ -44,6 +44,38 @@ import type { UserSkill, UserTier } from '../../types';
 
 type ProfileTab = 'overview' | 'bookings' | 'requests' | 'saved' | 'documents' | 'settings';
 
+interface TransportBookingRow {
+  id: string;
+  vehicle_name?: string | null;
+  start_date?: string | null;
+  created_at?: string | null;
+  status?: string | null;
+  total_price?: number | null;
+  pickup_location?: string | null;
+  duration_days?: number | null;
+}
+
+interface ExperienceBookingRow {
+  id: string;
+  experience_name?: string | null;
+  booking_date?: string | null;
+  created_at?: string | null;
+  status?: string | null;
+  total_price?: number | null;
+  guest_count?: number | null;
+  time_slot?: string | null;
+}
+
+interface StaysBookingRow {
+  id: string;
+  property_name?: string | null;
+  check_in?: string | null;
+  created_at?: string | null;
+  status?: string | null;
+  total_price?: number | null;
+  nights?: number | null;
+}
+
 interface BookingItem {
   id: string;
   type: 'transport' | 'experience' | 'stay';
@@ -183,11 +215,11 @@ function BookingsSection({ userId }: { userId: string }) {
   const isLoading = transportLoading || experienceLoading || staysLoading;
 
   const allBookings: BookingItem[] = [
-    ...(transportBookings?.map((b: any) => ({
+    ...((transportBookings as unknown as TransportBookingRow[] | undefined)?.map((b) => ({
       id: b.id,
       type: 'transport' as const,
       title: `${b.vehicle_name || 'Vehicle'} Rental`,
-      date: b.start_date || b.created_at,
+      date: b.start_date || b.created_at || '',
       status: b.status || 'confirmed',
       amount: b.total_price ? `AED ${b.total_price}` : undefined,
       details: {
@@ -195,11 +227,11 @@ function BookingsSection({ userId }: { userId: string }) {
         'Duration': b.duration_days ? `${b.duration_days} days` : 'N/A',
       },
     })) || []),
-    ...(experienceBookings?.map((b: any) => ({
+    ...((experienceBookings as unknown as ExperienceBookingRow[] | undefined)?.map((b) => ({
       id: b.id,
       type: 'experience' as const,
       title: b.experience_name || 'Experience',
-      date: b.booking_date || b.created_at,
+      date: b.booking_date || b.created_at || '',
       status: b.status || 'confirmed',
       amount: b.total_price ? `AED ${b.total_price}` : undefined,
       details: {
@@ -207,11 +239,11 @@ function BookingsSection({ userId }: { userId: string }) {
         'Time': b.time_slot || 'TBD',
       },
     })) || []),
-    ...(stayBookings?.map((b: any) => ({
+    ...((stayBookings as unknown as StaysBookingRow[] | undefined)?.map((b) => ({
       id: b.id,
       type: 'stay' as const,
       title: b.property_name || 'Accommodation',
-      date: b.check_in || b.created_at,
+      date: b.check_in || b.created_at || '',
       status: b.status || 'confirmed',
       amount: b.total_price ? `AED ${b.total_price}` : undefined,
       details: {

@@ -91,35 +91,37 @@ function matchesSearch(venue: MapLocation, query: string): boolean {
 export default function LiveMapPage() {
   const mapRef = useRef<MapRef>(null);
   const [viewState, setViewState] = useState(UAE_CENTER);
-  const [venues, setVenues] = useState<MapLocation[]>([]);
   const [selected, setSelected] = useState<MapLocation | null>(null);
   const [activeFilter, setActiveFilter] = useState<FilterId>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Load Explore locations for the map experience.
-  useEffect(() => {
-    const mapped: MapLocation[] = ALL_EXPLORE_LOCATIONS
+  const venues = useMemo(
+    () =>
+      ALL_EXPLORE_LOCATIONS
       .filter((location) => isFinite(location.latitude) && isFinite(location.longitude))
-      .map((location) => ({
-        id: location.id,
-        name: location.name,
-        category: location.category,
-        description: location.long_description || location.short_description,
-        latitude: location.latitude,
-        longitude: location.longitude,
-        locationStr: `${location.area}, ${location.emirate}`,
-        tags: location.tags,
-        priceRange: 'AED ' + '$'.repeat(location.price_tier),
-        vibe: location.vibe,
-        bestTime: location.best_time,
-        insiderTip: location.insider_tip,
-        detailHref: '/explore',
-        requestHref: `/request?location=${encodeURIComponent(location.name)}`,
-        requestLabel: 'Plan with Concierge',
-      }));
+      .map((location) => {
+        const tierCount = Math.max(0, Math.min(4, Math.floor(Number(location.price_tier) || 0)));
 
-    setVenues(mapped);
-  }, []);
+        return {
+          id: location.id,
+          name: location.name,
+          category: location.category,
+          description: location.long_description || location.short_description,
+          latitude: location.latitude,
+          longitude: location.longitude,
+          locationStr: `${location.area}, ${location.emirate}`,
+          tags: location.tags,
+          priceRange: tierCount > 0 ? 'AED ' + '$'.repeat(tierCount) : 'AED -',
+          vibe: location.vibe,
+          bestTime: location.best_time,
+          insiderTip: location.insider_tip,
+          detailHref: '/explore',
+          requestHref: `/request?location=${encodeURIComponent(location.name)}`,
+          requestLabel: 'Plan with Concierge',
+        };
+      }),
+    [],
+  );
 
   // Combine category filter + search query — no refetch
   const visibleVenues = useMemo(
@@ -132,16 +134,10 @@ export default function LiveMapPage() {
     [venues, activeFilter, searchQuery],
   );
 
-  // Close panel if its venue gets hidden by filter or search
-  useEffect(() => {
-    if (
-      selected &&
-      (!matchesFilter(selected.category, activeFilter) ||
-        !matchesSearch(selected, searchQuery))
-    ) {
-      setSelected(null);
-    }
-  }, [activeFilter, searchQuery, selected]);
+  const activeSelected = useMemo(
+    () => visibleVenues.find((venue) => venue.id === selected?.id) ?? null,
+    [selected?.id, visibleVenues],
+  );
 
   const handleFilterChange = useCallback((id: FilterId) => {
     setActiveFilter(id);
@@ -256,7 +252,7 @@ export default function LiveMapPage() {
           >
             <VenueMarker
               color={getCategoryColor(venue.category)}
-              active={selected?.id === venue.id}
+              active={activeSelected?.id === venue.id}
               onClick={() => handleMarkerClick(venue)}
             />
           </Marker>
@@ -264,7 +260,7 @@ export default function LiveMapPage() {
       </Map>
 
       {/* Side panel / bottom sheet */}
-      <MapSidePanel venue={selected} onClose={handleClose} />
+      <MapSidePanel venue={activeSelected} onClose={handleClose} />
     </div>
   );
 }

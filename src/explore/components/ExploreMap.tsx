@@ -44,6 +44,23 @@ function esc(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
+function getPopupImageStyle(image?: string): string {
+  if (!image || typeof window === 'undefined') {
+    return '';
+  }
+
+  try {
+    const resolved = new URL(image, window.location.origin);
+    if (!['http:', 'https:'].includes(resolved.protocol)) {
+      return '';
+    }
+
+    return `background:url('${esc(resolved.toString())}') center/cover no-repeat;`;
+  } catch {
+    return '';
+  }
+}
+
 function buildMarkerEl(loc: ExploreLocation, animDelay: number): HTMLElement {
   const el = document.createElement('div');
   const isFeatured = loc.is_featured;
@@ -129,8 +146,9 @@ function buildPopupHtml(loc: ExploreLocation): string {
     ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">${featuredBadge}${gemBadge}</div>` 
     : '';
 
-  const heroImage = loc.hero_image
-    ? `<div style="width:100%;height:100px;background:url('${esc(loc.hero_image)}') center/cover no-repeat;border-radius:10px 10px 0 0;position:relative;">
+  const heroImageStyle = getPopupImageStyle(loc.hero_image ?? undefined);
+  const heroImage = heroImageStyle
+    ? `<div style="width:100%;height:100px;${heroImageStyle}border-radius:10px 10px 0 0;position:relative;">
         <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,#111214);"></div>
         ${loc.category ? `<div style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:3px 8px;">
           <span style="font-size:9px;font-weight:600;letter-spacing:0.12em;color:#fff;text-transform:uppercase;">${esc(loc.category)}</span>
@@ -208,7 +226,9 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
   const onSelectRef = useRef(onLocationSelect);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  onSelectRef.current = onLocationSelect;
+  useEffect(() => {
+    onSelectRef.current = onLocationSelect;
+  }, [onLocationSelect]);
 
   const token = getMapboxToken();
 

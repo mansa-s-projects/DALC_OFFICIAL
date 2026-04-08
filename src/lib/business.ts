@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { queryPublished } from './supabase-query';
 import type {
   BusinessService,
   BusinessBooking,
@@ -228,12 +229,12 @@ export const MOCK_SERVICES: BusinessService[] = [
     hero_image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2574&auto=format&fit=crop',
     gallery_images: [],
     service_type: 'filing',
-    duration_description: '3–7 business days',
+    duration_description: '15 business days',
     pricing_model: 'starting_from',
     price_from: 1500,
     price_currency: 'AED',
     price_display: 'From AED 1,500',
-    required_documents: ['Valid passport', 'Emirates ID', 'Trade license for electronic media (from Invest in Dubai or relevant authority)', 'Good Conduct Certificate (police clearance) from Dubai Police', 'Portfolio or social media account links'],
+    required_documents: ['Valid passport', 'Emirates ID (or passport + valid UAE visa/talent agency sponsorship for non-residents)', 'Trade license for electronic media (from Invest in Dubai or relevant authority)', 'Good Conduct Certificate (police clearance) from Dubai Police', 'Portfolio or social media account links'],
     eligibility_criteria: ['Minimum age 18 years', 'Clean criminal record', 'UAE resident or citizen (non-residents require talent management agency)', 'Active social media presence'],
     government_fees: 0,
     government_authority: 'UAE Media Council — National Media Authority',
@@ -264,23 +265,19 @@ export const MOCK_SERVICES: BusinessService[] = [
 // ─── Service Functions ────────────────────────────────────────────────────────
 
 export async function getBusinessServices(filters?: BusinessFilters): Promise<BusinessService[]> {
-  let query = supabase
-    .from('business_services')
-    .select('*')
-    .eq('status', 'published')
-    .order('popularity_score', { ascending: false });
-
-  if (filters?.subcategory) query = query.eq('subcategory', filters.subcategory);
-  if (filters?.sub_subcategory) query = query.eq('sub_subcategory', filters.sub_subcategory);
-  if (filters?.service_type) query = query.eq('service_type', filters.service_type);
-  if (filters?.pricing_model) query = query.eq('pricing_model', filters.pricing_model);
-  if (filters?.price_min != null) query = query.gte('price_from', filters.price_min);
-  if (filters?.price_max != null) query = query.lte('price_from', filters.price_max);
-  if (filters?.is_featured != null) query = query.eq('is_featured', filters.is_featured);
-
-  const { data, error } = await query;
-  if (error) throw error;
-  return (data ?? []) as BusinessService[];
+  return queryPublished<BusinessService>({
+    table: 'business_services',
+    orderBy: { column: 'popularity_score', ascending: false },
+    filters: {
+      subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
+      sub_subcategory: filters?.sub_subcategory ? { op: 'eq', value: filters.sub_subcategory } : undefined,
+      service_type: filters?.service_type ? { op: 'eq', value: filters.service_type } : undefined,
+      pricing_model: filters?.pricing_model ? { op: 'eq', value: filters.pricing_model } : undefined,
+      price_from_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'price_from' } : undefined,
+      price_from_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'price_from' } : undefined,
+      is_featured: filters?.is_featured != null ? { op: 'eq', value: filters.is_featured } : undefined,
+    },
+  });
 }
 
 export async function getServiceBySlug(slug: string): Promise<BusinessService | null> {
@@ -377,31 +374,73 @@ export async function getUserConsultations(userId: string): Promise<BusinessCons
 }
 
 const BUSINESS_HOURS = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+const BUSINESS_SLOT_DURATION_MINUTES = 60;
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function createBusinessSlots(date: string, occupiedHours: Set<number>): TimeSlot[] {
+  return BUSINESS_HOURS.map((hour) => {
+    const slotTime = new Date(`${date}T00:00:00.000Z`);
+    slotTime.setUTCHours(hour, 0, 0, 0);
+
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+
+    return {
+      time: slotTime.toISOString(),
+      label: `${displayHour}:00 ${ampm}`,
+      available: !occupiedHours.has(hour),
+    };
+  });
+}
 
 export async function getAvailableSlots(serviceId: string, date: string): Promise<TimeSlot[]> {
-  if (serviceId) {
-    const { data: bookings } = await supabase
-      .from('business_bookings')
-      .select('time')
-      .eq('service_id', serviceId)
-      .eq('date', date);
-
-    const unavailable = (bookings ?? []).map((b: { time: string }) => new Date(b.time).getHours());
-    const slots: TimeSlot[] = BUSINESS_HOURS.map(h => {
-      const dt = new Date(date);
-      dt.setHours(h, 0, 0, 0);
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      const displayH = h > 12 ? h - 12 : h === 0 ? 12 : h;
-      return {
-        time: dt.toISOString(),
-        label: `${displayH}:00 ${ampm}`,
-        available: !unavailable.includes(h),
-      };
-    });
-    return slots;
+  if (!date) {
+    return [];
   }
 
-  return [] as TimeSlot[];
+  if (!serviceId || !UUID_PATTERN.test(serviceId)) {
+    return createBusinessSlots(date, new Set<number>());
+  }
+
+  const dayStart = new Date(`${date}T00:00:00.000Z`);
+  const dayEnd = new Date(dayStart);
+  dayEnd.setUTCDate(dayEnd.getUTCDate() + 1);
+
+  const { data, error } = await supabase
+    .from('business_consultations')
+    .select('scheduled_at, duration_minutes')
+    .eq('service_id', serviceId)
+    .gte('scheduled_at', dayStart.toISOString())
+    .lt('scheduled_at', dayEnd.toISOString())
+    .in('status', ['scheduled', 'confirmed', 'in_progress']);
+
+  if (error) throw error;
+
+  const occupiedHours = new Set<number>();
+  const consultations = (data ?? []) as Array<Pick<BusinessConsultation, 'scheduled_at' | 'duration_minutes'>>;
+
+  for (const consultation of consultations) {
+    const start = new Date(consultation.scheduled_at);
+    const end = new Date(
+      start.getTime() +
+        (consultation.duration_minutes ?? BUSINESS_SLOT_DURATION_MINUTES) * 60_000,
+    );
+
+    for (const hour of BUSINESS_HOURS) {
+      const slotStart = new Date(dayStart);
+      slotStart.setUTCHours(hour, 0, 0, 0);
+
+      const slotEnd = new Date(slotStart);
+      slotEnd.setUTCMinutes(slotEnd.getUTCMinutes() + BUSINESS_SLOT_DURATION_MINUTES);
+
+      if (start < slotEnd && end > slotStart) {
+        occupiedHours.add(hour);
+      }
+    }
+  }
+
+  return createBusinessSlots(date, occupiedHours);
 }
 
 export async function getComplianceChecklist(serviceId: string): Promise<ComplianceItem[]> {
@@ -420,31 +459,14 @@ export async function updateComplianceItem(
   item: ComplianceItem,
   completed: boolean
 ): Promise<void> {
-  const { data: booking, error: fetchError } = await supabase
-    .from('business_bookings')
-    .select('compliance_status')
-    .eq('id', bookingId)
-    .single();
-
-  if (fetchError) throw fetchError;
-
-  const updated = ((booking?.compliance_status as ComplianceItem[]) ?? []).map(c =>
-    c.id === item.id
-      ? { ...c, completed, completed_at: completed ? new Date().toISOString() : undefined }
-      : c
-  );
-
-  const { error: updateError } = await supabase
-    .from('business_bookings')
-    .update({ compliance_status: updated })
-    .eq('id', bookingId);
-
-  if (updateError) throw updateError;
-
-  const { error } = await supabase.rpc('update_compliance_item', {
+  const { data, error } = await supabase.rpc('update_compliance_item', {
     booking_id: bookingId,
     item_id: item.id,
-    completed,
+    item_completed: completed,
   });
+
   if (error) throw error;
+  if (data == null) {
+    throw new Error('Compliance update returned no data');
+  }
 }

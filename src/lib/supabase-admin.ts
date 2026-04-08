@@ -1,7 +1,8 @@
 import 'server-only';
 import { createClient } from '@supabase/supabase-js';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
-let supabaseAdminSingleton: ReturnType<typeof createClient<any>> | null = null;
+let supabaseAdminSingleton: SupabaseClient | null = null;
 
 export function getSupabaseAdminClient() {
   if (supabaseAdminSingleton) return supabaseAdminSingleton;
@@ -21,7 +22,7 @@ export function getSupabaseAdminClient() {
     );
   }
 
-  supabaseAdminSingleton = createClient<any>(supabaseUrl, serviceRoleKey, {
+  supabaseAdminSingleton = createClient(supabaseUrl, serviceRoleKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,

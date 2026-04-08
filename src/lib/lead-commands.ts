@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 import { processNotificationEvent } from './notification-engine';
 import { enqueueCrmSyncJob, mapLeadToCrmFields } from './crm-sync';
 

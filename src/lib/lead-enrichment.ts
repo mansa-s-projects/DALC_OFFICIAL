@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 export async function enqueueLeadEnrichmentJob(input: {
   supabaseAdmin: SupabaseAdmin;

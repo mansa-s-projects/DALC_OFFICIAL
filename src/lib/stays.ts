@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { queryPublished } from './supabase-query';
 import type {
   StaysProperty,
   StaysBooking,
@@ -469,23 +470,25 @@ function generateMockAvailability(propertyId: string, startDate: string, endDate
 // ─── Service Functions ────────────────────────────────────────────────────────
 
 export async function getProperties(filters?: StaysFilters): Promise<StaysProperty[]> {
-  let query = supabase.from('stays_properties').select('*').eq('status', 'published').order('popularity_score', { ascending: false });
-  if (filters?.subcategory) query = query.eq('subcategory', filters.subcategory);
-  if (filters?.location) query = query.ilike('location', `%${filters.location}%`);
-  if (filters?.area) query = query.ilike('area', `%${filters.area}%`);
-  if (filters?.bedrooms) query = query.gte('bedrooms', filters.bedrooms);
-  if (filters?.bathrooms) query = query.gte('bathrooms', filters.bathrooms);
-  if (filters?.price_min != null) query = query.gte('base_price', filters.price_min);
-  if (filters?.price_max != null) query = query.lte('base_price', filters.price_max);
-  if (filters?.star_rating) query = query.eq('star_rating', filters.star_rating);
-  if (filters?.beachfront != null) query = query.eq('beachfront', filters.beachfront);
-  if (filters?.private_pool != null) query = query.eq('private_pool', filters.private_pool);
-  if (filters?.furnished != null) query = query.eq('furnished', filters.furnished);
-  if (filters?.instant_booking != null) query = query.eq('instant_booking', filters.instant_booking);
-  if (filters?.is_featured != null) query = query.eq('is_featured', filters.is_featured);
-  const { data, error } = await query;
-  if (error) throw error;
-  return (data ?? []) as StaysProperty[];
+  return queryPublished<StaysProperty>({
+    table: 'stays_properties',
+    orderBy: { column: 'popularity_score', ascending: false },
+    filters: {
+      subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
+      location: filters?.location ? { op: 'ilike', value: filters.location } : undefined,
+      area: filters?.area ? { op: 'ilike', value: filters.area } : undefined,
+      bedrooms: filters?.bedrooms ? { op: 'gte', value: filters.bedrooms } : undefined,
+      bathrooms: filters?.bathrooms ? { op: 'gte', value: filters.bathrooms } : undefined,
+      base_price_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'base_price' } : undefined,
+      base_price_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'base_price' } : undefined,
+      star_rating: filters?.star_rating ? { op: 'eq', value: filters.star_rating } : undefined,
+      beachfront: filters?.beachfront != null ? { op: 'eq', value: filters.beachfront } : undefined,
+      private_pool: filters?.private_pool != null ? { op: 'eq', value: filters.private_pool } : undefined,
+      furnished: filters?.furnished != null ? { op: 'eq', value: filters.furnished } : undefined,
+      instant_booking: filters?.instant_booking != null ? { op: 'eq', value: filters.instant_booking } : undefined,
+      is_featured: filters?.is_featured != null ? { op: 'eq', value: filters.is_featured } : undefined,
+    },
+  });
 }
 
 export async function getPropertyBySlug(slug: string): Promise<StaysProperty | null> {

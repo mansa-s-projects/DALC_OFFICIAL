@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 export type NotificationEventType =
   | 'new_hot_lead_created'
@@ -65,8 +65,8 @@ async function resolveTargets(
     return defaultTargets(event);
   }
 
-  return data.map((row: any) => ({
-    channel: row.channel as NotificationChannel,
+  return data.map((row: { channel: NotificationChannel; recipient: string }) => ({
+    channel: row.channel,
     recipient: String(row.recipient),
   }));
 }

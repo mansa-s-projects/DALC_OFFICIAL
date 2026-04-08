@@ -42,6 +42,7 @@ export default function RequestPage() {
     details: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const selectedType = useMemo(
     () => BRIEF_TYPES.find((item) => item.value === briefType) ?? BRIEF_TYPES[0],
@@ -50,17 +51,24 @@ export default function RequestPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    await createRequest.mutateAsync({
-      category: 'concierge',
-      request_type: 'inquiry',
-      date_time: form.when || new Date().toISOString(),
-      party_size: Number(form.partySize) || 1,
-      contact_name: form.name,
-      contact_info: form.contact,
-      venue_name: form.target || CONCIERGE_TYPE_LABELS[briefType],
-      notes: [`brief_type=${briefType}`, form.details].filter(Boolean).join(' | '),
-    });
-    setSubmitted(true);
+    setSubmissionError(null);
+
+    try {
+      await createRequest.mutateAsync({
+        category: 'concierge',
+        request_type: 'inquiry',
+        date_time: form.when || new Date().toISOString(),
+        party_size: Number(form.partySize) || 1,
+        contact_name: form.name,
+        contact_info: form.contact,
+        venue_name: form.target || CONCIERGE_TYPE_LABELS[briefType],
+        notes: [`brief_type=${briefType}`, form.details].filter(Boolean).join(' | '),
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Failed to submit concierge request:', error);
+      setSubmissionError('We could not submit your brief. Please try again or use the WhatsApp backup link.');
+    }
   }
 
   return (
@@ -155,6 +163,10 @@ export default function RequestPage() {
                   <input type="number" min="1" value={form.partySize} onChange={(e) => setForm((prev) => ({ ...prev, partySize: e.target.value }))} placeholder="Guests" className="rounded-xl border border-white/8 bg-white/5 px-4 py-3 text-sm outline-none focus:border-[#C9A84C]/30" />
                 </div>
                 <textarea value={form.details} onChange={(e) => setForm((prev) => ({ ...prev, details: e.target.value }))} placeholder="Tell us what success looks like: timing, atmosphere, budget range, logistics, preferences, edge cases." rows={7} className="w-full rounded-2xl border border-white/8 bg-white/5 px-4 py-4 text-sm leading-6 outline-none focus:border-[#C9A84C]/30" required />
+
+                {submissionError && (
+                  <p className="text-sm text-red-300">{submissionError}</p>
+                )}
 
                 <div className="flex flex-col gap-3 border-t border-white/6 pt-5 md:flex-row md:items-center md:justify-between">
                   <div className="flex flex-wrap gap-3 text-xs text-white/45">

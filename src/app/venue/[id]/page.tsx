@@ -10,6 +10,18 @@ function getBaseUrl() {
 	return new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
 }
 
+function getAbsoluteUrl(value?: string | null): string | undefined {
+	if (!value) {
+		return undefined;
+	}
+
+	try {
+		return new URL(value, getBaseUrl()).toString();
+	} catch {
+		return undefined;
+	}
+}
+
 export async function generateMetadata({ params }: VenuePageProps): Promise<Metadata> {
 	const { id } = await params;
 	const venue = getStaticVenueById(id);
@@ -24,6 +36,7 @@ export async function generateMetadata({ params }: VenuePageProps): Promise<Meta
 	const title = `${venue.name} | Dubai Venue Guide | Dubai À La Carte`;
 	const description = getVenueSeoDescription(venue);
 	const url = new URL(`/venue/${venue.id}`, getBaseUrl());
+	const absoluteHeroImage = getAbsoluteUrl(venue.hero_image);
 
 	return {
 		title,
@@ -37,18 +50,20 @@ export async function generateMetadata({ params }: VenuePageProps): Promise<Meta
 			url: url.toString(),
 			type: 'article',
 			siteName: 'Dubai À La Carte',
-			images: [
-				{
-					url: venue.hero_image,
-					alt: venue.name,
-				},
-			],
+			images: absoluteHeroImage
+				? [
+					{
+						url: absoluteHeroImage,
+						alt: venue.name,
+					},
+				]
+				: undefined,
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
-			images: [venue.hero_image],
+			images: absoluteHeroImage ? [absoluteHeroImage] : undefined,
 		},
 		keywords: [
 			venue.name,

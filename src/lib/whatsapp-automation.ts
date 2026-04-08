@@ -1,4 +1,4 @@
-type SupabaseAdmin = any;
+import type { SupabaseAdmin } from './types/supabase-admin';
 
 export type WhatsAppTriggerType =
   | 'hot_lead_created'

@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { queryPublished } from './supabase-query';
 import type {
   ExperienceService,
   ExperienceBooking,
@@ -640,7 +641,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
       { tier: 'Couples Ritual', price: 1400, description: 'Private hammam suite for two', includes: ['Private suite', 'Couples ritual', 'Champagne', 'Fresh fruit', 'Spa products to take home'], max_guests: 2 },
     ],
     max_capacity: 20,
-    current_bookings: 12,
+    current_bookings: 3,
     availability_type: 'time_slot',
     time_slots: [
       { day: 'Daily', start: '10:00', end: '21:00', capacity: 20 },
@@ -1417,7 +1418,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     sub_subcategory: 'dune-buggy',
     name: 'Can-Am Maverick R 2-Seater',
     slug: 'can-am-maverick-r-2-seater',
-    description_short: 'The ultimate 2-seater dune buggy — Can-Am flagship performance machine.',
+    description_short: 'The ultimate 2-seater dune buggy — Can-Am\'s flagship performance machine.',
     description_long: 'The Can-Am Maverick R is the pinnacle of side-by-side performance. With 240 horsepower and advanced suspension, this 2-seater beast conquers the most challenging dunes with ease. For serious thrill-seekers only.',
     hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -1521,7 +1522,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
       { tier: '1 Hour', price: 1350, description: '1-hour performance session', max_guests: 2 },
     ],
     max_capacity: 2,
-    current_bookings: 3,
+    current_bookings: 2,
     availability_type: 'time_slot',
     time_slots: [
       { day: 'Daily', start: '08:00', end: '17:00', capacity: 6 },
@@ -1609,7 +1610,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
       { tier: '1 Hour', price: 900, description: '1-hour adventure session', max_guests: 2 },
     ],
     max_capacity: 2,
-    current_bookings: 4,
+    current_bookings: 2,
     availability_type: 'time_slot',
     time_slots: [
       { day: 'Daily', start: '08:00', end: '17:00', capacity: 8 },
@@ -2003,7 +2004,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
       { tier: 'Private Lexus', price: 990, description: 'Private transfer + mosque tour', max_guests: 4 },
     ],
     max_capacity: 4,
-    current_bookings: 5,
+    current_bookings: 4,
     availability_type: 'time_slot',
     time_slots: [
       { day: 'Daily', start: '08:00', end: '14:00', capacity: 10 },
@@ -2301,25 +2302,22 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
 // ─── Service Functions ────────────────────────────────────────────────────────
 
 export async function getExperiences(filters?: ExperienceFilters): Promise<ExperienceService[]> {
-  let query = supabase
-    .from('experience_services')
-    .select('*')
-    .in('status', ['published', 'sold_out'])
-    .order('trending_score', { ascending: false });
-
-  if (filters?.subcategory) query = query.eq('subcategory', filters.subcategory);
-  if (filters?.sub_subcategory) query = query.eq('sub_subcategory', filters.sub_subcategory);
-  if (filters?.service_type) query = query.eq('service_type', filters.service_type);
-  if (filters?.pricing_model) query = query.eq('pricing_model', filters.pricing_model);
-  if (filters?.price_min != null) query = query.gte('price_from', filters.price_min);
-  if (filters?.price_max != null) query = query.lte('price_from', filters.price_max);
-  if (filters?.is_featured != null) query = query.eq('is_featured', filters.is_featured);
-  if (filters?.is_trending != null) query = query.eq('is_trending', filters.is_trending);
-  if (filters?.location) query = query.ilike('location', `%${filters.location}%`);
-
-  const { data, error } = await query;
-  if (error) throw error;
-  return (data ?? []) as ExperienceService[];
+  return queryPublished<ExperienceService>({
+    table: 'experience_services',
+    statusValues: ['published', 'sold_out'],
+    orderBy: { column: 'trending_score', ascending: false },
+    filters: {
+      subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
+      sub_subcategory: filters?.sub_subcategory ? { op: 'eq', value: filters.sub_subcategory } : undefined,
+      service_type: filters?.service_type ? { op: 'eq', value: filters.service_type } : undefined,
+      pricing_model: filters?.pricing_model ? { op: 'eq', value: filters.pricing_model } : undefined,
+      price_from_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'price_from' } : undefined,
+      price_from_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'price_from' } : undefined,
+      is_featured: filters?.is_featured != null ? { op: 'eq', value: filters.is_featured } : undefined,
+      is_trending: filters?.is_trending != null ? { op: 'eq', value: filters.is_trending } : undefined,
+      location: filters?.location ? { op: 'ilike', value: filters.location } : undefined,
+    },
+  });
 }
 
 export async function getExperienceBySlug(slug: string): Promise<ExperienceService | null> {

@@ -1,5 +1,3 @@
-import type { IntentType } from "./categoryMap";
-
 export type IntentDecision =
   | "CREATE_REQUEST"
   | "START_RELOCATION_FLOW"
@@ -7,20 +5,20 @@ export type IntentDecision =
   | "START_LIFESTYLE_FLOW"
   | "UNKNOWN";
 
-export type IntentPayload = {
-  user_input: string;
-  intent_type: IntentType;
-  complexity_score: number;
+type IntentPayload = {
+  user_input?: string;
+  intent_type?: string | null;
+  complexity_score?: number | null;
 };
 
 export type IntentResponse = {
-  intent: IntentPayload;
+  intent?: IntentPayload | null;
 };
 
 export function intentRouter(intentResponse: IntentResponse): IntentDecision {
   const intent = intentResponse.intent;
-  const intentType = intent.intent_type;
-  const complexityScore = intent.complexity_score;
+  const intentType = intent?.intent_type;
+  const complexityScore = intent?.complexity_score ?? 0;
 
   if (intentType === "relocation") {
     if (complexityScore >= 4) {

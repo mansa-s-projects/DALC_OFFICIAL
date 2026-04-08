@@ -35,7 +35,7 @@ function PriceTierIndicator({ tier }: { tier: number }) {
 
 export default function LocationCard({ location, index, onClick }: LocationCardProps) {
   const heroImage = location.hero_image || getPlaceholderImage(location.id);
-  const hasValidImage = location.hero_image && !location.hero_image.includes('placeholder');
+  const hasValidImage = Boolean(heroImage);
 
   return (
     <motion.article
@@ -129,7 +129,7 @@ export default function LocationCard({ location, index, onClick }: LocationCardP
             {location.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-white/8 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-[#B6B6B6]/70"
+                className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-0.5 text-[10px] font-medium text-[#B6B6B6]/70"
               >
                 {tag}
               </span>

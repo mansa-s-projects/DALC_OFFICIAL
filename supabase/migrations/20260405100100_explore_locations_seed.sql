@@ -220,7 +220,7 @@ INSERT INTO public.explore_locations (
 -- ─── VIEWPOINTS ───────────────────────────────────────────────────────────────
 
 ('view-at-the-palm', 'The View at The Palm', 'A 360-degree observation deck on the 52nd floor of The Palm Tower.',
- NULL, 25.1124, 55.1390, 'Dubai', 'Palm Jumeirah', 'Viewpoint', 'Observation',
+ NULL, 25.1096, 55.1388, 'Dubai', 'Palm Jumeirah', 'Viewpoint', 'Observation',
  false, true, '/images/explore/viewpoints/palm-view-hero.jpg', '{}',
  '{"Views","Photography","Skyline","Palm","Sunset"}', 'Palm panorama', 3,
  'Daily 10:00 AM - 10:00 PM', 'Sunset for golden palm views', 'Upgrade to the infinity pool for the ultimate experience.'),
