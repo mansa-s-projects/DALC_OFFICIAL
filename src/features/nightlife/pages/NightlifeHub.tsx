@@ -6,7 +6,7 @@ import Footer from '../../../components/navigation/Footer';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { ArrowRight, Utensils, Palmtree, Music, Mic2 } from 'lucide-react';
-import { MOCK_VENUES } from '../../../data/venues/mockData';
+import { useVenues } from '../hooks/useVenues';
 import VenueCard from '../../../components/cards/VenueCard';
 
 const NIGHTLIFE_CATEGORIES = [
@@ -40,7 +40,8 @@ const NIGHTLIFE_CATEGORIES = [
 ];
 
 export default function Nightlife() {
-  const diningEntertainmentVenues = MOCK_VENUES.filter(v => v.category === 'dining-entertainment').slice(0, 2);
+  const { data: allDiningEntertainment = [] } = useVenues({ category: 'dining-entertainment' });
+  const diningEntertainmentVenues = allDiningEntertainment.slice(0, 2);
 
   return (
     <div className="min-h-screen bg-luxury-black">

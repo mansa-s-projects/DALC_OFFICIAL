@@ -97,7 +97,7 @@ export default function AdminVenues() {
                   <td className="p-4">
                     <div className="flex items-center gap-3">
                       <img
-                        src={venue.hero_image}
+                        src={venue.hero_image || undefined}
                         alt={venue.name}
                         className="w-10 h-10 rounded-sm object-cover"
                       />

@@ -346,8 +346,13 @@ export function getVenueGalleryImage(id: string): string | undefined {
   return ID_TO_IMAGE_SET[id]?.gallery;
 }
 
+const MENU_STUB_FOLDERS = new Set(['CouCou', 'Ram___Roll', 'Verde_Beach', 'BCH', 'Verde']);
+
 export function getVenueMenuImage(id: string): string | undefined {
-  return ID_TO_IMAGE_SET[id]?.menu;
+  const menuPath = ID_TO_IMAGE_SET[id]?.menu;
+  if (!menuPath) return undefined;
+  const folder = menuPath.split('/')[3];
+  return MENU_STUB_FOLDERS.has(folder) ? undefined : menuPath;
 }
 
 export function getVenueBlogPath(id: string): string | undefined {

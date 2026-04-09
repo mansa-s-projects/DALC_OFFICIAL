@@ -51,6 +51,10 @@ export function getStaticVenueById(id: string): Venue | undefined {
   return MOCK_VENUES.find((venue) => venue.id === id);
 }
 
+export function getStaticVenueBySlug(slug: string): Venue | undefined {
+  return MOCK_VENUES.find((venue) => venue.id === slug || (venue as { slug?: string }).slug === slug);
+}
+
 export function getVenueSeoDescription(venue: Venue): string {
   const categoryLabel = (venue.category || '').replace(/-/g, ' ').trim() || 'venue';
   const location = venue.area || venue.location || 'Dubai';

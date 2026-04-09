@@ -95,7 +95,7 @@ export default function TrendingStrip({ venues, userSkills = [] }: TrendingStrip
                   className="relative h-[280px] rounded-lg overflow-hidden"
                 >
                   <img
-                    src={venue.hero_image}
+                    src={venue.hero_image || undefined}
                     alt={venue.name}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"

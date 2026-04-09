@@ -5,7 +5,6 @@ const routerCompatAlias = './src/lib/router.tsx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'dist',
   images: {
     unoptimized: true,
   },

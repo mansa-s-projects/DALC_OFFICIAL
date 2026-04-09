@@ -1,45 +1,60 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight, Anchor, Wind, Mountain, Sparkles, Ticket, Crown, Waves } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
-import Footer from '../../../components/navigation/Footer';
-import { DALC_EXPERIENCE_CATEGORIES } from '../catalog';
-import UpcomingEventsStrip from '../components/UpcomingEventsStrip';
+import Link from "next/link";
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Anchor,
+  Wind,
+  Mountain,
+  Sparkles,
+  Ticket,
+  Crown,
+  Waves,
+} from "lucide-react";
+import Navbar from "../../../components/navigation/Navbar";
+import Footer from "../../../components/navigation/Footer";
+import { DALC_EXPERIENCE_CATEGORIES } from "../catalog";
+import UpcomingEventsStrip from "../components/UpcomingEventsStrip";
 
 // Premium hero images per category - using reliable Unsplash URLs
 const CATEGORY_HERO_IMAGES: Record<string, string> = {
-  'desert-adventures':
-    'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=2070&auto=format&fit=crop',
-  'water-activities':
-    'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=2070&auto=format&fit=crop',
-  'aerial-and-adrenaline':
-    'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2070&auto=format&fit=crop',
+  "desert-adventures":
+    "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2070&auto=format&fit=crop",
+  "water-activities":
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop",
+  "aerial-and-adrenaline":
+    "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2070&auto=format&fit=crop",
   wellness:
-    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop',
-  'tickets-and-culture':
-    'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2070&auto=format&fit=crop',
-  'luxury-leisure':
-    'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop',
+    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop",
+  "tickets-and-culture":
+    "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2070&auto=format&fit=crop",
+  "luxury-leisure":
+    "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop",
+  "photography-experience":
+    "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop",
+  "signature-dining":
+    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
+  observation:
+    "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2070&auto=format&fit=crop",
 };
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
-  'desert-adventures': Mountain,
-  'water-activities': Waves,
-  'aerial-and-adrenaline': Wind,
+  "desert-adventures": Mountain,
+  "water-activities": Waves,
+  "aerial-and-adrenaline": Wind,
   wellness: Sparkles,
-  'tickets-and-culture': Ticket,
-  'luxury-leisure': Crown,
+  "tickets-and-culture": Ticket,
+  "luxury-leisure": Crown,
 };
 
 const CATEGORY_ACCENTS: Record<string, string> = {
-  'desert-adventures': 'from-amber-500/30 to-yellow-600/20',
-  'water-activities': 'from-sky-400/30 to-cyan-500/20',
-  'aerial-and-adrenaline': 'from-orange-500/30 to-red-600/20',
-  wellness: 'from-emerald-500/30 to-teal-600/20',
-  'tickets-and-culture': 'from-purple-500/30 to-pink-600/20',
-  'luxury-leisure': 'from-luxury-gold/30 to-amber-600/20',
+  "desert-adventures": "from-amber-500/30 to-yellow-600/20",
+  "water-activities": "from-sky-400/30 to-cyan-500/20",
+  "aerial-and-adrenaline": "from-orange-500/30 to-red-600/20",
+  wellness: "from-emerald-500/30 to-teal-600/20",
+  "tickets-and-culture": "from-purple-500/30 to-pink-600/20",
+  "luxury-leisure": "from-luxury-gold/30 to-amber-600/20",
 };
 
 export default function ExperiencesHub() {
@@ -68,8 +83,9 @@ export default function ExperiencesHub() {
             Curated by Intent
           </h1>
           <p className="text-gray-400 leading-relaxed max-w-xl mx-auto">
-            Six pillars of extraordinary. From yacht charters and jet skis on the Gulf to the skies above
-            the desert, each category unlocks a world of premium bookable moments.
+            Six pillars of extraordinary. From yacht charters and jet skis on
+            the Gulf to the skies above the desert, each category unlocks a
+            world of premium bookable moments.
           </p>
         </motion.div>
       </section>
@@ -79,15 +95,17 @@ export default function ExperiencesHub() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {DALC_EXPERIENCE_CATEGORIES.map((category, idx) => {
             const Icon = CATEGORY_ICONS[category.slug] || Crown;
-            const heroImage = CATEGORY_HERO_IMAGES[category.slug] || '';
-            const accentGradient = CATEGORY_ACCENTS[category.slug] || 'from-luxury-gold/30 to-amber-600/20';
+            const heroImage = CATEGORY_HERO_IMAGES[category.slug];
+            const accentGradient =
+              CATEGORY_ACCENTS[category.slug] ||
+              "from-luxury-gold/30 to-amber-600/20";
 
             return (
               <motion.div
                 key={category.slug}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: idx * 0.08, duration: 0.5 }}
               >
                 <Link
@@ -96,12 +114,16 @@ export default function ExperiencesHub() {
                 >
                   {/* Hero Image */}
                   <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={heroImage}
-                      alt={category.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      loading="lazy"
-                    />
+                    {heroImage ? (
+                      <img
+                        src={heroImage}
+                        alt={category.title}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-white/5" />
+                    )}
                     {/* Dark overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0F] via-[#0D0D0F]/40 to-transparent" />
 
@@ -120,7 +142,10 @@ export default function ExperiencesHub() {
                       <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-3 py-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
                         <span className="text-[11px] font-medium text-white/80 tracking-wide">
-                          {category.items.length} {category.items.length === 1 ? 'experience' : 'experiences'}
+                          {category.items.length}{" "}
+                          {category.items.length === 1
+                            ? "experience"
+                            : "experiences"}
                         </span>
                       </div>
                     </div>

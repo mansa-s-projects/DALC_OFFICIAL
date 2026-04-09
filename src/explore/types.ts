@@ -33,6 +33,7 @@ export interface ExploreFilterState {
   hiddenGems: 'all' | 'true' | 'false';
   featured: 'all' | 'true';
   search: string;
+  priceTier: 'all' | '1' | '2' | '3' | '4';
 }
 
 export const DEFAULT_FILTERS: ExploreFilterState = {
@@ -41,4 +42,5 @@ export const DEFAULT_FILTERS: ExploreFilterState = {
   hiddenGems: 'all',
   featured: 'all',
   search: '',
+  priceTier: 'all',
 };

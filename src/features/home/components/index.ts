@@ -6,4 +6,3 @@ export { default as InputField } from './InputField';
 export { default as PrimaryButton } from './PrimaryButton';
 export { default as RequestCard } from './RequestCard';
 export { default as ServiceCard } from './ServiceCard';
-export { default as VenueCard } from './VenueCard';

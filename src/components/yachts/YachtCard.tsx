@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Heart, Users, Ruler, Anchor } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useAppStore } from '@/store/useAppStore';
-import type { YachtItem } from '@/data/transport/yachtsData';
-import { getYachtImage, getYachtWhatsAppUrl } from '@/data/transport/yachtsData';
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import { Heart, Users, Ruler, Anchor } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useAppStore } from "@/store/useAppStore";
+import type { YachtItem } from "@/data/transport/yachtsData";
+import {
+  getYachtImage,
+  getYachtWhatsAppUrl,
+} from "@/data/transport/yachtsData";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -14,7 +17,7 @@ function YachtImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <Anchor className="w-16 h-16 text-gray-600" />
@@ -79,7 +82,7 @@ export default function YachtCard({ yacht }: YachtCardProps) {
     <motion.div
       variants={yachtCardVariants}
       whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="group relative flex flex-col rounded-2xl overflow-hidden bg-luxury-charcoal border border-white/5 hover:border-luxury-gold/30 transition-all duration-500 hover:shadow-aura"
     >
       {/* ── Image ──────────────────────────────────────────── */}
@@ -118,15 +121,15 @@ export default function YachtCard({ yacht }: YachtCardProps) {
             e.stopPropagation();
             toggleSaved(yacht.id);
           }}
-          aria-label={isSaved ? 'Remove from saved' : 'Save yacht'}
+          aria-label={isSaved ? "Remove from saved" : "Save yacht"}
           className={cn(
-            'absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-300',
+            "absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-300",
             isSaved
-              ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
-              : 'bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60'
+              ? "bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40"
+              : "bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60",
           )}
         >
-          <Heart className={cn('w-4 h-4', isSaved && 'fill-luxury-gold')} />
+          <Heart className={cn("w-4 h-4", isSaved && "fill-luxury-gold")} />
         </button>
       </div>
 
@@ -139,7 +142,7 @@ export default function YachtCard({ yacht }: YachtCardProps) {
 
         {/* Specs */}
         <div className="flex items-center gap-3 mt-2">
-          {yacht.length !== '–' && (
+          {yacht.length !== "–" && (
             <span className="flex items-center gap-1 text-gray-500 text-xs">
               <Ruler className="w-3 h-3" />
               {yacht.length}

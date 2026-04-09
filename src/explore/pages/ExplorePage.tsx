@@ -52,6 +52,7 @@ export default function ExplorePage() {
     filters.category !== 'All Categories' ||
     filters.hiddenGems !== 'all' ||
     filters.featured !== 'all' ||
+    filters.priceTier !== 'all' ||
     filters.search.trim() !== '';
 
   const handleLocationSelect = useCallback((loc: ExploreLocation) => {

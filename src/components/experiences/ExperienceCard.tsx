@@ -1,15 +1,22 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight, Clock, Users, MapPin, Star, TrendingUp } from 'lucide-react';
-import type { ExperienceService } from '../../types/experiences';
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Clock,
+  Users,
+  MapPin,
+  Star,
+  TrendingUp,
+} from "lucide-react";
+import type { ExperienceService } from "../../types/experiences";
 import {
   SUBCATEGORY_LABELS,
   SERVICE_TYPE_LABELS,
   PRICING_MODEL_LABELS,
-} from '../../types/experiences';
+} from "../../types/experiences";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -17,7 +24,7 @@ function ExperienceImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <MapPin className="w-16 h-16 text-gray-600" />
@@ -75,17 +82,17 @@ export default function ExperienceCard({
 
   const priceLabel =
     price_display ??
-    (pricing_model === 'free'
-      ? 'Free'
-      : pricing_model === 'tiered' && price_from
-      ? `From ${price_currency} ${price_from.toLocaleString()}`
-      : price_from
-      ? `${price_currency} ${price_from.toLocaleString()}`
-      : 'Contact for pricing');
+    (pricing_model === "free"
+      ? "Free"
+      : pricing_model === "tiered" && price_from
+        ? `From ${price_currency} ${price_from.toLocaleString()}`
+        : price_from
+          ? `${price_currency} ${price_from.toLocaleString()}`
+          : "Contact for pricing");
 
   const durationLabel = duration_minutes
     ? duration_minutes >= 60
-      ? `${Math.floor(duration_minutes / 60)}h ${duration_minutes % 60 > 0 ? `${duration_minutes % 60}m` : ''}`
+      ? `${Math.floor(duration_minutes / 60)}h ${duration_minutes % 60 > 0 ? `${duration_minutes % 60}m` : ""}`
       : `${duration_minutes} min`
     : null;
 
@@ -174,7 +181,7 @@ export default function ExperienceCard({
         <div className="flex items-center justify-between pt-4 border-t border-white/10">
           <div>
             <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-0.5">
-              {pricing_model === 'free' ? 'Price' : 'From'}
+              {pricing_model === "free" ? "Price" : "From"}
             </p>
             <p className="text-luxury-gold font-bold text-base tracking-wide">
               {priceLabel}

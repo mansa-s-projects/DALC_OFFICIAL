@@ -24,6 +24,7 @@ export function useFilteredLocations(
         loc.category?.toLowerCase() !== filters.category.toLowerCase()
       )
         return false;
+      if (filters.priceTier !== 'all' && loc.price_tier !== parseInt(filters.priceTier)) return false;
       if (q) {
         const hit =
           loc.name.toLowerCase().includes(q) ||

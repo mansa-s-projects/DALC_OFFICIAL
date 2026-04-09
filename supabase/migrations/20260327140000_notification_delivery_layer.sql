@@ -28,8 +28,25 @@ CREATE TABLE IF NOT EXISTS public.notifications (
   trigger_source text
 );
 
+-- Ensure all sales-ops columns exist on the pre-existing notifications table
+ALTER TABLE public.notifications
+  ADD COLUMN IF NOT EXISTS event_type      TEXT,
+  ADD COLUMN IF NOT EXISTS lead_id         UUID REFERENCES public.leads(id) ON DELETE CASCADE,
+  ADD COLUMN IF NOT EXISTS owner_id        TEXT,
+  ADD COLUMN IF NOT EXISTS channel         TEXT,
+  ADD COLUMN IF NOT EXISTS recipient       TEXT,
+  ADD COLUMN IF NOT EXISTS payload         JSONB NOT NULL DEFAULT '{}'::jsonb,
+  ADD COLUMN IF NOT EXISTS status          TEXT NOT NULL DEFAULT 'pending',
+  ADD COLUMN IF NOT EXISTS sent_at         TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS failed_at       TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS error_message   TEXT,
+  ADD COLUMN IF NOT EXISTS dedupe_key      TEXT,
+  ADD COLUMN IF NOT EXISTS retry_count     INTEGER NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS trigger_source  TEXT;
+
 CREATE UNIQUE INDEX IF NOT EXISTS ux_notifications_dedupe_channel_recipient
-  ON public.notifications(dedupe_key, channel, recipient);
+  ON public.notifications(dedupe_key, channel, recipient)
+  WHERE dedupe_key IS NOT NULL AND channel IS NOT NULL AND recipient IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_notifications_status_created
   ON public.notifications(status, created_at DESC);

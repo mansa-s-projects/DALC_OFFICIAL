@@ -8,7 +8,10 @@ export type ExperienceCategorySlug =
   | 'aerial-and-adrenaline'
   | 'wellness'
   | 'tickets-and-culture'
-  | 'luxury-leisure';
+  | 'luxury-leisure'
+  | 'photography-experience'
+  | 'signature-dining'
+  | 'observation';
 
 export interface ExperienceCatalogItem {
   slug: string;
@@ -45,11 +48,11 @@ function toSlug(value: string): string {
 const SUBCATEGORY_FALLBACK_IMAGES: Record<string, string> = {
   nightlife: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop',
   dining: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
-  adventure: 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop',
+  adventure: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop',
   sky: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop',
   wellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
   culture: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
-  water: 'https://images.unsplash.com/photo-1566373809071-8bc4ae67f186?q=80&w=800&auto=format&fit=crop',
+  water: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop',
 };
 
 function fromMockSubcategory(subcategory: string): ExperienceCatalogItem[] {
@@ -111,7 +114,7 @@ function getYachtCharterItems(): ExperienceCatalogItem[] {
 // Desert Adventures - Dune Buggies and ATVs with reliable images
 function getDesertAdventureItems(): ExperienceCatalogItem[] {
   const desertImages = [
-    'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=800&auto=format&fit=crop', // Dubai desert dunes
+    'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop', // Dubai desert dunes
     'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop', // Desert sunset
     'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop', // Desert safari
     'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop', // Desert landscape
@@ -289,9 +292,177 @@ function getDesertAdventureItems(): ExperienceCatalogItem[] {
       image: desertImages[2],
       ctaLabel: 'Add to Booking',
     },
+    // Equestrian
+    {
+      slug: 'balade-a-cheval-1h',
+      title: 'Balade à Cheval • 1 Hour',
+      description: 'Horse ride in the desert • Mon–Thu: AED 240 / Fri–Sun: AED 280',
+      image: 'https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Ride',
+    },
+    {
+      slug: 'balade-a-poney-30min',
+      title: 'Balade à Poney • 30 Minutes',
+      description: 'Pony ride for kids in the desert • AED 150',
+      image: 'https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Ride',
+    },
+    // Sonara Camp
+    {
+      slug: 'sonara-camp-sunset-dinner',
+      title: 'Sonara Camp – Sunset & Dinner Experience',
+      description: 'Desert camp with live show & BBQ dinner • AED 890 adult / AED 380 child',
+      image: desertImages[1],
+      ctaLabel: 'Book Experience',
+    },
+    {
+      slug: 'sonara-camp-overnight',
+      title: 'Sonara Camp – Overnight Experience',
+      description: 'Spend the night under the stars in a private desert nest • AED 2,650 per nest',
+      image: desertImages[3],
+      ctaLabel: 'Book Overnight',
+    },
+    {
+      slug: 'sonara-camp-sunset',
+      title: 'Sonara Camp – Sunset Experience',
+      description: 'Golden hour in the desert with show & drinks • AED 480 adult / AED 190 child',
+      image: desertImages[2],
+      ctaLabel: 'Book Experience',
+    },
+    // Photo sessions on demand
+    {
+      slug: 'desert-photo-session',
+      title: 'Desert Photo Session on Demand',
+      description: 'Professional shoot with horse, camel, falcon, or snake • Price on request',
+      image: desertImages[0],
+      ctaLabel: 'Request Shoot',
+    },
   ];
 
   return vehicles;
+}
+
+function getAerialItems(): ExperienceCatalogItem[] {
+  const heliImage = 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop';
+  const skydiveImage = 'https://images.unsplash.com/photo-1601024445121-e5b82f020549?q=80&w=800&auto=format&fit=crop';
+  const ziplineImage = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop';
+
+  return [
+    {
+      slug: 'helicoptere-tour-12min',
+      title: 'Hélicoptère Tour • 12 Minutes',
+      description: 'Scenic helicopter flight over Dubai • AED 710/pers or AED 3,550 private (up to 5)',
+      image: heliImage,
+      ctaLabel: 'Book Flight',
+    },
+    {
+      slug: 'helicoptere-tour-17min',
+      title: 'Hélicoptère Tour • 17 Minutes',
+      description: 'Extended scenic helicopter flight over Dubai • AED 945/pers or AED 4,725 private',
+      image: heliImage,
+      ctaLabel: 'Book Flight',
+    },
+    {
+      slug: 'helicoptere-tour-22min',
+      title: 'Hélicoptère Tour • 22 Minutes',
+      description: 'Full iconic Dubai helicopter tour • AED 1,299/pers or AED 6,495 private',
+      image: heliImage,
+      ctaLabel: 'Book Flight',
+    },
+    {
+      slug: 'saut-en-parachute-palm',
+      title: 'Saut en Parachute – Palm Drop Zone',
+      description: 'Tandem skydive over the iconic Palm Jumeirah • AED 2,499/pers',
+      image: skydiveImage,
+      ctaLabel: 'Book Skydive',
+    },
+    {
+      slug: 'saut-en-parachute-desert',
+      title: 'Saut en Parachute – Desert Drop Zone',
+      description: 'Tandem skydive over the golden Dubai desert • AED 2,099/pers',
+      image: skydiveImage,
+      ctaLabel: 'Book Skydive',
+    },
+    {
+      slug: 'tyrolienne-marina-zipline',
+      title: 'Tyrolienne Marina – Dubai Zipline',
+      description: 'Fly at 80 km/h over Dubai Marina • AED 699/pers',
+      image: ziplineImage,
+      ctaLabel: 'Book Zipline',
+    },
+  ];
+}
+
+function getPhotographyItems(): ExperienceCatalogItem[] {
+  const photoImage = 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop';
+  return [
+    {
+      slug: 'flying-shooting-solo',
+      title: 'Flying Shooting – Solo',
+      description: 'Inoubliable dress photoshoot in the desert or stud farm • AED 1,650',
+      image: photoImage,
+      ctaLabel: 'Book Shoot',
+    },
+    {
+      slug: 'flying-shooting-duo',
+      title: 'Flying Shooting – Duo',
+      description: 'Inoubliable dress photoshoot for two • AED 1,850',
+      image: photoImage,
+      ctaLabel: 'Book Shoot',
+    },
+    {
+      slug: 'flying-shooting-couple',
+      title: 'Flying Shooting – Couple',
+      description: 'Romantic desert or stud farm couple shoot • AED 1,750',
+      image: photoImage,
+      ctaLabel: 'Book Shoot',
+    },
+    {
+      slug: 'flying-shooting-family',
+      title: 'Flying Shooting – Family',
+      description: 'Family dress photoshoot in a magical setting • AED 1,950',
+      image: photoImage,
+      ctaLabel: 'Book Shoot',
+    },
+    {
+      slug: 'flying-shooting-group',
+      title: 'Flying Shooting – Group (3+)',
+      description: 'Group dress photoshoot • AED 1,200/pers • Minimum 3 people',
+      image: photoImage,
+      ctaLabel: 'Book Shoot',
+    },
+    {
+      slug: 'flying-shooting-extra',
+      title: 'Flying Shooting – Extra Subjects',
+      description: 'Add horse, camel, falcon, snake, video, or event coverage • Price on request',
+      image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Request Quote',
+    },
+  ];
+}
+
+function getSignatureDiningItems(): ExperienceCatalogItem[] {
+  return [
+    {
+      slug: 'experience-signature-dinner',
+      title: 'Expérience Signature – Gourmet Dinner on Embers',
+      description: 'Exclusive gourmet dinner at the stud farm or in the desert, prepared over open embers • Price on request',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Request Experience',
+    },
+  ];
+}
+
+function getObservationItems(): ExperienceCatalogItem[] {
+  return [
+    {
+      slug: 'sky-views-observatory',
+      title: 'Sky Views Observatory',
+      description: 'Breathtaking views from the top of Address Sky View • Glass slide & walk-in-void at 219m • From AED 70/pers',
+      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Tickets',
+    },
+  ];
 }
 
 function getLuxuryLeisureCars(): ExperienceCatalogItem[] {
@@ -345,7 +516,7 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
     slug: 'aerial-and-adrenaline',
     title: 'Aerial & Adrenaline',
     description: 'Sky-focused and adrenaline-led experiences.',
-    items: [...fromMockSubcategory('sky'), ...fromMockSubcategory('adventure').filter((i) => i.title.toLowerCase().includes('skydive'))],
+    items: getAerialItems(),
   },
   {
     slug: 'wellness',
@@ -364,6 +535,24 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
     title: 'Luxury Leisure',
     description: 'Premium lifestyle bookings and luxury cars.',
     items: [...fromMockSubcategory('nightlife'), ...fromMockSubcategory('dining'), ...getLuxuryLeisureCars()],
+  },
+  {
+    slug: 'photography-experience',
+    title: 'Photography & Experience',
+    description: 'Unforgettable dress photoshoots in the desert or at the stud farm with premium subjects.',
+    items: getPhotographyItems(),
+  },
+  {
+    slug: 'signature-dining',
+    title: 'Signature Dining',
+    description: 'Exclusive gourmet dining experiences under the stars or at the stud farm.',
+    items: getSignatureDiningItems(),
+  },
+  {
+    slug: 'observation',
+    title: 'Observation',
+    description: 'Sky-high viewpoints and iconic observatory experiences across Dubai.',
+    items: getObservationItems(),
   },
 ];
 

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Heart, Fuel, Zap, Calendar, Users, Car } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useAppStore } from '@/store/useAppStore';
-import type { CarItem } from '@/data/transport/carsData';
-import { getCarImage, getCarWhatsAppUrl } from '@/data/transport/carsData';
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import { Heart, Fuel, Zap, Calendar, Users, Car } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useAppStore } from "@/store/useAppStore";
+import type { CarItem } from "@/data/transport/carsData";
+import { getCarImage, getCarWhatsAppUrl } from "@/data/transport/carsData";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -14,7 +14,7 @@ function CarImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <Car className="w-16 h-16 text-gray-600" />
@@ -72,20 +72,20 @@ export default function CarCard({ car, categoryId }: CarCardProps) {
   const savedVenues = useAppStore((s) => s.savedVenues);
   const isSaved = savedVenues.includes(car.id);
   const image = getCarImage(car.id, categoryId);
-  const isElectric = car.fuel === 'Electric';
+  const isElectric = car.fuel === "Electric";
 
   return (
     <motion.div
       variants={carCardVariants}
       whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="group relative flex flex-col rounded-2xl overflow-hidden bg-luxury-charcoal border border-white/5 hover:border-luxury-gold/30 transition-all duration-500 hover:shadow-aura"
     >
       {/* ── Image ──────────────────────────────────────────── */}
       <div className="relative h-[220px] overflow-hidden bg-gray-900">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
-          src={image} 
+        <img
+          src={image}
           alt={`${car.brand} ${car.model} ${car.year}`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -112,15 +112,15 @@ export default function CarCard({ car, categoryId }: CarCardProps) {
             e.stopPropagation();
             toggleSaved(car.id);
           }}
-          aria-label={isSaved ? 'Remove from saved' : 'Save car'}
+          aria-label={isSaved ? "Remove from saved" : "Save car"}
           className={cn(
-            'absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-300',
+            "absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-300",
             isSaved
-              ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
-              : 'bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60'
+              ? "bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40"
+              : "bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60",
           )}
         >
-          <Heart className={cn('w-4 h-4', isSaved && 'fill-luxury-gold')} />
+          <Heart className={cn("w-4 h-4", isSaved && "fill-luxury-gold")} />
         </button>
       </div>
 
@@ -137,13 +137,19 @@ export default function CarCard({ car, categoryId }: CarCardProps) {
             <Calendar className="w-3 h-3" />
             {car.year}
           </span>
-          <span className={cn(
-            'flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border',
-            isElectric
-              ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/25'
-              : 'bg-white/5 text-gray-500 border-white/10'
-          )}>
-            {isElectric ? <Zap className="w-2.5 h-2.5" /> : <Fuel className="w-2.5 h-2.5" />}
+          <span
+            className={cn(
+              "flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border",
+              isElectric
+                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/25"
+                : "bg-white/5 text-gray-500 border-white/10",
+            )}
+          >
+            {isElectric ? (
+              <Zap className="w-2.5 h-2.5" />
+            ) : (
+              <Fuel className="w-2.5 h-2.5" />
+            )}
             {car.fuel}
           </span>
           {car.seats && (
