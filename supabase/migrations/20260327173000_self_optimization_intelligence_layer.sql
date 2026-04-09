@@ -404,7 +404,8 @@ SELECT
          ((baseline.base_won / NULLIF(baseline.base_total,0)) * 0.5)
       THEN 'conversion_collapse'
     ELSE 'healthy'
-  END AS killswitch_reason;
+  END AS killswitch_reason
+FROM recent, baseline, flow;
 
 -- 39) Competitive intelligence layer (simple external-shift proxy)
 CREATE OR REPLACE VIEW public.v_cc_competitive_intelligence AS

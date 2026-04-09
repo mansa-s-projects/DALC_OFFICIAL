@@ -1,19 +1,33 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight, Users, Clock, Gauge } from 'lucide-react';
-import type { TransportService, TransportSubcategory } from '../../types/transport';
-import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from '../../types/transport';
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { ArrowRight, Users, Clock, Gauge } from "lucide-react";
+import type {
+  TransportService,
+  TransportSubcategory,
+} from "../../types/transport";
+import {
+  SUBCATEGORY_LABELS,
+  PRICING_MODEL_LABELS,
+} from "../../types/transport";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
-function TransportImage({ src, alt, fallbackIcon }: { src: string; alt: string; fallbackIcon?: React.ReactNode }) {
+function TransportImage({
+  src,
+  alt,
+  fallbackIcon,
+}: {
+  src: string;
+  alt: string;
+  fallbackIcon?: React.ReactNode;
+}) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         {fallbackIcon || <span className="text-4xl text-gray-600">🚗</span>}
@@ -70,26 +84,28 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
 
   const priceLabel =
     price_display ??
-    (pricing_model === 'custom'
-      ? 'Custom Quote'
-      : pricing_model === 'hourly'
-      ? `${price_currency} ${price_from?.toLocaleString()}/hr`
-      : pricing_model === 'daily'
-      ? `${price_currency} ${price_from?.toLocaleString()}/day`
-      : `${price_currency} ${price_from?.toLocaleString()}`);
+    (pricing_model === "custom"
+      ? "Custom Quote"
+      : pricing_model === "hourly"
+        ? `${price_currency} ${price_from?.toLocaleString()}/hr`
+        : pricing_model === "daily"
+          ? `${price_currency} ${price_from?.toLocaleString()}/day`
+          : `${price_currency} ${price_from?.toLocaleString()}`);
 
   // Get key spec based on subcategory
   const getKeySpec = () => {
     const specs = specifications as Record<string, unknown>;
-    if (subcategory === 'cars') {
-      return specs['horsepower'] ? `${specs['horsepower']}` : null;
+    if (subcategory === "cars") {
+      return specs["horsepower"] ? `${specs["horsepower"]}` : null;
     }
-    if (subcategory === 'yachts') {
-      return specs['length_ft'] ? `${specs['length_ft']} ft` : null;
+    if (subcategory === "yachts") {
+      return specs["length_ft"] ? `${specs["length_ft"]} ft` : null;
     }
-    if (subcategory === 'jets') {
-      const rangeKm = specs['range_km'];
-      return typeof rangeKm === 'number' ? `${(rangeKm / 1000).toFixed(0)}k km` : null;
+    if (subcategory === "jets") {
+      const rangeKm = specs["range_km"];
+      return typeof rangeKm === "number"
+        ? `${(rangeKm / 1000).toFixed(0)}k km`
+        : null;
     }
     return null;
   };
@@ -106,7 +122,11 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       {/* Image */}
       <div className="relative h-52 overflow-hidden bg-gray-900">
         {hero_image ? (
-          <TransportImage src={hero_image} alt={name} fallbackIcon={SUBCATEGORY_ICONS[subcategory]} />
+          <TransportImage
+            src={hero_image}
+            alt={name}
+            fallbackIcon={SUBCATEGORY_ICONS[subcategory]}
+          />
         ) : (
           <div className="w-full h-full bg-white/5 flex items-center justify-center">
             <div className="text-luxury-gold/30 text-4xl">
@@ -137,7 +157,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
         {sub_subcategory && (
           <div className="absolute top-4 right-4">
             <span className="px-2 py-1 bg-white/10 border border-white/20 text-gray-300 text-[10px] uppercase tracking-widest">
-              {sub_subcategory.replace(/-/g, ' ')}
+              {sub_subcategory.replace(/-/g, " ")}
             </span>
           </div>
         )}
@@ -160,7 +180,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           {max_capacity && (
             <span className="flex items-center gap-1.5">
               <Users className="w-3.5 h-3.5 text-luxury-gold/60" />
-              {max_capacity} {max_capacity === 1 ? 'guest' : 'guests'}
+              {max_capacity} {max_capacity === 1 ? "guest" : "guests"}
             </span>
           )}
           {min_booking_hours && (
@@ -181,7 +201,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
         <div className="flex items-center justify-between pt-4 border-t border-white/10">
           <div>
             <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-0.5">
-              {pricing_model === 'custom' ? 'Pricing' : 'From'}
+              {pricing_model === "custom" ? "Pricing" : "From"}
             </p>
             <p className="text-luxury-gold font-bold text-base tracking-wide">
               {priceLabel}

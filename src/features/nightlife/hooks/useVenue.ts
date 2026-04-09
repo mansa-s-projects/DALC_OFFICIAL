@@ -11,18 +11,16 @@ export function useVenue(id?: string | null) {
       if (!id) throw new Error('Venue id is required.');
 
       try {
-        const { data, error } = await supabase
-          .from('venues')
-          .select('*')
-          .eq('id', id)
-          .single();
+        const byId = await supabase.from('venues').select('*').eq('id', id).single();
+        if (!byId.error && byId.data) return normalizeVenue(byId.data);
 
-        if (error) throw error;
-        return normalizeVenue(data);
+        const bySlug = await supabase.from('venues').select('*').eq('slug', id).single();
+        if (!bySlug.error && bySlug.data) return normalizeVenue(bySlug.data);
+
+        throw byId.error ?? new Error('Venue not found');
       } catch {
-        // Fallback to mock data
         const { MOCK_VENUES } = await import('../../../data/venues/mockData');
-        const mockVenue = MOCK_VENUES.find(v => v.id === id);
+        const mockVenue = MOCK_VENUES.find(v => v.id === id || (v as { slug?: string }).slug === id);
         if (mockVenue) return mockVenue;
         throw new Error('Venue not found');
       }

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight, Clock, FileText, Building2 } from 'lucide-react';
-import type { BusinessService } from '../../types/business';
-import { SUBCATEGORY_LABELS, SERVICE_TYPE_LABELS } from '../../types/business';
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { ArrowRight, Clock, FileText, Building2 } from "lucide-react";
+import type { BusinessService } from "../../types/business";
+import { SUBCATEGORY_LABELS, SERVICE_TYPE_LABELS } from "../../types/business";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -13,7 +13,7 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <Building2 className="w-16 h-16 text-gray-600" />
@@ -62,13 +62,13 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
 
   const priceLabel =
     price_display ??
-    (pricing_model === 'custom_quote'
-      ? 'Custom Quote'
-      : pricing_model === 'hourly'
-      ? `${price_currency} ${price_from?.toLocaleString()}/hr`
-      : pricing_model === 'starting_from'
-      ? `From ${price_currency} ${price_from?.toLocaleString()}`
-      : `${price_currency} ${price_from?.toLocaleString()}`);
+    (pricing_model === "custom_quote"
+      ? "Custom Quote"
+      : pricing_model === "hourly"
+        ? `${price_currency} ${price_from?.toLocaleString()}/hr`
+        : pricing_model === "starting_from"
+          ? `From ${price_currency} ${price_from?.toLocaleString()}`
+          : `${price_currency} ${price_from?.toLocaleString()}`);
 
   return (
     <motion.div
@@ -81,8 +81,8 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       <div className="relative h-52 overflow-hidden bg-gray-900">
         {hero_image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img 
-            src={hero_image} 
+          <img
+            src={hero_image}
             alt={name}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
@@ -143,7 +143,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
         <div className="flex items-center justify-between pt-4 border-t border-white/10">
           <div>
             <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-0.5">
-              {pricing_model === 'custom_quote' ? 'Pricing' : 'Starting from'}
+              {pricing_model === "custom_quote" ? "Pricing" : "Starting from"}
             </p>
             <p className="text-luxury-gold font-bold text-base tracking-wide">
               {priceLabel}

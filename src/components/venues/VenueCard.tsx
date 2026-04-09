@@ -1,12 +1,28 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Heart, TrendingUp, Sparkles, Navigation, ExternalLink, X, Map as MapIcon, ImageOff } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useAppStore } from '@/store/useAppStore';
-import type { VenueItem } from '@/data/venues/venuesData';
-import { getVenueImage, getWhatsAppUrl, getGoogleMapsUrl, getAppleMapsUrl, getWazeUrl } from '@/data/venues/venuesData';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  MapPin,
+  Heart,
+  TrendingUp,
+  Sparkles,
+  Navigation,
+  ExternalLink,
+  X,
+  Map as MapIcon,
+  ImageOff,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useAppStore } from "@/store/useAppStore";
+import type { VenueItem } from "@/data/venues/venuesData";
+import {
+  getVenueImage,
+  getWhatsAppUrl,
+  getGoogleMapsUrl,
+  getAppleMapsUrl,
+  getWazeUrl,
+} from "@/data/venues/venuesData";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -14,7 +30,7 @@ function VenueImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <ImageOff className="w-16 h-16 text-gray-600" />
@@ -86,7 +102,9 @@ function MapModal({ venue, isOpen, onClose }: MapModalProps) {
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <div>
-                  <h3 className="text-lg font-display text-white">{venue.name}</h3>
+                  <h3 className="text-lg font-display text-white">
+                    {venue.name}
+                  </h3>
                   <p className="text-xs text-gray-500">{venue.location}</p>
                 </div>
                 <button
@@ -120,7 +138,9 @@ function MapModal({ venue, isOpen, onClose }: MapModalProps) {
                   className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-luxury-gold/30 rounded-xl transition-all"
                 >
                   <MapIcon className="w-5 h-5 text-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-wider text-gray-400">Google</span>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400">
+                    Google
+                  </span>
                 </a>
                 <a
                   href={getAppleMapsUrl(venue.name, venue.coordinates)}
@@ -129,7 +149,9 @@ function MapModal({ venue, isOpen, onClose }: MapModalProps) {
                   className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-luxury-gold/30 rounded-xl transition-all"
                 >
                   <Navigation className="w-5 h-5 text-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-wider text-gray-400">Apple</span>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400">
+                    Apple
+                  </span>
                 </a>
                 <a
                   href={getWazeUrl(venue.coordinates)}
@@ -138,7 +160,9 @@ function MapModal({ venue, isOpen, onClose }: MapModalProps) {
                   className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-luxury-gold/30 rounded-xl transition-all"
                 >
                   <ExternalLink className="w-5 h-5 text-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-wider text-gray-400">Waze</span>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400">
+                    Waze
+                  </span>
                 </a>
               </div>
             </div>
@@ -189,7 +213,9 @@ function SeoTooltip({ description }: { description: string }) {
             className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-luxury-charcoal border border-white/10 rounded-xl shadow-2xl z-20"
           >
             <div className="absolute bottom-[-5px] left-4 w-2 h-2 bg-luxury-charcoal border-b border-r border-white/10 rotate-45" />
-            <p className="text-[11px] text-gray-300 leading-relaxed">{description}</p>
+            <p className="text-[11px] text-gray-300 leading-relaxed">
+              {description}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -216,7 +242,11 @@ interface VenueCardProps {
   onClick?: () => void;
 }
 
-export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps) {
+export default function VenueCard({
+  venue,
+  categoryId,
+  onClick,
+}: VenueCardProps) {
   const toggleSaved = useAppStore((s) => s.toggleSavedVenue);
   const savedVenues = useAppStore((s) => s.savedVenues);
   const isSaved = savedVenues.includes(venue.id);
@@ -230,11 +260,11 @@ export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps
       <motion.div
         variants={cardVariants}
         whileHover={{ y: -8 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={onClick}
         className={cn(
           "group relative h-[460px] w-full rounded-2xl overflow-hidden bg-luxury-charcoal border border-white/5 hover:border-luxury-gold/30 transition-all duration-500 hover:shadow-aura",
-          onClick && "cursor-pointer"
+          onClick && "cursor-pointer",
         )}
       >
         {/* Background Image */}
@@ -266,15 +296,15 @@ export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps
               e.stopPropagation();
               toggleSaved(venue.id);
             }}
-            aria-label={isSaved ? 'Remove from saved' : 'Save venue'}
+            aria-label={isSaved ? "Remove from saved" : "Save venue"}
             className={cn(
-              'p-2 rounded-full backdrop-blur-sm transition-all duration-300',
+              "p-2 rounded-full backdrop-blur-sm transition-all duration-300",
               isSaved
-                ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
-                : 'bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60'
+                ? "bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40"
+                : "bg-black/40 text-white/70 border border-white/15 hover:text-white hover:bg-black/60",
             )}
           >
-            <Heart className={cn('w-4 h-4', isSaved && 'fill-luxury-gold')} />
+            <Heart className={cn("w-4 h-4", isSaved && "fill-luxury-gold")} />
           </button>
         </div>
 
@@ -286,11 +316,13 @@ export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps
               {venue.tags[0]}
             </p>
             <div className="flex gap-0.5 text-luxury-gold text-xs">
-              {venue.priceRange.split('').map((_, i) => (
+              {venue.priceRange.split("").map((_, i) => (
                 <span key={i}>$</span>
               ))}
               {[...Array(4 - venue.priceRange.length)].map((_, i) => (
-                <span key={i} className="text-gray-700">$</span>
+                <span key={i} className="text-gray-700">
+                  $
+                </span>
               ))}
             </div>
           </div>
@@ -352,7 +384,7 @@ export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps
                   Take Me There
                 </button>
               )}
-              
+
               {/* WhatsApp CTA */}
               <a
                 href={getWhatsAppUrl(venue.name)}
@@ -369,7 +401,11 @@ export default function VenueCard({ venue, categoryId, onClick }: VenueCardProps
       </motion.div>
 
       {/* Map Modal */}
-      <MapModal venue={venue} isOpen={isMapOpen} onClose={() => setIsMapOpen(false)} />
+      <MapModal
+        venue={venue}
+        isOpen={isMapOpen}
+        onClose={() => setIsMapOpen(false)}
+      />
     </>
   );
 }

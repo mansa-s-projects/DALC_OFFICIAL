@@ -23,7 +23,7 @@ export default function EditorialCard({ venue, index }: EditorialCardProps) {
         <div className="relative w-full h-[320px] md:h-[400px] overflow-hidden rounded-sm bg-luxury-charcoal">
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500 z-10" />
           <img 
-            src={venue.hero_image} 
+            src={venue.hero_image || undefined} 
             alt={venue.name} 
             className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
           />

@@ -114,7 +114,7 @@ export default function AdminVenueForm() {
       area: form.area,
       vibe_tags: form.vibe_tags.split(',').map((s) => s.trim()).filter(Boolean),
       price_tier: form.price_tier,
-      hero_image: form.hero_image,
+      hero_image: form.hero_image || null,
       gallery_images: form.gallery_images.split('\n').map((s) => s.trim()).filter(Boolean),
       description_short: form.description_short,
       description_long: form.description_long,

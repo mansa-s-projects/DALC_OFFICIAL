@@ -39,6 +39,31 @@ CREATE TABLE IF NOT EXISTS public.explore_locations (
 -- ==========================================
 -- INDEXES
 -- ==========================================
+
+-- Ensure all columns exist in case table pre-existed without them
+ALTER TABLE public.explore_locations
+  ADD COLUMN IF NOT EXISTS short_description    TEXT,
+  ADD COLUMN IF NOT EXISTS long_description     TEXT,
+  ADD COLUMN IF NOT EXISTS emirate              TEXT DEFAULT 'Dubai',
+  ADD COLUMN IF NOT EXISTS area                 TEXT,
+  ADD COLUMN IF NOT EXISTS category             TEXT DEFAULT 'Landmark',
+  ADD COLUMN IF NOT EXISTS subcategory          TEXT,
+  ADD COLUMN IF NOT EXISTS is_hidden_gem        BOOLEAN DEFAULT false,
+  ADD COLUMN IF NOT EXISTS is_featured          BOOLEAN DEFAULT false,
+  ADD COLUMN IF NOT EXISTS hero_image           TEXT,
+  ADD COLUMN IF NOT EXISTS gallery_images       TEXT[] DEFAULT '{}',
+  ADD COLUMN IF NOT EXISTS tags                 TEXT[] DEFAULT '{}',
+  ADD COLUMN IF NOT EXISTS vibe                 TEXT,
+  ADD COLUMN IF NOT EXISTS price_tier           INTEGER DEFAULT 2,
+  ADD COLUMN IF NOT EXISTS opening_hours        TEXT,
+  ADD COLUMN IF NOT EXISTS best_time            TEXT,
+  ADD COLUMN IF NOT EXISTS insider_tip          TEXT,
+  ADD COLUMN IF NOT EXISTS booking_url          TEXT,
+  ADD COLUMN IF NOT EXISTS google_maps_place_id TEXT,
+  ADD COLUMN IF NOT EXISTS source_venue_id      TEXT,
+  ADD COLUMN IF NOT EXISTS recommend_score      INTEGER DEFAULT 85,
+  ADD COLUMN IF NOT EXISTS view_count           INTEGER DEFAULT 0;
+
 CREATE INDEX IF NOT EXISTS idx_explore_locations_emirate ON public.explore_locations(emirate);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_category ON public.explore_locations(category);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_hidden_gem ON public.explore_locations(is_hidden_gem);

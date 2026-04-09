@@ -1,11 +1,20 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight, Users, Bed, Bath, Star, MapPin, Waves, Umbrella } from 'lucide-react';
-import type { StaysProperty } from '../../types/stays';
-import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from '../../types/stays';
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Users,
+  Bed,
+  Bath,
+  Star,
+  MapPin,
+  Waves,
+  Umbrella,
+} from "lucide-react";
+import type { StaysProperty } from "../../types/stays";
+import { SUBCATEGORY_LABELS, PRICING_MODEL_LABELS } from "../../types/stays";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -13,7 +22,7 @@ function PropertyImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <Bed className="w-16 h-16 text-gray-600" />
@@ -43,7 +52,10 @@ interface PropertyCardProps {
   index?: number;
 }
 
-export default function PropertyCard({ property, index = 0 }: PropertyCardProps) {
+export default function PropertyCard({
+  property,
+  index = 0,
+}: PropertyCardProps) {
   const {
     id,
     name,
@@ -66,8 +78,9 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
     instant_booking,
   } = property;
 
-  const priceLabel = price_display || 
-    `${price_currency} ${base_price.toLocaleString()}/${PRICING_MODEL_LABELS[pricing_model].toLowerCase().replace('per ', '')}`;
+  const priceLabel =
+    price_display ||
+    `${price_currency} ${base_price.toLocaleString()}/${PRICING_MODEL_LABELS[pricing_model].toLowerCase().replace("per ", "")}`;
 
   return (
     <motion.div
@@ -80,8 +93,8 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
       <div className="relative h-56 overflow-hidden bg-gray-900">
         {hero_image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img 
-            src={hero_image} 
+          <img
+            src={hero_image}
             alt={name}
             className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
             loading="lazy"

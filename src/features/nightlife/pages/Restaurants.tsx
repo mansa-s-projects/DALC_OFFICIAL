@@ -4,13 +4,13 @@ import React from 'react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
-import { MOCK_VENUES } from '../../../data/venues/mockData';
+import { useVenues } from '../hooks/useVenues';
 import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
 
 export default function Restaurants() {
-  const restaurants = React.useMemo(() => MOCK_VENUES.filter(v => v.category === 'dining' || v.category === 'dining-entertainment'), []);
-  const isLoading = false;
+  const { data: allVenues = [], isLoading } = useVenues({ category: 'all' });
+  const restaurants = React.useMemo(() => allVenues.filter(v => v.category === 'dining' || v.category === 'dining-entertainment'), [allVenues]);
 
   return (
     <div className="min-h-screen bg-luxury-black">

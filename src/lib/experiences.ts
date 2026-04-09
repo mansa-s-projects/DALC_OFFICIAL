@@ -132,7 +132,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'platinum-desert-safari-dinner',
     description_short: 'Luxury desert safari with wildlife drive, falcon show, and gourmet dinner under the stars.',
     description_long: 'Experience the Dubai Desert Conservation Reserve in ultimate luxury. This platinum safari includes a private wildlife drive in a Range Rover, interactive falcon demonstration, camel ride, and a 6-course gourmet dinner at an exclusive desert camp with live entertainment.',
-    hero_image: 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=2674&auto=format&fit=crop',
+    hero_image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2674&auto=format&fit=crop',
     gallery_images: [
       'https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop',
@@ -1642,7 +1642,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'morning-desert-safari-private',
     description_short: 'Private morning safari in the cool desert air — perfect for families up to 7 people.',
     description_long: 'Beat the heat with our exclusive morning desert safari. Depart early in a private vehicle and experience the golden dunes in the cool morning light. Includes thrilling dune bashing, camel ride, and falcon photo opportunities. Perfect for families and groups who prefer cooler temperatures.',
-    hero_image: 'https://images.unsplash.com/photo-1547234935-80c7142ee969?q=80&w=2674&auto=format&fit=crop',
+    hero_image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2674&auto=format&fit=crop',
     gallery_images: [],
     highlights: ['Private Lexus vehicle', 'Up to 7 guests', 'Hotel pickup included', 'Morning cool temperatures'],
     vibe_tags: ['Adventure', 'Family', 'Nature', 'Private'],

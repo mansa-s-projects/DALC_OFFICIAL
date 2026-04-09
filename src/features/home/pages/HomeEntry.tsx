@@ -89,14 +89,14 @@ const CATEGORIES = [
 ];
 
 const EXPERIENCES = [
-  { name: 'Jet Ski', tag: 'Water', image: 'https://images.unsplash.com/photo-1559628233-100c798642d4?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Evening Desert Safari', tag: 'Desert', image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Polaris RZR Ride', tag: 'Adventure', image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Jet Ski', tag: 'Water', image: 'https://images.unsplash.com/photo-1590664863685-a99b5f5f7555?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Evening Desert Safari', tag: 'Desert', image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Polaris RZR Ride', tag: 'Adventure', image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop' },
   { name: 'Private Villa Pool', tag: 'Leisure', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600&auto=format&fit=crop' },
   { name: 'Sheikh Zayed Mosque', tag: 'Culture', image: 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=600&auto=format&fit=crop' },
   { name: 'Balloon Experience', tag: 'Air', image: 'https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Musandam Tour', tag: 'Oman', image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Massage & Wellness', tag: 'Wellness', image: 'https://images.unsplash.com/photo-1540555700478-4be289fbec6d?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Musandam Tour', tag: 'Oman', image: 'https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Massage & Wellness', tag: 'Wellness', image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format&fit=crop' },
 ];
 
 const STATS = [

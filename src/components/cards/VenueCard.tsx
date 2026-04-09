@@ -1,11 +1,18 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Star, MapPin, ArrowRight, TrendingUp, Heart, ImageOff } from 'lucide-react';
-import { Venue } from '../../types';
-import Link from 'next/link';
-import { useAppStore } from '../../store/useAppStore';
+import React, { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import {
+  Star,
+  MapPin,
+  ArrowRight,
+  TrendingUp,
+  Heart,
+  ImageOff,
+} from "lucide-react";
+import { Venue } from "../../types";
+import Link from "next/link";
+import { useAppStore } from "../../store/useAppStore";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 
@@ -13,7 +20,7 @@ function VenueImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (error) {
+  if (error || !src) {
     return (
       <div className="w-full h-full bg-gray-800 flex items-center justify-center">
         <ImageOff className="w-16 h-16 text-gray-600" />
@@ -63,7 +70,7 @@ function SaveButton({ isSaved, onToggle }: SaveButtonProps) {
 
   return (
     <button
-      aria-label={isSaved ? 'Remove from saved' : 'Save venue'}
+      aria-label={isSaved ? "Remove from saved" : "Save venue"}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -71,11 +78,11 @@ function SaveButton({ isSaved, onToggle }: SaveButtonProps) {
       }}
       className={`p-2 rounded-full backdrop-blur-sm transition-all duration-300 ${
         isSaved
-          ? 'bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40'
-          : 'bg-white/10 text-white/60 border border-white/10 hover:text-white hover:bg-white/20'
+          ? "bg-luxury-gold/20 text-luxury-gold border border-luxury-gold/40"
+          : "bg-white/10 text-white/60 border border-white/10 hover:text-white hover:bg-white/20"
       }`}
     >
-      <Heart className={`w-4 h-4 ${isSaved ? 'fill-luxury-gold' : ''}`} />
+      <Heart className={`w-4 h-4 ${isSaved ? "fill-luxury-gold" : ""}`} />
     </button>
   );
 }
@@ -134,7 +141,10 @@ export default function VenueCard({
             )}
           </div>
 
-          <SaveButton isSaved={isSaved} onToggle={() => toggleSaved(venue.id)} />
+          <SaveButton
+            isSaved={isSaved}
+            onToggle={() => toggleSaved(venue.id)}
+          />
         </div>
 
         {/* Bottom Content */}
@@ -150,7 +160,9 @@ export default function VenueCard({
               <p className="text-luxury-gold text-xs font-bold uppercase tracking-widest mb-1">
                 {venue.subcategory}
               </p>
-              <h3 className="text-2xl font-display text-white font-medium">{venue.name}</h3>
+              <h3 className="text-2xl font-display text-white font-medium">
+                {venue.name}
+              </h3>
             </div>
             <div className="flex items-center gap-1 bg-white/10 px-2 py-1 rounded backdrop-blur-sm">
               <Star className="w-3 h-3 text-luxury-gold fill-luxury-gold" />
@@ -169,7 +181,9 @@ export default function VenueCard({
                 <span key={i}>$</span>
               ))}
               {[...Array(4 - venue.price_tier)].map((_, i) => (
-                <span key={i} className="text-gray-600">$</span>
+                <span key={i} className="text-gray-600">
+                  $
+                </span>
               ))}
             </div>
           </div>
@@ -182,11 +196,13 @@ export default function VenueCard({
                   key={skill}
                   className="text-[9px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300/80 border border-amber-500/20 rounded-full px-2 py-0.5"
                 >
-                  {skill.replace('_', ' ')}
+                  {skill.replace("_", " ")}
                 </span>
               ))}
               {venue.skills.length > 3 && (
-                <span className="text-[9px] text-gray-500">+{venue.skills.length - 3}</span>
+                <span className="text-[9px] text-gray-500">
+                  +{venue.skills.length - 3}
+                </span>
               )}
             </div>
           )}

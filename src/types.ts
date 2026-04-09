@@ -103,6 +103,10 @@ export interface Venue {
   insider_tip?: string;
   coordinates?: { lat: number; lng: number };
 
+  // SEO / Routing Fields
+  slug?: string;
+  emirate?: string;
+
   // Operational Fields
   supplier_id?: string;
   status?: 'draft' | 'published' | 'archived';
