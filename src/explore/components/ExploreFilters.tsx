@@ -1,3 +1,5 @@
+'use client';
+
 import { Search, X, ChevronDown, LayoutGrid, Map as MapIcon, Star, Gem, DollarSign } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import type { ExploreFilterState } from '../types';

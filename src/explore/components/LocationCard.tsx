@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Gem, MapPin, ArrowUpRight, Star, Clock, DollarSign } from 'lucide-react';
 import Image from 'next/image';
@@ -126,9 +128,9 @@ export default function LocationCard({ location, index, onClick }: LocationCardP
         {/* Tags */}
         {location.tags && location.tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
-            {location.tags.slice(0, 3).map((tag) => (
+            {location.tags.slice(0, 3).map((tag, i) => (
               <span
-                key={tag}
+                key={`${tag}-${i}`}
                 className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-0.5 text-[10px] font-medium text-[#B6B6B6]/70"
               >
                 {tag}
@@ -146,7 +148,7 @@ export default function LocationCard({ location, index, onClick }: LocationCardP
             {/* Location */}
             <span className="flex items-center gap-1 text-xs text-[#B6B6B6]/55">
               <MapPin className="h-3 w-3" />
-              {location.area || location.emirate}
+              {location.area || location.emirate || 'UAE'}
             </span>
 
             {/* Price tier */}

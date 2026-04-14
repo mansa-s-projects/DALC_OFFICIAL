@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimatePresence, motion } from 'motion/react';
 import {
   X, MapPin, ExternalLink, Gem, Calendar, Star, Clock,
@@ -283,9 +285,9 @@ export default function LocationDrawer({ location, onClose }: LocationDrawerProp
               {/* Tags */}
               {location.tags && location.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
-                  {location.tags.map((tag) => (
+                  {location.tags.map((tag, i) => (
                     <span
-                      key={tag}
+                      key={`${tag}-${i}`}
                       className="rounded-md border border-white/8 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-cipher-muted"
                     >
                       {tag}

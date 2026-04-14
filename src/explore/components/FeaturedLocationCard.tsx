@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Gem, MapPin, ArrowUpRight, Star, Clock, DollarSign, Sparkles } from 'lucide-react';
 import Image from 'next/image';
@@ -128,9 +130,9 @@ export default function FeaturedLocationCard({ location, index, onClick }: Featu
         {/* Tags */}
         {location.tags && location.tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
-            {location.tags.slice(0, 4).map((tag) => (
+            {location.tags.slice(0, 4).map((tag, i) => (
               <span
-                key={tag}
+                key={`${tag}-${i}`}
                 className="rounded-md border border-white/8 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-[#B6B6B6]/70 transition-colors group-hover:border-[rgba(200,164,107,0.2)] group-hover:text-[#B6B6B6]"
               >
                 {tag}
@@ -159,7 +161,7 @@ export default function FeaturedLocationCard({ location, index, onClick }: Featu
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-xs text-[#B6B6B6]/60">
               <MapPin className="h-3.5 w-3.5" />
-              {location.area || location.emirate}
+              {location.area || location.emirate || 'UAE'}
             </span>
 
             {location.price_tier && <PriceTierIndicator tier={location.price_tier} />}

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { MapPin, AlertCircle, WifiOff, Star, Sparkles } from 'lucide-react';
 import LocationCard from './LocationCard';

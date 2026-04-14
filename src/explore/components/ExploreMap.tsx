@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -276,7 +278,8 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
 
   // Sync markers whenever filtered locations or map load state changes
   useEffect(() => {
-    if (!mapRef.current || !isLoaded) return;
+    const map = mapRef.current;
+    if (!map || !isLoaded) return;
 
     // Clear
     markersRef.current.forEach((m) => m.remove());
@@ -298,13 +301,13 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
 
       const marker = new mapboxgl.Marker({ element: el, anchor: 'center' })
         .setLngLat([loc.longitude, loc.latitude])
-        .addTo(mapRef.current!);
+        .addTo(map);
 
       el.addEventListener('mouseenter', () => {
         popup
           .setLngLat([loc.longitude, loc.latitude])
           .setHTML(buildPopupHtml(loc))
-          .addTo(mapRef.current!);
+          .addTo(map);
       });
 
       el.addEventListener('mouseleave', () => {
@@ -315,9 +318,9 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
         e.stopPropagation();
         popup.remove();
         onSelectRef.current(loc);
-        mapRef.current?.flyTo({
+        map.flyTo({
           center: [loc.longitude, loc.latitude],
-          zoom: Math.max(mapRef.current.getZoom(), 11),
+          zoom: Math.max(map.getZoom(), 11),
           duration: 950,
           essential: true,
         });
