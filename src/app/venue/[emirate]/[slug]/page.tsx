@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import VenueDetail from '@/features/nightlife/pages/VenueDetail';
-import { getStaticVenueBySlug, getVenueSeoDescription } from '@/features/nightlife/lib/venueDiscovery';
+import { getVenueSeoDescription } from '@/features/nightlife/lib/venueDiscovery';
+import { fetchVenueBySlug } from '@/lib/fetchVenues';
 
 type VenueSlugPageProps = {
 	params: Promise<{ emirate: string; slug: string }>;
@@ -25,7 +26,7 @@ function getAbsoluteUrl(value?: string | null): string | undefined {
 
 export async function generateMetadata({ params }: VenueSlugPageProps): Promise<Metadata> {
 	const { emirate, slug } = await params;
-	const venue = getStaticVenueBySlug(slug);
+	const venue = await fetchVenueBySlug(emirate, slug);
 
 	if (!venue) {
 		return {
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }: VenueSlugPageProps): Promise<
 
 export default async function VenueSlugPage({ params }: VenueSlugPageProps) {
 	const { emirate, slug } = await params;
-	const venue = getStaticVenueBySlug(slug);
+	const venue = await fetchVenueBySlug(emirate, slug);
 
 	const jsonLd = venue
 		? {

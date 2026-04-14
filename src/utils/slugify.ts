@@ -39,7 +39,8 @@ const AREA_TO_EMIRATE: Record<string, EmirateSlug> = {
 
 export function toEmirateSlug(area: string, location?: string): EmirateSlug {
   const haystack = (area + ' ' + (location ?? '')).trim().toLowerCase();
-  for (const [key, emirate] of Object.entries(AREA_TO_EMIRATE)) {
+  const entries = Object.entries(AREA_TO_EMIRATE).sort(([a], [b]) => b.length - a.length);
+  for (const [key, emirate] of entries) {
     if (haystack.includes(key)) return emirate;
   }
   return 'dubai';
@@ -59,6 +60,7 @@ export function slugify(text: string): string {
 export function generateVenueSlug(name: string, area?: string): string {
   const nameSlug = slugify(name);
   const areaSlug = area ? slugify(area) : '';
+  if (!nameSlug) return areaSlug;
   return areaSlug ? `${nameSlug}-${areaSlug}` : nameSlug;
 }
 
@@ -78,6 +80,6 @@ export function isLegacyVenueId(segment: string): boolean {
     segment.startsWith('bc-') ||
     segment.startsWith('nc-') ||
     segment.startsWith('de-') ||
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(segment)
+    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(segment)
   );
 }

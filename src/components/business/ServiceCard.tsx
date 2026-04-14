@@ -65,10 +65,10 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
     (pricing_model === "custom_quote"
       ? "Custom Quote"
       : pricing_model === "hourly"
-        ? `${price_currency} ${price_from?.toLocaleString()}/hr`
+        ? price_from != null ? `${price_currency} ${price_from.toLocaleString()}/hr` : "Contact for pricing"
         : pricing_model === "starting_from"
-          ? `From ${price_currency} ${price_from?.toLocaleString()}`
-          : `${price_currency} ${price_from?.toLocaleString()}`);
+          ? price_from != null ? `From ${price_currency} ${price_from.toLocaleString()}` : "Contact for pricing"
+          : price_from != null ? `${price_currency} ${price_from.toLocaleString()}` : "Contact for pricing");
 
   return (
     <motion.div

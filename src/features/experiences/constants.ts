@@ -16,5 +16,5 @@ export const EXPERIENCE_CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
   "signature-dining":
     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
   observation:
-    "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop",
 };

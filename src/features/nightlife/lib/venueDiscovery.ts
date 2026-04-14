@@ -1,4 +1,3 @@
-import { MOCK_VENUES } from '@/data/venues/mockData';
 import type { Category, UserSkill, Venue } from '@/types';
 import { SKILL_LABELS } from '@/types';
 
@@ -15,10 +14,10 @@ export type VenueRecommendation = {
 };
 
 const CATEGORY_ROUTES: Partial<Record<Category, string>> = {
-  dining: '/nightlife/restaurants',
-  nightlife: '/nightlife/clubs',
-  'beach-clubs': '/nightlife/beach-clubs',
-  'dining-entertainment': '/nightlife/dining',
+  dining: '/explore/dubai/restaurants',
+  nightlife: '/explore/dubai/nightlife',
+  'beach-clubs': '/explore/dubai/beach-clubs',
+  'dining-entertainment': '/explore/dubai/dining-entertainment',
 };
 
 function normalizeValue(value: string): string {
@@ -47,12 +46,12 @@ export function getVenueCategoryHref(category: Category): string {
   return CATEGORY_ROUTES[category] ?? '/nightlife';
 }
 
-export function getStaticVenueById(id: string): Venue | undefined {
-  return MOCK_VENUES.find((venue) => venue.id === id);
+export function getStaticVenueById(_id: string): Venue | undefined {
+  return undefined;
 }
 
-export function getStaticVenueBySlug(slug: string): Venue | undefined {
-  return MOCK_VENUES.find((venue) => venue.id === slug || (venue as { slug?: string }).slug === slug);
+export function getStaticVenueBySlug(_slug: string): Venue | undefined {
+  return undefined;
 }
 
 export function getVenueSeoDescription(venue: Venue): string {

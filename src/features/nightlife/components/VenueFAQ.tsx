@@ -65,9 +65,11 @@ export default function VenueFAQ({ venue, onBook }: VenueFAQProps) {
             className="border border-white/8 rounded-sm overflow-hidden bg-white/[0.02] hover:border-white/15 transition-colors"
           >
             <button
+              id={`faq-btn-${i}`}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full flex items-center justify-between px-6 py-5 text-left group"
               aria-expanded={openIndex === i}
+              aria-controls={`faq-panel-${i}`}
             >
               <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors pr-4">
                 {faq.q}
@@ -82,7 +84,10 @@ export default function VenueFAQ({ venue, onBook }: VenueFAQProps) {
             <AnimatePresence initial={false}>
               {openIndex === i && (
                 <motion.div
+                  id={`faq-panel-${i}`}
                   key="content"
+                  role="region"
+                  aria-labelledby={`faq-btn-${i}`}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

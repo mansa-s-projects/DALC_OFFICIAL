@@ -6,10 +6,13 @@ export type RequestPriority = "HIGH" | "NORMAL" | "LOW";
 export type RequestRow = {
   id: string;
   intent_id: string | null;
+  user_id: string | null;
   status: string;
   priority: RequestPriority;
   assigned_to: string | null;
   category: string;
+  request_type: string;
+  title: string;
   created_at: string;
   updated_at: string;
 };

@@ -106,6 +106,24 @@ export interface Venue {
   // SEO / Routing Fields
   slug?: string;
   emirate?: string;
+  category_slug?: string;
+  seo_title?: string;
+  seo_description?: string;
+  canonical_url?: string;
+
+  // Booking Fields
+  booking_mode?: 'request' | 'direct' | 'whatsapp' | 'external';
+  booking_url?: string;
+  whatsapp_number?: string;
+  min_spend_aed?: number;
+
+  // Geo Fields
+  latitude?: number;
+  longitude?: number;
+
+  // Analytics
+  view_count?: number;
+  published_at?: string;
 
   // Operational Fields
   supplier_id?: string;

@@ -94,6 +94,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
 
   // Get key spec based on subcategory
   const getKeySpec = () => {
+    if (!specifications) return null;
     const specs = specifications as Record<string, unknown>;
     if (subcategory === "cars") {
       return specs["horsepower"] ? `${specs["horsepower"]}` : null;

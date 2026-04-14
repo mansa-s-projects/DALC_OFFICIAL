@@ -50,6 +50,20 @@ export function normalizeVenue(raw: Record<string, unknown>): Venue {
     who_its_for: raw.who_its_for as string | undefined,
     insider_tip: raw.insider_tip as string | undefined,
     coordinates: raw.coordinates as { lat: number; lng: number } | undefined,
+    slug: (raw.slug as string) ?? undefined,
+    emirate: (raw.emirate_slug as string) ?? (raw.emirate as string) ?? 'dubai',
+    category_slug: (raw.category_slug as string) ?? undefined,
+    seo_title: (raw.seo_title as string) ?? undefined,
+    seo_description: (raw.seo_description as string) ?? undefined,
+    canonical_url: (raw.canonical_url as string) ?? undefined,
+    booking_mode: (raw.booking_mode as Venue['booking_mode']) ?? 'request',
+    booking_url: (raw.booking_url as string) ?? undefined,
+    whatsapp_number: (raw.whatsapp_number as string) ?? undefined,
+    min_spend_aed: raw.min_spend_aed != null ? Number(raw.min_spend_aed) : undefined,
+    latitude: raw.latitude != null ? Number(raw.latitude) : undefined,
+    longitude: raw.longitude != null ? Number(raw.longitude) : undefined,
+    view_count: Number(raw.view_count ?? 0),
+    published_at: (raw.published_at as string) ?? undefined,
   };
 
   const localImages = applyLocalImages(base);
