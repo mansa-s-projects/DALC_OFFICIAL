@@ -9,7 +9,7 @@ import { motion } from 'motion/react';
 
 export default function BeachClubs() {
   // ✅ FIX HERE
-  const { data: beachClubs = [], isLoading } = useVenues('beach-clubs');
+  const { data: beachClubs = [], isLoading } = useVenues({ category: 'beach-clubs' });
 
   return (
     <div className="min-h-screen bg-luxury-black">

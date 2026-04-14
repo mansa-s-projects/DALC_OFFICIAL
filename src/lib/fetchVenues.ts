@@ -37,7 +37,14 @@ export async function fetchVenues(options: FetchVenuesOptions = {}): Promise<Ven
   }
 
   if (category) {
-    query = query.eq('category_slug', category);
+    const { data: categoryRow } = await admin
+      .from('venue_categories')
+      .select('id')
+      .eq('slug', category)
+      .single();
+    if (categoryRow) {
+      query = query.eq('category_id', categoryRow.id);
+    }
   }
 
   const { data, error } = await query;
