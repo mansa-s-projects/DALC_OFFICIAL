@@ -207,7 +207,7 @@ export default function VenueCard({
             </div>
           )}
 
-          <Link href={`/venue/${venue.id}`} className="inline-block w-full">
+          <Link href={`/venue/${venue.emirate ?? 'dubai'}/${venue.slug ?? venue.id}`} className="inline-block w-full">
             <button className="w-full py-3 bg-white/10 hover:bg-luxury-gold hover:text-black border border-white/20 hover:border-luxury-gold text-white uppercase text-xs font-bold tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-aura">
               View Details <ArrowRight className="w-4 h-4" />
             </button>

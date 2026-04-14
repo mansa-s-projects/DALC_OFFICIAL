@@ -60,7 +60,8 @@ export function useIntent(): UseIntentResult {
       });
 
       if (!res.ok) {
-        const json = (await res.json()) as { error?: string };
+        let json: { error?: string } = {};
+        try { json = (await res.json()) as { error?: string }; } catch { /* non-JSON error */ }
         throw new Error(json.error ?? `HTTP ${res.status}`);
       }
 

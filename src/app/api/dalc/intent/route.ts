@@ -8,15 +8,16 @@ export async function POST(req: NextRequest) {
     const body = (await req.json()) as { user_input?: unknown; user_id?: unknown };
     const userInput = body.user_input;
     const userId = typeof body.user_id === "string" ? body.user_id : null;
+    const normalizedInput = typeof userInput === "string" ? userInput.trim() : "";
 
-    if (typeof userInput !== "string" || userInput.trim().length === 0) {
+    if (normalizedInput.length === 0) {
       return NextResponse.json(
         { error: "user_input is required" },
         { status: 400 },
       );
     }
 
-    const { intentResponse, decision } = await handleIntent(userInput);
+    const { intentResponse, decision } = await handleIntent(normalizedInput);
     const intent = intentResponse.intent!;
 
     // Persist intent to DB

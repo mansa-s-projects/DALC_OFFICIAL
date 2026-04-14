@@ -17,7 +17,10 @@ export function useExploreLocations() {
         .from('explore_locations')
         .select('*')
         .order('created_at', { ascending: false });
-      if (error) return STATIC_FALLBACK;
+      if (error) {
+        console.error('[useExploreLocations] fetch error:', error);
+        return STATIC_FALLBACK;
+      }
       if (!data || data.length === 0) return STATIC_FALLBACK;
       return data as ExploreLocation[];
     },

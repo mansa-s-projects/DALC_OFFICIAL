@@ -399,14 +399,14 @@ function getPhotographyItems(): ExperienceCatalogItem[] {
     {
       slug: 'flying-shooting-solo',
       title: 'Flying Shooting – Solo',
-      description: 'Inoubliable dress photoshoot in the desert or stud farm • AED 1,650',
+      description: 'Unforgettable dress photoshoot in the desert or stud farm • AED 1,650',
       image: photoImage,
       ctaLabel: 'Book Shoot',
     },
     {
       slug: 'flying-shooting-duo',
       title: 'Flying Shooting – Duo',
-      description: 'Inoubliable dress photoshoot for two • AED 1,850',
+      description: 'Unforgettable dress photoshoot for two • AED 1,850',
       image: photoImage,
       ctaLabel: 'Book Shoot',
     },

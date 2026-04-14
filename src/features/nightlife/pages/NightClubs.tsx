@@ -8,7 +8,13 @@ import { useVenues } from '../hooks/useVenues';
 import { motion } from 'motion/react';
 
 export default function NightClubs() {
-  const { data: clubs = [], isLoading } = useVenues({ category: 'nightlife' });
+  const { data: clubs = [], isLoading, error } = useVenues({ category: 'nightlife' });
+
+  if (error) return (
+    <div className="min-h-screen bg-luxury-black flex items-center justify-center">
+      <p className="text-gray-500 italic">Unable to load venues. Please try again later.</p>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-luxury-black">

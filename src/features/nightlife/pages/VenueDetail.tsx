@@ -738,6 +738,8 @@ export default function VenueDetail() {
         </button>
       </div>
 
+      <div className="h-24 lg:hidden" aria-hidden="true" />
+
       <Footer />
 
       {/* Booking Modal */}
@@ -797,6 +799,7 @@ export default function VenueDetail() {
                         <input
                           type="date"
                           required
+                          min={new Date().toISOString().split('T')[0]}
                           className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:border-luxury-gold outline-none transition-colors"
                           value={bookingForm.date}
                           onChange={(e) =>

@@ -114,8 +114,13 @@ export default function CategoryPage({ category }: CategoryPageProps) {
   const [activePriceTiers, setActivePriceTiers] = useState<number[]>([]);
   const [page, setPage] = useState(1);
 
+  const VALID_CATEGORIES = Object.keys(CATEGORY_CONFIG) as Category[];
+  const safeCategory = VALID_CATEGORIES.includes(category as Category)
+    ? (category as Category)
+    : undefined;
+
   const { data: venues = [], isLoading } = useVenues({
-    category: category as Category,
+    category: safeCategory,
   });
 
   const filtered = useMemo(() => {
@@ -150,7 +155,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
     "@type": "ItemList",
     name: `${config.label} in Dubai`,
     description: config.description,
-    numberOfItems: filtered.length,
+    numberOfItems: Math.min(filtered.length, 10),
     itemListElement: paged.slice(0, 10).map((v, i) => ({
       "@type": "ListItem",
       position: i + 1,
