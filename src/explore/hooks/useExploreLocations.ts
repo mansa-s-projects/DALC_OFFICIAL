@@ -1,24 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '../../lib/supabase';
-import type { ExploreLocation } from '../types';
-import { ALL_EXPLORE_LOCATIONS } from '../data/exploreLocations';
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "../../lib/supabase";
+import type { ExploreLocation } from "../types";
+import { ALL_EXPLORE_LOCATIONS } from "../data/exploreLocations";
 
 const STATIC_FALLBACK: ExploreLocation[] = ALL_EXPLORE_LOCATIONS.map((loc) => ({
   ...loc,
-  created_at: '2024-01-01T00:00:00Z',
+  created_at: "2024-01-01T00:00:00Z",
 })) as ExploreLocation[];
 
 export function useExploreLocations() {
   return useQuery<ExploreLocation[]>({
-    queryKey: ['explore_locations'],
+    queryKey: ["explore_locations"],
     queryFn: async () => {
       if (!supabase) return STATIC_FALLBACK;
       const { data, error } = await supabase
-        .from('explore_locations')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .from("explore_locations")
+        .select("*")
+        .order("created_at", { ascending: false });
       if (error) {
-        console.error('[useExploreLocations] fetch error:', error);
         return STATIC_FALLBACK;
       }
       if (!data || data.length === 0) return STATIC_FALLBACK;
