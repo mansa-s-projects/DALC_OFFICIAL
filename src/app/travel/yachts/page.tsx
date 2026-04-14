@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
+'use client';
 
-export default function TravelYachtsRedirectPage() {
-  redirect('/experiences/water-activities');
-}
+export { default } from '@/features/transport/pages/YachtsList';

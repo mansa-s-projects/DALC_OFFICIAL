@@ -1,335 +1,168 @@
-"use client";
+'use client';
 
-import { useCallback, useMemo, useRef, useState } from "react";
-import Map, { Source, Layer, type MapRef } from "react-map-gl/mapbox";
-import type { MapLayerMouseEvent } from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import {
-  MapSidePanel,
-  getCategoryColor,
-  type MapLocation,
-} from "./MapSidePanel";
-import { ALL_EXPLORE_LOCATIONS } from "@/explore/data/exploreLocations";
-import {
-  MapCategoryFilter,
-  matchesFilter,
-  type FilterId,
-} from "./MapCategoryFilter";
-import { MapSearchOverlay } from "./MapSearchOverlay";
+import { useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
+import Link from 'next/link';
+import { MapPin, Bell, ArrowRight, Wifi, Navigation, Layers } from 'lucide-react';
+import Navbar from '../../components/navigation/Navbar';
+import Footer from '../../components/navigation/Footer';
 
-// ─── Constants ────────────────────────────────────────────────────────────────
-
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? "";
-
-const DUBAI_CENTER = {
-  longitude: 55.2708,
-  latitude: 25.2048,
-  zoom: 10.5,
-};
-
-// ─── Layer specs (drawn directly on the GL canvas — no DOM overhead) ──────────
-
-const clusterLayer = {
-  id: "clusters",
-  type: "circle" as const,
-  filter: ["has", "point_count"],
-  paint: {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    "circle-color": "#C8A46B",
-    "circle-radius": [
-      "step",
-      ["get", "point_count"],
-      18,
-      10,
-      24,
-      30,
-      32,
-    ] as unknown as number,
-    "circle-stroke-width": 2,
-    "circle-stroke-color": "rgba(201,168,76,0.35)",
-    "circle-opacity": 0.92,
-    /* eslint-enable @typescript-eslint/no-explicit-any */
+const FEATURES = [
+  {
+    icon: Navigation,
+    label: 'Real-Time Positioning',
+    description: 'See every DALC-vetted venue, transport pickup point, and dining destination on a live city map.',
   },
-};
-
-const clusterCountLayer = {
-  id: "cluster-count",
-  type: "symbol" as const,
-  filter: ["has", "point_count"],
-  layout: {
-    "text-field": "{point_count_abbreviated}",
-    "text-size": 12,
-    "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+  {
+    icon: Layers,
+    label: 'Multi-Layer Filtering',
+    description: 'Toggle between nightlife, experiences, transport hubs, hotels, and business districts.',
   },
-  paint: {
-    "text-color": "#080706",
+  {
+    icon: Wifi,
+    label: 'Live Availability',
+    description: 'Real-time venue occupancy, wait times, and booking windows — all pinned to the map.',
   },
-};
-
-const venueLayer = {
-  id: "venues",
-  type: "circle" as const,
-  filter: ["!", ["has", "point_count"]],
-  paint: {
-    "circle-radius": [
-      "interpolate",
-      ["linear"],
-      ["zoom"],
-      8,
-      5,
-      12,
-      8,
-      15,
-      12,
-    ] as unknown as number,
-    "circle-color": ["get", "color"] as unknown as string,
-    "circle-stroke-width": 1.5,
-    "circle-stroke-color": "rgba(255,255,255,0.45)",
-    "circle-opacity": 0.93,
-  },
-};
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function matchesSearch(venue: MapLocation, query: string): boolean {
-  if (!query) return true;
-  const q = query.toLowerCase();
-  return (
-    venue.name.toLowerCase().includes(q) ||
-    venue.category.toLowerCase().includes(q) ||
-    venue.locationStr?.toLowerCase().includes(q) ||
-    venue.tags?.some((tag) => tag.toLowerCase().includes(q)) ||
-    false
-  );
-}
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
+];
 
 export default function LiveMapPage() {
-  const mapRef = useRef<MapRef>(null);
-  const [viewState, setViewState] = useState(DUBAI_CENTER);
-  const [selected, setSelected] = useState<MapLocation | null>(null);
-  const [activeFilter, setActiveFilter] = useState<FilterId>("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const venues = useMemo(
-    () =>
-      ALL_EXPLORE_LOCATIONS.filter(
-        (loc) =>
-          isFinite(loc.latitude) &&
-          isFinite(loc.longitude) &&
-          loc.latitude !== 0 &&
-          loc.longitude !== 0,
-      ).map((loc) => {
-        const tier = Math.max(
-          0,
-          Math.min(4, Math.floor(Number(loc.price_tier) || 0)),
-        );
-        return {
-          id: loc.id,
-          name: loc.name,
-          category: loc.category,
-          description: loc.long_description || loc.short_description,
-          latitude: loc.latitude,
-          longitude: loc.longitude,
-          locationStr: `${loc.area}, ${loc.emirate}`,
-          tags: loc.tags,
-          priceRange: tier > 0 ? "AED " + "$".repeat(tier) : "AED -",
-          vibe: loc.vibe,
-          bestTime: loc.best_time,
-          insiderTip: loc.insider_tip,
-          detailHref: "/explore",
-          requestHref: `/request?location=${encodeURIComponent(loc.name)}`,
-          requestLabel: "Plan with Concierge",
-        };
-      }),
-    [],
-  );
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  const visibleVenues = useMemo(
-    () =>
-      venues.filter(
-        (v) =>
-          matchesFilter(v.category, activeFilter) &&
-          matchesSearch(v, searchQuery),
-      ),
-    [venues, activeFilter, searchQuery],
-  );
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
 
-  // GeoJSON fed directly into the Mapbox GL source — renders as a native layer
-  const geojson = useMemo(
-    () => ({
-      type: "FeatureCollection" as const,
-      features: visibleVenues.map((v) => ({
-        type: "Feature" as const,
-        geometry: {
-          type: "Point" as const,
-          coordinates: [v.longitude, v.latitude] as [number, number],
-        },
-        properties: {
-          id: v.id,
-          color: getCategoryColor(v.category),
-        },
-      })),
-    }),
-    [visibleVenues],
-  );
-
-  const venueById = useMemo(() => {
-    const map: Record<
-      string,
-      {
-        id: string;
-        name: string;
-        category: string;
-        latitude: number;
-        longitude: number;
-        requestLabel: string;
-      }
-    > = {};
-    for (const v of venues) {
-      map[v.id] = v;
+    const dots: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
+    for (let i = 0; i < 60; i++) {
+      dots.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 2 + 1,
+        a: Math.random(),
+      });
     }
-    return map;
-  }, [venues]);
 
-  const handleMapClick = useCallback(
-    (e: MapLayerMouseEvent) => {
-      const features = e.features;
-      if (!features || features.length === 0) {
-        setSelected(null);
-        return;
-      }
-      const f = features[0];
-
-      // Cluster click → zoom in
-      if (f.layer && f.layer.id === "clusters" && f.geometry.type === "Point") {
-        const currentZoom = mapRef.current?.getMap().getZoom() ?? 10;
-        mapRef.current?.flyTo({
-          center: f.geometry.coordinates as [number, number],
-          zoom: currentZoom + 3,
-          duration: 500,
+    let raf: number;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      dots.forEach((d) => {
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
+        if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,168,76,${d.a * 0.4})`;
+        ctx.fill();
+      });
+      dots.forEach((a, i) => {
+        dots.slice(i + 1).forEach((b) => {
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(201,168,76,${(1 - dist / 120) * 0.12})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
         });
-        return;
-      }
-
-      // Individual venue click → open side panel
-      const id = f.properties?.id as string | undefined;
-      if (id) {
-        const venue = venueById[id] ?? null;
-        setSelected((prev) => (prev?.id === id ? null : venue));
-      }
-    },
-    [venueById],
-  );
-
-  const handleClose = useCallback(() => setSelected(null), []);
-  const handleFilterChange = useCallback(
-    (id: FilterId) => setActiveFilter(id),
-    [],
-  );
-  const handleSearchChange = useCallback((v: string) => setSearchQuery(v), []);
-
-  if (!MAPBOX_TOKEN) {
-    return (
-      <div className="fixed inset-0 z-0 bg-black flex items-center justify-center">
-        <div className="text-center px-6">
-          <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-3">
-            Live Map
-          </p>
-          <p className="text-gray-400 text-sm">
-            Map unavailable — set NEXT_PUBLIC_MAPBOX_TOKEN to enable.
-          </p>
-        </div>
-      </div>
-    );
-  }
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
-    <div className="fixed inset-0 z-0 bg-black">
-      {/* Top gradient bar */}
-      <div
-        className="absolute top-0 left-0 right-0 z-10 flex items-center px-5 py-4"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      >
-        <div className="flex items-center gap-3">
-          <span
-            style={{
-              color: "#C8A46B",
-              fontSize: 13,
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              fontFamily: "serif",
-            }}
-          >
-            DALC
-          </span>
-          <span
-            style={{
-              width: 1,
-              height: 14,
-              background: "rgba(255,255,255,0.2)",
-              display: "inline-block",
-            }}
-          />
-          <span
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.6)",
-            }}
-          >
-            Live Map
-          </span>
-          {venues.length > 0 && (
-            <span
-              style={{
-                fontSize: 10,
-                color: "rgba(255,255,255,0.25)",
-                letterSpacing: "0.08em",
-              }}
-            >
-              · {visibleVenues.length}/{venues.length}
-            </span>
-          )}
+    <div className="min-h-screen bg-[#080706] flex flex-col">
+      <Navbar />
+
+      <section className="relative flex-1 flex flex-col items-center justify-center pt-24 pb-16 px-4 text-center overflow-hidden min-h-[75vh]">
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
+
+        <div className="relative z-10 mb-10">
+          <div className="relative w-20 h-20 mx-auto">
+            <motion.div
+              animate={{ scale: [1, 2.2, 1], opacity: [0.4, 0, 0.4] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: 'easeOut' }}
+              className="absolute inset-0 rounded-full bg-luxury-gold/20"
+            />
+            <motion.div
+              animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: 'easeOut', delay: 0.4 }}
+              className="absolute inset-0 rounded-full bg-luxury-gold/15"
+            />
+            <div className="relative z-10 w-20 h-20 rounded-full bg-luxury-gold/10 border border-luxury-gold/30 flex items-center justify-center">
+              <MapPin className="w-8 h-8 text-luxury-gold" strokeWidth={1.5} />
+            </div>
+          </div>
         </div>
-      </div>
 
-      <MapSearchOverlay value={searchQuery} onChange={handleSearchChange} />
-      <MapCategoryFilter active={activeFilter} onChange={handleFilterChange} />
-
-      <Map
-        ref={mapRef}
-        {...viewState}
-        onMove={(evt) => setViewState(evt.viewState)}
-        style={{ width: "100%", height: "100%" }}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
-        mapboxAccessToken={MAPBOX_TOKEN}
-        attributionControl={false}
-        reuseMaps
-        interactiveLayerIds={["venues", "clusters"]}
-        onClick={handleMapClick}
-      >
-        <Source
-          id="venues-source"
-          type="geojson"
-          data={geojson}
-          cluster={true}
-          clusterMaxZoom={13}
-          clusterRadius={45}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-2xl mx-auto"
         >
-          <Layer {...clusterLayer} />
-          <Layer {...clusterCountLayer} />
-          <Layer {...venueLayer} />
-        </Source>
-      </Map>
+          <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.5em] mb-5">Coming Soon</p>
+          <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight">Dubai Live Map</h1>
+          <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-10">
+            An interactive real-time city layer showing every DALC venue, transport node, and experience on a living map of Dubai.
+          </p>
+          <Link
+            href="/request"
+            className="inline-flex items-center gap-3 px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300"
+          >
+            <Bell className="w-4 h-4" />
+            Notify Me at Launch
+          </Link>
+        </motion.div>
 
-      <MapSidePanel venue={selected} onClose={handleClose} />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.03]" />
+          <div className="absolute top-1/2 left-0 right-0 h-px bg-white/[0.03]" />
+        </div>
+      </section>
+
+      <section className="px-4 md:px-8 max-w-5xl mx-auto pb-24 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
+          {FEATURES.map(({ icon: Icon, label, description }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="bg-[#080706] p-8 flex flex-col gap-4"
+            >
+              <div className="w-10 h-10 border border-luxury-gold/20 flex items-center justify-center">
+                <Icon className="w-5 h-5 text-luxury-gold" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-white font-display text-lg">{label}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+            </motion.div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href="/experiences"
+            className="inline-flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest hover:text-luxury-gold transition-colors"
+          >
+            Browse Experiences in the meantime
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
