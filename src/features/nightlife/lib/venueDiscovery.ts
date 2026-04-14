@@ -14,10 +14,10 @@ export type VenueRecommendation = {
 };
 
 const CATEGORY_ROUTES: Partial<Record<Category, string>> = {
-  dining: '/explore/dubai/restaurants',
-  nightlife: '/explore/dubai/nightlife',
-  'beach-clubs': '/explore/dubai/beach-clubs',
-  'dining-entertainment': '/explore/dubai/dining-entertainment',
+  dining: '/nightlife/restaurants',
+  nightlife: '/nightlife',
+  'beach-clubs': '/nightlife/beach-clubs',
+  'dining-entertainment': '/nightlife/private-events', // or keep as dining-entertainment based on what exists
 };
 
 function normalizeValue(value: string): string {

@@ -1,4 +1,4 @@
-import { jetFleet } from "../../../data/transport/jetFleet";
+import { jetFleet } from "../../../data/jets/jetFleet";
 
 type JetFleetItem = {
   id: string;

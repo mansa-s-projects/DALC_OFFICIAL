@@ -5,11 +5,11 @@ import { motion } from "motion/react";
 import { Heart, Users, Ruler, Anchor } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/store/useAppStore";
-import type { YachtItem } from "@/data/transport/yachtsData";
+import type { YachtItem } from "@/data/yachts/yachtsData";
 import {
   getYachtImage,
   getYachtWhatsAppUrl,
-} from "@/data/transport/yachtsData";
+} from "@/data/yachts/yachtsData";
 
 // ─── Image Component with Error Handling ────────────────────────────────────
 

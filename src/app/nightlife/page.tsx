@@ -1,13 +1,20 @@
-import NightlifeHub from '@/features/nightlife/pages/NightlifeHub';
-import { buildNightlifeMetadata } from '@/features/nightlife/lib/metadata';
+import type { Metadata } from 'next';
 
-export const metadata = buildNightlifeMetadata({
-	title: 'Dubai Nightlife Concierge | Clubs, Beach Clubs, Dining | Dubai À La Carte',
-	description: 'Discover Dubai nightlife with DALC concierge access to clubs, beach clubs, restaurants, and dinner shows across DIFC, Downtown, Palm Jumeirah, and beyond.',
-	path: '/nightlife',
-	keywords: ['Dubai nightlife', 'Dubai clubs', 'Dubai beach clubs', 'Dubai concierge', 'luxury nightlife Dubai'],
-});
+export const metadata: Metadata = {
+  title: 'Dubai Nightlife Concierge | Dubai À La Carte',
+  description: 'Discover Dubai nightlife with DALC concierge access.',
+};
 
 export default function NightlifePage() {
-	return <NightlifeHub />;
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
+      <h1 className="text-4xl md:text-5xl font-serif text-cipher-gold mb-6">Nightlife</h1>
+      <p className="text-xl text-cipher-muted max-w-2xl">
+        Experience the ultimate VIP nightlife in Dubai. Exclusive tables, beach clubs, and elite dining entertainment.
+      </p>
+      <div className="mt-8 text-cipher-dim border border-cipher-rim p-6 rounded bg-cipher-card2">
+        <p>Placeholder content - Nightlife architecture refactoring in progress.</p>
+      </div>
+    </div>
+  );
 }

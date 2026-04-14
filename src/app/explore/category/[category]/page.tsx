@@ -38,6 +38,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ExploreCategoryPage({ params }: Props) {
-  const { category } = await params;
+  const resolvedParams = await params;
+  const category = resolvedParams?.category;
+
+  console.log('[ExploreCategoryPage] params:', resolvedParams);
+
+  if (!category) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4">
+        <h1 className="text-2xl font-serif text-cipher-gold mb-2">Category Not Found</h1>
+        <p className="text-cipher-muted">
+          We could not find the explore category you are looking for. Please return to the explore hub.
+        </p>
+      </div>
+    );
+  }
+
   return <CategoryPage category={category} />;
 }
