@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminAuth } from '@/lib/api-auth';
 import { getSupabaseAdminClient } from '@/lib/supabase-admin';
 import {
   getFirstTouchAttribution,
@@ -6,7 +7,10 @@ import {
   getMultiTouchAttribution,
 } from '@/lib/attribution-models';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await requireAdminAuth(request, 'view_reports');
+  if (auth instanceof NextResponse) return auth;
+
   const supabaseAdmin = getSupabaseAdminClient();
 
   try {

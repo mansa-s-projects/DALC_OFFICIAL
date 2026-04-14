@@ -68,7 +68,7 @@ export type UserStage =
 
 // --- Auth & Role Types ---
 
-export type UserRole = 'user' | 'admin' | 'concierge';
+export type UserRole = 'user' | 'admin' | 'concierge' | 'sales_manager' | 'sales_agent' | 'viewer';
 export type UserTier = 'standard' | 'gold' | 'platinum' | 'black';
 
 // --- Venue ---

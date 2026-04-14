@@ -1,7 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminAuth } from '@/lib/api-auth';
 import { fetchViewRows } from '@/lib/sales-ops-dashboard-api';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await requireAdminAuth(request, 'view_reports');
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const rows = await fetchViewRows('v_dashboard_metrics', { limit: 1 });
     return NextResponse.json({ ok: true, data: rows[0] || null });

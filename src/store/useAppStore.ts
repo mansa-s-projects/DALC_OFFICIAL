@@ -16,10 +16,9 @@ interface OnboardingData {
 }
 
 interface AppState {
-  // Auth
+  // Auth — display-only, never used as a security gate
   session: Session | null;
   profile: UserProfile | null;
-  isAdmin: boolean;
   setSession: (session: Session | null) => void;
   setProfile: (profile: UserProfile | null) => void;
   clearAuth: () => void;
@@ -69,17 +68,12 @@ const DEFAULT_ONBOARDING: OnboardingData = {
 export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
-      // Auth
+      // Auth — display-only; security enforcement is in middleware + API routes
       session: null,
       profile: null,
-      isAdmin: false,
       setSession: (session) => set({ session }),
-      setProfile: (profile) =>
-        set({
-          profile,
-          isAdmin: profile?.role === 'admin' || profile?.role === 'concierge',
-        }),
-      clearAuth: () => set({ session: null, profile: null, isAdmin: false }),
+      setProfile: (profile) => set({ profile }),
+      clearAuth: () => set({ session: null, profile: null }),
 
       // User (local)
       user: null,
@@ -147,7 +141,8 @@ export const useAppStore = create<AppState>()(
         onboardingData: state.onboardingData,
         user: state.user,
         savedVenues: state.savedVenues,
-        profile: state.profile,
+        // profile and session are intentionally excluded from localStorage.
+        // Auth state rehydrates fresh from Supabase on every mount via AuthListener.
       }),
     }
   )
