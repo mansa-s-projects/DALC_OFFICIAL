@@ -19,7 +19,12 @@
       "Bash(python:*)",
       "Bash(node -e \"console.log\\(require\\(''./node_modules/react-map-gl/package.json''\\).version\\)\")",
       "Bash(ls \"c:\\\\Users\\\\mehdi\\\\Desktop\\\\DESKTOP\\\\02_PROJECTS\\\\01_ACTIVE\\\\DALC_OFFICIAL\\\\src\\\\pages\\\\live-map\"\" && echo \"---\" && ls \"c:UsersmehdiDesktopDESKTOP02_PROJECTS01_ACTIVEDALC_OFFICIALsrcfeatureslive-map\"\")",
-      "Bash(grep -v \"^$\")"
+      "Bash(grep -v \"^$\")",
+      "Bash(taskkill /PID 24932 /F)",
+      "Read(//tmp/**)",
+      "Bash(taskkill /PID 24932 /F /T)",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":3000\")"
     ]
   },
   "enabledMcpjsonServers": [
