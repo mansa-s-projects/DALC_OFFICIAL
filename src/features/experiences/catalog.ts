@@ -1,5 +1,5 @@
 import { CAR_CATEGORIES, getCarImage } from '../../data/transport/carsData';
-import { YACHT_CATEGORIES, getYachtImage } from '../../data/transport/yachtsData';
+import { YACHT_CATEGORIES, getYachtImage } from '../../data/yachts/yachtsData';
 import { MOCK_EXPERIENCES } from '../../lib/experiences';
 
 export type ExperienceCategorySlug =
