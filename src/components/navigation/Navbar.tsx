@@ -31,7 +31,7 @@ export default function Navbar() {
   const router = useRouter();
   const session = useAppStore((s) => s.session);
   const profile = useAppStore((s) => s.profile);
-  const isAdmin = useAppStore((s) => s.isAdmin);
+  const showAdminLink = profile?.role === 'admin' || profile?.role === 'sales_manager' || profile?.role === 'concierge';
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -154,7 +154,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {isAdmin && (
+          {showAdminLink && (
             <Link
               href="/admin"
               className="relative group transition-colors duration-200"
@@ -310,7 +310,7 @@ export default function Navbar() {
           >
             Search
           </button>
-          {isAdmin && (
+          {showAdminLink && (
             <Link
               href="/admin"
               className="font-display font-light text-xl pb-4"

@@ -1,42 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminAuth } from '@/lib/api-auth';
 import { fetchViewRows, getLimitFromRequest } from '@/lib/sales-ops-dashboard-api';
 
 export async function GET(request: NextRequest) {
+  const auth = await requireAdminAuth(request, 'view_reports');
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const limit = getLimitFromRequest(request, 40, 200);
 
     const [hotLeads, overdueTasks, leadsWithoutOwner, leadsWithoutFollowUp, recentlyActive, topConvertingSources] =
       await Promise.all([
-        fetchViewRows('v_dashboard_hot_leads', {
-          limit,
-          orderBy: 'lead_score',
-          ascending: false,
-        }),
-        fetchViewRows('v_dashboard_overdue_tasks', {
-          limit,
-          orderBy: 'urgency_score',
-          ascending: false,
-        }),
-        fetchViewRows('v_dashboard_leads_without_owner', {
-          limit,
-          orderBy: 'created_at',
-          ascending: false,
-        }),
-        fetchViewRows('v_dashboard_leads_without_follow_up', {
-          limit,
-          orderBy: 'created_at',
-          ascending: false,
-        }),
-        fetchViewRows('v_dashboard_recently_active_leads', {
-          limit,
-          orderBy: 'last_activity_at',
-          ascending: false,
-        }),
-        fetchViewRows('v_dashboard_top_converting_sources', {
-          limit,
-          orderBy: 'conversion_rate_pct',
-          ascending: false,
-        }),
+        fetchViewRows('v_dashboard_hot_leads', { limit, orderBy: 'lead_score', ascending: false }),
+        fetchViewRows('v_dashboard_overdue_tasks', { limit, orderBy: 'urgency_score', ascending: false }),
+        fetchViewRows('v_dashboard_leads_without_owner', { limit, orderBy: 'created_at', ascending: false }),
+        fetchViewRows('v_dashboard_leads_without_follow_up', { limit, orderBy: 'created_at', ascending: false }),
+        fetchViewRows('v_dashboard_recently_active_leads', { limit, orderBy: 'last_activity_at', ascending: false }),
+        fetchViewRows('v_dashboard_top_converting_sources', { limit, orderBy: 'conversion_rate_pct', ascending: false }),
       ]);
 
     return NextResponse.json({

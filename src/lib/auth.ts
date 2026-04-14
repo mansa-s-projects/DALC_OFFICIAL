@@ -1,31 +1,6 @@
 import { supabase } from './supabase';
 import type { UserProfile } from '../types';
 
-// Cookie helpers for middleware auth
-function setCookie(name: string, value: string, days = 7) {
-  if (typeof document === 'undefined') return;
-  const expires = new Date(Date.now() + days * 86400000).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=/;SameSite=Lax`;
-}
-
-function deleteCookie(name: string) {
-  if (typeof document === 'undefined') return;
-  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax`;
-}
-
-async function setRoleCookie(userId: string) {
-  if (!supabase) return;
-  const { data } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', userId)
-    .single();
-  
-  if (data?.role) {
-    setCookie('dalc_role', data.role);
-  }
-}
-
 export async function signUp(email: string, password: string, firstName?: string, lastName?: string) {
   if (!supabase) throw new Error('Supabase is not configured.');
 
@@ -39,7 +14,6 @@ export async function signUp(email: string, password: string, firstName?: string
 
   if (error) throw error;
 
-  // Update profile with name if provided
   if (data.user && (firstName || lastName)) {
     const { error: profileError } = await supabase
       .from('profiles')
@@ -63,20 +37,11 @@ export async function signIn(email: string, password: string) {
   });
 
   if (error) throw error;
-  
-  // Set dalc_role cookie for middleware auth
-  if (data.user) {
-    await setRoleCookie(data.user.id);
-  }
-  
   return data;
 }
 
 export async function signOut() {
   if (!supabase) throw new Error('Supabase is not configured.');
-
-  // Clear role cookie on sign out
-  deleteCookie('dalc_role');
 
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
@@ -99,11 +64,6 @@ export async function getProfile(userId: string): Promise<UserProfile | null> {
     .single();
 
   if (error || !data) return null;
-
-  // Sync role cookie with profile
-  if (data.role) {
-    setCookie('dalc_role', data.role);
-  }
 
   return {
     id: data.id,

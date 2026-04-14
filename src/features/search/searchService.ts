@@ -81,24 +81,24 @@ async function searchVenues(q: string): Promise<SearchResult[]> {
 
 async function searchExperiences(q: string): Promise<SearchResult[]> {
   const { data, error } = await supabase
-    .from('experiences')
-    .select('id, name, description_short, subcategory, location, hero_image, price_tier')
-    .or(`name.ilike.%${q}%,description_short.ilike.%${q}%,subcategory.ilike.%${q}%`)
+    .from('activities')
+    .select('id, name, slug, description_short, area, location, status')
+    .or(`name.ilike.%${q}%,description_short.ilike.%${q}%,area.ilike.%${q}%`)
+    .in('status', ['published', 'sold_out'])
     .limit(6);
 
   if (error || !data) return [];
 
-  return (data as ExperienceSearchRow[]).map((v): SearchResult => ({
+  return (data as { id: string; name: string; slug: string; description_short: string | null; area: string | null; location: string | null; status: string }[]).map((v): SearchResult => ({
     id: String(v.id),
     type: 'experience',
     title: v.name,
     subtitle: v.description_short ?? '',
-    category: v.subcategory ?? '',
-    area: v.location ?? 'Dubai',
-    image: v.hero_image ?? '',
-    slug: String(v.id),
-    href: `/experiences/${v.subcategory}/${v.id}`,
-    price_tier: v.price_tier ?? undefined,
+    category: 'activity',
+    area: v.area ?? v.location ?? 'Dubai',
+    image: '',
+    slug: v.slug,
+    href: `/experiences/${v.slug}`,
   }));
 }
 
