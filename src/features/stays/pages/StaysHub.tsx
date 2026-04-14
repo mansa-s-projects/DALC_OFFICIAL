@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import {
   Building2,
-  Home,
   Hotel,
   ArrowRight,
   Star,
@@ -12,8 +11,6 @@ import {
 } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
-import PropertyCard from '../../../components/stays/PropertyCard';
-import { useFeaturedProperties } from '../hooks/useStays';
 import type { StaysSubcategory } from '../types';
 import { SUBCATEGORY_LABELS, SUBCATEGORY_DESCRIPTIONS } from '../types';
 
@@ -36,13 +33,6 @@ const CATEGORIES: CategoryConfig[] = [
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
   },
   {
-    subcategory: 'villas',
-    label: SUBCATEGORY_LABELS.villas,
-    icon: <Home className="w-7 h-7" />,
-    gradient: 'from-blue-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
-  },
-  {
     subcategory: 'residences',
     label: SUBCATEGORY_LABELS.residences,
     icon: <Building2 className="w-7 h-7" />,
@@ -63,7 +53,6 @@ const STATS = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function StaysHub() {
-  const { data: featured = [], isLoading } = useFeaturedProperties();
 
   return (
     <div className="min-h-screen bg-luxury-black">
@@ -105,15 +94,15 @@ export default function StaysHub() {
               href="/travel/hotels"
               className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              Explore Travel Stays
+              Browse Hotels Worldwide
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/travel/villas"
+              href="/stays/residences"
               className="px-8 py-4 border border-luxury-gold/40 text-luxury-gold text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <Home className="w-4 h-4" />
-              Private Villas
+              <Building2 className="w-4 h-4" />
+              Residences
             </Link>
           </div>
         </motion.div>
@@ -149,7 +138,7 @@ export default function StaysHub() {
           <h2 className="text-3xl md:text-4xl font-display text-white">Choose Your Stay</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {CATEGORIES.map((cat, idx) => (
             <motion.div
               key={cat.subcategory}
@@ -193,57 +182,6 @@ export default function StaysHub() {
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* ── Featured Properties ──────────────────────────────────────────────── */}
-      <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex items-end justify-between mb-12 flex-wrap gap-4"
-        >
-          <div>
-            <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-3">
-              Curated
-            </p>
-            <h2 className="text-3xl md:text-4xl font-display text-white">Featured Properties</h2>
-          </div>
-          <div className="flex gap-4">
-            <Link
-              href="/travel/hotels"
-              className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
-            >
-              Hotels <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/travel/villas"
-              className="text-luxury-gold text-xs uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
-            >
-              Villas <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </motion.div>
-
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-96 bg-white/5 animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featured.slice(0, 6).map((property, idx) => (
-              <PropertyCard key={property.id} property={property} index={idx} />
-            ))}
-          </div>
-        )}
-
-        {!isLoading && featured.length === 0 && (
-          <div className="text-center py-16 border border-white/10">
-            <p className="text-gray-500 italic">Properties loading soon.</p>
-          </div>
-        )}
       </section>
 
       {/* ── Why Book With Us ─────────────────────────────────────────────────── */}

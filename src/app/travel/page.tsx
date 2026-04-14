@@ -2,69 +2,48 @@
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import {
-  PlaneTakeoff,
-  Hotel,
-  Home,
-  Plane,
-  Car,
-  ArrowRight,
-  Star,
-} from 'lucide-react';
+import { PlaneTakeoff, Hotel, Plane, Car, ArrowRight, Star } from 'lucide-react';
 import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
-
-// ─── Category Config ──────────────────────────────────────────────────────────
 
 const TRAVEL_CATEGORIES = [
   {
     id: 'flights',
     title: 'Flights',
-    description: 'Commercial & private aviation worldwide',
+    description: 'Search 500+ airlines. Economy to First Class. Commercial & private aviation worldwide.',
     icon: <PlaneTakeoff className="w-8 h-8" />,
-    gradient: 'from-blue-900/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop',
     link: '/travel/flights',
+    badge: 'Live Search',
   },
   {
     id: 'hotels',
     title: 'Hotels',
-    description: 'World-class hotels & premium stays',
+    description: 'World-class hotels across every destination — curated, rated, and bookable in seconds.',
     icon: <Hotel className="w-8 h-8" />,
-    gradient: 'from-amber-900/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8376?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8376?q=80&w=1200&auto=format&fit=crop',
     link: '/travel/hotels',
-  },
-  {
-    id: 'villas',
-    title: 'Villas',
-    description: 'Private villas & luxury residences',
-    icon: <Home className="w-8 h-8" />,
-    gradient: 'from-emerald-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
-    link: '/travel/villas',
+    badge: 'Curated',
   },
   {
     id: 'jets',
     title: 'Private Jets',
-    description: 'Charter world-class aircraft to anywhere',
+    description: 'Charter ultra-long-range aircraft to anywhere on earth. 24/7 ARGUS-rated operators.',
     icon: <Plane className="w-8 h-8" />,
-    gradient: 'from-zinc-800/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=1200&auto=format&fit=crop',
     link: '/travel/jets',
+    badge: 'On Demand',
   },
   {
     id: 'car-rental',
     title: 'Car Rental',
-    description: 'Economy & standard vehicles for daily use',
+    description: 'Economy, SUV, luxury and electric vehicles for every drive across Dubai and beyond.',
     icon: <Car className="w-8 h-8" />,
-    gradient: 'from-red-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop',
     link: '/travel/car-rental',
+    badge: 'Instant',
   },
 ];
-
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function TravelHub() {
   return (
@@ -93,18 +72,18 @@ export default function TravelHub() {
             Dubai À La Carte
           </p>
           <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight">
-            Curated Travel<br />
-            <span className="text-luxury-gold">Expeditions</span>
+            Travel<br />
+            <span className="text-luxury-gold">Your Way</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            From seamless arrivals via private jet to the most exclusive stays — plan every step of your Dubai journey.
+            Flights, hotels, private jets and car rentals — plan every step of your journey in one place.
           </p>
         </motion.div>
       </section>
 
       {/* ── Category Grid ─────────────────────────────────────────────────────── */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24 -mt-16 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {TRAVEL_CATEGORIES.map((cat, idx) => (
             <motion.div
               key={cat.id}
@@ -115,32 +94,37 @@ export default function TravelHub() {
             >
               <Link
                 href={cat.link}
-                className="group relative block h-[26rem] overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
+                className="group relative block h-[22rem] overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
                 <img
                   src={cat.image}
                   alt={cat.title}
                   className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient}`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/60 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/50 to-transparent opacity-90" />
 
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                  <div className="text-luxury-gold/80 group-hover:text-luxury-gold transition-colors duration-300">
-                    {cat.icon}
+                  <div className="flex items-start justify-between">
+                    <div className="text-luxury-gold/80 group-hover:text-luxury-gold transition-colors duration-300">
+                      {cat.icon}
+                    </div>
+                    {cat.badge && (
+                      <span className="bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1">
+                        {cat.badge}
+                      </span>
+                    )}
                   </div>
                   <div>
-                    <h3 className="text-white font-display text-3xl mb-2 group-hover:text-luxury-gold transition-colors duration-300">
+                    <h3 className="text-white font-display text-4xl mb-3 group-hover:text-luxury-gold transition-colors duration-300">
                       {cat.title}
                     </h3>
-                    <p className="text-gray-300 text-base font-light leading-relaxed">
+                    <p className="text-gray-300 text-sm font-light leading-relaxed max-w-sm">
                       {cat.description}
                     </p>
+                    <div className="mt-5 flex items-center gap-2 text-luxury-gold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Explore <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
                   </div>
-                </div>
-
-                <div className="absolute bottom-8 right-8 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-                  <ArrowRight className="w-6 h-6 text-luxury-gold" />
                 </div>
               </Link>
             </motion.div>
@@ -166,7 +150,7 @@ export default function TravelHub() {
               Let Us Plan Your Journey
             </h2>
             <p className="text-gray-400 text-base max-w-xl mx-auto mb-10 leading-relaxed">
-              Our travel concierges connect your flights, transfers, stays, and daily itinerary into one flawless experience.
+              Our travel concierges connect your flights, transfers, hotels, and daily itinerary into one flawless experience.
             </p>
             <Link
               href="/request"

@@ -346,6 +346,8 @@ function getAerialItems(): ExperienceCatalogItem[] {
   const heliImage = 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop';
   const skydiveImage = 'https://images.unsplash.com/photo-1601024445121-e5b82f020549?q=80&w=800&auto=format&fit=crop';
   const ziplineImage = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop';
+  const balloonImage = 'https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=800&auto=format&fit=crop';
+  const seaplaneImage = 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?q=80&w=800&auto=format&fit=crop';
 
   return [
     {
@@ -371,24 +373,66 @@ function getAerialItems(): ExperienceCatalogItem[] {
     },
     {
       slug: 'saut-en-parachute-palm',
-      title: 'Saut en Parachute – Palm Drop Zone',
-      description: 'Tandem skydive over the iconic Palm Jumeirah • AED 2,499/pers',
+      title: 'Skydiving • Palm Jumeirah Drop Zone',
+      description: 'Tandem skydive over the iconic Palm Jumeirah • 3 hours • From AED 2,205',
       image: skydiveImage,
       ctaLabel: 'Book Skydive',
     },
     {
       slug: 'saut-en-parachute-desert',
-      title: 'Saut en Parachute – Desert Drop Zone',
+      title: 'Skydiving • Desert Drop Zone',
       description: 'Tandem skydive over the golden Dubai desert • AED 2,099/pers',
       image: skydiveImage,
       ctaLabel: 'Book Skydive',
     },
     {
+      slug: 'indoor-skydiving-ifly',
+      title: 'Indoor Skydiving – iFly Dubai',
+      description: 'Wind tunnel skydiving simulation — no experience needed • 1 hour • From AED 440',
+      image: 'https://images.unsplash.com/photo-1521898284481-a5ec348cb555?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Experience',
+    },
+    {
+      slug: 'hot-air-balloon-desert',
+      title: 'Hot Air Balloon – Desert Sunrise',
+      description: 'Sunrise balloon flight over the desert with falcon show • 4 hours • From AED 1,285',
+      image: balloonImage,
+      ctaLabel: 'Book Flight',
+    },
+    {
+      slug: 'seaplane-tour-dubai',
+      title: 'Seaplane Aerial Tour – Dubai',
+      description: 'Scenic seaplane tour over Dubai Creek and coastline • 40 minutes • From AED 1,543',
+      image: seaplaneImage,
+      ctaLabel: 'Book Tour',
+    },
+    {
+      slug: 'gyrocopter-flight',
+      title: 'Gyrocopter Flight – Dubai Marina',
+      description: 'Open-cockpit gyrocopter over the marina skyline • 20 minutes • From AED 1,028',
+      image: heliImage,
+      ctaLabel: 'Book Flight',
+    },
+    {
       slug: 'tyrolienne-marina-zipline',
-      title: 'Tyrolienne Marina – Dubai Zipline',
+      title: 'Zipline – Dubai Marina',
       description: 'Fly at 80 km/h over Dubai Marina • AED 699/pers',
       image: ziplineImage,
       ctaLabel: 'Book Zipline',
+    },
+    {
+      slug: 'zipline-jebel-jais',
+      title: 'Zipline – Jebel Jais (World\'s Longest)',
+      description: 'World\'s longest zipline over the Hajar mountains, Ras Al Khaimah • 2 hours • From AED 808',
+      image: ziplineImage,
+      ctaLabel: 'Book Zipline',
+    },
+    {
+      slug: 'jais-sledder',
+      title: 'Jais Sledder – Mountain Toboggan',
+      description: 'Thrilling toboggan ride down Jebel Jais mountain, Ras Al Khaimah • 30 min • From AED 220',
+      image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Ride',
     },
   ];
 }
@@ -445,10 +489,31 @@ function getSignatureDiningItems(): ExperienceCatalogItem[] {
   return [
     {
       slug: 'experience-signature-dinner',
-      title: 'Expérience Signature – Gourmet Dinner on Embers',
+      title: 'Gourmet Dinner on Embers',
       description: 'Exclusive gourmet dinner at the stud farm or in the desert, prepared over open embers • Price on request',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
+      image: '/images/Signature Dining/Gourmet Dinner on Embers.png',
       ctaLabel: 'Request Experience',
+    },
+    {
+      slug: 'desert-dinner-experience',
+      title: 'Private Desert Dinner Experience',
+      description: 'Intimate dinner under the stars in the Dubai desert — private setup, curated menu • 3 hours • From AED 735',
+      image: '/images/Signature Dining/Private Desert Dinner Experience.png',
+      ctaLabel: 'Reserve Now',
+    },
+    {
+      slug: 'luxury-dinner-in-the-sky',
+      title: 'Dinner in the Sky – Dubai',
+      description: 'Suspended dining table 50m above the city skyline — an unmissable spectacle • 1.5 hours • From AED 918',
+      image: '/images/Signature Dining/Dinner in the Sky – Dubai.png',
+      ctaLabel: 'Reserve Now',
+    },
+    {
+      slug: 'dhow-cruise-dinner',
+      title: 'Dhow Cruise Dinner – Dubai Marina',
+      description: 'Traditional dhow dinner cruise through Dubai Marina with skyline views • 2 hours • From AED 330',
+      image: '/images/Signature Dining/Dhow Cruise Dinner.png',
+      ctaLabel: 'Book Cruise',
     },
   ];
 }
@@ -461,6 +526,90 @@ function getObservationItems(): ExperienceCatalogItem[] {
       description: 'Breathtaking views from the top of Address Sky View • Glass slide & walk-in-void at 219m • From AED 70/pers',
       image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop',
       ctaLabel: 'Book Tickets',
+    },
+    {
+      slug: 'palm-jumeirah-boardwalk',
+      title: 'Palm Jumeirah Boardwalk',
+      description: 'Stroll the outer crescent of Palm Island — panoramic views of Atlantis, the Gulf and Dubai skyline • Best at sunset • Free',
+      image: 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Explore',
+    },
+    {
+      slug: 'dubai-marina-walk',
+      title: 'Dubai Marina Walk',
+      description: 'Waterfront promenade lined with skyscrapers, yachts and restaurants — most iconic urban district • Best at evening • Free',
+      image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Explore',
+    },
+    {
+      slug: 'aura-skypool',
+      title: 'Aura Skypool – Palm Jumeirah',
+      description: '360° infinity pool at the top of Palm Tower — the highest 360° infinity pool in the world • Best at sunset',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Access',
+    },
+    {
+      slug: 'al-qudra-lakes',
+      title: 'Al Qudra Lakes',
+      description: 'Artificial desert lakes with flamingos, cycling routes, and a surprising wetland ecosystem in the dunes • Nov–Mar',
+      image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'love-lake',
+      title: 'Love Lake – Al Qudra',
+      description: 'Heart-shaped desert lake visible from the air — a romantic desert landscape unique to Dubai • Oct–Apr',
+      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'moon-lake',
+      title: 'Moon Lake – Hidden Gem',
+      description: 'Crescent-shaped lake hidden deep in the Al Qudra dunes — rarely visited, extraordinary at sunset • Hidden Gem 🔮',
+      image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Request Guide',
+    },
+    {
+      slug: 'hatta-dam',
+      title: 'Hatta Dam',
+      description: 'Turquoise mountain reservoir surrounded by the Hajar mountains — popular for kayaking • Oct–Apr',
+      image: 'https://images.unsplash.com/photo-1588449668365-d15e397f6787?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'liwa-desert',
+      title: 'Liwa Desert – Empty Quarter',
+      description: 'Some of the tallest sand dunes on Earth in the heart of the Empty Quarter, Abu Dhabi • Nov–Mar',
+      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Plan Visit',
+    },
+    {
+      slug: 'sir-bani-yas-island',
+      title: 'Sir Bani Yas Island Wildlife Safari',
+      description: 'Wildlife island reserve with Arabian oryx, cheetahs & giraffes — a rare UAE safari experience • Oct–Apr',
+      image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Plan Visit',
+    },
+    {
+      slug: 'jubail-mangrove-park',
+      title: 'Jubail Mangrove Park – Abu Dhabi',
+      description: 'Boardwalk and kayaking through the UAE\'s largest mangrove ecosystem • Oct–Apr • Free entry',
+      image: 'https://images.unsplash.com/photo-1518822374967-36b15e5f36f5?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'khatt-springs',
+      title: 'Khatt Springs – Hidden Gem',
+      description: 'Natural hot springs in the Ras Al Khaimah mountains — therapeutic mineral water, off the tourist trail • Hidden Gem 🔮',
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Request Guide',
+    },
+    {
+      slug: 'al-zorah-nature-reserve',
+      title: 'Al Zorah Nature Reserve – Ajman',
+      description: 'Hidden coastal mangrove reserve with flamingos and rare birdlife near Ajman city • Hidden Gem 🔮 • Oct–Apr',
+      image: 'https://images.unsplash.com/photo-1518822374967-36b15e5f36f5?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
     },
   ];
 }
@@ -496,6 +645,270 @@ function getLuxuryLeisureCars(): ExperienceCatalogItem[] {
   }));
 }
 
+
+function getWaterExtrasItems(): ExperienceCatalogItem[] {
+  const waterImg = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop';
+  const yachtImg = 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop';
+  const divingImg = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop';
+  return [
+    {
+      slug: 'parasailing-dubai',
+      title: 'Parasailing – Dubai Marina',
+      description: 'Soar above the marina coastline with panoramic skyline views • 30 min • From AED 440',
+      image: waterImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'flyboard-dubai',
+      title: 'Flyboard – JBR Beach',
+      description: 'Water-propulsion hydroflight experience at JBR Beach • 30 min • From AED 477',
+      image: waterImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'wakeboarding-dubai',
+      title: 'Wakeboarding – Dubai Marina',
+      description: 'Behind-the-boat wakeboarding in Dubai Marina • 1 hour • From AED 514',
+      image: waterImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'scuba-diving-dubai',
+      title: 'Scuba Diving – Jumeirah',
+      description: 'Introductory open-water scuba dive with certified instructors • 2 hours • From AED 734',
+      image: divingImg,
+      ctaLabel: 'Book Dive',
+    },
+    {
+      slug: 'sunset-yacht-cruise',
+      title: 'Sunset Yacht Cruise – Dubai Marina',
+      description: 'Intimate sunset cruise with Dubai skyline panorama • 2 hours • From AED 1,285',
+      image: yachtImg,
+      ctaLabel: 'Book Cruise',
+    },
+    {
+      slug: 'private-yacht-50ft',
+      title: 'Private Yacht Charter – 50ft',
+      description: 'Private 50ft yacht for small groups in Dubai Marina • 3 hours • From AED 2,570',
+      image: yachtImg,
+      ctaLabel: 'Request Charter',
+    },
+    {
+      slug: 'luxury-yacht-80ft',
+      title: 'Luxury Yacht Charter – 80ft',
+      description: 'Luxury 80ft yacht with full crew for an unforgettable cruise • 4 hours • From AED 5,508',
+      image: yachtImg,
+      ctaLabel: 'Request Charter',
+    },
+    {
+      slug: 'deep-sea-fishing',
+      title: 'Deep Sea Fishing Trip',
+      description: 'Full-day fishing expedition into international waters with experienced crew • 4 hours • From AED 1,835',
+      image: waterImg,
+      ctaLabel: 'Book Trip',
+    },
+    {
+      slug: 'snorkeling-fujairah',
+      title: 'Snorkeling – Fujairah Coral Reefs',
+      description: 'Snorkel through vibrant coral reefs and marine life on the East Coast • 2 hours • From AED 440',
+      image: divingImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'diving-snoopy-island',
+      title: 'Scuba Diving – Snoopy Island, Fujairah',
+      description: 'Dive around the famous Snoopy Island with turtles, fish and coral • 3 hours • From AED 587',
+      image: divingImg,
+      ctaLabel: 'Book Dive',
+    },
+    {
+      slug: 'deep-dive-dubai',
+      title: 'Deep Dive Dubai – World\'s Deepest Pool',
+      description: 'Dive into the world\'s deepest indoor pool — explore an underwater city at 60m depth • From AED 1,285',
+      image: divingImg,
+      ctaLabel: 'Book Dive',
+    },
+    {
+      slug: 'kayaking-hatta-dam',
+      title: 'Kayaking – Hatta Dam',
+      description: 'Kayak on the stunning turquoise mountain reservoir of Hatta Dam • 1 hour • From AED 220',
+      image: waterImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'mangrove-kayaking-abudhabi',
+      title: 'Mangrove Kayaking – Abu Dhabi',
+      description: 'Paddle through the lush mangrove forests of Abu Dhabi • 2 hours • From AED 294',
+      image: waterImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'snoopy-island',
+      title: 'Snoopy Island – Fujairah',
+      description: 'Small island famous for crystal waters, coral reefs, and sea turtles — snorkeling paradise • Oct–May',
+      image: divingImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'dibba-rock',
+      title: 'Dibba Rock – Dive Site',
+      description: 'Top dive site in the UAE with coral reefs and rich marine biodiversity in Fujairah • Oct–May',
+      image: divingImg,
+      ctaLabel: 'Discover',
+    },
+  ];
+}
+
+function getCulturalItems(): ExperienceCatalogItem[] {
+  const cultureImg = 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop';
+  return [
+    {
+      slug: 'cultural-tour-al-fahidi',
+      title: 'Cultural Tour – Al Fahidi Historic District',
+      description: 'Walking tour through old Dubai\'s wind tower houses, museums and souks • 2 hours • From AED 220',
+      image: cultureImg,
+      ctaLabel: 'Book Tour',
+    },
+    {
+      slug: 'louvre-abu-dhabi-tour',
+      title: 'Louvre Abu Dhabi – Guided Tour',
+      description: 'Guided experience of Jean Nouvel\'s architectural masterpiece and its world-class collection • 2 hours • From AED 257',
+      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Tour',
+    },
+    {
+      slug: 'sharjah-art-walk',
+      title: 'Sharjah Art Walk',
+      description: 'Explore the vibrant art district of Sharjah — galleries, installations and street art • 2 hours • From AED 184',
+      image: cultureImg,
+      ctaLabel: 'Book Walk',
+    },
+    {
+      slug: 'oyster-farm-rak',
+      title: 'Oyster Farm Tour – Ras Al Khaimah',
+      description: 'Tour a working oyster farm and taste fresh locally-farmed oysters • 2 hours • From AED 514',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Tour',
+    },
+    {
+      slug: 'al-fahidi-historic-district',
+      title: 'Al Fahidi Historic District – Self Guide',
+      description: 'Best preserved neighborhood in Dubai — traditional wind towers, the Dubai Museum, art galleries • Free • Oct–Apr',
+      image: cultureImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'al-seef-waterfront',
+      title: 'Al Seef – Dubai Creek Waterfront',
+      description: 'Waterfront district blending heritage architecture with modern design along Dubai Creek • Best in the evening',
+      image: cultureImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'qasr-al-watan',
+      title: 'Qasr Al Watan – Presidential Palace',
+      description: 'Stunning presidential palace open to visitors — symbol of Emirati governance and architecture, Abu Dhabi • Evenings',
+      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Plan Visit',
+    },
+    {
+      slug: 'dhayah-fort',
+      title: 'Dhayah Fort – Ras Al Khaimah',
+      description: 'The only remaining hilltop fort in the UAE — sweeping views over palm groves • Hidden Gem 🔮 • Oct–Apr',
+      image: cultureImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'al-noor-island',
+      title: 'Al Noor Island – Sharjah',
+      description: 'Island park with art installations and a butterfly house — where art meets nature • Evenings',
+      image: cultureImg,
+      ctaLabel: 'Plan Visit',
+    },
+    {
+      slug: 'fossil-rock-sharjah',
+      title: 'Fossil Rock – Sharjah',
+      description: 'Ancient marine fossils embedded in sandstone formations — prehistoric UAE in the desert • Oct–Apr',
+      image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'mleiha-archaeological-centre',
+      title: 'Mleiha Archaeological Centre – Sharjah',
+      description: 'Ancient human settlements in Arabia — fossils, desert expeditions and Bronze Age tombs • Oct–Apr',
+      image: cultureImg,
+      ctaLabel: 'Plan Visit',
+    },
+    {
+      slug: 'ed-dur-archaeological-site',
+      title: 'Ed Dur – Ancient Sun Temple',
+      description: 'One of the most important pre-Islamic sites in the UAE — ancient temple ruins, Umm Al Quwain • Hidden Gem 🔮',
+      image: cultureImg,
+      ctaLabel: 'Discover',
+    },
+  ];
+}
+
+function getWellnessExtrasItems(): ExperienceCatalogItem[] {
+  return [
+    {
+      slug: 'luxury-spa-day',
+      title: 'Luxury Spa Day – Full Treatment',
+      description: 'Premium full-body spa and wellness treatment at a 5-star Dubai resort • 3 hours • From AED 808',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'beach-club-day-pass',
+      title: 'Beach Club Day Pass',
+      description: 'Full-day access to a premium Dubai beach club with pool, sunbeds and F&B credit • Full day • From AED 551',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop',
+      ctaLabel: 'Book Access',
+    },
+  ];
+}
+
+function getMountainAdventureItems(): ExperienceCatalogItem[] {
+  const mountainImg = 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop';
+  return [
+    {
+      slug: 'mountain-hiking-hatta',
+      title: 'Mountain Hiking – Hatta',
+      description: 'Guided hiking through the rugged Hajar mountains in Hatta • 3 hours • From AED 330',
+      image: mountainImg,
+      ctaLabel: 'Book Hike',
+    },
+    {
+      slug: 'mountain-bike-hatta',
+      title: 'Mountain Biking – Hatta Trails',
+      description: 'Bike through scenic mountain trails inside the Hatta Heritage Village area • 2 hours • From AED 257',
+      image: mountainImg,
+      ctaLabel: 'Book Now',
+    },
+    {
+      slug: 'wadi-shawka',
+      title: 'Wadi Shawka – Off-Road Hiking',
+      description: 'Rocky valley with natural pools and hiking routes, Ras Al Khaimah — popular local off-road destination • Nov–Mar',
+      image: mountainImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'wadi-wurayah',
+      title: 'Wadi Wurayah – UNESCO Waterfall Valley',
+      description: 'UNESCO protected valley with one of the UAE\'s only permanent waterfalls and rich wildlife, Fujairah • Oct–Apr',
+      image: mountainImg,
+      ctaLabel: 'Discover',
+    },
+    {
+      slug: 'jebel-jais-scenic',
+      title: 'Jebel Jais – UAE\'s Highest Mountain',
+      description: 'Scenic mountain drive to the UAE\'s highest peak with dramatic Hajar landscapes, Ras Al Khaimah • Oct–Apr',
+      image: mountainImg,
+      ctaLabel: 'Plan Visit',
+    },
+  ];
+}
+
 export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
   {
     slug: 'desert-adventures',
@@ -503,14 +916,15 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
     description: 'Dune buggies, ATVs, and off-road safaris in the Dubai desert.',
     items: [
       ...getDesertAdventureItems(),
+      ...getMountainAdventureItems(),
       ...fromMockSubcategory('adventure').filter((i) => !i.title.toLowerCase().includes('skydive')),
     ],
   },
   {
     slug: 'water-activities',
     title: 'Water Activities',
-    description: 'Jet skis, yacht charters, and high-speed water experiences along the Dubai coastline.',
-    items: [...getWaterActivityItems(), ...getYachtCharterItems()],
+    description: 'Jet skis, yacht charters, scuba diving, kayaking and more along the UAE coastline.',
+    items: [...getWaterActivityItems(), ...getYachtCharterItems(), ...getWaterExtrasItems()],
   },
   {
     slug: 'aerial-and-adrenaline',
@@ -521,14 +935,14 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
   {
     slug: 'wellness',
     title: 'Wellness',
-    description: 'Spa and restoration experiences.',
-    items: fromMockSubcategory('wellness'),
+    description: 'Spa, beach club access, and restoration experiences across Dubai.',
+    items: [...fromMockSubcategory('wellness'), ...getWellnessExtrasItems()],
   },
   {
     slug: 'tickets-and-culture',
     title: 'Tickets & Culture',
-    description: 'Cultural tours, events, and curated access.',
-    items: fromMockSubcategory('culture'),
+    description: 'Cultural tours, archaeological sites, and curated access across the UAE.',
+    items: [...fromMockSubcategory('culture'), ...getCulturalItems()],
   },
   {
     slug: 'luxury-leisure',

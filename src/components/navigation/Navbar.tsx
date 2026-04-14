@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, LogOut, User, Search } from "lucide-react";
 import { cn } from "../../utils/cn";
@@ -52,10 +53,13 @@ export default function Navbar() {
     profile?.first_name || session?.user?.email?.split("@")[0] || "";
 
   const navItems = [
-    { label: "Move To Dubai", path: "/move-to-dubai" },
-    { label: "Nightlife", path: "/nightlife" },
+    { label: "Stays", path: "/stays" },
     { label: "Experiences", path: "/experiences" },
+    { label: "Nightlife", path: "/nightlife" },
+    { label: "Transport", path: "/transport" },
     { label: "Travel", path: "/travel" },
+    { label: "Business", path: "/business" },
+    { label: "Move To Dubai", path: "/move-to-dubai" },
     { label: "Concierge", path: "/request" },
   ];
 
@@ -80,49 +84,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-12 w-8 flex items-end justify-center pb-1">
-            <svg
-              viewBox="0 0 40 100"
-              className="h-full w-auto fill-current transition-transform duration-500 group-hover:scale-110"
-              style={{ color: C.gold }}
-            >
-              <path d="M19 0 L21 0 L21 100 L19 100 Z" />
-              <path
-                d="M21 20 L25 20 L25 100 L21 100 Z"
-                className="opacity-90"
-              />
-              <path
-                d="M25 40 L29 40 L29 100 L25 100 Z"
-                className="opacity-75"
-              />
-              <path
-                d="M29 60 L33 60 L33 100 L29 100 Z"
-                className="opacity-60"
-              />
-              <path
-                d="M33 80 L38 80 L38 100 L33 100 Z"
-                className="opacity-40"
-              />
-              <path
-                d="M15 20 L19 20 L19 100 L15 100 Z"
-                className="opacity-90"
-              />
-              <path
-                d="M11 40 L15 40 L15 100 L11 100 Z"
-                className="opacity-75"
-              />
-              <path d="M7 60 L11 60 L11 100 L7 100 Z" className="opacity-60" />
-              <path d="M2 80 L7 80 L7 100 L2 100 Z" className="opacity-40" />
-            </svg>
-            <div
-              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: "rgba(201,168,76,0.18)",
-                filter: "blur(12px)",
-              }}
-            />
-          </div>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/branding/logo-main.png"
+            alt="DALC"
+            width={400}
+            height={130}
+            className="h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            style={{ filter: "brightness(0) invert(1)" }}
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
