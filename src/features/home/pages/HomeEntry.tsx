@@ -28,7 +28,7 @@ const CATEGORIES = [
     title: 'Luxury Cars',
     subtitle: 'Economy to supercar — daily rental',
     image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop',
-    href: '/car-rental',
+    href: '/travel/car-rental',
     featured: true,
   },
   {

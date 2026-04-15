@@ -74,7 +74,7 @@ export default function Footer() {
                 links: [
                   { label: 'Profile',       href: '/profile' },
                   { label: 'My Requests',   href: '/profile?tab=requests' },
-                  { label: 'Notifications', href: '/notifications' },
+                  { label: 'Notifications', href: '/profile' },
                 ],
               },
             ].map((col) => (
