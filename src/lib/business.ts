@@ -11,7 +11,7 @@ import type {
   TimeSlot,
 } from '../types/business';
 
-// ─── Mock Data ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Mock Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const MOCK_SERVICES: BusinessService[] = [
   {
@@ -20,12 +20,12 @@ export const MOCK_SERVICES: BusinessService[] = [
     sub_subcategory: 'Free Zone',
     name: 'DMCC Free Zone Company Setup',
     slug: 'dmcc-free-zone-company-setup',
-    description_short: "Full-service company formation in DMCC — one of Dubai's most prestigious free zones.",
+    description_short: "Full-service company formation in DMCC â€” one of Dubai's most prestigious free zones.",
     description_long: 'Establish your business in the Dubai Multi Commodities Centre (DMCC), the world-ranked free zone offering 100% foreign ownership, zero corporate tax, and a global business community. Our team handles every step from name reservation to licence issuance.',
-    hero_image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/hotels/four-seasons-difc.jpg',
     gallery_images: [],
     service_type: 'package',
-    duration_description: '3–5 business weeks',
+    duration_description: '3â€“5 business weeks',
     pricing_model: 'starting_from',
     price_from: 15000,
     price_currency: 'AED',
@@ -65,10 +65,10 @@ export const MOCK_SERVICES: BusinessService[] = [
     slug: 'dubai-mainland-llc-formation',
     description_short: 'Establish a mainland Limited Liability Company with full market access across the UAE.',
     description_long: 'A mainland LLC gives you unrestricted access to the UAE market, the ability to work with government entities, and freedom to operate from any commercial location. We handle DED registration, notarisation and all government interactions.',
-    hero_image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/hotels/address-downtown.jpg',
     gallery_images: [],
     service_type: 'package',
-    duration_description: '2–4 business weeks',
+    duration_description: '2â€“4 business weeks',
     pricing_model: 'starting_from',
     price_from: 12000,
     price_currency: 'AED',
@@ -76,7 +76,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Passport copies (all shareholders)', 'Emirates ID (if resident)', 'NOC from sponsor (if applicable)', 'Tenancy contract for office'],
     eligibility_criteria: ['Any nationality', 'Minimum 1 shareholder', 'Local service agent required for some activities'],
     government_fees: 6800,
-    government_authority: 'DED — Dubai Economy & Tourism',
+    government_authority: 'DED â€” Dubai Economy & Tourism',
     compliance_checklist: [
       { id: 'cc-1', label: 'Activity approved by DED', required: true, completed: false },
       { id: 'cc-2', label: 'MOA notarised', required: true, completed: false },
@@ -103,12 +103,12 @@ export const MOCK_SERVICES: BusinessService[] = [
     sub_subcategory: 'Corporate Account',
     name: 'UAE Corporate Bank Account Opening',
     slug: 'uae-corporate-bank-account-opening',
-    description_short: 'Open a corporate account with a leading UAE bank — we handle introductions and applications.',
+    description_short: 'Open a corporate account with a leading UAE bank â€” we handle introductions and applications.',
     description_long: 'Banking setup is a critical step for any new business in the UAE. We leverage established relationships with major UAE banks to streamline your application and increase approval chances.',
-    hero_image: 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/hotels/the-ritz-carlton-difc.jpg',
     gallery_images: [],
     service_type: 'advisory',
-    duration_description: '2–6 weeks (bank dependent)',
+    duration_description: '2â€“6 weeks (bank dependent)',
     pricing_model: 'fixed',
     price_from: 5000,
     price_currency: 'AED',
@@ -141,14 +141,14 @@ export const MOCK_SERVICES: BusinessService[] = [
     id: 'mock-svc-4',
     subcategory: 'residency-investment',
     sub_subcategory: 'Golden Visa',
-    name: 'UAE Golden Visa — Investor Pathway',
+    name: 'UAE Golden Visa â€” Investor Pathway',
     slug: 'uae-golden-visa-investor-pathway',
     description_short: '10-year UAE residency visa through property investment or business investment.',
     description_long: 'The UAE Golden Visa offers long-term residency for investors, entrepreneurs and exceptional talents. The investor pathway requires AED 2M in qualifying assets. We guide you through every step of the application and ICA submission.',
-    hero_image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=2574&auto=format&fit=crop',
+    hero_image: '/images/hotels/the-lana-dubai.jpg',
     gallery_images: [],
     service_type: 'package',
-    duration_description: '4–8 weeks',
+    duration_description: '4â€“8 weeks',
     pricing_model: 'starting_from',
     price_from: 8000,
     price_currency: 'AED',
@@ -156,7 +156,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Valid passport', 'Emirates ID (if applicable)', 'Title deed or investment certificate', 'Medical fitness certificate', 'Emirates ID application form'],
     eligibility_criteria: ['AED 2M+ property investment OR AED 2M+ business investment', 'Valid passport with 6+ months validity', 'No criminal record'],
     government_fees: 4200,
-    government_authority: 'ICA — Federal Authority for Identity & Citizenship',
+    government_authority: 'ICA â€” Federal Authority for Identity & Citizenship',
     compliance_checklist: [
       { id: 'cc-1', label: 'Investment proof verified', required: true, completed: false },
       { id: 'cc-2', label: 'Medical fitness test completed', required: true, completed: false },
@@ -187,18 +187,18 @@ export const MOCK_SERVICES: BusinessService[] = [
     slug: 'vat-registration-compliance',
     description_short: 'End-to-end VAT registration and ongoing compliance management for UAE businesses.',
     description_long: 'UAE VAT compliance is mandatory for businesses exceeding AED 375,000 in annual turnover. Our tax advisors handle FTA registration, return filing, and audit support to keep your business fully compliant.',
-    hero_image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2611&auto=format&fit=crop',
+    hero_image: '/images/hotels/park-hyatt-dubai.jpg',
     gallery_images: [],
     service_type: 'filing',
-    duration_description: '1–2 weeks for registration',
+    duration_description: '1â€“2 weeks for registration',
     pricing_model: 'starting_from',
     price_from: 2500,
     price_currency: 'AED',
     price_display: 'From AED 2,500',
     required_documents: ['Trade licence', 'Emirates ID of owner', 'Bank statements (12 months)', 'Sales invoices', 'Customs declarations (if applicable)'],
-    eligibility_criteria: ['Annual taxable supplies ≥ AED 375,000 (mandatory)', 'Annual taxable supplies ≥ AED 187,500 (voluntary)'],
+    eligibility_criteria: ['Annual taxable supplies â‰¥ AED 375,000 (mandatory)', 'Annual taxable supplies â‰¥ AED 187,500 (voluntary)'],
     government_fees: 0,
-    government_authority: 'FTA — Federal Tax Authority',
+    government_authority: 'FTA â€” Federal Tax Authority',
     compliance_checklist: [
       { id: 'cc-1', label: 'FTA e-services account created', required: true, completed: false },
       { id: 'cc-2', label: 'VAT registration submitted', required: true, completed: false },
@@ -226,7 +226,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     slug: 'uae-media-council-advertiser-permit',
     description_short: 'Mandatory permit for influencers, content creators, and freelancers promoting products or services on social media in UAE.',
     description_long: 'As of February 1, 2026, all influencers, content creators, and freelancers promoting products or services on social media in the UAE must obtain an Advertiser Permit from the UAE Media Council. This applies to paid, gifted, or unpaid promotional content across all social media platforms, websites, and blogs. The permit number must be displayed prominently on your account. Valid for 1 year (free for citizens and residents for 3 years). Non-residents must apply through an authorized talent management agency for a 3-month permit.',
-    hero_image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2574&auto=format&fit=crop',
+    hero_image: '/images/hotels/raffles-dubai.jpg',
     gallery_images: [],
     service_type: 'filing',
     duration_description: '15 business days',
@@ -237,7 +237,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Valid passport', 'Emirates ID (or passport + valid UAE visa/talent agency sponsorship for non-residents)', 'Trade license for electronic media (from Invest in Dubai or relevant authority)', 'Good Conduct Certificate (police clearance) from Dubai Police', 'Portfolio or social media account links'],
     eligibility_criteria: ['Minimum age 18 years', 'Clean criminal record', 'UAE resident or citizen (non-residents require talent management agency)', 'Active social media presence'],
     government_fees: 0,
-    government_authority: 'UAE Media Council — National Media Authority',
+    government_authority: 'UAE Media Council â€” National Media Authority',
     compliance_checklist: [
       { id: 'cc-1', label: 'Electronic media trade license obtained', description: 'Trade license specifically for electronic media activities', required: true, completed: false },
       { id: 'cc-2', label: 'Good Conduct Certificate obtained', description: 'Police clearance from Dubai Police', required: true, completed: false },
@@ -262,7 +262,7 @@ export const MOCK_SERVICES: BusinessService[] = [
   },
 ];
 
-// ─── Service Functions ────────────────────────────────────────────────────────
+// â”€â”€â”€ Service Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function getBusinessServices(filters?: BusinessFilters): Promise<BusinessService[]> {
   return queryPublished<BusinessService>({

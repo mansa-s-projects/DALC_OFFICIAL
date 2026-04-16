@@ -21,7 +21,7 @@ import {
 import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
-// ─── Animation helper ─────────────────────────────────────────────────────────
+// â”€â”€â”€ Animation helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -30,13 +30,13 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const BENEFITS = [
   {
     icon: Shield,
     title: 'No Sponsor Required',
-    desc: 'Full independence — live, work, and travel without any local sponsor or employer.',
+    desc: 'Full independence â€” live, work, and travel without any local sponsor or employer.',
   },
   {
     icon: Clock,
@@ -147,7 +147,7 @@ const PRICING = [
   {
     tier: 'Managed',
     price: 'AED 14,500',
-    description: 'Fully managed service — we handle everything end to end.',
+    description: 'Fully managed service â€” we handle everything end to end.',
     features: [
       'Everything in Assisted',
       'Full document collection & notarization',
@@ -209,7 +209,7 @@ const FAQS = [
   },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function GoldenVisaPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('investor');
@@ -221,11 +221,11 @@ export default function GoldenVisaPage() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2844&auto=format&fit=crop"
+            src="/images/hotels/address-downtown.jpg"
             alt="UAE skyline"
             className="w-full h-full object-cover opacity-20"
           />
@@ -250,7 +250,7 @@ export default function GoldenVisaPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                UAE Immigration · Golden Visa
+                UAE Immigration Â· Golden Visa
               </span>
             </div>
 
@@ -261,7 +261,7 @@ export default function GoldenVisaPage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              The UAE Golden Visa grants 10-year renewable residency — no employer, no sponsor,
+              The UAE Golden Visa grants 10-year renewable residency â€” no employer, no sponsor,
               no limits. We manage the entire process for you.
             </p>
 
@@ -286,7 +286,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── What Is It ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ What Is It â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div {...fade()}>
@@ -302,13 +302,13 @@ export default function GoldenVisaPage() {
               programme designed to attract global talent, investors, and visionaries to the Emirates.
             </p>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Unlike standard UAE residency tied to employment, the Golden Visa is self-sponsored —
+              Unlike standard UAE residency tied to employment, the Golden Visa is self-sponsored â€”
               it does not expire if you travel abroad, and it can be renewed indefinitely as long as
               the qualifying conditions are maintained.
             </p>
             <p className="text-gray-400 leading-relaxed">
               Over 150,000 Golden Visas have been issued since launch. Join the world's most dynamic
-              global community — from Dubai.
+              global community â€” from Dubai.
             </p>
           </motion.div>
 
@@ -327,10 +327,10 @@ export default function GoldenVisaPage() {
                 {[
                   { label: 'Validity', value: '10 years (renewable)' },
                   { label: 'Sponsorship', value: 'Self-sponsored' },
-                  { label: 'Family included', value: 'Yes — spouse, children, parents' },
+                  { label: 'Family included', value: 'Yes â€” spouse, children, parents' },
                   { label: 'Minimum investment', value: 'AED 2,000,000' },
-                  { label: 'Processing time', value: '4–8 weeks' },
-                  { label: 'Exit requirement', value: 'None — travel freely' },
+                  { label: 'Processing time', value: '4â€“8 weeks' },
+                  { label: 'Exit requirement', value: 'None â€” travel freely' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center justify-between border-b border-white/[0.06] pb-4 last:border-0 last:pb-0">
                     <span className="text-gray-500 text-sm">{item.label}</span>
@@ -343,7 +343,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── Benefits ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Benefits â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -375,7 +375,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── Eligibility Checker ────────────────────────────────────────────── */}
+      {/* â”€â”€ Eligibility Checker â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-14">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">
@@ -461,7 +461,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── Investment Routes ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Investment Routes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -490,7 +490,7 @@ export default function GoldenVisaPage() {
               {
                 route: 'Exceptional Talent',
                 amount: 'By merit',
-                desc: 'Demonstrated excellence in science, arts, culture, sport, or innovative fields — endorsed by a relevant UAE federal authority.',
+                desc: 'Demonstrated excellence in science, arts, culture, sport, or innovative fields â€” endorsed by a relevant UAE federal authority.',
                 features: ['Government endorsement required', 'No financial requirement', 'Renewable based on activity'],
               },
             ].map((route, idx) => (
@@ -513,7 +513,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── Application Process ────────────────────────────────────────────── */}
+      {/* â”€â”€ Application Process â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">
@@ -538,7 +538,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── Pricing ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Pricing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -605,7 +605,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── FAQ ────────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-4xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-14">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">
@@ -652,7 +652,7 @@ export default function GoldenVisaPage() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] py-28 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fade()}>
@@ -690,3 +690,4 @@ export default function GoldenVisaPage() {
     </div>
   );
 }
+

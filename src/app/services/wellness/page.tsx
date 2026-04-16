@@ -25,13 +25,13 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SERVICES = [
   {
     icon: Heart,
     label: 'Luxury Spa & Treatments',
-    desc: 'Priority bookings at Dubai\'s most exclusive spas — Talise Ottoman, Waldorf Astoria, ESPA at DIFC, and private therapist arrangements.',
+    desc: 'Priority bookings at Dubai\'s most exclusive spas â€” Talise Ottoman, Waldorf Astoria, ESPA at DIFC, and private therapist arrangements.',
   },
   {
     icon: Shield,
@@ -41,7 +41,7 @@ const SERVICES = [
   {
     icon: Zap,
     label: 'Fitness & Personal Training',
-    desc: 'Elite personal trainers who come to you — hotel, villa, or private gym. Customised programmes for every goal.',
+    desc: 'Elite personal trainers who come to you â€” hotel, villa, or private gym. Customised programmes for every goal.',
   },
   {
     icon: Sun,
@@ -56,7 +56,7 @@ const SERVICES = [
   {
     icon: Users,
     label: 'Group Wellness Retreats',
-    desc: 'Corporate and social group wellness experiences — yoga retreats, desert sound baths, and bespoke team wellbeing days.',
+    desc: 'Corporate and social group wellness experiences â€” yoga retreats, desert sound baths, and bespoke team wellbeing days.',
   },
 ];
 
@@ -73,7 +73,7 @@ const PACKAGES = [
   {
     name: 'Day Wellness',
     price: 'From AED 3,500',
-    desc: 'A complete day of restorative luxury — spa, nutrition, and mindfulness.',
+    desc: 'A complete day of restorative luxury â€” spa, nutrition, and mindfulness.',
     includes: [
       'Full-day spa access (luxury property)',
       'Signature massage (90 minutes)',
@@ -86,7 +86,7 @@ const PACKAGES = [
   {
     name: 'Weekend Retreat',
     price: 'From AED 12,000',
-    desc: 'Two full days of transformative wellness — mind, body, and spirit.',
+    desc: 'Two full days of transformative wellness â€” mind, body, and spirit.',
     includes: [
       'Private villa or spa hotel (2 nights)',
       'Daily personal training sessions',
@@ -101,7 +101,7 @@ const PACKAGES = [
   {
     name: 'Monthly Programme',
     price: 'From AED 8,000 / mo',
-    desc: 'Ongoing luxury wellness management — the lifestyle upgrade that lasts.',
+    desc: 'Ongoing luxury wellness management â€” the lifestyle upgrade that lasts.',
     includes: [
       'Weekly PT sessions (4 per month)',
       '4 premium spa bookings/month',
@@ -114,7 +114,7 @@ const PACKAGES = [
   },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function WellnessPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', interest: '' });
@@ -124,7 +124,7 @@ export default function WellnessPage() {
     e.preventDefault();
     if (!form.name || !form.phone) return;
     const msg = encodeURIComponent(
-      `Hi DALC — Wellness Inquiry\nInterest: ${form.interest || 'General'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}`
+      `Hi DALC â€” Wellness Inquiry\nInterest: ${form.interest || 'General'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}`
     );
     window.open(`https://wa.me/971585987600?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -134,11 +134,11 @@ export default function WellnessPage() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2670&auto=format&fit=crop"
+            src="/images/beach_clubs/Kyma/image1.jpg"
             alt="Luxury wellness spa Dubai"
             className="w-full h-full object-cover opacity-20"
           />
@@ -159,7 +159,7 @@ export default function WellnessPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai · Wellness & Health
+                Dubai Â· Wellness & Health
               </span>
             </div>
 
@@ -172,7 +172,7 @@ export default function WellnessPage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              Dubai's finest spas, elite trainers, private physicians, and wellness experiences —
+              Dubai's finest spas, elite trainers, private physicians, and wellness experiences â€”
               curated and delivered through your DALC concierge.
             </p>
 
@@ -197,7 +197,7 @@ export default function WellnessPage() {
         </div>
       </section>
 
-      {/* ── Services ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Services â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Our Services</p>
@@ -223,7 +223,7 @@ export default function WellnessPage() {
         </div>
       </section>
 
-      {/* ── Partner Venues ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ Partner Venues â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-14 text-center">
@@ -247,7 +247,7 @@ export default function WellnessPage() {
         </div>
       </section>
 
-      {/* ── Packages ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Packages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section id="packages" className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16 text-center">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Packages</p>
@@ -295,7 +295,7 @@ export default function WellnessPage() {
         </div>
       </section>
 
-      {/* ── CTA Form ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ CTA Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] py-24">
         <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.06]">
@@ -306,7 +306,7 @@ export default function WellnessPage() {
                 Book a Wellness<br />Experience
               </h2>
               <p className="text-gray-400 leading-relaxed">
-                Tell us what you need and we'll curate the perfect wellness experience — whether it's
+                Tell us what you need and we'll curate the perfect wellness experience â€” whether it's
                 a single afternoon or an ongoing programme.
               </p>
             </motion.div>
@@ -371,3 +371,4 @@ export default function WellnessPage() {
     </div>
   );
 }
+

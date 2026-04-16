@@ -10,15 +10,16 @@ import {
   ArrowRight,
   CalendarCheck,
   Star,
+  MapPin,
+  Briefcase,
 } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/business/ServiceCard';
 import { MOCK_SERVICES } from '../../../lib/business';
+import freezoneData from '../../../data/business/freezones.json';
 import type { BusinessSubcategory } from '../types';
 import { SUBCATEGORY_DESCRIPTIONS } from '../types';
-
-// ─── Category Config ──────────────────────────────────────────────────────────
 
 interface CategoryConfig {
   subcategory: BusinessSubcategory;
@@ -28,69 +29,124 @@ interface CategoryConfig {
   image: string;
 }
 
+interface FreezoneItem {
+  name: string;
+  full_name?: string;
+  emirate: string;
+  type: string;
+  authority?: string;
+  focus_sectors?: string[];
+  description?: string;
+}
+
 const CATEGORIES: CategoryConfig[] = [
   {
     subcategory: 'company-formation',
     label: 'Company Formation',
     icon: <Building2 className="w-7 h-7" />,
     gradient: 'from-amber-900/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/address-downtown.jpg',
   },
   {
     subcategory: 'licensing',
     label: 'Business Licensing',
     icon: <FileText className="w-7 h-7" />,
     gradient: 'from-zinc-800/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1568992688065-536aad8a12f6?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/armani-hotel-dubai.jpg',
   },
   {
     subcategory: 'banking',
     label: 'Banking & Finance',
     icon: <Landmark className="w-7 h-7" />,
     gradient: 'from-blue-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/address-downtown.jpg',
   },
   {
     subcategory: 'tax',
     label: 'Tax & Accounting',
     icon: <Receipt className="w-7 h-7" />,
     gradient: 'from-emerald-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/atlantis-the-palm.jpg',
   },
   {
     subcategory: 'residency-investment',
     label: 'Residency & Investment',
     icon: <Globe className="w-7 h-7" />,
     gradient: 'from-purple-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/armani-hotel-dubai.jpg',
   },
 ];
-
-// ─── Stats ────────────────────────────────────────────────────────────────────
 
 const STATS = [
   { value: '3,000+', label: 'Companies formed' },
   { value: '98%', label: 'Approval rate' },
   { value: '15+', label: 'Years in Dubai' },
-  { value: '50+', label: 'Free zones covered' },
+  { value: '20+', label: 'Free zones mapped' },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+const allFreezones = (freezoneData as { freezones: FreezoneItem[] }).freezones;
+const dubaiFreezones = allFreezones.filter((zone) => zone.emirate === 'Dubai');
+const otherUaeFreezones = allFreezones.filter((zone) => zone.emirate !== 'Dubai');
+
+function FreezoneGrid({ title, items }: { title: string; items: FreezoneItem[] }) {
+  return (
+    <div className="space-y-6">
+      <div>
+        <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-3">Free Zones</p>
+        <h3 className="text-2xl md:text-3xl font-display text-white">{title}</h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {items.map((zone) => (
+          <div key={`${zone.emirate}-${zone.name}`} className="border border-white/10 bg-white/[0.03] p-6">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p className="text-white font-display text-xl leading-tight">{zone.name}</p>
+                <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">
+                  {zone.emirate} â€¢ {zone.type}
+                </p>
+              </div>
+              <MapPin className="w-4 h-4 text-luxury-gold/70 flex-shrink-0 mt-1" />
+            </div>
+
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-4">
+              {zone.description}
+            </p>
+
+            <div className="space-y-3 text-sm">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Why choose it</p>
+                <p className="text-gray-300">{zone.authority || zone.full_name || zone.name}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Best for</p>
+                <div className="flex flex-wrap gap-2">
+                  {(zone.focus_sectors || []).slice(0, 4).map((sector) => (
+                    <span key={sector} className="border border-luxury-gold/20 bg-luxury-gold/5 px-2 py-1 text-[10px] uppercase tracking-widest text-luxury-gold/85">
+                      {sector}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function BusinessHub() {
-  const featured = MOCK_SERVICES.filter(s => s.is_featured).slice(0, 6);
+  const featured = MOCK_SERVICES.filter((s) => s.is_featured).slice(0, 6);
   const isLoading = false;
 
   return (
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop"
+            src="/images/hotels/address-downtown.jpg"
             alt="Dubai skyline business district"
             className="w-full h-full object-cover opacity-30"
           />
@@ -108,12 +164,12 @@ export default function BusinessHub() {
             Dubai Business Services
           </p>
           <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight">
-            Your Business,<br />
+            Your Business, 
             <span className="text-luxury-gold">Established</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">
-            From company formation to Golden Visa — expert guidance for every step of
-            building your business presence in the UAE.
+            From company formation to Golden Visa strategy, we position your setup around market access,
+            licensing route, banking readiness, and long-term UAE growth.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -134,25 +190,21 @@ export default function BusinessHub() {
           </div>
         </motion.div>
 
-        {/* Stats bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="relative z-10 mt-20 w-full max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10"
         >
-          {STATS.map(stat => (
+          {STATS.map((stat) => (
             <div key={stat.label} className="bg-luxury-black px-6 py-5 text-center">
-              <p className="text-luxury-gold font-display text-2xl md:text-3xl font-bold mb-1">
-                {stat.value}
-              </p>
+              <p className="text-luxury-gold font-display text-2xl md:text-3xl font-bold mb-1">{stat.value}</p>
               <p className="text-gray-500 text-xs uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </motion.div>
       </section>
 
-      {/* ── Category Cards ───────────────────────────────────────────────────── */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0 }}
@@ -178,15 +230,12 @@ export default function BusinessHub() {
                 href={`/business/${cat.subcategory}`}
                 className="group relative block h-60 overflow-hidden border border-white/10 hover:border-luxury-gold/50 transition-all duration-500"
               >
-                {/* BG Image */}
                 <img
                   src={cat.image}
                   alt={cat.label}
                   className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient}`} />
-
-                {/* Content */}
                 <div className="absolute inset-0 p-5 flex flex-col justify-between">
                   <div className="text-luxury-gold/70 group-hover:text-luxury-gold transition-colors duration-300">
                     {cat.icon}
@@ -200,8 +249,6 @@ export default function BusinessHub() {
                     </p>
                   </div>
                 </div>
-
-                {/* Arrow */}
                 <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ArrowRight className="w-4 h-4 text-luxury-gold" />
                 </div>
@@ -211,7 +258,6 @@ export default function BusinessHub() {
         </div>
       </section>
 
-      {/* ── Featured Services ─────────────────────────────────────────────────── */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0 }}
@@ -220,9 +266,7 @@ export default function BusinessHub() {
           className="flex items-end justify-between mb-12 flex-wrap gap-4"
         >
           <div>
-            <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-3">
-              Curated
-            </p>
+            <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-3">Curated</p>
             <h2 className="text-3xl md:text-4xl font-display text-white">Featured Services</h2>
           </div>
           <Link
@@ -246,15 +290,13 @@ export default function BusinessHub() {
             ))}
           </div>
         )}
-
-        {!isLoading && featured.length === 0 && (
-          <div className="text-center py-16 border border-white/10">
-            <p className="text-gray-500 italic">Services launching soon.</p>
-          </div>
-        )}
       </section>
 
-      {/* ── Free Consultation CTA ─────────────────────────────────────────────── */}
+      <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24 space-y-16">
+        <FreezoneGrid title="Dubai Free Zones" items={dubaiFreezones} />
+        <FreezoneGrid title="UAE Free Zones Beyond Dubai" items={otherUaeFreezones} />
+      </section>
+
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -262,20 +304,13 @@ export default function BusinessHub() {
           viewport={{ once: true }}
           className="relative overflow-hidden border border-luxury-gold/20 p-10 md:p-16 text-center"
         >
-          {/* BG */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08),transparent_70%)]" />
-
           <div className="relative z-10">
-            <Star className="w-8 h-8 text-luxury-gold mx-auto mb-6 opacity-60" />
-            <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-4">
-              Complimentary
-            </p>
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">
-              Start with a Free Consultation
-            </h2>
+            <Briefcase className="w-8 h-8 text-luxury-gold mx-auto mb-6 opacity-60" />
+            <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.4em] mb-4">Complimentary</p>
+            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Start with a Free Consultation</h2>
             <p className="text-gray-400 text-base max-w-xl mx-auto mb-10 leading-relaxed">
-              Speak with one of our Dubai business advisors — no commitment, no fees.
-              We'll map out the right structure for your goals.
+              We map your right free zone, mainland route, licensing stack, banking prep, and visa pathway before any formal engagement.
             </p>
             <Link
               href="/business/consultation/new"

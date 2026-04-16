@@ -18,7 +18,7 @@ import {
 import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
-// ─── Services catalogue ───────────────────────────────────────────────────────
+// â”€â”€â”€ Services catalogue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SERVICES = [
   {
@@ -40,7 +40,7 @@ const SERVICES = [
   {
     icon: Building2,
     label: 'Business Setup',
-    description: 'Mainland, Free Zone, and Offshore company formation — fully handled.',
+    description: 'Mainland, Free Zone, and Offshore company formation â€” fully handled.',
     href: '/services/business-setup',
     accent: 'from-zinc-800/40 to-luxury-black',
     tag: 'Corporate',
@@ -56,7 +56,7 @@ const SERVICES = [
   {
     icon: Plane,
     label: 'Personal Concierge',
-    description: 'Your private command centre — any request, any time, with total discretion.',
+    description: 'Your private command centre â€” any request, any time, with total discretion.',
     href: '/request',
     accent: 'from-rose-900/40 to-luxury-black',
     tag: 'Lifestyle',
@@ -64,7 +64,7 @@ const SERVICES = [
   {
     icon: MapPin,
     label: 'Relocation',
-    description: 'End-to-end relocation management — visas, home, banking, and beyond.',
+    description: 'End-to-end relocation management â€” visas, home, banking, and beyond.',
     href: '/move-to-dubai',
     accent: 'from-sky-900/40 to-luxury-black',
     tag: 'Moving',
@@ -72,7 +72,7 @@ const SERVICES = [
   {
     icon: Calendar,
     label: 'Event Planning',
-    description: 'Private dinners, yacht parties, weddings, and corporate events — flawlessly executed.',
+    description: 'Private dinners, yacht parties, weddings, and corporate events â€” flawlessly executed.',
     href: '/services/event-planning',
     accent: 'from-purple-900/40 to-luxury-black',
     tag: 'Events',
@@ -103,7 +103,7 @@ const SERVICES = [
   },
 ];
 
-// ─── Fade helper ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ Fade helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -112,19 +112,19 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function ServicesHub() {
   return (
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2850&auto=format&fit=crop"
+            src="/images/hotels/address-downtown.jpg"
             alt="Dubai skyline luxury"
             className="w-full h-full object-cover opacity-20"
           />
@@ -146,7 +146,7 @@ export default function ServicesHub() {
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-10">
               <span className="w-1 h-1 rounded-full bg-luxury-gold" />
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai À La Carte — Services
+                Dubai Ã€ La Carte â€” Services
               </span>
             </div>
 
@@ -157,7 +157,7 @@ export default function ServicesHub() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              From Golden Visa to private security — DALC delivers every facet of Dubai life
+              From Golden Visa to private security â€” DALC delivers every facet of Dubai life
               through a single, white-glove concierge experience.
             </p>
 
@@ -187,7 +187,7 @@ export default function ServicesHub() {
         </div>
       </section>
 
-      {/* ── Services Grid ──────────────────────────────────────────────────── */}
+      {/* â”€â”€ Services Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade(0)} className="mb-16">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">
@@ -239,7 +239,7 @@ export default function ServicesHub() {
         </div>
       </section>
 
-      {/* ── Why DALC strip ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ Why DALC strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-y border-white/[0.07] bg-white/[0.02] py-16">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
           {[
@@ -256,7 +256,7 @@ export default function ServicesHub() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-28 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fade()}>
@@ -295,3 +295,4 @@ export default function ServicesHub() {
     </div>
   );
 }
+

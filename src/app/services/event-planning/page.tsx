@@ -27,25 +27,25 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const EVENT_TYPES = [
   {
     icon: Heart,
     label: 'Private Dinners',
-    desc: 'Intimate dining experiences at Dubai\'s most exclusive venues — Burj Al Arab, Nobu, Zuma, and private residences.',
+    desc: 'Intimate dining experiences at Dubai\'s most exclusive venues â€” Burj Al Arab, Nobu, Zuma, and private residences.',
     bg: 'from-rose-900/30',
   },
   {
     icon: Briefcase,
     label: 'Corporate Events',
-    desc: 'Product launches, board dinners, team retreats, and conferences — executed with precision and presence.',
+    desc: 'Product launches, board dinners, team retreats, and conferences â€” executed with precision and presence.',
     bg: 'from-blue-900/30',
   },
   {
     icon: Star,
     label: 'Weddings',
-    desc: 'Dubai destination weddings planned end-to-end — venue, florals, entertainment, catering, and logistics.',
+    desc: 'Dubai destination weddings planned end-to-end â€” venue, florals, entertainment, catering, and logistics.',
     bg: 'from-amber-900/30',
   },
   {
@@ -57,13 +57,13 @@ const EVENT_TYPES = [
   {
     icon: Anchor,
     label: 'Yacht Parties',
-    desc: 'Superyacht charters for 10 to 200 guests. Catering, DJ, décor, and offshore experiences included.',
+    desc: 'Superyacht charters for 10 to 200 guests. Catering, DJ, dÃ©cor, and offshore experiences included.',
     bg: 'from-sky-900/30',
   },
   {
     icon: Sun,
     label: 'Desert Experiences',
-    desc: 'Private desert camps under the stars — Bedouin dining, live music, fire shows, and morning falconry.',
+    desc: 'Private desert camps under the stars â€” Bedouin dining, live music, fire shows, and morning falconry.',
     bg: 'from-orange-900/30',
   },
 ];
@@ -72,22 +72,22 @@ const WHAT_WE_HANDLE = [
   { icon: Calendar, label: 'Venue Sourcing & Booking', desc: 'Access to private venues, rooftops, yachts, desert camps, and iconic Dubai landmarks.' },
   { icon: Users, label: 'Catering & F&B', desc: 'Michelin-starred private chefs, curated menus, sommelier service, and live stations.' },
   { icon: Music, label: 'Entertainment', desc: 'DJs, live bands, cultural performers, celebrity artists, and bespoke entertainment acts.' },
-  { icon: Star, label: 'Décor & Design', desc: 'Custom florals, lighting design, branded installations, and luxury table settings.' },
+  { icon: Star, label: 'DÃ©cor & Design', desc: 'Custom florals, lighting design, branded installations, and luxury table settings.' },
   { icon: ArrowRight, label: 'Logistics & Transport', desc: 'Guest transfers, valet, airport meet & greet, and on-site event coordination.' },
   { icon: Camera, label: 'Photography & Film', desc: 'Professional event photography and videography. Drone footage and same-day reels.' },
 ];
 
 const PROCESS = [
   { num: '01', label: 'Brief', desc: 'You share your vision, guest count, date, and budget. We listen and ask the right questions.' },
-  { num: '02', label: 'Concept', desc: 'We present a bespoke event concept — venue options, mood boards, and initial costing.' },
+  { num: '02', label: 'Concept', desc: 'We present a bespoke event concept â€” venue options, mood boards, and initial costing.' },
   { num: '03', label: 'Plan', desc: 'Detailed event plan, supplier confirmations, and a timeline down to the minute.' },
-  { num: '04', label: 'Execute', desc: 'Our team is on the ground — setup, supplier management, and real-time coordination.' },
+  { num: '04', label: 'Execute', desc: 'Our team is on the ground â€” setup, supplier management, and real-time coordination.' },
   { num: '05', label: 'Celebrate', desc: 'You enjoy every moment. We handle everything so you never lift a finger.' },
 ];
 
 const TESTIMONIALS = [
   {
-    quote: "DALC turned our product launch into something the press talked about for weeks. From the yacht to the rooftop finale — every detail was impeccable.",
+    quote: "DALC turned our product launch into something the press talked about for weeks. From the yacht to the rooftop finale â€” every detail was impeccable.",
     author: "James H.",
     title: "CEO, London-based Tech Group",
   },
@@ -103,7 +103,7 @@ const TESTIMONIALS = [
   },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function EventPlanningPage() {
   const [form, setForm] = useState({
@@ -122,7 +122,7 @@ export default function EventPlanningPage() {
     e.preventDefault();
     if (!form.name || !form.phone) return;
     const msg = encodeURIComponent(
-      `Hi DALC — Event Planning Inquiry\nEvent: ${form.eventType || 'TBD'}\nDate: ${form.date || 'TBD'}\nGuests: ${form.guests || 'TBD'}\nBudget: ${form.budget || 'TBD'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nDetails: ${form.details}`
+      `Hi DALC â€” Event Planning Inquiry\nEvent: ${form.eventType || 'TBD'}\nDate: ${form.date || 'TBD'}\nGuests: ${form.guests || 'TBD'}\nBudget: ${form.budget || 'TBD'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nDetails: ${form.details}`
     );
     window.open(`https://wa.me/971585987600?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -132,11 +132,11 @@ export default function EventPlanningPage() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2798&auto=format&fit=crop"
+            src="/images/Signature Dining/Private Desert Dinner Experience.png"
             alt="Luxury event Dubai"
             className="w-full h-full object-cover opacity-25"
           />
@@ -157,7 +157,7 @@ export default function EventPlanningPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai · Event Planning
+                Dubai Â· Event Planning
               </span>
             </div>
 
@@ -168,7 +168,7 @@ export default function EventPlanningPage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              From intimate private dinners to epic 500-person yacht parties —
+              From intimate private dinners to epic 500-person yacht parties â€”
               we create unforgettable experiences for Dubai's most discerning clients.
             </p>
 
@@ -193,7 +193,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── Event Types ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Event Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Event Types</p>
@@ -224,7 +224,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── Gallery placeholder ────────────────────────────────────────────── */}
+      {/* â”€â”€ Gallery placeholder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-14 text-center">
@@ -255,7 +255,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── What We Handle ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ What We Handle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16 text-center">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Full Service</p>
@@ -279,7 +279,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── Process ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Process â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -298,7 +298,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── Testimonials ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ Testimonials â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-14 text-center">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Testimonials</p>
@@ -324,7 +324,7 @@ export default function EventPlanningPage() {
         </div>
       </section>
 
-      {/* ── Inquiry Form ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ Inquiry Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section id="inquiry" className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-5xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-14 text-center">
@@ -376,10 +376,10 @@ export default function EventPlanningPage() {
                   className="w-full bg-white/[0.03] border border-white/[0.1] text-white p-3.5 text-sm focus:border-luxury-gold/60 focus:outline-none transition-colors duration-300"
                 >
                   <option value="">Select...</option>
-                  <option>1–10 guests</option>
-                  <option>10–30 guests</option>
-                  <option>30–100 guests</option>
-                  <option>100–300 guests</option>
+                  <option>1â€“10 guests</option>
+                  <option>10â€“30 guests</option>
+                  <option>30â€“100 guests</option>
+                  <option>100â€“300 guests</option>
                   <option>300+ guests</option>
                 </select>
               </div>
@@ -391,9 +391,9 @@ export default function EventPlanningPage() {
                   className="w-full bg-white/[0.03] border border-white/[0.1] text-white p-3.5 text-sm focus:border-luxury-gold/60 focus:outline-none transition-colors duration-300"
                 >
                   <option value="">Select range...</option>
-                  <option>AED 10K – 30K</option>
-                  <option>AED 30K – 100K</option>
-                  <option>AED 100K – 500K</option>
+                  <option>AED 10K â€“ 30K</option>
+                  <option>AED 30K â€“ 100K</option>
+                  <option>AED 100K â€“ 500K</option>
                   <option>AED 500K+</option>
                   <option>Discuss openly</option>
                 </select>
@@ -446,3 +446,4 @@ export default function EventPlanningPage() {
     </div>
   );
 }
+

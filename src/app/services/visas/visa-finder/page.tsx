@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -11,10 +11,8 @@ import {
   Clock, 
   CreditCard, 
   TrendingUp,
-  MessageCircle,
   ArrowRight,
   CheckCircle2,
-  AlertCircle,
   Camera,
   Upload,
   Download,
@@ -35,14 +33,6 @@ interface VisaResult {
   processingTime: string;
   estimatedCost: string;
   successRate: string;
-}
-
-interface LeadPayload {
-  passport: string;
-  destination: string;
-  fullName: string;
-  email: string;
-  phone: string;
 }
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -92,13 +82,27 @@ export default function VisaFinderPage() {
   // Form State
   const [formData, setFormData] = useState({ fullName: '', email: '', phone: '' });
   const [errors, setErrors] = useState<Partial<typeof formData>>({});
+  const [passportQuery, setPassportQuery] = useState('');
+  const [destinationQuery, setDestinationQuery] = useState('');
 
   const stepNumber = { nationality: 1, destination: 2, result: 3, photo: 4, lead: 5 };
+
+  const filteredPassportCountries = useMemo(
+    () => COUNTRIES.filter((country) => country.name.toLowerCase().includes(passportQuery.toLowerCase())),
+    [passportQuery]
+  );
+
+  const filteredDestinationCountries = useMemo(
+    () => COUNTRIES
+      .filter((country) => country.code !== passport)
+      .filter((country) => country.name.toLowerCase().includes(destinationQuery.toLowerCase())),
+    [passport, destinationQuery]
+  );
 
   const getVisaResult = (): VisaResult => VISA_RESULTS[`${passport}-${destination}`] || VISA_RESULTS.default;
 
   const handleBack = () => {
-    if (step === 'destination') { setStep('nationality'); setPassport(''); }
+    if (step === 'destination') { setStep('nationality'); setPassport(''); setDestinationQuery(''); }
     else if (step === 'result') { setStep('destination'); setDestination(''); }
     else if (step === 'photo') { setStep('result'); cancelCamera(); }
     else if (step === 'lead') { setStep('result'); setIsUnlocked(false); }
@@ -226,25 +230,32 @@ export default function VisaFinderPage() {
   const destinationCountry = COUNTRIES.find(c => c.code === destination)?.name || '';
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="relative min-h-screen overflow-hidden bg-[#050506] text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(212,175,55,0.13),transparent_38%),radial-gradient(circle_at_80%_100%,rgba(212,175,55,0.08),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,175,55,0.05)_1px,transparent_1px)] bg-[size:42px_42px] opacity-[0.08]" />
+      </div>
+
       {/* Header */}
-      <div className="border-b border-[#D4AF37]/20">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-light text-white">
-                Visa <span className="text-[#D4AF37]">Finder</span>
-              </h1>
-              <p className="text-gray-400 text-sm mt-1">Discover your pathway to Dubai</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#D4AF37] text-sm">Step {stepNumber[step]} of 5</span>
+      <div className="relative z-10 border-b border-[#D4AF37]/20 bg-black/40 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-6">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#D4AF37]/75">DALC Global Mobility</p>
+            <h1 className="mt-1 text-2xl font-light text-white sm:text-3xl">
+              Visa <span className="text-[#D4AF37]">Intelligence</span> Finder
+            </h1>
+            <p className="mt-1 text-sm text-gray-400">Live eligibility, processing windows, and concierge-led application support</p>
+          </div>
+          <div className="rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-2 text-right">
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#D4AF37]/80">Progress</p>
+            <div className="mt-1 flex items-center gap-2">
+              <span className="text-sm text-[#D4AF37]">Step {stepNumber[step]} of 5</span>
               <div className="flex gap-1">
                 {[1, 2, 3, 4, 5].map(i => (
                   <div
                     key={i}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i <= stepNumber[step] ? 'bg-[#D4AF37]' : 'bg-[#D4AF37]/20'
+                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                      i <= stepNumber[step] ? 'bg-[#D4AF37]' : 'bg-[#D4AF37]/25'
                     }`}
                   />
                 ))}
@@ -255,137 +266,208 @@ export default function VisaFinderPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 pt-8 sm:pt-12">
         <AnimatePresence mode="wait">
           {/* Step 1: Nationality */}
           {step === 'nationality' && (
-            <motion.div key="nationality" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="max-w-4xl mx-auto">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-light text-white mb-3">Select Your Nationality</h2>
-                <p className="text-gray-400">Choose your passport country to begin</p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-                {COUNTRIES.map((country) => (
+            <motion.div key="nationality" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="mx-auto max-w-5xl">
+              <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-[#0C0C0D]/85 backdrop-blur-xl">
+                <div className="border-b border-[#D4AF37]/20 px-6 py-8 sm:px-10">
+                  <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-[0.28em] text-[#D4AF37]/70">Step 1</p>
+                      <h2 className="mt-2 text-3xl font-light text-white sm:text-4xl">Select Passport Nationality</h2>
+                      <p className="mt-2 max-w-xl text-sm text-gray-400">Find your passport quickly and unlock destination rules built for your profile.</p>
+                    </div>
+                    <div className="w-full md:w-[320px]">
+                      <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gray-500">Search Country</label>
+                      <input
+                        type="text"
+                        value={passportQuery}
+                        onChange={(e) => setPassportQuery(e.target.value)}
+                        className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:border-[#D4AF37] focus:outline-none"
+                        placeholder="Type: United States, India, UAE..."
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-6 py-6 sm:px-10 sm:py-8">
+                  <p className="mb-4 text-xs uppercase tracking-[0.2em] text-gray-500">Available Countries: {filteredPassportCountries.length}</p>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                    {filteredPassportCountries.map((country) => (
                   <button
                     key={country.code}
                     onClick={() => {
                       setPassport(country.code);
+                      setDestinationQuery('');
                       setTimeout(() => setStep('destination'), 200);
                     }}
-                    className={`group p-4 rounded-xl border transition-all duration-300 hover:scale-[1.02] ${
-                      passport === country.code ? 'border-[#FFD700] bg-[#D4AF37]/10' : 'border-[#D4AF37]/20 bg-[#1A1A1A] hover:border-[#D4AF37]/50'
+                    className={`group rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                      passport === country.code
+                        ? 'border-[#FFD700] bg-[#D4AF37]/12 shadow-[0_0_24px_rgba(212,175,55,0.16)]'
+                        : 'border-[#D4AF37]/15 bg-[#121214] hover:border-[#D4AF37]/45'
                     }`}
                   >
-                    <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{country.flag}</div>
-                    <div className="text-white text-sm font-medium">{country.name}</div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="text-2xl transition-transform group-hover:scale-110">{country.flag}</span>
+                      <span className="font-mono text-xs tracking-widest text-[#D4AF37]/75">{country.code}</span>
+                    </div>
+                    <div className="text-sm font-medium text-white">{country.name}</div>
+                    <p className="mt-1 text-xs text-gray-500">Passport jurisdiction</p>
                   </button>
                 ))}
+                  </div>
+                  {filteredPassportCountries.length === 0 && (
+                    <p className="rounded-xl border border-[#D4AF37]/20 bg-black/30 px-4 py-6 text-center text-sm text-gray-400">No matching country found. Try a shorter keyword.</p>
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
 
           {/* Step 2: Destination */}
           {step === 'destination' && (
-            <motion.div key="destination" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="max-w-4xl mx-auto">
-              <button onClick={handleBack} className="flex items-center gap-2 text-[#D4AF37] mb-6 hover:text-[#FFD700] transition-colors">
+            <motion.div key="destination" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="mx-auto max-w-5xl">
+              <button onClick={handleBack} className="mb-5 flex items-center gap-2 text-[#D4AF37] transition-colors hover:text-[#FFD700]">
                 <ChevronLeft className="w-5 h-5" /> Change Nationality
               </button>
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-light text-white mb-3">Where Are You Going?</h2>
-                <p className="text-gray-400">Select your destination country</p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-                {COUNTRIES.filter(c => c.code !== passport).map((country) => (
+
+              <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-[#0C0C0D]/85 backdrop-blur-xl">
+                <div className="border-b border-[#D4AF37]/20 px-6 py-8 sm:px-10">
+                  <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-[0.28em] text-[#D4AF37]/70">Step 2</p>
+                      <h2 className="mt-2 text-3xl font-light text-white sm:text-4xl">Choose Destination</h2>
+                      <p className="mt-2 max-w-xl text-sm text-gray-400">Your passport: {passportCountry}. Pick where you want to travel next.</p>
+                    </div>
+                    <div className="w-full md:w-[320px]">
+                      <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gray-500">Search Destination</label>
+                      <input
+                        type="text"
+                        value={destinationQuery}
+                        onChange={(e) => setDestinationQuery(e.target.value)}
+                        className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:border-[#D4AF37] focus:outline-none"
+                        placeholder="Type destination country..."
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-6 py-6 sm:px-10 sm:py-8">
+                  <p className="mb-4 text-xs uppercase tracking-[0.2em] text-gray-500">Eligible Destinations: {filteredDestinationCountries.length}</p>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                    {filteredDestinationCountries.map((country) => (
                   <button
                     key={country.code}
                     onClick={() => {
                       setDestination(country.code);
                       setTimeout(() => setStep('result'), 200);
                     }}
-                    className={`group p-4 rounded-xl border transition-all duration-300 hover:scale-[1.02] ${
-                      destination === country.code ? 'border-[#FFD700] bg-[#D4AF37]/10' : 'border-[#D4AF37]/20 bg-[#1A1A1A] hover:border-[#D4AF37]/50'
+                    className={`group rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                      destination === country.code
+                        ? 'border-[#FFD700] bg-[#D4AF37]/12 shadow-[0_0_24px_rgba(212,175,55,0.16)]'
+                        : 'border-[#D4AF37]/15 bg-[#121214] hover:border-[#D4AF37]/45'
                     }`}
                   >
-                    <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{country.flag}</div>
-                    <div className="text-white text-sm font-medium">{country.name}</div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="text-2xl transition-transform group-hover:scale-110">{country.flag}</span>
+                      <ChevronRight className="h-4 w-4 text-[#D4AF37]/70" />
+                    </div>
+                    <div className="text-sm font-medium text-white">{country.name}</div>
+                    <p className="mt-1 text-xs text-gray-500">Entry rules preview</p>
                   </button>
                 ))}
+                  </div>
+                  {filteredDestinationCountries.length === 0 && (
+                    <p className="rounded-xl border border-[#D4AF37]/20 bg-black/30 px-4 py-6 text-center text-sm text-gray-400">No destination found. Refine your search keyword.</p>
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
 
           {/* Step 3: Result */}
           {step === 'result' && (
-            <motion.div key="result" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="max-w-3xl mx-auto">
-              <button onClick={handleBack} className="flex items-center gap-2 text-[#D4AF37] mb-6 hover:text-[#FFD700] transition-colors">
+            <motion.div key="result" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="mx-auto max-w-5xl">
+              <button onClick={handleBack} className="mb-5 flex items-center gap-2 text-[#D4AF37] transition-colors hover:text-[#FFD700]">
                 <ChevronLeft className="w-5 h-5" /> Change Destination
               </button>
 
-              <div className="bg-[#1A1A1A] rounded-2xl border border-[#D4AF37]/30 overflow-hidden">
-                <div className="p-8 border-b border-[#D4AF37]/20">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-4xl">{COUNTRIES.find(c => c.code === destination)?.flag}</span>
+              <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-[#0E0E10]/90 backdrop-blur-xl">
+                <div className="border-b border-[#D4AF37]/20 px-6 py-8 sm:px-10">
+                  <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className="text-5xl">{COUNTRIES.find(c => c.code === destination)?.flag}</span>
                       <div>
-                        <h2 className="text-3xl font-light text-white">{destinationCountry}</h2>
-                        <p className="text-gray-400 text-sm">From {passportCountry}</p>
+                        <p className="font-mono text-xs uppercase tracking-[0.24em] text-[#D4AF37]/75">Visa Match</p>
+                        <h2 className="mt-1 text-3xl font-light text-white sm:text-4xl">{passportCountry} to {destinationCountry}</h2>
+                        <p className="mt-1 text-sm text-gray-400">Intelligence snapshot generated for your route</p>
                       </div>
                     </div>
-                    <div className={`px-4 py-2 rounded-full ${result.bgColor} border ${result.color.replace('text-', 'border-')}/30`}>
+                    <div className={`inline-flex rounded-full px-5 py-2.5 ${result.bgColor} border ${result.color.replace('text-', 'border-')}/30`}>
                       <span className={`text-sm font-semibold ${result.color}`}>{result.label}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-[#0A0A0A] rounded-xl p-6 border border-[#D4AF37]/10">
-                      <div className="flex items-center gap-3 mb-3">
+                <div className="px-6 py-8 sm:px-10">
+                  <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+                    <div className="rounded-2xl border border-[#D4AF37]/20 bg-black/30 p-5">
+                      <div className="mb-3 flex items-center gap-3">
                         <Clock className="w-5 h-5 text-[#D4AF37]" />
-                        <span className="text-gray-400 text-sm">Processing Time</span>
+                        <span className="text-sm text-gray-400">Processing Time</span>
                       </div>
-                      <p className="text-white text-lg font-medium">{result.processingTime}</p>
+                      <p className="text-xl font-light text-white">{result.processingTime}</p>
                     </div>
-                    <div className="bg-[#0A0A0A] rounded-xl p-6 border border-[#D4AF37]/10">
-                      <div className="flex items-center gap-3 mb-3">
+                    <div className="rounded-2xl border border-[#D4AF37]/20 bg-black/30 p-5">
+                      <div className="mb-3 flex items-center gap-3">
                         <CreditCard className="w-5 h-5 text-[#D4AF37]" />
-                        <span className="text-gray-400 text-sm">Estimated Cost</span>
+                        <span className="text-sm text-gray-400">Estimated Cost</span>
                       </div>
-                      <p className="text-white text-lg font-medium">{result.estimatedCost}</p>
+                      <p className="text-xl font-light text-white">{result.estimatedCost}</p>
                     </div>
-                    <div className="bg-[#0A0A0A] rounded-xl p-6 border border-[#D4AF37]/10">
-                      <div className="flex items-center gap-3 mb-3">
+                    <div className="rounded-2xl border border-[#D4AF37]/20 bg-black/30 p-5">
+                      <div className="mb-3 flex items-center gap-3">
                         <TrendingUp className="w-5 h-5 text-[#D4AF37]" />
-                        <span className="text-gray-400 text-sm">Success Rate</span>
+                        <span className="text-sm text-gray-400">Success Rate</span>
                       </div>
-                      <p className="text-white text-lg font-medium">{result.successRate}</p>
+                      <p className="text-xl font-light text-white">{result.successRate}</p>
                     </div>
                   </div>
 
-                  {/* AI Photo Assistant Call-to-Action */}
-                  <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-6 flex flex-col md:flex-row items-center gap-6 justify-between">
+                  <div className="rounded-2xl border border-[#D4AF37]/25 bg-[linear-gradient(120deg,rgba(212,175,55,0.12),rgba(212,175,55,0.02)_55%)] p-6">
+                    <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h3 className="text-white font-medium flex items-center gap-2 mb-2">
+                      <h3 className="mb-2 flex items-center gap-2 text-lg font-medium text-white">
                         <Sparkles className="w-5 h-5 text-[#D4AF37]" />
                         AI Passport Photo Assistant
                       </h3>
-                      <p className="text-sm text-gray-400">
+                      <p className="max-w-xl text-sm text-gray-300">
                         Generate a 100% compliant, background-removed passport photo instantly. Perfect for your UAE Visa application.
                       </p>
                     </div>
-                    <button
-                      onClick={() => setStep('photo')}
-                      className="px-6 py-3 bg-[#D4AF37]/10 border border-[#D4AF37] text-[#D4AF37] rounded-xl font-medium hover:bg-[#D4AF37] hover:text-[#0A0A0A] transition-all whitespace-nowrap"
-                    >
-                      Generate Photo
-                    </button>
+                      <button
+                        onClick={() => setStep('photo')}
+                        className="whitespace-nowrap rounded-xl border border-[#D4AF37] bg-[#D4AF37]/10 px-6 py-3 font-medium text-[#D4AF37] transition-all hover:bg-[#D4AF37] hover:text-[#0A0A0A]"
+                      >
+                        Generate Photo
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-8 border-t border-[#D4AF37]/20 bg-[#0A0A0A]/50">
-                  <button onClick={() => setStep('lead')} className="w-full px-8 py-4 bg-[#D4AF37] text-[#0A0A0A] rounded-xl font-medium hover:bg-[#FFD700] transition-all duration-300 flex items-center justify-center gap-2">
+                <div className="grid gap-3 border-t border-[#D4AF37]/20 bg-black/35 p-6 sm:grid-cols-2 sm:p-8">
+                  <button
+                    onClick={() => setStep('photo')}
+                    className="flex items-center justify-center gap-2 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-6 py-4 font-medium text-[#D4AF37] transition-all hover:bg-[#D4AF37] hover:text-[#0A0A0A]"
+                  >
+                    <Sparkles className="h-5 w-5" />
+                    Enhance Passport Photo
+                  </button>
+                  <button onClick={() => setStep('lead')} className="flex items-center justify-center gap-2 rounded-xl bg-[#D4AF37] px-6 py-4 font-medium text-[#0A0A0A] transition-all hover:bg-[#FFD700]">
                     <ArrowRight className="w-5 h-5" />
-                    Skip to Application Details
+                    Continue Application
                   </button>
                 </div>
               </div>
@@ -394,50 +476,49 @@ export default function VisaFinderPage() {
 
           {/* Step 4: AI Photo Assistant */}
           {step === 'photo' && (
-            <motion.div key="photo" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="max-w-4xl mx-auto">
+            <motion.div key="photo" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="mx-auto max-w-5xl">
               <button 
                 onClick={handleBack} 
-                className="flex items-center gap-2 text-[#D4AF37] mb-6 hover:text-[#FFD700] transition-colors"
+                className="mb-5 flex items-center gap-2 text-[#D4AF37] transition-colors hover:text-[#FFD700]"
                 disabled={isProcessing}
               >
                 <ChevronLeft className="w-5 h-5" /> Back to Visa Results
               </button>
 
-              <div className="bg-[#1A1A1A] rounded-2xl border border-[#D4AF37]/30 overflow-hidden">
-                <div className="p-8 text-center border-b border-[#D4AF37]/20">
-                  <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-[#0E0E10]/90 backdrop-blur-xl">
+                <div className="border-b border-[#D4AF37]/20 p-8 text-center sm:p-10">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D4AF37]/10">
                     <User className="w-8 h-8 text-[#D4AF37]" />
                   </div>
-                  <h2 className="text-3xl font-light text-white mb-2">Setup Your Passport Photo</h2>
-                  <p className="text-gray-400">Our AI will remove the background, center your face, and format it exactly for UAE Visa requirements.</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-[#D4AF37]/75">Step 4</p>
+                  <h2 className="mb-2 mt-3 text-3xl font-light text-white sm:text-4xl">Passport Photo AI Studio</h2>
+                  <p className="mx-auto max-w-2xl text-gray-400">Our AI removes background, aligns framing, and formats your image to UAE visa standards in one pass.</p>
                 </div>
 
-                <div className="p-8">
-                  {/* Photo Flow Container */}
+                <div className="p-6 sm:p-8">
                   {!capturedImage && !processedImage ? (
-                    // Capture / Upload mode
-                    <div className="max-w-2xl mx-auto">
-                      <div className="flex justify-center gap-4 mb-6">
+                    <div className="mx-auto max-w-3xl">
+                      <div className="mb-6 flex justify-center gap-3">
                         <button 
                           onClick={() => { setPhotoMode('upload'); cancelCamera(); }}
-                          className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all ${photoMode === 'upload' ? 'bg-[#D4AF37] text-[#0A0A0A] border-[#D4AF37]' : 'bg-transparent text-gray-400 border-gray-700 hover:text-white'}`}
+                          className={`flex items-center gap-2 rounded-full border px-6 py-3 transition-all ${photoMode === 'upload' ? 'border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A]' : 'border-gray-700 bg-transparent text-gray-400 hover:text-white'}`}
                         >
                           <Upload className="w-4 h-4" /> Upload File
                         </button>
                         <button 
                           onClick={startCamera}
-                          className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all ${photoMode === 'camera' ? 'bg-[#D4AF37] text-[#0A0A0A] border-[#D4AF37]' : 'bg-transparent text-gray-400 border-gray-700 hover:text-white'}`}
+                          className={`flex items-center gap-2 rounded-full border px-6 py-3 transition-all ${photoMode === 'camera' ? 'border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A]' : 'border-gray-700 bg-transparent text-gray-400 hover:text-white'}`}
                         >
                           <Camera className="w-4 h-4" /> Use Camera
                         </button>
                       </div>
 
-                      <div className="bg-[#0A0A0A] border border-dashed border-[#D4AF37]/30 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[400px]">
+                      <div className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#D4AF37]/30 bg-black/40 p-8">
                         {photoMode === 'upload' ? (
                           <>
-                            <Upload className="w-16 h-16 text-[#D4AF37]/50 mb-4" />
-                            <h3 className="text-white text-lg font-medium mb-2">Drag & Drop or Verify Image</h3>
-                            <p className="text-gray-500 mb-6 text-sm text-center max-w-sm">JPEG, PNG formats supported. Must be a clear picture of your face.</p>
+                            <Upload className="mb-4 h-16 w-16 text-[#D4AF37]/50" />
+                            <h3 className="mb-2 text-lg font-medium text-white">Upload Passport Portrait</h3>
+                            <p className="mb-6 max-w-sm text-center text-sm text-gray-500">JPEG or PNG supported. Use a clear, front-facing portrait for best AI output.</p>
                             <input 
                               type="file" 
                               accept="image/*" 
@@ -447,7 +528,7 @@ export default function VisaFinderPage() {
                             />
                             <button 
                               onClick={() => fileInputRef.current?.click()}
-                              className="px-8 py-3 bg-[#1A1A1A] border border-[#D4AF37]/50 text-[#D4AF37] rounded-xl hover:bg-[#D4AF37]/10 transition-colors"
+                              className="rounded-xl border border-[#D4AF37]/50 bg-[#1A1A1A] px-8 py-3 text-[#D4AF37] transition-colors hover:bg-[#D4AF37]/10"
                             >
                               Browse Files
                             </button>
@@ -462,7 +543,7 @@ export default function VisaFinderPage() {
                             </div>
                             <button 
                               onClick={takePhoto}
-                              className="mt-6 px-8 py-4 bg-[#D4AF37] text-[#0A0A0A] font-medium rounded-full hover:bg-[#FFD700] transition-all flex items-center gap-2"
+                              className="mt-6 flex items-center gap-2 rounded-full bg-[#D4AF37] px-8 py-4 font-medium text-[#0A0A0A] transition-all hover:bg-[#FFD700]"
                             >
                               <Camera className="w-5 h-5" /> 
                               Capture Photo
@@ -472,24 +553,20 @@ export default function VisaFinderPage() {
                       </div>
                     </div>
                   ) : (
-                    // Processing / Results mode
-                    <div className="max-w-4xl mx-auto">
-                      <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
-                        
-                        {/* Original Image */}
+                    <div className="mx-auto max-w-5xl">
+                      <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
                         <div className={`transition-opacity duration-500 ${showPreview === 'processed' ? 'opacity-50 blur-[2px] scale-95' : 'opacity-100 scale-100'}`}>
-                          <h4 className="text-center text-gray-400 mb-3 text-sm font-medium uppercase tracking-wider">Original</h4>
-                          <div className="w-[300px] aspect-square rounded-xl overflow-hidden border border-gray-700 bg-black">
+                          <h4 className="mb-3 text-center text-sm font-medium uppercase tracking-wider text-gray-400">Original</h4>
+                          <div className="aspect-square w-[300px] overflow-hidden rounded-xl border border-gray-700 bg-black">
                             {capturedImage && (
                               <img src={capturedImage} alt="Original capture" className="w-full h-full object-cover" />
                             )}
                           </div>
                         </div>
 
-                        {/* Processed Arrow/Loader */}
-                        <div className="flex flex-col items-center justify-center shrink-0 w-16">
+                        <div className="flex w-16 shrink-0 flex-col items-center justify-center">
                           {isProcessing ? (
-                            <div className="space-y-4 text-center flex flex-col items-center mt-6">
+                            <div className="mt-6 flex flex-col items-center space-y-4 text-center">
                               <div className="w-10 h-10 border-4 border-[#D4AF37]/20 border-t-[#D4AF37] rounded-full animate-spin" />
                               <span className="text-[#D4AF37] text-xs font-mono uppercase tracking-widest animate-pulse">Running AI</span>
                             </div>
@@ -498,10 +575,9 @@ export default function VisaFinderPage() {
                           ) : null}
                         </div>
 
-                        {/* Final AI Output */}
                         <div className={`transition-opacity duration-500 ${showPreview === 'original' ? 'opacity-50 blur-[2px] scale-95' : 'opacity-100 scale-100'}`}>
-                          <h4 className="text-center text-[#D4AF37] mb-3 text-sm font-medium uppercase tracking-wider">Passort Standard</h4>
-                          <div className="w-[300px] aspect-square rounded-xl overflow-hidden border-2 border-[#D4AF37] bg-white relative">
+                          <h4 className="mb-3 text-center text-sm font-medium uppercase tracking-wider text-[#D4AF37]">Passport Standard</h4>
+                          <div className="relative aspect-square w-[300px] overflow-hidden rounded-xl border-2 border-[#D4AF37] bg-white">
                             {processedImage ? (
                               <img src={processedImage} alt="AI Processed Photo" className="w-full h-full object-contain" />
                             ) : (
@@ -510,12 +586,11 @@ export default function VisaFinderPage() {
                               </div>
                             )}
                             
-                            {/* Process Action Overlay */}
                             {!isProcessing && !processedImage && capturedImage && (
                               <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
                                 <button 
                                   onClick={processImage}
-                                  className="px-6 py-3 bg-[#D4AF37] text-[#0A0A0A] rounded-xl font-medium hover:bg-[#FFD700] transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+                                  className="flex items-center gap-2 rounded-xl bg-[#D4AF37] px-6 py-3 font-medium text-[#0A0A0A] shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-colors hover:bg-[#FFD700]"
                                 >
                                   <Sparkles className="w-5 h-5" /> Enhance Photo
                                 </button>
@@ -525,12 +600,11 @@ export default function VisaFinderPage() {
                         </div>
                       </div>
 
-                      {/* Controls after processing */}
                       {processedImage && !isProcessing && (
-                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
                           <button 
                             onClick={resetPhoto}
-                            className="px-6 py-3 text-gray-400 hover:text-white transition-colors flex items-center gap-2 justify-center"
+                            className="flex items-center justify-center gap-2 px-6 py-3 text-gray-400 transition-colors hover:text-white"
                           >
                             <RefreshCcw className="w-4 h-4" /> Retake Photo
                           </button>
@@ -539,14 +613,14 @@ export default function VisaFinderPage() {
                             <button 
                               onMouseEnter={() => setShowPreview('original')}
                               onMouseLeave={() => setShowPreview('processed')}
-                              className="px-6 py-3 bg-[#1A1A1A] border border-[#D4AF37]/50 text-[#D4AF37] rounded-xl hover:bg-[#D4AF37]/10 transition-all flex items-center gap-2 justify-center"
+                              className="flex items-center justify-center gap-2 rounded-xl border border-[#D4AF37]/50 bg-[#1A1A1A] px-6 py-3 text-[#D4AF37] transition-all hover:bg-[#D4AF37]/10"
                             >
                               Hold for Original
                             </button>
                             
                             <button 
                               onClick={handleDownload}
-                              className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-gray-200 transition-all flex items-center gap-2 justify-center shadow-md"
+                              className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black transition-all hover:bg-gray-200"
                             >
                               <Download className="w-5 h-5" /> Download HD
                             </button>
@@ -557,10 +631,9 @@ export default function VisaFinderPage() {
                   )}
                 </div>
 
-                {/* Continue to App */}
                 {processedImage && (
-                  <div className="p-8 border-t border-[#D4AF37]/20 bg-[#0A0A0A]/50">
-                    <button onClick={() => setStep('lead')} className="w-full px-8 py-4 bg-[#D4AF37] text-[#0A0A0A] rounded-xl font-medium hover:bg-[#FFD700] transition-all duration-300 flex items-center justify-center gap-2">
+                  <div className="border-t border-[#D4AF37]/20 bg-black/35 p-8">
+                    <button onClick={() => setStep('lead')} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D4AF37] px-8 py-4 font-medium text-[#0A0A0A] transition-all duration-300 hover:bg-[#FFD700]">
                       Submit & Continue Application
                       <ArrowRight className="w-5 h-5" />
                     </button>
@@ -572,40 +645,47 @@ export default function VisaFinderPage() {
 
           {/* Step 5: Lead Capture */}
           {step === 'lead' && (
-            <motion.div key="lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="max-w-xl mx-auto">
-              <button onClick={handleBack} className="flex items-center gap-2 text-[#D4AF37] mb-6 hover:text-[#FFD700] transition-colors">
+            <motion.div key="lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="mx-auto max-w-3xl">
+              <button onClick={handleBack} className="mb-5 flex items-center gap-2 text-[#D4AF37] transition-colors hover:text-[#FFD700]">
                 <ChevronLeft className="w-5 h-5" /> Back
               </button>
 
-              <div className="bg-[#1A1A1A] rounded-2xl border border-[#D4AF37]/30 p-8">
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="rounded-3xl border border-[#D4AF37]/30 bg-[#0E0E10]/90 p-7 backdrop-blur-xl sm:p-10">
+                <div className="mb-8 text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D4AF37]/10">
                     <Lock className="w-8 h-8 text-[#D4AF37]" />
                   </div>
-                  <h2 className="text-2xl font-light text-white mb-2">Secure Your Submission</h2>
-                  <p className="text-gray-400">Enter your official details to proceed with your fast-tracked visa application</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-[#D4AF37]/75">Step 5</p>
+                  <h2 className="mb-2 mt-3 text-3xl font-light text-white">Secure Your Submission</h2>
+                  <p className="mx-auto max-w-xl text-gray-400">Enter your official details to proceed with your fast-tracked visa application.</p>
+                </div>
+
+                <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <div className="rounded-xl border border-[#D4AF37]/20 bg-black/30 px-4 py-3 text-center text-sm text-gray-300">Route: {passportCountry} {'>'} {destinationCountry}</div>
+                  <div className="rounded-xl border border-[#D4AF37]/20 bg-black/30 px-4 py-3 text-center text-sm text-gray-300">Estimated: {result.processingTime}</div>
+                  <div className="rounded-xl border border-[#D4AF37]/20 bg-black/30 px-4 py-3 text-center text-sm text-gray-300">Guidance: Concierge Priority</div>
                 </div>
 
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-gray-400 text-sm mb-2">Full Name *</label>
-                    <input type="text" value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#D4AF37]/20 rounded-xl text-white placeholder-gray-600 focus:border-[#D4AF37] focus:outline-none transition-colors" placeholder="Enter your full name as per passport" />
+                    <label className="mb-2 block text-sm text-gray-400">Full Name *</label>
+                    <input type="text" value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} className="w-full rounded-xl border border-[#D4AF37]/20 bg-[#0A0A0A] px-4 py-3 text-white placeholder-gray-600 transition-colors focus:border-[#D4AF37] focus:outline-none" placeholder="Enter your full name as per passport" />
                     {errors.fullName && <p className="text-red-400 text-sm mt-1">{errors.fullName}</p>}
                   </div>
                   <div>
-                    <label className="block text-gray-400 text-sm mb-2">Email Address *</label>
-                    <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#D4AF37]/20 rounded-xl text-white placeholder-gray-600 focus:border-[#D4AF37] focus:outline-none transition-colors" placeholder="your@email.com" />
+                    <label className="mb-2 block text-sm text-gray-400">Email Address *</label>
+                    <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full rounded-xl border border-[#D4AF37]/20 bg-[#0A0A0A] px-4 py-3 text-white placeholder-gray-600 transition-colors focus:border-[#D4AF37] focus:outline-none" placeholder="your@email.com" />
                     {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
                   </div>
                   <div>
-                    <label className="block text-gray-400 text-sm mb-2">Phone Number *</label>
-                    <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#D4AF37]/20 rounded-xl text-white placeholder-gray-600 focus:border-[#D4AF37] focus:outline-none transition-colors" placeholder="+971 50 123 4567" />
+                    <label className="mb-2 block text-sm text-gray-400">Phone Number *</label>
+                    <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full rounded-xl border border-[#D4AF37]/20 bg-[#0A0A0A] px-4 py-3 text-white placeholder-gray-600 transition-colors focus:border-[#D4AF37] focus:outline-none" placeholder="+971 50 123 4567" />
                     {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
                   </div>
 
                   <div className="pt-4">
                     {!isUnlocked ? (
-                       <button onClick={handleLeadSubmit} disabled={isSubmitting} className="w-full px-8 py-4 bg-[#D4AF37] text-[#0A0A0A] rounded-xl font-medium hover:bg-[#FFD700] transition-all duration-300 flex items-center justify-center gap-2">
+                       <button onClick={handleLeadSubmit} disabled={isSubmitting} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D4AF37] px-8 py-4 font-medium text-[#0A0A0A] transition-all duration-300 hover:bg-[#FFD700] disabled:cursor-not-allowed disabled:opacity-70">
                        {isSubmitting ? (
                          <>
                            <div className="w-5 h-5 border-2 border-[#0A0A0A] border-t-transparent rounded-full animate-spin" />
@@ -619,7 +699,7 @@ export default function VisaFinderPage() {
                        )}
                      </button>
                     ) : (
-                      <div className="bg-emerald-400/10 border border-emerald-400/30 rounded-xl p-6 text-center">
+                      <div className="rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-6 text-center">
                         <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-3" />
                         <h4 className="text-white text-lg font-medium mb-1">Application Submitted</h4>
                         <p className="text-emerald-400/80 text-sm">Your dedicated DALC advisor will contact you shortly.</p>

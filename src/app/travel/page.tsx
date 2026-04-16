@@ -19,9 +19,9 @@ const TRAVEL_CATEGORIES = [
   {
     id: 'hotels',
     title: 'Hotels',
-    description: 'World-class hotels across every destination — curated, rated, and bookable in seconds.',
+    description: 'World-class hotels across every destination â€” curated, rated, and bookable in seconds.',
     icon: <Hotel className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8376?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/hotels/atlantis-the-palm.jpg',
     link: '/travel/hotels',
     badge: 'Curated',
   },
@@ -50,11 +50,11 @@ export default function TravelHub() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop"
+            src="/images/hotels/armani-hotel-dubai.jpg"
             alt="Dubai Travel"
             className="w-full h-full object-cover opacity-30"
           />
@@ -76,12 +76,12 @@ export default function TravelHub() {
             <span className="text-luxury-gold">Your Way</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Flights, hotels, private jets and car rentals — plan every step of your journey in one place.
+            Flights, hotels, private jets and car rentals â€” plan every step of your journey in one place.
           </p>
         </motion.div>
       </section>
 
-      {/* ── Category Grid ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Category Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24 -mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {TRAVEL_CATEGORIES.map((cat, idx) => (
@@ -132,7 +132,7 @@ export default function TravelHub() {
         </div>
       </section>
 
-      {/* ── Concierge CTA ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Concierge CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -166,3 +166,4 @@ export default function TravelHub() {
     </div>
   );
 }
+

@@ -26,13 +26,13 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SERVICE_TYPES = [
   {
     icon: Home,
     label: 'Buy',
-    desc: 'Apartments, villas, penthouses — we source the finest properties across Dubai and negotiate on your behalf.',
+    desc: 'Apartments, villas, penthouses â€” we source the finest properties across Dubai and negotiate on your behalf.',
   },
   {
     icon: MapPin,
@@ -47,7 +47,7 @@ const SERVICE_TYPES = [
   {
     icon: Building2,
     label: 'Off-Plan',
-    desc: 'Access to pre-launch prices from Dubai\'s top developers — EMAAR, Nakheel, Aldar, and beyond.',
+    desc: 'Access to pre-launch prices from Dubai\'s top developers â€” EMAAR, Nakheel, Aldar, and beyond.',
   },
 ];
 
@@ -56,57 +56,57 @@ const AREAS = [
     name: 'Downtown Dubai',
     description: 'Home to the Burj Khalifa and Dubai Mall. The most iconic address in the city.',
     priceFrom: 'AED 1.8M',
-    yield: '5–7%',
+    yield: '5â€“7%',
   },
   {
     name: 'Palm Jumeirah',
     description: 'Dubai\'s iconic palm island. Luxury villas, beach apartments, and unmatched lifestyle.',
     priceFrom: 'AED 3.5M',
-    yield: '4–6%',
+    yield: '4â€“6%',
   },
   {
     name: 'Dubai Marina',
     description: 'Waterfront living with a vibrant promenade, dining, and direct beach access.',
     priceFrom: 'AED 1.2M',
-    yield: '6–8%',
+    yield: '6â€“8%',
   },
   {
     name: 'Business Bay',
-    description: 'Dubai\'s central business district — close to Downtown with strong rental demand.',
+    description: 'Dubai\'s central business district â€” close to Downtown with strong rental demand.',
     priceFrom: 'AED 900K',
-    yield: '6–8%',
+    yield: '6â€“8%',
   },
   {
     name: 'JBR / JBR Beach',
-    description: 'Jumeirah Beach Residence — a premium beachfront community with hotel-style living.',
+    description: 'Jumeirah Beach Residence â€” a premium beachfront community with hotel-style living.',
     priceFrom: 'AED 1.5M',
-    yield: '6–7%',
+    yield: '6â€“7%',
   },
   {
     name: 'Emaar Beachfront',
     description: 'New development between Dubai Marina and Palm. Limited supply, high demand.',
     priceFrom: 'AED 2.1M',
-    yield: '5–7%',
+    yield: '5â€“7%',
   },
 ];
 
 const WHY_INVEST = [
   { value: '0%', label: 'Capital Gains Tax' },
   { value: '0%', label: 'Rental Income Tax' },
-  { value: '6–10%', label: 'Average Net Yield' },
+  { value: '6â€“10%', label: 'Average Net Yield' },
   { value: 'AED 2M+', label: 'Golden Visa Eligibility' },
 ];
 
 const OUR_SERVICES = [
   { icon: MapPin, label: 'Property Search', desc: 'We source the best properties matching your criteria from our developer and agent network.' },
-  { icon: Shield, label: 'Legal Support', desc: 'Contract review, title deed verification, and DLD registration — all handled for you.' },
+  { icon: Shield, label: 'Legal Support', desc: 'Contract review, title deed verification, and DLD registration â€” all handled for you.' },
   { icon: DollarSign, label: 'Mortgage Assistance', desc: 'Connections to the best UAE mortgage brokers for residents and non-residents alike.' },
-  { icon: Building2, label: 'Property Management', desc: 'Tenant sourcing, rent collection, maintenance — passive income without the hassle.' },
+  { icon: Building2, label: 'Property Management', desc: 'Tenant sourcing, rent collection, maintenance â€” passive income without the hassle.' },
   { icon: TrendingUp, label: 'Investment Analysis', desc: 'ROI calculations, market comparables, and area trend reports before you commit.' },
   { icon: Users, label: 'Developer Access', desc: 'Early access to off-plan launches and payment plan negotiations with major developers.' },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function RealEstatePage() {
   const [consultForm, setConsultForm] = useState({ name: '', email: '', phone: '', interest: '' });
@@ -116,7 +116,7 @@ export default function RealEstatePage() {
     e.preventDefault();
     if (!consultForm.name || !consultForm.phone) return;
     const msg = encodeURIComponent(
-      `Hi DALC — I'd like a property consultation.\nInterest: ${consultForm.interest || 'General'}\nName: ${consultForm.name}\nEmail: ${consultForm.email}\nPhone: ${consultForm.phone}`
+      `Hi DALC â€” I'd like a property consultation.\nInterest: ${consultForm.interest || 'General'}\nName: ${consultForm.name}\nEmail: ${consultForm.email}\nPhone: ${consultForm.phone}`
     );
     window.open(`https://wa.me/971585987600?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -126,11 +126,11 @@ export default function RealEstatePage() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop"
+            src="/images/hotels/armani-hotel-dubai.jpg"
             alt="Dubai real estate"
             className="w-full h-full object-cover opacity-20"
           />
@@ -151,7 +151,7 @@ export default function RealEstatePage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai · Real Estate
+                Dubai Â· Real Estate
               </span>
             </div>
 
@@ -162,7 +162,7 @@ export default function RealEstatePage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              Buy, rent, invest, or develop — we navigate Dubai's property market with unmatched
+              Buy, rent, invest, or develop â€” we navigate Dubai's property market with unmatched
               access and expert local knowledge.
             </p>
 
@@ -187,7 +187,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Service Types ──────────────────────────────────────────────────── */}
+      {/* â”€â”€ Service Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.05]">
           {SERVICE_TYPES.map((type, idx) => {
@@ -205,7 +205,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Why Invest Stats ───────────────────────────────────────────────── */}
+      {/* â”€â”€ Why Invest Stats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-y border-white/[0.07] bg-white/[0.02] py-16">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
           {WHY_INVEST.map((stat, idx) => (
@@ -217,7 +217,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Why Invest narrative ───────────────────────────────────────────── */}
+      {/* â”€â”€ Why Invest narrative â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div {...fade()}>
@@ -228,7 +228,7 @@ export default function RealEstatePage() {
               <span className="text-luxury-gold">property market.</span>
             </h2>
             <p className="text-gray-400 leading-relaxed mb-5">
-              Dubai offers net rental yields of 6–10% — higher than London, New York, Paris, and Singapore.
+              Dubai offers net rental yields of 6â€“10% â€” higher than London, New York, Paris, and Singapore.
               With zero capital gains tax and zero rental income tax, every dirham of return stays with you.
             </p>
             <p className="text-gray-400 leading-relaxed mb-5">
@@ -247,7 +247,7 @@ export default function RealEstatePage() {
                 'Zero capital gains tax on property sales',
                 'Zero rental income tax',
                 'Freehold ownership for foreigners in designated areas',
-                'DLD-regulated — fully transparent transactions',
+                'DLD-regulated â€” fully transparent transactions',
                 'Strong currency pegged to USD',
                 'Golden Visa eligibility at AED 2M+',
                 'World\'s busiest international airport drives demand',
@@ -263,7 +263,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Featured Areas ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ Featured Areas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -290,7 +290,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Our Services ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ Our Services â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16 text-center">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Our Services</p>
@@ -314,7 +314,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Meet the Team Teaser ───────────────────────────────────────────── */}
+      {/* â”€â”€ Meet the Team Teaser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div {...fade()}>
@@ -346,7 +346,7 @@ export default function RealEstatePage() {
         </div>
       </section>
 
-      {/* ── Consultation CTA ───────────────────────────────────────────────── */}
+      {/* â”€â”€ Consultation CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section id="consultation" className="max-w-5xl mx-auto px-4 md:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.06]">
           <motion.div {...fade()} className="bg-luxury-black p-8 md:p-14">
@@ -418,3 +418,4 @@ export default function RealEstatePage() {
     </div>
   );
 }
+

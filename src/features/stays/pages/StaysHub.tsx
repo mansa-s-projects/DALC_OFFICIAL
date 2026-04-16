@@ -14,7 +14,7 @@ import Footer from '../../../components/navigation/Footer';
 import type { StaysSubcategory } from '../types';
 import { SUBCATEGORY_LABELS, SUBCATEGORY_DESCRIPTIONS } from '../types';
 
-// ─── Category Config ──────────────────────────────────────────────────────────
+// â”€â”€â”€ Category Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface CategoryConfig {
   subcategory: StaysSubcategory;
@@ -30,18 +30,18 @@ const CATEGORIES: CategoryConfig[] = [
     label: SUBCATEGORY_LABELS.hotels,
     icon: <Hotel className="w-7 h-7" />,
     gradient: 'from-amber-900/60 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/atlantis-the-palm.jpg',
   },
   {
     subcategory: 'residences',
     label: SUBCATEGORY_LABELS.residences,
     icon: <Building2 className="w-7 h-7" />,
     gradient: 'from-emerald-900/40 to-luxury-black',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop',
+    image: '/images/hotels/address-downtown.jpg',
   },
 ];
 
-// ─── Stats ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Stats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const STATS = [
   { value: '500+', label: 'Properties' },
@@ -50,7 +50,7 @@ const STATS = [
   { value: 'Best', label: 'Price Guarantee' },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function StaysHub() {
 
@@ -58,12 +58,12 @@ export default function StaysHub() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ────────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop"
+            src="/images/hotels/armani-hotel-dubai.jpg"
             alt="Dubai skyline"
             className="w-full h-full object-cover opacity-30"
           />
@@ -85,7 +85,7 @@ export default function StaysHub() {
             <span className="text-luxury-gold">Dubai</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">
-            From premium hotels to beachfront villas and furnished residences — 
+            From premium hotels to beachfront villas and furnished residences â€” 
             discover the perfect stay for your Dubai journey, whether for a night or a year.
           </p>
 
@@ -125,7 +125,7 @@ export default function StaysHub() {
         </motion.div>
       </section>
 
-      {/* ── Category Cards ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ Category Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0 }}
@@ -184,7 +184,7 @@ export default function StaysHub() {
         </div>
       </section>
 
-      {/* ── Why Book With Us ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ Why Book With Us â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -234,7 +234,7 @@ export default function StaysHub() {
         </motion.div>
       </section>
 
-      {/* ── Concierge CTA ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Concierge CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -272,3 +272,4 @@ export default function StaysHub() {
     </div>
   );
 }
+

@@ -53,10 +53,8 @@ export default function Navbar() {
     profile?.first_name || session?.user?.email?.split("@")[0] || "";
 
   const navItems = [
-    { label: "Stays", path: "/stays" },
     { label: "Experiences", path: "/experiences" },
     { label: "Nightlife", path: "/nightlife" },
-    { label: "Transport", path: "/transport" },
     { label: "Travel", path: "/travel" },
     { label: "Business", path: "/business" },
     { label: "Move To Dubai", path: "/move-to-dubai" },

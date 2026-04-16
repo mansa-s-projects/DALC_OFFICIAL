@@ -23,7 +23,7 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
 });
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SERVICES = [
   {
@@ -39,7 +39,7 @@ const SERVICES = [
   {
     icon: Eye,
     label: 'Advance Team',
-    desc: 'Pre-event site surveys, threat assessment, route planning, and venue security sweeps — before you arrive anywhere.',
+    desc: 'Pre-event site surveys, threat assessment, route planning, and venue security sweeps â€” before you arrive anywhere.',
   },
   {
     icon: Users,
@@ -49,12 +49,12 @@ const SERVICES = [
   {
     icon: Home,
     label: 'Residential Security',
-    desc: 'Villa and estate security — manned guarding, CCTV monitoring, access management, and domestic staff vetting.',
+    desc: 'Villa and estate security â€” manned guarding, CCTV monitoring, access management, and domestic staff vetting.',
   },
   {
     icon: Lock,
     label: 'Executive Travel Security',
-    desc: 'Comprehensive security for international travel — airport assistance, hotel safety review, and in-country protection throughout the UAE and region.',
+    desc: 'Comprehensive security for international travel â€” airport assistance, hotel safety review, and in-country protection throughout the UAE and region.',
   },
 ];
 
@@ -82,24 +82,24 @@ const WHY_US = [
 ];
 
 const PROCESS = [
-  { num: '01', title: 'Consultation', desc: 'A confidential discussion about your needs, schedule, exposure level, and concerns — no obligation.' },
+  { num: '01', title: 'Consultation', desc: 'A confidential discussion about your needs, schedule, exposure level, and concerns â€” no obligation.' },
   { num: '02', title: 'Risk Assessment', desc: 'Our security analysts conduct a threat and vulnerability assessment tailored to your profile and itinerary.' },
-  { num: '03', title: 'Deployment Plan', desc: 'We design a comprehensive protection plan — team composition, vehicles, communication protocols, and contingencies.' },
+  { num: '03', title: 'Deployment Plan', desc: 'We design a comprehensive protection plan â€” team composition, vehicles, communication protocols, and contingencies.' },
   { num: '04', title: '24/7 Coverage', desc: 'Your protection team is deployed. Continuous communication, daily briefings, and instant incident response.' },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function VipSecurityPage() {
   return (
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2670&auto=format&fit=crop"
+            src="/images/hotels/address-downtown.jpg"
             alt="VIP security Dubai"
             className="w-full h-full object-cover opacity-15"
           />
@@ -120,7 +120,7 @@ export default function VipSecurityPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai · VIP Security
+                Dubai Â· VIP Security
               </span>
             </div>
 
@@ -135,7 +135,7 @@ export default function VipSecurityPage() {
               and executives in Dubai and across the region.
             </p>
 
-            {/* Privacy-first CTA — WhatsApp only */}
+            {/* Privacy-first CTA â€” WhatsApp only */}
             <div className="flex justify-center">
               <a
                 href="https://wa.me/971585987600?text=Hi%20DALC%20%E2%80%94%20I%27d%20like%20a%20confidential%20security%20consultation."
@@ -149,13 +149,13 @@ export default function VipSecurityPage() {
             </div>
 
             <p className="text-gray-600 text-xs uppercase tracking-widest mt-5">
-              WhatsApp only — no public contact form — your privacy is paramount
+              WhatsApp only â€” no public contact form â€” your privacy is paramount
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Discretion Banner ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Discretion Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-y border-white/[0.07] bg-white/[0.02] py-10">
         <div className="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-center gap-10">
           {[
@@ -175,7 +175,7 @@ export default function VipSecurityPage() {
         </div>
       </section>
 
-      {/* ── Services ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Services â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <motion.div {...fade()} className="mb-16">
           <p className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em] mb-4">Services</p>
@@ -201,7 +201,7 @@ export default function VipSecurityPage() {
         </div>
       </section>
 
-      {/* ── Why Trust Us ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ Why Trust Us â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -222,7 +222,7 @@ export default function VipSecurityPage() {
         </div>
       </section>
 
-      {/* ── Narrative ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Narrative â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div {...fade()}>
@@ -234,7 +234,7 @@ export default function VipSecurityPage() {
             </h2>
             <p className="text-gray-400 leading-relaxed mb-5">
               The best security is the kind no one knows is there. Our officers are trained to blend
-              seamlessly into any environment — whether a Michelin-starred restaurant, a royal gathering,
+              seamlessly into any environment â€” whether a Michelin-starred restaurant, a royal gathering,
               or a corporate board meeting.
             </p>
             <p className="text-gray-400 leading-relaxed mb-5">
@@ -243,7 +243,7 @@ export default function VipSecurityPage() {
               begins with a mutual NDA.
             </p>
             <p className="text-gray-400 leading-relaxed">
-              Our team has operated at the highest levels — protecting heads of state, major business
+              Our team has operated at the highest levels â€” protecting heads of state, major business
               figures, and prominent families across the Gulf, Europe, and beyond.
             </p>
           </motion.div>
@@ -277,7 +277,7 @@ export default function VipSecurityPage() {
         </div>
       </section>
 
-      {/* ── How It Works ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ How It Works â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="border-t border-white/[0.07] bg-white/[0.015] py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <motion.div {...fade()} className="mb-16 text-center">
@@ -296,7 +296,7 @@ export default function VipSecurityPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Final CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-28 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fade()}>
@@ -320,7 +320,7 @@ export default function VipSecurityPage() {
               <ArrowRight className="w-4 h-4" />
             </a>
             <p className="text-gray-600 text-xs uppercase tracking-widest mt-5">
-              WhatsApp only · No public form · End-to-end encrypted
+              WhatsApp only Â· No public form Â· End-to-end encrypted
             </p>
 
             <div className="mt-12 pt-10 border-t border-white/[0.07]">
@@ -337,3 +337,4 @@ export default function VipSecurityPage() {
     </div>
   );
 }
+

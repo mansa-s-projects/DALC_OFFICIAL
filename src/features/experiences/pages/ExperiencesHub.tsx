@@ -20,23 +20,23 @@ import UpcomingEventsStrip from "../components/UpcomingEventsStrip";
 // Premium hero images per category - using reliable Unsplash URLs
 const CATEGORY_HERO_IMAGES: Record<string, string> = {
   "desert-adventures":
-    "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2070&auto=format&fit=crop",
+    "/images/Aristodesert/image1.png",
   "water-activities":
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop",
+    "/images/water-activities/yamaha-fx-svho.jpg",
   "aerial-and-adrenaline":
     "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2070&auto=format&fit=crop",
   wellness:
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop",
+    "/images/beach_clubs/Kyma/image1.jpg",
   "tickets-and-culture":
     "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2070&auto=format&fit=crop",
   "luxury-leisure":
-    "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop",
+    "/images/dining_entertainment/Billionaire/image1.jpg",
   "photography-experience":
-    "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop",
+    "/images/Aristodesert/image2.png",
   "signature-dining":
-    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
+    "/images/Signature Dining/Dinner in the Sky – Dubai.png",
   observation:
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop",
+    "/images/hotels/address-downtown.jpg",
 };
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
@@ -194,3 +194,4 @@ export default function ExperiencesHub() {
     </div>
   );
 }
+
