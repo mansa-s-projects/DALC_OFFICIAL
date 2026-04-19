@@ -13,6 +13,8 @@ export interface YachtItem {
   popular?: boolean;
   isNew?: boolean;
   image?: string;
+  galleryImages?: string[];
+  alt?: string;
 }
 
 export interface YachtCategory {
@@ -85,29 +87,213 @@ const YACHT_IMAGES: Record<string, string> = {
   'azimut-sky-62': 'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
   'azimut-63': 'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
   'azimut-65': 'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
-  'san-lorenzo-82': 'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=800&auto=format&fit=crop',
-  'astra-76': 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
-  'babbar-ii': 'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop',
-  'babbar': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+  'san-lorenzo-82': 'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+  'astra-76': 'https://images.unsplash.com/photo-1504276099933-af2dadd6f9b1?q=80&w=800&auto=format&fit=crop',
+  'babbar-ii': 'https://images.unsplash.com/photo-1517511620-3900476a5b97?q=80&w=800&auto=format&fit=crop',
+  'babbar': 'https://images.unsplash.com/photo-1572986881-a37bb0b2ce6a?q=80&w=800&auto=format&fit=crop',
   
   // Large Yachts
-  'thunder': 'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
-  'sunseeker-116': 'https://images.unsplash.com/photo-1588359348347-9bc6cbbb462e?q=80&w=800&auto=format&fit=crop',
-  'nedship-107': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
-  'ak-yacht': 'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+  'thunder': 'https://images.unsplash.com/photo-1476234251400-d88cde065d9a?q=80&w=800&auto=format&fit=crop',
+  'sunseeker-116': 'https://images.unsplash.com/photo-1490730161690-37b49a6ba5c2?q=80&w=800&auto=format&fit=crop',
+  'nedship-107': 'https://images.unsplash.com/photo-1535750089041-c0ea1d17a89f?q=80&w=800&auto=format&fit=crop',
+  'ak-yacht': 'https://images.unsplash.com/photo-1580619305218-72b7b3a0b4da?q=80&w=800&auto=format&fit=crop',
   
   // Luxury Collection (Unknown)
-  'sunseeker-manhattan-yacht': 'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
-  'azimut-magellano-yacht': 'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
-  'azimut-magellano': 'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=800&auto=format&fit=crop',
-  'sanlorenzo-yacht': 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
-  'princess-yacht': 'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop',
-  'azimut-amie-yacht': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
-  'kona-yacht': 'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
-  'lana': 'https://images.unsplash.com/photo-1588359348347-9bc6cbbb462e?q=80&w=800&auto=format&fit=crop',
-  'black-pearl': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
-  'tiberias': 'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+  'sunseeker-manhattan-yacht': 'https://images.unsplash.com/photo-1562517049-edb8d3b03c50?q=80&w=800&auto=format&fit=crop',
+  'azimut-magellano-yacht': 'https://images.unsplash.com/photo-1524673450801-b5e801a2f932?q=80&w=800&auto=format&fit=crop',
+  'azimut-magellano': 'https://images.unsplash.com/photo-1583675523442-cc8c6e7d1b8a?q=80&w=800&auto=format&fit=crop',
+  'sanlorenzo-yacht': 'https://images.unsplash.com/photo-1574169208507-845792bd5c6e?q=80&w=800&auto=format&fit=crop',
+  'princess-yacht': 'https://images.unsplash.com/photo-1612872087-58f66b7d1f4c?q=80&w=800&auto=format&fit=crop',
+  'azimut-amie-yacht': 'https://images.unsplash.com/photo-1525610588-e3f30aab2e61?q=80&w=800&auto=format&fit=crop',
+  'kona-yacht': 'https://images.unsplash.com/photo-1551827572-2d5f4ef70bd7?q=80&w=800&auto=format&fit=crop',
+  'lana': 'https://images.unsplash.com/photo-1567430940-cbf0fa46a6ee?q=80&w=800&auto=format&fit=crop',
+  'black-pearl': 'https://images.unsplash.com/photo-1488720000-3c4b10d3ca80?q=80&w=800&auto=format&fit=crop',
+  'tiberias': 'https://images.unsplash.com/photo-1529679543740-08dbd91f6a7a?q=80&w=800&auto=format&fit=crop',
 };
+
+const YACHT_GALLERY_IMAGES: Record<string, string[]> = {
+  'blue-yonder': [
+    'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-sp': [
+    'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'volare': [
+    'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+  ],
+  'java-sunseeker-64': [
+    'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'caliente': [
+    'https://images.unsplash.com/photo-1588359348347-9bc6cbbb462e?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=800&auto=format&fit=crop',
+  ],
+  'baia-100-astro': [
+    'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
+  ],
+  'fazimut-sky-52': [
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-sky-62': [
+    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-63': [
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-65': [
+    'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1599232288126-7c0673ef20a8?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+  ],
+  'san-lorenzo-82': [
+    'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1504276099933-af2dadd6f9b1?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1586456198823-7ffdb81a3e1e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'astra-76': [
+    'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1517511620-3900476a5b97?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1621277224630-81a0a4d2b9cc?q=80&w=800&auto=format&fit=crop',
+  ],
+  'babbar-ii': [
+    'https://images.unsplash.com/photo-1572986881-a37bb0b2ce6a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1504276099933-af2dadd6f9b1?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+  ],
+  'babbar': [
+    'https://images.unsplash.com/photo-1517511620-3900476a5b97?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1559017615-12f23f84e451?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1504276099933-af2dadd6f9b1?q=80&w=800&auto=format&fit=crop',
+  ],
+  'thunder': [
+    'https://images.unsplash.com/photo-1490730161690-37b49a6ba5c2?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1535750089041-c0ea1d17a89f?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1580619305218-72b7b3a0b4da?q=80&w=800&auto=format&fit=crop',
+  ],
+  'sunseeker-116': [
+    'https://images.unsplash.com/photo-1476234251400-d88cde065d9a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1535750089041-c0ea1d17a89f?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1580619305218-72b7b3a0b4da?q=80&w=800&auto=format&fit=crop',
+  ],
+  'nedship-107': [
+    'https://images.unsplash.com/photo-1490730161690-37b49a6ba5c2?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1580619305218-72b7b3a0b4da?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1476234251400-d88cde065d9a?q=80&w=800&auto=format&fit=crop',
+  ],
+  'ak-yacht': [
+    'https://images.unsplash.com/photo-1535750089041-c0ea1d17a89f?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1476234251400-d88cde065d9a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1490730161690-37b49a6ba5c2?q=80&w=800&auto=format&fit=crop',
+  ],
+  'sunseeker-manhattan-yacht': [
+    'https://images.unsplash.com/photo-1524673450801-b5e801a2f932?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1583675523442-cc8c6e7d1b8a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1574169208507-845792bd5c6e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-magellano-yacht': [
+    'https://images.unsplash.com/photo-1562517049-edb8d3b03c50?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1583675523442-cc8c6e7d1b8a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1574169208507-845792bd5c6e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-magellano': [
+    'https://images.unsplash.com/photo-1562517049-edb8d3b03c50?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1524673450801-b5e801a2f932?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1574169208507-845792bd5c6e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'sanlorenzo-yacht': [
+    'https://images.unsplash.com/photo-1612872087-58f66b7d1f4c?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1525610588-e3f30aab2e61?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1551827572-2d5f4ef70bd7?q=80&w=800&auto=format&fit=crop',
+  ],
+  'princess-yacht': [
+    'https://images.unsplash.com/photo-1562517049-edb8d3b03c50?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1583675523442-cc8c6e7d1b8a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1551827572-2d5f4ef70bd7?q=80&w=800&auto=format&fit=crop',
+  ],
+  'azimut-amie-yacht': [
+    'https://images.unsplash.com/photo-1562517049-edb8d3b03c50?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1583675523442-cc8c6e7d1b8a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1574169208507-845792bd5c6e?q=80&w=800&auto=format&fit=crop',
+  ],
+  'kona-yacht': [
+    'https://images.unsplash.com/photo-1529679543740-08dbd91f6a7a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1567430940-cbf0fa46a6ee?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1488720000-3c4b10d3ca80?q=80&w=800&auto=format&fit=crop',
+  ],
+  'lana': [
+    'https://images.unsplash.com/photo-1529679543740-08dbd91f6a7a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1551827572-2d5f4ef70bd7?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1525610588-e3f30aab2e61?q=80&w=800&auto=format&fit=crop',
+  ],
+  'black-pearl': [
+    'https://images.unsplash.com/photo-1529679543740-08dbd91f6a7a?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1490730161690-37b49a6ba5c2?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1535750089041-c0ea1d17a89f?q=80&w=800&auto=format&fit=crop',
+  ],
+  'tiberias': [
+    'https://images.unsplash.com/photo-1567430940-cbf0fa46a6ee?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1488720000-3c4b10d3ca80?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1551827572-2d5f4ef70bd7?q=80&w=800&auto=format&fit=crop',
+  ],
+};
+
+const YACHT_ALT_TEXT: Record<string, string> = {
+  'blue-yonder': 'Blue Yonder 45ft luxury yacht charter Dubai private hire 8 guests',
+  'azimut-sp': 'Azimut SP 48ft sports yacht Dubai Marina JBR private cruising',
+  'volare': 'Volare 55ft mid-size luxury yacht Dubai harbour cruise 12 guests',
+  'java-sunseeker-64': 'Java Sunseeker 64ft yacht charter Dubai Palm Jumeirah 15 guests',
+  'caliente': 'Caliente 62ft luxury yacht Dubai private charter Arabian Gulf',
+  'baia-100-astro': 'Baia 100 Astro 100ft superyacht Dubai private cruise 20 guests',
+  'fazimut-sky-52': 'Fazimut Sky 52ft sundeck yacht Dubai Marina charter',
+  'azimut-sky-62': 'Azimut Sky 62ft open deck yacht Dubai premium charter 15 guests',
+  'azimut-63': 'Azimut 63ft sports yacht Dubai luxury cruise Palm Jumeirah',
+  'azimut-65': 'Azimut 65ft flybridge yacht Dubai sunset cruise Arabian Gulf 18 guests',
+  'san-lorenzo-82': 'San Lorenzo 82ft superyacht Dubai luxury charter 20 guests',
+  'astra-76': 'Astra 76ft motor yacht Dubai private hire corporate event 18 guests',
+  'babbar-ii': 'Babbar II 70ft luxury yacht Dubai birthday party cruise charter',
+  'babbar': 'Babbar 68ft classic motor yacht Dubai private charter experience',
+  'thunder': 'Thunder 95ft megayacht Dubai charter 25 guests Arabian Gulf cruise',
+  'sunseeker-116': 'Sunseeker 116ft superyacht Dubai luxury cruise event 30 guests',
+  'nedship-107': 'Nedship 107ft explorer yacht Dubai exclusive charter Arabian Gulf',
+  'ak-yacht': 'AK Yacht 120ft megayacht Dubai 35 guests flagship luxury charter',
+  'sunseeker-manhattan-yacht': 'Sunseeker Manhattan luxury yacht Dubai Marina collection charter',
+  'azimut-magellano-yacht': 'Azimut Magellano explorer yacht Dubai long-range luxury cruise',
+  'azimut-magellano': 'Azimut Magellano classic motor yacht Dubai luxury collection charter',
+  'sanlorenzo-yacht': 'Sanlorenzo superyacht Dubai exclusive private charter luxury',
+  'princess-yacht': 'Princess Yacht Dubai flybridge luxury charter VIP experience',
+  'azimut-amie-yacht': 'Azimut Amie luxury collection yacht Dubai private hire charter',
+  'kona-yacht': 'Kona luxury yacht Dubai private cruise experience Arabian Gulf',
+  'lana': 'Lana superyacht Dubai 24 guests exclusive private charter experience',
+  'black-pearl': 'Black Pearl flagship superyacht Dubai 40 guests ultimate luxury charter',
+  'tiberias': 'Tiberias megayacht Dubai 32 guests luxury collection private cruise',
+};
+
+function getYachtGallery(name: string): string[] {
+  const id = toId(name);
+  return YACHT_GALLERY_IMAGES[id] ?? [];
+}
+
+function getYachtAlt(name: string): string {
+  const id = toId(name);
+  return YACHT_ALT_TEXT[id] ?? `${name} luxury yacht charter Dubai`;
+}
 
 // Category fallback images
 const CATEGORY_FALLBACK_IMAGES: Record<YachtCategoryId, string> = {
@@ -175,6 +361,8 @@ function parseRawCategory(key: RawYachtCategoryKey): YachtCategory {
       popular: index === 0,
       isNew: index === rawItems.length - 1,
       image: getYachtImage(item.name),
+      galleryImages: getYachtGallery(item.name),
+      alt: getYachtAlt(item.name),
     })),
   };
 }

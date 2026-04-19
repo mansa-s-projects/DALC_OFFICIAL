@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { NextProviders } from './providers/NextProviders';
+import Navbar from '@/components/Navbar';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -20,11 +21,13 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning>
         <NextProviders>
+          <Navbar />
           {children}
         </NextProviders>
       </body>
     </html>
   );
 }
+
 
 

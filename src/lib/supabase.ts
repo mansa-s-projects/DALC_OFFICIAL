@@ -21,5 +21,4 @@ const _supabase =
 // Non-null assertion: supabase is always initialised in production (env vars
 // are required). Call sites that need graceful degradation can check
 // `process.env.NEXT_PUBLIC_SUPABASE_URL` directly before calling.
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 export const supabase = _supabase!;

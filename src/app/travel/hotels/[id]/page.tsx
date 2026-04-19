@@ -17,7 +17,6 @@ import {
   Shield,
   Clock,
 } from "lucide-react";
-import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import hotelsData from "@/data/travel/hotels/hotels.json";
 import type { Hotel } from "@/features/travel/types";
@@ -119,8 +118,6 @@ export default function HotelDetailPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -380,3 +377,4 @@ function StarRating({ rating }: { rating: number }) {
     </div>
   );
 }
+

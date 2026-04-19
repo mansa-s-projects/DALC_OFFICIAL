@@ -165,7 +165,7 @@ export default function VenueDetail() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImageIndex, handleNext, handlePrev]);
+  }, [selectedImageIndex, isMenuOpen, handleNext, handlePrev, setIsMenuOpen, setSelectedImageIndex]);
 
   // Handle booking submission — creates a real request
   const handleBookingSubmit = async () => {

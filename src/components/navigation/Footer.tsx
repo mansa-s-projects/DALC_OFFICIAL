@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // DALC palette
 const C = {
@@ -20,28 +21,17 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="max-w-sm">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="relative h-10 w-8 flex items-end justify-center pb-1">
-                <svg viewBox="0 0 40 100" className="h-full w-auto fill-current" style={{ color: C.gold }}>
-                  <path d="M19 0 L21 0 L21 100 L19 100 Z" />
-                  <path d="M21 20 L25 20 L25 100 L21 100 Z" className="opacity-90" />
-                  <path d="M25 40 L29 40 L29 100 L25 100 Z" className="opacity-75" />
-                  <path d="M29 60 L33 60 L33 100 L29 100 Z" className="opacity-60" />
-                  <path d="M33 80 L38 80 L38 100 L33 100 Z" className="opacity-40" />
-                  <path d="M15 20 L19 20 L19 100 L15 100 Z" className="opacity-90" />
-                  <path d="M11 40 L15 40 L15 100 L11 100 Z" className="opacity-75" />
-                  <path d="M7 60 L11 60 L11 100 L7 100 Z" className="opacity-60" />
-                  <path d="M2 80 L7 80 L7 100 L2 100 Z" className="opacity-40" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-display font-light leading-none" style={{ fontSize: '18px', letterSpacing: '-0.01em', color: C.white }}>
-                  Dubai
-                </p>
-                <p className="font-display font-light italic leading-none" style={{ fontSize: '14px', color: C.gold }}>
-                  À La Carte
-                </p>
-              </div>
+            <div className="mb-8">
+              <Link href="/">
+                <Image
+                  src="/branding/logo-main.png"
+                  alt="Dubai À La Carte"
+                  width={240}
+                  height={78}
+                  className="h-16 w-auto object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+              </Link>
             </div>
             <p className="font-body font-light text-sm leading-relaxed" style={{ color: C.dim }}>
               The premier concierge service for the modern elite. Experience Dubai like never before

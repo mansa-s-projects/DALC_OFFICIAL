@@ -14,7 +14,6 @@ import {
   ChevronDown,
   X,
 } from "lucide-react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import aircraftData from "../../../data/travel/jets/aircraft.json";
 import type { Aircraft, JetCategory } from "../../../features/travel/types";
@@ -149,8 +148,6 @@ export default function JetsPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative h-[55vh] min-h-[440px] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -343,3 +340,4 @@ export default function JetsPage() {
     </div>
   );
 }
+

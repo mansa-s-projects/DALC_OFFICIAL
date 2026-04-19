@@ -15,7 +15,6 @@ import {
   Shield,
   Loader2,
 } from "lucide-react";
-import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import hotelsData from "@/data/travel/hotels/hotels.json";
 import type { Hotel } from "@/features/travel/types";
@@ -151,7 +150,6 @@ export default function HotelBookingPage() {
   if (bookingComplete) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="pt-32 pb-16 px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -224,8 +222,6 @@ export default function HotelBookingPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       <div className="pt-28 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Link
@@ -438,3 +434,4 @@ export default function HotelBookingPage() {
     </div>
   );
 }
+

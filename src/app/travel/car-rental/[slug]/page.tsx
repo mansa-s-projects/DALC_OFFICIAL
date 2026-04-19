@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'motion/react';
 import { ArrowLeft, Zap, Users, Fuel, Calendar, MessageCircle } from 'lucide-react';
-import Navbar from '../../../../components/navigation/Navbar';
 import Footer from '../../../../components/navigation/Footer';
 import {
   getAllCars,
@@ -36,8 +35,6 @@ export default function CarDetailPage({ params }: { params: Promise<{ slug: stri
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       <div className="max-w-5xl mx-auto px-4 md:px-8 pt-28 pb-24">
         {/* ── Breadcrumb ────────────────────────────────────────────────────── */}
         <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-10">
@@ -145,3 +142,4 @@ export default function CarDetailPage({ params }: { params: Promise<{ slug: stri
     </div>
   );
 }
+

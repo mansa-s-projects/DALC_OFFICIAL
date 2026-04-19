@@ -15,7 +15,6 @@ import {
   ShoppingBag,
   Heart,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 // â”€â”€â”€ Services catalogue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -117,8 +116,6 @@ const fade = (delay = 0) => ({
 export default function ServicesHub() {
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background image */}
@@ -295,4 +292,5 @@ export default function ServicesHub() {
     </div>
   );
 }
+
 

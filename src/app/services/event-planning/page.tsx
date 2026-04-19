@@ -17,7 +17,6 @@ import {
   Heart,
   Briefcase,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 const fade = (delay = 0) => ({
@@ -57,7 +56,7 @@ const EVENT_TYPES = [
   {
     icon: Anchor,
     label: 'Yacht Parties',
-    desc: 'Superyacht charters for 10 to 200 guests. Catering, DJ, dÃ©cor, and offshore experiences included.',
+    desc: 'Superyacht charters for 10 to 200 guests. Catering, DJ, décor, and offshore experiences included.',
     bg: 'from-sky-900/30',
   },
   {
@@ -72,7 +71,7 @@ const WHAT_WE_HANDLE = [
   { icon: Calendar, label: 'Venue Sourcing & Booking', desc: 'Access to private venues, rooftops, yachts, desert camps, and iconic Dubai landmarks.' },
   { icon: Users, label: 'Catering & F&B', desc: 'Michelin-starred private chefs, curated menus, sommelier service, and live stations.' },
   { icon: Music, label: 'Entertainment', desc: 'DJs, live bands, cultural performers, celebrity artists, and bespoke entertainment acts.' },
-  { icon: Star, label: 'DÃ©cor & Design', desc: 'Custom florals, lighting design, branded installations, and luxury table settings.' },
+  { icon: Star, label: 'Décor & Design', desc: 'Custom florals, lighting design, branded installations, and luxury table settings.' },
   { icon: ArrowRight, label: 'Logistics & Transport', desc: 'Guest transfers, valet, airport meet & greet, and on-site event coordination.' },
   { icon: Camera, label: 'Photography & Film', desc: 'Professional event photography and videography. Drone footage and same-day reels.' },
 ];
@@ -130,8 +129,6 @@ export default function EventPlanningPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -157,7 +154,7 @@ export default function EventPlanningPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai Â· Event Planning
+                Dubai · Event Planning
               </span>
             </div>
 
@@ -446,4 +443,5 @@ export default function EventPlanningPage() {
     </div>
   );
 }
+
 

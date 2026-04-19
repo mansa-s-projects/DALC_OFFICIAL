@@ -83,7 +83,6 @@ export default function CarCard({ car, categoryId }: CarCardProps) {
     >
       {/* ── Image ──────────────────────────────────────────── */}
       <div className="relative h-[220px] overflow-hidden bg-gray-900">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
           alt={`${car.brand} ${car.model} ${car.year}`}

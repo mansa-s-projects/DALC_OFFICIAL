@@ -19,7 +19,6 @@ import {
   Minus,
   Plus,
 } from "lucide-react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import airportsData from "../../../data/travel/flights/airports.json";
 import type { Airport, FlightSearchParams, CabinClass, FlightType } from "../../../features/travel/types";
@@ -347,8 +346,6 @@ export default function FlightsPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[60vh] flex flex-col items-center justify-end pt-24 pb-0 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -600,3 +597,4 @@ export default function FlightsPage() {
     </div>
   );
 }
+

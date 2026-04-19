@@ -18,7 +18,6 @@ import {
   Globe,
   Briefcase,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 // â”€â”€â”€ Animation helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -219,8 +218,6 @@ export default function GoldenVisaPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -250,7 +247,7 @@ export default function GoldenVisaPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                UAE Immigration Â· Golden Visa
+                UAE Immigration · Golden Visa
               </span>
             </div>
 
@@ -690,4 +687,5 @@ export default function GoldenVisaPage() {
     </div>
   );
 }
+
 

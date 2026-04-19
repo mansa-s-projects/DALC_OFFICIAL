@@ -28,7 +28,6 @@ import {
   AlertTriangle,
   Loader2,
 } from 'lucide-react';
-import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
 import { AvatarUpload } from '../../components/AvatarUpload';
 import { useAppStore } from '../../store/useAppStore';
@@ -581,7 +580,6 @@ export default function ProfilePage() {
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-[#050607] text-white">
-        <Navbar />
         <div className="flex min-h-[80vh] items-center justify-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -646,8 +644,6 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-[#050607] text-white">
-      <Navbar />
-
       {showEdit && (
         <EditProfileModal
           initialFirstName={profile?.first_name ?? ''}
@@ -878,3 +874,4 @@ export default function ProfilePage() {
     </div>
   );
 }
+

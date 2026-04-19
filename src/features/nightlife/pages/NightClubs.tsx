@@ -34,7 +34,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 95,
     opening_hours: 'Thu â€“ Sat: 10 PM â€“ 4 AM',
-    music: 'House Â· Hip-Hop Â· Commercial',
+    music: 'House · Hip-Hop · Commercial',
     dress_code: 'Smart Elegant â€“ No Sports Wear',
   },
   {
@@ -43,12 +43,12 @@ const CLUBS: Club[] = [
     folder: 'Babylon',
     area: 'DIFC',
     vibe: 'Lounge Club',
-    description_short: 'An opulent club in the heart of DIFC, fusing bold dÃ©cor with a global beats soundtrack and Miami-style energy.',
+    description_short: 'An opulent club in the heart of DIFC, fusing bold décor with a global beats soundtrack and Miami-style energy.',
     description_long: "Babylon brings an unapologetically rich aesthetic to DIFC. Think dramatic interiors, velvet booths, and a programming slate that moves between Eastern rhythms and global house music. The venue draws a cosmopolitan crowd seeking late-night energy in DIFC's most storied district.",
     is_featured: true,
     recommend_score: 92,
     opening_hours: 'Wed â€“ Sat: 9 PM â€“ 3 AM',
-    music: 'House Â· Hip-Hop Â· R&B',
+    music: 'House · Hip-Hop · R&B',
     dress_code: 'Smart Elegant',
   },
   {
@@ -62,7 +62,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 87,
     opening_hours: 'Tue â€“ Sat: 8 PM â€“ 2 AM',
-    music: 'Deep House Â· Chill Â· Live Music',
+    music: 'Deep House · Chill · Live Music',
     dress_code: 'Smart Casual',
   },
   {
@@ -76,7 +76,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 94,
     opening_hours: 'Fri â€“ Sat: 11 PM â€“ 6 AM',
-    music: 'Techno Â· Dark House Â· Underground',
+    music: 'Techno · Dark House · Underground',
     dress_code: 'Dark colours preferred',
   },
   {
@@ -90,7 +90,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 96,
     opening_hours: 'Tue & Thu â€“ Sat: 10 PM â€“ 4 AM',
-    music: 'House Â· Afro House Â· Arabic',
+    music: 'House · Afro House · Arabic',
     dress_code: 'Smart / Elegant',
   },
   {
@@ -104,7 +104,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 93,
     opening_hours: 'Wed â€“ Sat: 8 PM â€“ 3 AM',
-    music: 'Commercial House Â· R&B Â· Hip-Hop',
+    music: 'Commercial House · R&B · Hip-Hop',
     dress_code: 'Smart Casual',
   },
   {
@@ -118,7 +118,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 88,
     opening_hours: 'Thu â€“ Sat: 10 PM â€“ 4 AM',
-    music: 'Hip-Hop Â· R&B Â· Trap',
+    music: 'Hip-Hop · R&B · Trap',
     dress_code: 'Smart Casual',
   },
   {
@@ -132,7 +132,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 91,
     opening_hours: 'Wed â€“ Sat: 9 PM â€“ 3 AM',
-    music: 'Dark House Â· Nu-Disco Â· Electronic',
+    music: 'Dark House · Nu-Disco · Electronic',
     dress_code: 'Smart Elegant',
   },
   {
@@ -146,7 +146,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 92,
     opening_hours: 'Wed â€“ Sat: 11 PM â€“ 4 AM',
-    music: 'Electronic Â· House Â· Afrobeats',
+    music: 'Electronic · House · Afrobeats',
     dress_code: 'Smart Elegant',
   },
   {
@@ -160,7 +160,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 90,
     opening_hours: 'Thu â€“ Sat: 11 PM â€“ 4 AM',
-    music: 'Electronic Â· Japanese House Â· Rave',
+    music: 'Electronic · Japanese House · Rave',
     dress_code: 'Fashion-forward',
   },
   {
@@ -174,7 +174,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 96,
     opening_hours: 'Wed â€“ Sat: 9 PM â€“ 4 AM',
-    music: 'House Â· Commercial Â· Afrohouse',
+    music: 'House · Commercial · Afrohouse',
     dress_code: 'Cocktail Attire â€“ Strict Door',
   },
   {
@@ -184,11 +184,11 @@ const CLUBS: Club[] = [
     area: 'Amazonico, DIFC',
     vibe: 'Rooftop Club',
     description_short: 'The rooftop extension of Amazonico in DIFC â€” a lush Latin-tropical experience with open skies, DJ sets, and an Amazonian energy above the city.',
-    description_long: "Paraiso Rooftop sits atop Amazonico DIFC, bringing a rainforest energy to Dubai's skyline. Tropical dÃ©cor, live percussion elements, and a soundtrack that journeys from Afrobeats to reggaeton make this one of the city's most vibrant rooftop experiences.",
+    description_long: "Paraiso Rooftop sits atop Amazonico DIFC, bringing a rainforest energy to Dubai's skyline. Tropical décor, live percussion elements, and a soundtrack that journeys from Afrobeats to reggaeton make this one of the city's most vibrant rooftop experiences.",
     is_featured: false,
     recommend_score: 89,
     opening_hours: 'Thu â€“ Sat: 9 PM â€“ 3 AM',
-    music: 'Reggaeton Â· Latin House Â· Afrobeats',
+    music: 'Reggaeton · Latin House · Afrobeats',
     dress_code: 'Tropical Chic',
   },
   {
@@ -202,7 +202,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 95,
     opening_hours: 'Wed â€“ Sat: 9 PM â€“ 4 AM',
-    music: 'Contemporary Club Â· Russian Pop Â· House',
+    music: 'Contemporary Club · Russian Pop · House',
     dress_code: 'Formal â€“ Evening Wear',
   },
   {
@@ -216,7 +216,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 93,
     opening_hours: 'Fri â€“ Sat: 11 PM â€“ Late',
-    music: 'House Â· Soul Â· Eclectic',
+    music: 'House · Soul · Eclectic',
     dress_code: 'Smart â€“ Invitation preferred',
   },
   {
@@ -230,7 +230,7 @@ const CLUBS: Club[] = [
     is_featured: true,
     recommend_score: 94,
     opening_hours: 'Daily: 7 PM â€“ 3 AM',
-    music: 'Nu-Disco Â· House Â· Oriental Fusion',
+    music: 'Nu-Disco · House · Oriental Fusion',
     dress_code: 'Smart Elegant',
   },
   {
@@ -244,7 +244,7 @@ const CLUBS: Club[] = [
     is_featured: false,
     recommend_score: 88,
     opening_hours: 'Wed â€“ Sat: 9 PM â€“ 3 AM',
-    music: 'Latin Â· Reggaeton Â· Salsa',
+    music: 'Latin · Reggaeton · Salsa',
     dress_code: 'Smart Casual',
   },
   {

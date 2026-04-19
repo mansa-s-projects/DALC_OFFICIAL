@@ -3,7 +3,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, X } from 'lucide-react';
-import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
 import CarHero from '../../components/cars/CarHero';
 import CarTabs, { type CarTabId } from '../../components/cars/CarTabs';
@@ -76,8 +75,6 @@ export default function CarRentalPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* ── Hero ───────────────────────────────────────────── */}
       <CarHero onCategorySelect={setActiveTab} />
 
@@ -200,3 +197,4 @@ export default function CarRentalPage() {
     </div>
   );
 }
+

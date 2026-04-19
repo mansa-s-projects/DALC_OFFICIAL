@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { PlaneTakeoff, Hotel, Plane, Car, ArrowRight, Star } from 'lucide-react';
-import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
 
 const TRAVEL_CATEGORIES = [
@@ -48,8 +47,6 @@ const TRAVEL_CATEGORIES = [
 export default function TravelHub() {
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -166,4 +163,5 @@ export default function TravelHub() {
     </div>
   );
 }
+
 

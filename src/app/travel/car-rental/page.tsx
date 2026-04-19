@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Car, ArrowRight, Zap, Users } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import {
   CAR_CATEGORIES,
@@ -103,8 +102,6 @@ export default function CarRentalPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative h-[45vh] min-h-[360px] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -204,3 +201,4 @@ export default function CarRentalPage() {
     </div>
   );
 }
+

@@ -19,7 +19,6 @@ import {
   Wifi,
   Waves,
 } from "lucide-react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import hotelsData from "../../../data/travel/hotels/hotels.json";
 import type { Hotel as HotelType, HotelSearchParams } from "../../../features/travel/types";
@@ -238,8 +237,6 @@ export default function HotelsPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* ── Hero — no overflow-hidden, no search inside ───────────────────── */}
       <section className="relative h-[52vh] flex flex-col items-center justify-center pt-24 px-4 text-center">
         <div className="absolute inset-0 z-0">
@@ -504,3 +501,4 @@ export default function HotelsPage() {
     </div>
   );
 }
+

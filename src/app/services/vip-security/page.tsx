@@ -13,7 +13,6 @@ import {
   Lock,
   CheckCircle,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 const fade = (delay = 0) => ({
@@ -93,8 +92,6 @@ const PROCESS = [
 export default function VipSecurityPage() {
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
-
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -120,7 +117,7 @@ export default function VipSecurityPage() {
 
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-8 block">
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai Â· VIP Security
+                Dubai · VIP Security
               </span>
             </div>
 
@@ -320,7 +317,7 @@ export default function VipSecurityPage() {
               <ArrowRight className="w-4 h-4" />
             </a>
             <p className="text-gray-600 text-xs uppercase tracking-widest mt-5">
-              WhatsApp only Â· No public form Â· End-to-end encrypted
+              WhatsApp only · No public form · End-to-end encrypted
             </p>
 
             <div className="mt-12 pt-10 border-t border-white/[0.07]">
@@ -337,4 +334,5 @@ export default function VipSecurityPage() {
     </div>
   );
 }
+
 
