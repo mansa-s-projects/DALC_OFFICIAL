@@ -52,7 +52,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book dune buggy rental in Dubai from AED 600. Polaris RZR, Can-Am Maverick R, X3 & Sport. Private desert track, 30-min & 1-hour sessions. Helmets & safety gear included.',
     shortDescription:
       'Tear across golden dunes at full throttle. Premium buggies — Polaris RZR, Can-Am Maverick X3 & Maverick R — on a private desert track.',
-    image: 'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop',
     alt: 'Dune buggy rental Dubai Lahbab desert Can-Am Maverick Polaris RZR',
     galleryImages: [
       'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
@@ -231,7 +231,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Quad biking in Dubai from AED 300. Yamaha Raptor 700, Yamaha Grizzly 700, and Quad 570 through the Lahbab Red Sand Dunes. 30-min and 1-hour sessions. No experience needed.',
     shortDescription:
       'Conquer the Lahbab dunes on powerful ATVs. From the entry-level Quad 570 to the thundering Yamaha Raptor 700 — sessions for all levels.',
-    image: 'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop',
     alt: 'Quad biking Dubai ATV desert Yamaha Raptor Grizzly Lahbab dunes',
     galleryImages: [
       'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
@@ -339,7 +339,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book a desert safari in Dubai from AED 160. Shared evening safaris, private morning safaris, and exclusive Sonara Camp overnight stays with dune bashing, BBQ dinner & entertainment.',
     shortDescription:
       'Sunset dune bashing, a lavish Bedouin camp dinner, and stars over the Lahbab. Shared from AED 160, private from AED 990 — or go all-night at Sonara Camp.',
-    image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=1200&auto=format&fit=crop',
     alt: 'Desert safari Dubai evening dune bashing Lahbab Bedouin camp',
     galleryImages: [
       'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
@@ -475,7 +475,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Camel and horse riding in the Dubai desert from AED 150. Guided rides for all ages on Arabian horses and camels. Pony rides for children from AED 150. Lahbab desert location.',
     shortDescription:
       'Drift across the sands on an Arabian horse or a desert camel. Gentle guided rides for all ages — including pony rides for the little ones.',
-    image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1200&auto=format&fit=crop',
     alt: 'Camel riding Dubai desert traditional experience Lahbab Arabian horse',
     galleryImages: [
       'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
@@ -533,7 +533,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Try sandboarding in the Dubai desert from AED 90 per person. Slide down the Lahbab red sand dunes with all boards and equipment included. Suitable for all ages and experience levels.',
     shortDescription:
       'Strap on a board and carve down the towering red dunes. Equipment and instruction included — suitable for all ages and abilities.',
-    image: 'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200&auto=format&fit=crop',
     alt: 'Sandboarding Dubai Lahbab red sand dunes desert activity',
     galleryImages: [
       'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
