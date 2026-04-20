@@ -19,7 +19,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning>
+      <body className="overflow-x-hidden" suppressHydrationWarning>
         <NextProviders>
           <Navbar />
           {children}

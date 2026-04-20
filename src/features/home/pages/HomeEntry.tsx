@@ -246,13 +246,13 @@ export default function HomeEntry() {
             {/* Headline Ã¢â‚¬â€ beige-warm white, not cold */}
             <h1
               className="font-display font-light leading-[0.88] mb-2"
-              style={{ fontSize: 'clamp(72px, 13vw, 168px)', letterSpacing: '-0.02em', color: C.white }}
+              style={{ fontSize: 'clamp(38px, 13vw, 168px)', letterSpacing: '-0.02em', color: C.white }}
             >
               Dubai
             </h1>
             <h1
               className="font-display font-light italic leading-[0.88] mb-14"
-              style={{ fontSize: 'clamp(54px, 10vw, 128px)', letterSpacing: '-0.01em', color: C.gold }}
+              style={{ fontSize: 'clamp(28px, 10vw, 128px)', letterSpacing: '-0.01em', color: C.gold }}
             >
               À La Carte
             </h1>
@@ -576,13 +576,13 @@ export default function HomeEntry() {
             <div className="h-px w-12 mx-auto mb-12" style={{ background: `rgba(201,168,76,0.3)` }} />
             <h2
               className="font-display font-light leading-[0.9] mb-3"
-              style={{ fontSize: 'clamp(40px, 6vw, 80px)', color: C.white }}
+              style={{ fontSize: 'clamp(32px, 6vw, 80px)', color: C.white }}
             >
               Ready to Experience
             </h2>
             <h2
               className="font-display font-light italic leading-[0.9] mb-10"
-              style={{ fontSize: 'clamp(40px, 6vw, 80px)', color: C.gold }}
+              style={{ fontSize: 'clamp(32px, 6vw, 80px)', color: C.gold }}
             >
               Dubai?
             </h2>
@@ -642,7 +642,7 @@ export default function HomeEntry() {
             {emailStatus === 'done' ? (
               <p className="font-mono text-sm tracking-wider" style={{ color: C.gold }}>You're on the list.</p>
             ) : (
-              <div className="flex gap-2" suppressHydrationWarning>
+              <div className="flex flex-col sm:flex-row gap-2" suppressHydrationWarning>
                 <input
                   type="email"
                   value={email}
@@ -662,7 +662,7 @@ export default function HomeEntry() {
                 <button
                   onClick={handleEmailSubmit}
                   disabled={emailStatus === 'saving' || !email.trim()}
-                  className="px-8 py-4 font-mono text-[11px] uppercase tracking-[0.18em] font-medium transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="w-full sm:w-auto px-8 py-4 font-mono text-[11px] uppercase tracking-[0.18em] font-medium transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                   style={{ background: C.gold, color: C.textBg, borderRadius: '3px' }}
                 >
                   {emailStatus === 'saving' ? 'Sending...' : 'Join'}

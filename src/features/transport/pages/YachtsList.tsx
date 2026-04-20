@@ -204,7 +204,7 @@ export default function YachtsList() {
             <span>/</span>
             <span className="text-luxury-gold">Luxury Yachts</span>
           </nav>
-          <h1 className="text-4xl md:text-6xl font-display text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-display text-white mb-4">
             Luxury Yachts
           </h1>
           <p className="text-gray-300 text-base max-w-xl mx-auto leading-relaxed">

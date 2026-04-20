@@ -88,7 +88,7 @@ export default function Navbar() {
             alt="DALC"
             width={400}
             height={130}
-            className="h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-10 md:h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
             style={{ filter: "brightness(0) invert(1)" }}
             priority
           />
