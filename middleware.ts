@@ -34,7 +34,7 @@ export async function middleware(request: NextRequest) {
   if (error || !user) {
     if (isAdminPath) {
       const loginUrl = new URL('/auth/login', request.url);
-      loginUrl.searchParams.set('from', encodeURIComponent(pathname));
+      loginUrl.searchParams.set('from', pathname);
       return NextResponse.redirect(loginUrl, { status: 303 });
     }
     return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 });

@@ -30,8 +30,8 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const session = useAppStore((s: any) => s.session);
-  const profile = useAppStore((s: any) => s.profile);
+  const session = useAppStore((s) => s.session);
+  const profile = useAppStore((s) => s.profile);
   const showAdminLink = profile?.role === 'admin' || profile?.role === 'sales_manager' || profile?.role === 'concierge';
 
   useEffect(() => {
