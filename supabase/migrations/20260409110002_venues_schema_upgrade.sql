@@ -41,9 +41,7 @@ BEGIN
   RETURN final_slug;
 END;
 $$;
-
 COMMENT ON FUNCTION public.generate_venue_slug IS 'Generates a unique URL slug for a venue from its name. Appends numeric suffix on collision.';
-
 -- ── 2. Add new columns ────────────────────────────────────────
 
 ALTER TABLE public.venues
@@ -86,7 +84,6 @@ ALTER TABLE public.venues
 
   -- Publishing
   ADD COLUMN IF NOT EXISTS published_at        TIMESTAMPTZ;
-
 -- ── 3. FTS column ─────────────────────────────────────────────
 -- Added separately because GENERATED columns cannot be combined
 -- with ADD COLUMN IF NOT EXISTS in older Postgres minor versions.
@@ -110,7 +107,6 @@ BEGIN
   END IF;
 END
 $$;
-
 -- ── 3b. Fix FK on category_id if it still points to old 'categories' table ──
 -- category_id may have been added by a prior migration referencing the wrong table.
 DO $$
@@ -135,7 +131,6 @@ BEGIN
   END IF;
 END
 $$;
-
 -- ── 4. Backfill: category_id + category_slug ─────────────────
 
 UPDATE public.venues v
@@ -146,13 +141,11 @@ FROM public.venue_categories vc
 WHERE LOWER(v.category) = vc.slug
    OR LOWER(v.category) = LOWER(vc.name)
    OR LOWER(v.category) = LOWER(vc.plural_name);
-
 -- ── 5. Backfill: emirate_id (default Dubai for existing rows) ─
 
 UPDATE public.venues
 SET emirate_id = (SELECT id FROM public.emirates WHERE slug = 'dubai' LIMIT 1)
 WHERE emirate_id IS NULL;
-
 -- ── 6. Slug backfill trigger ──────────────────────────────────
 
 CREATE OR REPLACE FUNCTION public.venues_before_insert_slug()
@@ -166,12 +159,10 @@ BEGIN
   RETURN NEW;
 END;
 $$;
-
 DROP TRIGGER IF EXISTS trg_venues_slug ON public.venues;
 CREATE TRIGGER trg_venues_slug
   BEFORE INSERT ON public.venues
   FOR EACH ROW EXECUTE FUNCTION public.venues_before_insert_slug();
-
 -- ── 7. updated_at trigger ─────────────────────────────────────
 
 CREATE OR REPLACE FUNCTION public.set_updated_at()
@@ -183,25 +174,21 @@ BEGIN
   RETURN NEW;
 END;
 $$;
-
 DROP TRIGGER IF EXISTS trg_venues_updated_at ON public.venues;
 CREATE TRIGGER trg_venues_updated_at
   BEFORE UPDATE ON public.venues
   FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
-
 -- ── 8. Backfill slugs for all existing rows ───────────────────
 
 UPDATE public.venues
 SET slug = public.generate_venue_slug(name, id)
 WHERE slug IS NULL;
-
 -- ── 9. Set published_at for existing published rows ───────────
 
 UPDATE public.venues
 SET published_at = created_at
 WHERE status = 'published'
   AND published_at IS NULL;
-
 -- ── 10. Column comments ───────────────────────────────────────
 
 COMMENT ON COLUMN public.venues.slug             IS 'URL-safe unique slug — primary identifier for public routes (e.g. /venues/bliss-beach-club).';

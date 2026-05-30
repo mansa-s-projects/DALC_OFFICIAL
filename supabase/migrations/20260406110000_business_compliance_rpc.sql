@@ -70,7 +70,6 @@ BEGIN
   RETURN updated_status;
 END;
 $$;
-
 REVOKE ALL ON FUNCTION public.update_compliance_item(UUID, TEXT, BOOLEAN) FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION public.update_compliance_item(UUID, TEXT, BOOLEAN) TO authenticated;
 GRANT EXECUTE ON FUNCTION public.update_compliance_item(UUID, TEXT, BOOLEAN) TO service_role;

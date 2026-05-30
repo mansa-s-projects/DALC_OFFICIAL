@@ -40,7 +40,7 @@ const CATEGORIES = [
   {
     title: 'Desert Adventures',
     subtitle: 'Safari, quad bikes, dune buggies',
-    image: '/images/Aristodesert/image3.png',
+    image: '/images/desert-adventures/Aristodesert/image3.png',
     href: '/experiences',
   },
   {
@@ -89,7 +89,7 @@ const CATEGORIES = [
 
 const EXPERIENCES = [
   { name: 'Jet Ski', tag: 'Water', image: '/images/water-activities/yamaha-fx-svho.jpg' },
-  { name: 'Evening Desert Safari', tag: 'Desert', image: '/images/Aristodesert/image2.png' },
+  { name: 'Evening Desert Safari', tag: 'Desert', image: '/images/desert-adventures/Aristodesert/image2.png' },
   { name: 'Polaris RZR Ride', tag: 'Adventure', image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop' },
   { name: 'Private Villa Pool', tag: 'Leisure', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600&auto=format&fit=crop' },
   { name: 'Sheikh Zayed Mosque', tag: 'Culture', image: 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=600&auto=format&fit=crop' },
@@ -182,13 +182,16 @@ export default function HomeEntry() {
 
     setEmailStatus('saving');
     if (supabase) {
-      const { error } = await supabase.from('requests').insert({
-        category: 'travel',
-        request_type: 'inquiry',
-        contact_name: 'DALC Newsletter',
-        contact_info: normalized,
-        notes: 'source=dalc_homepage',
-      });
+      const { error } = await supabase
+        .from('requests')
+        .insert({
+          category: 'travel',
+          request_type: 'inquiry',
+          contact_name: 'DALC Newsletter',
+          contact_info: normalized,
+          notes: 'source=dalc_homepage',
+        })
+        .select('id');
       if (error) { setEmailStatus('error'); return; }
     } else {
       const existing = JSON.parse(localStorage.getItem('dalc_access_emails') || '[]') as string[];
@@ -218,7 +221,7 @@ export default function HomeEntry() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/hotels/burj-al-arab.jpg"
+            src="/images/herodubai/hero-dubai-skyline.jpg"
             alt="Dubai skyline"
             className="w-full h-full object-cover"
             loading="eager"

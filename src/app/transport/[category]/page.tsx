@@ -1,22 +1,26 @@
-import { redirect } from 'next/navigation';
+"use client";
 
-const CATEGORY_REDIRECTS: Record<string, string> = {
-  cars: '/travel/car-rental',
-  yachts: '/experiences/water-activities',
-  jets: '/travel/jets',
+import type { ComponentType } from "react";
+import { useParams } from "next/navigation";
+import NotFound from "@/app/not-found";
+import CarsList from "@/features/transport/pages/CarsList";
+import YachtsList from "@/features/transport/pages/YachtsList";
+import JetsList from "@/features/transport/pages/JetsList";
+
+const CATEGORY_COMPONENTS: Record<string, ComponentType> = {
+  cars: CarsList,
+  yachts: YachtsList,
+  jets: JetsList,
 };
 
-export default async function TransportCategoryPage({
-  params,
-}: {
-  params: Promise<{ category: string }>;
-}) {
-  const { category } = await params;
-  const destination = CATEGORY_REDIRECTS[category];
+export default function TransportCategoryPage() {
+  const params = useParams();
+  const category = params?.category as string;
+  const Component = CATEGORY_COMPONENTS[category];
 
-  if (!destination) {
-    redirect('/travel');
+  if (!Component) {
+    return <NotFound />;
   }
 
-  redirect(destination);
+  return <Component />;
 }

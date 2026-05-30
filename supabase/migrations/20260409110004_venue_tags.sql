@@ -16,11 +16,9 @@ CREATE TABLE IF NOT EXISTS public.venue_tags (
   is_active BOOLEAN NOT NULL DEFAULT TRUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
 COMMENT ON TABLE  public.venue_tags       IS 'Canonical tags taxonomy. Replaces free-text vibe_tags arrays.';
 COMMENT ON COLUMN public.venue_tags.slug  IS 'URL-safe unique slug — used in filter queries and frontend chips.';
 COMMENT ON COLUMN public.venue_tags.type  IS 'Tag classification: vibe | feature | cuisine | occasion | crowd.';
-
 -- ── 2. Seed tags ──────────────────────────────────────────────
 
 INSERT INTO public.venue_tags (slug, name, type) VALUES
@@ -61,7 +59,6 @@ INSERT INTO public.venue_tags (slug, name, type) VALUES
   ('locals',            'Locals',             'crowd'),
   ('celebrities',       'Celebrities',        'crowd')
 ON CONFLICT (slug) DO NOTHING;
-
 -- ── 3. Junction table ─────────────────────────────────────────
 
 CREATE TABLE IF NOT EXISTS public.venue_tag_map (
@@ -69,9 +66,7 @@ CREATE TABLE IF NOT EXISTS public.venue_tag_map (
   tag_id     UUID NOT NULL REFERENCES public.venue_tags(id)  ON DELETE CASCADE,
   PRIMARY KEY (venue_id, tag_id)
 );
-
 COMMENT ON TABLE public.venue_tag_map IS 'Many-to-many venue ↔ tag associations.';
-
 -- ── 4. Backfill from vibe_tags TEXT[] ────────────────────────
 -- Maps existing free-text vibe_tags values to canonical tag slugs.
 -- Unmatched tags are silently skipped.
@@ -87,28 +82,22 @@ FROM
 WHERE LOWER(TRIM(raw_tag)) = t.slug
    OR LOWER(TRIM(raw_tag)) = LOWER(t.name)
 ON CONFLICT DO NOTHING;
-
 -- ── 5. RLS ────────────────────────────────────────────────────
 
 ALTER TABLE public.venue_tags    ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.venue_tag_map ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "venue_tags_public_read"
   ON public.venue_tags FOR SELECT
   USING (is_active = TRUE);
-
 CREATE POLICY "venue_tags_admin_write"
   ON public.venue_tags FOR ALL
   USING (auth.role() = 'service_role');
-
 CREATE POLICY "venue_tag_map_public_read"
   ON public.venue_tag_map FOR SELECT
   USING (TRUE);
-
 CREATE POLICY "venue_tag_map_admin_write"
   ON public.venue_tag_map FOR ALL
   USING (auth.role() = 'service_role');
-
 -- ── 6. Indexes ────────────────────────────────────────────────
 
 CREATE INDEX IF NOT EXISTS idx_venue_tag_map_venue_id ON public.venue_tag_map (venue_id);

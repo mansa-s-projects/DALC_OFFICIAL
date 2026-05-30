@@ -34,18 +34,20 @@ export async function enqueueCrmSyncJob(input: {
 }) {
   const dedupeKey = `crm:${input.leadId}:${input.jobType}:${input.dedupeContext}`;
 
-  await input.supabaseAdmin.from('crm_sync_jobs').upsert(
-    {
-      lead_id: input.leadId,
-      job_type: input.jobType,
-      provider: getProvider(),
-      payload: input.payload,
-      dedupe_key: dedupeKey,
-      status: 'pending',
-      next_attempt_at: new Date().toISOString(),
-    },
-    { onConflict: 'dedupe_key', ignoreDuplicates: true }
-  );
+  const upsertPayload = {
+    lead_id: input.leadId,
+    job_type: input.jobType,
+    provider: getProvider(),
+    payload: input.payload,
+    dedupe_key: dedupeKey,
+    status: 'pending',
+    next_attempt_at: new Date().toISOString(),
+  };
+  const { error } = await input.supabaseAdmin
+    .from('crm_sync_jobs')
+    .upsert(upsertPayload, { onConflict: 'dedupe_key', ignoreDuplicates: true })
+    .select('id');
+  if (error) throw new Error(error.message || 'Failed to enqueue CRM sync job');
 }
 
 export async function processNextCrmSyncJob(input: {
@@ -55,7 +57,7 @@ export async function processNextCrmSyncJob(input: {
   const nowIso = new Date().toISOString();
   const { data: job } = await input.supabaseAdmin
     .from('crm_sync_jobs')
-    .select('*')
+    .select('id, lead_id, job_type, provider, payload, status, dedupe_key, attempt_count, next_attempt_at, last_error, processed_at, created_at')
     .in('status', ['pending', 'retry'])
     .lte('next_attempt_at', nowIso)
     .order('created_at', { ascending: true })
@@ -65,11 +67,11 @@ export async function processNextCrmSyncJob(input: {
   if (!job) return null;
 
   try {
-    await input.supabaseAdmin
-      .from('crm_sync_jobs')
-      .update({ status: 'processing' })
-      .eq('id', job.id)
-      .eq('status', job.status);
+    const processingPatch = { status: 'processing' };
+    const { error: processingError } = await input.supabaseAdmin
+      .from('crm_sync_jobs').update(processingPatch).eq('id', job.id).eq('status', job.status)
+      .select('id');
+    if (processingError) throw new Error(processingError.message || 'Failed to mark CRM job as processing');
 
     if (job.job_type === 'create') {
       await input.adapter.createLead(job.payload || {});
@@ -79,17 +81,22 @@ export async function processNextCrmSyncJob(input: {
       await input.adapter.updateLeadStatus(job.payload || {});
     }
 
-    await input.supabaseAdmin.from('crm_sync_jobs').update({
+    const completePatch = {
       status: 'completed',
       processed_at: new Date().toISOString(),
       last_error: null,
-    }).eq('id', job.id);
+    };
+    const { error: completeError } = await input.supabaseAdmin
+      .from('crm_sync_jobs').update(completePatch).eq('id', job.id)
+      .select('id');
+    if (completeError) throw new Error(completeError.message || 'Failed to mark CRM job as completed');
 
-    await input.supabaseAdmin.from('crm_sync_logs').insert({
+    const completedLogPayload = {
       job_id: job.id,
       status: 'completed',
       response_payload: job.payload || {},
-    });
+    };
+    await input.supabaseAdmin.from('crm_sync_logs').insert(completedLogPayload).select('id');
 
     return job;
   } catch (error) {
@@ -97,18 +104,23 @@ export async function processNextCrmSyncJob(input: {
     const terminal = nextAttemptCount >= 5;
     const backoffMinutes = Math.min(60, Math.pow(2, nextAttemptCount));
 
-    await input.supabaseAdmin.from('crm_sync_jobs').update({
+    const retryPatch = {
       status: terminal ? 'failed' : 'retry',
       attempt_count: nextAttemptCount,
       next_attempt_at: new Date(Date.now() + backoffMinutes * 60 * 1000).toISOString(),
       last_error: error instanceof Error ? error.message : 'CRM sync failure',
-    }).eq('id', job.id);
+    };
+    const { error: retryError } = await input.supabaseAdmin
+      .from('crm_sync_jobs').update(retryPatch).eq('id', job.id)
+      .select('id');
+    if (retryError) throw new Error(retryError.message || 'Failed to update CRM retry state');
 
-    await input.supabaseAdmin.from('crm_sync_logs').insert({
+    const retryLogPayload = {
       job_id: job.id,
       status: terminal ? 'failed' : 'retry',
       error_message: error instanceof Error ? error.message : 'CRM sync failure',
-    });
+    };
+    await input.supabaseAdmin.from('crm_sync_logs').insert(retryLogPayload).select('id');
 
     return null;
   }

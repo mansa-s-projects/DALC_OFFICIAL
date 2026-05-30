@@ -19,10 +19,8 @@ CREATE TABLE IF NOT EXISTS public.partners (
   created_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at     TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_partners_category ON public.partners(category);
 CREATE INDEX IF NOT EXISTS idx_partners_status   ON public.partners(status);
-
 -- ============================================================
 -- INTENTS
 -- ============================================================
@@ -38,11 +36,9 @@ CREATE TABLE IF NOT EXISTS public.intents (
   created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_intents_user_id     ON public.intents(user_id);
 CREATE INDEX IF NOT EXISTS idx_intents_intent_type ON public.intents(intent_type);
 CREATE INDEX IF NOT EXISTS idx_intents_created_at  ON public.intents(created_at DESC);
-
 -- ============================================================
 -- EXTEND REQUESTS: add intent_id + priority
 -- ============================================================
@@ -50,10 +46,8 @@ ALTER TABLE public.requests
   ADD COLUMN IF NOT EXISTS intent_id UUID REFERENCES public.intents(id) ON DELETE SET NULL,
   ADD COLUMN IF NOT EXISTS priority  TEXT NOT NULL DEFAULT 'NORMAL'
     CHECK (priority IN ('HIGH', 'NORMAL', 'LOW'));
-
 CREATE INDEX IF NOT EXISTS idx_requests_intent_id ON public.requests(intent_id);
 CREATE INDEX IF NOT EXISTS idx_requests_priority  ON public.requests(priority);
-
 -- ============================================================
 -- QUOTES
 -- ============================================================
@@ -73,10 +67,8 @@ CREATE TABLE IF NOT EXISTS public.quotes (
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_quotes_request_id ON public.quotes(request_id);
 CREATE INDEX IF NOT EXISTS idx_quotes_status     ON public.quotes(status);
-
 -- ============================================================
 -- PAYMENTS
 -- ============================================================
@@ -97,11 +89,9 @@ CREATE TABLE IF NOT EXISTS public.payments (
   created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at            TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_payments_request_id        ON public.payments(request_id);
 CREATE INDEX IF NOT EXISTS idx_payments_status            ON public.payments(status);
 CREATE INDEX IF NOT EXISTS idx_payments_stripe_session_id ON public.payments(stripe_session_id);
-
 -- ============================================================
 -- TASKS
 -- ============================================================
@@ -120,11 +110,9 @@ CREATE TABLE IF NOT EXISTS public.tasks (
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_tasks_request_id  ON public.tasks(request_id);
 CREATE INDEX IF NOT EXISTS idx_tasks_assignee_id ON public.tasks(assignee_id);
 CREATE INDEX IF NOT EXISTS idx_tasks_status      ON public.tasks(status);
-
 -- ============================================================
 -- CONVERSATIONS
 -- ============================================================
@@ -139,11 +127,9 @@ CREATE TABLE IF NOT EXISTS public.conversations (
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_conversations_request_id ON public.conversations(request_id);
 CREATE INDEX IF NOT EXISTS idx_conversations_author_id  ON public.conversations(author_id);
 CREATE INDEX IF NOT EXISTS idx_conversations_created_at ON public.conversations(created_at);
-
 -- ============================================================
 -- OPERATOR_ACTIONS
 -- ============================================================
@@ -157,11 +143,9 @@ CREATE TABLE IF NOT EXISTS public.operator_actions (
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_operator_actions_request_id  ON public.operator_actions(request_id);
 CREATE INDEX IF NOT EXISTS idx_operator_actions_operator_id ON public.operator_actions(operator_id);
 CREATE INDEX IF NOT EXISTS idx_operator_actions_action_type ON public.operator_actions(action_type);
-
 -- ============================================================
 -- handle_updated_at utility function
 -- ============================================================
@@ -172,7 +156,6 @@ BEGIN
   RETURN NEW;
 END;
 $$;
-
 -- ============================================================
 -- updated_at triggers
 -- ============================================================
@@ -191,7 +174,6 @@ BEGIN
   END LOOP;
 END;
 $$;
-
 -- ============================================================
 -- RLS: enable but stay permissive for service_role callers
 -- ============================================================
@@ -202,32 +184,25 @@ ALTER TABLE public.tasks            ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.conversations    ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.operator_actions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.partners         ENABLE ROW LEVEL SECURITY;
-
 -- Users see their own intents
 CREATE POLICY "Users view own intents"   ON public.intents FOR SELECT USING (user_id = auth.uid());
 CREATE POLICY "System inserts intents"   ON public.intents FOR INSERT WITH CHECK (true);
-
 -- Users see quotes for their requests
 CREATE POLICY "Users view own quotes"    ON public.quotes  FOR SELECT
   USING (request_id IN (SELECT id FROM public.requests WHERE user_id = auth.uid()));
-
 -- Users see their own payments
 CREATE POLICY "Users view own payments"  ON public.payments FOR SELECT
   USING (user_id = auth.uid());
-
 -- Users see tasks for their requests
 CREATE POLICY "Users view own tasks"     ON public.tasks FOR SELECT
   USING (request_id IN (SELECT id FROM public.requests WHERE user_id = auth.uid()));
-
 -- Users see messages in their requests
 CREATE POLICY "Users view own convos"    ON public.conversations FOR SELECT
   USING (request_id IN (SELECT id FROM public.requests WHERE user_id = auth.uid()));
 CREATE POLICY "Users post own convos"    ON public.conversations FOR INSERT
   WITH CHECK (request_id IN (SELECT id FROM public.requests WHERE user_id = auth.uid()));
-
 -- Actions restricted to service_role (operators use admin client)
 CREATE POLICY "Operators insert actions" ON public.operator_actions FOR INSERT WITH CHECK (true);
 CREATE POLICY "Operators view actions"   ON public.operator_actions FOR SELECT USING (true);
-
 -- Partners readable by all authenticated
 CREATE POLICY "Auth users view partners" ON public.partners FOR SELECT USING (auth.role() = 'authenticated');

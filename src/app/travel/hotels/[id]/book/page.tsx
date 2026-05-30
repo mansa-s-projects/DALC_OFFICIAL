@@ -52,6 +52,7 @@ export default function HotelBookingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingComplete, setBookingComplete] = useState(false);
   const [bookingId, setBookingId] = useState("");
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
   const [form, setForm] = useState<GuestForm>({
     firstName: "",
@@ -94,6 +95,7 @@ export default function HotelBookingPage() {
     e.preventDefault();
     if (!validateForm()) return;
 
+    setBookingError(null);
     setIsSubmitting(true);
 
     try {
@@ -118,12 +120,14 @@ export default function HotelBookingPage() {
         setBookingId(data.booking_id || `HTL-${Date.now()}`);
         setBookingComplete(true);
       } else {
-        setBookingId(`HTL-${Date.now()}`);
-        setBookingComplete(true);
+        const errorBody = await response.json().catch(() => null);
+        setBookingError(
+          errorBody?.error ||
+            "Booking could not be completed. Please try again.",
+        );
       }
     } catch {
-      setBookingId(`HTL-${Date.now()}`);
-      setBookingComplete(true);
+      setBookingError("Booking could not be completed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -425,6 +429,10 @@ export default function HotelBookingPage() {
                   <span>Secure payment processing</span>
                 </div>
               </div>
+
+                  {bookingError && (
+                    <p className="mt-4 text-sm text-red-400">{bookingError}</p>
+                  )}
             </div>
           </div>
         </div>

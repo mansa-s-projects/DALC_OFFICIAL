@@ -1,0 +1,640 @@
+﻿[
+  {
+    "column_name": "category_id",
+    "constraint_name": "activities_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activity_categories",
+    "table_name": "activities"
+  },
+  {
+    "column_name": "vendor_id",
+    "constraint_name": "activities_vendor_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "vendors",
+    "table_name": "activities"
+  },
+  {
+    "column_name": "activity_id",
+    "constraint_name": "activity_availability_activity_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activities",
+    "table_name": "activity_availability"
+  },
+  {
+    "column_name": "activity_id",
+    "constraint_name": "activity_bookings_activity_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activities",
+    "table_name": "activity_bookings"
+  },
+  {
+    "column_name": "availability_id",
+    "constraint_name": "activity_bookings_availability_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activity_availability",
+    "table_name": "activity_bookings"
+  },
+  {
+    "column_name": "pricing_id",
+    "constraint_name": "activity_bookings_pricing_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activity_pricing",
+    "table_name": "activity_bookings"
+  },
+  {
+    "column_name": "user_id",
+    "constraint_name": "activity_bookings_user_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "activity_bookings"
+  },
+  {
+    "column_name": "parent_id",
+    "constraint_name": "activity_categories_parent_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activity_categories",
+    "table_name": "activity_categories"
+  },
+  {
+    "column_name": "activity_id",
+    "constraint_name": "activity_images_activity_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activities",
+    "table_name": "activity_images"
+  },
+  {
+    "column_name": "activity_id",
+    "constraint_name": "activity_pricing_activity_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "activities",
+    "table_name": "activity_pricing"
+  },
+  {
+    "column_name": "experience_id",
+    "constraint_name": "booking_requests_experience_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "experience_services",
+    "table_name": "booking_requests"
+  },
+  {
+    "column_name": "transport_id",
+    "constraint_name": "booking_requests_transport_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "transport_items",
+    "table_name": "booking_requests"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "booking_requests_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues",
+    "table_name": "booking_requests"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "business_bookings_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "business_services",
+    "table_name": "business_bookings"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "business_consultations_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "business_services",
+    "table_name": "business_consultations"
+  },
+  {
+    "column_name": "canonical_service_id",
+    "constraint_name": "business_services_canonical_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "business_services"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "conversations_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "conversations"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "crm_sync_jobs_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "crm_sync_jobs"
+  },
+  {
+    "column_name": "job_id",
+    "constraint_name": "crm_sync_logs_job_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "crm_sync_jobs",
+    "table_name": "crm_sync_logs"
+  },
+  {
+    "column_name": "emirate_id",
+    "constraint_name": "districts_emirate_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "emirates",
+    "table_name": "districts"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "experience_bookings_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "experience_bookings"
+  },
+  {
+    "column_name": "user_id",
+    "constraint_name": "experience_bookings_user_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "experience_bookings"
+  },
+  {
+    "column_name": "emirate_id",
+    "constraint_name": "experience_services_emirate_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "emirates",
+    "table_name": "experience_services"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "experiences_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "experiences"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "experiences_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "experiences"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "experiences_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "experiences"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "experiences_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "experiences"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "explore_locations_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "explore_categories",
+    "table_name": "explore_locations"
+  },
+  {
+    "column_name": "district_id",
+    "constraint_name": "explore_locations_district_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "districts",
+    "table_name": "explore_locations"
+  },
+  {
+    "column_name": "emirate_id",
+    "constraint_name": "explore_locations_emirate_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "emirates",
+    "table_name": "explore_locations"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_automations_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_automations"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_enrichment_data_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_enrichment_data"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_enrichment_jobs_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_enrichment_jobs"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_history_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_history"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_ownership_history_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_ownership_history"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "lead_tasks_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "lead_tasks"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "model_feedback_audit_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "model_feedback_audit"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "notifications_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "notifications"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "operator_actions_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "operator_actions"
+  },
+  {
+    "column_name": "quote_id",
+    "constraint_name": "payments_quote_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "quotes",
+    "table_name": "payments"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "payments_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "payments"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "quotes_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "quotes"
+  },
+  {
+    "column_name": "relocation_profile_id",
+    "constraint_name": "relocation_cost_estimates_relocation_profile_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "relocation_profiles",
+    "table_name": "relocation_cost_estimates"
+  },
+  {
+    "column_name": "changed_by",
+    "constraint_name": "request_status_log_changed_by_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "request_status_log"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "request_status_log_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "request_status_log"
+  },
+  {
+    "column_name": "assigned_to",
+    "constraint_name": "requests_assigned_to_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "booking_id",
+    "constraint_name": "requests_booking_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "bookings",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "requests_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "intent_id",
+    "constraint_name": "requests_intent_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "intents",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "requests_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "requests_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "user_id",
+    "constraint_name": "requests_user_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "requests_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "requests"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "services_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "services"
+  },
+  {
+    "column_name": "property_id",
+    "constraint_name": "stays_availability_property_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "stays_properties",
+    "table_name": "stays_availability"
+  },
+  {
+    "column_name": "property_id",
+    "constraint_name": "stays_bookings_property_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "stays_properties",
+    "table_name": "stays_bookings"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "stays_bookings_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "stays_bookings"
+  },
+  {
+    "column_name": "user_id",
+    "constraint_name": "stays_bookings_user_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "stays_bookings"
+  },
+  {
+    "column_name": "canonical_service_id",
+    "constraint_name": "stays_properties_canonical_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "stays_properties"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "stays_properties_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "stays_properties"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "stays_properties_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "stays_properties"
+  },
+  {
+    "column_name": "supplier_id",
+    "constraint_name": "stays_properties_supplier_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "suppliers",
+    "table_name": "stays_properties"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "subcategories_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "subcategories"
+  },
+  {
+    "column_name": "partner_id",
+    "constraint_name": "tasks_partner_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "partners",
+    "table_name": "tasks"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "tasks_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "tasks"
+  },
+  {
+    "column_name": "relocation_profile_id",
+    "constraint_name": "transport_bookings_relocation_profile_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "relocation_profiles",
+    "table_name": "transport_bookings"
+  },
+  {
+    "column_name": "request_id",
+    "constraint_name": "transport_bookings_request_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "requests",
+    "table_name": "transport_bookings"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "transport_bookings_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "transport_services",
+    "table_name": "transport_bookings"
+  },
+  {
+    "column_name": "user_id",
+    "constraint_name": "transport_bookings_user_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "profiles",
+    "table_name": "transport_bookings"
+  },
+  {
+    "column_name": "canonical_service_id",
+    "constraint_name": "transport_services_canonical_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "transport_services"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "transport_services_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "transport_services"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "transport_services_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "transport_services"
+  },
+  {
+    "column_name": "supplier_id",
+    "constraint_name": "transport_services_supplier_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "suppliers",
+    "table_name": "transport_services"
+  },
+  {
+    "column_name": "relocation_profile_id",
+    "constraint_name": "user_documents_relocation_profile_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "relocation_profiles",
+    "table_name": "user_documents"
+  },
+  {
+    "column_name": "workflow_id",
+    "constraint_name": "user_workflow_steps_workflow_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "user_workflows",
+    "table_name": "user_workflow_steps"
+  },
+  {
+    "column_name": "relocation_profile_id",
+    "constraint_name": "user_workflows_relocation_profile_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "relocation_profiles",
+    "table_name": "user_workflows"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "venue_media_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "venue_media"
+  },
+  {
+    "column_name": "related_venue_id",
+    "constraint_name": "venue_related_related_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "venue_related"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "venue_related_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "venue_related"
+  },
+  {
+    "column_name": "tag_id",
+    "constraint_name": "venue_tag_map_tag_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venue_tags",
+    "table_name": "venue_tag_map"
+  },
+  {
+    "column_name": "venue_id",
+    "constraint_name": "venue_tag_map_venue_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venues_old",
+    "table_name": "venue_tag_map"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "venues_category_id_fkey1",
+    "foreign_column": "id",
+    "foreign_table": "venue_categories",
+    "table_name": "venues"
+  },
+  {
+    "column_name": "emirate_id",
+    "constraint_name": "venues_emirate_id_fkey1",
+    "foreign_column": "id",
+    "foreign_table": "emirates",
+    "table_name": "venues"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "venues_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "categories",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "category_id",
+    "constraint_name": "venues_category_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "venue_categories",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "emirate_id",
+    "constraint_name": "venues_emirate_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "emirates",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "service_id",
+    "constraint_name": "venues_service_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "services",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "subcategory_id",
+    "constraint_name": "venues_subcategory_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "subcategories",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "supplier_id",
+    "constraint_name": "venues_supplier_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "suppliers",
+    "table_name": "venues_old"
+  },
+  {
+    "column_name": "whatsapp_job_id",
+    "constraint_name": "whatsapp_delivery_logs_whatsapp_job_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "whatsapp_jobs",
+    "table_name": "whatsapp_delivery_logs"
+  },
+  {
+    "column_name": "lead_id",
+    "constraint_name": "whatsapp_jobs_lead_id_fkey",
+    "foreign_column": "id",
+    "foreign_table": "leads",
+    "table_name": "whatsapp_jobs"
+  }
+]
+

@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS public.business_services (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.business_consultations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   request_id UUID,
@@ -53,7 +52,6 @@ CREATE TABLE IF NOT EXISTS public.business_consultations (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.business_bookings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   request_id UUID,
@@ -78,19 +76,16 @@ CREATE TABLE IF NOT EXISTS public.business_bookings (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_biz_services_subcategory ON public.business_services(subcategory);
 CREATE INDEX IF NOT EXISTS idx_biz_services_slug ON public.business_services(slug);
 CREATE INDEX IF NOT EXISTS idx_biz_services_status ON public.business_services(status);
 CREATE INDEX IF NOT EXISTS idx_biz_bookings_user ON public.business_bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_biz_consultations_user ON public.business_consultations(user_id);
-
 -- RLS
 ALTER TABLE public.business_services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.business_consultations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.business_bookings ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Anyone can view published business services" ON public.business_services FOR SELECT USING (status = 'published');
 CREATE POLICY "Admins manage business services" ON public.business_services FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'));
 CREATE POLICY "Users view own consultations" ON public.business_consultations FOR SELECT USING (user_id = auth.uid());

@@ -2,7 +2,6 @@
 -- Idempotent migration for DALC notification storage + realtime support.
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
 CREATE TABLE IF NOT EXISTS public.notifications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -35,7 +34,6 @@ CREATE TABLE IF NOT EXISTS public.notifications (
     OR (is_read = TRUE)
   )
 );
-
 ALTER TABLE public.notifications
   ADD COLUMN IF NOT EXISTS type TEXT,
   ADD COLUMN IF NOT EXISTS title TEXT,
@@ -46,7 +44,6 @@ ALTER TABLE public.notifications
   ADD COLUMN IF NOT EXISTS metadata JSONB,
   ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ,
   ADD COLUMN IF NOT EXISTS read_at TIMESTAMPTZ;
-
 UPDATE public.notifications
 SET
   type = COALESCE(type, 'system'),
@@ -55,7 +52,6 @@ SET
   is_read = COALESCE(is_read, FALSE),
   metadata = COALESCE(metadata, '{}'::jsonb),
   created_at = COALESCE(created_at, NOW());
-
 ALTER TABLE public.notifications
   ALTER COLUMN type SET DEFAULT 'system',
   ALTER COLUMN type SET NOT NULL,
@@ -70,7 +66,6 @@ ALTER TABLE public.notifications
   ALTER COLUMN metadata SET NOT NULL,
   ALTER COLUMN created_at SET DEFAULT NOW(),
   ALTER COLUMN created_at SET NOT NULL;
-
 DO $$
 BEGIN
   IF NOT EXISTS (
@@ -94,7 +89,6 @@ BEGIN
       );
   END IF;
 END $$;
-
 DO $$
 BEGIN
   IF NOT EXISTS (
@@ -109,7 +103,6 @@ BEGIN
       );
   END IF;
 END $$;
-
 DO $$
 BEGIN
   IF NOT EXISTS (
@@ -125,18 +118,13 @@ BEGIN
       );
   END IF;
 END $$;
-
 CREATE INDEX IF NOT EXISTS idx_notifications_user_id
   ON public.notifications(user_id);
-
 CREATE INDEX IF NOT EXISTS idx_notifications_user_read
   ON public.notifications(user_id, is_read);
-
 CREATE INDEX IF NOT EXISTS idx_notifications_created_at
   ON public.notifications(created_at DESC);
-
 ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS users_own_notifications ON public.notifications;
 DROP POLICY IF EXISTS notifications_own ON public.notifications;
 DROP POLICY IF EXISTS notifications_select_own ON public.notifications;
@@ -144,7 +132,6 @@ DROP POLICY IF EXISTS notifications_insert_own ON public.notifications;
 DROP POLICY IF EXISTS notifications_update_own ON public.notifications;
 DROP POLICY IF EXISTS notifications_delete_own ON public.notifications;
 DROP POLICY IF EXISTS notifications_admin_manage ON public.notifications;
-
 CREATE POLICY notifications_select_own ON public.notifications
   FOR SELECT
   USING (
@@ -156,7 +143,6 @@ CREATE POLICY notifications_select_own ON public.notifications
         AND profiles.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY notifications_insert_own ON public.notifications
   FOR INSERT
   WITH CHECK (
@@ -168,7 +154,6 @@ CREATE POLICY notifications_insert_own ON public.notifications
         AND profiles.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY notifications_update_own ON public.notifications
   FOR UPDATE
   USING (
@@ -189,7 +174,6 @@ CREATE POLICY notifications_update_own ON public.notifications
         AND profiles.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY notifications_delete_own ON public.notifications
   FOR DELETE
   USING (
@@ -201,7 +185,6 @@ CREATE POLICY notifications_delete_own ON public.notifications
         AND profiles.role IN ('admin', 'concierge')
     )
   );
-
 DO $$
 BEGIN
   IF NOT EXISTS (

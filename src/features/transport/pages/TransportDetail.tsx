@@ -49,7 +49,8 @@ export default function TransportDetail() {
 
   const handleBookingSubmit = async (data: TransportBookingInput) => {
     if (!session?.user) {
-      router.push('/auth/login');
+      const location = encodeURIComponent(service?.name ?? 'Transport Service');
+      router.push(`/request?location=${location}`);
       return;
     }
     
@@ -131,7 +132,7 @@ export default function TransportDetail() {
       <Navbar />
 
       {/* ── Hero Gallery ───────────────────────────────────────────────────────── */}
-      <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <section className="relative h-[62vh] min-h-[420px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden">
         {galleryImages.length > 0 ? (
           <AnimatePresence mode="wait">
             <motion.img
@@ -157,13 +158,13 @@ export default function TransportDetail() {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 border border-white/30 text-white/70 hover:text-luxury-gold hover:border-luxury-gold/50 transition-colors z-10"
+              className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 border border-white/30 text-white/70 hover:text-luxury-gold hover:border-luxury-gold/50 transition-colors z-10"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 border border-white/30 text-white/70 hover:text-luxury-gold hover:border-luxury-gold/50 transition-colors z-10"
+              className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 border border-white/30 text-white/70 hover:text-luxury-gold hover:border-luxury-gold/50 transition-colors z-10"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -172,7 +173,7 @@ export default function TransportDetail() {
 
         {/* Image Indicators */}
         {galleryImages.length > 1 && (
-          <div className="absolute bottom-32 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <div className="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {galleryImages.map((_, idx) => (
               <button
                 key={idx}
@@ -188,8 +189,8 @@ export default function TransportDetail() {
         )}
 
         {/* Breadcrumb */}
-        <div className="absolute top-24 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto z-10">
-          <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
+        <div className="absolute top-20 sm:top-24 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto z-10">
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.18em] sm:tracking-widest max-w-[calc(100%-4rem)] sm:max-w-none pr-10 sm:pr-0">
             <Link href="/transport" className="hover:text-luxury-gold transition-colors">
               Transport
             </Link>
@@ -201,19 +202,19 @@ export default function TransportDetail() {
               {SUBCATEGORY_LABELS[service.subcategory]}
             </Link>
             <span>/</span>
-            <span className="text-luxury-gold truncate max-w-[200px]">{service.name}</span>
+            <span className="text-luxury-gold break-words max-w-full sm:max-w-[200px]">{service.name}</span>
           </nav>
         </div>
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto pb-10 z-10">
+        <div className="absolute bottom-0 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto pb-8 sm:pb-10 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
             {/* Badges */}
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-4 pr-10 sm:pr-0">
               <span className="px-3 py-1.5 bg-luxury-black/80 border border-luxury-gold/30 text-luxury-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                 {getSubcategoryIcon()}
                 {SUBCATEGORY_LABELS[service.subcategory]}
@@ -235,12 +236,12 @@ export default function TransportDetail() {
               )}
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-display text-white mb-3 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-display text-white mb-3 leading-tight max-w-[12ch] sm:max-w-none">
               {service.name}
             </h1>
             
             {service.description_short && (
-              <p className="text-gray-300 text-lg max-w-2xl leading-relaxed">
+              <p className="text-gray-300 text-base sm:text-lg max-w-xl sm:max-w-2xl leading-relaxed">
                 {service.description_short}
               </p>
             )}

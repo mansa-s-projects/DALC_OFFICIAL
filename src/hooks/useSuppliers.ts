@@ -3,7 +3,10 @@ import { supabase } from '../lib/supabase';
 import type { Supplier } from '../types';
 
 async function fetchSuppliers(): Promise<Supplier[]> {
-  const { data, error } = await supabase.from('suppliers').select('*').order('name');
+  const { data, error } = await supabase
+    .from('suppliers')
+    .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+    .order('name');
   if (error) throw error;
   return data ?? [];
 }
@@ -19,7 +22,11 @@ export function useSuppliers() {
 
   const createSupplier = useMutation({
     mutationFn: async (input: Omit<Supplier, 'id' | 'created_at' | 'updated_at'>) => {
-      const { data, error } = await supabase.from('suppliers').insert(input).select().single();
+      const { data, error } = await supabase
+        .from('suppliers')
+        .insert(input)
+        .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+        .single();
       if (error) throw error;
       return data as Supplier;
     },
@@ -28,7 +35,12 @@ export function useSuppliers() {
 
   const updateSupplier = useMutation({
     mutationFn: async ({ id, updates }: { id: string; updates: Partial<Omit<Supplier, 'id' | 'created_at' | 'updated_at'>> }) => {
-      const { data, error } = await supabase.from('suppliers').update(updates).eq('id', id).select().single();
+      const { data, error } = await supabase
+        .from('suppliers')
+        .update(updates)
+        .eq('id', id)
+        .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+        .single();
       if (error) throw error;
       return data as Supplier;
     },
@@ -37,7 +49,7 @@ export function useSuppliers() {
 
   const deleteSupplier = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase.from('suppliers').delete().eq('id', id);
+      const { error } = await supabase.from('suppliers').delete().eq('id', id).select('id');
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ['suppliers'] }),

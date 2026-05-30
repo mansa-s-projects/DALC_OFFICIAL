@@ -24,7 +24,7 @@ async function attachVenueIds(suppliers: Supplier[]): Promise<SupplierWithVenues
   const venueMap = new Map<string, string[]>();
 
   const { data, error } = await supabase
-    .from('venues')
+    .from('venues_old')
     .select('id, supplier_id')
     .in('supplier_id', ids);
   if (error) throw error;
@@ -43,14 +43,17 @@ async function attachVenueIds(suppliers: Supplier[]): Promise<SupplierWithVenues
 }
 
 export async function fetchSuppliersWithVenues(): Promise<SupplierWithVenues[]> {
-  const { data, error } = await supabase.from('suppliers').select('*').order('name');
+  const { data, error } = await supabase
+    .from('suppliers')
+    .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+    .order('name');
   if (error) throw error;
   return attachVenueIds((data ?? []) as Supplier[]);
 }
 
 async function assignSupplierToVenues(supplierId: string, venueIds: string[]) {
   const { data: currentRows, error: currentError } = await supabase
-    .from('venues')
+    .from('venues_old')
     .select('id')
     .eq('supplier_id', supplierId);
   if (currentError) throw currentError;
@@ -60,18 +63,22 @@ async function assignSupplierToVenues(supplierId: string, venueIds: string[]) {
   const toAssign = venueIds.filter((id) => !currentIds.includes(id));
 
   if (toRemove.length) {
-    const { error } = await supabase.from('venues').update({ supplier_id: null }).in('id', toRemove);
+    const { error } = await supabase.from('venues_old').update({ supplier_id: null }).in('id', toRemove).select('id');
     if (error) throw error;
   }
 
   if (toAssign.length) {
-    const { error } = await supabase.from('venues').update({ supplier_id: supplierId }).in('id', toAssign);
+    const { error } = await supabase.from('venues_old').update({ supplier_id: supplierId }).in('id', toAssign).select('id');
     if (error) throw error;
   }
 }
 
 export async function createSupplierWithVenues(input: SupplierUpsertInput, venueIds: string[]): Promise<SupplierWithVenues> {
-  const { data, error } = await supabase.from('suppliers').insert(input).select('*').single();
+  const { data, error } = await supabase
+    .from('suppliers')
+    .insert(input)
+    .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+    .single();
   if (error) throw error;
 
   const supplier = data as Supplier;
@@ -88,7 +95,12 @@ export async function updateSupplierWithVenues(
   updates: Partial<SupplierUpsertInput>,
   venueIds: string[]
 ): Promise<SupplierWithVenues> {
-  const { data, error } = await supabase.from('suppliers').update(updates).eq('id', id).select('*').single();
+  const { data, error } = await supabase
+    .from('suppliers')
+    .update(updates)
+    .eq('id', id)
+    .select('id, name, contact_person, email, phone, whatsapp, categories, commission_rate, notes, status, created_at, updated_at')
+    .single();
   if (error) throw error;
 
   await assignSupplierToVenues(id, venueIds);
@@ -142,15 +154,15 @@ export async function bulkUpsertSuppliers(rows: BulkImportRow[]): Promise<BulkIm
       let supplierId: string;
 
       if (!existing) {
+        const createPayload = {
+          name: row.name,
+          categories: row.categories,
+          commission_rate: 0,
+          status: 'pending',
+          notes: [row.location, row.seo_category].filter(Boolean).join(' | ') || null,
+        };
         const { data: created, error: createError } = await supabase
-          .from('suppliers')
-          .insert({
-            name: row.name,
-            categories: row.categories,
-            commission_rate: 0,
-            status: 'pending',
-            notes: [row.location, row.seo_category].filter(Boolean).join(' | ') || null,
-          })
+          .from('suppliers').insert(createPayload)
           .select('id')
           .single();
         if (createError) throw createError;
@@ -163,7 +175,8 @@ export async function bulkUpsertSuppliers(rows: BulkImportRow[]): Promise<BulkIm
         const { error: updateError } = await supabase
           .from('suppliers')
           .update({ categories: mergedCategories })
-          .eq('id', existing.id);
+          .eq('id', existing.id)
+          .select('id');
         if (updateError) throw updateError;
         supplierId = existing.id;
         result.updated++;

@@ -132,7 +132,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'platinum-desert-safari-dinner',
     description_short: 'Luxury desert safari with wildlife drive, falcon show, and gourmet dinner under the stars.',
     description_long: 'Experience the Dubai Desert Conservation Reserve in ultimate luxury. This platinum safari includes a private wildlife drive in a Range Rover, interactive falcon demonstration, camel ride, and a 6-course gourmet dinner at an exclusive desert camp with live entertainment.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [
       'https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop',
@@ -1244,7 +1244,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'polaris-rzr-4-seater-dune-buggy',
     description_short: 'Conquer the Dubai dunes in a powerful 4-seater Polaris RZR off-road vehicle.',
     description_long: 'Experience the thrill of desert off-roading in the legendary Polaris RZR 4-seater. Perfect for families or groups, this high-performance side-by-side vehicle tackles the towering dunes of the Dubai Desert with ease. Includes safety briefing, helmet, and goggles.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['4-seater capacity', 'High-performance engine', 'Safety equipment included', 'Professional guide'],
     vibe_tags: ['Adrenaline', 'Adventure', 'Desert', 'Family'],
@@ -1288,7 +1288,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'quad-570-atv-ride',
     description_short: 'Entry-level quad biking experience perfect for beginners on the Dubai dunes.',
     description_long: 'The Quad 570 is the perfect introduction to desert quad biking. Easy to handle yet powerful enough for exciting dune riding, this ATV delivers an accessible adventure for first-timers and experienced riders alike.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Beginner-friendly', '570cc engine', 'Safety gear included', 'Guide-led tour'],
     vibe_tags: ['Adrenaline', 'Adventure', 'Desert', 'Beginner'],
@@ -1332,7 +1332,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'yamaha-raptor-700-atv',
     description_short: 'Sport-performance quad for experienced riders seeking adrenaline on the dunes.',
     description_long: 'The Yamaha Raptor 700 is a sport-performance ATV built for thrill-seekers. With a powerful 700cc engine and aggressive handling, this quad delivers an exhilarating ride across the challenging terrain of the Dubai Desert.',
-    hero_image: '/images/Aristodesert/image3.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image3.png',
     gallery_images: [],
     highlights: ['700cc sport engine', 'Performance suspension', 'For experienced riders', 'High-speed capable'],
     vibe_tags: ['Adrenaline', 'Extreme', 'Desert', 'Performance'],
@@ -1376,7 +1376,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'yamaha-grizzly-700-atv',
     description_short: 'Utility-class ATV combining comfort and power for extended desert adventures.',
     description_long: 'The Yamaha Grizzly 700 is a utility-class ATV that offers superior comfort for longer rides without sacrificing power. Perfect for riders who want to explore more of the desert in comfort while still enjoying the thrill of off-road riding.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['700cc utility engine', 'Superior comfort', 'Extended range', 'All-terrain capable'],
     vibe_tags: ['Adventure', 'Comfort', 'Desert', 'Exploration'],
@@ -1420,7 +1420,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-r-2-seater',
     description_short: 'The ultimate 2-seater dune buggy â€” Can-Am\'s flagship performance machine.',
     description_long: 'The Can-Am Maverick R is the pinnacle of side-by-side performance. With 240 horsepower and advanced suspension, this 2-seater beast conquers the most challenging dunes with ease. For serious thrill-seekers only.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['240 HP turbo engine', 'Race-grade suspension', 'Premium 2-seater', 'Ultimate performance'],
     vibe_tags: ['Extreme', 'Adrenaline', 'Premium', 'Performance'],
@@ -1464,7 +1464,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-r-4-seater',
     description_short: 'Share the ultimate dune buggy experience with 3 friends in the Maverick R 4-seater.',
     description_long: 'All the power of the Maverick R in a 4-seater configuration. Share the ultimate desert experience with family or friends while enjoying 240 horsepower and race-grade performance across the Dubai dunes.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['240 HP turbo engine', '4-seater capacity', 'Race-grade suspension', 'Group experience'],
     vibe_tags: ['Extreme', 'Adrenaline', 'Premium', 'Group'],
@@ -1508,7 +1508,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-x3-2-seater',
     description_short: 'High-performance 2-seater dune buggy with turbo power and aggressive styling.',
     description_long: 'The Can-Am Maverick X3 delivers turbocharged performance in a purpose-built desert machine. With its low center of gravity and aggressive stance, the X3 carves through dunes like a sports car on sand.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Turbo engine', 'Low center of gravity', 'Aggressive styling', 'Performance handling'],
     vibe_tags: ['Adrenaline', 'Performance', 'Desert', 'Sport'],
@@ -1552,7 +1552,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-x3-4-seater',
     description_short: 'Share the turbo-powered Maverick X3 experience with the whole crew.',
     description_long: 'The 4-seater Maverick X3 combines turbocharged performance with group capacity. Bring the whole crew and experience the thrill of high-performance dune bashing together.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Turbo engine', '4-seater capacity', 'Performance handling', 'Group adventure'],
     vibe_tags: ['Adrenaline', 'Performance', 'Family', 'Group'],
@@ -1596,7 +1596,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-sport-2-seater',
     description_short: 'Balanced performance and value â€” the Maverick Sport delivers thrilling dune adventures.',
     description_long: 'The Can-Am Maverick Sport offers the perfect balance of performance and accessibility. An excellent choice for those wanting a premium dune buggy experience without the extreme power of the X3 or R models.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Balanced performance', 'Great value', 'Easy handling', 'Fun for all levels'],
     vibe_tags: ['Adventure', 'Fun', 'Desert', 'Accessible'],
@@ -1642,7 +1642,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'morning-desert-safari-private',
     description_short: 'Private morning safari in the cool desert air â€” perfect for families up to 7 people.',
     description_long: 'Beat the heat with our exclusive morning desert safari. Depart early in a private vehicle and experience the golden dunes in the cool morning light. Includes thrilling dune bashing, camel ride, and falcon photo opportunities. Perfect for families and groups who prefer cooler temperatures.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['Private Lexus vehicle', 'Up to 7 guests', 'Hotel pickup included', 'Morning cool temperatures'],
     vibe_tags: ['Adventure', 'Family', 'Nature', 'Private'],
@@ -1685,7 +1685,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'evening-desert-safari-shared',
     description_short: 'Classic Dubai desert safari experience with BBQ dinner and live entertainment.',
     description_long: 'The quintessential Dubai experience. Watch the sunset over the dunes, enjoy thrilling dune bashing, and end the evening at a traditional Bedouin camp with BBQ dinner, belly dancing, tanoura shows, and henna painting.',
-    hero_image: '/images/Aristodesert/image2.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Sunset dune bashing', 'BBQ dinner', 'Live shows', 'Camel ride', 'Henna painting'],
     vibe_tags: ['Adventure', 'Cultural', 'Entertainment', 'Dining'],
@@ -1729,7 +1729,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'evening-desert-safari-private',
     description_short: 'Private evening safari with dedicated vehicle and all the classic experiences.',
     description_long: 'Enjoy the full evening safari experience in complete privacy. Your own vehicle, your own table at the camp, and a personalized experience. Includes everything from the shared safari plus dedicated attention from your guide.',
-    hero_image: '/images/Aristodesert/image3.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image3.png',
     gallery_images: [],
     highlights: ['Private vehicle', '2 people included', 'VIP seating', 'Personalized service'],
     vibe_tags: ['Adventure', 'Luxury', 'Private', 'Romantic'],
@@ -2123,7 +2123,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'ferrari-world-abu-dhabi',
     description_short: 'The world\'s first Ferrari theme park with the fastest roller coaster on Earth.',
     description_long: 'Experience the thrill of Ferrari World Abu Dhabi, home to Formula Rossa â€” the world\'s fastest roller coaster reaching 240 km/h. Enjoy racing simulators, family rides, Italian dining, and immerse yourself in the Ferrari legend.',
-    hero_image: '/images/Aristodesert/image1.png',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['Formula Rossa', 'Racing simulators', '40+ rides', 'Italian dining'],
     vibe_tags: ['Adrenaline', 'Family', 'Theme park', 'Ferrari'],
@@ -2403,10 +2403,10 @@ export async function checkCapacity(
   }
 
   const { data: service } = await supabase
-    .from('experience_services')
+    .from('activities')
     .select('max_capacity')
-    .eq('id', serviceId)
-    .single();
+    .eq('slug', serviceId)
+    .maybeSingle();
 
   const totalCapacity = service?.max_capacity || 100;
   const remaining = Math.max(0, totalCapacity - bookedCount);
@@ -2466,37 +2466,40 @@ export function generateTicketCode(bookingId: string): string {
 export async function createExperienceBooking(input: ExperienceBookingInput): Promise<ExperienceBooking> {
   const ticketCode = generateTicketCode(input.service_id);
 
+  const bookingInsertPayload = {
+    service_id: input.service_id,
+    user_id: input.user_id,
+    booking_date: input.booking_date,
+    time_slot: input.time_slot,
+    party_size: input.party_size,
+    tier: input.tier,
+    unit_price: input.unit_price,
+    total_price: input.total_price,
+    currency: 'AED',
+    ticket_code: ticketCode,
+    ticket_status: 'active',
+    status: 'confirmed',
+  };
+
   const { data, error } = await supabase
     .from('experience_bookings')
-    .insert({
-      service_id: input.service_id,
-      user_id: input.user_id,
-      booking_date: input.booking_date,
-      time_slot: input.time_slot,
-      party_size: input.party_size,
-      tier: input.tier,
-      unit_price: input.unit_price,
-      total_price: input.total_price,
-      currency: 'AED',
-      ticket_code: ticketCode,
-      ticket_status: 'active',
-      status: 'confirmed',
-    })
-    .select('*, service:experience_services(*)')
+    .insert(bookingInsertPayload)
+    .select('id,request_id,service_id,user_id,booking_date,time_slot,party_size,tier,unit_price,total_price,currency,ticket_code,ticket_status,status,created_at,updated_at,service:experience_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,hero_image,event_date,status)')
     .single();
 
   if (error) throw error;
-  return data as ExperienceBooking;
+  if (!data?.id) throw new Error('Experience booking creation failed: missing booking id');
+  return data as unknown as ExperienceBooking;
 }
 
 export async function getUserExperienceBookings(userId: string): Promise<ExperienceBooking[]> {
   const { data, error } = await supabase
     .from('experience_bookings')
-    .select('*, service:experience_services(*)')
+    .select('id,request_id,service_id,user_id,booking_date,time_slot,party_size,tier,unit_price,total_price,currency,ticket_code,ticket_status,status,created_at,updated_at,service:experience_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,hero_image,event_date,status)')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return (data ?? []) as ExperienceBooking[];
+  return (data ?? []) as unknown as ExperienceBooking[];
 }
 

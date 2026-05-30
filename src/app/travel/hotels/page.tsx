@@ -187,7 +187,7 @@ function HotelCard({ hotel, index }: { hotel: HotelType; index: number }) {
             <p className="text-gray-600 text-xs">per night</p>
           </div>
           <Link
-            href="/request"
+            href={`/travel/hotels/${hotel.id}`}
             className="flex items-center gap-1.5 px-4 py-2 bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold text-xs font-bold uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-all duration-300"
           >
             Book <ArrowRight className="w-3 h-3" />

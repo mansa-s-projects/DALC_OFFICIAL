@@ -24,31 +24,35 @@ export function useAdminStats() {
     staleTime: 30 * 1000,
     queryFn: async () => {
       const [requestsRes, venuesRes, suppliersRes] = await Promise.all([
-        supabase.from('requests').select('id, status, created_at', { count: 'exact' }),
-        supabase.from('venues').select('id', { count: 'exact' }),
-        supabase.from('suppliers').select('id', { count: 'exact' }),
+        supabase.from('requests').select('id, status, created_at'),
+        supabase.from('venues').select('id'),
+        supabase.from('suppliers').select('id'),
       ]);
 
       // Schema-sync views are optional until the migration is applied.
       const [serviceCatalogRes, bookingSyncRes] = await Promise.all([
-        supabase.from('v_service_catalog').select('source_id', { count: 'exact', head: true }),
-        supabase.from('v_booking_sync').select('booking_source_id', { count: 'exact', head: true }),
+        supabase.from('v_service_catalog').select('source_id'),
+        supabase.from('v_booking_sync').select('*', { count: 'exact', head: true }),
       ]);
 
       const requests = (requestsRes.data ?? []) as RequestRow[];
       const pending = requests.filter((r) => (PENDING_STATUSES as readonly string[]).includes(r.status)).length;
       const confirmed = requests.filter((r) => r.status === 'confirmed').length;
       const completed = requests.filter((r) => r.status === 'completed').length;
+      const venuesCount = (venuesRes.data ?? []).length;
+      const suppliersCount = (suppliersRes.data ?? []).length;
+      const syncedServicesCount = serviceCatalogRes.error ? null : (serviceCatalogRes.data ?? []).length;
+      const syncedBookingsCount = bookingSyncRes.error ? null : (bookingSyncRes.count ?? 0);
 
       return {
-        totalRequests: requestsRes.count ?? 0,
+        totalRequests: requests.length,
         pendingRequests: pending,
         confirmedRequests: confirmed,
         completedRequests: completed,
-        totalVenues: venuesRes.count ?? 0,
-        totalSuppliers: suppliersRes.count ?? 0,
-        syncedServices: serviceCatalogRes.error ? null : (serviceCatalogRes.count ?? 0),
-        syncedBookings: bookingSyncRes.error ? null : (bookingSyncRes.count ?? 0),
+        totalVenues: venuesCount,
+        totalSuppliers: suppliersCount,
+        syncedServices: syncedServicesCount,
+        syncedBookings: syncedBookingsCount,
       };
     },
   });

@@ -90,11 +90,13 @@ function AirportInput({
   onChange,
   placeholder,
   icon: Icon,
+  onOpenChange,
 }: {
   value: Airport | null;
   onChange: (a: Airport) => void;
   placeholder: string;
   icon: React.ComponentType<{ className?: string }>;
+  onOpenChange?: (open: boolean) => void;
 }) {
   const [query, setQuery] = useState(value ? `${value.city} (${value.code})` : "");
   const [open, setOpen] = useState(false);
@@ -119,6 +121,10 @@ function AirportInput({
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   return (
     <div ref={ref} className="relative flex-1 min-w-0">
@@ -335,6 +341,7 @@ export default function FlightsPage() {
   });
 
   const [searched, setSearched] = useState(false);
+  const [isAirportDropdownOpen, setIsAirportDropdownOpen] = useState(false);
 
   const update = (patch: Partial<FlightSearchParams>) =>
     setParams((p) => ({ ...p, ...patch }));
@@ -401,12 +408,13 @@ export default function FlightsPage() {
             </div>
 
             {/* Route row */}
-            <div className="flex flex-col md:flex-row gap-2 mb-3">
+            <div className={`flex flex-col md:flex-row gap-2 ${isAirportDropdownOpen ? "mb-72" : "mb-3"}`}>
               <AirportInput
                 value={params.origin}
                 onChange={(a) => update({ origin: a })}
                 placeholder="Where from?"
                 icon={PlaneTakeoff}
+                onOpenChange={setIsAirportDropdownOpen}
               />
 
               <button
@@ -421,6 +429,7 @@ export default function FlightsPage() {
                 onChange={(a) => update({ destination: a })}
                 placeholder="Where to?"
                 icon={PlaneLanding}
+                onOpenChange={setIsAirportDropdownOpen}
               />
 
               {/* Dates */}

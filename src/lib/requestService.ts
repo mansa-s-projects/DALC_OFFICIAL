@@ -44,19 +44,20 @@ export async function createRequestFromIntent(
   const supabase = getSupabaseAdminClient();
   const priority = resolvePriority(input.complexity_score);
   const category = resolveCategory(input.intent_type);
+  const insertPayload = {
+    intent_id: input.intent_id,
+    user_id: input.user_id ?? null,
+    status: 'pending',
+    priority,
+    category,
+    request_type: 'concierge',
+    title: `${category} request`,
+  };
 
   const { data, error } = await supabase
     .from("requests")
-    .insert({
-      intent_id: input.intent_id,
-      user_id: input.user_id ?? null,
-      status: "pending",
-      priority,
-      category,
-      request_type: "concierge",
-      title: `${category} request`,
-    })
-    .select()
+    .insert(insertPayload)
+    .select('id, intent_id, user_id, status, priority, assigned_to, category, request_type, created_at, updated_at')
     .single();
 
   if (error) {

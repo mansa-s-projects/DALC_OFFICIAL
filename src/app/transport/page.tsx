@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
+"use client";
 
-export default function TransportRedirectPage() {
-	redirect('/travel');
-}
+export { default } from '@/features/transport/pages/TransportHub';

@@ -40,3 +40,8 @@ tsconfig.tsbuildinfo
 *.zip
 *.tar.gz
 *.rar
+
+# Environment variables
+.env
+.env.local
+.env.*

@@ -14,7 +14,6 @@ ALTER TABLE public.leads
   ADD COLUMN IF NOT EXISTS sla_first_contact_breached_at timestamptz,
   ADD COLUMN IF NOT EXISTS sla_follow_up_breached boolean NOT NULL DEFAULT false,
   ADD COLUMN IF NOT EXISTS sla_follow_up_breached_at timestamptz;
-
 CREATE TABLE IF NOT EXISTS public.lead_ownership_history (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -25,7 +24,6 @@ CREATE TABLE IF NOT EXISTS public.lead_ownership_history (
   reason text,
   metadata jsonb NOT NULL DEFAULT '{}'::jsonb
 );
-
 CREATE TABLE IF NOT EXISTS public.lead_tasks (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -41,7 +39,6 @@ CREATE TABLE IF NOT EXISTS public.lead_tasks (
   completion_note text,
   idempotency_key text
 );
-
 CREATE TABLE IF NOT EXISTS public.lead_history (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -54,31 +51,23 @@ CREATE TABLE IF NOT EXISTS public.lead_history (
   metadata jsonb NOT NULL DEFAULT '{}'::jsonb,
   idempotency_key text
 );
-
 CREATE UNIQUE INDEX IF NOT EXISTS ux_lead_tasks_idempotency_key
   ON public.lead_tasks(idempotency_key)
   WHERE idempotency_key IS NOT NULL;
-
 CREATE UNIQUE INDEX IF NOT EXISTS ux_lead_history_idempotency_key
   ON public.lead_history(idempotency_key)
   WHERE idempotency_key IS NOT NULL;
-
 CREATE INDEX IF NOT EXISTS idx_leads_owner_status
   ON public.leads(owner_id, lead_status, priority, created_at DESC);
-
 CREATE INDEX IF NOT EXISTS idx_leads_follow_up_due
   ON public.leads(next_follow_up_at)
   WHERE lead_status NOT IN ('won', 'lost');
-
 CREATE INDEX IF NOT EXISTS idx_lead_tasks_owner_status_due
   ON public.lead_tasks(owner_id, status, due_at);
-
 CREATE INDEX IF NOT EXISTS idx_lead_history_lead_created
   ON public.lead_history(lead_id, created_at DESC);
-
 CREATE INDEX IF NOT EXISTS idx_ownership_history_lead_created
   ON public.lead_ownership_history(lead_id, created_at DESC);
-
 CREATE OR REPLACE FUNCTION public.is_valid_lead_status_transition(old_status text, new_status text)
 RETURNS boolean
 LANGUAGE plpgsql
@@ -101,7 +90,6 @@ BEGIN
   );
 END;
 $$;
-
 CREATE OR REPLACE FUNCTION public.enforce_lead_status_transition()
 RETURNS trigger
 LANGUAGE plpgsql
@@ -118,15 +106,12 @@ BEGIN
   RETURN NEW;
 END;
 $$;
-
 DROP TRIGGER IF EXISTS trg_enforce_lead_status_transition ON public.leads;
-
 CREATE TRIGGER trg_enforce_lead_status_transition
 BEFORE UPDATE ON public.leads
 FOR EACH ROW
 WHEN (OLD.lead_status IS DISTINCT FROM NEW.lead_status)
 EXECUTE FUNCTION public.enforce_lead_status_transition();
-
 CREATE OR REPLACE VIEW public.v_leads_by_owner AS
 SELECT
   owner_id,
@@ -135,7 +120,6 @@ SELECT
   COUNT(*) AS lead_count
 FROM public.leads
 GROUP BY owner_id, lead_status, priority;
-
 CREATE OR REPLACE VIEW public.v_overdue_follow_ups AS
 SELECT
   t.id,
@@ -152,7 +136,6 @@ JOIN public.leads l ON l.id = t.lead_id
 WHERE t.status <> 'completed'
   AND t.due_at IS NOT NULL
   AND t.due_at < now();
-
 CREATE OR REPLACE VIEW public.v_hot_leads_no_contact AS
 SELECT
   id,
@@ -166,7 +149,6 @@ FROM public.leads
 WHERE lead_temperature = 'hot'
   AND last_contacted_at IS NULL
   AND lead_status NOT IN ('won', 'lost');
-
 CREATE OR REPLACE VIEW public.v_won_leads_by_source AS
 SELECT
   source_page,
@@ -176,7 +158,6 @@ SELECT
 FROM public.leads
 WHERE lead_status = 'won'
 GROUP BY source_page, service_slug;
-
 CREATE OR REPLACE VIEW public.v_lost_leads_by_reason AS
 SELECT
   COALESCE(lost_reason, 'unspecified') AS lost_reason,
@@ -184,7 +165,6 @@ SELECT
 FROM public.leads
 WHERE lead_status = 'lost'
 GROUP BY COALESCE(lost_reason, 'unspecified');
-
 CREATE OR REPLACE VIEW public.v_salesperson_workload AS
 SELECT
   l.owner_id,
@@ -194,7 +174,6 @@ SELECT
 FROM public.leads l
 LEFT JOIN public.lead_tasks t ON t.lead_id = l.id
 GROUP BY l.owner_id;
-
 CREATE OR REPLACE VIEW public.v_conversion_rate_by_owner AS
 SELECT
   owner_id,
@@ -207,7 +186,6 @@ SELECT
   END AS conversion_rate_pct
 FROM public.leads
 GROUP BY owner_id;
-
 CREATE OR REPLACE VIEW public.v_avg_time_to_first_contact AS
 SELECT
   owner_id,
@@ -215,7 +193,6 @@ SELECT
 FROM public.leads
 WHERE last_contacted_at IS NOT NULL
 GROUP BY owner_id;
-
 ALTER TABLE public.lead_ownership_history ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lead_tasks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lead_history ENABLE ROW LEVEL SECURITY;

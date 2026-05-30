@@ -57,7 +57,7 @@ export interface SearchResult {
 
 async function searchVenues(q: string): Promise<SearchResult[]> {
   const { data, error } = await supabase
-    .from('venues')
+    .from('venues_old')
     .select('id, name, category, subcategory, area, hero_image, description_short, price_tier, recommend_score')
     .or(`name.ilike.%${q}%,description_short.ilike.%${q}%,area.ilike.%${q}%,subcategory.ilike.%${q}%`)
     .limit(10);

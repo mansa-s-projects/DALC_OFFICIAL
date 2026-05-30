@@ -7,7 +7,6 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const {
-      hotel_id,
       hotel_name,
       room_type,
       check_in,
@@ -26,7 +25,6 @@ export async function POST(request: Request) {
         booking_id,
         booking_type: "hotel",
         status: "confirmed",
-        hotel_id,
         hotel_name,
         room_type,
         check_in,

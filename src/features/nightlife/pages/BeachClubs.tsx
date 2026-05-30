@@ -23,6 +23,7 @@ interface BeachClub {
   map_query: string;
   trending?: boolean;
   featured?: boolean;
+  has_secondary_image?: boolean;
 }
 
 const BEACH_CLUBS: BeachClub[] = [
@@ -204,7 +205,7 @@ const BEACH_CLUBS: BeachClub[] = [
     description: 'Gallery 7:40 is named for Dubai\'s golden hour — the magical 7:40pm sunset that paints the Arabian Gulf in fire. Part beach bar, part art gallery, this JBR favourite curates rotating exhibitions alongside a thoughtful drinks list and light Mediterranean bites.',
     highlights: ['🎨 Rotating art gallery exhibitions', '🌅 Named for Dubai\'s perfect sunset', '🍸 Artisan sundowner cocktails', '🏖️ JBR beachfront access'],
     hours: '4pm – 1am', dress_code: 'Casual Artistic', best_for: 'Sunset watching, art crowd',
-    map_query: 'Gallery 7:40 JBR Dubai',
+    map_query: 'Gallery 7:40 JBR Dubai', has_secondary_image: false,
   },
   {
     id: '21', name: 'Ninive Beach', folder: 'Ninive_Beach', location: 'Anantara World Islands', area: 'World Islands',
@@ -452,6 +453,7 @@ function BeachClubCard({ club: c, index, priceTierLabel, onBlog, onMenu }: {
   onMenu: () => void;
 }) {
   const [img2Error, setImg2Error] = useState(false);
+  const hasSecondaryImage = c.has_secondary_image !== false;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.map_query)}`;
 
   return (
@@ -479,7 +481,7 @@ function BeachClubCard({ club: c, index, priceTierLabel, onBlog, onMenu }: {
           </div>
         )}
 
-        {!img2Error && (
+        {hasSecondaryImage && !img2Error && (
           <div className="absolute bottom-4 left-4 w-20 h-16 rounded-xl overflow-hidden border-2 border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl">
             <img
               src={`/images/beach_clubs/${c.folder}/image2.jpg`}
@@ -556,6 +558,7 @@ function BlogModal({ club: c, onClose, priceTierLabel, onMenuOpen }: {
   priceTierLabel: (tier: number) => string;
   onMenuOpen: () => void;
 }) {
+  const hasSecondaryImage = c.has_secondary_image !== false;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.map_query)}`;
 
   return (
@@ -585,14 +588,16 @@ function BlogModal({ club: c, onClose, priceTierLabel, onMenuOpen }: {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f0d0b] via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0f0d0b]/30 to-transparent" />
 
-          <div className="absolute top-4 right-16 w-24 h-20 rounded-xl overflow-hidden border border-white/20 shadow-xl">
-            <img
-              src={`/images/beach_clubs/${c.folder}/image2.jpg`}
-              alt={`${c.name} atmosphere`}
-              className="w-full h-full object-cover"
-              onError={e => { (e.target as HTMLElement).parentElement!.style.display = 'none'; }}
-            />
-          </div>
+          {hasSecondaryImage && (
+            <div className="absolute top-4 right-16 w-24 h-20 rounded-xl overflow-hidden border border-white/20 shadow-xl">
+              <img
+                src={`/images/beach_clubs/${c.folder}/image2.jpg`}
+                alt={`${c.name} atmosphere`}
+                className="w-full h-full object-cover"
+                onError={e => { (e.target as HTMLElement).parentElement!.style.display = 'none'; }}
+              />
+            </div>
+          )}
 
           <button
             onClick={onClose}

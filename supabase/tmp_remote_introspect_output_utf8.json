@@ -1,0 +1,219 @@
+﻿[
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.current_app_role()\n RETURNS text\n LANGUAGE sql\n STABLE\nAS $function$\r\n  SELECT COALESCE(\r\n    (current_setting('request.jwt.claims', true)::jsonb -\u003e 'app_metadata' -\u003e\u003e 'role'),\r\n    (current_setting('request.jwt.claims', true)::jsonb -\u003e\u003e 'role'),\r\n    'viewer'\r\n  );\r\n$function$\n",
+    "proname": "current_app_role"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.current_app_team_id()\n RETURNS text\n LANGUAGE sql\n STABLE\nAS $function$\r\n  SELECT COALESCE(\r\n    (current_setting('request.jwt.claims', true)::jsonb -\u003e 'app_metadata' -\u003e\u003e 'team_id'),\r\n    ''\r\n  );\r\n$function$\n",
+    "proname": "current_app_team_id"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.enforce_lead_status_transition()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n  IF NOT public.is_valid_lead_status_transition(OLD.lead_status, NEW.lead_status) THEN\r\n    RAISE EXCEPTION 'Invalid lead status transition: % -\u003e %', OLD.lead_status, NEW.lead_status;\r\n  END IF;\r\n\r\n  IF NEW.lead_status IS DISTINCT FROM OLD.lead_status THEN\r\n    NEW.status_updated_at = now();\r\n  END IF;\r\n\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "enforce_lead_status_transition"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.generate_activity_ticket_code()\n RETURNS text\n LANGUAGE plpgsql\nAS $function$\nDECLARE\n  code TEXT;\n  chars TEXT := 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';\n  exists_check BOOLEAN;\nBEGIN\n  LOOP\n    code := 'DALC-';\n    FOR i IN 1..8 LOOP\n      code := code || substr(chars, floor(random() * length(chars) + 1)::int, 1);\n      IF i = 4 THEN code := code || '-'; END IF;\n    END LOOP;\n    SELECT EXISTS(SELECT 1 FROM public.activity_bookings WHERE ticket_code = code) INTO exists_check;\n    EXIT WHEN NOT exists_check;\n  END LOOP;\n  RETURN code;\nEND;\n$function$\n",
+    "proname": "generate_activity_ticket_code"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.generate_experience_ticket_code()\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO 'public'\nAS $function$\r\nDECLARE\r\n  code TEXT;\r\n  exists_check BOOLEAN;\r\nBEGIN\r\n  LOOP\r\n    -- Generate random 8 character code\r\n    code := 'DALC-' || upper(substring(md5(random()::text) from 1 for 4)) || '-' || upper(substring(md5(random()::text) from 1 for 4));\r\n    \r\n    -- Check if code already exists\r\n    SELECT EXISTS(SELECT 1 FROM public.experience_bookings WHERE ticket_code = code) INTO exists_check;\r\n    \r\n    EXIT WHEN NOT exists_check;\r\n  END LOOP;\r\n  \r\n  RETURN code;\r\nEND;\r\n$function$\n",
+    "proname": "generate_experience_ticket_code"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.generate_venue_slug(input_name text, input_id text)\n RETURNS text\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO 'public'\nAS $function$\r\nDECLARE\r\n  base_slug  TEXT;\r\n  final_slug TEXT;\r\n  counter    INTEGER := 0;\r\nBEGIN\r\n  base_slug := LOWER(\r\n    REGEXP_REPLACE(\r\n      REGEXP_REPLACE(\r\n        REGEXP_REPLACE(input_name, '[^a-zA-Z0-9\\s\\-]', '', 'g'),\r\n        '\\s+', '-', 'g'\r\n      ),\r\n      '-{2,}', '-', 'g'\r\n    )\r\n  );\r\n  base_slug := TRIM(BOTH '-' FROM base_slug);\r\n\r\n  final_slug := base_slug;\r\n\r\n  -- Ensure uniqueness by appending counter if slug already exists\r\n  WHILE EXISTS (\r\n    SELECT 1 FROM public.venues\r\n    WHERE slug = final_slug AND id != input_id\r\n  ) LOOP\r\n    counter := counter + 1;\r\n    final_slug := base_slug || '-' || counter;\r\n  END LOOP;\r\n\r\n  RETURN final_slug;\r\nEND;\r\n$function$\n",
+    "proname": "generate_venue_slug"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gin_extract_query_trgm$function$\n",
+    "proname": "gin_extract_query_trgm"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gin_extract_value_trgm(text, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gin_extract_value_trgm$function$\n",
+    "proname": "gin_extract_value_trgm"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gin_trgm_consistent(internal, smallint, text, integer, internal, internal, internal, internal)\n RETURNS boolean\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gin_trgm_consistent$function$\n",
+    "proname": "gin_trgm_consistent"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gin_trgm_triconsistent(internal, smallint, text, integer, internal, internal, internal)\n RETURNS \"char\"\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gin_trgm_triconsistent$function$\n",
+    "proname": "gin_trgm_triconsistent"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_compress(internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_compress$function$\n",
+    "proname": "gtrgm_compress"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_consistent(internal, text, smallint, oid, internal)\n RETURNS boolean\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_consistent$function$\n",
+    "proname": "gtrgm_consistent"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_decompress(internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_decompress$function$\n",
+    "proname": "gtrgm_decompress"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_distance(internal, text, smallint, oid, internal)\n RETURNS double precision\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_distance$function$\n",
+    "proname": "gtrgm_distance"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_in(cstring)\n RETURNS gtrgm\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_in$function$\n",
+    "proname": "gtrgm_in"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_options(internal)\n RETURNS void\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE\nAS '$libdir/pg_trgm', $function$gtrgm_options$function$\n",
+    "proname": "gtrgm_options"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_out(gtrgm)\n RETURNS cstring\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_out$function$\n",
+    "proname": "gtrgm_out"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_penalty(internal, internal, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_penalty$function$\n",
+    "proname": "gtrgm_penalty"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_picksplit(internal, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_picksplit$function$\n",
+    "proname": "gtrgm_picksplit"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_same(gtrgm, gtrgm, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_same$function$\n",
+    "proname": "gtrgm_same"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.gtrgm_union(internal, internal)\n RETURNS gtrgm\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$gtrgm_union$function$\n",
+    "proname": "gtrgm_union"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  INSERT INTO public.profiles (id, email)\r\n  VALUES (NEW.id, NEW.email);\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "handle_new_user"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.handle_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "handle_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.is_admin()\n RETURNS boolean\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT EXISTS (\n    SELECT 1\n    FROM profiles\n    WHERE id = auth.uid() AND role = 'admin'\n  );\n$function$\n",
+    "proname": "is_admin"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.is_staff()\n RETURNS boolean\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT EXISTS (\n    SELECT 1\n    FROM profiles\n    WHERE id = auth.uid() AND role IN ('admin', 'concierge')\n  );\n$function$\n",
+    "proname": "is_staff"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.is_valid_lead_status_transition(old_status text, new_status text)\n RETURNS boolean\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n  IF old_status = new_status THEN\r\n    RETURN true;\r\n  END IF;\r\n\r\n  RETURN (\r\n    (old_status = 'new' AND new_status IN ('assigned', 'lost', 'unresponsive')) OR\r\n    (old_status = 'assigned' AND new_status IN ('contacted', 'lost', 'unresponsive')) OR\r\n    (old_status = 'contacted' AND new_status IN ('qualified', 'lost', 'unresponsive')) OR\r\n    (old_status = 'qualified' AND new_status IN ('proposal_sent', 'lost', 'unresponsive')) OR\r\n    (old_status = 'proposal_sent' AND new_status IN ('negotiation', 'won', 'lost', 'unresponsive')) OR\r\n    (old_status = 'negotiation' AND new_status IN ('won', 'lost', 'unresponsive')) OR\r\n    (old_status = 'unresponsive' AND new_status IN ('contacted', 'lost')) OR\r\n    (old_status = 'won' AND new_status = 'won') OR\r\n    (old_status = 'lost' AND new_status = 'lost')\r\n  );\r\nEND;\r\n$function$\n",
+    "proname": "is_valid_lead_status_transition"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.log_request_status(p_request_id uuid, p_status text, p_meta jsonb)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$BEGIN\n  INSERT INTO public.request_status_log(request_id, status, meta)\n  VALUES (p_request_id, p_status, p_meta);\nEND;$function$\n",
+    "proname": "log_request_status"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.log_request_status_change()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  IF OLD.status IS DISTINCT FROM NEW.status THEN\r\n    INSERT INTO public.request_status_log (request_id, old_status, new_status, changed_by)\r\n    VALUES (NEW.id, OLD.status, NEW.status, auth.uid());\r\n  END IF;\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "log_request_status_change"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.rls_auto_enable()\n RETURNS event_trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE\n  cmd record;\nBEGIN\n  FOR cmd IN\n    SELECT *\n    FROM pg_event_trigger_ddl_commands()\n    WHERE command_tag IN ('CREATE TABLE', 'CREATE TABLE AS', 'SELECT INTO')\n      AND object_type IN ('table','partitioned table')\n  LOOP\n     IF cmd.schema_name IS NOT NULL AND cmd.schema_name IN ('public') AND cmd.schema_name NOT IN ('pg_catalog','information_schema') AND cmd.schema_name NOT LIKE 'pg_toast%' AND cmd.schema_name NOT LIKE 'pg_temp%' THEN\n      BEGIN\n        EXECUTE format('alter table if exists %s enable row level security', cmd.object_identity);\n        RAISE LOG 'rls_auto_enable: enabled RLS on %', cmd.object_identity;\n      EXCEPTION\n        WHEN OTHERS THEN\n          RAISE LOG 'rls_auto_enable: failed to enable RLS on %', cmd.object_identity;\n      END;\n     ELSE\n        RAISE LOG 'rls_auto_enable: skip % (either system schema or not in enforced list: %.)', cmd.object_identity, cmd.schema_name;\n     END IF;\n  END LOOP;\nEND;\n$function$\n",
+    "proname": "rls_auto_enable"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.set_activity_booking_ticket()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  IF NEW.ticket_code IS NULL THEN\n    NEW.ticket_code := generate_activity_ticket_code();\n  END IF;\n  RETURN NEW;\nEND;\n$function$\n",
+    "proname": "set_activity_booking_ticket"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.set_limit(real)\n RETURNS real\n LANGUAGE c\n STRICT\nAS '$libdir/pg_trgm', $function$set_limit$function$\n",
+    "proname": "set_limit"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.set_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n  NEW.updated_at := NOW();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "set_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.show_limit()\n RETURNS real\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$show_limit$function$\n",
+    "proname": "show_limit"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.show_trgm(text)\n RETURNS text[]\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$show_trgm$function$\n",
+    "proname": "show_trgm"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.similarity(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$similarity$function$\n",
+    "proname": "similarity"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.similarity_dist(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$similarity_dist$function$\n",
+    "proname": "similarity_dist"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.similarity_op(text, text)\n RETURNS boolean\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$similarity_op$function$\n",
+    "proname": "similarity_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.strict_word_similarity(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$strict_word_similarity$function$\n",
+    "proname": "strict_word_similarity"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.strict_word_similarity_commutator_op(text, text)\n RETURNS boolean\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$strict_word_similarity_commutator_op$function$\n",
+    "proname": "strict_word_similarity_commutator_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.strict_word_similarity_dist_commutator_op(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$strict_word_similarity_dist_commutator_op$function$\n",
+    "proname": "strict_word_similarity_dist_commutator_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.strict_word_similarity_dist_op(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$strict_word_similarity_dist_op$function$\n",
+    "proname": "strict_word_similarity_dist_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.strict_word_similarity_op(text, text)\n RETURNS boolean\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$strict_word_similarity_op$function$\n",
+    "proname": "strict_word_similarity_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_activities_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  NEW.updated_at = now();\n  RETURN NEW;\nEND;\n$function$\n",
+    "proname": "update_activities_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_compliance_item(booking_id uuid, item_id text, item_completed boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\nDECLARE\r\n  current_status JSONB := '[]'::jsonb;\r\n  updated_status JSONB := '[]'::jsonb;\r\nBEGIN\r\n  IF auth.uid() IS NULL THEN\r\n    RAISE EXCEPTION 'Authentication required';\r\n  END IF;\r\n\r\n  SELECT b.compliance_status\r\n  INTO current_status\r\n  FROM public.business_bookings b\r\n  WHERE b.id = booking_id\r\n    AND (\r\n      b.user_id = auth.uid()\r\n      OR EXISTS (\r\n        SELECT 1\r\n        FROM public.profiles p\r\n        WHERE p.id = auth.uid()\r\n          AND p.role IN ('admin', 'concierge')\r\n      )\r\n    )\r\n  FOR UPDATE;\r\n\r\n  IF NOT FOUND THEN\r\n    RAISE EXCEPTION 'Business booking not found or not accessible';\r\n  END IF;\r\n\r\n  IF NOT EXISTS (\r\n    SELECT 1\r\n    FROM jsonb_array_elements(COALESCE(current_status, '[]'::jsonb)) AS compliance_item\r\n    WHERE compliance_item-\u003e\u003e'id' = item_id\r\n  ) THEN\r\n    RAISE EXCEPTION 'Compliance item % was not found on booking %', item_id, booking_id;\r\n  END IF;\r\n\r\n  SELECT COALESCE(\r\n    jsonb_agg(\r\n      CASE\r\n        WHEN compliance_item-\u003e\u003e'id' = item_id THEN\r\n          jsonb_strip_nulls(\r\n            compliance_item\r\n            || jsonb_build_object(\r\n              'completed', item_completed,\r\n              'completed_at', CASE WHEN item_completed THEN now() ELSE NULL END\r\n            )\r\n          )\r\n        ELSE compliance_item\r\n      END\r\n    ),\r\n    '[]'::jsonb\r\n  )\r\n  INTO updated_status\r\n  FROM jsonb_array_elements(COALESCE(current_status, '[]'::jsonb)) AS compliance_item;\r\n\r\n  UPDATE public.business_bookings\r\n  SET compliance_status = updated_status,\r\n      updated_at = now()\r\n  WHERE id = booking_id;\r\n\r\n  RETURN updated_status;\r\nEND;\r\n$function$\n",
+    "proname": "update_compliance_item"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_experiences_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "update_experiences_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_stays_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "update_stays_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_transport_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "update_transport_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.update_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'public'\nAS $function$\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "update_updated_at"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.venues_before_insert_slug()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n  IF NEW.slug IS NULL OR NEW.slug = '' THEN\r\n    NEW.slug := public.generate_venue_slug(NEW.name, NEW.id);\r\n  END IF;\r\n  RETURN NEW;\r\nEND;\r\n$function$\n",
+    "proname": "venues_before_insert_slug"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.word_similarity(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$word_similarity$function$\n",
+    "proname": "word_similarity"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.word_similarity_commutator_op(text, text)\n RETURNS boolean\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$word_similarity_commutator_op$function$\n",
+    "proname": "word_similarity_commutator_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.word_similarity_dist_commutator_op(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$word_similarity_dist_commutator_op$function$\n",
+    "proname": "word_similarity_dist_commutator_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.word_similarity_dist_op(text, text)\n RETURNS real\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$word_similarity_dist_op$function$\n",
+    "proname": "word_similarity_dist_op"
+  },
+  {
+    "definition": "CREATE OR REPLACE FUNCTION public.word_similarity_op(text, text)\n RETURNS boolean\n LANGUAGE c\n STABLE PARALLEL SAFE STRICT\nAS '$libdir/pg_trgm', $function$word_similarity_op$function$\n",
+    "proname": "word_similarity_op"
+  }
+]
+

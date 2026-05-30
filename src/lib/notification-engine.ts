@@ -76,7 +76,11 @@ async function markNotificationStatus(
   notificationId: string,
   patch: Record<string, unknown>
 ) {
-  await supabaseAdmin.from('notifications').update(patch).eq('id', notificationId);
+  await supabaseAdmin
+    .from('notifications')
+    .update(patch)
+    .eq('id', notificationId)
+    .select('id');
 }
 
 async function dispatchEmail(target: NotificationTarget, payload: Record<string, unknown>) {
@@ -138,7 +142,7 @@ async function getOrCreateNotificationRecord(
 ) {
   const { data: existing } = await supabaseAdmin
     .from('notifications')
-    .select('*')
+    .select('id, status, retry_count, dedupe_key, channel, recipient, payload, event_type, lead_id, owner_id, trigger_source, sent_at, failed_at, error_message')
     .eq('dedupe_key', dedupeKey)
     .eq('channel', target.channel)
     .eq('recipient', target.recipient)
@@ -159,13 +163,14 @@ async function getOrCreateNotificationRecord(
     trigger_source: event.triggerSource,
   };
 
+  const upsertOptions = {
+    onConflict: 'dedupe_key,channel,recipient',
+    ignoreDuplicates: true,
+  };
+
   const { data, error } = await supabaseAdmin
-    .from('notifications')
-    .upsert(insertPayload, {
-      onConflict: 'dedupe_key,channel,recipient',
-      ignoreDuplicates: true,
-    })
-    .select('*')
+    .from('notifications').upsert(insertPayload, upsertOptions)
+    .select('id, status, retry_count, dedupe_key, channel, recipient, payload, event_type, lead_id, owner_id, trigger_source, sent_at, failed_at, error_message')
     .maybeSingle();
 
   if (error) throw new Error(error.message || 'Failed to persist notification');
@@ -173,7 +178,7 @@ async function getOrCreateNotificationRecord(
 
   const fallback = await supabaseAdmin
     .from('notifications')
-    .select('*')
+    .select('id, status, retry_count, dedupe_key, channel, recipient, payload, event_type, lead_id, owner_id, trigger_source, sent_at, failed_at, error_message')
     .eq('dedupe_key', dedupeKey)
     .eq('channel', target.channel)
     .eq('recipient', target.recipient)

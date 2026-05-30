@@ -23,9 +23,9 @@ import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 
 const IMAGES = [
-  "/images/Aristodesert/Screenshot 2026-04-14 200016.png",
-  "/images/Aristodesert/Screenshot 2026-04-14 200034.png",
-  "/images/Aristodesert/Screenshot 2026-04-14 200046.png",
+  "/images/desert-adventures/Aristodesert/Screenshot 2026-04-14 200016.png",
+  "/images/desert-adventures/Aristodesert/Screenshot 2026-04-14 200034.png",
+  "/images/desert-adventures/Aristodesert/Screenshot 2026-04-14 200046.png",
 ];
 
 const EXPERIENCES = [

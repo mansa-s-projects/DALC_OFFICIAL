@@ -14,12 +14,10 @@ CREATE TABLE IF NOT EXISTS public.venue_categories (
   is_active    BOOLEAN NOT NULL DEFAULT TRUE,
   created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
 COMMENT ON TABLE  public.venue_categories                IS 'Canonical venue category definitions — single source of truth for category slugs used in routes and DB.';
 COMMENT ON COLUMN public.venue_categories.slug           IS 'URL-safe slug matching app route segment (e.g. nightlife, beach-clubs).';
 COMMENT ON COLUMN public.venue_categories.plural_name    IS 'Display label for list pages (e.g. "Beach Clubs").';
 COMMENT ON COLUMN public.venue_categories.sort_order     IS 'Controls display order in category nav.';
-
 -- Seed core nightlife/venue categories
 INSERT INTO public.venue_categories (slug, name, plural_name, icon, description, sort_order) VALUES
   ('nightlife',             'Nightlife',              'Nightlife',              '🎉', 'Night clubs, rooftop bars, and late-night venues.',      1),
@@ -29,14 +27,11 @@ INSERT INTO public.venue_categories (slug, name, plural_name, icon, description,
   ('experiences',           'Experience',             'Experiences',            '✨', 'Activities, events, and unique Dubai experiences.',       5),
   ('wellness',              'Wellness',               'Wellness',               '🧘', 'Spas, fitness, and wellness destinations.',               6)
 ON CONFLICT (slug) DO NOTHING;
-
 -- Enable RLS
 ALTER TABLE public.venue_categories ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "venue_categories_public_read"
   ON public.venue_categories FOR SELECT
   USING (is_active = TRUE);
-
 CREATE POLICY "venue_categories_admin_write"
   ON public.venue_categories FOR ALL
   USING (auth.role() = 'service_role');

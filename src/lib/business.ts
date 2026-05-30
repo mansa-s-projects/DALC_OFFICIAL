@@ -309,37 +309,40 @@ export async function getFeaturedServices(subcategory?: string): Promise<Busines
 }
 
 export async function createBusinessBooking(input: BusinessBookingInput): Promise<BusinessBooking> {
+  const bookingInsertPayload = {
+    service_id: input.service_id,
+    user_id: input.user_id,
+    package_selected: input.package_selected,
+    documents_required: input.documents_required ?? [],
+    quoted_price: input.quoted_price,
+    government_fees: input.government_fees,
+    total_price: input.total_price,
+    relocation_profile_id: input.relocation_profile_id,
+    status: 'pending',
+    workflow_status: 'not_started',
+    current_step: 1,
+  };
+
   const { data, error } = await supabase
     .from('business_bookings')
-    .insert({
-      service_id: input.service_id,
-      user_id: input.user_id,
-      package_selected: input.package_selected,
-      documents_required: input.documents_required ?? [],
-      quoted_price: input.quoted_price,
-      government_fees: input.government_fees,
-      total_price: input.total_price,
-      relocation_profile_id: input.relocation_profile_id,
-      status: 'pending',
-      workflow_status: 'not_started',
-      current_step: 1,
-    })
-    .select('*, service:business_services(*)')
+    .insert(bookingInsertPayload)
+    .select('id,request_id,service_id,user_id,package_selected,documents_submitted,documents_required,documents_complete,compliance_status,current_step,total_steps,workflow_status,quoted_price,government_fees,total_price,currency,relocation_profile_id,status,estimated_completion,completed_at,created_at,updated_at,service:business_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,duration_description,status)')
     .single();
 
   if (error) throw error;
-  return data as BusinessBooking;
+  if (!data?.id) throw new Error('Business booking creation failed: missing booking id');
+  return data as unknown as BusinessBooking;
 }
 
 export async function getUserBusinessBookings(userId: string): Promise<BusinessBooking[]> {
   const { data, error } = await supabase
     .from('business_bookings')
-    .select('*, service:business_services(*)')
+    .select('id,request_id,service_id,user_id,package_selected,documents_submitted,documents_required,documents_complete,compliance_status,current_step,total_steps,workflow_status,quoted_price,government_fees,total_price,currency,relocation_profile_id,status,estimated_completion,completed_at,created_at,updated_at,service:business_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,duration_description,status)')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return (data ?? []) as BusinessBooking[];
+  return (data ?? []) as unknown as BusinessBooking[];
 }
 
 export async function scheduleConsultation(input: ConsultationInput): Promise<BusinessConsultation> {

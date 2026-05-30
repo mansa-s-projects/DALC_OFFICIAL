@@ -8,12 +8,10 @@
 
 -- REQUESTS
 ALTER TABLE IF EXISTS public.requests ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS "Users can view own requests" ON public.requests;
 DROP POLICY IF EXISTS "Users can create requests" ON public.requests;
 DROP POLICY IF EXISTS "Staff can view all requests" ON public.requests;
 DROP POLICY IF EXISTS "Staff can update requests" ON public.requests;
-
 CREATE POLICY "requests_select_own_or_staff" ON public.requests
   FOR SELECT USING (
     user_id = auth.uid()
@@ -23,7 +21,6 @@ CREATE POLICY "requests_select_own_or_staff" ON public.requests
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 -- Authenticated users can create their own requests.
 -- Anonymous access is restricted to the DALC access intake pattern.
 CREATE POLICY "requests_insert_guarded" ON public.requests
@@ -47,7 +44,6 @@ CREATE POLICY "requests_insert_guarded" ON public.requests
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 -- Users can update own requests only before fulfillment states.
 CREATE POLICY "requests_update_guarded" ON public.requests
   FOR UPDATE USING (
@@ -74,13 +70,10 @@ CREATE POLICY "requests_update_guarded" ON public.requests
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 -- REQUEST STATUS LOG
 ALTER TABLE IF EXISTS public.request_status_log ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS "Staff can view request log" ON public.request_status_log;
 DROP POLICY IF EXISTS "System can insert request log" ON public.request_status_log;
-
 CREATE POLICY "request_log_select_own_or_staff" ON public.request_status_log
   FOR SELECT USING (
     EXISTS (
@@ -95,7 +88,6 @@ CREATE POLICY "request_log_select_own_or_staff" ON public.request_status_log
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY "request_log_insert_staff_only" ON public.request_status_log
   FOR INSERT WITH CHECK (
     EXISTS (
@@ -106,12 +98,9 @@ CREATE POLICY "request_log_insert_staff_only" ON public.request_status_log
     OR
     changed_by = auth.uid()
   );
-
 -- SUPPLIERS
 ALTER TABLE IF EXISTS public.suppliers ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS "Admins can manage suppliers" ON public.suppliers;
-
 CREATE POLICY "suppliers_select_staff" ON public.suppliers
   FOR SELECT USING (
     EXISTS (
@@ -120,7 +109,6 @@ CREATE POLICY "suppliers_select_staff" ON public.suppliers
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY "suppliers_manage_admin" ON public.suppliers
   FOR ALL USING (
     EXISTS (
@@ -136,14 +124,11 @@ CREATE POLICY "suppliers_manage_admin" ON public.suppliers
       WHERE p.id = auth.uid() AND p.role = 'admin'
     )
   );
-
 -- BOOKINGS (core)
 ALTER TABLE IF EXISTS public.bookings ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS "Users can view own bookings" ON public.bookings;
 DROP POLICY IF EXISTS "Staff can view all bookings" ON public.bookings;
 DROP POLICY IF EXISTS "Staff can manage bookings" ON public.bookings;
-
 CREATE POLICY "bookings_select_own_or_staff" ON public.bookings
   FOR SELECT USING (
     user_id = auth.uid()
@@ -153,7 +138,6 @@ CREATE POLICY "bookings_select_own_or_staff" ON public.bookings
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY "bookings_insert_staff_or_owner" ON public.bookings
   FOR INSERT WITH CHECK (
     user_id = auth.uid()
@@ -163,7 +147,6 @@ CREATE POLICY "bookings_insert_staff_or_owner" ON public.bookings
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 CREATE POLICY "bookings_update_staff_or_owner" ON public.bookings
   FOR UPDATE USING (
     user_id = auth.uid()
@@ -181,7 +164,6 @@ CREATE POLICY "bookings_update_staff_or_owner" ON public.bookings
       WHERE p.id = auth.uid() AND p.role IN ('admin', 'concierge')
     )
   );
-
 -- ------------------------------------------------------------
 -- 2) FULL DATA SCHEME SYNC (canonical + legacy bridge)
 -- ------------------------------------------------------------
@@ -190,32 +172,24 @@ CREATE POLICY "bookings_update_staff_or_owner" ON public.bookings
 ALTER TABLE IF EXISTS public.services
   ADD CONSTRAINT services_status_chk
   CHECK (status IN ('active', 'draft', 'archived')) NOT VALID;
-
 ALTER TABLE IF EXISTS public.experiences
   ADD CONSTRAINT experiences_status_chk
   CHECK (status IN ('active', 'draft', 'archived')) NOT VALID;
-
 ALTER TABLE IF EXISTS public.bookings
   ADD CONSTRAINT bookings_status_chk
   CHECK (status IN ('pending', 'confirmed', 'in_progress', 'completed', 'cancelled')) NOT VALID;
-
 -- Legacy -> canonical mapping columns
 ALTER TABLE IF EXISTS public.business_services
   ADD COLUMN IF NOT EXISTS canonical_service_id UUID REFERENCES public.services(id) ON DELETE SET NULL;
-
 ALTER TABLE IF EXISTS public.transport_services
   ADD COLUMN IF NOT EXISTS canonical_service_id UUID REFERENCES public.services(id) ON DELETE SET NULL;
-
 ALTER TABLE IF EXISTS public.stays_properties
   ADD COLUMN IF NOT EXISTS canonical_service_id UUID REFERENCES public.services(id) ON DELETE SET NULL;
-
 ALTER TABLE IF EXISTS public.experience_services
   ADD COLUMN IF NOT EXISTS canonical_service_id UUID REFERENCES public.services(id) ON DELETE SET NULL;
-
 -- Requests/bookings normalized links
 ALTER TABLE IF EXISTS public.requests
   ADD COLUMN IF NOT EXISTS booking_id UUID REFERENCES public.bookings(id) ON DELETE SET NULL;
-
 -- Core categories seed for platform pillars
 INSERT INTO public.categories (slug, name, description)
 VALUES
@@ -228,7 +202,6 @@ VALUES
 ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
   description = EXCLUDED.description;
-
 -- Core subcategory seed (minimal stable baseline)
 WITH c AS (
   SELECT id, slug FROM public.categories
@@ -252,7 +225,6 @@ JOIN (
 ON CONFLICT (category_id, slug) DO UPDATE SET
   name = EXCLUDED.name,
   description = EXCLUDED.description;
-
 -- ------------------------------------------------------------
 -- 3) SYNC VIEWS (single query surfaces)
 -- ------------------------------------------------------------
@@ -331,7 +303,6 @@ SELECT
   es.created_at,
   es.updated_at
 FROM public.experience_services es;
-
 -- Unified bookings surface (core + vertical bookings)
 CREATE OR REPLACE VIEW public.v_booking_sync AS
 SELECT
@@ -395,7 +366,6 @@ SELECT
   eb.created_at,
   eb.updated_at
 FROM public.experience_bookings eb;
-
 -- Read access for authenticated users (RLS applies to base tables)
 GRANT SELECT ON public.v_service_catalog TO authenticated;
 GRANT SELECT ON public.v_booking_sync TO authenticated;

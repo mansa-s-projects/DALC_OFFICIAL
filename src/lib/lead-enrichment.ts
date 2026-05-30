@@ -7,22 +7,24 @@ export async function enqueueLeadEnrichmentJob(input: {
 }) {
   const dedupeKey = `enrich:${input.leadId}:${input.dedupeContext}`;
 
-  await input.supabaseAdmin.from('lead_enrichment_jobs').upsert(
-    {
-      lead_id: input.leadId,
-      status: 'pending',
-      dedupe_key: dedupeKey,
-      next_attempt_at: new Date().toISOString(),
-    },
-    { onConflict: 'dedupe_key', ignoreDuplicates: true }
-  );
+  const upsertPayload = {
+    lead_id: input.leadId,
+    status: 'pending',
+    dedupe_key: dedupeKey,
+    next_attempt_at: new Date().toISOString(),
+  };
+  const { error } = await input.supabaseAdmin
+    .from('lead_enrichment_jobs')
+    .upsert(upsertPayload, { onConflict: 'dedupe_key', ignoreDuplicates: true })
+    .select('id');
+  if (error) throw new Error(error.message || 'Failed to enqueue lead enrichment job');
 }
 
 export async function processNextLeadEnrichmentJob(supabaseAdmin: SupabaseAdmin) {
   const nowIso = new Date().toISOString();
   const { data: job } = await supabaseAdmin
     .from('lead_enrichment_jobs')
-    .select('*')
+    .select('id, lead_id, status, dedupe_key, attempt_count, next_attempt_at, last_error, processed_at, created_at')
     .in('status', ['pending', 'retry'])
     .lte('next_attempt_at', nowIso)
     .order('created_at', { ascending: true })
@@ -32,9 +34,17 @@ export async function processNextLeadEnrichmentJob(supabaseAdmin: SupabaseAdmin)
   if (!job) return null;
 
   try {
-    await supabaseAdmin.from('lead_enrichment_jobs').update({ status: 'processing' }).eq('id', job.id);
+    const processingPatch = { status: 'processing' };
+    const { error: processingError } = await supabaseAdmin
+      .from('lead_enrichment_jobs').update(processingPatch).eq('id', job.id)
+      .select('id');
+    if (processingError) throw new Error(processingError.message || 'Failed to mark enrichment job as processing');
 
-    const { data: lead } = await supabaseAdmin.from('leads').select('*').eq('id', job.lead_id).single();
+    const { data: lead } = await supabaseAdmin
+      .from('leads')
+      .select('id, name, email, phone, source_page')
+      .eq('id', job.lead_id)
+      .single();
     if (!lead) throw new Error('Lead not found for enrichment');
 
     const apiUrl = process.env.LEAD_ENRICHMENT_API_URL;
@@ -59,30 +69,39 @@ export async function processNextLeadEnrichmentJob(supabaseAdmin: SupabaseAdmin)
       enrichmentPayload = (await response.json()) as Record<string, unknown>;
     }
 
-    await supabaseAdmin.from('lead_enrichment_data').insert({
+    const enrichmentDataPayload = {
       lead_id: job.lead_id,
       provider: process.env.LEAD_ENRICHMENT_PROVIDER || 'internal',
       data: enrichmentPayload,
       confidence_score: Number(enrichmentPayload.confidence_score || 0),
-    });
+    };
+    await supabaseAdmin.from('lead_enrichment_data').insert(enrichmentDataPayload).select('id');
 
-    await supabaseAdmin.from('lead_enrichment_jobs').update({
+    const completePatch = {
       status: 'completed',
       processed_at: new Date().toISOString(),
       last_error: null,
-    }).eq('id', job.id);
+    };
+    const { error: completeError } = await supabaseAdmin
+      .from('lead_enrichment_jobs').update(completePatch).eq('id', job.id)
+      .select('id');
+    if (completeError) throw new Error(completeError.message || 'Failed to mark enrichment job as completed');
 
     return job;
   } catch (error) {
     const attempts = Number(job.attempt_count || 0) + 1;
     const terminal = attempts >= 5;
 
-    await supabaseAdmin.from('lead_enrichment_jobs').update({
+    const retryPatch = {
       status: terminal ? 'failed' : 'retry',
       attempt_count: attempts,
       next_attempt_at: new Date(Date.now() + Math.min(60, Math.pow(2, attempts)) * 60000).toISOString(),
       last_error: error instanceof Error ? error.message : 'Lead enrichment failed',
-    }).eq('id', job.id);
+    };
+    const { error: retryError } = await supabaseAdmin
+      .from('lead_enrichment_jobs').update(retryPatch).eq('id', job.id)
+      .select('id');
+    if (retryError) throw new Error(retryError.message || 'Failed to update enrichment retry state');
 
     return null;
   }

@@ -18,6 +18,10 @@ export interface WaitlistInput {
   booking_date?: string;
 }
 
+type WaitlistEntryWithUser = WaitlistEntry & {
+  user: { id: string; first_name: string; last_name: string; email: string } | null;
+};
+
 // Check if user is already on waitlist for an experience
 export function useWaitlistStatus(experienceId: string | undefined, userId: string | undefined) {
   return useQuery({
@@ -26,7 +30,7 @@ export function useWaitlistStatus(experienceId: string | undefined, userId: stri
     queryFn: async () => {
       const { data, error } = await supabase
         .from('waitlist_entries')
-        .select('*')
+        .select('id, user_id, experience_id, time_slot, booking_date, status, created_at')
         .eq('experience_id', experienceId)
         .eq('user_id', userId)
         .in('status', ['waiting', 'notified'])
@@ -46,14 +50,8 @@ export function useJoinWaitlist() {
     mutationFn: async (input: WaitlistInput) => {
       const { data, error } = await supabase
         .from('waitlist_entries')
-        .insert({
-          experience_id: input.experience_id,
-          user_id: input.user_id,
-          time_slot: input.time_slot,
-          booking_date: input.booking_date,
-          status: 'waiting',
-        })
-        .select()
+        .insert({ experience_id: input.experience_id, user_id: input.user_id, time_slot: input.time_slot, booking_date: input.booking_date, status: 'waiting' })
+        .select('id, user_id, experience_id, time_slot, booking_date, status, created_at')
         .single();
 
       if (error) throw error;
@@ -74,7 +72,8 @@ export function useLeaveWaitlist() {
       const { error } = await supabase
         .from('waitlist_entries')
         .update({ status: 'expired' })
-        .eq('id', entryId);
+        .eq('id', entryId)
+        .select('id');
 
       if (error) throw error;
       return { entryId, experienceId, userId };
@@ -93,16 +92,39 @@ export function useExperienceWaitlist(experienceId: string | undefined) {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('waitlist_entries')
-        .select(`
-          *,
-          user:profiles(id, first_name, last_name, email)
-        `)
+        .select('id, user_id, experience_id, time_slot, booking_date, status, created_at')
         .eq('experience_id', experienceId)
         .eq('status', 'waiting')
         .order('created_at', { ascending: true });
 
       if (error) throw error;
-      return data as (WaitlistEntry & { user: { id: string; first_name: string; last_name: string; email: string } })[];
+      const waitlist = (data ?? []) as WaitlistEntry[];
+      const userIds = Array.from(new Set(waitlist.map((entry) => entry.user_id).filter(Boolean)));
+
+      if (userIds.length === 0) {
+        return waitlist.map((entry) => ({ ...entry, user: null })) as WaitlistEntryWithUser[];
+      }
+
+      const { data: profiles, error: profilesError } = await supabase
+        .from('profiles')
+        .select('id, first_name, last_name, email')
+        .in('id', userIds);
+
+      if (profilesError) throw profilesError;
+
+      const profilesById = new Map(
+        (profiles ?? []).map((profile) => [
+          profile.id,
+          {
+            id: profile.id,
+            first_name: profile.first_name ?? '',
+            last_name: profile.last_name ?? '',
+            email: profile.email ?? '',
+          },
+        ])
+      );
+
+      return waitlist.map((entry) => ({ ...entry, user: profilesById.get(entry.user_id) ?? null }));
     },
   });
 }
@@ -117,7 +139,7 @@ export function useNotifyWaitlist() {
         .from('waitlist_entries')
         .update({ status: 'notified', notified_at: new Date().toISOString() })
         .in('id', entryIds)
-        .select();
+        .select('id, user_id, experience_id, status, notified_at, created_at');
 
       if (error) throw error;
       return data;

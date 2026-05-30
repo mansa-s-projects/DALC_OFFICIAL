@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS public.stays_properties (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Stays Availability Table (per-date availability and pricing)
 CREATE TABLE IF NOT EXISTS public.stays_availability (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -82,7 +81,6 @@ CREATE TABLE IF NOT EXISTS public.stays_availability (
   notes TEXT,
   UNIQUE(property_id, date)
 );
-
 -- Stays Bookings Table
 CREATE TABLE IF NOT EXISTS public.stays_bookings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -113,7 +111,6 @@ CREATE TABLE IF NOT EXISTS public.stays_bookings (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_stays_properties_subcategory ON public.stays_properties(subcategory);
 CREATE INDEX IF NOT EXISTS idx_stays_properties_area ON public.stays_properties(area);
@@ -123,33 +120,24 @@ CREATE INDEX IF NOT EXISTS idx_stays_availability_property_date ON public.stays_
 CREATE INDEX IF NOT EXISTS idx_stays_bookings_property ON public.stays_bookings(property_id);
 CREATE INDEX IF NOT EXISTS idx_stays_bookings_user ON public.stays_bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_stays_bookings_dates ON public.stays_bookings(check_in, check_out);
-
 -- RLS Policies
 ALTER TABLE public.stays_properties ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.stays_availability ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.stays_bookings ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Anyone can view published stays" ON public.stays_properties
   FOR SELECT USING (status = 'published');
-
 CREATE POLICY "Admins manage stays" ON public.stays_properties FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'));
-
 CREATE POLICY "Anyone can view availability" ON public.stays_availability
   FOR SELECT USING (true);
-
 CREATE POLICY "Admins manage availability" ON public.stays_availability FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'));
-
 CREATE POLICY "Users view own bookings" ON public.stays_bookings FOR SELECT
   USING (user_id = auth.uid());
-
 CREATE POLICY "Users create bookings" ON public.stays_bookings FOR INSERT
   WITH CHECK (user_id = auth.uid());
-
 CREATE POLICY "Staff manage bookings" ON public.stays_bookings FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role IN ('admin', 'concierge')));
-
 -- Updated at trigger
 CREATE OR REPLACE FUNCTION update_stays_updated_at()
 RETURNS TRIGGER AS $$
@@ -158,12 +146,10 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 DROP TRIGGER IF EXISTS stays_properties_updated_at ON public.stays_properties;
 CREATE TRIGGER stays_properties_updated_at
   BEFORE UPDATE ON public.stays_properties
   FOR EACH ROW EXECUTE FUNCTION update_stays_updated_at();
-
 DROP TRIGGER IF EXISTS stays_bookings_updated_at ON public.stays_bookings;
 CREATE TRIGGER stays_bookings_updated_at
   BEFORE UPDATE ON public.stays_bookings

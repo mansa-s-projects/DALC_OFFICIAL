@@ -11,7 +11,7 @@ export function useNotifications(userId: string | undefined) {
       
       const { data, error } = await supabase
         .from('notifications')
-        .select('*')
+        .select('id, user_id, type, title, message, priority, is_read, action_url, metadata, created_at, read_at')
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
         .limit(50);
@@ -35,9 +35,9 @@ export function useUnreadCount(userId: string | undefined) {
     queryFn: async (): Promise<number> => {
       if (!userId || !supabase) return 0;
       
-      const { count, error } = await supabase
+      const { data, error } = await supabase
         .from('notifications')
-        .select('*', { count: 'exact', head: true })
+        .select('id')
         .eq('user_id', userId)
         .eq('is_read', false);
       
@@ -46,7 +46,7 @@ export function useUnreadCount(userId: string | undefined) {
         return 0;
       }
       
-      return count || 0;
+      return (data ?? []).length;
     },
     enabled: !!userId,
   });
@@ -63,7 +63,7 @@ export function useCreateNotification() {
       const { data, error } = await supabase
         .from('notifications')
         .insert(input)
-        .select()
+        .select('id, user_id, type, title, message, priority, is_read, action_url, metadata, created_at, read_at')
         .single();
       
       if (error) {
@@ -91,7 +91,8 @@ export function useMarkAsRead() {
       const { error } = await supabase
         .from('notifications')
         .update({ is_read: true, read_at: new Date().toISOString() })
-        .eq('id', notificationId);
+        .eq('id', notificationId)
+        .select('id, user_id, is_read, read_at');
       
       if (error) {
         console.error('Error marking notification as read:', error);
@@ -116,10 +117,9 @@ export function useMarkAllAsRead() {
       if (!supabase) return { error: 'No supabase client' };
       
       const { error } = await supabase
-        .from('notifications')
-        .update({ is_read: true, read_at: new Date().toISOString() })
-        .eq('user_id', userId)
-        .eq('is_read', false);
+        .from('notifications').update({ is_read: true, read_at: new Date().toISOString() }).eq('user_id', userId)
+        .eq('is_read', false)
+        .select('id');
       
       if (error) {
         console.error('Error marking all notifications as read:', error);
@@ -146,7 +146,8 @@ export function useDeleteNotification() {
       const { error } = await supabase
         .from('notifications')
         .delete()
-        .eq('id', notificationId);
+        .eq('id', notificationId)
+        .select('id');
       
       if (error) {
         console.error('Error deleting notification:', error);
