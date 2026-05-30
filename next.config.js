@@ -8,17 +8,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
-    return [
-      { source: '/nightlife', destination: '/explore/dubai', permanent: true },
-      { source: '/nightlife/restaurants', destination: '/explore/dubai/restaurants', permanent: true },
-      { source: '/nightlife/beach-clubs', destination: '/explore/dubai/beach-clubs', permanent: true },
-      { source: '/nightlife/clubs', destination: '/explore/dubai/nightlife', permanent: true },
-      { source: '/nightlife/dining', destination: '/explore/dubai/dining-entertainment', permanent: true },
-      { source: '/nightlife/private-events', destination: '/explore/dubai', permanent: true },
-      { source: '/nightlife/:path*', destination: '/explore/dubai/:path*', permanent: true },
-    ];
-  },
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),

@@ -40,7 +40,10 @@ export function useRequests(userId?: string) {
     queryKey: ['requests', userId ?? 'all'],
     enabled: Boolean(userId),
     queryFn: async () => {
-      let query = supabase.from('requests').select('*').order('created_at', { ascending: false });
+      let query = supabase
+        .from('requests')
+        .select('id, user_id, venue_id, venue_name, category, request_type, date_time, party_size, status, priority_score, assigned_to, contact_name, contact_info, notes, internal_notes, supplier_response, confirmed_at, completed_at, created_at, updated_at, service_id, category_id, subcategory_id, booking_id, intent_id, priority')
+        .order('created_at', { ascending: false });
       if (userId) {
         query = query.eq('user_id', userId);
       }
@@ -52,20 +55,22 @@ export function useRequests(userId?: string) {
 
   const createMutation = useMutation({
     mutationFn: async (payload: CreateRequestInput) => {
-      const { data, error } = await supabase
-        .from('requests')
-        .insert({
+      const response = await fetch('/api/requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           ...payload,
-          request_type: payload.request_type ?? 'booking',
           user_id: userId,
-          status: 'submitted',
-          priority_score: 0,
-        })
-        .select('*')
-        .single();
+        }),
+      });
 
-      if (error) throw error;
-      return data as Request;
+      const body = await response.json();
+
+      if (!response.ok || !body?.success || !body?.request) {
+        throw new Error(body?.error ?? 'Failed to create request');
+      }
+
+      return body.request as Request;
     },
     onMutate: async (payload: CreateRequestInput): Promise<MutationContext> => {
       const cacheKey = ['requests', userId ?? 'all'];
@@ -94,23 +99,6 @@ export function useRequests(userId?: string) {
         queryClient.setQueryData(context.cacheKey, context.previous);
       }
     },
-    onSuccess: async (created: Request) => {
-      try {
-        const { error } = await supabase.from('request_status_log').insert({
-          request_id: created.id,
-          old_status: null,
-          new_status: 'submitted',
-          changed_by: userId ?? null,
-          notes: null,
-        });
-
-        if (error) {
-          console.error('Failed to insert into request_status_log:', error);
-        }
-      } catch (error) {
-        console.error('Failed to insert into request_status_log:', error);
-      }
-    },
     onSettled: (_data: Request | undefined, _error: unknown, _payload: CreateRequestInput, context: MutationContext | undefined) => {
       if (context?.cacheKey) {
         queryClient.invalidateQueries({ queryKey: context.cacheKey });
@@ -120,7 +108,12 @@ export function useRequests(userId?: string) {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, updates }: { id: string; updates: Partial<Request> }) => {
-      const { data, error } = await supabase.from('requests').update(updates).eq('id', id).select('*').single();
+      const { data, error } = await supabase
+        .from('requests')
+        .update(updates)
+        .eq('id', id)
+        .select('id, user_id, venue_id, venue_name, category, request_type, date_time, party_size, status, priority_score, assigned_to, contact_name, contact_info, notes, internal_notes, supplier_response, confirmed_at, completed_at, created_at, updated_at, service_id, category_id, subcategory_id, booking_id, intent_id, priority')
+        .single();
       if (error) throw error;
       return data as Request;
     },
@@ -131,7 +124,7 @@ export function useRequests(userId?: string) {
 
   const removeMutation = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase.from('requests').delete().eq('id', id);
+      const { error } = await supabase.from('requests').delete().eq('id', id).select('id');
       if (error) throw error;
       return id;
     },
@@ -160,7 +153,7 @@ export function useRequestDetail(requestId?: string, userId?: string) {
 
       let requestQuery = supabase
         .from('requests')
-        .select('*')
+        .select('id, user_id, venue_id, venue_name, category, request_type, date_time, party_size, status, priority_score, assigned_to, contact_name, contact_info, notes, internal_notes, supplier_response, confirmed_at, completed_at, created_at, updated_at, service_id, category_id, subcategory_id, booking_id, intent_id, priority')
         .eq('id', requestId);
 
       if (userId) {
@@ -171,7 +164,7 @@ export function useRequestDetail(requestId?: string, userId?: string) {
         requestQuery.single(),
         supabase
           .from('request_status_log')
-          .select('*')
+          .select('id, request_id, old_status, new_status, changed_by, notes, created_at')
           .eq('request_id', requestId)
           .order('created_at', { ascending: true }),
       ]);
@@ -195,7 +188,7 @@ export function useAllRequests(enabled = true) {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('requests')
-        .select('*')
+        .select('id, user_id, venue_id, venue_name, category, request_type, date_time, party_size, status, priority_score, assigned_to, contact_name, contact_info, notes, internal_notes, supplier_response, confirmed_at, completed_at, created_at, updated_at, service_id, category_id, subcategory_id, booking_id, intent_id, priority')
         .order('created_at', { ascending: false });
       if (error) throw error;
       return (data ?? []) as Request[];

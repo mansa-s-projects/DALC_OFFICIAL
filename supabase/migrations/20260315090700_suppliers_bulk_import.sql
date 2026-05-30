@@ -5,7 +5,6 @@
 -- Case-insensitive unique index so ilike-based upserts are deterministic
 CREATE UNIQUE INDEX IF NOT EXISTS idx_suppliers_name_ci
   ON suppliers (LOWER(name));
-
 -- Optional helper function: upsert a single supplier row by name.
 -- The platform layer uses this via .ilike() + branching, but keeping a
 -- DB-side function here gives a single-round-trip alternative if needed later.

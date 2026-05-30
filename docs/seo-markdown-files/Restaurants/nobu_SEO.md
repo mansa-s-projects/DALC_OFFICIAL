@@ -1,0 +1,16 @@
+# SEO Strategy: Nobu
+## Location: Atlantis The Palm
+## Category: Japanese
+
+### 💎 The Secret Menu Hook
+(Drafting high-luxury editorial content for Nobu in Atlantis The Palm...)
+
+### 📍 Local Authority & Mapping
+- Primary Keyword: Nobu Dubai
+- Secondary Keyword: Atlantis The Palm luxury dining
+- WhatsApp Lead Gen: Syncing...
+
+### 🖼️ Asset Status
+- Hero Image: Linked
+- Menu Image: Pending Scrape
+- Location Map: Initializing...

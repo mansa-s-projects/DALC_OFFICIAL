@@ -69,7 +69,7 @@ async function writeLeadHistory(
   }
 ) {
   if (!payload.idempotencyKey) {
-    await supabaseAdmin.from('lead_history').insert({
+    const historyInsertPayload = {
       lead_id: payload.leadId,
       action_type: payload.actionType,
       actor_id: payload.actorId || null,
@@ -77,25 +77,25 @@ async function writeLeadHistory(
       next_data: payload.nextData || null,
       reason: payload.reason || null,
       metadata: payload.metadata || {},
-    });
+    };
+    await supabaseAdmin.from('lead_history').insert(historyInsertPayload).select('id');
     return;
   }
 
+  const historyUpsertPayload = {
+    lead_id: payload.leadId,
+    action_type: payload.actionType,
+    actor_id: payload.actorId || null,
+    previous_data: payload.previousData || null,
+    next_data: payload.nextData || null,
+    reason: payload.reason || null,
+    metadata: payload.metadata || {},
+    idempotency_key: payload.idempotencyKey,
+  };
   await supabaseAdmin
     .from('lead_history')
-    .upsert(
-      {
-        lead_id: payload.leadId,
-        action_type: payload.actionType,
-        actor_id: payload.actorId || null,
-        previous_data: payload.previousData || null,
-        next_data: payload.nextData || null,
-        reason: payload.reason || null,
-        metadata: payload.metadata || {},
-        idempotency_key: payload.idempotencyKey,
-      },
-      { onConflict: 'idempotency_key', ignoreDuplicates: true }
-    );
+    .upsert(historyUpsertPayload, { onConflict: 'idempotency_key', ignoreDuplicates: true })
+    .select('id');
 }
 
 async function updateSlaFlags(supabaseAdmin: SupabaseAdmin, leadId: string) {
@@ -123,7 +123,12 @@ async function updateSlaFlags(supabaseAdmin: SupabaseAdmin, leadId: string) {
     patch.sla_follow_up_breached_at = new Date().toISOString();
   }
 
-  await supabaseAdmin.from('leads').update(patch).eq('id', leadId);
+  const { error: slaError } = await supabaseAdmin
+    .from('leads')
+    .update(patch)
+    .eq('id', leadId)
+    .select('id');
+  if (slaError) throw new Error(slaError.message || 'Failed to update lead SLA flags');
 
   if (hotNoContactBreach || assignedNoFollowUpBreach) {
     await processNotificationEvent(supabaseAdmin, {
@@ -178,29 +183,30 @@ export async function assignLeadOwner(
     ensureTransition('new', 'assigned');
   }
 
+  const ownerPatch = {
+    owner_id: input.ownerId,
+    assigned_to: input.ownerId,
+    assigned_at: now,
+    lead_status: nextStatus,
+    status_updated_at: now,
+  };
   const { data, error } = await context.supabaseAdmin
-    .from('leads')
-    .update({
-      owner_id: input.ownerId,
-      assigned_to: input.ownerId,
-      assigned_at: now,
-      lead_status: nextStatus,
-      status_updated_at: now,
-    })
+    .from('leads').update(ownerPatch)
     .eq('id', input.leadId)
     .select('*')
     .single();
 
   if (error || !data) throw new Error(error?.message || 'Failed to assign owner');
 
-  await context.supabaseAdmin.from('lead_ownership_history').insert({
+  const ownershipHistoryPayload = {
     lead_id: input.leadId,
     previous_owner_id: lead.owner_id || null,
     new_owner_id: input.ownerId,
     changed_by: context.actorId || null,
     reason: context.reason || 'owner_assignment',
     metadata: input.metadata || {},
-  });
+  };
+  await context.supabaseAdmin.from('lead_ownership_history').insert(ownershipHistoryPayload).select('id');
 
   await writeLeadHistory(context.supabaseAdmin, {
     leadId: input.leadId,
@@ -285,8 +291,7 @@ export async function updateLeadStatus(
   }
 
   const { data, error } = await context.supabaseAdmin
-    .from('leads')
-    .update(patch)
+    .from('leads').update(patch)
     .eq('id', input.leadId)
     .select('*')
     .single();
@@ -404,10 +409,12 @@ export async function createFollowUpTask(context: CommandContext, input: FollowU
         .maybeSingle()
     ).data;
 
-  await context.supabaseAdmin
+  const { error: followUpError } = await context.supabaseAdmin
     .from('leads')
     .update({ next_follow_up_at: input.dueAt || null })
-    .eq('id', input.leadId);
+    .eq('id', input.leadId)
+    .select('id');
+  if (followUpError) throw new Error(followUpError.message || 'Failed to update next follow up time');
 
   await writeLeadHistory(context.supabaseAdmin, {
     leadId: input.leadId,
@@ -438,28 +445,32 @@ export async function completeFollowUpTask(
 
   const now = new Date().toISOString();
 
+  const completedTaskPatch = {
+    status: 'completed',
+    completed_at: now,
+    completion_note: input.completionNote || null,
+  };
   const { data, error } = await context.supabaseAdmin
     .from('lead_tasks')
-    .update({
-      status: 'completed',
-      completed_at: now,
-      completion_note: input.completionNote || null,
-    })
+    .update(completedTaskPatch)
     .eq('id', input.taskId)
-    .select('*')
+    .select('id, lead_id, status, completed_at, completion_note')
     .single();
 
   if (error || !data) throw new Error(error?.message || 'Failed to complete task');
 
   const lead = await getLeadById(context.supabaseAdmin, task.lead_id);
 
-  await context.supabaseAdmin
+  const contactPatch = {
+    last_contacted_at: now,
+    follow_up_count: Math.max(0, Number(lead.follow_up_count || 0)) + 1,
+  };
+  const { error: contactError } = await context.supabaseAdmin
     .from('leads')
-    .update({
-      last_contacted_at: now,
-      follow_up_count: Math.max(0, Number(lead.follow_up_count || 0)) + 1,
-    })
-    .eq('id', task.lead_id);
+    .update(contactPatch)
+    .eq('id', task.lead_id)
+    .select('id');
+  if (contactError) throw new Error(contactError.message || 'Failed to update lead contact markers');
 
   await writeLeadHistory(context.supabaseAdmin, {
     leadId: task.lead_id,
@@ -487,8 +498,7 @@ export async function closeLeadAsWon(
   });
 
   const { data, error } = await context.supabaseAdmin
-    .from('leads')
-    .update({ won_value: input.wonValue, closed_at: new Date().toISOString() })
+    .from('leads').update({ won_value: input.wonValue, closed_at: new Date().toISOString() })
     .eq('id', input.leadId)
     .select('*')
     .single();
@@ -520,8 +530,7 @@ export async function closeLeadAsLost(
   });
 
   const { data, error } = await context.supabaseAdmin
-    .from('leads')
-    .update({ lost_reason: input.lostReason, closed_at: new Date().toISOString() })
+    .from('leads').update({ lost_reason: input.lostReason, closed_at: new Date().toISOString() })
     .eq('id', input.leadId)
     .select('*')
     .single();

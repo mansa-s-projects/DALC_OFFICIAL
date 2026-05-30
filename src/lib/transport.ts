@@ -472,38 +472,41 @@ export async function getFeaturedTransport(subcategory?: string): Promise<Transp
 }
 
 export async function createTransportBooking(input: TransportBookingInput): Promise<TransportBooking> {
+  const bookingInsertPayload = {
+    service_id: input.service_id,
+    user_id: input.user_id,
+    pickup_date: input.pickup_date,
+    return_date: input.return_date,
+    pickup_location: input.pickup_location,
+    dropoff_location: input.dropoff_location,
+    duration_hours: input.duration_hours,
+    relocation_profile_id: input.relocation_profile_id,
+    workflow_step_id: input.workflow_step_id,
+    quoted_price: input.quoted_price,
+    currency: 'AED',
+    status: 'pending',
+  };
+
   const { data, error } = await supabase
     .from('transport_bookings')
-    .insert({
-      service_id: input.service_id,
-      user_id: input.user_id,
-      pickup_date: input.pickup_date,
-      return_date: input.return_date,
-      pickup_location: input.pickup_location,
-      dropoff_location: input.dropoff_location,
-      duration_hours: input.duration_hours,
-      relocation_profile_id: input.relocation_profile_id,
-      workflow_step_id: input.workflow_step_id,
-      quoted_price: input.quoted_price,
-      currency: 'AED',
-      status: 'pending',
-    })
-    .select('*, service:transport_services(*)')
+    .insert(bookingInsertPayload)
+    .select('id,request_id,service_id,user_id,pickup_date,return_date,pickup_location,dropoff_location,duration_hours,relocation_profile_id,workflow_step_id,quoted_price,final_price,currency,status,created_at,updated_at,service:transport_services(id,name,slug,subcategory,sub_subcategory,price_from,price_currency,price_display,hero_image,status)')
     .single();
 
   if (error) throw error;
-  return data as TransportBooking;
+  if (!data?.id) throw new Error('Transport booking creation failed: missing booking id');
+  return data as unknown as TransportBooking;
 }
 
 export async function getUserTransportBookings(userId: string): Promise<TransportBooking[]> {
   const { data, error } = await supabase
     .from('transport_bookings')
-    .select('*, service:transport_services(*)')
+    .select('id,request_id,service_id,user_id,pickup_date,return_date,pickup_location,dropoff_location,duration_hours,relocation_profile_id,workflow_step_id,quoted_price,final_price,currency,status,created_at,updated_at,service:transport_services(id,name,slug,subcategory,sub_subcategory,price_from,price_currency,price_display,hero_image,status)')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return (data ?? []) as TransportBooking[];
+  return (data ?? []) as unknown as TransportBooking[];
 }
 
 export async function checkAvailability(
@@ -555,9 +558,7 @@ export async function getAvailableTimeSlots(serviceId: string, date: string): Pr
     .lt('pickup_date', endOfDay.toISOString())
     .or(`return_date.gt.${startOfDay.toISOString()},return_date.is.null`);
 
-  if (error) {
-    return [] as TimeSlot[];
-  }
+  const bookingRows = error ? [] : (bookings ?? []);
 
   const { data: service } = await supabase
     .from('transport_services')
@@ -565,17 +566,20 @@ export async function getAvailableTimeSlots(serviceId: string, date: string): Pr
     .eq('id', serviceId)
     .single();
 
+  const fallbackSubcategory = MOCK_SERVICES.find((s) => s.id === serviceId)?.subcategory;
+  const serviceSubcategory = service?.subcategory ?? fallbackSubcategory;
+
   const slots: TimeSlot[] = [];
   const base = new Date(date);
   let hours: number[] = [];
-  if (service?.subcategory === 'jets') hours = [6, 8, 10, 12, 14, 16, 18];
-  else if (service?.subcategory === 'yachts') hours = [9, 10, 11, 14, 15, 16, 17, 18];
+  if (serviceSubcategory === 'jets') hours = [6, 8, 10, 12, 14, 16, 18];
+  else if (serviceSubcategory === 'yachts') hours = [9, 10, 11, 14, 15, 16, 17, 18];
   else hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
   for (const h of hours) {
     base.setHours(h, 0, 0, 0);
     const slotTime = base.toISOString();
-    const isBooked = bookings?.some(b => {
+    const isBooked = bookingRows.some(b => {
       // Assuming minimum booking is 1 hour for overlap check
       const bStart = new Date(b.pickup_date).getTime();
       const bEnd = b.return_date ? new Date(b.return_date).getTime() : bStart + 60 * 60 * 1000;

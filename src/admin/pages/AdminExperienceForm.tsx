@@ -93,7 +93,7 @@ export default function AdminExperienceForm() {
       });
       setLoading(false);
     })();
-  }, [id, isNew]);
+  }, [id, isNew, setForm, setError, setLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

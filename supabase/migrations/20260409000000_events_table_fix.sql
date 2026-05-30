@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS public.events (
   metadata         jsonb       NOT NULL DEFAULT '{}'::jsonb,
   session_id       text        NOT NULL DEFAULT ''
 );
-
 -- If the table already existed without client_event_id, add it now
 DO $$
 BEGIN
@@ -25,17 +24,14 @@ BEGIN
     ALTER TABLE public.events ADD COLUMN client_event_id text UNIQUE;
   END IF;
 END $$;
-
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_events_created_at      ON public.events(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_events_event_name      ON public.events(event_name);
 CREATE INDEX IF NOT EXISTS idx_events_page            ON public.events(page);
 CREATE INDEX IF NOT EXISTS idx_events_session_id      ON public.events(session_id);
 CREATE INDEX IF NOT EXISTS idx_events_client_event_id ON public.events(client_event_id);
-
 -- RLS (service-role key bypasses this; anon cannot read)
 ALTER TABLE public.events ENABLE ROW LEVEL SECURITY;
-
 -- Allow service role to insert/select freely (policy for anon is intentionally absent)
 DO $$
 BEGIN
@@ -49,7 +45,6 @@ BEGIN
       FOR ALL TO service_role USING (true) WITH CHECK (true)';
   END IF;
 END $$;
-
 -- Ensure leads table also exists (API uses it in the same request path)
 CREATE TABLE IF NOT EXISTS public.leads (
   id             uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -71,10 +66,8 @@ CREATE TABLE IF NOT EXISTS public.leads (
   user_agent     text,
   session_id     text        NOT NULL DEFAULT ''
 );
-
 CREATE INDEX IF NOT EXISTS idx_leads_created_at   ON public.leads(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_leads_source_page  ON public.leads(source_page);
 CREATE INDEX IF NOT EXISTS idx_leads_service_slug ON public.leads(service_slug);
 CREATE INDEX IF NOT EXISTS idx_leads_session_id   ON public.leads(session_id);
-
 ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;

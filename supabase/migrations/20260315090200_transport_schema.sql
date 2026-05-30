@@ -60,7 +60,6 @@ CREATE TABLE IF NOT EXISTS public.transport_services (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Transport Bookings Table
 CREATE TABLE IF NOT EXISTS public.transport_bookings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -89,7 +88,6 @@ CREATE TABLE IF NOT EXISTS public.transport_bookings (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_transport_services_category ON public.transport_services(subcategory);
 CREATE INDEX IF NOT EXISTS idx_transport_services_sub_sub ON public.transport_services(sub_subcategory);
@@ -99,31 +97,24 @@ CREATE INDEX IF NOT EXISTS idx_transport_services_featured ON public.transport_s
 CREATE INDEX IF NOT EXISTS idx_transport_bookings_service ON public.transport_bookings(service_id);
 CREATE INDEX IF NOT EXISTS idx_transport_bookings_user ON public.transport_bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_transport_bookings_request ON public.transport_bookings(request_id);
-
 -- RLS Policies
 ALTER TABLE public.transport_services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.transport_bookings ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Anyone can view published transport services"
   ON public.transport_services FOR SELECT
   USING (status = 'published');
-
 CREATE POLICY "Admins manage transport services"
   ON public.transport_services FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'));
-
 CREATE POLICY "Users view own transport bookings"
   ON public.transport_bookings FOR SELECT
   USING (user_id = auth.uid());
-
 CREATE POLICY "Users create transport bookings"
   ON public.transport_bookings FOR INSERT
   WITH CHECK (user_id = auth.uid());
-
 CREATE POLICY "Staff manage transport bookings"
   ON public.transport_bookings FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role IN ('admin', 'concierge')));
-
 -- Updated at trigger
 CREATE OR REPLACE FUNCTION update_transport_updated_at()
 RETURNS TRIGGER AS $$
@@ -132,12 +123,10 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 DROP TRIGGER IF EXISTS transport_services_updated_at ON public.transport_services;
 CREATE TRIGGER transport_services_updated_at
   BEFORE UPDATE ON public.transport_services
   FOR EACH ROW EXECUTE FUNCTION update_transport_updated_at();
-
 DROP TRIGGER IF EXISTS transport_bookings_updated_at ON public.transport_bookings;
 CREATE TRIGGER transport_bookings_updated_at
   BEFORE UPDATE ON public.transport_bookings

@@ -1,5 +1,6 @@
 import RequestPage from '@/features/concierge/pages/RequestPage';
 import { buildPageMetadata } from '@/lib/metadata';
+import { Suspense } from 'react';
 
 export const metadata = buildPageMetadata({
   title: 'Request Concierge Support | Dubai À La Carte',
@@ -9,5 +10,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function RequestRoute() {
-  return <RequestPage />;
+  return (
+    <Suspense fallback={<p className="px-4 py-32 text-center text-white/70">Loading...</p>}>
+      <RequestPage />
+    </Suspense>
+  );
 }

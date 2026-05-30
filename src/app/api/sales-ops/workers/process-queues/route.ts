@@ -14,9 +14,9 @@ function isAuthorized(request: NextRequest) {
 
 async function collectQueueStats(supabaseAdmin: any, table: string) {
   const [{ count: pendingCount }, { count: processingCount }, { count: failedCount }] = await Promise.all([
-    supabaseAdmin.from(table).select('*', { count: 'exact', head: true }).in('status', ['pending', 'retry']),
-    supabaseAdmin.from(table).select('*', { count: 'exact', head: true }).eq('status', 'processing'),
-    supabaseAdmin.from(table).select('*', { count: 'exact', head: true }).eq('status', 'failed'),
+    supabaseAdmin.from(table).select('id', { count: 'exact', head: true }).in('status', ['pending', 'retry']),
+    supabaseAdmin.from(table).select('id', { count: 'exact', head: true }).eq('status', 'processing'),
+    supabaseAdmin.from(table).select('id', { count: 'exact', head: true }).eq('status', 'failed'),
   ]);
 
   const { data: oldestPending } = await supabaseAdmin

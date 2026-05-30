@@ -243,7 +243,6 @@ ON CONFLICT (id) DO UPDATE SET
   latitude = EXCLUDED.latitude,
   longitude = EXCLUDED.longitude,
   updated_at = now();
-
 -- ─── VENUES AS EXPLORE LOCATIONS ──────────────────────────────────────────────
 
 INSERT INTO public.explore_locations (

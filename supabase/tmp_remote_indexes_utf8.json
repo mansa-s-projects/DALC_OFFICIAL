@@ -1,0 +1,1548 @@
+﻿[
+  {
+    "indexdef": "CREATE UNIQUE INDEX activities_pkey ON public.activities USING btree (id)",
+    "indexname": "activities_pkey",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activities_slug_key ON public.activities USING btree (slug)",
+    "indexname": "activities_slug_key",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_area ON public.activities USING btree (area)",
+    "indexname": "idx_activities_area",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_category ON public.activities USING btree (category_id)",
+    "indexname": "idx_activities_category",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_featured ON public.activities USING btree (is_featured) WHERE (is_featured = true)",
+    "indexname": "idx_activities_featured",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_service_type ON public.activities USING btree (service_type)",
+    "indexname": "idx_activities_service_type",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_slug ON public.activities USING btree (slug)",
+    "indexname": "idx_activities_slug",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_status ON public.activities USING btree (status)",
+    "indexname": "idx_activities_status",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_trending ON public.activities USING btree (trending_score DESC)",
+    "indexname": "idx_activities_trending",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_vendor ON public.activities USING btree (vendor_id)",
+    "indexname": "idx_activities_vendor",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activities_vibe_tags ON public.activities USING gin (vibe_tags)",
+    "indexname": "idx_activities_vibe_tags",
+    "tablename": "activities"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_availability_pkey ON public.activity_availability USING btree (id)",
+    "indexname": "activity_availability_pkey",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_avail_active ON public.activity_availability USING btree (is_active)",
+    "indexname": "idx_activity_avail_active",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_avail_activity ON public.activity_availability USING btree (activity_id)",
+    "indexname": "idx_activity_avail_activity",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_avail_date ON public.activity_availability USING btree (activity_id, specific_date)",
+    "indexname": "idx_activity_avail_date",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_avail_day ON public.activity_availability USING btree (activity_id, day_of_week)",
+    "indexname": "idx_activity_avail_day",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_avail_season ON public.activity_availability USING btree (valid_from, valid_until)",
+    "indexname": "idx_activity_avail_season",
+    "tablename": "activity_availability"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_bookings_pkey ON public.activity_bookings USING btree (id)",
+    "indexname": "activity_bookings_pkey",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_bookings_ticket_code_key ON public.activity_bookings USING btree (ticket_code)",
+    "indexname": "activity_bookings_ticket_code_key",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_activity ON public.activity_bookings USING btree (activity_id)",
+    "indexname": "idx_activity_bookings_activity",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_capacity ON public.activity_bookings USING btree (activity_id, booking_date, status)",
+    "indexname": "idx_activity_bookings_capacity",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_created ON public.activity_bookings USING btree (created_at DESC)",
+    "indexname": "idx_activity_bookings_created",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_date ON public.activity_bookings USING btree (booking_date)",
+    "indexname": "idx_activity_bookings_date",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_payment ON public.activity_bookings USING btree (payment_status)",
+    "indexname": "idx_activity_bookings_payment",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_status ON public.activity_bookings USING btree (status)",
+    "indexname": "idx_activity_bookings_status",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_activity_bookings_ticket ON public.activity_bookings USING btree (ticket_code)",
+    "indexname": "idx_activity_bookings_ticket",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_bookings_user ON public.activity_bookings USING btree (user_id)",
+    "indexname": "idx_activity_bookings_user",
+    "tablename": "activity_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_categories_pkey ON public.activity_categories USING btree (id)",
+    "indexname": "activity_categories_pkey",
+    "tablename": "activity_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_categories_slug_key ON public.activity_categories USING btree (slug)",
+    "indexname": "activity_categories_slug_key",
+    "tablename": "activity_categories"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_categories_active ON public.activity_categories USING btree (is_active)",
+    "indexname": "idx_activity_categories_active",
+    "tablename": "activity_categories"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_categories_parent ON public.activity_categories USING btree (parent_id)",
+    "indexname": "idx_activity_categories_parent",
+    "tablename": "activity_categories"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_categories_sort ON public.activity_categories USING btree (sort_order)",
+    "indexname": "idx_activity_categories_sort",
+    "tablename": "activity_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_images_pkey ON public.activity_images USING btree (id)",
+    "indexname": "activity_images_pkey",
+    "tablename": "activity_images"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_images_activity ON public.activity_images USING btree (activity_id)",
+    "indexname": "idx_activity_images_activity",
+    "tablename": "activity_images"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_images_sort ON public.activity_images USING btree (activity_id, sort_order)",
+    "indexname": "idx_activity_images_sort",
+    "tablename": "activity_images"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_images_type ON public.activity_images USING btree (activity_id, type)",
+    "indexname": "idx_activity_images_type",
+    "tablename": "activity_images"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX activity_pricing_pkey ON public.activity_pricing USING btree (id)",
+    "indexname": "activity_pricing_pkey",
+    "tablename": "activity_pricing"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_pricing_active ON public.activity_pricing USING btree (activity_id, is_active)",
+    "indexname": "idx_activity_pricing_active",
+    "tablename": "activity_pricing"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_pricing_activity ON public.activity_pricing USING btree (activity_id)",
+    "indexname": "idx_activity_pricing_activity",
+    "tablename": "activity_pricing"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_activity_pricing_sort ON public.activity_pricing USING btree (activity_id, sort_order)",
+    "indexname": "idx_activity_pricing_sort",
+    "tablename": "activity_pricing"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX agent_capacity_config_owner_id_key ON public.agent_capacity_config USING btree (owner_id)",
+    "indexname": "agent_capacity_config_owner_id_key",
+    "tablename": "agent_capacity_config"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX agent_capacity_config_pkey ON public.agent_capacity_config USING btree (id)",
+    "indexname": "agent_capacity_config_pkey",
+    "tablename": "agent_capacity_config"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX agent_orchestration_pkey ON public.agent_orchestration USING btree (id)",
+    "indexname": "agent_orchestration_pkey",
+    "tablename": "agent_orchestration"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX api_failure_logs_pkey ON public.api_failure_logs USING btree (id)",
+    "indexname": "api_failure_logs_pkey",
+    "tablename": "api_failure_logs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX autopilot_adjustment_log_pkey ON public.autopilot_adjustment_log USING btree (id)",
+    "indexname": "autopilot_adjustment_log_pkey",
+    "tablename": "autopilot_adjustment_log"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_adjustment_log_created ON public.autopilot_adjustment_log USING btree (created_at DESC)",
+    "indexname": "idx_adjustment_log_created",
+    "tablename": "autopilot_adjustment_log"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX booking_requests_pkey ON public.booking_requests USING btree (id)",
+    "indexname": "booking_requests_pkey",
+    "tablename": "booking_requests"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX bookings_booking_id_key ON public.bookings USING btree (booking_id)",
+    "indexname": "bookings_booking_id_key",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX bookings_pkey ON public.bookings USING btree (id)",
+    "indexname": "bookings_pkey",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_bookings_booking_id ON public.bookings USING btree (booking_id)",
+    "indexname": "idx_bookings_booking_id",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_bookings_request_id ON public.bookings USING btree (request_id)",
+    "indexname": "idx_bookings_request_id",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_bookings_status ON public.bookings USING btree (status)",
+    "indexname": "idx_bookings_status",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_bookings_user_id ON public.bookings USING btree (user_id)",
+    "indexname": "idx_bookings_user_id",
+    "tablename": "bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX business_bookings_pkey ON public.business_bookings USING btree (id)",
+    "indexname": "business_bookings_pkey",
+    "tablename": "business_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_biz_bookings_user ON public.business_bookings USING btree (user_id)",
+    "indexname": "idx_biz_bookings_user",
+    "tablename": "business_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX business_consultations_pkey ON public.business_consultations USING btree (id)",
+    "indexname": "business_consultations_pkey",
+    "tablename": "business_consultations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_biz_consultations_user ON public.business_consultations USING btree (user_id)",
+    "indexname": "idx_biz_consultations_user",
+    "tablename": "business_consultations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX business_services_pkey ON public.business_services USING btree (id)",
+    "indexname": "business_services_pkey",
+    "tablename": "business_services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX business_services_slug_key ON public.business_services USING btree (slug)",
+    "indexname": "business_services_slug_key",
+    "tablename": "business_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_biz_services_slug ON public.business_services USING btree (slug)",
+    "indexname": "idx_biz_services_slug",
+    "tablename": "business_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_biz_services_status ON public.business_services USING btree (status)",
+    "indexname": "idx_biz_services_status",
+    "tablename": "business_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_biz_services_subcategory ON public.business_services USING btree (subcategory)",
+    "indexname": "idx_biz_services_subcategory",
+    "tablename": "business_services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX categories_name_key ON public.categories USING btree (name)",
+    "indexname": "categories_name_key",
+    "tablename": "categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX categories_pkey ON public.categories USING btree (id)",
+    "indexname": "categories_pkey",
+    "tablename": "categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX categories_slug_key ON public.categories USING btree (slug)",
+    "indexname": "categories_slug_key",
+    "tablename": "categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX categories_slug_key_idx ON public.categories USING btree (slug)",
+    "indexname": "categories_slug_key_idx",
+    "tablename": "categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX concierge_requests_pkey ON public.concierge_requests USING btree (id)",
+    "indexname": "concierge_requests_pkey",
+    "tablename": "concierge_requests"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX conversations_pkey ON public.conversations USING btree (id)",
+    "indexname": "conversations_pkey",
+    "tablename": "conversations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_conversations_author_id ON public.conversations USING btree (author_id)",
+    "indexname": "idx_conversations_author_id",
+    "tablename": "conversations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_conversations_created_at ON public.conversations USING btree (created_at)",
+    "indexname": "idx_conversations_created_at",
+    "tablename": "conversations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_conversations_request_id ON public.conversations USING btree (request_id)",
+    "indexname": "idx_conversations_request_id",
+    "tablename": "conversations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX crm_sync_jobs_pkey ON public.crm_sync_jobs USING btree (id)",
+    "indexname": "crm_sync_jobs_pkey",
+    "tablename": "crm_sync_jobs"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_crm_sync_jobs_status_attempt ON public.crm_sync_jobs USING btree (status, next_attempt_at, created_at)",
+    "indexname": "idx_crm_sync_jobs_status_attempt",
+    "tablename": "crm_sync_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_crm_sync_jobs_dedupe ON public.crm_sync_jobs USING btree (dedupe_key)",
+    "indexname": "ux_crm_sync_jobs_dedupe",
+    "tablename": "crm_sync_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX crm_sync_logs_pkey ON public.crm_sync_logs USING btree (id)",
+    "indexname": "crm_sync_logs_pkey",
+    "tablename": "crm_sync_logs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX districts_pkey ON public.districts USING btree (id)",
+    "indexname": "districts_pkey",
+    "tablename": "districts"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX emirates_name_key ON public.emirates USING btree (name)",
+    "indexname": "emirates_name_key",
+    "tablename": "emirates"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX emirates_pkey ON public.emirates USING btree (id)",
+    "indexname": "emirates_pkey",
+    "tablename": "emirates"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX emirates_slug_key ON public.emirates USING btree (slug)",
+    "indexname": "emirates_slug_key",
+    "tablename": "emirates"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX events_pkey ON public.events USING btree (id)",
+    "indexname": "events_pkey",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_events_client_event_id ON public.events USING btree (client_event_id)",
+    "indexname": "idx_events_client_event_id",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_events_created_at ON public.events USING btree (created_at DESC)",
+    "indexname": "idx_events_created_at",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_events_event_name ON public.events USING btree (event_name)",
+    "indexname": "idx_events_event_name",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_events_page ON public.events USING btree (page)",
+    "indexname": "idx_events_page",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_events_session_id ON public.events USING btree (session_id)",
+    "indexname": "idx_events_session_id",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_events_client_event_id ON public.events USING btree (client_event_id) WHERE (client_event_id IS NOT NULL)",
+    "indexname": "ux_events_client_event_id",
+    "tablename": "events"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experience_bookings_pkey ON public.experience_bookings USING btree (id)",
+    "indexname": "experience_bookings_pkey",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experience_bookings_ticket_code_key ON public.experience_bookings USING btree (ticket_code)",
+    "indexname": "experience_bookings_ticket_code_key",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_exp_bookings_date ON public.experience_bookings USING btree (booking_date)",
+    "indexname": "idx_exp_bookings_date",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_exp_bookings_service ON public.experience_bookings USING btree (service_id)",
+    "indexname": "idx_exp_bookings_service",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_exp_bookings_ticket ON public.experience_bookings USING btree (ticket_code)",
+    "indexname": "idx_exp_bookings_ticket",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_exp_bookings_user ON public.experience_bookings USING btree (user_id)",
+    "indexname": "idx_exp_bookings_user",
+    "tablename": "experience_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experience_services_pkey ON public.experience_services USING btree (id)",
+    "indexname": "experience_services_pkey",
+    "tablename": "experience_services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experience_services_slug_key ON public.experience_services USING btree (slug)",
+    "indexname": "experience_services_slug_key",
+    "tablename": "experience_services"
+  },
+  {
+    "indexdef": "CREATE INDEX experiences_category_id_idx ON public.experiences USING btree (category_id)",
+    "indexname": "experiences_category_id_idx",
+    "tablename": "experiences"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiences_pkey ON public.experiences USING btree (id)",
+    "indexname": "experiences_pkey",
+    "tablename": "experiences"
+  },
+  {
+    "indexdef": "CREATE INDEX experiences_subcategory_id_idx ON public.experiences USING btree (subcategory_id)",
+    "indexname": "experiences_subcategory_id_idx",
+    "tablename": "experiences"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_experiences_service_id ON public.experiences USING btree (service_id)",
+    "indexname": "idx_experiences_service_id",
+    "tablename": "experiences"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_experiences_venue_id ON public.experiences USING btree (venue_id)",
+    "indexname": "idx_experiences_venue_id",
+    "tablename": "experiences"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiment_assignments_dedupe_key_key ON public.experiment_assignments USING btree (dedupe_key)",
+    "indexname": "experiment_assignments_dedupe_key_key",
+    "tablename": "experiment_assignments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiment_assignments_pkey ON public.experiment_assignments USING btree (id)",
+    "indexname": "experiment_assignments_pkey",
+    "tablename": "experiment_assignments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiment_events_pkey ON public.experiment_events USING btree (id)",
+    "indexname": "experiment_events_pkey",
+    "tablename": "experiment_events"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiments_experiment_key_key ON public.experiments USING btree (experiment_key)",
+    "indexname": "experiments_experiment_key_key",
+    "tablename": "experiments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX experiments_pkey ON public.experiments USING btree (id)",
+    "indexname": "experiments_pkey",
+    "tablename": "experiments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX explore_categories_name_key ON public.explore_categories USING btree (name)",
+    "indexname": "explore_categories_name_key",
+    "tablename": "explore_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX explore_categories_pkey ON public.explore_categories USING btree (id)",
+    "indexname": "explore_categories_pkey",
+    "tablename": "explore_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX explore_categories_slug_key ON public.explore_categories USING btree (slug)",
+    "indexname": "explore_categories_slug_key",
+    "tablename": "explore_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX explore_locations_pkey ON public.explore_locations USING btree (id)",
+    "indexname": "explore_locations_pkey",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_explore_locations_category ON public.explore_locations USING btree (category)",
+    "indexname": "idx_explore_locations_category",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_explore_locations_coords ON public.explore_locations USING btree (latitude, longitude)",
+    "indexname": "idx_explore_locations_coords",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_explore_locations_emirate ON public.explore_locations USING btree (emirate)",
+    "indexname": "idx_explore_locations_emirate",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_explore_locations_featured ON public.explore_locations USING btree (is_featured)",
+    "indexname": "idx_explore_locations_featured",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_explore_locations_hidden_gem ON public.explore_locations USING btree (is_hidden_gem)",
+    "indexname": "idx_explore_locations_hidden_gem",
+    "tablename": "explore_locations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX founder_overrides_override_key_key ON public.founder_overrides USING btree (override_key)",
+    "indexname": "founder_overrides_override_key_key",
+    "tablename": "founder_overrides"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX founder_overrides_pkey ON public.founder_overrides USING btree (id)",
+    "indexname": "founder_overrides_pkey",
+    "tablename": "founder_overrides"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_intents_created_at ON public.intents USING btree (created_at DESC)",
+    "indexname": "idx_intents_created_at",
+    "tablename": "intents"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_intents_intent_type ON public.intents USING btree (intent_type)",
+    "indexname": "idx_intents_intent_type",
+    "tablename": "intents"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_intents_user_id ON public.intents USING btree (user_id)",
+    "indexname": "idx_intents_user_id",
+    "tablename": "intents"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX intents_pkey ON public.intents USING btree (id)",
+    "indexname": "intents_pkey",
+    "tablename": "intents"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_lead_automations_lead_id ON public.lead_automations USING btree (lead_id, executed_at DESC)",
+    "indexname": "idx_lead_automations_lead_id",
+    "tablename": "lead_automations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_automations_pkey ON public.lead_automations USING btree (id)",
+    "indexname": "lead_automations_pkey",
+    "tablename": "lead_automations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_lead_automations_dedupe ON public.lead_automations USING btree (lead_id, trigger_key, action_name)",
+    "indexname": "ux_lead_automations_dedupe",
+    "tablename": "lead_automations"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_enrichment_data_pkey ON public.lead_enrichment_data USING btree (id)",
+    "indexname": "lead_enrichment_data_pkey",
+    "tablename": "lead_enrichment_data"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_lead_enrichment_jobs_status_attempt ON public.lead_enrichment_jobs USING btree (status, next_attempt_at, created_at)",
+    "indexname": "idx_lead_enrichment_jobs_status_attempt",
+    "tablename": "lead_enrichment_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_enrichment_jobs_pkey ON public.lead_enrichment_jobs USING btree (id)",
+    "indexname": "lead_enrichment_jobs_pkey",
+    "tablename": "lead_enrichment_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_lead_enrichment_jobs_dedupe ON public.lead_enrichment_jobs USING btree (dedupe_key)",
+    "indexname": "ux_lead_enrichment_jobs_dedupe",
+    "tablename": "lead_enrichment_jobs"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_history_dashboard_created ON public.lead_history USING btree (created_at DESC, action_type)",
+    "indexname": "idx_history_dashboard_created",
+    "tablename": "lead_history"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_lead_history_lead_created ON public.lead_history USING btree (lead_id, created_at DESC)",
+    "indexname": "idx_lead_history_lead_created",
+    "tablename": "lead_history"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_history_pkey ON public.lead_history USING btree (id)",
+    "indexname": "lead_history_pkey",
+    "tablename": "lead_history"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_lead_history_idempotency_key ON public.lead_history USING btree (idempotency_key) WHERE (idempotency_key IS NOT NULL)",
+    "indexname": "ux_lead_history_idempotency_key",
+    "tablename": "lead_history"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_ownership_history_lead_created ON public.lead_ownership_history USING btree (lead_id, created_at DESC)",
+    "indexname": "idx_ownership_history_lead_created",
+    "tablename": "lead_ownership_history"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_ownership_history_pkey ON public.lead_ownership_history USING btree (id)",
+    "indexname": "lead_ownership_history_pkey",
+    "tablename": "lead_ownership_history"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_playbook_steps_pkey ON public.lead_playbook_steps USING btree (id)",
+    "indexname": "lead_playbook_steps_pkey",
+    "tablename": "lead_playbook_steps"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_playbook_steps_playbook_key_step_order_key ON public.lead_playbook_steps USING btree (playbook_key, step_order)",
+    "indexname": "lead_playbook_steps_playbook_key_step_order_key",
+    "tablename": "lead_playbook_steps"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_playbooks_pkey ON public.lead_playbooks USING btree (id)",
+    "indexname": "lead_playbooks_pkey",
+    "tablename": "lead_playbooks"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_playbooks_playbook_key_key ON public.lead_playbooks USING btree (playbook_key)",
+    "indexname": "lead_playbooks_playbook_key_key",
+    "tablename": "lead_playbooks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_lead_tasks_owner_status_due ON public.lead_tasks USING btree (owner_id, status, due_at)",
+    "indexname": "idx_lead_tasks_owner_status_due",
+    "tablename": "lead_tasks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_tasks_dashboard_due ON public.lead_tasks USING btree (status, due_at, priority)",
+    "indexname": "idx_tasks_dashboard_due",
+    "tablename": "lead_tasks"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX lead_tasks_pkey ON public.lead_tasks USING btree (id)",
+    "indexname": "lead_tasks_pkey",
+    "tablename": "lead_tasks"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_lead_tasks_idempotency_key ON public.lead_tasks USING btree (idempotency_key) WHERE (idempotency_key IS NOT NULL)",
+    "indexname": "ux_lead_tasks_idempotency_key",
+    "tablename": "lead_tasks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_created_at ON public.leads USING btree (created_at DESC)",
+    "indexname": "idx_leads_created_at",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_dashboard_closed ON public.leads USING btree (closed_at DESC, lead_status)",
+    "indexname": "idx_leads_dashboard_closed",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_dashboard_followup ON public.leads USING btree (next_follow_up_at, lead_status)",
+    "indexname": "idx_leads_dashboard_followup",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_dashboard_hot ON public.leads USING btree (lead_temperature, lead_score DESC, status_updated_at DESC)",
+    "indexname": "idx_leads_dashboard_hot",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_dashboard_status_owner ON public.leads USING btree (lead_status, owner_id, created_at DESC)",
+    "indexname": "idx_leads_dashboard_status_owner",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_follow_up_due ON public.leads USING btree (next_follow_up_at) WHERE (lead_status \u003c\u003e ALL (ARRAY['won'::text, 'lost'::text]))",
+    "indexname": "idx_leads_follow_up_due",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_owner_status ON public.leads USING btree (owner_id, lead_status, priority, created_at DESC)",
+    "indexname": "idx_leads_owner_status",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_service_slug ON public.leads USING btree (service_slug)",
+    "indexname": "idx_leads_service_slug",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_session_id ON public.leads USING btree (session_id)",
+    "indexname": "idx_leads_session_id",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_source_page ON public.leads USING btree (source_page)",
+    "indexname": "idx_leads_source_page",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_leads_temperature_priority ON public.leads USING btree (lead_temperature, priority, created_at DESC)",
+    "indexname": "idx_leads_temperature_priority",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX leads_pkey ON public.leads USING btree (id)",
+    "indexname": "leads_pkey",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_leads_idempotency_key ON public.leads USING btree (idempotency_key) WHERE (idempotency_key IS NOT NULL)",
+    "indexname": "ux_leads_idempotency_key",
+    "tablename": "leads"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_feedback_audit_created ON public.model_feedback_audit USING btree (created_at DESC)",
+    "indexname": "idx_feedback_audit_created",
+    "tablename": "model_feedback_audit"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX model_feedback_audit_pkey ON public.model_feedback_audit USING btree (id)",
+    "indexname": "model_feedback_audit_pkey",
+    "tablename": "model_feedback_audit"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_mv_report_funnel_conversion_key ON public.mv_report_funnel_conversion USING btree (source_page, service_slug)",
+    "indexname": "idx_mv_report_funnel_conversion_key",
+    "tablename": "mv_report_funnel_conversion"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_mv_report_quality_key ON public.mv_report_lead_quality_by_source USING btree (source_page)",
+    "indexname": "idx_mv_report_quality_key",
+    "tablename": "mv_report_lead_quality_by_source"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_mv_report_sales_performance_key ON public.mv_report_sales_performance USING btree (owner_id)",
+    "indexname": "idx_mv_report_sales_performance_key",
+    "tablename": "mv_report_sales_performance"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_mv_report_source_roi_key ON public.mv_report_source_roi USING btree (source_page)",
+    "indexname": "idx_mv_report_source_roi_key",
+    "tablename": "mv_report_source_roi"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_mv_report_time_to_close_key ON public.mv_report_time_to_close USING btree (owner_id)",
+    "indexname": "idx_mv_report_time_to_close_key",
+    "tablename": "mv_report_time_to_close"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notification_preferences_lookup ON public.notification_preferences USING btree (event_type, owner_id, team_id, channel, enabled)",
+    "indexname": "idx_notification_preferences_lookup",
+    "tablename": "notification_preferences"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX notification_preferences_pkey ON public.notification_preferences USING btree (id)",
+    "indexname": "notification_preferences_pkey",
+    "tablename": "notification_preferences"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_created_at ON public.notifications USING btree (created_at DESC)",
+    "indexname": "idx_notifications_created_at",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_lead_created ON public.notifications USING btree (lead_id, created_at DESC)",
+    "indexname": "idx_notifications_lead_created",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_owner_created ON public.notifications USING btree (owner_id, created_at DESC)",
+    "indexname": "idx_notifications_owner_created",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_status_created ON public.notifications USING btree (status, created_at DESC)",
+    "indexname": "idx_notifications_status_created",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_unread_dashboard ON public.notifications USING btree (channel, read_at, created_at DESC) WHERE (channel = 'internal_dashboard'::text)",
+    "indexname": "idx_notifications_unread_dashboard",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_user_id ON public.notifications USING btree (user_id)",
+    "indexname": "idx_notifications_user_id",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_user_read ON public.notifications USING btree (user_id, is_read)",
+    "indexname": "idx_notifications_user_read",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX notifications_pkey ON public.notifications USING btree (id)",
+    "indexname": "notifications_pkey",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_notifications_dedupe_channel_recipient ON public.notifications USING btree (dedupe_key, channel, recipient) WHERE ((dedupe_key IS NOT NULL) AND (channel IS NOT NULL) AND (recipient IS NOT NULL))",
+    "indexname": "ux_notifications_dedupe_channel_recipient",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_operator_actions_action_type ON public.operator_actions USING btree (action_type)",
+    "indexname": "idx_operator_actions_action_type",
+    "tablename": "operator_actions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_operator_actions_operator_id ON public.operator_actions USING btree (operator_id)",
+    "indexname": "idx_operator_actions_operator_id",
+    "tablename": "operator_actions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_operator_actions_request_id ON public.operator_actions USING btree (request_id)",
+    "indexname": "idx_operator_actions_request_id",
+    "tablename": "operator_actions"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX operator_actions_pkey ON public.operator_actions USING btree (id)",
+    "indexname": "operator_actions_pkey",
+    "tablename": "operator_actions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_partners_category ON public.partners USING btree (category)",
+    "indexname": "idx_partners_category",
+    "tablename": "partners"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_partners_status ON public.partners USING btree (status)",
+    "indexname": "idx_partners_status",
+    "tablename": "partners"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX partners_pkey ON public.partners USING btree (id)",
+    "indexname": "partners_pkey",
+    "tablename": "partners"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_payments_request_id ON public.payments USING btree (request_id)",
+    "indexname": "idx_payments_request_id",
+    "tablename": "payments"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_payments_status ON public.payments USING btree (status)",
+    "indexname": "idx_payments_status",
+    "tablename": "payments"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_payments_stripe_session_id ON public.payments USING btree (stripe_session_id)",
+    "indexname": "idx_payments_stripe_session_id",
+    "tablename": "payments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX payments_pkey ON public.payments USING btree (id)",
+    "indexname": "payments_pkey",
+    "tablename": "payments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX posts_pkey ON public.posts USING btree (id)",
+    "indexname": "posts_pkey",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX posts_slug_key ON public.posts USING btree (slug)",
+    "indexname": "posts_slug_key",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)",
+    "indexname": "profiles_pkey",
+    "tablename": "profiles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX providers_name_key ON public.providers USING btree (name)",
+    "indexname": "providers_name_key",
+    "tablename": "providers"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX providers_pkey ON public.providers USING btree (id)",
+    "indexname": "providers_pkey",
+    "tablename": "providers"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX queue_health_metrics_pkey ON public.queue_health_metrics USING btree (id)",
+    "indexname": "queue_health_metrics_pkey",
+    "tablename": "queue_health_metrics"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_quotes_request_id ON public.quotes USING btree (request_id)",
+    "indexname": "idx_quotes_request_id",
+    "tablename": "quotes"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_quotes_status ON public.quotes USING btree (status)",
+    "indexname": "idx_quotes_status",
+    "tablename": "quotes"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX quotes_pkey ON public.quotes USING btree (id)",
+    "indexname": "quotes_pkey",
+    "tablename": "quotes"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX relocation_cost_estimates_pkey ON public.relocation_cost_estimates USING btree (id)",
+    "indexname": "relocation_cost_estimates_pkey",
+    "tablename": "relocation_cost_estimates"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_reloc_profiles_user ON public.relocation_profiles USING btree (user_id)",
+    "indexname": "idx_reloc_profiles_user",
+    "tablename": "relocation_profiles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX relocation_profiles_pkey ON public.relocation_profiles USING btree (id)",
+    "indexname": "relocation_profiles_pkey",
+    "tablename": "relocation_profiles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX relocation_profiles_user_id_key ON public.relocation_profiles USING btree (user_id)",
+    "indexname": "relocation_profiles_user_id_key",
+    "tablename": "relocation_profiles"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_request_log_request ON public.request_status_log USING btree (request_id)",
+    "indexname": "idx_request_log_request",
+    "tablename": "request_status_log"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX request_status_log_pkey ON public.request_status_log USING btree (id)",
+    "indexname": "request_status_log_pkey",
+    "tablename": "request_status_log"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_created ON public.requests USING btree (created_at DESC)",
+    "indexname": "idx_requests_created",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_intent_id ON public.requests USING btree (intent_id)",
+    "indexname": "idx_requests_intent_id",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_priority ON public.requests USING btree (priority)",
+    "indexname": "idx_requests_priority",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_service_id ON public.requests USING btree (service_id)",
+    "indexname": "idx_requests_service_id",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_status ON public.requests USING btree (status)",
+    "indexname": "idx_requests_status",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_requests_user ON public.requests USING btree (user_id)",
+    "indexname": "idx_requests_user",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX requests_pkey ON public.requests USING btree (id)",
+    "indexname": "requests_pkey",
+    "tablename": "requests"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX role_permissions_pkey ON public.role_permissions USING btree (id)",
+    "indexname": "role_permissions_pkey",
+    "tablename": "role_permissions"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX role_permissions_role_resource_action_key ON public.role_permissions USING btree (role, resource, action)",
+    "indexname": "role_permissions_role_resource_action_key",
+    "tablename": "role_permissions"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX routing_rules_config_pkey ON public.routing_rules_config USING btree (id)",
+    "indexname": "routing_rules_config_pkey",
+    "tablename": "routing_rules_config"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX routing_rules_config_version_rule_key_key ON public.routing_rules_config USING btree (version, rule_key)",
+    "indexname": "routing_rules_config_version_rule_key_key",
+    "tablename": "routing_rules_config"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX scoring_weights_pkey ON public.scoring_weights USING btree (id)",
+    "indexname": "scoring_weights_pkey",
+    "tablename": "scoring_weights"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX scoring_weights_version_event_name_key ON public.scoring_weights USING btree (version, event_name)",
+    "indexname": "scoring_weights_version_event_name_key",
+    "tablename": "scoring_weights"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_services_subcategory_id ON public.services USING btree (subcategory_id)",
+    "indexname": "idx_services_subcategory_id",
+    "tablename": "services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX services_pkey ON public.services USING btree (id)",
+    "indexname": "services_pkey",
+    "tablename": "services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX services_subcategory_id_slug_key ON public.services USING btree (subcategory_id, slug)",
+    "indexname": "services_subcategory_id_slug_key",
+    "tablename": "services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_availability_property_date ON public.stays_availability USING btree (property_id, date)",
+    "indexname": "idx_stays_availability_property_date",
+    "tablename": "stays_availability"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX stays_availability_pkey ON public.stays_availability USING btree (id)",
+    "indexname": "stays_availability_pkey",
+    "tablename": "stays_availability"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX stays_availability_property_id_date_key ON public.stays_availability USING btree (property_id, date)",
+    "indexname": "stays_availability_property_id_date_key",
+    "tablename": "stays_availability"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_bookings_dates ON public.stays_bookings USING btree (check_in, check_out)",
+    "indexname": "idx_stays_bookings_dates",
+    "tablename": "stays_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_bookings_property ON public.stays_bookings USING btree (property_id)",
+    "indexname": "idx_stays_bookings_property",
+    "tablename": "stays_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_bookings_user ON public.stays_bookings USING btree (user_id)",
+    "indexname": "idx_stays_bookings_user",
+    "tablename": "stays_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX stays_bookings_pkey ON public.stays_bookings USING btree (id)",
+    "indexname": "stays_bookings_pkey",
+    "tablename": "stays_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_properties_area ON public.stays_properties USING btree (area)",
+    "indexname": "idx_stays_properties_area",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_properties_slug ON public.stays_properties USING btree (slug)",
+    "indexname": "idx_stays_properties_slug",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_properties_status ON public.stays_properties USING btree (status)",
+    "indexname": "idx_stays_properties_status",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_stays_properties_subcategory ON public.stays_properties USING btree (subcategory)",
+    "indexname": "idx_stays_properties_subcategory",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX stays_properties_category_id_idx ON public.stays_properties USING btree (category_id)",
+    "indexname": "stays_properties_category_id_idx",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX stays_properties_pkey ON public.stays_properties USING btree (id)",
+    "indexname": "stays_properties_pkey",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX stays_properties_slug_key ON public.stays_properties USING btree (slug)",
+    "indexname": "stays_properties_slug_key",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX stays_properties_subcategory_id_idx ON public.stays_properties USING btree (subcategory_id)",
+    "indexname": "stays_properties_subcategory_id_idx",
+    "tablename": "stays_properties"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_subcategories_category_id ON public.subcategories USING btree (category_id)",
+    "indexname": "idx_subcategories_category_id",
+    "tablename": "subcategories"
+  },
+  {
+    "indexdef": "CREATE INDEX subcategories_category_id_idx ON public.subcategories USING btree (category_id)",
+    "indexname": "subcategories_category_id_idx",
+    "tablename": "subcategories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX subcategories_category_id_slug_key ON public.subcategories USING btree (category_id, slug)",
+    "indexname": "subcategories_category_id_slug_key",
+    "tablename": "subcategories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX subcategories_category_slug_key_idx ON public.subcategories USING btree (category_id, slug)",
+    "indexname": "subcategories_category_slug_key_idx",
+    "tablename": "subcategories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX subcategories_pkey ON public.subcategories USING btree (id)",
+    "indexname": "subcategories_pkey",
+    "tablename": "subcategories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX suppliers_pkey ON public.suppliers USING btree (id)",
+    "indexname": "suppliers_pkey",
+    "tablename": "suppliers"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX system_error_logs_pkey ON public.system_error_logs USING btree (id)",
+    "indexname": "system_error_logs_pkey",
+    "tablename": "system_error_logs"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_tasks_assignee_id ON public.tasks USING btree (assignee_id)",
+    "indexname": "idx_tasks_assignee_id",
+    "tablename": "tasks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_tasks_request_id ON public.tasks USING btree (request_id)",
+    "indexname": "idx_tasks_request_id",
+    "tablename": "tasks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_tasks_status ON public.tasks USING btree (status)",
+    "indexname": "idx_tasks_status",
+    "tablename": "tasks"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX tasks_pkey ON public.tasks USING btree (id)",
+    "indexname": "tasks_pkey",
+    "tablename": "tasks"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_bookings_request ON public.transport_bookings USING btree (request_id)",
+    "indexname": "idx_transport_bookings_request",
+    "tablename": "transport_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_bookings_service ON public.transport_bookings USING btree (service_id)",
+    "indexname": "idx_transport_bookings_service",
+    "tablename": "transport_bookings"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_bookings_user ON public.transport_bookings USING btree (user_id)",
+    "indexname": "idx_transport_bookings_user",
+    "tablename": "transport_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX transport_bookings_pkey ON public.transport_bookings USING btree (id)",
+    "indexname": "transport_bookings_pkey",
+    "tablename": "transport_bookings"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX transport_items_pkey ON public.transport_items USING btree (id)",
+    "indexname": "transport_items_pkey",
+    "tablename": "transport_items"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX transport_items_slug_key ON public.transport_items USING btree (slug)",
+    "indexname": "transport_items_slug_key",
+    "tablename": "transport_items"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_services_category ON public.transport_services USING btree (subcategory)",
+    "indexname": "idx_transport_services_category",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_services_featured ON public.transport_services USING btree (is_featured) WHERE (is_featured = true)",
+    "indexname": "idx_transport_services_featured",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_services_slug ON public.transport_services USING btree (slug)",
+    "indexname": "idx_transport_services_slug",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_services_status ON public.transport_services USING btree (status)",
+    "indexname": "idx_transport_services_status",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_transport_services_sub_sub ON public.transport_services USING btree (sub_subcategory)",
+    "indexname": "idx_transport_services_sub_sub",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX transport_services_category_id_idx ON public.transport_services USING btree (category_id)",
+    "indexname": "transport_services_category_id_idx",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX transport_services_pkey ON public.transport_services USING btree (id)",
+    "indexname": "transport_services_pkey",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX transport_services_slug_key ON public.transport_services USING btree (slug)",
+    "indexname": "transport_services_slug_key",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX transport_services_subcategory_id_idx ON public.transport_services USING btree (subcategory_id)",
+    "indexname": "transport_services_subcategory_id_idx",
+    "tablename": "transport_services"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_reloc_docs_user ON public.user_documents USING btree (user_id)",
+    "indexname": "idx_reloc_docs_user",
+    "tablename": "user_documents"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_documents_pkey ON public.user_documents USING btree (id)",
+    "indexname": "user_documents_pkey",
+    "tablename": "user_documents"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_roles_pkey ON public.user_roles USING btree (id)",
+    "indexname": "user_roles_pkey",
+    "tablename": "user_roles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_roles_user_id_key ON public.user_roles USING btree (user_id)",
+    "indexname": "user_roles_user_id_key",
+    "tablename": "user_roles"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_reloc_steps_workflow ON public.user_workflow_steps USING btree (workflow_id)",
+    "indexname": "idx_reloc_steps_workflow",
+    "tablename": "user_workflow_steps"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_workflow_steps_pkey ON public.user_workflow_steps USING btree (id)",
+    "indexname": "user_workflow_steps_pkey",
+    "tablename": "user_workflow_steps"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_reloc_workflows_user ON public.user_workflows USING btree (user_id)",
+    "indexname": "idx_reloc_workflows_user",
+    "tablename": "user_workflows"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_workflows_pkey ON public.user_workflows USING btree (id)",
+    "indexname": "user_workflows_pkey",
+    "tablename": "user_workflows"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_vendors_categories ON public.vendors USING gin (categories)",
+    "indexname": "idx_vendors_categories",
+    "tablename": "vendors"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_vendors_emirate ON public.vendors USING btree (emirate)",
+    "indexname": "idx_vendors_emirate",
+    "tablename": "vendors"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_vendors_status ON public.vendors USING btree (status)",
+    "indexname": "idx_vendors_status",
+    "tablename": "vendors"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX vendors_pkey ON public.vendors USING btree (id)",
+    "indexname": "vendors_pkey",
+    "tablename": "vendors"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX vendors_slug_key ON public.vendors USING btree (slug)",
+    "indexname": "vendors_slug_key",
+    "tablename": "vendors"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_categories_pkey ON public.venue_categories USING btree (id)",
+    "indexname": "venue_categories_pkey",
+    "tablename": "venue_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_categories_slug_key ON public.venue_categories USING btree (slug)",
+    "indexname": "venue_categories_slug_key",
+    "tablename": "venue_categories"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_venue_media_one_hero ON public.venue_media USING btree (venue_id) WHERE (is_hero = true)",
+    "indexname": "idx_venue_media_one_hero",
+    "tablename": "venue_media"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_media_venue_id ON public.venue_media USING btree (venue_id, sort_order)",
+    "indexname": "idx_venue_media_venue_id",
+    "tablename": "venue_media"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_media_pkey ON public.venue_media USING btree (id)",
+    "indexname": "venue_media_pkey",
+    "tablename": "venue_media"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_related_source ON public.venue_related USING btree (venue_id, sort_order)",
+    "indexname": "idx_venue_related_source",
+    "tablename": "venue_related"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_related_target ON public.venue_related USING btree (related_venue_id)",
+    "indexname": "idx_venue_related_target",
+    "tablename": "venue_related"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_related_pkey ON public.venue_related USING btree (venue_id, related_venue_id)",
+    "indexname": "venue_related_pkey",
+    "tablename": "venue_related"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_tag_map_tag_id ON public.venue_tag_map USING btree (tag_id)",
+    "indexname": "idx_venue_tag_map_tag_id",
+    "tablename": "venue_tag_map"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_tag_map_venue_id ON public.venue_tag_map USING btree (venue_id)",
+    "indexname": "idx_venue_tag_map_venue_id",
+    "tablename": "venue_tag_map"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_tag_map_pkey ON public.venue_tag_map USING btree (venue_id, tag_id)",
+    "indexname": "venue_tag_map_pkey",
+    "tablename": "venue_tag_map"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venue_tags_type ON public.venue_tags USING btree (type) WHERE (is_active = true)",
+    "indexname": "idx_venue_tags_type",
+    "tablename": "venue_tags"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_tags_pkey ON public.venue_tags USING btree (id)",
+    "indexname": "venue_tags_pkey",
+    "tablename": "venue_tags"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venue_tags_slug_key ON public.venue_tags USING btree (slug)",
+    "indexname": "venue_tags_slug_key",
+    "tablename": "venue_tags"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venues_pkey1 ON public.venues USING btree (id)",
+    "indexname": "venues_pkey1",
+    "tablename": "venues"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venues_slug_key1 ON public.venues USING btree (slug)",
+    "indexname": "venues_slug_key1",
+    "tablename": "venues"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_area ON public.venues_old USING btree (area)",
+    "indexname": "idx_venues_area",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_category ON public.venues_old USING btree (category)",
+    "indexname": "idx_venues_category",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_category_id ON public.venues_old USING btree (category_id) WHERE (category_id IS NOT NULL)",
+    "indexname": "idx_venues_category_id",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_coords ON public.venues_old USING btree (latitude, longitude) WHERE ((latitude IS NOT NULL) AND (longitude IS NOT NULL))",
+    "indexname": "idx_venues_coords",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_emirate ON public.venues_old USING btree (emirate_id, category_slug) WHERE (status = 'published'::text)",
+    "indexname": "idx_venues_emirate",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_featured ON public.venues_old USING btree (is_featured DESC, trending_score DESC) WHERE ((status = 'published'::text) AND (is_featured = true))",
+    "indexname": "idx_venues_featured",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_fts ON public.venues_old USING gin (fts)",
+    "indexname": "idx_venues_fts",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_listing ON public.venues_old USING btree (category_slug, emirate_id, price_tier, is_featured DESC, trending_score DESC) WHERE (status = 'published'::text)",
+    "indexname": "idx_venues_listing",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_name_trgm ON public.venues_old USING gin (name gin_trgm_ops)",
+    "indexname": "idx_venues_name_trgm",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_price_tier ON public.venues_old USING btree (price_tier, category_slug) WHERE (status = 'published'::text)",
+    "indexname": "idx_venues_price_tier",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_published_at ON public.venues_old USING btree (published_at DESC) WHERE ((status = 'published'::text) AND (published_at IS NOT NULL))",
+    "indexname": "idx_venues_published_at",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_service_id ON public.venues_old USING btree (service_id)",
+    "indexname": "idx_venues_service_id",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_skills ON public.venues_old USING gin (skills)",
+    "indexname": "idx_venues_skills",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX idx_venues_slug ON public.venues_old USING btree (slug) WHERE (slug IS NOT NULL)",
+    "indexname": "idx_venues_slug",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_status ON public.venues_old USING btree (status)",
+    "indexname": "idx_venues_status",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_venues_trending ON public.venues_old USING btree (trending_score DESC, view_count DESC) WHERE ((status = 'published'::text) AND (trending_score \u003e 0))",
+    "indexname": "idx_venues_trending",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX venues_category_id_idx ON public.venues_old USING btree (category_id)",
+    "indexname": "venues_category_id_idx",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venues_pkey ON public.venues_old USING btree (id)",
+    "indexname": "venues_pkey",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX venues_slug_key ON public.venues_old USING btree (slug)",
+    "indexname": "venues_slug_key",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE INDEX venues_subcategory_id_idx ON public.venues_old USING btree (subcategory_id)",
+    "indexname": "venues_subcategory_id_idx",
+    "tablename": "venues_old"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX whatsapp_delivery_logs_pkey ON public.whatsapp_delivery_logs USING btree (id)",
+    "indexname": "whatsapp_delivery_logs_pkey",
+    "tablename": "whatsapp_delivery_logs"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_whatsapp_jobs_status_attempt ON public.whatsapp_jobs USING btree (status, next_attempt_at, created_at)",
+    "indexname": "idx_whatsapp_jobs_status_attempt",
+    "tablename": "whatsapp_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ux_whatsapp_jobs_dedupe ON public.whatsapp_jobs USING btree (dedupe_key)",
+    "indexname": "ux_whatsapp_jobs_dedupe",
+    "tablename": "whatsapp_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX whatsapp_jobs_pkey ON public.whatsapp_jobs USING btree (id)",
+    "indexname": "whatsapp_jobs_pkey",
+    "tablename": "whatsapp_jobs"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX whatsapp_templates_pkey ON public.whatsapp_templates USING btree (id)",
+    "indexname": "whatsapp_templates_pkey",
+    "tablename": "whatsapp_templates"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX whatsapp_templates_template_key_key ON public.whatsapp_templates USING btree (template_key)",
+    "indexname": "whatsapp_templates_template_key_key",
+    "tablename": "whatsapp_templates"
+  }
+]
+

@@ -11,24 +11,26 @@ export async function submitConciergeRequest(
   userId: string,
   input: ConciergeRequestInput
 ): Promise<ConciergeRequest> {
+  const insertPayload = {
+    user_id: userId,
+    category: 'concierge',
+    request_type: 'concierge',
+    concierge_request_type: input.request_type,
+    title: input.title,
+    description: input.description,
+    urgency: input.urgency,
+    preferred_date: input.preferred_date,
+    preferred_time: input.preferred_time,
+    budget_range: input.budget_range,
+    special_instructions: input.special_instructions,
+    status: 'pending',
+    party_size: 1,
+  };
+
   const { data, error } = await supabase
     .from('requests')
-    .insert({
-      user_id: userId,
-      category: 'concierge',
-      request_type: 'concierge',
-      concierge_request_type: input.request_type,
-      title: input.title,
-      description: input.description,
-      urgency: input.urgency,
-      preferred_date: input.preferred_date,
-      preferred_time: input.preferred_time,
-      budget_range: input.budget_range,
-      special_instructions: input.special_instructions,
-      status: 'pending',
-      party_size: 1,
-    })
-    .select()
+    .insert(insertPayload)
+    .select('*')
     .single();
 
   if (error) {
@@ -65,14 +67,15 @@ export async function updateConciergeStatus(
   status: ConciergeStatus,
   notes?: string
 ): Promise<boolean> {
+  const statusPatch = {
+    status,
+    concierge_notes: notes,
+    updated_at: new Date().toISOString(),
+  };
+
   const { error } = await supabase
-    .from('requests')
-    .update({
-      status,
-      concierge_notes: notes,
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', requestId);
+    .from('requests').update(statusPatch).eq('id', requestId)
+    .select('id');
 
   return !error;
 }

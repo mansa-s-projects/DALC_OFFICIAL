@@ -52,7 +52,7 @@ export interface StatusLogEntry {
 export async function fetchStatusLog(requestId: string): Promise<StatusLogEntry[]> {
   const { data, error } = await supabase
     .from('request_status_log')
-    .select('*')
+    .select('id, request_id, old_status, new_status, changed_by, notes, created_at')
     .eq('request_id', requestId)
     .order('created_at', { ascending: true });
 
@@ -101,31 +101,28 @@ export async function transitionRequestStatus(input: TransitionInput): Promise<T
 
   try {
     const { data } = await supabase
-      .from('requests')
-      .update(requestUpdate)
-      .eq('id', requestId)
-      .eq('status', fromStatus)
-      .select('*')
+      .from('requests').update(requestUpdate).eq('id', requestId).eq('status', fromStatus)
+      .select('id, user_id, venue_id, venue_name, category, request_type, date_time, party_size, status, priority_score, assigned_to, contact_name, contact_info, notes, internal_notes, supplier_response, confirmed_at, completed_at, created_at, updated_at, service_id, category_id, subcategory_id, booking_id, intent_id, priority')
       .single();
 
     requestData = data as Request | null;
 
-    const { error: logError } = await supabase
-      .from('request_status_log')
-      .insert({
-        request_id: requestId,
-        old_status: fromStatus,
-        new_status: toStatus,
-        changed_by: changedBy ?? null,
-        notes: notes ?? null,
-      });
+    const statusLogPayload = {
+      request_id: requestId,
+      old_status: fromStatus,
+      new_status: toStatus,
+      changed_by: changedBy ?? null,
+      notes: notes ?? null,
+    };
+    const { error: logError } = await supabase.from('request_status_log').insert(statusLogPayload).select('id');
 
     if (logError) {
       // Rollback the first update
       await supabase
         .from('requests')
         .update({ status: fromStatus })
-        .eq('id', requestId);
+        .eq('id', requestId)
+        .select('id');
       throw logError;
     }
   } catch (error) {

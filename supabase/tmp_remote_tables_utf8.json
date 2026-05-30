@@ -1,0 +1,615 @@
+﻿[
+  {
+    "table_name": "activities",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "activity_availability",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "activity_bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "activity_categories",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "activity_images",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "activity_pricing",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "agent_capacity_config",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "agent_orchestration",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "api_failure_logs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "autopilot_adjustment_log",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "booking_requests",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "business_bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "business_consultations",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "business_services",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "categories",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "categories_backup_20260327",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "concierge_requests",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "conversations",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "crm_sync_jobs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "crm_sync_logs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "districts",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "emirates",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "events",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experience_bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experience_services",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experiences",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experiment_assignments",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experiment_events",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "experiments",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "explore_categories",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "explore_categories_backup_20260327",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "explore_locations",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "founder_overrides",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "intents",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_automations",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_enrichment_data",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_enrichment_jobs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_history",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_ownership_history",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_playbook_steps",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_playbooks",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "lead_tasks",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "leads",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "model_feedback_audit",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "notification_preferences",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "notifications",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "operator_actions",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "partners",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "payments",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "posts",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "profiles",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "providers",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "queue_health_metrics",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "quotes",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "relocation_cost_estimates",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "relocation_profiles",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "request_status_log",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "requests",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "role_permissions",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "routing_rules_config",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "scoring_weights",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "services",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "stays_availability",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "stays_bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "stays_properties",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "subcategories",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "subcategories_backup_20260327",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "suppliers",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "system_error_logs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "tasks",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "transport_bookings",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "transport_items",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "transport_services",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "user_documents",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "user_roles",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "user_workflow_steps",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "user_workflows",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "users",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_avg_time_to_first_contact",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_booking_sync",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_active_overrides",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_capacity_balancer",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_competitive_intelligence",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_conversion_acceleration",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_critical_alerts",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_deal_health",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_decision_signals",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_execution_discipline_metrics",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_founder_control_metrics",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_high_dropoff_pages",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_high_intent_interception",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_hot_leads_immediate_action",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_instant_response_targets",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_killswitch_detection",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_lead_value_prediction",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_leads_no_contact_yet",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_likely_to_convert",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_overdue_followups",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_playbook_execution_mapping",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_predicted_vs_actual",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_product_feedback_insights",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_recent_high_activity",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_reengagement_candidates",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_revenue_leak_detection",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_revenue_priority_queue",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_routing_adjustments",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_sales_pressure",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_scoring_weight_adjustments",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_cc_source_quality_score",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_conversion_rate_by_owner",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_activity_stream",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_alerts",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_hot_leads",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_leads_without_follow_up",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_leads_without_owner",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_live_lead_feed",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_metrics",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_needs_first_contact",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_overdue_tasks",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_recent_conversions",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_recently_active_leads",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_dashboard_top_converting_sources",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_failed_notifications",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_hot_leads_no_contact",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_leads_by_owner",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_lost_leads_by_reason",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_monitoring_alert_rules",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_notification_volume_by_type",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_notifications_by_lead",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_notifications_by_owner",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_overdue_follow_ups",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_recent_alerts",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_revenue_attribution_first_touch",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_revenue_attribution_last_touch",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_revenue_attribution_multi_touch",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_revenue_forecast_simple",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_salesperson_workload",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_service_catalog",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_unread_dashboard_alerts",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "v_won_leads_by_source",
+    "table_type": "VIEW"
+  },
+  {
+    "table_name": "vendors",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venue_categories",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venue_media",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venue_related",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venue_tag_map",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venue_tags",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venues",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "venues_old",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "waitlist_entries",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "whatsapp_delivery_logs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "whatsapp_jobs",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "whatsapp_templates",
+    "table_type": "BASE TABLE"
+  }
+]
+

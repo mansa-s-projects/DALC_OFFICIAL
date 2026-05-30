@@ -556,13 +556,46 @@ export async function createStaysBooking(input: StaysBookingInput): Promise<Stay
   if (!property) throw new Error('Property not found');
   const priceBreakdown = await calculatePrice(input.property_id, input.check_in, input.check_out);
   if (!priceBreakdown) throw new Error('Could not calculate price');
-  const { data, error } = await supabase.from('stays_bookings').insert({ property_id: input.property_id, user_id: input.user_id, check_in: input.check_in, check_out: input.check_out, guests: input.guests, guest_name: input.guest_name, guest_email: input.guest_email, guest_phone: input.guest_phone, special_requests: input.special_requests, nights: priceBreakdown.nights, base_price_total: priceBreakdown.base_price_total, seasonal_adjustment: priceBreakdown.seasonal_adjustment, cleaning_fee: priceBreakdown.cleaning_fee, service_fee: priceBreakdown.service_fee, security_deposit: priceBreakdown.security_deposit, discount_amount: priceBreakdown.discount_amount, total_price: priceBreakdown.total_price, currency: priceBreakdown.currency, status: 'pending' }).select('*, property:stays_properties(*)').single();
+
+  const bookingInsertPayload = {
+    property_id: input.property_id,
+    user_id: input.user_id,
+    check_in: input.check_in,
+    check_out: input.check_out,
+    guests: input.guests,
+    guest_name: input.guest_name,
+    guest_email: input.guest_email,
+    guest_phone: input.guest_phone,
+    special_requests: input.special_requests,
+    nights: priceBreakdown.nights,
+    base_price_total: priceBreakdown.base_price_total,
+    seasonal_adjustment: priceBreakdown.seasonal_adjustment,
+    cleaning_fee: priceBreakdown.cleaning_fee,
+    service_fee: priceBreakdown.service_fee,
+    security_deposit: priceBreakdown.security_deposit,
+    discount_amount: priceBreakdown.discount_amount,
+    total_price: priceBreakdown.total_price,
+    currency: priceBreakdown.currency,
+    status: 'pending',
+  };
+
+  const { data, error } = await supabase
+    .from('stays_bookings')
+    .insert(bookingInsertPayload)
+    .select('id,property_id,user_id,check_in,check_out,guests,guest_name,guest_email,guest_phone,special_requests,nights,base_price_total,seasonal_adjustment,cleaning_fee,service_fee,security_deposit,discount_amount,total_price,currency,status,confirmation_code,cancellation_reason,cancelled_at,created_at,updated_at,confirmed_at,checked_in_at,checked_out_at,property:stays_properties(id,name,slug,subcategory,location,area,hero_image,base_price,price_currency,price_display,status)')
+    .single();
+
   if (error) throw error;
-  return data as StaysBooking;
+  if (!data?.id) throw new Error('Stays booking creation failed: missing booking id');
+  return data as unknown as StaysBooking;
 }
 
 export async function getUserBookings(userId: string): Promise<StaysBooking[]> {
-  const { data, error } = await supabase.from('stays_bookings').select('*, property:stays_properties(*)').eq('user_id', userId).order('created_at', { ascending: false });
+  const { data, error } = await supabase
+    .from('stays_bookings')
+    .select('id,property_id,user_id,check_in,check_out,guests,guest_name,guest_email,guest_phone,special_requests,nights,base_price_total,seasonal_adjustment,cleaning_fee,service_fee,security_deposit,discount_amount,total_price,currency,status,confirmation_code,cancellation_reason,cancelled_at,created_at,updated_at,confirmed_at,checked_in_at,checked_out_at,property:stays_properties(id,name,slug,subcategory,location,area,hero_image,base_price,price_currency,price_display,status)')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
   if (error) throw error;
-  return (data ?? []) as StaysBooking[];
+  return (data ?? []) as unknown as StaysBooking[];
 }

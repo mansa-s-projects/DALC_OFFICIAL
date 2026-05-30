@@ -5,7 +5,6 @@ BEGIN
 EXCEPTION
   WHEN duplicate_object THEN NULL;
 END $$;
-
 CREATE TABLE IF NOT EXISTS public.user_roles (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -14,10 +13,8 @@ CREATE TABLE IF NOT EXISTS public.user_roles (
   team_id text,
   UNIQUE (user_id)
 );
-
 ALTER TABLE public.leads
   ADD COLUMN IF NOT EXISTS owner_team_id text;
-
 CREATE OR REPLACE FUNCTION public.current_app_role()
 RETURNS text
 LANGUAGE sql
@@ -29,7 +26,6 @@ AS $$
     'viewer'
   );
 $$;
-
 CREATE OR REPLACE FUNCTION public.current_app_team_id()
 RETURNS text
 LANGUAGE sql
@@ -40,7 +36,6 @@ AS $$
     ''
   );
 $$;
-
 -- Permission map (db-native)
 CREATE TABLE IF NOT EXISTS public.role_permissions (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -50,7 +45,6 @@ CREATE TABLE IF NOT EXISTS public.role_permissions (
   allowed boolean NOT NULL DEFAULT true,
   UNIQUE(role, resource, action)
 );
-
 INSERT INTO public.role_permissions (role, resource, action, allowed)
 VALUES
   ('admin', 'leads', 'view', true),
@@ -82,12 +76,10 @@ VALUES
   ('viewer', 'reports', 'view', true),
   ('viewer', 'users', 'manage', false)
 ON CONFLICT (role, resource, action) DO UPDATE SET allowed = EXCLUDED.allowed;
-
 -- RLS policies for sales ops entities
 DROP POLICY IF EXISTS leads_select_policy ON public.leads;
 DROP POLICY IF EXISTS leads_update_policy ON public.leads;
 DROP POLICY IF EXISTS leads_insert_policy ON public.leads;
-
 CREATE POLICY leads_select_policy ON public.leads
 FOR SELECT
 USING (
@@ -102,7 +94,6 @@ USING (
   )
   OR public.current_app_role() = 'viewer'
 );
-
 CREATE POLICY leads_update_policy ON public.leads
 FOR UPDATE
 USING (
@@ -116,18 +107,15 @@ USING (
     AND owner_id = auth.uid()::text
   )
 );
-
 CREATE POLICY leads_insert_policy ON public.leads
 FOR INSERT
 WITH CHECK (
   public.current_app_role() IN ('admin', 'sales_manager', 'sales_agent')
 );
-
 ALTER TABLE public.lead_tasks ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS lead_tasks_select_policy ON public.lead_tasks;
 DROP POLICY IF EXISTS lead_tasks_update_policy ON public.lead_tasks;
 DROP POLICY IF EXISTS lead_tasks_insert_policy ON public.lead_tasks;
-
 CREATE POLICY lead_tasks_select_policy ON public.lead_tasks
 FOR SELECT
 USING (
@@ -144,7 +132,6 @@ USING (
     AND owner_id = auth.uid()::text
   )
 );
-
 CREATE POLICY lead_tasks_update_policy ON public.lead_tasks
 FOR UPDATE
 USING (
@@ -160,13 +147,11 @@ USING (
     AND owner_id = auth.uid()::text
   )
 );
-
 CREATE POLICY lead_tasks_insert_policy ON public.lead_tasks
 FOR INSERT
 WITH CHECK (
   public.current_app_role() IN ('admin', 'sales_manager', 'sales_agent')
 );
-
 -- CRM sync layer
 CREATE TABLE IF NOT EXISTS public.crm_sync_jobs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -182,10 +167,8 @@ CREATE TABLE IF NOT EXISTS public.crm_sync_jobs (
   last_error text,
   processed_at timestamptz
 );
-
 CREATE UNIQUE INDEX IF NOT EXISTS ux_crm_sync_jobs_dedupe ON public.crm_sync_jobs(dedupe_key);
 CREATE INDEX IF NOT EXISTS idx_crm_sync_jobs_status_attempt ON public.crm_sync_jobs(status, next_attempt_at, created_at);
-
 CREATE TABLE IF NOT EXISTS public.crm_sync_logs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -194,7 +177,6 @@ CREATE TABLE IF NOT EXISTS public.crm_sync_logs (
   response_payload jsonb,
   error_message text
 );
-
 -- WhatsApp automation layer
 CREATE TABLE IF NOT EXISTS public.whatsapp_templates (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -204,7 +186,6 @@ CREATE TABLE IF NOT EXISTS public.whatsapp_templates (
   variables jsonb NOT NULL DEFAULT '[]'::jsonb,
   enabled boolean NOT NULL DEFAULT true
 );
-
 CREATE TABLE IF NOT EXISTS public.whatsapp_jobs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -221,10 +202,8 @@ CREATE TABLE IF NOT EXISTS public.whatsapp_jobs (
   failed_at timestamptz,
   error_message text
 );
-
 CREATE UNIQUE INDEX IF NOT EXISTS ux_whatsapp_jobs_dedupe ON public.whatsapp_jobs(dedupe_key);
 CREATE INDEX IF NOT EXISTS idx_whatsapp_jobs_status_attempt ON public.whatsapp_jobs(status, next_attempt_at, created_at);
-
 CREATE TABLE IF NOT EXISTS public.whatsapp_delivery_logs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -233,7 +212,6 @@ CREATE TABLE IF NOT EXISTS public.whatsapp_delivery_logs (
   delivery_status text NOT NULL,
   provider_payload jsonb
 );
-
 -- Lead enrichment layer
 CREATE TABLE IF NOT EXISTS public.lead_enrichment_jobs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -246,10 +224,8 @@ CREATE TABLE IF NOT EXISTS public.lead_enrichment_jobs (
   last_error text,
   processed_at timestamptz
 );
-
 CREATE UNIQUE INDEX IF NOT EXISTS ux_lead_enrichment_jobs_dedupe ON public.lead_enrichment_jobs(dedupe_key);
 CREATE INDEX IF NOT EXISTS idx_lead_enrichment_jobs_status_attempt ON public.lead_enrichment_jobs(status, next_attempt_at, created_at);
-
 CREATE TABLE IF NOT EXISTS public.lead_enrichment_data (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -258,7 +234,6 @@ CREATE TABLE IF NOT EXISTS public.lead_enrichment_data (
   data jsonb NOT NULL DEFAULT '{}'::jsonb,
   confidence_score numeric(5,2)
 );
-
 -- Experimentation system
 CREATE TABLE IF NOT EXISTS public.experiments (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -269,7 +244,6 @@ CREATE TABLE IF NOT EXISTS public.experiments (
   start_at timestamptz,
   end_at timestamptz
 );
-
 CREATE TABLE IF NOT EXISTS public.experiment_assignments (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -278,7 +252,6 @@ CREATE TABLE IF NOT EXISTS public.experiment_assignments (
   variant text NOT NULL,
   dedupe_key text NOT NULL UNIQUE
 );
-
 CREATE TABLE IF NOT EXISTS public.experiment_events (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -288,7 +261,6 @@ CREATE TABLE IF NOT EXISTS public.experiment_events (
   event_name text NOT NULL,
   value numeric(12,2)
 );
-
 -- Monitoring setup
 CREATE TABLE IF NOT EXISTS public.system_error_logs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -298,7 +270,6 @@ CREATE TABLE IF NOT EXISTS public.system_error_logs (
   error_message text NOT NULL,
   payload jsonb
 );
-
 CREATE TABLE IF NOT EXISTS public.queue_health_metrics (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -308,7 +279,6 @@ CREATE TABLE IF NOT EXISTS public.queue_health_metrics (
   failed_count integer NOT NULL DEFAULT 0,
   lag_seconds integer NOT NULL DEFAULT 0
 );
-
 CREATE TABLE IF NOT EXISTS public.api_failure_logs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -318,7 +288,6 @@ CREATE TABLE IF NOT EXISTS public.api_failure_logs (
   error_message text,
   payload jsonb
 );
-
 CREATE OR REPLACE VIEW public.v_monitoring_alert_rules AS
 SELECT
   'queue_lag'::text AS alert_type,
@@ -337,7 +306,6 @@ SELECT
   jsonb_build_object('status_code', status_code, 'error_message', error_message) AS payload
 FROM public.api_failure_logs
 WHERE created_at >= now() - interval '15 minutes';
-
 -- Advanced reporting materialized views
 CREATE MATERIALIZED VIEW IF NOT EXISTS public.mv_report_funnel_conversion AS
 SELECT
@@ -351,10 +319,8 @@ SELECT
   END AS win_rate_pct
 FROM public.leads
 GROUP BY source_page, service_slug;
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mv_report_funnel_conversion_key
   ON public.mv_report_funnel_conversion(source_page, service_slug);
-
 CREATE MATERIALIZED VIEW IF NOT EXISTS public.mv_report_source_roi AS
 SELECT
   source_page,
@@ -364,10 +330,8 @@ SELECT
   COALESCE(SUM(won_value) FILTER (WHERE lead_status = 'won'), 0) / NULLIF(COUNT(*), 0) AS revenue_per_lead
 FROM public.leads
 GROUP BY source_page;
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mv_report_source_roi_key
   ON public.mv_report_source_roi(source_page);
-
 CREATE MATERIALIZED VIEW IF NOT EXISTS public.mv_report_lead_quality_by_source AS
 SELECT
   source_page,
@@ -376,10 +340,8 @@ SELECT
   COUNT(*) AS total_count
 FROM public.leads
 GROUP BY source_page;
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mv_report_quality_key
   ON public.mv_report_lead_quality_by_source(source_page);
-
 CREATE MATERIALIZED VIEW IF NOT EXISTS public.mv_report_sales_performance AS
 SELECT
   owner_id,
@@ -393,10 +355,8 @@ SELECT
   END AS conversion_rate_pct
 FROM public.leads
 GROUP BY owner_id;
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mv_report_sales_performance_key
   ON public.mv_report_sales_performance(owner_id);
-
 CREATE MATERIALIZED VIEW IF NOT EXISTS public.mv_report_time_to_close AS
 SELECT
   owner_id,
@@ -404,10 +364,8 @@ SELECT
   COUNT(*) FILTER (WHERE lead_status IN ('won','lost')) AS closed_count
 FROM public.leads
 GROUP BY owner_id;
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mv_report_time_to_close_key
   ON public.mv_report_time_to_close(owner_id);
-
 -- Revenue attribution models
 CREATE OR REPLACE VIEW public.v_revenue_attribution_first_touch AS
 SELECT
@@ -419,7 +377,6 @@ SELECT
   l.source_page AS attributed_page
 FROM public.leads l
 WHERE l.lead_status = 'won';
-
 CREATE OR REPLACE VIEW public.v_revenue_attribution_last_touch AS
 SELECT
   l.id AS lead_id,
@@ -437,7 +394,6 @@ LEFT JOIN LATERAL (
   LIMIT 1
 ) e ON true
 WHERE l.lead_status = 'won';
-
 CREATE OR REPLACE VIEW public.v_revenue_attribution_multi_touch AS
 SELECT
   l.id AS lead_id,
@@ -448,7 +404,6 @@ SELECT
 FROM public.leads l
 JOIN public.events e ON e.session_id = l.session_id
 WHERE l.lead_status = 'won';
-
 -- Forecasting model
 CREATE OR REPLACE VIEW public.v_revenue_forecast_simple AS
 SELECT
@@ -461,7 +416,6 @@ SELECT
     * (SELECT COALESCE(AVG(CASE WHEN lead_status = 'won' THEN 1.0 ELSE 0.0 END), 0) FROM public.leads WHERE created_at >= now() - interval '90 days')
     * (SELECT COALESCE(AVG(won_value), 0) FROM public.leads WHERE lead_status = 'won' AND won_value IS NOT NULL)
   ) AS projected_daily_revenue;
-
 ALTER TABLE public.user_roles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.role_permissions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.crm_sync_jobs ENABLE ROW LEVEL SECURITY;

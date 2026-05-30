@@ -23,7 +23,6 @@ SELECT
   ) AS source_quality_score
 FROM public.leads l
 GROUP BY l.source_page;
-
 -- 2) Decision signals for operators
 CREATE OR REPLACE VIEW public.v_cc_decision_signals AS
 WITH activity AS (
@@ -65,7 +64,6 @@ SELECT
 FROM public.leads l
 LEFT JOIN activity ON activity.session_id = l.session_id
 LEFT JOIN public.v_cc_source_quality_score sq ON sq.source_page = l.source_page;
-
 -- 3) Priority queues (Step 1)
 CREATE OR REPLACE VIEW public.v_cc_hot_leads_immediate_action AS
 SELECT *
@@ -76,13 +74,11 @@ WHERE intent_level = 'hot'
     owner_id IS NULL
     OR recommended_action IN ('mark_contacted', 'create_follow_up', 'send_whatsapp')
   );
-
 CREATE OR REPLACE VIEW public.v_cc_leads_no_contact_yet AS
 SELECT *
 FROM public.v_cc_decision_signals
 WHERE lead_status IN ('new', 'assigned')
   AND recommended_action = 'mark_contacted';
-
 CREATE OR REPLACE VIEW public.v_cc_overdue_followups AS
 SELECT
   t.id AS task_id,
@@ -103,13 +99,11 @@ LEFT JOIN public.v_cc_source_quality_score sq ON sq.source_page = l.source_page
 WHERE t.status <> 'completed'
   AND t.due_at IS NOT NULL
   AND t.due_at < now();
-
 CREATE OR REPLACE VIEW public.v_cc_recent_high_activity AS
 SELECT *
 FROM public.v_cc_decision_signals
 WHERE events_last_15m >= 3
   AND lead_status NOT IN ('won', 'lost');
-
 CREATE OR REPLACE VIEW public.v_cc_likely_to_convert AS
 SELECT
   ds.*,
@@ -131,7 +125,6 @@ SELECT
   ) AS conversion_likelihood_score
 FROM public.v_cc_decision_signals ds
 WHERE ds.lead_status NOT IN ('won', 'lost');
-
 -- 4) Real-time sales alerts (Step 22)
 CREATE OR REPLACE VIEW public.v_cc_critical_alerts AS
 WITH high_value_sources AS (
@@ -197,7 +190,6 @@ FROM public.leads l
 JOIN high_value_sources hvs ON hvs.source_page = l.source_page
 WHERE l.created_at >= now() - interval '30 minutes'
   AND l.lead_status IN ('new', 'assigned', 'contacted');
-
 -- 5) Revenue leak detection (Step 23)
 CREATE OR REPLACE VIEW public.v_cc_revenue_leak_detection AS
 WITH base AS (
@@ -241,7 +233,6 @@ WITH base AS (
   WHERE next_follow_up_at IS NOT NULL AND next_follow_up_at < now()
 )
 SELECT * FROM leaks;
-
 CREATE OR REPLACE VIEW public.v_cc_high_dropoff_pages AS
 SELECT
   l.source_page,
@@ -256,7 +247,6 @@ SELECT
 FROM public.leads l
 GROUP BY l.source_page
 HAVING COUNT(*) >= 5;
-
 -- 6) Sales playbook engine (Step 24)
 CREATE TABLE IF NOT EXISTS public.lead_playbooks (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -266,7 +256,6 @@ CREATE TABLE IF NOT EXISTS public.lead_playbooks (
   trigger_rule jsonb NOT NULL DEFAULT '{}'::jsonb,
   enabled boolean NOT NULL DEFAULT true
 );
-
 CREATE TABLE IF NOT EXISTS public.lead_playbook_steps (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -278,7 +267,6 @@ CREATE TABLE IF NOT EXISTS public.lead_playbook_steps (
   config jsonb NOT NULL DEFAULT '{}'::jsonb,
   UNIQUE(playbook_key, step_order)
 );
-
 INSERT INTO public.lead_playbooks (playbook_key, display_name, trigger_rule, enabled)
 VALUES
   ('relocation_lead', 'Relocation Lead Playbook', '{"service_slug": ["relocation-support", "visa-services"]}'::jsonb, true),
@@ -288,7 +276,6 @@ ON CONFLICT (playbook_key) DO UPDATE
 SET display_name = EXCLUDED.display_name,
     trigger_rule = EXCLUDED.trigger_rule,
     enabled = EXCLUDED.enabled;
-
 INSERT INTO public.lead_playbook_steps (playbook_key, step_order, step_name, action_type, schedule_offset_minutes, config)
 VALUES
   ('relocation_lead', 1, 'First Contact', 'mark_contacted', 0, '{"channel":"call_or_whatsapp"}'::jsonb),
@@ -307,7 +294,6 @@ SET step_name = EXCLUDED.step_name,
     action_type = EXCLUDED.action_type,
     schedule_offset_minutes = EXCLUDED.schedule_offset_minutes,
     config = EXCLUDED.config;
-
 CREATE OR REPLACE VIEW public.v_cc_playbook_execution_mapping AS
 SELECT
   p.playbook_key,
@@ -322,7 +308,6 @@ FROM public.lead_playbooks p
 JOIN public.lead_playbook_steps s ON s.playbook_key = p.playbook_key
 WHERE p.enabled = true
 ORDER BY p.playbook_key, s.step_order;
-
 -- 7) Conversion acceleration (Step 25)
 CREATE OR REPLACE VIEW public.v_cc_conversion_acceleration AS
 SELECT
@@ -346,7 +331,6 @@ SELECT
   END AS urgency_score
 FROM public.v_cc_decision_signals ds
 WHERE ds.lead_status NOT IN ('won', 'lost');
-
 -- 8) Product feedback insight layer (Step 26)
 CREATE OR REPLACE VIEW public.v_cc_product_feedback_insights AS
 WITH page_stats AS (
@@ -373,7 +357,6 @@ SELECT
     ELSE 'low'
   END AS improvement_priority
 FROM page_stats ps;
-
 -- 9) Lead value prediction (Step 27)
 CREATE OR REPLACE VIEW public.v_cc_lead_value_prediction AS
 SELECT
@@ -413,7 +396,6 @@ SELECT
 FROM public.v_cc_decision_signals ds
 JOIN public.leads l ON l.id = ds.lead_id
 WHERE ds.lead_status NOT IN ('won', 'lost');
-
 -- 10) Automated re-engagement (Step 28)
 CREATE OR REPLACE VIEW public.v_cc_reengagement_candidates AS
 SELECT
@@ -446,7 +428,6 @@ WHERE l.lead_status NOT IN ('won', 'lost')
     COALESCE(l.next_follow_up_at, 'epoch'::timestamptz),
     l.created_at
   ) < now() - interval '72 hours';
-
 -- 11) Execution discipline (Step 30)
 CREATE OR REPLACE VIEW public.v_cc_execution_discipline_metrics AS
 SELECT
@@ -489,6 +470,5 @@ SELECT
 FROM public.leads l
 LEFT JOIN public.lead_tasks t ON t.lead_id = l.id
 GROUP BY COALESCE(l.owner_id, 'unassigned');
-
 ALTER TABLE public.lead_playbooks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lead_playbook_steps ENABLE ROW LEVEL SECURITY;

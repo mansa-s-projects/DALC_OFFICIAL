@@ -92,7 +92,6 @@ export default function PropertyCard({
       {/* Image */}
       <div className="relative h-56 overflow-hidden bg-gray-900">
         {hero_image ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={hero_image}
             alt={name}

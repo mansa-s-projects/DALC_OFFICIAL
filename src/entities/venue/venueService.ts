@@ -5,7 +5,7 @@ export async function listVenues(limit = 24): Promise<VenueEntity[]> {
   if (!supabase) return [];
 
   const { data, error } = await supabase
-    .from('venues')
+    .from('venues_old')
     .select('id, name, category, subcategory, supplier_id, status')
     .limit(limit);
 

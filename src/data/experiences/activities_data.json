@@ -1,0 +1,232 @@
+{
+  "Water_Activities": [
+    {
+      "name": "Yamaha VX Deluxe 1050cc",
+      "type": "Jet Ski",
+      "source_slug": "yamaha-vx-deluxe-jet-ski",
+      "options": [
+        {"duration": "30 min", "price_aed": 250},
+        {"duration": "60 min", "price_aed": 450},
+        {"duration": "90 min", "price_aed": 600},
+        {"duration": "120 min", "price_aed": 750}
+      ]
+    },
+    {
+      "name": "Yamaha JetBlaster",
+      "type": "Jet Ski",
+      "source_slug": "yamaha-jetblaster-jet-ski",
+      "options": [
+        {"duration": "30 min", "price_aed": 290},
+        {"duration": "60 min", "price_aed": 490},
+        {"duration": "90 min", "price_aed": 640},
+        {"duration": "120 min", "price_aed": 790}
+      ]
+    },
+    {
+      "name": "Yamaha GP HO 1900cc",
+      "type": "Jet Ski",
+      "source_slug": "yamaha-gp-ho-jet-ski",
+      "options": [
+        {"duration": "30 min", "price_aed": 350},
+        {"duration": "60 min", "price_aed": 600},
+        {"duration": "90 min", "price_aed": 750},
+        {"duration": "120 min", "price_aed": 890}
+      ]
+    },
+    {
+      "name": "Yamaha FX SVHO 260HP",
+      "type": "Jet Ski",
+      "source_slug": "yamaha-fx-svho-premium-jet-ski",
+      "options": [
+        {"duration": "30 min", "price_aed": 499},
+        {"duration": "60 min", "price_aed": 749},
+        {"duration": "90 min", "price_aed": 799},
+        {"duration": "120 min", "price_aed": 999}
+      ]
+    },
+    {
+      "name": "Jetcar",
+      "type": "Water Car",
+      "source_slug": "jetcar-drive-on-water",
+      "options": [
+        {"duration": "20 min", "price_aed": 600},
+        {"duration": "30 min", "price_aed": 900},
+        {"duration": "60 min", "price_aed": 1300}
+      ]
+    }
+  ],
+  "Desert_Activities": [
+    {
+      "vehicle": "Polaris RZR 4 seater",
+      "source_slug": "polaris-rzr-4-seater-dune-buggy",
+      "options": [
+        {"duration": "30 min", "price_aed": 600},
+        {"duration": "1 hour", "price_aed": 1000}
+      ]
+    },
+    {
+      "vehicle": "Quad 570",
+      "source_slug": "quad-570-atv-ride",
+      "options": [
+        {"duration": "30 min", "price_aed": 300},
+        {"duration": "1 hour", "price_aed": 500}
+      ]
+    },
+    {
+      "vehicle": "Yamaha Raptor 700",
+      "source_slug": "yamaha-raptor-700-atv",
+      "options": [
+        {"duration": "30 min", "price_aed": 350},
+        {"duration": "1 hour", "price_aed": 600}
+      ]
+    },
+    {
+      "vehicle": "Yamaha Grizzly 700",
+      "source_slug": "yamaha-grizzly-700-atv",
+      "options": [
+        {"duration": "30 min", "price_aed": 380},
+        {"duration": "1 hour", "price_aed": 650}
+      ]
+    },
+    {
+      "vehicle": "Maverick R 2 seats",
+      "source_slug": "can-am-maverick-r-2-seater",
+      "options": [
+        {"duration": "30 min", "price_aed": 1150},
+        {"duration": "1 hour", "price_aed": 2000}
+      ]
+    },
+    {
+      "vehicle": "Maverick R 4 seats",
+      "source_slug": "can-am-maverick-r-4-seater",
+      "options": [
+        {"duration": "30 min", "price_aed": 1250},
+        {"duration": "1 hour", "price_aed": 2200}
+      ]
+    },
+    {
+      "vehicle": "Maverick X3 2 seats",
+      "source_slug": "can-am-maverick-x3-2-seater",
+      "options": [
+        {"duration": "30 min", "price_aed": 800},
+        {"duration": "1 hour", "price_aed": 1350}
+      ]
+    },
+    {
+      "vehicle": "Maverick X3 4 seats",
+      "source_slug": "can-am-maverick-x3-4-seater",
+      "options": [
+        {"duration": "30 min", "price_aed": 850},
+        {"duration": "1 hour", "price_aed": 1450}
+      ]
+    },
+    {
+      "vehicle": "Maverick Sport 2 seats",
+      "source_slug": "can-am-maverick-sport-2-seater",
+      "options": [
+        {"duration": "30 min", "price_aed": 600},
+        {"duration": "1 hour", "price_aed": 900}
+      ]
+    }
+  ],
+  "Desert_Safari": [
+    {
+      "package": "Morning Safari",
+      "type": "Private car",
+      "source_slug": "morning-desert-safari-private",
+      "details": "up to 7 people",
+      "price": "890 AED per car",
+      "includes": ["Hotel pickup"]
+    },
+    {
+      "package": "Evening Safari",
+      "type": "Shared",
+      "source_slug": "evening-desert-safari-shared",
+      "options": [
+        {"details": "child", "price": "160 AED", "includes": ["Camel ride"]},
+        {"details": "adult", "price": "220 AED", "includes": ["Falcon photos"]}
+      ]
+    },
+    {
+      "package": "Evening Safari",
+      "type": "Private",
+      "source_slug": "evening-desert-safari-private",
+      "details": "2 people included",
+      "price": "990 AED",
+      "includes": ["Dune driving", "Sandboarding", "BBQ dinner", "Shows", "Henna"]
+    },
+    {
+      "package": "Extra person",
+      "type": "Add-on",
+      "source_slug": "evening-desert-safari-private",
+      "price": "+100 AED",
+      "includes": ["Sandboarding", "BBQ dinner", "Shows", "Henna"]
+    }
+  ],
+  "Villa_Experience": [
+    {"experience": "Pool access", "source_slug": "aristo-desert-pool-day-pass", "details": "per person", "price": "100 AED"},
+    {"experience": "Private villa 5 hours", "source_slug": "aristo-desert-private-villa", "details": "6 people max", "price": "1750 AED"},
+    {"experience": "Extra hour", "source_slug": "aristo-desert-private-villa", "price": "250 AED"},
+    {"experience": "1 night stay", "source_slug": "aristo-desert-overnight-stay", "details": "breakfast included", "price": "2200 AED"},
+    {"experience": "Football activity", "source_slug": "aristo-desert-football", "details": "1 hour 30", "price": "200 AED"},
+    {"experience": "Desert pause experience", "source_slug": "aristo-desert-pause-experience", "price": "150 AED"}
+  ],
+  "Abu_Dhabi_Tours": [
+    {"name": "Sheikh Zayed Mosque tour", "source_slug": "sheikh-zayed-mosque-tour-private", "details": "private Lexus", "price": "990 AED"},
+    {"name": "Abu Dhabi city tour", "source_slug": "abu-dhabi-city-tour-private", "details": "private car", "price": "1290 AED"},
+    {"name": "Mercedes Viano private", "source_slug": "abu-dhabi-city-tour-private", "price": "1600 AED"},
+    {"name": "Qasr Al Watan", "source_slug": "qasr-al-watan-entry", "details": "entry", "price": "from 70 AED"},
+    {"name": "Ferrari World", "source_slug": "ferrari-world-abu-dhabi", "details": "child", "price": "from 295 AED"},
+    {"name": "Ferrari World", "source_slug": "ferrari-world-abu-dhabi", "details": "adult", "price": "from 350 AED"},
+    {"name": "Louvre Abu Dhabi", "source_slug": "louvre-abu-dhabi-entry", "details": "entry", "price": "from 70 AED"}
+  ],
+  "Entertainment": [],
+  "Air": [],
+  "Oman_Tour": [
+    {
+      "destination": "Musandam",
+      "source_slug": "musandam-day-trip-open-tour",
+      "type": "Day trip",
+      "price": {"adult": 450, "child": 350},
+      "notes": "Under 3 free",
+      "included": ["Transport from Dubai"]
+    },
+    {
+      "destination": "Khasab",
+      "source_slug": "khasab-premium-fjord-tour",
+      "type": "Premium fjord tour",
+      "price": {"adult": 890, "child": 690},
+      "notes": "Dolphin watching",
+      "included": ["Boat cruise", "Swimming", "Snorkeling", "Destination", "Lunch", "Cave visit"]
+    }
+  ],
+  "Wellness": [
+    {
+      "service": "Talise Ottoman Spa - Royal Hammam Ritual",
+      "source_slug": "talise-ottoman-royal-hammam",
+      "prices": {"single": 750, "couples": 1400}
+    },
+    {
+      "service": "Anantara Spa - Desert Rose Ritual",
+      "source_slug": "anantara-desert-rose-ritual",
+      "prices": {"standard": 850, "couples": 1600}
+    },
+    {
+      "service": "Desert Yoga & Meditation Retreat",
+      "source_slug": "desert-yoga-meditation-retreat",
+      "prices": {"yoga_only": 450, "full_retreat": 650}
+    },
+    {
+      "service": "Float Therapy at Zero Gravity",
+      "source_slug": "float-therapy-zero-gravity",
+      "prices": {"single_session": 350, "package_of_3": 900}
+    },
+    {
+      "service": "Sound Healing Session",
+      "source_slug": "sound-healing-session",
+      "prices": {"group_session": 280, "private_session": 800}
+    }
+  ],
+  "Theme_Parks": []
+}
+

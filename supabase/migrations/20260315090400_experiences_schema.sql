@@ -83,7 +83,6 @@ CREATE TABLE IF NOT EXISTS public.experience_services (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Experience Bookings Table
 CREATE TABLE IF NOT EXISTS public.experience_bookings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -112,7 +111,6 @@ CREATE TABLE IF NOT EXISTS public.experience_bookings (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_exp_services_subcategory ON public.experience_services(subcategory);
 CREATE INDEX IF NOT EXISTS idx_exp_services_type ON public.experience_services(service_type);
@@ -125,26 +123,19 @@ CREATE INDEX IF NOT EXISTS idx_exp_bookings_service ON public.experience_booking
 CREATE INDEX IF NOT EXISTS idx_exp_bookings_user ON public.experience_bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_exp_bookings_date ON public.experience_bookings(booking_date);
 CREATE INDEX IF NOT EXISTS idx_exp_bookings_ticket ON public.experience_bookings(ticket_code);
-
 -- RLS Policies
 ALTER TABLE public.experience_services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.experience_bookings ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Anyone can view published experiences" ON public.experience_services
   FOR SELECT USING (status IN ('published', 'sold_out'));
-
 CREATE POLICY "Admins manage experiences" ON public.experience_services FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'));
-
 CREATE POLICY "Users view own experience bookings" ON public.experience_bookings FOR SELECT
   USING (user_id = auth.uid());
-
 CREATE POLICY "Users create experience bookings" ON public.experience_bookings FOR INSERT
   WITH CHECK (user_id = auth.uid());
-
 CREATE POLICY "Staff manage experience bookings" ON public.experience_bookings FOR ALL
   USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role IN ('admin', 'concierge')));
-
 -- Updated at trigger
 CREATE OR REPLACE FUNCTION update_experiences_updated_at()
 RETURNS TRIGGER AS $$
@@ -153,17 +144,14 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 DROP TRIGGER IF EXISTS experience_services_updated_at ON public.experience_services;
 CREATE TRIGGER experience_services_updated_at
   BEFORE UPDATE ON public.experience_services
   FOR EACH ROW EXECUTE FUNCTION update_experiences_updated_at();
-
 DROP TRIGGER IF EXISTS experience_bookings_updated_at ON public.experience_bookings;
 CREATE TRIGGER experience_bookings_updated_at
   BEFORE UPDATE ON public.experience_bookings
   FOR EACH ROW EXECUTE FUNCTION update_experiences_updated_at();
-
 -- Function to generate unique ticket code
 CREATE OR REPLACE FUNCTION generate_experience_ticket_code()
 RETURNS TEXT AS $$

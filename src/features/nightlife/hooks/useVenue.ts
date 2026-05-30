@@ -1,22 +1,27 @@
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '../../../lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { normalizeVenue } from '../lib/normalizeVenue';
 
-export function useVenue(id?: string | null) {
+export function useVenue(slug: string) {
   return useQuery({
-    queryKey: ['venue', id],
-    enabled: Boolean(id),
+    queryKey: ['venue', slug],
+    enabled: Boolean(slug),
     staleTime: 5 * 60 * 1000,
+
     queryFn: async () => {
-      if (!id) throw new Error('Venue id is required.');
+      if (!supabase) return null;
 
-      const byId = await supabase.from('venues').select('*').eq('id', id).single();
-      if (!byId.error && byId.data) return normalizeVenue(byId.data);
+      const { data, error } = await supabase
+        .from('venues')
+        .select('*')
+        .eq('slug', slug)
+        .eq('status', 'published')
+        .maybeSingle();
 
-      const bySlug = await supabase.from('venues').select('*').eq('slug', id).single();
-      if (!bySlug.error && bySlug.data) return normalizeVenue(bySlug.data);
+      if (error) throw new Error(error.message);
+      if (!data) return null;
 
-      throw new Error('Venue not found');
+      return normalizeVenue(data as Record<string, unknown>);
     },
   });
 }

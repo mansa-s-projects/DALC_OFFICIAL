@@ -10,17 +10,17 @@ import type {
   PricingTier,
 } from '../types/experiences';
 
-// ─── Mock Data ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Mock Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const MOCK_EXPERIENCES: ExperienceService[] = [
-  // ─── Nightlife ───────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Nightlife â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-1',
     subcategory: 'nightlife',
     sub_subcategory: 'rooftop-lounges',
-    name: 'Aura Skypool Lounge — Sunset Session',
+    name: 'Aura Skypool Lounge â€” Sunset Session',
     slug: 'aura-skypool-sunset-session',
-    description_short: 'The world\'s highest 360° infinity pool with panoramic views of the Palm Jumeirah.',
+    description_short: 'The world\'s highest 360Â° infinity pool with panoramic views of the Palm Jumeirah.',
     description_long: 'Experience the iconic Aura Skypool, suspended 200 meters in the air on the 50th floor of the Palm Tower. This sunset session includes premium lounger access, welcome drink, and unparalleled views of the Dubai skyline as the sun dips below the horizon.',
     hero_image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [
@@ -28,7 +28,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
       'https://images.unsplash.com/photo-1540555700478-4be289fbec6e?q=80&w=800&auto=format&fit=crop',
     ],
     highlights: [
-      '360° infinity pool access',
+      '360Â° infinity pool access',
       'Palm Jumeirah skyline views',
       'Premium sun lounger',
       'Welcome champagne cocktail',
@@ -73,7 +73,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-2',
     subcategory: 'nightlife',
     sub_subcategory: 'clubs',
-    name: 'WHITE Dubai — VIP Table Experience',
+    name: 'WHITE Dubai â€” VIP Table Experience',
     slug: 'white-dubai-vip-table',
     description_short: 'Dubai\'s ultimate rooftop nightclub with world-class DJs and skyline views.',
     description_long: 'WHITE Dubai is an award-winning outdoor rooftop nightclub at Meydan Racecourse Grandstand. This VIP table experience includes priority entry, premium bottle service, and a private table with unmatched views of the dance floor and Dubai skyline.',
@@ -123,7 +123,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Adventure ───────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Adventure â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-3',
     subcategory: 'adventure',
@@ -132,7 +132,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'platinum-desert-safari-dinner',
     description_short: 'Luxury desert safari with wildlife drive, falcon show, and gourmet dinner under the stars.',
     description_long: 'Experience the Dubai Desert Conservation Reserve in ultimate luxury. This platinum safari includes a private wildlife drive in a Range Rover, interactive falcon demonstration, camel ride, and a 6-course gourmet dinner at an exclusive desert camp with live entertainment.',
-    hero_image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2674&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [
       'https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop',
@@ -179,9 +179,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-4',
     subcategory: 'adventure',
     sub_subcategory: 'skydiving',
-    name: 'Skydive Dubai — Tandem Palm Jump',
+    name: 'Skydive Dubai â€” Tandem Palm Jump',
     slug: 'skydive-dubai-tandem-palm',
-    description_short: 'The ultimate adrenaline rush — tandem skydive over the iconic Palm Jumeirah.',
+    description_short: 'The ultimate adrenaline rush â€” tandem skydive over the iconic Palm Jumeirah.',
     description_long: 'Experience the world\'s most spectacular skydiving location. Jump from 13,000 feet with a certified instructor and freefall at 120mph over the stunning Palm Jumeirah, with breathtaking views of the Dubai coastline, Burj Al Arab, and the Arabian Gulf.',
     hero_image: 'https://images.unsplash.com/photo-1529661197280-63dc398c6b33?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -225,12 +225,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Dining ──────────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Dining â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-5',
     subcategory: 'dining',
     sub_subcategory: 'chefs-table',
-    name: 'Tresind Studio — Chef\'s Table Experience',
+    name: 'Tresind Studio â€” Chef\'s Table Experience',
     slug: 'tresind-studio-chefs-table',
     description_short: 'Intimate 20-course progressive Indian dining at the Chef\'s Table.',
     description_long: 'Tresind Studio is Dubai\'s most celebrated progressive Indian restaurant, holding two Michelin stars. The Chef\'s Table experience offers an intimate 20-course tasting menu with front-row seats to the kitchen action, personally curated and presented by Chef Himanshu Saini.',
@@ -281,12 +281,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Water ───────────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Water â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-6',
     subcategory: 'water',
     sub_subcategory: 'scuba-diving',
-    name: 'Atlantis Dive — Shark Safari Experience',
+    name: 'Atlantis Dive â€” Shark Safari Experience',
     slug: 'atlantis-dive-shark-safari',
     description_short: 'Dive among sharks, rays, and 65,000 marine animals at Atlantis The Palm.',
     description_long: 'Experience the ultimate underwater adventure at the Ambassador Lagoon, a 11-million-liter marine habitat. The Shark Safari uses specialized helmets that allow you to walk underwater and breathe naturally while surrounded by sharks, rays, and thousands of colorful fish. No diving certification required.',
@@ -335,10 +335,10 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-water-1',
     subcategory: 'water',
     sub_subcategory: 'jet-ski',
-    name: 'Yamaha VX Deluxe 1050cc — Jet Ski Ride',
+    name: 'Yamaha VX Deluxe 1050cc â€” Jet Ski Ride',
     slug: 'yamaha-vx-deluxe-jet-ski',
-    description_short: 'Entry-level thrill on the Arabian Gulf — the Yamaha VX Deluxe delivers smooth power for all skill levels.',
-    description_long: 'Jump on the Yamaha VX Deluxe 1050cc — the perfect entry point for jet ski enthusiasts. Whether you\'re a first-timer or a seasoned rider, the VX Deluxe offers a comfortable, nimble ride across the crystal waters of the Dubai coastline. Available in 30, 60, 90, and 120-minute sessions from the JBR launch point.',
+    description_short: 'Entry-level thrill on the Arabian Gulf â€” the Yamaha VX Deluxe delivers smooth power for all skill levels.',
+    description_long: 'Jump on the Yamaha VX Deluxe 1050cc â€” the perfect entry point for jet ski enthusiasts. Whether you\'re a first-timer or a seasoned rider, the VX Deluxe offers a comfortable, nimble ride across the crystal waters of the Dubai coastline. Available in 30, 60, 90, and 120-minute sessions from the JBR launch point.',
     hero_image: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
     highlights: ['1050cc 4-stroke engine', 'Suitable for beginners', 'JBR coastline route', 'Life jacket & safety brief included'],
@@ -381,9 +381,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-water-2',
     subcategory: 'water',
     sub_subcategory: 'jet-ski',
-    name: 'Yamaha JetBlaster — Jet Ski Ride',
+    name: 'Yamaha JetBlaster â€” Jet Ski Ride',
     slug: 'yamaha-jetblaster-jet-ski',
-    description_short: 'Compact, agile, and built for fun — the JetBlaster is the ultimate play machine on the water.',
+    description_short: 'Compact, agile, and built for fun â€” the JetBlaster is the ultimate play machine on the water.',
     description_long: 'The Yamaha JetBlaster is designed for pure entertainment. Its lightweight hull and responsive handling make it the most playful jet ski in the fleet. Perfect for riders who want sharp turns, quick acceleration, and non-stop smiles along the Dubai Marina coastline.',
     hero_image: 'https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -427,9 +427,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-water-3',
     subcategory: 'water',
     sub_subcategory: 'jet-ski',
-    name: 'Yamaha GP HO 1900cc — Jet Ski Ride',
+    name: 'Yamaha GP HO 1900cc â€” Jet Ski Ride',
     slug: 'yamaha-gp-ho-jet-ski',
-    description_short: 'Race-grade power on the open water — the GP HO 1900cc is for riders who crave speed.',
+    description_short: 'Race-grade power on the open water â€” the GP HO 1900cc is for riders who crave speed.',
     description_long: 'The Yamaha GP HO 1900cc is built for performance. With a high-output 1.8L engine and a hull designed for competitive racing, this jet ski delivers raw speed and precision handling. Ride the same platform used by professional riders along the stunning Dubai coastline.',
     hero_image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -473,9 +473,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-water-4',
     subcategory: 'water',
     sub_subcategory: 'jet-ski',
-    name: 'Yamaha FX SVHO 260HP — Premium Jet Ski',
+    name: 'Yamaha FX SVHO 260HP â€” Premium Jet Ski',
     slug: 'yamaha-fx-svho-premium-jet-ski',
-    description_short: 'The flagship Yamaha FX SVHO — 260 horsepower of supercharged luxury on the water.',
+    description_short: 'The flagship Yamaha FX SVHO â€” 260 horsepower of supercharged luxury on the water.',
     description_long: 'The Yamaha FX SVHO is the pinnacle of jet ski engineering. A supercharged 1.8-liter engine producing 260HP, combined with luxury cruise features like adjustable trim, no-wake mode, and a premium NanoXcel hull. This is the Dubai experience for riders who demand the absolute best.',
     hero_image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -520,9 +520,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-water-5',
     subcategory: 'water',
     sub_subcategory: 'water-car',
-    name: 'Jetcar — Drive on Water',
+    name: 'Jetcar â€” Drive on Water',
     slug: 'jetcar-drive-on-water',
-    description_short: 'The world\'s first water car — drive a jet-powered supercar across the Arabian Gulf.',
+    description_short: 'The world\'s first water car â€” drive a jet-powered supercar across the Arabian Gulf.',
     description_long: 'The Jetcar is unlike anything you\'ve experienced. Built to resemble a sports car but powered by a marine jet engine, it lets you literally drive on water at thrilling speeds. Drift, spin, and cruise along the Dubai Marina coastline in this head-turning, Instagram-breaking machine.',
     hero_image: 'https://images.unsplash.com/photo-1476673160081-cf065bc4e7ce?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -562,12 +562,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Sky ─────────────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Sky â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-7',
     subcategory: 'sky',
     sub_subcategory: 'helicopter-tour',
-    name: 'HeliDubai — Iconic Tour (22 min)',
+    name: 'HeliDubai â€” Iconic Tour (22 min)',
     slug: 'helidubai-iconic-tour',
     description_short: 'Breathtaking helicopter tour over Dubai\'s most iconic landmarks.',
     description_long: 'See Dubai from a whole new perspective with this 22-minute helicopter tour. Soar above the Palm Jumeirah, circle the Burj Al Arab, glide past the World Islands, and witness the towering Burj Khalifa from the sky. An unforgettable experience for any Dubai visitor.',
@@ -613,12 +613,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Wellness ────────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Wellness â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-8',
     subcategory: 'wellness',
     sub_subcategory: 'spa-resort',
-    name: 'Talise Ottoman Spa — Royal Hammam Ritual',
+    name: 'Talise Ottoman Spa â€” Royal Hammam Ritual',
     slug: 'talise-ottoman-royal-hammam',
     description_short: 'Luxurious Turkish hammam experience in Dubai\'s largest spa.',
     description_long: 'Immerse yourself in centuries-old Ottoman bathing traditions at Talise Ottoman Spa, one of the largest and most luxurious spas in the Middle East. This 3-hour Royal Hammam ritual includes full body exfoliation, foam massage, mud mask, and relaxation in the opulent marble surroundings.',
@@ -665,12 +665,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Culture ─────────────────────────────────────────────────────────────────
+  // â”€â”€â”€ Culture â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-9',
     subcategory: 'culture',
     sub_subcategory: 'heritage-walk',
-    name: 'Al Fahidi Historical — Old Dubai Walking Tour',
+    name: 'Al Fahidi Historical â€” Old Dubai Walking Tour',
     slug: 'alfahidi-old-dubai-walking-tour',
     description_short: 'Discover the historic heart of Dubai on this guided heritage walk through Al Fahidi.',
     description_long: 'Step back in time and explore Dubai\'s oldest neighborhood, Al Fahidi Historical District. This intimate walking tour takes you through narrow lanes, wind-tower houses, and traditional courtyards. Visit the Coffee Museum, cross the creek by abra, and explore the vibrant souks with an expert local guide.',
@@ -718,12 +718,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Additional Wellness Experiences ─────────────────────────────────────────
+  // â”€â”€â”€ Additional Wellness Experiences â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-wellness-2',
     subcategory: 'wellness',
     sub_subcategory: 'spa-resort',
-    name: 'Anantara Spa — Desert Rose Ritual',
+    name: 'Anantara Spa â€” Desert Rose Ritual',
     slug: 'anantara-desert-rose-ritual',
     description_short: 'Luxurious 2-hour spa journey inspired by Bedouin healing traditions.',
     description_long: 'Experience the ancient healing traditions of the desert at Anantara The Palm Dubai Resort. The Desert Rose Ritual combines Arabian essential oils, desert sand exfoliation, and a full-body massage using warmed stones from the nearby desert. A truly transformative wellness experience.',
@@ -950,12 +950,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Additional Culture Experiences ──────────────────────────────────────────
+  // â”€â”€â”€ Additional Culture Experiences â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-culture-2',
     subcategory: 'culture',
     sub_subcategory: 'museum-tour',
-    name: 'Museum of the Future — Private Guided Tour',
+    name: 'Museum of the Future â€” Private Guided Tour',
     slug: 'museum-future-private-tour',
     description_short: 'Exclusive after-hours access to Dubai most iconic museum.',
     description_long: 'Experience the Museum of the Future like never before with a private guided tour after public hours. This exclusive access allows you to explore the immersive exhibits without crowds, with a dedicated guide explaining the vision of tomorrow technologies and innovations.',
@@ -1184,12 +1184,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Event (Upcoming) ────────────────────────────────────────────────────────
+  // â”€â”€â”€ Event (Upcoming) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-10',
     subcategory: 'culture',
     sub_subcategory: 'art-gallery',
-    name: 'Dubai Art Season — Exclusive Gallery Night',
+    name: 'Dubai Art Season â€” Exclusive Gallery Night',
     slug: 'dubai-art-season-gallery-night',
     description_short: 'VIP access to Dubai\'s premier art galleries with artist meet-and-greets.',
     description_long: 'An exclusive evening celebrating Dubai\'s vibrant art scene. This curated gallery night provides VIP access to Alserkal Avenue\'s top contemporary galleries, private viewings, artist meet-and-greets, and a champagne reception. Limited tickets available.',
@@ -1235,7 +1235,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Desert Dune Buggy & ATV Activities ──────────────────────────────────────
+  // â”€â”€â”€ Desert Dune Buggy & ATV Activities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-desert-buggy-1',
     subcategory: 'adventure',
@@ -1244,7 +1244,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'polaris-rzr-4-seater-dune-buggy',
     description_short: 'Conquer the Dubai dunes in a powerful 4-seater Polaris RZR off-road vehicle.',
     description_long: 'Experience the thrill of desert off-roading in the legendary Polaris RZR 4-seater. Perfect for families or groups, this high-performance side-by-side vehicle tackles the towering dunes of the Dubai Desert with ease. Includes safety briefing, helmet, and goggles.',
-    hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['4-seater capacity', 'High-performance engine', 'Safety equipment included', 'Professional guide'],
     vibe_tags: ['Adrenaline', 'Adventure', 'Desert', 'Family'],
@@ -1288,7 +1288,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'quad-570-atv-ride',
     description_short: 'Entry-level quad biking experience perfect for beginners on the Dubai dunes.',
     description_long: 'The Quad 570 is the perfect introduction to desert quad biking. Easy to handle yet powerful enough for exciting dune riding, this ATV delivers an accessible adventure for first-timers and experienced riders alike.',
-    hero_image: 'https://images.unsplash.com/photo-1558618047-f4b511ec3632?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Beginner-friendly', '570cc engine', 'Safety gear included', 'Guide-led tour'],
     vibe_tags: ['Adrenaline', 'Adventure', 'Desert', 'Beginner'],
@@ -1332,7 +1332,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'yamaha-raptor-700-atv',
     description_short: 'Sport-performance quad for experienced riders seeking adrenaline on the dunes.',
     description_long: 'The Yamaha Raptor 700 is a sport-performance ATV built for thrill-seekers. With a powerful 700cc engine and aggressive handling, this quad delivers an exhilarating ride across the challenging terrain of the Dubai Desert.',
-    hero_image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7e2c?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image3.png',
     gallery_images: [],
     highlights: ['700cc sport engine', 'Performance suspension', 'For experienced riders', 'High-speed capable'],
     vibe_tags: ['Adrenaline', 'Extreme', 'Desert', 'Performance'],
@@ -1376,7 +1376,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'yamaha-grizzly-700-atv',
     description_short: 'Utility-class ATV combining comfort and power for extended desert adventures.',
     description_long: 'The Yamaha Grizzly 700 is a utility-class ATV that offers superior comfort for longer rides without sacrificing power. Perfect for riders who want to explore more of the desert in comfort while still enjoying the thrill of off-road riding.',
-    hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['700cc utility engine', 'Superior comfort', 'Extended range', 'All-terrain capable'],
     vibe_tags: ['Adventure', 'Comfort', 'Desert', 'Exploration'],
@@ -1418,9 +1418,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     sub_subcategory: 'dune-buggy',
     name: 'Can-Am Maverick R 2-Seater',
     slug: 'can-am-maverick-r-2-seater',
-    description_short: 'The ultimate 2-seater dune buggy — Can-Am\'s flagship performance machine.',
+    description_short: 'The ultimate 2-seater dune buggy â€” Can-Am\'s flagship performance machine.',
     description_long: 'The Can-Am Maverick R is the pinnacle of side-by-side performance. With 240 horsepower and advanced suspension, this 2-seater beast conquers the most challenging dunes with ease. For serious thrill-seekers only.',
-    hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['240 HP turbo engine', 'Race-grade suspension', 'Premium 2-seater', 'Ultimate performance'],
     vibe_tags: ['Extreme', 'Adrenaline', 'Premium', 'Performance'],
@@ -1464,7 +1464,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-r-4-seater',
     description_short: 'Share the ultimate dune buggy experience with 3 friends in the Maverick R 4-seater.',
     description_long: 'All the power of the Maverick R in a 4-seater configuration. Share the ultimate desert experience with family or friends while enjoying 240 horsepower and race-grade performance across the Dubai dunes.',
-    hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['240 HP turbo engine', '4-seater capacity', 'Race-grade suspension', 'Group experience'],
     vibe_tags: ['Extreme', 'Adrenaline', 'Premium', 'Group'],
@@ -1508,7 +1508,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-x3-2-seater',
     description_short: 'High-performance 2-seater dune buggy with turbo power and aggressive styling.',
     description_long: 'The Can-Am Maverick X3 delivers turbocharged performance in a purpose-built desert machine. With its low center of gravity and aggressive stance, the X3 carves through dunes like a sports car on sand.',
-    hero_image: 'https://images.unsplash.com/photo-1558618047-f4b511ec3632?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Turbo engine', 'Low center of gravity', 'Aggressive styling', 'Performance handling'],
     vibe_tags: ['Adrenaline', 'Performance', 'Desert', 'Sport'],
@@ -1552,7 +1552,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     slug: 'can-am-maverick-x3-4-seater',
     description_short: 'Share the turbo-powered Maverick X3 experience with the whole crew.',
     description_long: 'The 4-seater Maverick X3 combines turbocharged performance with group capacity. Bring the whole crew and experience the thrill of high-performance dune bashing together.',
-    hero_image: 'https://images.unsplash.com/photo-1558618047-f4b511ec3632?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Turbo engine', '4-seater capacity', 'Performance handling', 'Group adventure'],
     vibe_tags: ['Adrenaline', 'Performance', 'Family', 'Group'],
@@ -1594,9 +1594,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     sub_subcategory: 'dune-buggy',
     name: 'Can-Am Maverick Sport 2-Seater',
     slug: 'can-am-maverick-sport-2-seater',
-    description_short: 'Balanced performance and value — the Maverick Sport delivers thrilling dune adventures.',
+    description_short: 'Balanced performance and value â€” the Maverick Sport delivers thrilling dune adventures.',
     description_long: 'The Can-Am Maverick Sport offers the perfect balance of performance and accessibility. An excellent choice for those wanting a premium dune buggy experience without the extreme power of the X3 or R models.',
-    hero_image: 'https://images.unsplash.com/photo-1558618047-f4b511ec3632?q=80&w=2670&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Balanced performance', 'Great value', 'Easy handling', 'Fun for all levels'],
     vibe_tags: ['Adventure', 'Fun', 'Desert', 'Accessible'],
@@ -1633,16 +1633,16 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Desert Safari Packages ──────────────────────────────────────────────────
+  // â”€â”€â”€ Desert Safari Packages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-safari-morning',
     subcategory: 'adventure',
     sub_subcategory: 'desert-safari',
-    name: 'Morning Desert Safari — Private',
+    name: 'Morning Desert Safari â€” Private',
     slug: 'morning-desert-safari-private',
-    description_short: 'Private morning safari in the cool desert air — perfect for families up to 7 people.',
+    description_short: 'Private morning safari in the cool desert air â€” perfect for families up to 7 people.',
     description_long: 'Beat the heat with our exclusive morning desert safari. Depart early in a private vehicle and experience the golden dunes in the cool morning light. Includes thrilling dune bashing, camel ride, and falcon photo opportunities. Perfect for families and groups who prefer cooler temperatures.',
-    hero_image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2674&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['Private Lexus vehicle', 'Up to 7 guests', 'Hotel pickup included', 'Morning cool temperatures'],
     vibe_tags: ['Adventure', 'Family', 'Nature', 'Private'],
@@ -1681,11 +1681,11 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-safari-evening-shared',
     subcategory: 'adventure',
     sub_subcategory: 'desert-safari',
-    name: 'Evening Desert Safari — Shared',
+    name: 'Evening Desert Safari â€” Shared',
     slug: 'evening-desert-safari-shared',
     description_short: 'Classic Dubai desert safari experience with BBQ dinner and live entertainment.',
     description_long: 'The quintessential Dubai experience. Watch the sunset over the dunes, enjoy thrilling dune bashing, and end the evening at a traditional Bedouin camp with BBQ dinner, belly dancing, tanoura shows, and henna painting.',
-    hero_image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2674&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image2.png',
     gallery_images: [],
     highlights: ['Sunset dune bashing', 'BBQ dinner', 'Live shows', 'Camel ride', 'Henna painting'],
     vibe_tags: ['Adventure', 'Cultural', 'Entertainment', 'Dining'],
@@ -1725,11 +1725,11 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-safari-evening-private',
     subcategory: 'adventure',
     sub_subcategory: 'desert-safari',
-    name: 'Evening Desert Safari — Private',
+    name: 'Evening Desert Safari â€” Private',
     slug: 'evening-desert-safari-private',
     description_short: 'Private evening safari with dedicated vehicle and all the classic experiences.',
     description_long: 'Enjoy the full evening safari experience in complete privacy. Your own vehicle, your own table at the camp, and a personalized experience. Includes everything from the shared safari plus dedicated attention from your guide.',
-    hero_image: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=2674&auto=format&fit=crop',
+    hero_image: '/images/desert-adventures/Aristodesert/image3.png',
     gallery_images: [],
     highlights: ['Private vehicle', '2 people included', 'VIP seating', 'Personalized service'],
     vibe_tags: ['Adventure', 'Luxury', 'Private', 'Romantic'],
@@ -1766,12 +1766,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Aristo Desert Villa Experience ──────────────────────────────────────────
+  // â”€â”€â”€ Aristo Desert Villa Experience â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-aristo-pool',
     subcategory: 'wellness',
     sub_subcategory: 'desert-retreat',
-    name: 'Aristo Desert — Pool Day Pass',
+    name: 'Aristo Desert â€” Pool Day Pass',
     slug: 'aristo-desert-pool-day-pass',
     description_short: 'Escape to a private desert oasis with pool access at Aristo Desert Camp.',
     description_long: 'Discover tranquility at Aristo Desert, a hidden gem in the Dubai desert. Enjoy pool access surrounded by stunning dunes, comfortable loungers, and the serene atmosphere of a private desert retreat. The perfect daycation escape from the city.',
@@ -1814,7 +1814,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-aristo-villa',
     subcategory: 'wellness',
     sub_subcategory: 'desert-retreat',
-    name: 'Aristo Desert — Private Villa (5 Hours)',
+    name: 'Aristo Desert â€” Private Villa (5 Hours)',
     slug: 'aristo-desert-private-villa',
     description_short: 'Exclusive private villa experience in the Dubai desert for up to 6 guests.',
     description_long: 'Book your own private villa at Aristo Desert for 5 hours of exclusive access. Perfect for intimate gatherings, celebrations, or simply escaping the city with friends. Includes pool access, private lounging area, and stunning desert views.',
@@ -1858,7 +1858,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-aristo-overnight',
     subcategory: 'wellness',
     sub_subcategory: 'desert-retreat',
-    name: 'Aristo Desert — Overnight Stay',
+    name: 'Aristo Desert â€” Overnight Stay',
     slug: 'aristo-desert-overnight-stay',
     description_short: 'Sleep under the stars in a luxury desert villa with breakfast included.',
     description_long: 'Experience the magic of a night in the desert at Aristo Desert Camp. Check into your private villa, enjoy the pool and desert sunset, sleep in complete tranquility, and wake up to a delicious breakfast with panoramic dune views.',
@@ -1899,7 +1899,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-aristo-football',
     subcategory: 'adventure',
     sub_subcategory: 'sports',
-    name: 'Aristo Desert — Football Activity',
+    name: 'Aristo Desert â€” Football Activity',
     slug: 'aristo-desert-football',
     description_short: 'Play football in the desert with friends at Aristo Desert Camp.',
     description_long: 'Unique football experience in the desert setting. Book the pitch for 1.5 hours and enjoy a game with friends surrounded by stunning dunes. A fun activity to combine with pool access or villa booking.',
@@ -1942,9 +1942,9 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-aristo-pause',
     subcategory: 'wellness',
     sub_subcategory: 'desert-retreat',
-    name: 'Aristo Desert — Desert Pause Experience',
+    name: 'Aristo Desert â€” Desert Pause Experience',
     slug: 'aristo-desert-pause-experience',
-    description_short: 'A mindful desert escape — disconnect and find peace in the dunes.',
+    description_short: 'A mindful desert escape â€” disconnect and find peace in the dunes.',
     description_long: 'The Desert Pause Experience is designed for those seeking a moment of calm. Step away from the city, sit among the dunes, and experience the profound silence of the desert. Includes light refreshments and guided relaxation.',
     hero_image: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -1982,12 +1982,12 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Abu Dhabi Tours ─────────────────────────────────────────────────────────
+  // â”€â”€â”€ Abu Dhabi Tours â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-ad-mosque',
     subcategory: 'culture',
     sub_subcategory: 'day-trip',
-    name: 'Sheikh Zayed Mosque Tour — Private',
+    name: 'Sheikh Zayed Mosque Tour â€” Private',
     slug: 'sheikh-zayed-mosque-tour-private',
     description_short: 'Private Lexus transfer to the iconic Sheikh Zayed Grand Mosque in Abu Dhabi.',
     description_long: 'Visit one of the world\'s most beautiful mosques in style. Travel from Dubai to Abu Dhabi in a private Lexus with professional driver. Explore the stunning Sheikh Zayed Grand Mosque with its 82 white domes, gold-plated chandeliers, and the world\'s largest hand-knotted carpet.',
@@ -2031,7 +2031,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-ad-city-tour',
     subcategory: 'culture',
     sub_subcategory: 'day-trip',
-    name: 'Abu Dhabi City Tour — Private',
+    name: 'Abu Dhabi City Tour â€” Private',
     slug: 'abu-dhabi-city-tour-private',
     description_short: 'Full-day private Abu Dhabi city tour covering major landmarks and attractions.',
     description_long: 'Experience the best of Abu Dhabi in a full-day private tour. Visit Sheikh Zayed Mosque, drive along the Corniche, see the Heritage Village, Emirates Palace, and explore the city\'s modern architecture. Private car with professional driver included.',
@@ -2075,7 +2075,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-ad-qasr-alwatan',
     subcategory: 'culture',
     sub_subcategory: 'attraction',
-    name: 'Qasr Al Watan — Entry Ticket',
+    name: 'Qasr Al Watan â€” Entry Ticket',
     slug: 'qasr-al-watan-entry',
     description_short: 'Entry ticket to the stunning Presidential Palace of the UAE.',
     description_long: 'Explore Qasr Al Watan, the UAE\'s magnificent Presidential Palace. Discover the Arabian heritage, craftsmanship, and knowledge that shaped the nation. Walk through grand halls, explore the stunning architecture, and learn about the UAE\'s governance.',
@@ -2122,8 +2122,8 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     name: 'Ferrari World Abu Dhabi',
     slug: 'ferrari-world-abu-dhabi',
     description_short: 'The world\'s first Ferrari theme park with the fastest roller coaster on Earth.',
-    description_long: 'Experience the thrill of Ferrari World Abu Dhabi, home to Formula Rossa — the world\'s fastest roller coaster reaching 240 km/h. Enjoy racing simulators, family rides, Italian dining, and immerse yourself in the Ferrari legend.',
-    hero_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2670&auto=format&fit=crop',
+    description_long: 'Experience the thrill of Ferrari World Abu Dhabi, home to Formula Rossa â€” the world\'s fastest roller coaster reaching 240 km/h. Enjoy racing simulators, family rides, Italian dining, and immerse yourself in the Ferrari legend.',
+    hero_image: '/images/desert-adventures/Aristodesert/image1.png',
     gallery_images: [],
     highlights: ['Formula Rossa', 'Racing simulators', '40+ rides', 'Italian dining'],
     vibe_tags: ['Adrenaline', 'Family', 'Theme park', 'Ferrari'],
@@ -2163,7 +2163,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     id: 'mock-exp-ad-louvre',
     subcategory: 'culture',
     sub_subcategory: 'museum-tour',
-    name: 'Louvre Abu Dhabi — Entry Ticket',
+    name: 'Louvre Abu Dhabi â€” Entry Ticket',
     slug: 'louvre-abu-dhabi-entry',
     description_short: 'Visit the stunning Louvre Abu Dhabi museum on Saadiyat Island.',
     description_long: 'Explore the Louvre Abu Dhabi, an architectural masterpiece designed by Jean Nouvel. Home to 700+ artworks spanning human history, the museum features the iconic "Rain of Light" dome and world-class exhibitions from both Eastern and Western cultures.',
@@ -2208,14 +2208,14 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // ─── Musandam / Khasab Tours ─────────────────────────────────────────────────
+  // â”€â”€â”€ Musandam / Khasab Tours â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-musandam-day',
     subcategory: 'adventure',
     sub_subcategory: 'day-trip',
-    name: 'Musandam Day Trip — Open Tour',
+    name: 'Musandam Day Trip â€” Open Tour',
     slug: 'musandam-day-trip-open-tour',
-    description_short: 'Day trip to the stunning fjords of Musandam, Oman — the Norway of Arabia.',
+    description_short: 'Day trip to the stunning fjords of Musandam, Oman â€” the Norway of Arabia.',
     description_long: 'Escape to Musandam, Oman\'s breathtaking peninsula known as the "Norway of Arabia". This day trip from Dubai includes transport, traditional dhow boat cruise through the fjords, swimming, snorkeling, and a delicious lunch on board. A must-do experience.',
     hero_image: 'https://images.unsplash.com/photo-1571140973702-2f0c4a1b9e54?q=80&w=2670&auto=format&fit=crop',
     gallery_images: [],
@@ -2299,7 +2299,7 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
   },
 ];
 
-// ─── Service Functions ────────────────────────────────────────────────────────
+// â”€â”€â”€ Service Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function getExperiences(filters?: ExperienceFilters): Promise<ExperienceService[]> {
   return queryPublished<ExperienceService>({
@@ -2375,7 +2375,7 @@ export async function getUpcomingEvents(limit: number = 4): Promise<ExperienceSe
   return (data ?? []) as ExperienceService[];
 }
 
-// ─── Capacity & Availability ──────────────────────────────────────────────────
+// â”€â”€â”€ Capacity & Availability â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function checkCapacity(
   serviceId: string,
@@ -2403,10 +2403,10 @@ export async function checkCapacity(
   }
 
   const { data: service } = await supabase
-    .from('experience_services')
+    .from('activities')
     .select('max_capacity')
-    .eq('id', serviceId)
-    .single();
+    .eq('slug', serviceId)
+    .maybeSingle();
 
   const totalCapacity = service?.max_capacity || 100;
   const remaining = Math.max(0, totalCapacity - bookedCount);
@@ -2451,7 +2451,7 @@ export async function getAvailableSlots(serviceId: string, date: Date): Promise<
   return slots;
 }
 
-// ─── Booking Functions ────────────────────────────────────────────────────────
+// â”€â”€â”€ Booking Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export function generateTicketCode(bookingId: string): string {
   // Format: DALC-XXXX-XXXX (8 random alphanumeric characters)
@@ -2466,37 +2466,40 @@ export function generateTicketCode(bookingId: string): string {
 export async function createExperienceBooking(input: ExperienceBookingInput): Promise<ExperienceBooking> {
   const ticketCode = generateTicketCode(input.service_id);
 
+  const bookingInsertPayload = {
+    service_id: input.service_id,
+    user_id: input.user_id,
+    booking_date: input.booking_date,
+    time_slot: input.time_slot,
+    party_size: input.party_size,
+    tier: input.tier,
+    unit_price: input.unit_price,
+    total_price: input.total_price,
+    currency: 'AED',
+    ticket_code: ticketCode,
+    ticket_status: 'active',
+    status: 'confirmed',
+  };
+
   const { data, error } = await supabase
     .from('experience_bookings')
-    .insert({
-      service_id: input.service_id,
-      user_id: input.user_id,
-      booking_date: input.booking_date,
-      time_slot: input.time_slot,
-      party_size: input.party_size,
-      tier: input.tier,
-      unit_price: input.unit_price,
-      total_price: input.total_price,
-      currency: 'AED',
-      ticket_code: ticketCode,
-      ticket_status: 'active',
-      status: 'confirmed',
-    })
-    .select('*, service:experience_services(*)')
+    .insert(bookingInsertPayload)
+    .select('id,request_id,service_id,user_id,booking_date,time_slot,party_size,tier,unit_price,total_price,currency,ticket_code,ticket_status,status,created_at,updated_at,service:experience_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,hero_image,event_date,status)')
     .single();
 
   if (error) throw error;
-  return data as ExperienceBooking;
+  if (!data?.id) throw new Error('Experience booking creation failed: missing booking id');
+  return data as unknown as ExperienceBooking;
 }
 
 export async function getUserExperienceBookings(userId: string): Promise<ExperienceBooking[]> {
   const { data, error } = await supabase
     .from('experience_bookings')
-    .select('*, service:experience_services(*)')
+    .select('id,request_id,service_id,user_id,booking_date,time_slot,party_size,tier,unit_price,total_price,currency,ticket_code,ticket_status,status,created_at,updated_at,service:experience_services(id,name,slug,subcategory,sub_subcategory,service_type,pricing_model,price_from,price_currency,price_display,hero_image,event_date,status)')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return (data ?? []) as ExperienceBooking[];
+  return (data ?? []) as unknown as ExperienceBooking[];
 }
 

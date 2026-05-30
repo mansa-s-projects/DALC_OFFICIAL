@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS public.scoring_weights (
   reason text,
   UNIQUE (version, event_name)
 );
-
 CREATE TABLE IF NOT EXISTS public.routing_rules_config (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -25,7 +24,6 @@ CREATE TABLE IF NOT EXISTS public.routing_rules_config (
   reason text,
   UNIQUE (version, rule_key)
 );
-
 CREATE TABLE IF NOT EXISTS public.model_feedback_audit (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -38,7 +36,6 @@ CREATE TABLE IF NOT EXISTS public.model_feedback_audit (
   route_expected_owner text,
   route_actual_owner text
 );
-
 CREATE TABLE IF NOT EXISTS public.autopilot_adjustment_log (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -50,7 +47,6 @@ CREATE TABLE IF NOT EXISTS public.autopilot_adjustment_log (
   confidence numeric(6,2) NOT NULL DEFAULT 0,
   applied_by text NOT NULL DEFAULT 'autopilot'
 );
-
 CREATE TABLE IF NOT EXISTS public.founder_overrides (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -61,10 +57,8 @@ CREATE TABLE IF NOT EXISTS public.founder_overrides (
   reason text,
   updated_by text
 );
-
 CREATE INDEX IF NOT EXISTS idx_feedback_audit_created ON public.model_feedback_audit(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_adjustment_log_created ON public.autopilot_adjustment_log(created_at DESC);
-
 -- Seed explainable default scoring map (version 1)
 INSERT INTO public.scoring_weights (version, event_name, weight, active, reason)
 VALUES
@@ -79,7 +73,6 @@ VALUES
   (1, 'move_to_dubai_landing_lead_form_submit_success', 45, true, 'baseline'),
   (1, 'move_to_dubai_service_lead_form_submit_success', 45, true, 'baseline')
 ON CONFLICT (version, event_name) DO NOTHING;
-
 -- Seed routing defaults (version 1)
 INSERT INTO public.routing_rules_config (version, rule_key, condition, target_team, priority, active, reason)
 VALUES
@@ -87,7 +80,6 @@ VALUES
   (1, 'team-b-business', '{"service_slug":["company-formation"]}'::jsonb, 'team_b', 20, true, 'baseline'),
   (1, 'team-c-transport', '{"source_page_contains":["/transport","/travel/transport"]}'::jsonb, 'team_c', 30, true, 'baseline')
 ON CONFLICT (version, rule_key) DO NOTHING;
-
 -- 31.1 predicted vs actual
 CREATE OR REPLACE VIEW public.v_cc_predicted_vs_actual AS
 SELECT
@@ -109,7 +101,6 @@ SELECT
   ) AS prediction_error
 FROM public.leads l
 LEFT JOIN public.v_cc_lead_value_prediction p ON p.lead_id = l.id;
-
 -- 31.2 scoring adjustment recommendation
 CREATE OR REPLACE VIEW public.v_cc_scoring_weight_adjustments AS
 WITH event_to_outcome AS (
@@ -149,7 +140,6 @@ SELECT
   END AS adjustment_rule
 FROM event_to_outcome eto
 LEFT JOIN active_weights aw ON aw.event_name = eto.event_name;
-
 -- 31.3 routing adjustment recommendation
 CREATE OR REPLACE VIEW public.v_cc_routing_adjustments AS
 SELECT
@@ -171,7 +161,6 @@ SELECT
   END AS routing_adjustment_rule
 FROM public.leads l
 GROUP BY COALESCE(l.owner_team_id, 'unassigned');
-
 -- 32) Deal intelligence engine
 CREATE OR REPLACE VIEW public.v_cc_deal_health AS
 SELECT
@@ -208,7 +197,6 @@ SELECT
     2
   ) AS fail_likelihood
 FROM public.leads l;
-
 -- 33) Sales pressure system
 CREATE OR REPLACE VIEW public.v_cc_sales_pressure AS
 SELECT
@@ -235,7 +223,6 @@ SELECT
   END AS pressure_priority
 FROM public.leads l
 WHERE l.lead_status NOT IN ('won', 'lost');
-
 -- 34) Instant response engine
 CREATE OR REPLACE VIEW public.v_cc_instant_response_targets AS
 SELECT
@@ -259,7 +246,6 @@ SELECT
   END AS response_logic
 FROM public.leads l
 WHERE l.lead_status IN ('new', 'assigned', 'contacted');
-
 -- 35) Revenue priority queue
 CREATE OR REPLACE VIEW public.v_cc_revenue_priority_queue AS
 SELECT
@@ -291,7 +277,6 @@ SELECT
 FROM public.leads l
 LEFT JOIN public.v_cc_lead_value_prediction v ON v.lead_id = l.id
 WHERE l.lead_status NOT IN ('won', 'lost');
-
 -- 36) Sales capacity balancer
 CREATE TABLE IF NOT EXISTS public.agent_capacity_config (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -301,7 +286,6 @@ CREATE TABLE IF NOT EXISTS public.agent_capacity_config (
   max_open_tasks integer NOT NULL DEFAULT 25,
   enabled boolean NOT NULL DEFAULT true
 );
-
 CREATE OR REPLACE VIEW public.v_cc_capacity_balancer AS
 WITH workload AS (
   SELECT
@@ -330,7 +314,6 @@ SELECT
   END AS balancing_state
 FROM workload w
 LEFT JOIN public.agent_capacity_config c ON c.owner_id = w.owner_id AND c.enabled = true;
-
 -- 37) High-intent interception engine
 CREATE OR REPLACE VIEW public.v_cc_high_intent_interception AS
 WITH session_intent AS (
@@ -361,7 +344,6 @@ FROM session_intent si
 LEFT JOIN public.leads l ON l.session_id = si.session_id
 WHERE l.id IS NULL
   AND si.last_event_at >= now() - interval '20 minutes';
-
 -- 38) Revenue kill-switch detection
 CREATE OR REPLACE VIEW public.v_cc_killswitch_detection AS
 WITH recent AS (
@@ -406,7 +388,6 @@ SELECT
     ELSE 'healthy'
   END AS killswitch_reason
 FROM recent, baseline, flow;
-
 -- 39) Competitive intelligence layer (simple external-shift proxy)
 CREATE OR REPLACE VIEW public.v_cc_competitive_intelligence AS
 WITH daily AS (
@@ -456,7 +437,6 @@ SELECT
   END AS shift_detection
 FROM latest l
 JOIN stats s ON s.source_page = l.source_page;
-
 -- 40) Founder control layer
 CREATE OR REPLACE VIEW public.v_cc_founder_control_metrics AS
 SELECT
@@ -467,7 +447,6 @@ SELECT
   (SELECT COUNT(*) FROM public.v_cc_sales_pressure WHERE escalation_rule <> 'none') AS active_pressure_cases,
   (SELECT COUNT(*) FROM public.v_cc_revenue_leak_detection WHERE leak_priority >= 70) AS critical_leaks,
   (SELECT killswitch_triggered FROM public.v_cc_killswitch_detection LIMIT 1) AS killswitch_triggered;
-
 CREATE OR REPLACE VIEW public.v_cc_active_overrides AS
 SELECT
   override_key,
@@ -480,7 +459,6 @@ SELECT
 FROM public.founder_overrides
 WHERE enabled = true
   AND (expires_at IS NULL OR expires_at > now());
-
 ALTER TABLE public.scoring_weights ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.routing_rules_config ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.model_feedback_audit ENABLE ROW LEVEL SECURITY;

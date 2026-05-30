@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import { Mail, Lock, User, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
 import { signUp } from '@/lib/auth';
 
@@ -61,10 +62,16 @@ export default function Register() {
       >
         {/* Logo */}
         <div className="text-center mb-12">
-          <Link href="/" className="inline-block">
-            <h1 className="text-3xl font-display text-white">
-              Dubai <span className="italic text-gray-400">À La Carte</span>
-            </h1>
+          <Link href="/" className="inline-flex justify-center">
+            <Image
+              src="/branding/logo-main.png"
+              alt="Dubai À La Carte"
+              width={240}
+              height={78}
+              className="h-16 w-auto object-contain"
+              style={{ filter: 'brightness(0) invert(1)' }}
+              priority
+            />
           </Link>
           <p className="text-gray-500 text-sm mt-3 uppercase tracking-widest">Create Account</p>
         </div>

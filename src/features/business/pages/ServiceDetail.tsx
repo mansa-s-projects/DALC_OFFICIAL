@@ -7,12 +7,13 @@ import {
   Clock,
   Building2,
   CalendarCheck,
-  DollarSign,
   FileText,
   CheckCircle2,
   MapPin,
   Star,
   ArrowRight,
+  Landmark,
+  ShieldCheck,
 } from 'lucide-react';
 import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
@@ -29,7 +30,7 @@ export default function ServiceDetail() {
   const subcategory = params?.subcategory as string;
   const slug = params?.slug as string;
   const router = useRouter();
-  const session = useAppStore(s => s.session);
+  const session = useAppStore((s) => s.session);
 
   const service = MOCK_SERVICES.find((s) => s.slug === slug);
   const isLoading = false;
@@ -90,21 +91,19 @@ export default function ServiceDetail() {
     );
   }
 
-  const priceLabel =
-    service.price_display ??
-    (service.pricing_model === 'custom_quote'
-      ? 'Custom Quote'
-      : service.pricing_model === 'hourly'
-      ? `AED ${service.price_from?.toLocaleString()}/hr`
-      : service.pricing_model === 'starting_from'
-      ? `From AED ${service.price_from?.toLocaleString()}`
-      : `AED ${service.price_from?.toLocaleString()}`);
+  const engagementHighlights = [
+    'Strategic setup review aligned to your business model',
+    'Document preparation and authority-facing filing support',
+    'Advisor-led follow-up across approvals and compliance touchpoints',
+    service.freezone
+      ? `Route matched to ${service.freezone} requirements and licence fit`
+      : 'Route matched to mainland, banking, and licensing requirements',
+  ];
 
   return (
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
         {service.hero_image ? (
           <img
@@ -117,7 +116,6 @@ export default function ServiceDetail() {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/60 to-luxury-black/30" />
 
-        {/* Breadcrumb */}
         <div className="absolute top-24 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto">
           <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
             <Link href="/business" className="hover:text-luxury-gold transition-colors">Business</Link>
@@ -130,7 +128,6 @@ export default function ServiceDetail() {
           </nav>
         </div>
 
-        {/* Hero content */}
         <div className="absolute bottom-0 left-0 right-0 px-4 md:px-8 max-w-7xl mx-auto pb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,13 +159,8 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* ── Main content ─────────────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-        {/* ── Left / main column ──────────────────────────────────────────────── */}
         <div className="lg:col-span-2 space-y-12">
-
-          {/* Overview */}
           {service.description_long && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
               <h2 className="text-xl font-display text-white mb-4">Overview</h2>
@@ -176,7 +168,6 @@ export default function ServiceDetail() {
             </motion.div>
           )}
 
-          {/* Key info tiles */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {service.duration_description && (
               <div className="border border-white/10 p-4">
@@ -190,15 +181,13 @@ export default function ServiceDetail() {
               <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Steps</p>
               <p className="text-white text-sm font-medium">{service.estimated_steps} steps</p>
             </div>
-            {service.location && (
-              <div className="border border-white/10 p-4">
-                <MapPin className="w-5 h-5 text-luxury-gold mb-2" />
-                <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Location</p>
-                <p className="text-white text-sm font-medium">
-                  {service.freezone ? `${service.freezone}` : service.location}
-                </p>
-              </div>
-            )}
+            <div className="border border-white/10 p-4">
+              <MapPin className="w-5 h-5 text-luxury-gold mb-2" />
+              <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Route</p>
+              <p className="text-white text-sm font-medium">
+                {service.freezone || service.sub_subcategory || service.location}
+              </p>
+            </div>
             {service.government_authority && (
               <div className="border border-white/10 p-4">
                 <Building2 className="w-5 h-5 text-luxury-gold mb-2" />
@@ -208,7 +197,18 @@ export default function ServiceDetail() {
             )}
           </div>
 
-          {/* Process timeline */}
+          <div className="border border-white/10 p-6">
+            <h2 className="text-xl font-display text-white mb-5">What This Engagement Covers</h2>
+            <div className="space-y-3">
+              {engagementHighlights.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-sm text-gray-300">
+                  <ShieldCheck className="w-4 h-4 text-luxury-gold/70 flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {service.workflow_template.length > 0 && (
             <div>
               <h2 className="text-xl font-display text-white mb-6">Step-by-Step Process</h2>
@@ -216,7 +216,6 @@ export default function ServiceDetail() {
             </div>
           )}
 
-          {/* Documents */}
           {service.required_documents.length > 0 && (
             <div>
               <h2 className="text-xl font-display text-white mb-6">Document Requirements</h2>
@@ -224,31 +223,6 @@ export default function ServiceDetail() {
             </div>
           )}
 
-          {/* Government fees */}
-          <div className="border border-white/10 p-6">
-            <h2 className="text-xl font-display text-white mb-5">Fee Breakdown</h2>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between py-3 border-b border-white/10">
-                <span className="text-gray-400 text-sm">Service fee</span>
-                <span className="text-white text-sm font-medium">{priceLabel}</span>
-              </div>
-              <div className="flex items-center justify-between py-3 border-b border-white/10">
-                <span className="text-gray-400 text-sm">Government fees</span>
-                <span className="text-white text-sm font-medium">
-                  {service.government_fees > 0
-                    ? `AED ${service.government_fees.toLocaleString()}`
-                    : 'Included / N/A'}
-                </span>
-              </div>
-              {service.government_authority && (
-                <p className="text-gray-600 text-xs mt-2">
-                  Government fees paid to {service.government_authority}. Subject to change.
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Compliance checklist preview */}
           {service.compliance_checklist.length > 0 && (
             <div>
               <h2 className="text-xl font-display text-white mb-6">Compliance Checklist</h2>
@@ -256,7 +230,6 @@ export default function ServiceDetail() {
             </div>
           )}
 
-          {/* Eligibility */}
           {service.eligibility_criteria.length > 0 && (
             <div>
               <h2 className="text-xl font-display text-white mb-6">Eligibility Criteria</h2>
@@ -272,21 +245,17 @@ export default function ServiceDetail() {
           )}
         </div>
 
-        {/* ── Right / sticky sidebar ──────────────────────────────────────────── */}
         <div className="lg:col-span-1">
           <div className="sticky top-24 space-y-4">
-
-            {/* Pricing card */}
             <div className="border border-luxury-gold/30 p-6 bg-white/[0.02]">
-              <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-1">
-                {service.pricing_model === 'custom_quote' ? 'Pricing' : 'Starting from'}
+              <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Service Engagement</p>
+              <p className="text-luxury-gold font-display text-3xl font-bold mb-3">
+                Advisor-led setup
               </p>
-              <p className="text-luxury-gold font-display text-3xl font-bold mb-1">{priceLabel}</p>
-              {service.government_fees > 0 && (
-                <p className="text-gray-500 text-xs mb-5">
-                  + AED {service.government_fees.toLocaleString()} govt. fees
-                </p>
-              )}
+              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                Start with a consultation and we will map the right structure, documentation path,
+                and authority workflow before we move into filing.
+              </p>
 
               {bookingSuccess ? (
                 <div className="flex items-center gap-2 text-emerald-400 text-sm py-3 border border-emerald-400/20 px-4">
@@ -302,7 +271,7 @@ export default function ServiceDetail() {
                     disabled={createBooking.isPending || bookingStarted}
                     className="w-full py-4 bg-luxury-gold text-luxury-black text-sm font-bold uppercase tracking-widest hover:bg-luxury-gold/90 transition-all duration-300 disabled:opacity-50 mb-3"
                   >
-                    {createBooking.isPending ? 'Processing…' : 'Engage Service'}
+                    {createBooking.isPending ? 'Processing...' : 'Engage Service'}
                   </motion.button>
                   <Link
                     href={`/business/consultation/new?service=${service.id}`}
@@ -315,30 +284,28 @@ export default function ServiceDetail() {
               )}
             </div>
 
-            {/* Quick info */}
             <div className="border border-white/10 p-5 space-y-3">
               <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-3">Quick Info</p>
               {service.freezone && (
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between gap-4 text-sm">
                   <span className="text-gray-500">Free Zone</span>
-                  <span className="text-gray-200">{service.freezone}</span>
+                  <span className="text-gray-200 text-right">{service.freezone}</span>
                 </div>
               )}
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Currency</span>
-                <span className="text-gray-200">{service.price_currency}</span>
-              </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between gap-4 text-sm">
                 <span className="text-gray-500">Type</span>
-                <span className="text-gray-200">{SERVICE_TYPE_LABELS[service.service_type]}</span>
+                <span className="text-gray-200 text-right">{SERVICE_TYPE_LABELS[service.service_type]}</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between gap-4 text-sm">
+                <span className="text-gray-500">Authority</span>
+                <span className="text-gray-200 text-right">{service.government_authority || 'Advisor managed'}</span>
+              </div>
+              <div className="flex justify-between gap-4 text-sm">
                 <span className="text-gray-500">Docs required</span>
-                <span className="text-gray-200">{service.required_documents.length}</span>
+                <span className="text-gray-200 text-right">{service.required_documents.length}</span>
               </div>
             </div>
 
-            {/* Back link */}
             <Link
               href={`/business/${subcategory}`}
               className="flex items-center gap-2 text-gray-500 hover:text-luxury-gold text-xs uppercase tracking-widest transition-colors"
@@ -350,7 +317,6 @@ export default function ServiceDetail() {
         </div>
       </div>
 
-      {/* ── Related / CTA ─────────────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 pb-24">
         <div className="border border-luxury-gold/20 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
@@ -358,7 +324,7 @@ export default function ServiceDetail() {
               Unsure which service is right?
             </p>
             <h3 className="text-white font-display text-xl md:text-2xl">
-              Speak with an expert advisor — free
+              Speak with an expert advisor - free
             </h3>
           </div>
           <Link

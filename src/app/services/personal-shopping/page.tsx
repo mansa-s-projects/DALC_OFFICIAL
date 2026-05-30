@@ -14,7 +14,6 @@ import {
   Users,
   Crown,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 const fade = (delay = 0) => ({
@@ -161,8 +160,6 @@ export default function PersonalShoppingPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black relative overflow-hidden">
-      <Navbar />
-
       {/* ── Mysterious Overlay ─────────────────────────────────────────────── */}
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md px-4 mt-20">
         <motion.div
@@ -449,3 +446,4 @@ export default function PersonalShoppingPage() {
     </div>
   );
 }
+

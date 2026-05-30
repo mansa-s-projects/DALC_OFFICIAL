@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS public.relocation_profiles (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.user_workflows (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL,
@@ -28,7 +27,6 @@ CREATE TABLE IF NOT EXISTS public.user_workflows (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.user_workflow_steps (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   workflow_id UUID NOT NULL REFERENCES public.user_workflows(id) ON DELETE CASCADE,
@@ -43,7 +41,6 @@ CREATE TABLE IF NOT EXISTS public.user_workflow_steps (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.user_documents (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL,
@@ -59,7 +56,6 @@ CREATE TABLE IF NOT EXISTS public.user_documents (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS public.relocation_cost_estimates (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   relocation_profile_id UUID NOT NULL REFERENCES public.relocation_profiles(id),
@@ -73,18 +69,15 @@ CREATE TABLE IF NOT EXISTS public.relocation_cost_estimates (
   recurrence_period TEXT,
   created_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_reloc_profiles_user ON public.relocation_profiles(user_id);
 CREATE INDEX IF NOT EXISTS idx_reloc_workflows_user ON public.user_workflows(user_id);
 CREATE INDEX IF NOT EXISTS idx_reloc_steps_workflow ON public.user_workflow_steps(workflow_id);
 CREATE INDEX IF NOT EXISTS idx_reloc_docs_user ON public.user_documents(user_id);
-
 ALTER TABLE public.relocation_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_workflows ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_workflow_steps ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_documents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.relocation_cost_estimates ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Users manage own relocation profile" ON public.relocation_profiles FOR ALL USING (user_id = auth.uid());
 CREATE POLICY "Users manage own workflows" ON public.user_workflows FOR ALL USING (user_id = auth.uid());
 CREATE POLICY "Users manage own workflow steps" ON public.user_workflow_steps FOR ALL USING (EXISTS (SELECT 1 FROM public.user_workflows WHERE id = workflow_id AND user_id = auth.uid()));

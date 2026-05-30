@@ -1,21 +1,15 @@
 CREATE INDEX IF NOT EXISTS idx_leads_dashboard_hot
   ON public.leads(lead_temperature, lead_score DESC, status_updated_at DESC);
-
 CREATE INDEX IF NOT EXISTS idx_leads_dashboard_status_owner
   ON public.leads(lead_status, owner_id, created_at DESC);
-
 CREATE INDEX IF NOT EXISTS idx_leads_dashboard_followup
   ON public.leads(next_follow_up_at, lead_status);
-
 CREATE INDEX IF NOT EXISTS idx_leads_dashboard_closed
   ON public.leads(closed_at DESC, lead_status);
-
 CREATE INDEX IF NOT EXISTS idx_tasks_dashboard_due
   ON public.lead_tasks(status, due_at, priority);
-
 CREATE INDEX IF NOT EXISTS idx_history_dashboard_created
   ON public.lead_history(created_at DESC, action_type);
-
 CREATE OR REPLACE VIEW public.v_dashboard_live_lead_feed AS
 SELECT
   l.id,
@@ -44,7 +38,6 @@ SELECT
     ELSE 'review'
   END AS next_required_action
 FROM public.leads l;
-
 CREATE OR REPLACE VIEW public.v_dashboard_hot_leads AS
 SELECT
   l.id,
@@ -71,7 +64,6 @@ SELECT
 FROM public.leads l
 WHERE l.lead_temperature = 'hot'
   AND l.lead_status NOT IN ('won', 'lost');
-
 CREATE OR REPLACE VIEW public.v_dashboard_overdue_tasks AS
 SELECT
   t.id,
@@ -102,7 +94,6 @@ JOIN public.leads l ON l.id = t.lead_id
 WHERE t.status <> 'completed'
   AND t.due_at IS NOT NULL
   AND t.due_at < now();
-
 CREATE OR REPLACE VIEW public.v_dashboard_needs_first_contact AS
 SELECT
   l.id,
@@ -118,7 +109,6 @@ SELECT
 FROM public.leads l
 WHERE l.lead_status IN ('new', 'assigned')
   AND l.last_contacted_at IS NULL;
-
 CREATE OR REPLACE VIEW public.v_dashboard_recent_conversions AS
 SELECT
   l.id,
@@ -133,7 +123,6 @@ SELECT
 FROM public.leads l
 WHERE l.lead_status = 'won'
   AND l.closed_at IS NOT NULL;
-
 CREATE OR REPLACE VIEW public.v_dashboard_activity_stream AS
 SELECT
   h.created_at AS occurred_at,
@@ -159,7 +148,6 @@ SELECT
   END AS next_required_action
 FROM public.lead_history h
 JOIN public.leads l ON l.id = h.lead_id;
-
 CREATE OR REPLACE VIEW public.v_dashboard_leads_without_owner AS
 SELECT
   l.id,
@@ -173,7 +161,6 @@ SELECT
 FROM public.leads l
 WHERE l.owner_id IS NULL
   AND l.lead_status NOT IN ('won', 'lost');
-
 CREATE OR REPLACE VIEW public.v_dashboard_leads_without_follow_up AS
 SELECT
   l.id,
@@ -188,7 +175,6 @@ SELECT
 FROM public.leads l
 WHERE l.next_follow_up_at IS NULL
   AND l.lead_status NOT IN ('won', 'lost');
-
 CREATE OR REPLACE VIEW public.v_dashboard_recently_active_leads AS
 SELECT
   l.id,
@@ -218,7 +204,6 @@ WHERE GREATEST(
     COALESCE(l.status_updated_at, 'epoch'::timestamptz),
     l.created_at
   ) >= now() - interval '30 minutes';
-
 CREATE OR REPLACE VIEW public.v_dashboard_top_converting_sources AS
 SELECT
   l.source_page,
@@ -232,7 +217,6 @@ SELECT
   COALESCE(SUM(l.won_value) FILTER (WHERE l.lead_status = 'won'), 0) AS won_value_total
 FROM public.leads l
 GROUP BY l.source_page, l.service_slug;
-
 CREATE OR REPLACE VIEW public.v_dashboard_metrics AS
 SELECT
   (SELECT COUNT(*) FROM public.leads WHERE created_at >= date_trunc('day', now())) AS new_leads_today,
@@ -261,7 +245,6 @@ SELECT
       GROUP BY service_slug
     ) t
   ) AS leads_by_service_interest;
-
 CREATE OR REPLACE VIEW public.v_dashboard_alerts AS
 SELECT
   'new_hot_lead'::text AS alert_type,

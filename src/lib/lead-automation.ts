@@ -193,7 +193,7 @@ async function insertActionLog(
     details?: Record<string, unknown>;
   }
 ): Promise<boolean> {
-  const { error } = await supabaseAdmin.from('lead_automations').insert({
+  const automationLogPayload = {
     lead_id: payload.leadId,
     trigger_name: payload.triggerName,
     trigger_key: payload.triggerKey,
@@ -201,7 +201,8 @@ async function insertActionLog(
     status: payload.status,
     details: payload.details || {},
     executed_at: new Date().toISOString(),
-  });
+  };
+  const { error } = await supabaseAdmin.from('lead_automations').insert(automationLogPayload).select('id');
 
   if (!error) return true;
 
@@ -220,7 +221,8 @@ async function applyLeadPatch(
   const { error } = await supabaseAdmin
     .from('leads')
     .update({ ...patch, last_automation_at: new Date().toISOString() })
-    .eq('id', leadId);
+    .eq('id', leadId)
+    .select('id');
 
   if (error) throw error;
 }

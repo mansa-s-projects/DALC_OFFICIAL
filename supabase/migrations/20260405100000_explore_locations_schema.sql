@@ -35,15 +35,12 @@ CREATE TABLE IF NOT EXISTS public.explore_locations (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- ==========================================
 -- INDEXES
 -- ==========================================
 
 -- Ensure all columns exist in case table pre-existed without them
 ALTER TABLE public.explore_locations
-  ADD COLUMN IF NOT EXISTS short_description    TEXT,
-  ADD COLUMN IF NOT EXISTS long_description     TEXT,
   ADD COLUMN IF NOT EXISTS emirate              TEXT DEFAULT 'Dubai',
   ADD COLUMN IF NOT EXISTS area                 TEXT,
   ADD COLUMN IF NOT EXISTS category             TEXT DEFAULT 'Landmark',
@@ -63,30 +60,25 @@ ALTER TABLE public.explore_locations
   ADD COLUMN IF NOT EXISTS source_venue_id      TEXT,
   ADD COLUMN IF NOT EXISTS recommend_score      INTEGER DEFAULT 85,
   ADD COLUMN IF NOT EXISTS view_count           INTEGER DEFAULT 0;
-
 CREATE INDEX IF NOT EXISTS idx_explore_locations_emirate ON public.explore_locations(emirate);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_category ON public.explore_locations(category);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_hidden_gem ON public.explore_locations(is_hidden_gem);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_featured ON public.explore_locations(is_featured);
 CREATE INDEX IF NOT EXISTS idx_explore_locations_coords ON public.explore_locations(latitude, longitude);
-
 -- ==========================================
 -- ROW LEVEL SECURITY
 -- ==========================================
 ALTER TABLE public.explore_locations ENABLE ROW LEVEL SECURITY;
-
 -- Public read access for all locations
 DROP POLICY IF EXISTS "Anyone can view explore locations" ON public.explore_locations;
 CREATE POLICY "Anyone can view explore locations" ON public.explore_locations
   FOR SELECT USING (true);
-
 -- Admin-only write access
 DROP POLICY IF EXISTS "Admins can manage explore locations" ON public.explore_locations;
 CREATE POLICY "Admins can manage explore locations" ON public.explore_locations
   FOR ALL USING (
     EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin')
   );
-
 -- ==========================================
 -- TRIGGERS
 -- ==========================================

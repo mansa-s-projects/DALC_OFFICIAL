@@ -35,3 +35,13 @@ tsconfig.tsbuildinfo
 /playwright/.auth/
 
 .vercel
+
+# Large files — never commit
+*.zip
+*.tar.gz
+*.rar
+
+# Environment variables
+.env
+.env.local
+.env.*
