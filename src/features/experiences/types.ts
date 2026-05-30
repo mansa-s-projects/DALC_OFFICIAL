@@ -57,6 +57,7 @@ export interface ExperienceService {
   subcategory: ExperienceSubcategory;
   sub_subcategory?: string;
   name: string;
+  title?: string;
   slug: string;
   description_short?: string;
   description_long?: string;
@@ -79,11 +80,13 @@ export interface ExperienceService {
   is_recurring: boolean;
   recurrence_pattern?: string;
   duration_minutes?: number;
+  duration?: string | number;
   location: string;
   area?: string;
   venue_name?: string;
   coordinates?: { lat: number; lng: number };
   age_minimum?: number;
+  minAge?: number;
   dress_code?: string;
   requirements: string[];
   included: string[];
