@@ -4,8 +4,8 @@ import Stripe from "stripe";
 import { getSupabaseAdminClient } from "../../../../lib/supabase-admin";
 
 function getStripe() {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error('STRIPE_SECRET_KEY is not configured');
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
+  if (!key) return null;
   return new Stripe(key, { apiVersion: "2026-03-25.dahlia" });
 }
 
@@ -15,6 +15,22 @@ type CheckoutBody = {
 };
 
 export async function POST(req: NextRequest) {
+  const paymentsEnabled = process.env.PAYMENTS_ENABLED === "true";
+  if (!paymentsEnabled) {
+    return NextResponse.json(
+      { error: "Payments are temporarily paused. Please contact support." },
+      { status: 503 },
+    );
+  }
+
+  const stripe = getStripe();
+  if (!stripe) {
+    return NextResponse.json(
+      { error: "Payments are not configured. Missing STRIPE_SECRET_KEY." },
+      { status: 503 },
+    );
+  }
+
   const body = (await req.json()) as CheckoutBody;
   const requestId = typeof body.request_id === "string" ? body.request_id : null;
   const quoteId = typeof body.quote_id === "string" ? body.quote_id : null;
@@ -43,9 +59,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Quote is not payable" }, { status: 409 });
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const appUrl =
+    process.env.NEXT_PUBLIC_APP_URL ??
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "http://localhost:3000";
 
-  const session = await getStripe().checkout.sessions.create({
+  const session = await stripe.checkout.sessions.create({
     mode: "payment",
     payment_method_types: ["card"],
     line_items: [

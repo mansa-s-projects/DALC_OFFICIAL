@@ -68,6 +68,8 @@ const PAYMENT_STATUS_COLORS: Record<string, string> = {
   refunded: "text-purple-400",
 };
 
+const PAYMENTS_ENABLED = process.env.NEXT_PUBLIC_PAYMENTS_ENABLED === "true";
+
 export default function RequestDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -174,7 +176,7 @@ export default function RequestDetailPage() {
         )}
         {paymentStatus === "cancelled" && (
           <div className="mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
-            Payment was not completed. You can try again below.
+            Payment was not completed.
           </div>
         )}
 
@@ -257,7 +259,7 @@ export default function RequestDetailPage() {
                 </p>
               )}
 
-              {activeQuote.status === "sent" && latestPayment?.status !== "succeeded" && (
+              {activeQuote.status === "sent" && latestPayment?.status !== "succeeded" && PAYMENTS_ENABLED && (
                 <button
                   onClick={() => handleCheckout(activeQuote.id)}
                   disabled={checkoutLoading}
@@ -265,6 +267,11 @@ export default function RequestDetailPage() {
                 >
                   {checkoutLoading ? "Redirecting…" : "Pay Now"}
                 </button>
+              )}
+              {activeQuote.status === "sent" && latestPayment?.status !== "succeeded" && !PAYMENTS_ENABLED && (
+                <p className="text-sm text-[#F5EDD8]/50 border border-[#2A2518] rounded-xl px-4 py-3">
+                  Payments are temporarily paused. Our team will assist you directly.
+                </p>
               )}
             </div>
           ) : (
