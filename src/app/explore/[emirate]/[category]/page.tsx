@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSupabaseAdminClient } from '@/lib/supabase-admin';
+import { getSupabaseAdminClient, hasSupabaseAdminCredentials } from '@/lib/supabase-admin';
 import { fetchVenues } from '@/lib/fetchVenues';
 import VenueCard from '@/components/cards/VenueCard';
 
@@ -29,6 +29,9 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
+  if (!hasSupabaseAdminCredentials()) {
+    return [];
+  }
   try {
     const admin = getSupabaseAdminClient();
     const [emiratesResult, categoriesResult] = await Promise.all([
@@ -53,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categoryLabel =
     CATEGORY_LABELS[category] ??
     category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-  const title = `${categoryLabel} in ${emirateLabel} | Dubai À La Carte`;
+  const title = `${categoryLabel} in ${emirateLabel} | Dubai Ã€ La Carte`;
   const description = `Discover the best ${categoryLabel.toLowerCase()} in ${emirateLabel}. Curated recommendations with concierge booking access.`;
   const canonical = `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dubaialacharte.com'}/explore/${emirate}/${category}`;
 
@@ -66,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: canonical,
       type: 'website',
-      siteName: 'Dubai À La Carte',
+      siteName: 'Dubai Ã€ La Carte',
     },
     twitter: { card: 'summary_large_image', title, description },
   };

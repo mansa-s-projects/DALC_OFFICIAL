@@ -1,9 +1,16 @@
-import { getSupabaseAdminClient } from '@/lib/supabase-admin';
+import { getSupabaseAdminClient, hasSupabaseAdminCredentials } from '@/lib/supabase-admin';
 import type { MetadataRoute } from 'next';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dubaialacharte.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (!hasSupabaseAdminCredentials()) {
+    return [
+      { url: `${BASE}/`, changeFrequency: 'daily', priority: 1.0 },
+      { url: `${BASE}/explore`, changeFrequency: 'daily', priority: 0.9 },
+    ];
+  }
+
   const admin = getSupabaseAdminClient();
 
   const [venuesResult, emiratesResult, categoriesResult] = await Promise.all([

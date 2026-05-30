@@ -4,6 +4,15 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 
 let supabaseAdminSingleton: SupabaseClient | null = null;
 
+export function hasSupabaseAdminCredentials() {
+  return Boolean(
+    (process.env.NEXT_PUBLIC_SUPABASE_URL ??
+      process.env.SUPABASE_URL ??
+      process.env.VITE_SUPABASE_URL) &&
+      (process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_KEY)
+  );
+}
+
 export function getSupabaseAdminClient() {
   if (supabaseAdminSingleton) return supabaseAdminSingleton;
 

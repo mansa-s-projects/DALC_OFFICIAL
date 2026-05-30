@@ -1,5 +1,5 @@
 import 'server-only';
-import { getSupabaseAdminClient } from '@/lib/supabase-admin';
+import { getSupabaseAdminClient, hasSupabaseAdminCredentials } from '@/lib/supabase-admin';
 import { normalizeVenue } from '@/features/nightlife/lib/normalizeVenue';
 import type { Venue } from '@/types';
 
@@ -16,6 +16,9 @@ type RawVenueRow = Record<string, unknown> & {
 
 export async function fetchVenues(options: FetchVenuesOptions = {}): Promise<Venue[]> {
   const { emirate, category, limit = 100 } = options;
+  if (!hasSupabaseAdminCredentials()) {
+    return [];
+  }
   const admin = getSupabaseAdminClient();
 
   let query = admin
@@ -63,6 +66,9 @@ export async function fetchVenues(options: FetchVenuesOptions = {}): Promise<Ven
 }
 
 export async function fetchVenueBySlug(emirate: string, slug: string): Promise<Venue | null> {
+  if (!hasSupabaseAdminCredentials()) {
+    return null;
+  }
   const admin = getSupabaseAdminClient();
 
   const { data, error } = await admin
