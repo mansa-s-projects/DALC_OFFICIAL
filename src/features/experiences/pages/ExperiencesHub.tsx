@@ -35,7 +35,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Dubai Desert Safari & Dune Buggy Experiences",
     description:
       "Dune buggies, quad bikes, camel rides and sunset safaris — the most iconic side of Dubai.",
-    image: "/images/desert-adventures/Aristodesert/image1.png",
+    image: "/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp",
     badge: "Most Booked",
     startingFrom: "AED 160",
     cta: "Explore Desert",
@@ -97,7 +97,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Desert & Stud Farm Photoshoots Dubai",
     description:
       "Couture dress photoshoots with horses, camels and falcons in the golden desert light.",
-    image: "/images/desert-adventures/Aristodesert/image2.png",
+    image: "/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp",
     badge: null,
     startingFrom: "AED 1,650",
     cta: "Book a Shoot",
@@ -286,4 +286,3 @@ export default function ExperiencesHub() {
     </div>
   );
 }
-

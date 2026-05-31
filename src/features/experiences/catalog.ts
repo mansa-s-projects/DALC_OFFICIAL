@@ -114,10 +114,10 @@ function getYachtCharterItems(): ExperienceCatalogItem[] {
 // Desert Adventures - Dune Buggies and ATVs with reliable images
 function getDesertAdventureItems(): ExperienceCatalogItem[] {
   const desertImages = [
-    '/images/desert-adventures/Aristodesert/image1.png',
-    '/images/desert-adventures/Aristodesert/image2.png',
-    '/images/desert-adventures/Aristodesert/image3.png',
-    '/images/desert-adventures/Aristodesert/image1.png',
+    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
   ];
 
   const vehicles: ExperienceCatalogItem[] = [

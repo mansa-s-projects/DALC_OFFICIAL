@@ -40,7 +40,7 @@ const CATEGORIES = [
   {
     title: 'Desert Adventures',
     subtitle: 'Safari, quad bikes, dune buggies',
-    image: '/images/desert-adventures/Aristodesert/image3.png',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
     href: '/experiences',
   },
   {
@@ -89,7 +89,7 @@ const CATEGORIES = [
 
 const EXPERIENCES = [
   { name: 'Jet Ski', tag: 'Water', image: '/images/water-activities/yamaha-fx-svho.jpg' },
-  { name: 'Evening Desert Safari', tag: 'Desert', image: '/images/desert-adventures/Aristodesert/image2.png' },
+  { name: 'Evening Desert Safari', tag: 'Desert', image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp' },
   { name: 'Polaris RZR Ride', tag: 'Adventure', image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop' },
   { name: 'Private Villa Pool', tag: 'Leisure', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600&auto=format&fit=crop' },
   { name: 'Sheikh Zayed Mosque', tag: 'Culture', image: 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=600&auto=format&fit=crop' },
@@ -723,6 +723,5 @@ export default function HomeEntry() {
     </div>
   );
 }
-
 
 
