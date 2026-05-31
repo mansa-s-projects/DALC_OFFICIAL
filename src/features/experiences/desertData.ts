@@ -339,12 +339,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book a desert safari in Dubai from AED 160. Shared evening safaris, private morning safaris, and exclusive Sonara Camp overnight stays with dune bashing, BBQ dinner & entertainment.',
     shortDescription:
       'Sunset dune bashing, a lavish Bedouin camp dinner, and stars over the Lahbab. Shared from AED 160, private from AED 990 — or go all-night at Sonara Camp.',
-    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+    image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=1200&auto=format&fit=crop',
     alt: 'Desert safari Dubai evening dune bashing Lahbab Bedouin camp',
     galleryImages: [
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
     ],
     badge: 'Most Booked',
     fromPrice: 160,
@@ -356,7 +356,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Desert Safari — Shared (Adult)',
         description:
           "Dubai's most popular desert experience. Shared group departure: dune bashing, camel ride, Bedouin camp, BBQ dinner, and live entertainment under the stars.",
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 220,
         priceLabel: 'AED 220 / person',
         durationMinutes: 360,
@@ -368,7 +368,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Desert Safari — Shared (Child)',
         description:
           'The classic shared evening safari for children aged 2–11. Full experience — dune bashing, camp, dinner, and entertainment — at a reduced price.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 160,
         priceLabel: 'AED 160 / child',
         durationMinutes: 360,
@@ -379,7 +379,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Private Evening Desert Safari',
         description:
           'Exclusive private vehicle for your group. Dedicated guide, flexible timing, and a personalised journey through the Lahbab dunes.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 990,
         priceLabel: 'From AED 990 / vehicle',
         durationMinutes: 360,
@@ -391,7 +391,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Morning Desert Safari — Private',
         description:
           'Beat the heat and the crowds. Exclusive morning dune bashing in a private 4x4 — the desert in golden silence, all to yourself.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 890,
         priceLabel: 'From AED 890 / car',
         durationMinutes: 240,
@@ -402,7 +402,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Safari — Extra Person',
         description:
           'Add an additional guest to an existing private evening safari reservation.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 100,
         priceLabel: '+AED 100 / person',
         durationMinutes: 360,
@@ -413,7 +413,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Sunset & Dinner',
         description:
           "The UAE's most exclusive desert dining experience. A luxury camp in a private valley — sunset cocktails, a 5-course dinner, and curated entertainment.",
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 890,
         priceLabel: 'AED 890 adult / AED 380 child',
         durationMinutes: 300,
@@ -425,7 +425,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Sunset Experience',
         description:
           'Attend the legendary Sonara Camp sunset gathering without the full dinner. Cocktail hour, live music, and dusk over endless dunes.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 480,
         priceLabel: 'AED 480 adult / AED 190 child',
         durationMinutes: 120,
@@ -436,7 +436,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Overnight Stay',
         description:
           "Fall asleep under the Milky Way in a private nest tent. Sunrise breakfast included. The UAE's most extraordinary overnight desert experience.",
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
         priceAED: 2650,
         priceLabel: 'From AED 2,650 / nest',
         durationMinutes: 960,
@@ -475,12 +475,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Camel and horse riding in the Dubai desert from AED 150. Guided rides for all ages on Arabian horses and camels. Pony rides for children from AED 150. Lahbab desert location.',
     shortDescription:
       'Drift across the sands on an Arabian horse or a desert camel. Gentle guided rides for all ages — including pony rides for the little ones.',
-    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+    image: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1200&auto=format&fit=crop',
     alt: 'Camel riding Dubai desert traditional experience Lahbab Arabian horse',
     galleryImages: [
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?q=80&w=1200&auto=format&fit=crop',
     ],
     fromPrice: 150,
     seoContent:
@@ -491,7 +491,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Pony Ride — 30 Minutes',
         description:
           'A gentle, guided pony ride on the desert sands — perfect for children aged 3 and up. Handler present at all times.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=900&q=80',
         priceAED: 150,
         priceLabel: 'AED 150 / child',
         durationMinutes: 30,
@@ -502,7 +502,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Horse Ride — 1 Hour',
         description:
           'A scenic guided ride through the Lahbab red dunes on an Arabian horse. Suitable for beginners and experienced riders alike.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=900&q=80',
         priceAED: 240,
         priceLabel: 'AED 240–280 / person',
         durationMinutes: 60,
@@ -533,12 +533,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Try sandboarding in the Dubai desert from AED 90 per person. Slide down the Lahbab red sand dunes with all boards and equipment included. Suitable for all ages and experience levels.',
     shortDescription:
       'Strap on a board and carve down the towering red dunes. Equipment and instruction included — suitable for all ages and abilities.',
-    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+    image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200&auto=format&fit=crop',
     alt: 'Sandboarding Dubai Lahbab red sand dunes desert activity',
     galleryImages: [
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
     ],
     fromPrice: 90,
     seoContent:
@@ -549,7 +549,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sandboarding — Group Session',
         description:
           'Group rate for parties of 4 or more. Private dune zone, dedicated instructor, and group discount applied automatically. Unlimited runs for the session duration.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=900&q=80',
         priceAED: 90,
         priceLabel: 'AED 90 / person (4+ guests)',
         durationMinutes: 60,
@@ -561,7 +561,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sandboarding — Solo Session',
         description:
           'Strap on a board and carve down the iconic red dunes solo or as a pair. Equipment, instruction, and unlimited runs on the designated dune face.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+        image: 'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=900&q=80',
         priceAED: 120,
         priceLabel: 'AED 120 / person',
         durationMinutes: 60,

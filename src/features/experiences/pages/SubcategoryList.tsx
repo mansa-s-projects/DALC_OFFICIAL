@@ -194,7 +194,7 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
         <Navbar />
         <section className="relative h-[56vh] min-h-[380px] overflow-hidden">
           <img
-            src="/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp"
+            src="https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2070&auto=format&fit=crop"
             alt="Desert Adventures Dubai"
             className="absolute inset-0 w-full h-full object-cover"
           />
