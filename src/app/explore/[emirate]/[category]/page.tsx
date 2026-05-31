@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { getSupabaseAdminClient, hasSupabaseAdminCredentials } from '@/lib/supabase-admin';
-import { fetchVenues } from '@/lib/fetchVenues';
 import VenueCard from '@/components/cards/VenueCard';
+import { fetchVenues } from '@/lib/fetchVenues';
+import {
+  getSupabaseAdminClient,
+  hasSupabaseAdminCredentials,
+} from '@/lib/supabase-admin';
 
 export const revalidate = 3600;
 
@@ -29,17 +32,18 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
-  if (!hasSupabaseAdminCredentials()) {
-    return [];
-  }
+  if (!hasSupabaseAdminCredentials()) return [];
+
   try {
     const admin = getSupabaseAdminClient();
     const [emiratesResult, categoriesResult] = await Promise.all([
       admin.from('emirates').select('slug').eq('is_active', true),
       admin.from('venue_categories').select('slug').eq('is_active', true),
     ]);
+
     const emirates = emiratesResult.data ?? [];
     const categories = categoriesResult.data ?? [];
+
     return emirates.flatMap((e: { slug: string }) =>
       categories.map((c: { slug: string }) => ({ emirate: e.slug, category: c.slug }))
     );
@@ -50,15 +54,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { emirate, category } = await params;
+
   const emirateLabel =
     EMIRATE_LABELS[emirate] ??
     emirate.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   const categoryLabel =
     CATEGORY_LABELS[category] ??
     category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-  const title = `${categoryLabel} in ${emirateLabel} | Dubai Ã€ La Carte`;
+
+  const title = `${categoryLabel} in ${emirateLabel} | Dubai À La Carte`;
   const description = `Discover the best ${categoryLabel.toLowerCase()} in ${emirateLabel}. Curated recommendations with concierge booking access.`;
-  const canonical = `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dubaialacharte.com'}/explore/${emirate}/${category}`;
+  const canonical = `${
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dubaialacharte.com'
+  }/explore/${emirate}/${category}`;
 
   return {
     title,
@@ -69,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: canonical,
       type: 'website',
-      siteName: 'Dubai Ã€ La Carte',
+      siteName: 'Dubai À La Carte',
     },
     twitter: { card: 'summary_large_image', title, description },
   };
@@ -77,6 +85,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ExploreCategoryPage({ params }: Props) {
   const { emirate, category } = await params;
+
   const emirateLabel =
     EMIRATE_LABELS[emirate] ??
     emirate.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());

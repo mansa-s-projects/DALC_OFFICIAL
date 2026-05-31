@@ -10,7 +10,11 @@ export function buildPageMetadata(args: {
   path: string;
   keywords?: string[];
 }): Metadata {
-  const url = new URL(args.path, getBaseUrl());
+  const baseUrl = getBaseUrl();
+  const url = new URL(args.path, baseUrl);
+
+  const siteName = 'Dubai À La Carte';
+  const defaultOgImage = new URL('/branding/logo-main.png', baseUrl);
 
   return {
     title: args.title,
@@ -22,14 +26,21 @@ export function buildPageMetadata(args: {
       title: args.title,
       description: args.description,
       url: url.toString(),
-      siteName: 'Dubai À La Carte',
+      siteName,
       type: 'website',
+      images: [
+        {
+          url: defaultOgImage.toString(),
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: args.title,
       description: args.description,
+      images: [defaultOgImage.toString()],
     },
     keywords: args.keywords,
   };
 }
+
