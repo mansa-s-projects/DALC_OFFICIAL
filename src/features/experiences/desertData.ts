@@ -52,12 +52,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book dune buggy rental in Dubai from AED 600. Polaris RZR, Can-Am Maverick R, X3 & Sport. Private desert track, 30-min & 1-hour sessions. Helmets & safety gear included.',
     shortDescription:
       'Tear across golden dunes at full throttle. Premium buggies — Polaris RZR, Can-Am Maverick X3 & Maverick R — on a private desert track.',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
     alt: 'Dune buggy rental Dubai Lahbab desert Can-Am Maverick Polaris RZR',
     galleryImages: [
-      'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
     ],
     badge: 'Most Popular',
     fromPrice: 600,
@@ -69,7 +69,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Polaris RZR 4-Seater — 30 Min',
         description:
           '110 HP powerhouse, 4 seats. Ideal for groups or families who want shared thrills on the most iconic buggy in the UAE.',
-        image: 'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 30,
@@ -80,7 +80,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Polaris RZR 4-Seater — 1 Hour',
         description:
           '110 HP powerhouse, 4 seats. Full hour to tackle every dune, ridge, and valley — the complete desert buggy experience.',
-        image: 'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1000,
         priceLabel: 'AED 1,000',
         durationMinutes: 60,
@@ -92,7 +92,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 2-Seater — 30 Min',
         description:
           '232 HP twin-turbo — the fastest production side-by-side ever made. 2 seats. For those who demand peak desert performance.',
-        image: 'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1150,
         priceLabel: 'AED 1,150',
         durationMinutes: 30,
@@ -104,7 +104,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 2-Seater — 1 Hour',
         description:
           '232 HP twin-turbo, 2 seats. A full hour at the absolute limit — maximum speed, maximum adrenaline.',
-        image: 'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 2000,
         priceLabel: 'AED 2,000',
         durationMinutes: 60,
@@ -115,7 +115,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 4-Seater — 30 Min',
         description:
           "232 HP twin-turbo, 4 seats. Share the Maverick R's legendary power with up to 3 passengers.",
-        image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1250,
         priceLabel: 'AED 1,250',
         durationMinutes: 30,
@@ -126,7 +126,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 4-Seater — 1 Hour',
         description:
           '232 HP twin-turbo, 4 seats. The full Maverick R experience for groups — an hour of pure desert domination.',
-        image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 2200,
         priceLabel: 'AED 2,200',
         durationMinutes: 60,
@@ -137,7 +137,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 2-Seater — 30 Min',
         description:
           '195 HP turbocharged, 2 seats. The benchmark desert racer — explosive acceleration and pro-grade long-travel suspension.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 800,
         priceLabel: 'AED 800',
         durationMinutes: 30,
@@ -148,7 +148,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 2-Seater — 1 Hour',
         description:
           '195 HP turbocharged, 2 seats. A full hour on the most popular desert racer in Dubai. Pure adrenaline.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1350,
         priceLabel: 'AED 1,350',
         durationMinutes: 60,
@@ -160,7 +160,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 4-Seater — 30 Min',
         description:
           '195 HP turbocharged, 4 seats. All the thrill of the X3 with room for the whole crew.',
-        image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 850,
         priceLabel: 'AED 850',
         durationMinutes: 30,
@@ -171,7 +171,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 4-Seater — 1 Hour',
         description:
           '195 HP turbocharged, 4 seats. An hour of desert racing with up to 3 passengers along for the ride.',
-        image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1450,
         priceLabel: 'AED 1,450',
         durationMinutes: 60,
@@ -182,7 +182,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick Sport 2-Seater — 30 Min',
         description:
           '100 HP, 2 seats. The perfect introduction to dune buggy racing — capable, controlled, and genuinely thrilling.',
-        image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 30,
@@ -193,7 +193,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick Sport 2-Seater — 1 Hour',
         description:
           '100 HP, 2 seats. Full hour of desert exploration at an accessible price point — ideal for first-timers.',
-        image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 900,
         priceLabel: 'AED 900',
         durationMinutes: 60,
@@ -231,12 +231,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Quad biking in Dubai from AED 300. Yamaha Raptor 700, Yamaha Grizzly 700, and Quad 570 through the Lahbab Red Sand Dunes. 30-min and 1-hour sessions. No experience needed.',
     shortDescription:
       'Conquer the Lahbab dunes on powerful ATVs. From the entry-level Quad 570 to the thundering Yamaha Raptor 700 — sessions for all levels.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
     alt: 'Quad biking Dubai ATV desert Yamaha Raptor Grizzly Lahbab dunes',
     galleryImages: [
-      'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
     ],
     badge: 'Best Value',
     fromPrice: 300,
@@ -248,7 +248,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Quad 570 — 30 Minutes',
         description:
           'The perfect starter ATV. Easy to ride, powerful enough to tackle any dune — ideal for your first desert quad experience.',
-        image: 'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 300,
         priceLabel: 'AED 300',
         durationMinutes: 30,
@@ -259,7 +259,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Quad 570 — 1 Hour',
         description:
           'Full hour on the Quad 570. Cover more ground, explore more dunes, and build real confidence on the machine.',
-        image: 'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 500,
         priceLabel: 'AED 500',
         durationMinutes: 60,
@@ -271,7 +271,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Raptor 700 — 30 Minutes',
         description:
           'Sport-spec ATV with aggressive power delivery and a lightweight frame. For riders who want to push harder on the dunes.',
-        image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d09?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 350,
         priceLabel: 'AED 350',
         durationMinutes: 30,
@@ -282,7 +282,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Raptor 700 — 1 Hour',
         description:
           "An hour on Dubai's favourite sport quad. Maximum acceleration, maximum dune coverage — pure desert performance.",
-        image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d09?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 60,
@@ -294,7 +294,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Grizzly 700 — 30 Minutes',
         description:
           'All-terrain utility ATV with the smoothest ride in the fleet. Stable, capable, and confident on steep dune faces.',
-        image: 'https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 380,
         priceLabel: 'AED 380',
         durationMinutes: 30,
@@ -305,7 +305,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Grizzly 700 — 1 Hour',
         description:
           'A full hour on the Grizzly — maximising trail coverage with the stability and power to handle any terrain.',
-        image: 'https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 650,
         priceLabel: 'AED 650',
         durationMinutes: 60,
@@ -339,12 +339,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book a desert safari in Dubai from AED 160. Shared evening safaris, private morning safaris, and exclusive Sonara Camp overnight stays with dune bashing, BBQ dinner & entertainment.',
     shortDescription:
       'Sunset dune bashing, a lavish Bedouin camp dinner, and stars over the Lahbab. Shared from AED 160, private from AED 990 — or go all-night at Sonara Camp.',
-    image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     alt: 'Desert safari Dubai evening dune bashing Lahbab Bedouin camp',
     galleryImages: [
-      'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     ],
     badge: 'Most Booked',
     fromPrice: 160,
@@ -356,7 +356,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Desert Safari — Shared (Adult)',
         description:
           "Dubai's most popular desert experience. Shared group departure: dune bashing, camel ride, Bedouin camp, BBQ dinner, and live entertainment under the stars.",
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 220,
         priceLabel: 'AED 220 / person',
         durationMinutes: 360,
@@ -368,7 +368,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Desert Safari — Shared (Child)',
         description:
           'The classic shared evening safari for children aged 2–11. Full experience — dune bashing, camp, dinner, and entertainment — at a reduced price.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 160,
         priceLabel: 'AED 160 / child',
         durationMinutes: 360,
@@ -379,7 +379,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Private Evening Desert Safari',
         description:
           'Exclusive private vehicle for your group. Dedicated guide, flexible timing, and a personalised journey through the Lahbab dunes.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 990,
         priceLabel: 'From AED 990 / vehicle',
         durationMinutes: 360,
@@ -391,7 +391,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Morning Desert Safari — Private',
         description:
           'Beat the heat and the crowds. Exclusive morning dune bashing in a private 4x4 — the desert in golden silence, all to yourself.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 890,
         priceLabel: 'From AED 890 / car',
         durationMinutes: 240,
@@ -402,7 +402,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Evening Safari — Extra Person',
         description:
           'Add an additional guest to an existing private evening safari reservation.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 100,
         priceLabel: '+AED 100 / person',
         durationMinutes: 360,
@@ -413,7 +413,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Sunset & Dinner',
         description:
           "The UAE's most exclusive desert dining experience. A luxury camp in a private valley — sunset cocktails, a 5-course dinner, and curated entertainment.",
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 890,
         priceLabel: 'AED 890 adult / AED 380 child',
         durationMinutes: 300,
@@ -425,7 +425,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Sunset Experience',
         description:
           'Attend the legendary Sonara Camp sunset gathering without the full dinner. Cocktail hour, live music, and dusk over endless dunes.',
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 480,
         priceLabel: 'AED 480 adult / AED 190 child',
         durationMinutes: 120,
@@ -436,7 +436,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sonara Camp — Overnight Stay',
         description:
           "Fall asleep under the Milky Way in a private nest tent. Sunrise breakfast included. The UAE's most extraordinary overnight desert experience.",
-        image: 'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 2650,
         priceLabel: 'From AED 2,650 / nest',
         durationMinutes: 960,
@@ -475,12 +475,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Camel and horse riding in the Dubai desert from AED 150. Guided rides for all ages on Arabian horses and camels. Pony rides for children from AED 150. Lahbab desert location.',
     shortDescription:
       'Drift across the sands on an Arabian horse or a desert camel. Gentle guided rides for all ages — including pony rides for the little ones.',
-    image: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     alt: 'Camel riding Dubai desert traditional experience Lahbab Arabian horse',
     galleryImages: [
-      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1601024445-04f13b6d9b95?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?q=80&w=1200&auto=format&fit=crop',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     ],
     fromPrice: 150,
     seoContent:
@@ -491,7 +491,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Pony Ride — 30 Minutes',
         description:
           'A gentle, guided pony ride on the desert sands — perfect for children aged 3 and up. Handler present at all times.',
-        image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=900&q=80',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 150,
         priceLabel: 'AED 150 / child',
         durationMinutes: 30,
@@ -502,7 +502,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Horse Ride — 1 Hour',
         description:
           'A scenic guided ride through the Lahbab red dunes on an Arabian horse. Suitable for beginners and experienced riders alike.',
-        image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=900&q=80',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 240,
         priceLabel: 'AED 240–280 / person',
         durationMinutes: 60,
@@ -533,12 +533,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Try sandboarding in the Dubai desert from AED 90 per person. Slide down the Lahbab red sand dunes with all boards and equipment included. Suitable for all ages and experience levels.',
     shortDescription:
       'Strap on a board and carve down the towering red dunes. Equipment and instruction included — suitable for all ages and abilities.',
-    image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     alt: 'Sandboarding Dubai Lahbab red sand dunes desert activity',
     galleryImages: [
-      'https://images.unsplash.com/photo-1576485375-29b30e74d8ca?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1542401886-fe5e5f97ecad?q=80&w=1200&auto=format&fit=crop',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
+      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
     ],
     fromPrice: 90,
     seoContent:
@@ -549,7 +549,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sandboarding — Group Session',
         description:
           'Group rate for parties of 4 or more. Private dune zone, dedicated instructor, and group discount applied automatically. Unlimited runs for the session duration.',
-        image: 'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=900&q=80',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 90,
         priceLabel: 'AED 90 / person (4+ guests)',
         durationMinutes: 60,
@@ -561,7 +561,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Sandboarding — Solo Session',
         description:
           'Strap on a board and carve down the iconic red dunes solo or as a pair. Equipment, instruction, and unlimited runs on the designated dune face.',
-        image: 'https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=900&q=80',
+        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp',
         priceAED: 120,
         priceLabel: 'AED 120 / person',
         durationMinutes: 60,
