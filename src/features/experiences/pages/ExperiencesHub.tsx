@@ -14,6 +14,10 @@ import {
   UtensilsCrossed,
   ScanEye,
   Flame,
+  Anchor,
+  Landmark,
+  Map,
+  Zap,
 } from "lucide-react";
 import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
@@ -51,6 +55,17 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     cta: "Book Water Sport",
     urgency: "18 booked today",
   },
+  "yacht-charter": {
+    seoTitle: "Private Yacht Charter Dubai | Luxury Cruises from AED 650/hr",
+    description:
+      "Private yacht charters from 45ft to 120ft — sunset cruises, party yachts and fishing trips from Dubai Marina.",
+    image:
+      "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2000&auto=format&fit=crop",
+    badge: "Top Picks",
+    startingFrom: "AED 650/hr",
+    cta: "Charter Now",
+    urgency: null,
+  },
   "aerial-and-adrenaline": {
     seoTitle: "Skydiving, Helicopter Tours & Ziplines Dubai",
     description:
@@ -62,6 +77,17 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     cta: "Get Airborne",
     urgency: null,
   },
+  entertainment: {
+    seoTitle: "Theme Parks & Attractions Dubai | Aquaventure, IMG Worlds & More",
+    description:
+      "Dubai's world-class theme parks, iconic landmarks and entertainment — Aquaventure, IMG Worlds, Museum of the Future.",
+    image:
+      "https://images.unsplash.com/photo-1612287753685-a3e1c3ac3dd5?q=80&w=2000&auto=format&fit=crop",
+    badge: null,
+    startingFrom: "AED 25",
+    cta: "Explore Parks",
+    urgency: null,
+  },
   wellness: {
     seoTitle: "Luxury Spa & Beach Club Day Passes Dubai",
     description:
@@ -70,6 +96,28 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     badge: null,
     startingFrom: "AED 551",
     cta: "Restore & Relax",
+    urgency: null,
+  },
+  "abu-dhabi-tours": {
+    seoTitle: "Abu Dhabi Day Tours from Dubai | Grand Mosque, Ferrari World & More",
+    description:
+      "Private guided day tours to Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World, Warner Bros. and city tours.",
+    image:
+      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=2000&auto=format&fit=crop",
+    badge: null,
+    startingFrom: "AED 63",
+    cta: "Plan Day Trip",
+    urgency: null,
+  },
+  "oman-tours": {
+    seoTitle: "Oman Day Trips from Dubai | Musandam Fjords & Mountain Tours",
+    description:
+      "Guided day trips from Dubai to Oman's Musandam fjords — dolphin watching, snorkelling, and mountain adventures.",
+    image:
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop",
+    badge: null,
+    startingFrom: "AED 450",
+    cta: "Explore Oman",
     urgency: null,
   },
   "tickets-and-culture": {
@@ -128,8 +176,12 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
   "desert-adventures": Mountain,
   "water-activities": Waves,
+  "yacht-charter": Anchor,
   "aerial-and-adrenaline": Wind,
+  entertainment: Zap,
   wellness: Sparkles,
+  "abu-dhabi-tours": Landmark,
+  "oman-tours": Map,
   "tickets-and-culture": Ticket,
   "luxury-leisure": Crown,
   "photography-experience": Camera,

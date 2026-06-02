@@ -1,13 +1,36 @@
 import { getSupabaseAdminClient, hasSupabaseAdminCredentials } from '@/lib/supabase-admin';
+import { DALC_EXPERIENCE_CATEGORIES } from '@/features/experiences/catalog';
+import { DESERT_SUBCATEGORIES } from '@/features/experiences/desertData';
+import { WATER_MODELS } from '@/features/experiences/waterData';
 import type { MetadataRoute } from 'next';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dubaialacharte.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const experienceUrls: MetadataRoute.Sitemap = [
+    { url: `${BASE}/experiences`, changeFrequency: 'daily', priority: 0.9 },
+    ...DALC_EXPERIENCE_CATEGORIES.map((cat) => ({
+      url: `${BASE}/experiences/${cat.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
+    ...DESERT_SUBCATEGORIES.map((sub) => ({
+      url: `${BASE}/experiences/desert-adventures/${sub.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    ...WATER_MODELS.map((model) => ({
+      url: `${BASE}/experiences/water-activities/${model.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+  ];
+
   if (!hasSupabaseAdminCredentials()) {
     return [
       { url: `${BASE}/`, changeFrequency: 'daily', priority: 1.0 },
       { url: `${BASE}/explore`, changeFrequency: 'daily', priority: 0.9 },
+      ...experienceUrls,
     ];
   }
 
@@ -60,6 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: `${BASE}/`, changeFrequency: 'daily', priority: 1.0 },
     { url: `${BASE}/explore`, changeFrequency: 'daily', priority: 0.9 },
+    ...experienceUrls,
     ...emirateUrls,
     ...categoryUrls,
     ...venueUrls,
