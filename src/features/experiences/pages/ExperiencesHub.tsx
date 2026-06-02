@@ -59,8 +59,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Private Yacht Charter Dubai | Luxury Cruises from AED 650/hr",
     description:
       "Private yacht charters from 45ft to 120ft — sunset cruises, party yachts and fishing trips from Dubai Marina.",
-    image:
-      "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/yacht-charter-hero.jpg",
     badge: "Top Picks",
     startingFrom: "AED 650/hr",
     cta: "Charter Now",
@@ -70,8 +69,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Skydiving, Helicopter Tours & Ziplines Dubai",
     description:
       "Skydive over Palm Jumeirah, fly by helicopter over downtown, or conquer the world's longest zipline.",
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/aerial-hero.jpg",
     badge: "Top Picks",
     startingFrom: "AED 220",
     cta: "Get Airborne",
@@ -81,8 +79,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Theme Parks & Attractions Dubai | Aquaventure, IMG Worlds & More",
     description:
       "Dubai's world-class theme parks, iconic landmarks and entertainment — Aquaventure, IMG Worlds, Museum of the Future.",
-    image:
-      "https://images.unsplash.com/photo-1612287753685-a3e1c3ac3dd5?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/entertainment-hero.jpg",
     badge: null,
     startingFrom: "AED 25",
     cta: "Explore Parks",
@@ -92,7 +89,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Luxury Spa & Beach Club Day Passes Dubai",
     description:
       "5-star spa treatments, infinity pool access and beach club day passes at Dubai's finest resorts.",
-    image: "/images/beach_clubs/Kyma/image1.jpg",
+    image: "/images/experiences/wellness-hero.jpg",
     badge: null,
     startingFrom: "AED 551",
     cta: "Restore & Relax",
@@ -102,8 +99,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Abu Dhabi Day Tours from Dubai | Grand Mosque, Ferrari World & More",
     description:
       "Private guided day tours to Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World, Warner Bros. and city tours.",
-    image:
-      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/abu-dhabi-hero.jpg",
     badge: null,
     startingFrom: "AED 63",
     cta: "Plan Day Trip",
@@ -113,8 +109,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Oman Day Trips from Dubai | Musandam Fjords & Mountain Tours",
     description:
       "Guided day trips from Dubai to Oman's Musandam fjords — dolphin watching, snorkelling, and mountain adventures.",
-    image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/oman-tours-hero.jpg",
     badge: null,
     startingFrom: "AED 450",
     cta: "Explore Oman",
