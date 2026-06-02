@@ -34,7 +34,8 @@
       "Bash(cat src/features/explore/components/*.tsx)",
       "Bash(cat src/explore/hooks/*.ts)",
       "Bash(cat src/app/explore/[emirate]/page.tsx)",
-      "Bash(cat src/app/explore/[emirate]/[category]/page.tsx)"
+      "Bash(cat src/app/explore/[emirate]/[category]/page.tsx)",
+      "Bash(git commit -m ' *)"
     ]
   },
   "enabledMcpjsonServers": [
