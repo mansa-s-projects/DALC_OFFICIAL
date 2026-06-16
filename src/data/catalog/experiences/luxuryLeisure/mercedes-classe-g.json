@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Mercedes Classe G",
+    "slug":  "mercedes-classe-g",
+    "section":  "experiences",
+    "subsection":  "luxuryLeisure",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/luxuryLeisure/mercedes-classe-g",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

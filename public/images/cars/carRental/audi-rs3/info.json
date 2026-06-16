@@ -1,0 +1,21 @@
+{
+  "name": "Audi RS3",
+  "slug": "audi-rs3",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/audi-rs3/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/audi-rs3/1.jpg",
+    "/public/images/cars/carRental/audi-rs3/2.jpg",
+    "/public/images/cars/carRental/audi-rs3/3.jpg"
+  ],
+  "seo": {
+    "title": "Audi RS3",
+    "description": ""
+  }
+}

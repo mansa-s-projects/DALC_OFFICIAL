@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Jetour T2",
+    "slug":  "jetour-t2",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/jetour-t2",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Nissan Sunny",
+    "slug":  "nissan-sunny",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/nissan-sunny",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

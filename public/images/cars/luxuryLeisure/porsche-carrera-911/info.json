@@ -1,0 +1,21 @@
+{
+  "name": "Porsche Carrera 911",
+  "slug": "porsche-carrera-911",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/porsche-carrera-911/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/porsche-carrera-911/1.jpg",
+    "/public/images/cars/luxuryLeisure/porsche-carrera-911/2.jpg",
+    "/public/images/cars/luxuryLeisure/porsche-carrera-911/3.jpg"
+  ],
+  "seo": {
+    "title": "Porsche Carrera 911",
+    "description": ""
+  }
+}

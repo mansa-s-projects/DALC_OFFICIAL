@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Private Yacht Rental",
+    "slug":  "private-yacht-rental",
+    "section":  "experiences",
+    "subsection":  "marine",
+    "folderType":  "yachts",
+    "imageFolder":  "public/images/yachts/marine/private-yacht-rental",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

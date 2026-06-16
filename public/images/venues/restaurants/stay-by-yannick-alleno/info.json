@@ -1,0 +1,21 @@
+{
+  "name": "STAY by Yannick Alléno",
+  "slug": "stay-by-yannick-alleno",
+  "section": "explore",
+  "subsection": "restaurants",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/restaurants/stay-by-yannick-alleno/1.jpg",
+  "gallery": [
+    "/public/images/venues/restaurants/stay-by-yannick-alleno/1.jpg",
+    "/public/images/venues/restaurants/stay-by-yannick-alleno/2.jpg",
+    "/public/images/venues/restaurants/stay-by-yannick-alleno/3.jpg"
+  ],
+  "seo": {
+    "title": "STAY by Yannick Alléno",
+    "description": ""
+  }
+}

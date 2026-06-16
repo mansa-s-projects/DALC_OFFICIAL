@@ -1,0 +1,21 @@
+{
+  "name": "Skydiving Desert",
+  "slug": "skydiving-desert",
+  "section": "experiences",
+  "subsection": "aerialAdrenaline",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/aerialAdrenaline/skydiving-desert/1.jpg",
+  "gallery": [
+    "/public/images/experiences/aerialAdrenaline/skydiving-desert/1.jpg",
+    "/public/images/experiences/aerialAdrenaline/skydiving-desert/2.jpg",
+    "/public/images/experiences/aerialAdrenaline/skydiving-desert/3.jpg"
+  ],
+  "seo": {
+    "title": "Skydiving Desert",
+    "description": ""
+  }
+}

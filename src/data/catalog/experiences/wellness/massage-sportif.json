@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Massage Sportif",
+    "slug":  "massage-sportif",
+    "section":  "experiences",
+    "subsection":  "wellness",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/wellness/massage-sportif",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Chevrolet Groove",
+    "slug":  "chevrolet-groove",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/chevrolet-groove",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

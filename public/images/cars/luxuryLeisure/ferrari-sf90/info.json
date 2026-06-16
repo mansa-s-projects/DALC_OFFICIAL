@@ -1,0 +1,21 @@
+{
+  "name": "Ferrari SF90",
+  "slug": "ferrari-sf90",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/ferrari-sf90/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/ferrari-sf90/1.jpg",
+    "/public/images/cars/luxuryLeisure/ferrari-sf90/2.jpg",
+    "/public/images/cars/luxuryLeisure/ferrari-sf90/3.jpg"
+  ],
+  "seo": {
+    "title": "Ferrari SF90",
+    "description": ""
+  }
+}

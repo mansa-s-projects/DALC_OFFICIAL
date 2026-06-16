@@ -1,0 +1,21 @@
+{
+  "name": "Helicopter Tour 22min",
+  "slug": "helicopter-tour-22min",
+  "section": "experiences",
+  "subsection": "aerialAdrenaline",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/aerialAdrenaline/helicopter-tour-22min/1.jpg",
+  "gallery": [
+    "/public/images/experiences/aerialAdrenaline/helicopter-tour-22min/1.jpg",
+    "/public/images/experiences/aerialAdrenaline/helicopter-tour-22min/2.jpg",
+    "/public/images/experiences/aerialAdrenaline/helicopter-tour-22min/3.jpg"
+  ],
+  "seo": {
+    "title": "Helicopter Tour 22min",
+    "description": ""
+  }
+}

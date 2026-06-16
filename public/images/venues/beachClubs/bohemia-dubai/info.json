@@ -1,0 +1,21 @@
+{
+  "name": "Bohemia Dubai",
+  "slug": "bohemia-dubai",
+  "section": "explore",
+  "subsection": "beachClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/beachClubs/bohemia-dubai/1.jpg",
+  "gallery": [
+    "/public/images/venues/beachClubs/bohemia-dubai/1.jpg",
+    "/public/images/venues/beachClubs/bohemia-dubai/2.jpg",
+    "/public/images/venues/beachClubs/bohemia-dubai/3.jpg"
+  ],
+  "seo": {
+    "title": "Bohemia Dubai",
+    "description": ""
+  }
+}

@@ -1,0 +1,14 @@
+﻿{
+    "name":  "SeaWorld",
+    "slug":  "seaworld",
+    "section":  "experiences",
+    "subsection":  "ticketsCulture",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/ticketsCulture/seaworld",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

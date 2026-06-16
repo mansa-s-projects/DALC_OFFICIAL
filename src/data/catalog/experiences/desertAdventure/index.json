@@ -1,0 +1,26 @@
+﻿[
+    {
+        "slug":  "equestrian-signature-experience",
+        "name":  "Equestrian Signature Experience"
+    },
+    {
+        "slug":  "horse-riding-1h",
+        "name":  "Horse Riding 1H"
+    },
+    {
+        "slug":  "pony-riding-30min",
+        "name":  "Pony Riding 30min"
+    },
+    {
+        "slug":  "sonara-camp-overnight",
+        "name":  "Sonara Camp Overnight"
+    },
+    {
+        "slug":  "sonara-camp-sunset",
+        "name":  "Sonara Camp Sunset"
+    },
+    {
+        "slug":  "sonara-camp-sunset-dinner",
+        "name":  "Sonara Camp Sunset Dinner"
+    }
+]

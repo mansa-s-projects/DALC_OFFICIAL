@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Porsche GT3",
+    "slug":  "porsche-gt3",
+    "section":  "experiences",
+    "subsection":  "luxuryLeisure",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/luxuryLeisure/porsche-gt3",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

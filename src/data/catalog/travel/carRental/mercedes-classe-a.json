@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Mercedes Classe A",
+    "slug":  "mercedes-classe-a",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/mercedes-classe-a",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

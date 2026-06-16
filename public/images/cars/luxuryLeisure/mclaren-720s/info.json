@@ -1,0 +1,21 @@
+{
+  "name": "McLaren 720S",
+  "slug": "mclaren-720s",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/mclaren-720s/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/mclaren-720s/1.jpg",
+    "/public/images/cars/luxuryLeisure/mclaren-720s/2.jpg",
+    "/public/images/cars/luxuryLeisure/mclaren-720s/3.jpg"
+  ],
+  "seo": {
+    "title": "McLaren 720S",
+    "description": ""
+  }
+}

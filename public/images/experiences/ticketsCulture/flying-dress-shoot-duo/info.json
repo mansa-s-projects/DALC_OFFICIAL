@@ -1,0 +1,21 @@
+{
+  "name": "Flying Dress Shoot Duo",
+  "slug": "flying-dress-shoot-duo",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/flying-dress-shoot-duo/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-duo/1.jpg",
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-duo/2.jpg",
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-duo/3.jpg"
+  ],
+  "seo": {
+    "title": "Flying Dress Shoot Duo",
+    "description": ""
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Dubai City Tour",
+  "slug": "dubai-city-tour",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/dubai-city-tour/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/dubai-city-tour/1.jpg",
+    "/public/images/experiences/ticketsCulture/dubai-city-tour/2.jpg",
+    "/public/images/experiences/ticketsCulture/dubai-city-tour/3.jpg"
+  ],
+  "seo": {
+    "title": "Dubai City Tour",
+    "description": ""
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Fiat Abarth",
+  "slug": "fiat-abarth",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/fiat-abarth/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/fiat-abarth/1.jpg",
+    "/public/images/cars/carRental/fiat-abarth/2.jpg",
+    "/public/images/cars/carRental/fiat-abarth/3.jpg"
+  ],
+  "seo": {
+    "title": "Fiat Abarth",
+    "description": ""
+  }
+}

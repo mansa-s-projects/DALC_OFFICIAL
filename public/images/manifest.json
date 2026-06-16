@@ -1,0 +1,774 @@
+{
+  "generatedAt": "2026-06-04T04:07:50.050Z",
+  "total": 96,
+  "items": [
+    {
+      "name": "Trèsind Studio",
+      "slug": "tresind-studio",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\tresind-studio"
+    },
+    {
+      "name": "FZN by Björn Frantzén",
+      "slug": "fzn-by-bjorn-frantzen",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\fzn-by-bjorn-frantzen"
+    },
+    {
+      "name": "Row on 45",
+      "slug": "row-on-45",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\row-on-45"
+    },
+    {
+      "name": "STAY by Yannick Alléno",
+      "slug": "stay-by-yannick-alleno",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\stay-by-yannick-alleno"
+    },
+    {
+      "name": "Ossiano",
+      "slug": "ossiano",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\ossiano"
+    },
+    {
+      "name": "Orfali Bros",
+      "slug": "orfali-bros",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\orfali-bros"
+    },
+    {
+      "name": "Moonrise",
+      "slug": "moonrise",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\moonrise"
+    },
+    {
+      "name": "Smoked Room",
+      "slug": "smoked-room",
+      "section": "explore",
+      "subsection": "restaurants",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\restaurants\\smoked-room"
+    },
+    {
+      "name": "Nikki Beach",
+      "slug": "nikki-beach",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\nikki-beach"
+    },
+    {
+      "name": "DRIFT Beach",
+      "slug": "drift-beach",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\drift-beach"
+    },
+    {
+      "name": "O Beach Dubai",
+      "slug": "o-beach-dubai",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\o-beach-dubai"
+    },
+    {
+      "name": "Playa Pacha",
+      "slug": "playa-pacha",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\playa-pacha"
+    },
+    {
+      "name": "Bohemia Dubai",
+      "slug": "bohemia-dubai",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\bohemia-dubai"
+    },
+    {
+      "name": "Tagomago",
+      "slug": "tagomago",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\tagomago"
+    },
+    {
+      "name": "SAN Beach",
+      "slug": "san-beach",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\san-beach"
+    },
+    {
+      "name": "Baoli Dubai",
+      "slug": "baoli-dubai",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\baoli-dubai"
+    },
+    {
+      "name": "Gigi Rigolatto",
+      "slug": "gigi-rigolatto",
+      "section": "explore",
+      "subsection": "beachClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\beachClubs\\gigi-rigolatto"
+    },
+    {
+      "name": "SKY2.0",
+      "slug": "sky2-0",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\sky2-0"
+    },
+    {
+      "name": "BLU Dubai",
+      "slug": "blu-dubai",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\blu-dubai"
+    },
+    {
+      "name": "BLING Dubai",
+      "slug": "bling-dubai",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\bling-dubai"
+    },
+    {
+      "name": "White Dubai",
+      "slug": "white-dubai",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\white-dubai"
+    },
+    {
+      "name": "Armani Prive",
+      "slug": "armani-prive",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\armani-prive"
+    },
+    {
+      "name": "Muscovites Club",
+      "slug": "muscovites-club",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\muscovites-club"
+    },
+    {
+      "name": "Gate Two by Iris",
+      "slug": "gate-two-by-iris",
+      "section": "explore",
+      "subsection": "nightClubs",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\nightClubs\\gate-two-by-iris"
+    },
+    {
+      "name": "Krasota",
+      "slug": "krasota",
+      "section": "explore",
+      "subsection": "diningEntertainment",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\diningEntertainment\\krasota"
+    },
+    {
+      "name": "The Theater Dubai",
+      "slug": "the-theater-dubai",
+      "section": "explore",
+      "subsection": "diningEntertainment",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\diningEntertainment\\the-theater-dubai"
+    },
+    {
+      "name": "DREAM Dinner Show",
+      "slug": "dream-dinner-show",
+      "section": "explore",
+      "subsection": "diningEntertainment",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\diningEntertainment\\dream-dinner-show"
+    },
+    {
+      "name": "Gatsby Dubai",
+      "slug": "gatsby-dubai",
+      "section": "explore",
+      "subsection": "diningEntertainment",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\diningEntertainment\\gatsby-dubai"
+    },
+    {
+      "name": "La Perle by Dragone",
+      "slug": "la-perle-by-dragone",
+      "section": "explore",
+      "subsection": "diningEntertainment",
+      "folderType": "venues",
+      "folderPath": "public\\images\\venues\\diningEntertainment\\la-perle-by-dragone"
+    },
+    {
+      "name": "Private Yacht Rental",
+      "slug": "private-yacht-rental",
+      "section": "experiences",
+      "subsection": "marine",
+      "folderType": "yachts",
+      "folderPath": "public\\images\\yachts\\marine\\private-yacht-rental"
+    },
+    {
+      "name": "Jet Ski Rental",
+      "slug": "jet-ski-rental",
+      "section": "experiences",
+      "subsection": "marine",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\marine\\jet-ski-rental"
+    },
+    {
+      "name": "Dhow Cruise Musandam",
+      "slug": "dhow-cruise-musandam",
+      "section": "experiences",
+      "subsection": "marine",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\marine\\dhow-cruise-musandam"
+    },
+    {
+      "name": "Dhow Cruise Khasab",
+      "slug": "dhow-cruise-khasab",
+      "section": "experiences",
+      "subsection": "marine",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\marine\\dhow-cruise-khasab"
+    },
+    {
+      "name": "Skydiving Palm",
+      "slug": "skydiving-palm",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\skydiving-palm"
+    },
+    {
+      "name": "Skydiving Desert",
+      "slug": "skydiving-desert",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\skydiving-desert"
+    },
+    {
+      "name": "Zip-lining Marina",
+      "slug": "zip-lining-marina",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\zip-lining-marina"
+    },
+    {
+      "name": "Sky Views Observatory",
+      "slug": "sky-views-observatory",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\sky-views-observatory"
+    },
+    {
+      "name": "Helicopter Tour 12min",
+      "slug": "helicopter-tour-12min",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\helicopter-tour-12min"
+    },
+    {
+      "name": "Helicopter Tour 17min",
+      "slug": "helicopter-tour-17min",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\helicopter-tour-17min"
+    },
+    {
+      "name": "Helicopter Tour 22min",
+      "slug": "helicopter-tour-22min",
+      "section": "experiences",
+      "subsection": "aerialAdrenaline",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\aerialAdrenaline\\helicopter-tour-22min"
+    },
+    {
+      "name": "Sonara Camp Sunset Dinner",
+      "slug": "sonara-camp-sunset-dinner",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\sonara-camp-sunset-dinner"
+    },
+    {
+      "name": "Sonara Camp Overnight",
+      "slug": "sonara-camp-overnight",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\sonara-camp-overnight"
+    },
+    {
+      "name": "Sonara Camp Sunset",
+      "slug": "sonara-camp-sunset",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\sonara-camp-sunset"
+    },
+    {
+      "name": "Horse Riding 1H",
+      "slug": "horse-riding-1h",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\horse-riding-1h"
+    },
+    {
+      "name": "Pony Riding 30min",
+      "slug": "pony-riding-30min",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\pony-riding-30min"
+    },
+    {
+      "name": "Equestrian Signature Experience",
+      "slug": "equestrian-signature-experience",
+      "section": "experiences",
+      "subsection": "desertAdventure",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\desertAdventure\\equestrian-signature-experience"
+    },
+    {
+      "name": "Massage Relaxation",
+      "slug": "massage-relaxation",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-relaxation"
+    },
+    {
+      "name": "Massage Aromatherapy",
+      "slug": "massage-aromatherapy",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-aromatherapy"
+    },
+    {
+      "name": "Massage Tissue Profond",
+      "slug": "massage-tissue-profond",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-tissue-profond"
+    },
+    {
+      "name": "Massage Balinais",
+      "slug": "massage-balinais",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-balinais"
+    },
+    {
+      "name": "Massage Sportif",
+      "slug": "massage-sportif",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-sportif"
+    },
+    {
+      "name": "Massage Reflexology",
+      "slug": "massage-reflexology",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-reflexology"
+    },
+    {
+      "name": "Massage Combination",
+      "slug": "massage-combination",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-combination"
+    },
+    {
+      "name": "Massage Lymphatic",
+      "slug": "massage-lymphatic",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-lymphatic"
+    },
+    {
+      "name": "Massage Wood Therapy",
+      "slug": "massage-wood-therapy",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-wood-therapy"
+    },
+    {
+      "name": "Massage Hot Stones",
+      "slug": "massage-hot-stones",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\massage-hot-stones"
+    },
+    {
+      "name": "Couple Massage",
+      "slug": "couple-massage",
+      "section": "experiences",
+      "subsection": "wellness",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\wellness\\couple-massage"
+    },
+    {
+      "name": "IMG World of Adventure",
+      "slug": "img-world-of-adventure",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\img-world-of-adventure"
+    },
+    {
+      "name": "Warner Bros Abu Dhabi",
+      "slug": "warner-bros-abu-dhabi",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\warner-bros-abu-dhabi"
+    },
+    {
+      "name": "Atlantis Aquaventure",
+      "slug": "atlantis-aquaventure",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\atlantis-aquaventure"
+    },
+    {
+      "name": "Atlantis Lost Chambers",
+      "slug": "atlantis-lost-chambers",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\atlantis-lost-chambers"
+    },
+    {
+      "name": "Wild Wadi Waterpark",
+      "slug": "wild-wadi-waterpark",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\wild-wadi-waterpark"
+    },
+    {
+      "name": "Yas Waterpark",
+      "slug": "yas-waterpark",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\yas-waterpark"
+    },
+    {
+      "name": "SeaWorld",
+      "slug": "seaworld",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\seaworld"
+    },
+    {
+      "name": "Dubai City Tour",
+      "slug": "dubai-city-tour",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\dubai-city-tour"
+    },
+    {
+      "name": "Abu Dhabi City Tour Standard",
+      "slug": "abu-dhabi-city-tour-standard",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\abu-dhabi-city-tour-standard"
+    },
+    {
+      "name": "Abu Dhabi City Tour Mercedes Viano",
+      "slug": "abu-dhabi-city-tour-mercedes-viano",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\abu-dhabi-city-tour-mercedes-viano"
+    },
+    {
+      "name": "Sheikh Zayed Mosque Tour",
+      "slug": "sheikh-zayed-mosque-tour",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\sheikh-zayed-mosque-tour"
+    },
+    {
+      "name": "Qasr Al Watan Gardens",
+      "slug": "qasr-al-watan-gardens",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\qasr-al-watan-gardens"
+    },
+    {
+      "name": "Ferrari World Abu Dhabi",
+      "slug": "ferrari-world-abu-dhabi",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\ferrari-world-abu-dhabi"
+    },
+    {
+      "name": "Louvre Abu Dhabi",
+      "slug": "louvre-abu-dhabi",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\louvre-abu-dhabi"
+    },
+    {
+      "name": "Flying Dress Shoot Solo",
+      "slug": "flying-dress-shoot-solo",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\flying-dress-shoot-solo"
+    },
+    {
+      "name": "Flying Dress Shoot Duo",
+      "slug": "flying-dress-shoot-duo",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\flying-dress-shoot-duo"
+    },
+    {
+      "name": "Flying Dress Shoot Couple",
+      "slug": "flying-dress-shoot-couple",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\flying-dress-shoot-couple"
+    },
+    {
+      "name": "Flying Dress Shoot Family",
+      "slug": "flying-dress-shoot-family",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\flying-dress-shoot-family"
+    },
+    {
+      "name": "Flying Dress Shoot Group",
+      "slug": "flying-dress-shoot-group",
+      "section": "experiences",
+      "subsection": "ticketsCulture",
+      "folderType": "experiences",
+      "folderPath": "public\\images\\experiences\\ticketsCulture\\flying-dress-shoot-group"
+    },
+    {
+      "name": "Mercedes Classe G",
+      "slug": "mercedes-classe-g",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\mercedes-classe-g"
+    },
+    {
+      "name": "Porsche Carrera 911",
+      "slug": "porsche-carrera-911",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\porsche-carrera-911"
+    },
+    {
+      "name": "Ferrari SF90",
+      "slug": "ferrari-sf90",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\ferrari-sf90"
+    },
+    {
+      "name": "Lamborghini Aventador SVJ",
+      "slug": "lamborghini-aventador-svj",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\lamborghini-aventador-svj"
+    },
+    {
+      "name": "McLaren 720S",
+      "slug": "mclaren-720s",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\mclaren-720s"
+    },
+    {
+      "name": "Porsche GT3",
+      "slug": "porsche-gt3",
+      "section": "experiences",
+      "subsection": "luxuryLeisure",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\luxuryLeisure\\porsche-gt3"
+    },
+    {
+      "name": "Chevrolet Tao",
+      "slug": "chevrolet-tao",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\chevrolet-tao"
+    },
+    {
+      "name": "Audi RS3",
+      "slug": "audi-rs3",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\audi-rs3"
+    },
+    {
+      "name": "Audi RSQ3",
+      "slug": "audi-rsq3",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\audi-rsq3"
+    },
+    {
+      "name": "Audi RSQ8",
+      "slug": "audi-rsq8",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\audi-rsq8"
+    },
+    {
+      "name": "Porsche Cayenne",
+      "slug": "porsche-cayenne",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\porsche-cayenne"
+    },
+    {
+      "name": "Porsche Macan",
+      "slug": "porsche-macan",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\porsche-macan"
+    },
+    {
+      "name": "Nissan Sunny",
+      "slug": "nissan-sunny",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\nissan-sunny"
+    },
+    {
+      "name": "Chevrolet Groove",
+      "slug": "chevrolet-groove",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\chevrolet-groove"
+    },
+    {
+      "name": "MG One",
+      "slug": "mg-one",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\mg-one"
+    },
+    {
+      "name": "Fiat Abarth",
+      "slug": "fiat-abarth",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\fiat-abarth"
+    },
+    {
+      "name": "Mercedes Classe A",
+      "slug": "mercedes-classe-a",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\mercedes-classe-a"
+    },
+    {
+      "name": "Audi A3",
+      "slug": "audi-a3",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\audi-a3"
+    },
+    {
+      "name": "Jetour T2",
+      "slug": "jetour-t2",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\jetour-t2"
+    },
+    {
+      "name": "Audi Q5 Sportback",
+      "slug": "audi-q5-sportback",
+      "section": "travel",
+      "subsection": "carRental",
+      "folderType": "cars",
+      "folderPath": "public\\images\\cars\\carRental\\audi-q5-sportback"
+    }
+  ]
+}

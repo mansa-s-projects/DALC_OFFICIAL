@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Tagomago",
+    "slug":  "tagomago",
+    "section":  "explore",
+    "subsection":  "beachClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/beachClubs/tagomago",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

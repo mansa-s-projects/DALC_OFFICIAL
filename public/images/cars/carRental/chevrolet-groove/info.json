@@ -1,0 +1,21 @@
+{
+  "name": "Chevrolet Groove",
+  "slug": "chevrolet-groove",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/chevrolet-groove/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/chevrolet-groove/1.jpg",
+    "/public/images/cars/carRental/chevrolet-groove/2.jpg",
+    "/public/images/cars/carRental/chevrolet-groove/3.jpg"
+  ],
+  "seo": {
+    "title": "Chevrolet Groove",
+    "description": ""
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Nissan Sunny",
+  "slug": "nissan-sunny",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/nissan-sunny/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/nissan-sunny/1.jpg",
+    "/public/images/cars/carRental/nissan-sunny/2.jpg",
+    "/public/images/cars/carRental/nissan-sunny/3.jpg"
+  ],
+  "seo": {
+    "title": "Nissan Sunny",
+    "description": ""
+  }
+}

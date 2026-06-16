@@ -1,0 +1,21 @@
+{
+  "name": "Ferrari World Abu Dhabi",
+  "slug": "ferrari-world-abu-dhabi",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/ferrari-world-abu-dhabi/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/ferrari-world-abu-dhabi/1.jpg",
+    "/public/images/experiences/ticketsCulture/ferrari-world-abu-dhabi/2.jpg",
+    "/public/images/experiences/ticketsCulture/ferrari-world-abu-dhabi/3.jpg"
+  ],
+  "seo": {
+    "title": "Ferrari World Abu Dhabi",
+    "description": ""
+  }
+}

@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Jet Ski Rental",
+    "slug":  "jet-ski-rental",
+    "section":  "experiences",
+    "subsection":  "marine",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/marine/jet-ski-rental",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

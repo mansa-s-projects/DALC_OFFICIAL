@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Smoked Room",
+    "slug":  "smoked-room",
+    "section":  "explore",
+    "subsection":  "restaurants",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/restaurants/smoked-room",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

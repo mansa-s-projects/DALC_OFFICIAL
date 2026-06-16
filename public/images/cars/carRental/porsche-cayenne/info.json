@@ -1,0 +1,21 @@
+{
+  "name": "Porsche Cayenne",
+  "slug": "porsche-cayenne",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/porsche-cayenne/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/porsche-cayenne/1.jpg",
+    "/public/images/cars/carRental/porsche-cayenne/2.jpg",
+    "/public/images/cars/carRental/porsche-cayenne/3.jpg"
+  ],
+  "seo": {
+    "title": "Porsche Cayenne",
+    "description": ""
+  }
+}

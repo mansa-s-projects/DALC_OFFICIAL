@@ -1,0 +1,14 @@
+﻿{
+    "name":  "McLaren 720S",
+    "slug":  "mclaren-720s",
+    "section":  "experiences",
+    "subsection":  "luxuryLeisure",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/luxuryLeisure/mclaren-720s",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

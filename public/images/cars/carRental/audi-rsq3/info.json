@@ -1,0 +1,21 @@
+{
+  "name": "Audi RSQ3",
+  "slug": "audi-rsq3",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/audi-rsq3/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/audi-rsq3/1.jpg",
+    "/public/images/cars/carRental/audi-rsq3/2.jpg",
+    "/public/images/cars/carRental/audi-rsq3/3.jpg"
+  ],
+  "seo": {
+    "title": "Audi RSQ3",
+    "description": ""
+  }
+}

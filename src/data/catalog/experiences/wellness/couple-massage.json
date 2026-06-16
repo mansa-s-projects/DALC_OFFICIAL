@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Couple Massage",
+    "slug":  "couple-massage",
+    "section":  "experiences",
+    "subsection":  "wellness",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/wellness/couple-massage",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

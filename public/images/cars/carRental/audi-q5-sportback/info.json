@@ -1,0 +1,21 @@
+{
+  "name": "Audi Q5 Sportback",
+  "slug": "audi-q5-sportback",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/audi-q5-sportback/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/audi-q5-sportback/1.jpg",
+    "/public/images/cars/carRental/audi-q5-sportback/2.jpg",
+    "/public/images/cars/carRental/audi-q5-sportback/3.jpg"
+  ],
+  "seo": {
+    "title": "Audi Q5 Sportback",
+    "description": ""
+  }
+}

@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Atlantis Aquaventure",
+    "slug":  "atlantis-aquaventure",
+    "section":  "experiences",
+    "subsection":  "ticketsCulture",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/ticketsCulture/atlantis-aquaventure",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

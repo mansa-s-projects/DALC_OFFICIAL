@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Audi RS3",
+    "slug":  "audi-rs3",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/audi-rs3",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

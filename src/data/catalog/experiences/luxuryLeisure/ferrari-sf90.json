@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Ferrari SF90",
+    "slug":  "ferrari-sf90",
+    "section":  "experiences",
+    "subsection":  "luxuryLeisure",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/luxuryLeisure/ferrari-sf90",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

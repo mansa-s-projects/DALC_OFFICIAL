@@ -1,0 +1,21 @@
+{
+  "name": "Flying Dress Shoot Family",
+  "slug": "flying-dress-shoot-family",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/flying-dress-shoot-family/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-family/1.jpg",
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-family/2.jpg",
+    "/public/images/experiences/ticketsCulture/flying-dress-shoot-family/3.jpg"
+  ],
+  "seo": {
+    "title": "Flying Dress Shoot Family",
+    "description": ""
+  }
+}

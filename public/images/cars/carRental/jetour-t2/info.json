@@ -1,0 +1,21 @@
+{
+  "name": "Jetour T2",
+  "slug": "jetour-t2",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/jetour-t2/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/jetour-t2/1.jpg",
+    "/public/images/cars/carRental/jetour-t2/2.jpg",
+    "/public/images/cars/carRental/jetour-t2/3.jpg"
+  ],
+  "seo": {
+    "title": "Jetour T2",
+    "description": ""
+  }
+}

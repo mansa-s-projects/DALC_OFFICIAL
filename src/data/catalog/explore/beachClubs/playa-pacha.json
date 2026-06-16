@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Playa Pacha",
+    "slug":  "playa-pacha",
+    "section":  "explore",
+    "subsection":  "beachClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/beachClubs/playa-pacha",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

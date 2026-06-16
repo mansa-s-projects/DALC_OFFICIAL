@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Krasota",
+    "slug":  "krasota",
+    "section":  "explore",
+    "subsection":  "diningEntertainment",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/diningEntertainment/krasota",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

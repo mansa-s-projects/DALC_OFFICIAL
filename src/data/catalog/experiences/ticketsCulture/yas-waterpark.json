@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Yas Waterpark",
+    "slug":  "yas-waterpark",
+    "section":  "experiences",
+    "subsection":  "ticketsCulture",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/ticketsCulture/yas-waterpark",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

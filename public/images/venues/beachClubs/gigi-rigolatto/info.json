@@ -1,0 +1,21 @@
+{
+  "name": "Gigi Rigolatto",
+  "slug": "gigi-rigolatto",
+  "section": "explore",
+  "subsection": "beachClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/beachClubs/gigi-rigolatto/1.jpg",
+  "gallery": [
+    "/public/images/venues/beachClubs/gigi-rigolatto/1.jpg",
+    "/public/images/venues/beachClubs/gigi-rigolatto/2.jpg",
+    "/public/images/venues/beachClubs/gigi-rigolatto/3.jpg"
+  ],
+  "seo": {
+    "title": "Gigi Rigolatto",
+    "description": ""
+  }
+}

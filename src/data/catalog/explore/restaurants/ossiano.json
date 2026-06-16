@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Ossiano",
+    "slug":  "ossiano",
+    "section":  "explore",
+    "subsection":  "restaurants",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/restaurants/ossiano",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

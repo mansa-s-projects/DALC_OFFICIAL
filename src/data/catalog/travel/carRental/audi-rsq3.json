@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Audi RSQ3",
+    "slug":  "audi-rsq3",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/audi-rsq3",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

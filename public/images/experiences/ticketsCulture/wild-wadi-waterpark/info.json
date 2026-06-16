@@ -1,0 +1,21 @@
+{
+  "name": "Wild Wadi Waterpark",
+  "slug": "wild-wadi-waterpark",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/wild-wadi-waterpark/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/wild-wadi-waterpark/1.jpg",
+    "/public/images/experiences/ticketsCulture/wild-wadi-waterpark/2.jpg",
+    "/public/images/experiences/ticketsCulture/wild-wadi-waterpark/3.jpg"
+  ],
+  "seo": {
+    "title": "Wild Wadi Waterpark",
+    "description": ""
+  }
+}

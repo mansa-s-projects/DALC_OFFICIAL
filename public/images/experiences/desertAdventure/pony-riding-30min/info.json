@@ -1,0 +1,21 @@
+{
+  "name": "Pony Riding 30min",
+  "slug": "pony-riding-30min",
+  "section": "experiences",
+  "subsection": "desertAdventure",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/desertAdventure/pony-riding-30min/1.jpg",
+  "gallery": [
+    "/public/images/experiences/desertAdventure/pony-riding-30min/1.jpg",
+    "/public/images/experiences/desertAdventure/pony-riding-30min/2.jpg",
+    "/public/images/experiences/desertAdventure/pony-riding-30min/3.jpg"
+  ],
+  "seo": {
+    "title": "Pony Riding 30min",
+    "description": ""
+  }
+}

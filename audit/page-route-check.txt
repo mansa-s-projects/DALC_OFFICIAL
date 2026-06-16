@@ -1,0 +1,4 @@
+﻿total_static_routes=68
+ok=68
+redirects=0
+bad=0

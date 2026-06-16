@@ -1,0 +1,21 @@
+{
+  "name": "IMG World of Adventure",
+  "slug": "img-world-of-adventure",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/img-world-of-adventure/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/img-world-of-adventure/1.jpg",
+    "/public/images/experiences/ticketsCulture/img-world-of-adventure/2.jpg",
+    "/public/images/experiences/ticketsCulture/img-world-of-adventure/3.jpg"
+  ],
+  "seo": {
+    "title": "IMG World of Adventure",
+    "description": ""
+  }
+}

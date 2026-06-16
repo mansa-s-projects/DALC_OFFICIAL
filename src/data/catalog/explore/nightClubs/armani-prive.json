@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Armani Prive",
+    "slug":  "armani-prive",
+    "section":  "explore",
+    "subsection":  "nightClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/nightClubs/armani-prive",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

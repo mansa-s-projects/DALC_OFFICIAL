@@ -1,0 +1,21 @@
+{
+  "name": "Sonara Camp Overnight",
+  "slug": "sonara-camp-overnight",
+  "section": "experiences",
+  "subsection": "desertAdventure",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/desertAdventure/sonara-camp-overnight/1.jpg",
+  "gallery": [
+    "/public/images/experiences/desertAdventure/sonara-camp-overnight/1.jpg",
+    "/public/images/experiences/desertAdventure/sonara-camp-overnight/2.jpg",
+    "/public/images/experiences/desertAdventure/sonara-camp-overnight/3.jpg"
+  ],
+  "seo": {
+    "title": "Sonara Camp Overnight",
+    "description": ""
+  }
+}

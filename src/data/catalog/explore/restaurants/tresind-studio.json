@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Trèsind Studio",
+    "slug":  "tresind-studio",
+    "section":  "explore",
+    "subsection":  "restaurants",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/restaurants/tresind-studio",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

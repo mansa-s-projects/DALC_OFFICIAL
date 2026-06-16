@@ -1,0 +1,21 @@
+{
+  "name": "SAN Beach",
+  "slug": "san-beach",
+  "section": "explore",
+  "subsection": "beachClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/beachClubs/san-beach/1.jpg",
+  "gallery": [
+    "/public/images/venues/beachClubs/san-beach/1.jpg",
+    "/public/images/venues/beachClubs/san-beach/2.jpg",
+    "/public/images/venues/beachClubs/san-beach/3.jpg"
+  ],
+  "seo": {
+    "title": "SAN Beach",
+    "description": ""
+  }
+}

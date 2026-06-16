@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Porsche Macan",
+    "slug":  "porsche-macan",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/porsche-macan",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

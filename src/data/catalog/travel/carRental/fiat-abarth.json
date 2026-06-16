@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Fiat Abarth",
+    "slug":  "fiat-abarth",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/fiat-abarth",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

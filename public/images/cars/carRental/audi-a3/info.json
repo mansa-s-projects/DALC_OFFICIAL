@@ -1,0 +1,21 @@
+{
+  "name": "Audi A3",
+  "slug": "audi-a3",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/audi-a3/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/audi-a3/1.jpg",
+    "/public/images/cars/carRental/audi-a3/2.jpg",
+    "/public/images/cars/carRental/audi-a3/3.jpg"
+  ],
+  "seo": {
+    "title": "Audi A3",
+    "description": ""
+  }
+}

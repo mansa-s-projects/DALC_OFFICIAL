@@ -1,0 +1,14 @@
+﻿{
+    "name":  "DREAM Dinner Show",
+    "slug":  "dream-dinner-show",
+    "section":  "explore",
+    "subsection":  "diningEntertainment",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/diningEntertainment/dream-dinner-show",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

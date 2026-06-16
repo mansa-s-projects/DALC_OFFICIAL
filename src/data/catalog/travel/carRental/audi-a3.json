@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Audi A3",
+    "slug":  "audi-a3",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/audi-a3",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

@@ -1,0 +1,21 @@
+{
+  "name": "SKY2.0",
+  "slug": "sky2-0",
+  "section": "explore",
+  "subsection": "nightClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/nightClubs/sky2-0/1.jpg",
+  "gallery": [
+    "/public/images/venues/nightClubs/sky2-0/1.jpg",
+    "/public/images/venues/nightClubs/sky2-0/2.jpg",
+    "/public/images/venues/nightClubs/sky2-0/3.jpg"
+  ],
+  "seo": {
+    "title": "SKY2.0",
+    "description": ""
+  }
+}

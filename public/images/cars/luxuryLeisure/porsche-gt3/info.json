@@ -1,0 +1,21 @@
+{
+  "name": "Porsche GT3",
+  "slug": "porsche-gt3",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/porsche-gt3/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/porsche-gt3/1.jpg",
+    "/public/images/cars/luxuryLeisure/porsche-gt3/2.jpg",
+    "/public/images/cars/luxuryLeisure/porsche-gt3/3.jpg"
+  ],
+  "seo": {
+    "title": "Porsche GT3",
+    "description": ""
+  }
+}

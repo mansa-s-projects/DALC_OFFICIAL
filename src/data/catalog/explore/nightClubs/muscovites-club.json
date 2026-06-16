@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Muscovites Club",
+    "slug":  "muscovites-club",
+    "section":  "explore",
+    "subsection":  "nightClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/nightClubs/muscovites-club",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

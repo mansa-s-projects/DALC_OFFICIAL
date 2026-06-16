@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Porsche Cayenne",
+    "slug":  "porsche-cayenne",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/porsche-cayenne",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

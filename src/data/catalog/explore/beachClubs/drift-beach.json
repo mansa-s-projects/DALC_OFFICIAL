@@ -1,0 +1,14 @@
+﻿{
+    "name":  "DRIFT Beach",
+    "slug":  "drift-beach",
+    "section":  "explore",
+    "subsection":  "beachClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/beachClubs/drift-beach",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

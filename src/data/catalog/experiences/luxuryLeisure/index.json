@@ -1,0 +1,26 @@
+﻿[
+    {
+        "slug":  "ferrari-sf90",
+        "name":  "Ferrari SF90"
+    },
+    {
+        "slug":  "lamborghini-aventador-svj",
+        "name":  "Lamborghini Aventador SVJ"
+    },
+    {
+        "slug":  "mclaren-720s",
+        "name":  "McLaren 720S"
+    },
+    {
+        "slug":  "mercedes-classe-g",
+        "name":  "Mercedes Classe G"
+    },
+    {
+        "slug":  "porsche-carrera-911",
+        "name":  "Porsche Carrera 911"
+    },
+    {
+        "slug":  "porsche-gt3",
+        "name":  "Porsche GT3"
+    }
+]

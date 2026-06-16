@@ -1,0 +1,30 @@
+﻿[
+    {
+        "slug":  "helicopter-tour-12min",
+        "name":  "Helicopter Tour 12min"
+    },
+    {
+        "slug":  "helicopter-tour-17min",
+        "name":  "Helicopter Tour 17min"
+    },
+    {
+        "slug":  "helicopter-tour-22min",
+        "name":  "Helicopter Tour 22min"
+    },
+    {
+        "slug":  "sky-views-observatory",
+        "name":  "Sky Views Observatory"
+    },
+    {
+        "slug":  "skydiving-desert",
+        "name":  "Skydiving Desert"
+    },
+    {
+        "slug":  "skydiving-palm",
+        "name":  "Skydiving Palm"
+    },
+    {
+        "slug":  "zip-lining-marina",
+        "name":  "Zip-lining Marina"
+    }
+]

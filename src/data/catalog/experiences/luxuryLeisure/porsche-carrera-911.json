@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Porsche Carrera 911",
+    "slug":  "porsche-carrera-911",
+    "section":  "experiences",
+    "subsection":  "luxuryLeisure",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/luxuryLeisure/porsche-carrera-911",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

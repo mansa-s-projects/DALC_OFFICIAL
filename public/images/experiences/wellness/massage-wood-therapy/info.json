@@ -1,0 +1,21 @@
+{
+  "name": "Massage Wood Therapy",
+  "slug": "massage-wood-therapy",
+  "section": "experiences",
+  "subsection": "wellness",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/wellness/massage-wood-therapy/1.jpg",
+  "gallery": [
+    "/public/images/experiences/wellness/massage-wood-therapy/1.jpg",
+    "/public/images/experiences/wellness/massage-wood-therapy/2.jpg",
+    "/public/images/experiences/wellness/massage-wood-therapy/3.jpg"
+  ],
+  "seo": {
+    "title": "Massage Wood Therapy",
+    "description": ""
+  }
+}

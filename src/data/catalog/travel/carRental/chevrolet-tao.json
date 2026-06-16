@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Chevrolet Tao",
+    "slug":  "chevrolet-tao",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/chevrolet-tao",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

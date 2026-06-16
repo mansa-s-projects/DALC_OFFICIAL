@@ -33,6 +33,6 @@ const nextConfig = {
       'react-router-dom': routerCompatAlias,
     },
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

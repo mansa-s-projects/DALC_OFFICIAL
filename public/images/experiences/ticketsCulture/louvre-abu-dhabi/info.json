@@ -1,0 +1,21 @@
+{
+  "name": "Louvre Abu Dhabi",
+  "slug": "louvre-abu-dhabi",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/louvre-abu-dhabi/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/louvre-abu-dhabi/1.jpg",
+    "/public/images/experiences/ticketsCulture/louvre-abu-dhabi/2.jpg",
+    "/public/images/experiences/ticketsCulture/louvre-abu-dhabi/3.jpg"
+  ],
+  "seo": {
+    "title": "Louvre Abu Dhabi",
+    "description": ""
+  }
+}

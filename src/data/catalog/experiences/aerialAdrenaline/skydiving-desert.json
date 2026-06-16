@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Skydiving Desert",
+    "slug":  "skydiving-desert",
+    "section":  "experiences",
+    "subsection":  "aerialAdrenaline",
+    "folderType":  "experiences",
+    "imageFolder":  "public/images/experiences/aerialAdrenaline/skydiving-desert",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

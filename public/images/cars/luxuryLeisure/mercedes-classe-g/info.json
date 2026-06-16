@@ -1,0 +1,21 @@
+{
+  "name": "Mercedes Classe G",
+  "slug": "mercedes-classe-g",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/mercedes-classe-g/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/mercedes-classe-g/1.jpg",
+    "/public/images/cars/luxuryLeisure/mercedes-classe-g/2.jpg",
+    "/public/images/cars/luxuryLeisure/mercedes-classe-g/3.jpg"
+  ],
+  "seo": {
+    "title": "Mercedes Classe G",
+    "description": ""
+  }
+}

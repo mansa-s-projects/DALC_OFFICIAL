@@ -1,0 +1,14 @@
+﻿{
+    "name":  "Audi Q5 Sportback",
+    "slug":  "audi-q5-sportback",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/audi-q5-sportback",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

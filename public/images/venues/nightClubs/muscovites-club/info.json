@@ -1,0 +1,21 @@
+{
+  "name": "Muscovites Club",
+  "slug": "muscovites-club",
+  "section": "explore",
+  "subsection": "nightClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/nightClubs/muscovites-club/1.jpg",
+  "gallery": [
+    "/public/images/venues/nightClubs/muscovites-club/1.jpg",
+    "/public/images/venues/nightClubs/muscovites-club/2.jpg",
+    "/public/images/venues/nightClubs/muscovites-club/3.jpg"
+  ],
+  "seo": {
+    "title": "Muscovites Club",
+    "description": ""
+  }
+}

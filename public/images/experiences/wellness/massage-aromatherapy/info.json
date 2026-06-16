@@ -1,0 +1,21 @@
+{
+  "name": "Massage Aromatherapy",
+  "slug": "massage-aromatherapy",
+  "section": "experiences",
+  "subsection": "wellness",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/wellness/massage-aromatherapy/1.jpg",
+  "gallery": [
+    "/public/images/experiences/wellness/massage-aromatherapy/1.jpg",
+    "/public/images/experiences/wellness/massage-aromatherapy/2.jpg",
+    "/public/images/experiences/wellness/massage-aromatherapy/3.jpg"
+  ],
+  "seo": {
+    "title": "Massage Aromatherapy",
+    "description": ""
+  }
+}

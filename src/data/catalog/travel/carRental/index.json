@@ -1,0 +1,58 @@
+﻿[
+    {
+        "slug":  "audi-a3",
+        "name":  "Audi A3"
+    },
+    {
+        "slug":  "audi-q5-sportback",
+        "name":  "Audi Q5 Sportback"
+    },
+    {
+        "slug":  "audi-rs3",
+        "name":  "Audi RS3"
+    },
+    {
+        "slug":  "audi-rsq3",
+        "name":  "Audi RSQ3"
+    },
+    {
+        "slug":  "audi-rsq8",
+        "name":  "Audi RSQ8"
+    },
+    {
+        "slug":  "chevrolet-groove",
+        "name":  "Chevrolet Groove"
+    },
+    {
+        "slug":  "chevrolet-tao",
+        "name":  "Chevrolet Tao"
+    },
+    {
+        "slug":  "fiat-abarth",
+        "name":  "Fiat Abarth"
+    },
+    {
+        "slug":  "jetour-t2",
+        "name":  "Jetour T2"
+    },
+    {
+        "slug":  "mercedes-classe-a",
+        "name":  "Mercedes Classe A"
+    },
+    {
+        "slug":  "mg-one",
+        "name":  "MG One"
+    },
+    {
+        "slug":  "nissan-sunny",
+        "name":  "Nissan Sunny"
+    },
+    {
+        "slug":  "porsche-cayenne",
+        "name":  "Porsche Cayenne"
+    },
+    {
+        "slug":  "porsche-macan",
+        "name":  "Porsche Macan"
+    }
+]

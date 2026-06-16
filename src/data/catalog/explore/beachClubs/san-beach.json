@@ -1,0 +1,14 @@
+﻿{
+    "name":  "SAN Beach",
+    "slug":  "san-beach",
+    "section":  "explore",
+    "subsection":  "beachClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/beachClubs/san-beach",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

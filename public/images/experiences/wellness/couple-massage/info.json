@@ -1,0 +1,21 @@
+{
+  "name": "Couple Massage",
+  "slug": "couple-massage",
+  "section": "experiences",
+  "subsection": "wellness",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/wellness/couple-massage/1.jpg",
+  "gallery": [
+    "/public/images/experiences/wellness/couple-massage/1.jpg",
+    "/public/images/experiences/wellness/couple-massage/2.jpg",
+    "/public/images/experiences/wellness/couple-massage/3.jpg"
+  ],
+  "seo": {
+    "title": "Couple Massage",
+    "description": ""
+  }
+}

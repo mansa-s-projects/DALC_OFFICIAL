@@ -1,0 +1,21 @@
+{
+  "name": "Tagomago",
+  "slug": "tagomago",
+  "section": "explore",
+  "subsection": "beachClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/beachClubs/tagomago/1.jpg",
+  "gallery": [
+    "/public/images/venues/beachClubs/tagomago/1.jpg",
+    "/public/images/venues/beachClubs/tagomago/2.jpg",
+    "/public/images/venues/beachClubs/tagomago/3.jpg"
+  ],
+  "seo": {
+    "title": "Tagomago",
+    "description": ""
+  }
+}

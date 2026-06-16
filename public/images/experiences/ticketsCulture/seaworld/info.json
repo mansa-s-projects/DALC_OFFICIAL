@@ -1,0 +1,21 @@
+{
+  "name": "SeaWorld",
+  "slug": "seaworld",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/seaworld/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/seaworld/1.jpg",
+    "/public/images/experiences/ticketsCulture/seaworld/2.jpg",
+    "/public/images/experiences/ticketsCulture/seaworld/3.jpg"
+  ],
+  "seo": {
+    "title": "SeaWorld",
+    "description": ""
+  }
+}

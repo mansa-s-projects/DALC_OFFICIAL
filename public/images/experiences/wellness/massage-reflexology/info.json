@@ -1,0 +1,21 @@
+{
+  "name": "Massage Reflexology",
+  "slug": "massage-reflexology",
+  "section": "experiences",
+  "subsection": "wellness",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/wellness/massage-reflexology/1.jpg",
+  "gallery": [
+    "/public/images/experiences/wellness/massage-reflexology/1.jpg",
+    "/public/images/experiences/wellness/massage-reflexology/2.jpg",
+    "/public/images/experiences/wellness/massage-reflexology/3.jpg"
+  ],
+  "seo": {
+    "title": "Massage Reflexology",
+    "description": ""
+  }
+}

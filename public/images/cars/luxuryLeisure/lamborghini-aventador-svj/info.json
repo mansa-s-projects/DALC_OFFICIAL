@@ -1,0 +1,21 @@
+{
+  "name": "Lamborghini Aventador SVJ",
+  "slug": "lamborghini-aventador-svj",
+  "section": "experiences",
+  "subsection": "luxuryLeisure",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/luxuryLeisure/lamborghini-aventador-svj/1.jpg",
+  "gallery": [
+    "/public/images/cars/luxuryLeisure/lamborghini-aventador-svj/1.jpg",
+    "/public/images/cars/luxuryLeisure/lamborghini-aventador-svj/2.jpg",
+    "/public/images/cars/luxuryLeisure/lamborghini-aventador-svj/3.jpg"
+  ],
+  "seo": {
+    "title": "Lamborghini Aventador SVJ",
+    "description": ""
+  }
+}

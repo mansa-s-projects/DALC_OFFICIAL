@@ -1,0 +1,21 @@
+{
+  "name": "La Perle by Dragone",
+  "slug": "la-perle-by-dragone",
+  "section": "explore",
+  "subsection": "diningEntertainment",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/diningEntertainment/la-perle-by-dragone/1.jpg",
+  "gallery": [
+    "/public/images/venues/diningEntertainment/la-perle-by-dragone/1.jpg",
+    "/public/images/venues/diningEntertainment/la-perle-by-dragone/2.jpg",
+    "/public/images/venues/diningEntertainment/la-perle-by-dragone/3.jpg"
+  ],
+  "seo": {
+    "title": "La Perle by Dragone",
+    "description": ""
+  }
+}

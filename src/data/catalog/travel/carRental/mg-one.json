@@ -1,0 +1,14 @@
+﻿{
+    "name":  "MG One",
+    "slug":  "mg-one",
+    "section":  "travel",
+    "subsection":  "carRental",
+    "folderType":  "cars",
+    "imageFolder":  "public/images/cars/carRental/mg-one",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

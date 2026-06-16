@@ -1,0 +1,21 @@
+{
+  "name": "DREAM Dinner Show",
+  "slug": "dream-dinner-show",
+  "section": "explore",
+  "subsection": "diningEntertainment",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/diningEntertainment/dream-dinner-show/1.jpg",
+  "gallery": [
+    "/public/images/venues/diningEntertainment/dream-dinner-show/1.jpg",
+    "/public/images/venues/diningEntertainment/dream-dinner-show/2.jpg",
+    "/public/images/venues/diningEntertainment/dream-dinner-show/3.jpg"
+  ],
+  "seo": {
+    "title": "DREAM Dinner Show",
+    "description": ""
+  }
+}

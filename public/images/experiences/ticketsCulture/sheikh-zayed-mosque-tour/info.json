@@ -1,0 +1,21 @@
+{
+  "name": "Sheikh Zayed Mosque Tour",
+  "slug": "sheikh-zayed-mosque-tour",
+  "section": "experiences",
+  "subsection": "ticketsCulture",
+  "folderType": "experiences",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/experiences/ticketsCulture/sheikh-zayed-mosque-tour/1.jpg",
+  "gallery": [
+    "/public/images/experiences/ticketsCulture/sheikh-zayed-mosque-tour/1.jpg",
+    "/public/images/experiences/ticketsCulture/sheikh-zayed-mosque-tour/2.jpg",
+    "/public/images/experiences/ticketsCulture/sheikh-zayed-mosque-tour/3.jpg"
+  ],
+  "seo": {
+    "title": "Sheikh Zayed Mosque Tour",
+    "description": ""
+  }
+}

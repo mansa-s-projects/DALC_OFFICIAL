@@ -1,0 +1,14 @@
+﻿{
+    "name":  "BLU Dubai",
+    "slug":  "blu-dubai",
+    "section":  "explore",
+    "subsection":  "nightClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/nightClubs/blu-dubai",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

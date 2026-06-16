@@ -1,0 +1,21 @@
+{
+  "name": "Porsche Macan",
+  "slug": "porsche-macan",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/porsche-macan/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/porsche-macan/1.jpg",
+    "/public/images/cars/carRental/porsche-macan/2.jpg",
+    "/public/images/cars/carRental/porsche-macan/3.jpg"
+  ],
+  "seo": {
+    "title": "Porsche Macan",
+    "description": ""
+  }
+}

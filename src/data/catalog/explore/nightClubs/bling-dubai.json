@@ -1,0 +1,14 @@
+﻿{
+    "name":  "BLING Dubai",
+    "slug":  "bling-dubai",
+    "section":  "explore",
+    "subsection":  "nightClubs",
+    "folderType":  "venues",
+    "imageFolder":  "public/images/venues/nightClubs/bling-dubai",
+    "status":  "draft",
+    "tags":  [
+
+             ],
+    "shortDescription":  "",
+    "description":  ""
+}

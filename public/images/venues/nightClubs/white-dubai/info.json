@@ -1,0 +1,21 @@
+{
+  "name": "White Dubai",
+  "slug": "white-dubai",
+  "section": "explore",
+  "subsection": "nightClubs",
+  "folderType": "venues",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/venues/nightClubs/white-dubai/1.jpg",
+  "gallery": [
+    "/public/images/venues/nightClubs/white-dubai/1.jpg",
+    "/public/images/venues/nightClubs/white-dubai/2.jpg",
+    "/public/images/venues/nightClubs/white-dubai/3.jpg"
+  ],
+  "seo": {
+    "title": "White Dubai",
+    "description": ""
+  }
+}

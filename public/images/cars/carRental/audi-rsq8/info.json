@@ -1,0 +1,21 @@
+{
+  "name": "Audi RSQ8",
+  "slug": "audi-rsq8",
+  "section": "travel",
+  "subsection": "carRental",
+  "folderType": "cars",
+  "description": "",
+  "shortDescription": "",
+  "location": "",
+  "tags": [],
+  "coverImage": "/public/images/cars/carRental/audi-rsq8/1.jpg",
+  "gallery": [
+    "/public/images/cars/carRental/audi-rsq8/1.jpg",
+    "/public/images/cars/carRental/audi-rsq8/2.jpg",
+    "/public/images/cars/carRental/audi-rsq8/3.jpg"
+  ],
+  "seo": {
+    "title": "Audi RSQ8",
+    "description": ""
+  }
+}
