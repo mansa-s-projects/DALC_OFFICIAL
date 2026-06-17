@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev          # Dev server on 0.0.0.0:3000 (Turbopack)
 npm run build        # Production build (outputs to dist/)
 npx tsc --noEmit     # TypeScript type check
-npx next lint        # Lint — DO NOT use npm run lint (broken on Next.js 16)
+npm run lint         # Lint via ESLint CLI (`next lint` is not available on Next.js 16)
 npx vitest           # Unit tests (Vitest + Testing Library + jsdom)
 npx playwright test  # E2E tests (requires running dev server)
 ```

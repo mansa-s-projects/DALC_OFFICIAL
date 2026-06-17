@@ -267,7 +267,7 @@ Eliminate direct table-string drift and spread of schema assumptions by centrali
 5. Run full validation:
    - `npx tsc --noEmit`
    - `npm run build`
-   - `npx next lint`
+   - `npm run lint`
 
 ---
 
