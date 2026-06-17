@@ -1,0 +1,686 @@
+{
+  "audit_metadata": {
+    "timestamp": "2026-06-17T12:33:00Z",
+    "report_version": "1.0",
+    "auditor": "DALC Asset Recovery Engineer",
+    "status": "LAUNCH_BLOCKING",
+    "severity": "CRITICAL"
+  },
+  "summary": {
+    "total_assets": 896,
+    "total_valid_assets": 500,
+    "total_empty_assets": 396,
+    "recovery_rate_percent": 55.8,
+    "broken_assets_count": 396,
+    "architectural_migration_required": true,
+    "old_references_count": 103,
+    "launch_readiness_score": 18
+  },
+  "tier_1_critical": {
+    "description": "Luxury restaurants, beach clubs, nightclubs, dining entertainment, yachts, luxury cars, high-revenue experiences",
+    "items": [
+      {
+        "rank": 1,
+        "category": "Entertainment & Cultural Attractions",
+        "old_vertical": "ticketsCulture",
+        "new_vertical": "entertainment",
+        "new_slug": "entertainment",
+        "priority_score": 95,
+        "revenue_score": 88,
+        "seo_impact_score": 94,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 152,
+          "empty_files": 152,
+          "missing_percent": 100,
+          "missing_status": "ALL_MISSING"
+        },
+        "entity_count": 19,
+        "entities": [
+          {
+            "slug": "abu-dhabi-city-tour-mercedes-viano",
+            "name": "Abu Dhabi City Tour (Mercedes-Viano)",
+            "image_folder": "public/images/experiences/ticketsCulture/abu-dhabi-city-tour-mercedes-viano",
+            "empty_files": 8
+          },
+          {
+            "slug": "abu-dhabi-city-tour-standard",
+            "name": "Abu Dhabi City Tour (Standard)",
+            "image_folder": "public/images/experiences/ticketsCulture/abu-dhabi-city-tour-standard",
+            "empty_files": 8
+          },
+          {
+            "slug": "atlantis-aquaventure",
+            "name": "Atlantis The Palm Aquaventure",
+            "image_folder": "public/images/experiences/ticketsCulture/atlantis-aquaventure",
+            "empty_files": 8
+          },
+          {
+            "slug": "atlantis-lost-chambers",
+            "name": "Atlantis Lost Chambers Aquarium",
+            "image_folder": "public/images/experiences/ticketsCulture/atlantis-lost-chambers",
+            "empty_files": 8
+          },
+          {
+            "slug": "dubai-city-tour",
+            "name": "Dubai City Tour",
+            "image_folder": "public/images/experiences/ticketsCulture/dubai-city-tour",
+            "empty_files": 8
+          },
+          {
+            "slug": "ferrari-world-abu-dhabi",
+            "name": "Ferrari World Abu Dhabi",
+            "image_folder": "public/images/experiences/ticketsCulture/ferrari-world-abu-dhabi",
+            "empty_files": 8
+          },
+          {
+            "slug": "flying-dress-shoot-couple",
+            "name": "Flying Dress Shoot (Couple)",
+            "image_folder": "public/images/experiences/ticketsCulture/flying-dress-shoot-couple",
+            "empty_files": 8
+          },
+          {
+            "slug": "flying-dress-shoot-duo",
+            "name": "Flying Dress Shoot (Duo)",
+            "image_folder": "public/images/experiences/ticketsCulture/flying-dress-shoot-duo",
+            "empty_files": 8
+          },
+          {
+            "slug": "flying-dress-shoot-family",
+            "name": "Flying Dress Shoot (Family)",
+            "image_folder": "public/images/experiences/ticketsCulture/flying-dress-shoot-family",
+            "empty_files": 8
+          },
+          {
+            "slug": "flying-dress-shoot-group",
+            "name": "Flying Dress Shoot (Group)",
+            "image_folder": "public/images/experiences/ticketsCulture/flying-dress-shoot-group",
+            "empty_files": 8
+          },
+          {
+            "slug": "flying-dress-shoot-solo",
+            "name": "Flying Dress Shoot (Solo)",
+            "image_folder": "public/images/experiences/ticketsCulture/flying-dress-shoot-solo",
+            "empty_files": 8
+          },
+          {
+            "slug": "img-world-of-adventure",
+            "name": "IMG Worlds of Adventure",
+            "image_folder": "public/images/experiences/ticketsCulture/img-world-of-adventure",
+            "empty_files": 8
+          },
+          {
+            "slug": "louvre-abu-dhabi",
+            "name": "Louvre Abu Dhabi",
+            "image_folder": "public/images/experiences/ticketsCulture/louvre-abu-dhabi",
+            "empty_files": 8
+          },
+          {
+            "slug": "qasr-al-watan-gardens",
+            "name": "Qasr Al Watan Gardens",
+            "image_folder": "public/images/experiences/ticketsCulture/qasr-al-watan-gardens",
+            "empty_files": 8
+          },
+          {
+            "slug": "seaworld",
+            "name": "SeaWorld Abu Dhabi",
+            "image_folder": "public/images/experiences/ticketsCulture/seaworld",
+            "empty_files": 8
+          },
+          {
+            "slug": "sheikh-zayed-mosque-tour",
+            "name": "Sheikh Zayed Mosque Tour",
+            "image_folder": "public/images/experiences/ticketsCulture/sheikh-zayed-mosque-tour",
+            "empty_files": 8
+          },
+          {
+            "slug": "warner-bros-abu-dhabi",
+            "name": "Warner Bros. Abu Dhabi",
+            "image_folder": "public/images/experiences/ticketsCulture/warner-bros-abu-dhabi",
+            "empty_files": 8
+          },
+          {
+            "slug": "wild-wadi-waterpark",
+            "name": "Wild Wadi Waterpark",
+            "image_folder": "public/images/experiences/ticketsCulture/wild-wadi-waterpark",
+            "empty_files": 8
+          },
+          {
+            "slug": "yas-waterpark",
+            "name": "Yas Waterpark",
+            "image_folder": "public/images/experiences/ticketsCulture/yas-waterpark",
+            "empty_files": 8
+          }
+        ],
+        "impact": "Complete absence of marquee attraction imagery catastrophic for SEO and conversion rates. 19 major attractions with zero visual representation.",
+        "code_references": 40,
+        "migration_required": true
+      },
+      {
+        "rank": 2,
+        "category": "Luxury Supercars",
+        "old_vertical": "luxuryLeisure",
+        "new_vertical": "transport",
+        "new_slug": "luxury-cars",
+        "priority_score": 88,
+        "revenue_score": 95,
+        "seo_impact_score": 86,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 18,
+          "empty_files": 18,
+          "missing_percent": 100,
+          "missing_status": "ALL_MISSING"
+        },
+        "entity_count": 6,
+        "entities": [
+          {
+            "slug": "ferrari-sf90",
+            "name": "Ferrari SF90 Stradale",
+            "image_folder": "public/images/cars/luxuryLeisure/ferrari-sf90",
+            "empty_files": 3
+          },
+          {
+            "slug": "lamborghini-aventador-svj",
+            "name": "Lamborghini Aventador SVJ",
+            "image_folder": "public/images/cars/luxuryLeisure/lamborghini-aventador-svj",
+            "empty_files": 3
+          },
+          {
+            "slug": "mclaren-720s",
+            "name": "McLaren 720S",
+            "image_folder": "public/images/cars/luxuryLeisure/mclaren-720s",
+            "empty_files": 3
+          },
+          {
+            "slug": "mercedes-classe-g",
+            "name": "Mercedes-AMG G-Class",
+            "image_folder": "public/images/cars/luxuryLeisure/mercedes-classe-g",
+            "empty_files": 3
+          },
+          {
+            "slug": "porsche-carrera-911",
+            "name": "Porsche Carrera 911",
+            "image_folder": "public/images/cars/luxuryLeisure/porsche-carrera-911",
+            "empty_files": 3
+          },
+          {
+            "slug": "porsche-gt3",
+            "name": "Porsche GT3",
+            "image_folder": "public/images/cars/luxuryLeisure/porsche-gt3",
+            "empty_files": 3
+          }
+        ],
+        "impact": "Zero hero imagery for flagship luxury rental product. Brand damage risk for high-margin service (6x vehicle types, 100% missing images).",
+        "code_references": 14,
+        "migration_required": true
+      },
+      {
+        "rank": 3,
+        "category": "Yacht Charter",
+        "old_vertical": "marine",
+        "new_vertical": "transport",
+        "new_slug": "yacht-charter",
+        "priority_score": 83,
+        "revenue_score": 98,
+        "seo_impact_score": 85,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 4,
+          "empty_files": 4,
+          "missing_percent": 100,
+          "missing_status": "ALL_MISSING"
+        },
+        "entity_count": 1,
+        "entities": [
+          {
+            "slug": "private-yacht-rental",
+            "name": "Private Yacht Rental",
+            "image_folder": "public/images/yachts/marine/private-yacht-rental",
+            "empty_files": 4
+          }
+        ],
+        "impact": "Highest per-booking revenue item (~$2,000-10,000/booking) with zero visual marketing assets. Critical for conversion.",
+        "code_references": 5,
+        "migration_required": true
+      },
+      {
+        "rank": 4,
+        "category": "Aerial & Adrenaline",
+        "old_vertical": "aerialAdrenaline",
+        "new_vertical": "experiences",
+        "new_slug": "aerial-and-adrenaline",
+        "priority_score": 85,
+        "revenue_score": 92,
+        "seo_impact_score": 88,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 15,
+          "empty_files": 9,
+          "missing_percent": 60,
+          "missing_status": "PARTIAL"
+        },
+        "entity_count": 7,
+        "entities": [
+          {
+            "slug": "helicopter-tour-12min",
+            "name": "Helicopter Tour (12 minutes)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/helicopter-tour-12min",
+            "empty_files": 2
+          },
+          {
+            "slug": "helicopter-tour-17min",
+            "name": "Helicopter Tour (17 minutes)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/helicopter-tour-17min",
+            "empty_files": 2
+          },
+          {
+            "slug": "helicopter-tour-22min",
+            "name": "Helicopter Tour (22 minutes)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/helicopter-tour-22min",
+            "empty_files": 1
+          },
+          {
+            "slug": "sky-views-observatory",
+            "name": "Sky Views Observatory",
+            "image_folder": "public/images/experiences/aerialAdrenaline/sky-views-observatory",
+            "empty_files": 2
+          },
+          {
+            "slug": "skydiving-desert",
+            "name": "Skydiving (Desert Drop Zone)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/skydiving-desert",
+            "empty_files": 1
+          },
+          {
+            "slug": "skydiving-palm",
+            "name": "Skydiving (Palm Dropzone)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/skydiving-palm",
+            "empty_files": 1
+          },
+          {
+            "slug": "zip-lining-marina",
+            "name": "Zip-lining (Marina)",
+            "image_folder": "public/images/experiences/aerialAdrenaline/zip-lining-marina",
+            "empty_files": 0
+          }
+        ],
+        "impact": "High-margin experiences (avg $300-500/booking) with 60% image coverage gap. Critical for conversion and SEO.",
+        "code_references": 16,
+        "migration_required": true
+      },
+      {
+        "rank": 5,
+        "category": "Water Activities & Marine",
+        "old_vertical": "marine",
+        "new_vertical": "experiences",
+        "new_slug": "water-activities",
+        "priority_score": 79,
+        "revenue_score": 85,
+        "seo_impact_score": 82,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 9,
+          "empty_files": 3,
+          "missing_percent": 33,
+          "missing_status": "PARTIAL"
+        },
+        "entity_count": 3,
+        "entities": [
+          {
+            "slug": "dhow-cruise-khasab",
+            "name": "Dhow Cruise Khasab",
+            "image_folder": "public/images/experiences/marine/dhow-cruise-khasab",
+            "empty_files": 1
+          },
+          {
+            "slug": "dhow-cruise-musandam",
+            "name": "Dhow Cruise Musandam",
+            "image_folder": "public/images/experiences/marine/dhow-cruise-musandam",
+            "empty_files": 1
+          },
+          {
+            "slug": "jet-ski-rental",
+            "name": "Jet Ski Rental",
+            "image_folder": "public/images/experiences/marine/jet-ski-rental",
+            "empty_files": 1
+          }
+        ],
+        "impact": "Cultural water experiences with moderate 33% image gaps. Medium urgency due to partial coverage.",
+        "code_references": 14,
+        "migration_required": true
+      }
+    ]
+  },
+  "tier_2_high": {
+    "description": "Desert adventures, helicopters, water activities, skydiving - high-margin experiences",
+    "items": [
+      {
+        "rank": 6,
+        "category": "Desert Adventures",
+        "old_vertical": "desertAdventure",
+        "new_vertical": "experiences",
+        "new_slug": "desert-adventures",
+        "priority_score": 82,
+        "revenue_score": 78,
+        "seo_impact_score": 81,
+        "business_critical": true,
+        "file_status": {
+          "total_files": 15,
+          "empty_files": 9,
+          "missing_percent": 60,
+          "missing_status": "PARTIAL"
+        },
+        "entity_count": 6,
+        "entities": [
+          {
+            "slug": "equestrian-signature-experience",
+            "name": "Equestrian Signature Experience",
+            "image_folder": "public/images/experiences/desertAdventure/equestrian-signature-experience",
+            "empty_files": 2
+          },
+          {
+            "slug": "horse-riding-1h",
+            "name": "Horse Riding (1 hour)",
+            "image_folder": "public/images/experiences/desertAdventure/horse-riding-1h",
+            "empty_files": 2
+          },
+          {
+            "slug": "pony-riding-30min",
+            "name": "Pony Riding (30 minutes)",
+            "image_folder": "public/images/experiences/desertAdventure/pony-riding-30min",
+            "empty_files": 2
+          },
+          {
+            "slug": "sonara-camp-overnight",
+            "name": "Sonara Camp (Overnight)",
+            "image_folder": "public/images/experiences/desertAdventure/sonara-camp-overnight",
+            "empty_files": 1
+          },
+          {
+            "slug": "sonara-camp-sunset",
+            "name": "Sonara Camp (Sunset Experience)",
+            "image_folder": "public/images/experiences/desertAdventure/sonara-camp-sunset",
+            "empty_files": 1
+          },
+          {
+            "slug": "sonara-camp-sunset-dinner",
+            "name": "Sonara Camp (Sunset Dinner)",
+            "image_folder": "public/images/experiences/desertAdventure/sonara-camp-sunset-dinner",
+            "empty_files": 1
+          }
+        ],
+        "impact": "Popular experiential offerings significantly undermined with 60% image gaps. Medium-term conversion friction.",
+        "code_references": 14,
+        "migration_required": true
+      }
+    ]
+  },
+  "tier_3_medium": {
+    "description": "Wellness, tours, culture, concierge services - support and lifestyle offerings",
+    "items": [
+      {
+        "rank": 7,
+        "category": "Concierge Services",
+        "old_vertical": "N/A",
+        "new_vertical": "concierge",
+        "new_slug": "concierge",
+        "priority_score": 60,
+        "revenue_score": 65,
+        "seo_impact_score": 70,
+        "business_critical": false,
+        "file_status": {
+          "total_files": 8,
+          "empty_files": 4,
+          "missing_percent": 50,
+          "missing_status": "PARTIAL"
+        },
+        "entity_count": 4,
+        "entities": [
+          {
+            "slug": "custom-planning",
+            "name": "Custom Planning",
+            "image_folder": "public/images/concierge/customPlanning",
+            "empty_files": 1
+          },
+          {
+            "slug": "lifestyle-management",
+            "name": "Lifestyle Management",
+            "image_folder": "public/images/concierge/lifestyleManagement",
+            "empty_files": 1
+          },
+          {
+            "slug": "personal-requests",
+            "name": "Personal Requests",
+            "image_folder": "public/images/concierge/personalRequests",
+            "empty_files": 1
+          },
+          {
+            "slug": "vip-reservations",
+            "name": "VIP Reservations",
+            "image_folder": "public/images/concierge/vipReservations",
+            "empty_files": 1
+          }
+        ],
+        "impact": "Support service visual assets incomplete. Lower conversion impact than primary offerings.",
+        "code_references": 0,
+        "migration_required": false
+      },
+      {
+        "rank": 8,
+        "category": "Move to Dubai Services",
+        "old_vertical": "N/A",
+        "new_vertical": "move-to-dubai",
+        "new_slug": "move-to-dubai",
+        "priority_score": 65,
+        "revenue_score": 72,
+        "seo_impact_score": 68,
+        "business_critical": false,
+        "file_status": {
+          "total_files": 8,
+          "empty_files": 4,
+          "missing_percent": 50,
+          "missing_status": "PARTIAL"
+        },
+        "entity_count": 4,
+        "entities": [
+          {
+            "slug": "banking",
+            "name": "Banking Setup",
+            "image_folder": "public/images/moveToDubai/banking",
+            "empty_files": 1
+          },
+          {
+            "slug": "company-formation",
+            "name": "Company Formation",
+            "image_folder": "public/images/moveToDubai/companyFormation",
+            "empty_files": 1
+          },
+          {
+            "slug": "relocation-support",
+            "name": "Relocation Support",
+            "image_folder": "public/images/moveToDubai/relocationSupport",
+            "empty_files": 1
+          },
+          {
+            "slug": "visa-services",
+            "name": "Visa Services",
+            "image_folder": "public/images/moveToDubai/visaServices",
+            "empty_files": 1
+          }
+        ],
+        "impact": "Relocation service visuals incomplete. Emerging product line, medium priority.",
+        "code_references": 0,
+        "migration_required": false
+      }
+    ]
+  },
+  "migration_mapping": {
+    "old_to_new_vertical_references": [
+      {
+        "old_key": "marine",
+        "old_display": "Marine",
+        "new_key_primary": "water-activities",
+        "new_key_secondary": "yacht-charter",
+        "contexts": [
+          "public/images/experiences/marine/",
+          "public/images/yachts/marine/",
+          "src/data/catalog/experiences/marine/"
+        ],
+        "total_references": 19,
+        "file_patterns": [
+          "*.json",
+          "*.tsx",
+          "*.ts"
+        ]
+      },
+      {
+        "old_key": "aerialAdrenaline",
+        "old_display": "Aerial Adrenaline",
+        "new_key": "aerial-and-adrenaline",
+        "contexts": [
+          "public/images/experiences/aerialAdrenaline/",
+          "src/data/catalog/experiences/aerialAdrenaline/"
+        ],
+        "total_references": 16,
+        "file_patterns": [
+          "*.json",
+          "*.tsx",
+          "*.ts"
+        ]
+      },
+      {
+        "old_key": "desertAdventure",
+        "old_display": "Desert Adventure",
+        "new_key": "desert-adventures",
+        "contexts": [
+          "public/images/experiences/desertAdventure/",
+          "src/data/catalog/experiences/desertAdventure/"
+        ],
+        "total_references": 14,
+        "file_patterns": [
+          "*.json",
+          "*.tsx",
+          "*.ts"
+        ]
+      },
+      {
+        "old_key": "ticketsCulture",
+        "old_display": "Tickets Culture",
+        "new_key": "entertainment",
+        "contexts": [
+          "public/images/experiences/ticketsCulture/",
+          "src/data/catalog/experiences/ticketsCulture/"
+        ],
+        "total_references": 40,
+        "file_patterns": [
+          "*.json",
+          "*.tsx",
+          "*.ts"
+        ]
+      },
+      {
+        "old_key": "luxuryLeisure",
+        "old_display": "Luxury Leisure",
+        "new_key": "luxury-cars",
+        "contexts": [
+          "public/images/cars/luxuryLeisure/",
+          "src/data/catalog/cars/luxuryLeisure/"
+        ],
+        "total_references": 14,
+        "file_patterns": [
+          "*.json",
+          "*.tsx",
+          "*.ts"
+        ]
+      }
+    ],
+    "summary": {
+      "total_old_references": 103,
+      "breaking_changes": 5,
+      "requires_code_update": true,
+      "requires_directory_rename": true,
+      "requires_slug_migration": true
+    }
+  },
+  "recommended_action_plan": {
+    "phase_1_immediate": {
+      "duration_days": 1,
+      "priority": "CRITICAL",
+      "actions": [
+        "PAUSE LAUNCH - critical asset gaps detected",
+        "Audit all 500 valid assets for quality, resolution, format, optimization",
+        "Document current state of image file sizes, formats, dimensions",
+        "Create sourcing list for 396 missing assets with priority tiers"
+      ]
+    },
+    "phase_2_asset_recovery": {
+      "duration_days": 14,
+      "priority": "CRITICAL",
+      "actions": [
+        "Source high-res images for Tier 1 assets (Entertainment, Luxury Cars, Yachts, Aerial, Marine)",
+        "Source high-res images for Tier 2 assets (Desert Adventures)",
+        "Source images for Tier 3 assets (Concierge, Move to Dubai)",
+        "Convert all images to WebP format with proper optimization",
+        "Verify minimum 1600px landscape orientation for all images",
+        "Generate image-manifest.json with metadata for all assets"
+      ]
+    },
+    "phase_3_architecture_migration": {
+      "duration_days": 7,
+      "priority": "HIGH",
+      "actions": [
+        "Update 103 old vertical references in code (data files, links, CMS config)",
+        "Rename directories from old slugs to new slugs (with backup)",
+        "Update breadcrumbs and SEO metadata",
+        "Generate migration rollback instructions",
+        "Test all related-content links and cross-references"
+      ]
+    },
+    "phase_4_validation": {
+      "duration_days": 3,
+      "priority": "CRITICAL",
+      "actions": [
+        "Comprehensive broken link detection across all verticals",
+        "SEO audit (sitemap, structured data, crawlability)",
+        "Performance audit (image load times, Core Web Vitals)",
+        "Smoke test all affected pages and verticals",
+        "Deploy with confidence and monitor"
+      ]
+    }
+  },
+  "scoring_methodology": {
+    "priority_score": {
+      "range": "0-100",
+      "factors": [
+        "Business impact (40%)",
+        "Launch blocking status (30%)",
+        "Conversion friction (20%)",
+        "Technical debt (10%)"
+      ],
+      "threshold": {
+        "tier_1": "80-100",
+        "tier_2": "60-79",
+        "tier_3": "40-59"
+      }
+    },
+    "revenue_score": {
+      "range": "0-100",
+      "factors": [
+        "Average booking value (40%)",
+        "Booking frequency (30%)",
+        "Conversion rate impact (20%)",
+        "Market competitiveness (10%)"
+      ]
+    },
+    "seo_impact_score": {
+      "range": "0-100",
+      "factors": [
+        "Search volume for category (30%)",
+        "Image as ranking factor (30%)",
+        "User engagement signals (25%)",
+        "Mobile-first indexing (15%)"
+      ]
+    }
+  }
+}

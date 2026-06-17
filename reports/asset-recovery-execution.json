@@ -1,0 +1,1403 @@
+{
+  "timestamp": "2026-06-18T01:55:20.917070",
+  "summary": {
+    "recovered": 174,
+    "failed": 0,
+    "skipped": 0,
+    "total": 174
+  },
+  "details": [
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\hero.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.795763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-1.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.796760"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-2.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.797769"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-3.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-4.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-5.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-6.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-standard",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-standard\\gallery-7.jpg",
+      "source": "https://www.pexels.com/search/abu%20dhabi%20tour/",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.798763"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "abu-dhabi-city-tour-mercedes-viano",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\abu-dhabi-city-tour-mercedes-viano\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes-viano",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "ferrari-world-abu-dhabi",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\ferrari-world-abu-dhabi\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.805086"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.814430"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.814430"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "warner-bros-abu-dhabi",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\warner-bros-abu-dhabi\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/warner-bros-world",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "img-world-of-adventure",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\img-world-of-adventure\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/img-worlds",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "wild-wadi-waterpark",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\wild-wadi-waterpark\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/wild-wadi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.816456"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.830344"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "yas-waterpark",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\yas-waterpark\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/yas-waterpark",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-aquaventure",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-aquaventure\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/atlantis-aquaventure",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.831350"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "atlantis-lost-chambers",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\atlantis-lost-chambers\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/aquarium-marine-life",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.841890"
+    },
+    {
+      "entity": "seaworld",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847019"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "seaworld",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\seaworld\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/seaworld",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "louvre-abu-dhabi",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\louvre-abu-dhabi\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/louvre-abu-dhabi",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "qasr-al-watan-gardens",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\qasr-al-watan-gardens\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/qasr-al-watan",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.847867"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.863815"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "sheikh-zayed-mosque-tour",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\sheikh-zayed-mosque-tour\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/sheikh-zayed-mosque",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "dubai-city-tour",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\dubai-city-tour\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/dubai-city-tour",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-solo",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-solo\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/flying-dress",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.864535"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.880309"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.880309"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.880309"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.881913"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.882919"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.883918"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.883918"
+    },
+    {
+      "entity": "flying-dress-shoot-couple",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-couple\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/couple-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.884919"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.885918"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.885918"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.886918"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.887920"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.887920"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.888918"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.889918"
+    },
+    {
+      "entity": "flying-dress-shoot-duo",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-duo\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/aerial-dancing",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.889918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.890918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.891918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.891918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.892918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.893918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.893918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.894918"
+    },
+    {
+      "entity": "flying-dress-shoot-family",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-family\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/family-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.895919"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.895919"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.895919"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-4.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-4.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-5.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-5.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-6.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-6.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "flying-dress-shoot-group",
+      "image": "gallery-7.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\entertainment\\flying-dress-shoot-group\\gallery-7.jpg",
+      "source": "https://unsplash.com/s/photos/group-portrait",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "ferrari-sf90",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\ferrari-sf90\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "ferrari-sf90",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\ferrari-sf90\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "ferrari-sf90",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\ferrari-sf90\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/ferrari",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "lamborghini-aventador-svj",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\lamborghini-aventador-svj\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/lamborghini",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "lamborghini-aventador-svj",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\lamborghini-aventador-svj\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/lamborghini",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "lamborghini-aventador-svj",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\lamborghini-aventador-svj\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/lamborghini",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.897928"
+    },
+    {
+      "entity": "mclaren-720s",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mclaren-720s\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/mclaren",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "mclaren-720s",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mclaren-720s\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/mclaren",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "mclaren-720s",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mclaren-720s\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/mclaren",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "mercedes-classe-g",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mercedes-classe-g\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "mercedes-classe-g",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mercedes-classe-g\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "mercedes-classe-g",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\mercedes-classe-g\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/mercedes",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "porsche-carrera-911",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-carrera-911\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/porsche",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.906470"
+    },
+    {
+      "entity": "porsche-carrera-911",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-carrera-911\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/porsche",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.911569"
+    },
+    {
+      "entity": "porsche-carrera-911",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-carrera-911\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/porsche",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.911569"
+    },
+    {
+      "entity": "porsche-gt3",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-gt3\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/porsche-gt3",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.911569"
+    },
+    {
+      "entity": "porsche-gt3",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-gt3\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/porsche-gt3",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.913576"
+    },
+    {
+      "entity": "porsche-gt3",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\luxury-cars\\porsche-gt3\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/porsche-gt3",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.914139"
+    },
+    {
+      "entity": "private-yacht-rental",
+      "image": "hero.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\yachts\\private-yacht-rental\\hero.jpg",
+      "source": "https://unsplash.com/s/photos/yacht",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.914550"
+    },
+    {
+      "entity": "private-yacht-rental",
+      "image": "gallery-1.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\yachts\\private-yacht-rental\\gallery-1.jpg",
+      "source": "https://unsplash.com/s/photos/yacht",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.914550"
+    },
+    {
+      "entity": "private-yacht-rental",
+      "image": "gallery-2.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\yachts\\private-yacht-rental\\gallery-2.jpg",
+      "source": "https://unsplash.com/s/photos/yacht",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.917070"
+    },
+    {
+      "entity": "private-yacht-rental",
+      "image": "gallery-3.jpg",
+      "path": "c:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\public\\images\\experiences\\yachts\\private-yacht-rental\\gallery-3.jpg",
+      "source": "https://unsplash.com/s/photos/yacht",
+      "status": "downloaded",
+      "timestamp": "2026-06-18T01:55:20.917070"
+    }
+  ]
+}

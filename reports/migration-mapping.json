@@ -1,0 +1,452 @@
+{
+  "migration_metadata": {
+    "timestamp": "2026-06-17T12:33:00Z",
+    "report_type": "architecture-migration",
+    "migration_scope": "comprehensive",
+    "requires_code_review": true,
+    "requires_testing": true,
+    "estimated_effort_hours": "10-15",
+    "breaking_change": true
+  },
+  "vertical_mapping": {
+    "marine": {
+      "old_identifier": "marine",
+      "old_display_name": "Marine",
+      "status": "DEPRECATED",
+      "reason": "Ambiguous naming; split into two distinct verticals (water activities vs yacht charter)",
+      "replacement_mapping": [
+        {
+          "context": "Experiences - Water Activities",
+          "old_path": "public/images/experiences/marine/",
+          "old_data_path": "src/data/catalog/experiences/marine/",
+          "new_identifier": "water-activities",
+          "new_path": "public/images/experiences/water-activities/",
+          "new_data_path": "src/data/catalog/experiences/water-activities/",
+          "entities": [
+            "dhow-cruise-khasab",
+            "dhow-cruise-musandam",
+            "jet-ski-rental"
+          ]
+        },
+        {
+          "context": "Transport - Yacht Charter",
+          "old_path": "public/images/yachts/marine/",
+          "new_identifier": "yacht-charter",
+          "new_path": "public/images/yachts/",
+          "parent_vertical": "transport",
+          "entities": [
+            "private-yacht-rental"
+          ]
+        }
+      ],
+      "code_references": {
+        "total_count": 19,
+        "file_locations": [
+          "src/data/catalog/experiences/marine/",
+          "public/images/experiences/marine/",
+          "public/images/yachts/marine/"
+        ],
+        "reference_patterns": [
+          "\"subsection\": \"marine\"",
+          "\"imageFolder\": \"public/images/experiences/marine/",
+          "\"imageFolder\": \"public/images/yachts/marine/"
+        ]
+      }
+    },
+    "aerialAdrenaline": {
+      "old_identifier": "aerialAdrenaline",
+      "old_display_name": "Aerial Adrenaline",
+      "status": "DEPRECATED",
+      "reason": "Inconsistent camelCase naming; standardizing to kebab-case",
+      "replacement_mapping": [
+        {
+          "context": "Experiences - Aerial & Adrenaline",
+          "old_path": "public/images/experiences/aerialAdrenaline/",
+          "old_data_path": "src/data/catalog/experiences/aerialAdrenaline/",
+          "new_identifier": "aerial-and-adrenaline",
+          "new_path": "public/images/experiences/aerial-and-adrenaline/",
+          "new_data_path": "src/data/catalog/experiences/aerial-and-adrenaline/",
+          "parent_vertical": "experiences",
+          "entities": [
+            "helicopter-tour-12min",
+            "helicopter-tour-17min",
+            "helicopter-tour-22min",
+            "sky-views-observatory",
+            "skydiving-desert",
+            "skydiving-palm",
+            "zip-lining-marina"
+          ]
+        }
+      ],
+      "code_references": {
+        "total_count": 16,
+        "file_locations": [
+          "src/data/catalog/experiences/aerialAdrenaline/"
+        ],
+        "reference_patterns": [
+          "\"subsection\": \"aerialAdrenaline\"",
+          "\"imageFolder\": \"public/images/experiences/aerialAdrenaline/"
+        ]
+      }
+    },
+    "desertAdventure": {
+      "old_identifier": "desertAdventure",
+      "old_display_name": "Desert Adventure",
+      "status": "DEPRECATED",
+      "reason": "Inconsistent camelCase naming; standardizing to kebab-case",
+      "replacement_mapping": [
+        {
+          "context": "Experiences - Desert Adventures",
+          "old_path": "public/images/experiences/desertAdventure/",
+          "old_data_path": "src/data/catalog/experiences/desertAdventure/",
+          "new_identifier": "desert-adventures",
+          "new_path": "public/images/experiences/desert-adventures/",
+          "new_data_path": "src/data/catalog/experiences/desert-adventures/",
+          "parent_vertical": "experiences",
+          "entities": [
+            "equestrian-signature-experience",
+            "horse-riding-1h",
+            "pony-riding-30min",
+            "sonara-camp-overnight",
+            "sonara-camp-sunset",
+            "sonara-camp-sunset-dinner"
+          ]
+        }
+      ],
+      "code_references": {
+        "total_count": 14,
+        "file_locations": [
+          "src/data/catalog/experiences/desertAdventure/"
+        ],
+        "reference_patterns": [
+          "\"subsection\": \"desertAdventure\"",
+          "\"imageFolder\": \"public/images/experiences/desertAdventure/"
+        ]
+      }
+    },
+    "ticketsCulture": {
+      "old_identifier": "ticketsCulture",
+      "old_display_name": "Tickets & Culture",
+      "status": "DEPRECATED",
+      "reason": "Inconsistent naming; consolidating as 'entertainment' for broader appeal",
+      "replacement_mapping": [
+        {
+          "context": "Experiences - Entertainment",
+          "old_path": "public/images/experiences/ticketsCulture/",
+          "old_data_path": "src/data/catalog/experiences/ticketsCulture/",
+          "new_identifier": "entertainment",
+          "new_path": "public/images/experiences/entertainment/",
+          "new_data_path": "src/data/catalog/experiences/entertainment/",
+          "parent_vertical": "experiences",
+          "entities": [
+            "abu-dhabi-city-tour-mercedes-viano",
+            "abu-dhabi-city-tour-standard",
+            "atlantis-aquaventure",
+            "atlantis-lost-chambers",
+            "dubai-city-tour",
+            "ferrari-world-abu-dhabi",
+            "flying-dress-shoot-couple",
+            "flying-dress-shoot-duo",
+            "flying-dress-shoot-family",
+            "flying-dress-shoot-group",
+            "flying-dress-shoot-solo",
+            "img-world-of-adventure",
+            "louvre-abu-dhabi",
+            "qasr-al-watan-gardens",
+            "seaworld",
+            "sheikh-zayed-mosque-tour",
+            "warner-bros-abu-dhabi",
+            "wild-wadi-waterpark",
+            "yas-waterpark"
+          ]
+        }
+      ],
+      "code_references": {
+        "total_count": 40,
+        "file_locations": [
+          "src/data/catalog/experiences/ticketsCulture/"
+        ],
+        "reference_patterns": [
+          "\"subsection\": \"ticketsCulture\"",
+          "\"imageFolder\": \"public/images/experiences/ticketsCulture/"
+        ]
+      }
+    },
+    "luxuryLeisure": {
+      "old_identifier": "luxuryLeisure",
+      "old_display_name": "Luxury Leisure",
+      "status": "DEPRECATED",
+      "reason": "Generic naming; consolidating under 'luxury-cars' in transport vertical",
+      "replacement_mapping": [
+        {
+          "context": "Transport - Luxury Cars",
+          "old_path": "public/images/cars/luxuryLeisure/",
+          "old_data_path": "src/data/catalog/cars/luxuryLeisure/",
+          "new_identifier": "luxury-cars",
+          "new_path": "public/images/cars/luxury-cars/",
+          "new_data_path": "src/data/catalog/cars/luxury-cars/",
+          "parent_vertical": "transport",
+          "entities": [
+            "ferrari-sf90",
+            "lamborghini-aventador-svj",
+            "mclaren-720s",
+            "mercedes-classe-g",
+            "porsche-carrera-911",
+            "porsche-gt3"
+          ]
+        }
+      ],
+      "code_references": {
+        "total_count": 14,
+        "file_locations": [
+          "src/data/catalog/cars/luxuryLeisure/",
+          "public/images/cars/luxuryLeisure/"
+        ],
+        "reference_patterns": [
+          "\"subsection\": \"luxuryLeisure\"",
+          "\"imageFolder\": \"public/images/cars/luxuryLeisure/"
+        ]
+      }
+    }
+  },
+  "migration_checklist": {
+    "data_files": {
+      "task": "Update src/data/catalog JSON files",
+      "files_affected": [
+        "src/data/catalog/experiences/marine/*.json → src/data/catalog/experiences/water-activities/*.json",
+        "src/data/catalog/experiences/aerialAdrenaline/*.json → src/data/catalog/experiences/aerial-and-adrenaline/*.json",
+        "src/data/catalog/experiences/desertAdventure/*.json → src/data/catalog/experiences/desert-adventures/*.json",
+        "src/data/catalog/experiences/ticketsCulture/*.json → src/data/catalog/experiences/entertainment/*.json",
+        "src/data/catalog/cars/luxuryLeisure/*.json → src/data/catalog/cars/luxury-cars/*.json"
+      ],
+      "changes_required": [
+        "Rename \"subsection\" field values",
+        "Update \"imageFolder\" paths",
+        "Update \"slug\" references if present"
+      ],
+      "priority": "CRITICAL",
+      "effort_hours": "3-4"
+    },
+    "image_assets": {
+      "task": "Rename and relocate image directories",
+      "directories_affected": [
+        "public/images/experiences/marine/ → public/images/experiences/water-activities/",
+        "public/images/experiences/aerialAdrenaline/ → public/images/experiences/aerial-and-adrenaline/",
+        "public/images/experiences/desertAdventure/ → public/images/experiences/desert-adventures/",
+        "public/images/experiences/ticketsCulture/ → public/images/experiences/entertainment/",
+        "public/images/cars/luxuryLeisure/ → public/images/cars/luxury-cars/",
+        "public/images/yachts/marine/ → (parent: public/images/yachts/) [split context]"
+      ],
+      "commands": [
+        "mv public/images/experiences/marine public/images/experiences/water-activities",
+        "mv public/images/experiences/aerialAdrenaline public/images/experiences/aerial-and-adrenaline",
+        "mv public/images/experiences/desertAdventure public/images/experiences/desert-adventures",
+        "mv public/images/experiences/ticketsCulture public/images/experiences/entertainment",
+        "mv public/images/cars/luxuryLeisure public/images/cars/luxury-cars",
+        "rmdir public/images/yachts/marine (after moving private-yacht-rental)"
+      ],
+      "priority": "CRITICAL",
+      "effort_hours": "1"
+    },
+    "code_references": {
+      "task": "Update old vertical name references in TypeScript/TSX",
+      "files_to_scan": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.json"
+      ],
+      "search_patterns": [
+        "aerialAdrenaline",
+        "desertAdventure",
+        "marine",
+        "ticketsCulture",
+        "luxuryLeisure"
+      ],
+      "replacement_patterns": [
+        "aerialAdrenaline → aerial-and-adrenaline",
+        "desertAdventure → desert-adventures",
+        "marine → water-activities (experiences) OR yacht-charter (yachts)",
+        "ticketsCulture → entertainment",
+        "luxuryLeisure → luxury-cars"
+      ],
+      "priority": "CRITICAL",
+      "effort_hours": "4-5"
+    },
+    "breadcrumbs_seo": {
+      "task": "Update breadcrumb trails and SEO metadata",
+      "impact_areas": [
+        "Navigation breadcrumbs",
+        "Canonical URLs",
+        "Open Graph tags",
+        "Schema.org structured data",
+        "Sitemap.xml"
+      ],
+      "priority": "HIGH",
+      "effort_hours": "2"
+    },
+    "related_content": {
+      "task": "Update cross-references and related content links",
+      "impact_areas": [
+        "Related experiences sections",
+        "Up-sell/cross-sell recommendations",
+        "Internal navigation links",
+        "Category filters and facets"
+      ],
+      "priority": "HIGH",
+      "effort_hours": "2"
+    },
+    "internal_links": {
+      "task": "Validate all internal links post-migration",
+      "tools_recommended": [
+        "Next.js Link validation",
+        "Lighthouse audits",
+        "Custom link crawler"
+      ],
+      "priority": "CRITICAL",
+      "effort_hours": "2"
+    }
+  },
+  "execution_strategy": {
+    "approach": "Atomic migration with rollback capability",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Create backup of current state",
+        "command": "git commit -m 'backup: pre-migration state' && git tag migration-backup-2026-06-17",
+        "rollback_command": "git checkout migration-backup-2026-06-17"
+      },
+      {
+        "step": 2,
+        "description": "Rename data directories",
+        "command": "cd src/data/catalog && mv experiences/aerialAdrenaline experiences/aerial-and-adrenaline && mv experiences/desertAdventure experiences/desert-adventures && mv experiences/marine experiences/water-activities && mv experiences/ticketsCulture experiences/entertainment && mv cars/luxuryLeisure cars/luxury-cars"
+      },
+      {
+        "step": 3,
+        "description": "Rename image directories",
+        "command": "cd public/images && mv experiences/aerialAdrenaline experiences/aerial-and-adrenaline && mv experiences/desertAdventure experiences/desert-adventures && mv experiences/marine experiences/water-activities && mv experiences/ticketsCulture experiences/entertainment && mv cars/luxuryLeisure cars/luxury-cars"
+      },
+      {
+        "step": 4,
+        "description": "Update data file contents (subsection, imageFolder fields)",
+        "tool": "Find-and-replace in data files",
+        "patterns": [
+          "s/\"subsection\": \"aerialAdrenaline\"/\"subsection\": \"aerial-and-adrenaline\"/g",
+          "s/\"subsection\": \"desertAdventure\"/\"subsection\": \"desert-adventures\"/g",
+          "s/\"subsection\": \"marine\"/\"subsection\": \"water-activities\"/g",
+          "s/\"subsection\": \"ticketsCulture\"/\"subsection\": \"entertainment\"/g",
+          "s/\"subsection\": \"luxuryLeisure\"/\"subsection\": \"luxury-cars\"/g"
+        ]
+      },
+      {
+        "step": 5,
+        "description": "Update code references (TypeScript, JSON config)",
+        "tool": "Global find-and-replace",
+        "files": "src/**/*.{ts,tsx,json}",
+        "patterns": "See code_references section above"
+      },
+      {
+        "step": 6,
+        "description": "Update SEO metadata and breadcrumbs",
+        "files": "src/components/*, src/app/*, next-sitemap.js",
+        "changes": "Update canonical URLs, breadcrumbs, schema markup"
+      },
+      {
+        "step": 7,
+        "description": "Run type checker and linter",
+        "commands": [
+          "npx tsc --noEmit",
+          "npm run lint"
+        ]
+      },
+      {
+        "step": 8,
+        "description": "Test build and link validation",
+        "commands": [
+          "npm run build",
+          "Custom link crawler script"
+        ]
+      },
+      {
+        "step": 9,
+        "description": "Deploy with monitoring",
+        "actions": [
+          "Create feature branch",
+          "Merge to main",
+          "Deploy to staging",
+          "Run 404 monitoring for 24 hours",
+          "Deploy to production if clean"
+        ]
+      }
+    ]
+  },
+  "risk_assessment": {
+    "breaking_changes": "HIGH",
+    "scope": "COMPREHENSIVE",
+    "risks": [
+      {
+        "risk": "404 errors from outdated URLs",
+        "severity": "HIGH",
+        "mitigation": "Implement 301 redirects from old paths to new paths for 12 months"
+      },
+      {
+        "risk": "Broken internal links",
+        "severity": "HIGH",
+        "mitigation": "Comprehensive link validation before deployment"
+      },
+      {
+        "risk": "SEO rank drops due to URL changes",
+        "severity": "MEDIUM",
+        "mitigation": "301 redirects, updated sitemap, Google Search Console notification"
+      },
+      {
+        "risk": "Image path references in database",
+        "severity": "HIGH",
+        "mitigation": "Audit database for hardcoded paths; implement abstraction layer"
+      },
+      {
+        "risk": "Build failures from missing imports",
+        "severity": "MEDIUM",
+        "mitigation": "Type checking and build validation before merge"
+      }
+    ]
+  },
+  "validation_checklist": {
+    "pre_migration": [
+      "☐ Backup current state (git tag + commit)",
+      "☐ List all 103 references (grep results saved)",
+      "☐ Verify no hardcoded paths in database",
+      "☐ Build passes (npm run build)",
+      "☐ Type check passes (npx tsc --noEmit)",
+      "☐ Linter passes (npm run lint)"
+    ],
+    "during_migration": [
+      "☐ Execute rename commands in order",
+      "☐ Update data file contents",
+      "☐ Update code references",
+      "☐ Update SEO metadata",
+      "☐ Verify no files left in old directories"
+    ],
+    "post_migration": [
+      "☐ Build passes (npm run build)",
+      "☐ Type check passes (npx tsc --noEmit)",
+      "☐ Linter passes (npm run lint)",
+      "☐ All links validated (no 404s on staging)",
+      "☐ Images load correctly",
+      "☐ Breadcrumbs display correct paths",
+      "☐ SEO schema markup valid",
+      "☐ Search console notified of URL changes",
+      "☐ 301 redirects in place for old URLs",
+      "☐ Monitoring shows no error spikes"
+    ]
+  },
+  "rollback_procedure": {
+    "command": "git checkout migration-backup-2026-06-17",
+    "estimated_time_minutes": 5,
+    "validation": [
+      "Verify old directory structures restored",
+      "Verify old data files restored",
+      "Run npm run build to confirm",
+      "Clear CDN cache if applicable"
+    ]
+  }
+}

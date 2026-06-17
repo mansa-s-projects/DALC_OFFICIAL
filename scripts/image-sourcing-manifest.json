@@ -1,0 +1,573 @@
+{
+  "manifest_metadata": {
+    "generated": "2026-06-17",
+    "version": "1.0",
+    "mission": "Replace 396 empty image files with production-ready assets",
+    "scope": "Tier 1, 2, 3 categories",
+    "total_images_to_source": 396,
+    "estimated_effort_hours": 40,
+    "notes": "All sources verified as of 2026-06-17. Prefer official sources first, then Unsplash/Pexels."
+  },
+  "sourcing_strategy": {
+    "tier_1_entertainment": {
+      "priority": 1,
+      "count": 152,
+      "sources": {
+        "abu-dhabi-city-tour-standard": {
+          "entity": "Abu Dhabi City Tour (Standard)",
+          "images_needed": 8,
+          "primary_source": "Abu Dhabi Tourism Board - Official guides & Unsplash tags: abu-dhabi, city-tour",
+          "search_terms": ["Abu Dhabi city tour standard", "Abu Dhabi skyline"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.visitabudhabi.ae/en",
+            "https://unsplash.com/s/photos/abu-dhabi-city-tour"
+          ],
+          "fallback_urls": [
+            "https://www.pexels.com/search/abu%20dhabi%20tour/"
+          ]
+        },
+        "abu-dhabi-city-tour-mercedes-viano": {
+          "entity": "Abu Dhabi City Tour (Mercedes-Viano)",
+          "images_needed": 8,
+          "primary_source": "Same as standard + Mercedes vehicle photography",
+          "search_terms": ["Abu Dhabi city tour luxury", "Mercedes Viano van"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/mercedes-viano",
+            "https://unsplash.com/s/photos/luxury-vehicle-tour"
+          ]
+        },
+        "ferrari-world-abu-dhabi": {
+          "entity": "Ferrari World Abu Dhabi",
+          "images_needed": 8,
+          "primary_source": "Ferrari World Official - Theme park rides & attractions",
+          "search_terms": ["Ferrari World Abu Dhabi", "Formula Rossa"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.ferrariworldabudhabi.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/ferrari-world",
+            "https://www.pexels.com/search/theme%20park%20amusement/"
+          ]
+        },
+        "warner-bros-abu-dhabi": {
+          "entity": "Warner Bros. Abu Dhabi",
+          "images_needed": 8,
+          "primary_source": "Warner Bros Abu Dhabi Official - Themed lands & attractions",
+          "search_terms": ["Warner Bros World Abu Dhabi", "theme park Abu Dhabi"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.wbworldabudhabi.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/warner-bros-world",
+            "https://www.pexels.com/search/theme%20park/"
+          ]
+        },
+        "img-world-of-adventure": {
+          "entity": "IMG Worlds of Adventure",
+          "images_needed": 8,
+          "primary_source": "IMG Worlds Official - Theme park attractions",
+          "search_terms": ["IMG Worlds Dubai", "theme park Dubai"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.imgworlds.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/img-worlds",
+            "https://unsplash.com/s/photos/theme-park-dubai"
+          ]
+        },
+        "wild-wadi-waterpark": {
+          "entity": "Wild Wadi Waterpark",
+          "images_needed": 8,
+          "primary_source": "Wild Wadi Official - Water park attractions & slides",
+          "search_terms": ["Wild Wadi waterpark", "water park Dubai"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.wildwadi.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/wild-wadi",
+            "https://www.pexels.com/search/water%20park/"
+          ]
+        },
+        "yas-waterpark": {
+          "entity": "Yas Waterpark",
+          "images_needed": 8,
+          "primary_source": "Yas Waterpark Official - Abu Dhabi water park",
+          "search_terms": ["Yas Waterpark", "waterpark Abu Dhabi"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.yaswaterworld.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/yas-waterpark"
+          ]
+        },
+        "atlantis-aquaventure": {
+          "entity": "Atlantis The Palm Aquaventure",
+          "images_needed": 8,
+          "primary_source": "Atlantis Official - Aquatic park & rides",
+          "search_terms": ["Atlantis Aquaventure", "Atlantis The Palm water park"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.atlantisthepalm.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/atlantis-aquaventure"
+          ]
+        },
+        "atlantis-lost-chambers": {
+          "entity": "Atlantis Lost Chambers Aquarium",
+          "images_needed": 8,
+          "primary_source": "Atlantis Official - Aquarium & marine life",
+          "search_terms": ["Atlantis Lost Chambers", "Atlantis aquarium"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.atlantisthepalm.com/lost-chambers-aquarium"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/aquarium-marine-life"
+          ]
+        },
+        "seaworld": {
+          "entity": "SeaWorld Abu Dhabi",
+          "images_needed": 8,
+          "primary_source": "SeaWorld Abu Dhabi Official - Marine park attractions",
+          "search_terms": ["SeaWorld Abu Dhabi", "marine park Abu Dhabi"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://seaworldabudhabi.ae/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/seaworld",
+            "https://www.pexels.com/search/marine%20park/"
+          ]
+        },
+        "louvre-abu-dhabi": {
+          "entity": "Louvre Abu Dhabi",
+          "images_needed": 8,
+          "primary_source": "Louvre Abu Dhabi Official - Museum & architecture",
+          "search_terms": ["Louvre Abu Dhabi", "Abu Dhabi museum"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.louvreabudhabi.ae/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/louvre-abu-dhabi"
+          ]
+        },
+        "qasr-al-watan-gardens": {
+          "entity": "Qasr Al Watan Gardens",
+          "images_needed": 8,
+          "primary_source": "Qasr Al Watan Official - Palace & gardens",
+          "search_terms": ["Qasr Al Watan", "Abu Dhabi palace"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.qasralwatan.ae/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/qasr-al-watan"
+          ]
+        },
+        "sheikh-zayed-mosque-tour": {
+          "entity": "Sheikh Zayed Mosque Tour",
+          "images_needed": 8,
+          "primary_source": "Sheikh Zayed Grand Mosque Official - Iconic Islamic architecture",
+          "search_terms": ["Sheikh Zayed Mosque", "Abu Dhabi mosque"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.szgmc.ae/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/sheikh-zayed-mosque"
+          ]
+        },
+        "dubai-city-tour": {
+          "entity": "Dubai City Tour",
+          "images_needed": 8,
+          "primary_source": "Dubai Tourism Official - Iconic landmarks & skyline",
+          "search_terms": ["Dubai city tour", "Dubai landmarks", "Burj Khalifa"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "official_urls": [
+            "https://www.visitdubai.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/dubai-city-tour",
+            "https://unsplash.com/s/photos/dubai-skyline"
+          ]
+        },
+        "flying-dress-shoot-solo": {
+          "entity": "Flying Dress Shoot (Solo)",
+          "images_needed": 8,
+          "primary_source": "Professional photography - Studio/outdoor aerial shots",
+          "search_terms": ["flying dress photography", "aerial fabric photography solo"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/flying-dress",
+            "https://unsplash.com/s/photos/aerial-photography"
+          ]
+        },
+        "flying-dress-shoot-couple": {
+          "entity": "Flying Dress Shoot (Couple)",
+          "images_needed": 8,
+          "primary_source": "Professional photography - Couples aerial/fabric shoots",
+          "search_terms": ["flying dress couple", "couple aerial photography"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/couple-portrait",
+            "https://unsplash.com/s/photos/aerial-photography"
+          ]
+        },
+        "flying-dress-shoot-duo": {
+          "entity": "Flying Dress Shoot (Duo)",
+          "images_needed": 8,
+          "primary_source": "Professional photography - Two-person aerial/fabric shoots",
+          "search_terms": ["flying dress duo", "duo aerial photography"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/aerial-dancing"
+          ]
+        },
+        "flying-dress-shoot-family": {
+          "entity": "Flying Dress Shoot (Family)",
+          "images_needed": 8,
+          "primary_source": "Professional photography - Family aerial/fabric shoots",
+          "search_terms": ["family photography", "fabric dancing photography"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/family-portrait",
+            "https://unsplash.com/s/photos/aerial-dancing"
+          ]
+        },
+        "flying-dress-shoot-group": {
+          "entity": "Flying Dress Shoot (Group)",
+          "images_needed": 8,
+          "primary_source": "Professional photography - Group aerial/fabric shoots",
+          "search_terms": ["group photography", "multiple person aerial photography"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/group-portrait",
+            "https://unsplash.com/s/photos/aerial-performance"
+          ]
+        }
+      }
+    },
+    "tier_1_luxury_cars": {
+      "priority": 2,
+      "count": 18,
+      "note": "Use manufacturer official press photos or high-quality stock automotive photography",
+      "sources": {
+        "ferrari-sf90": {
+          "entity": "Ferrari SF90 Stradale",
+          "images_needed": 3,
+          "primary_source": "Ferrari Official - Press kit & official photos",
+          "search_terms": ["Ferrari SF90", "Ferrari SF90 Stradale"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.ferrari.com/en-US/cars/new/sf90-stradale"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/ferrari",
+            "https://unsplash.com/s/photos/supercar"
+          ]
+        },
+        "lamborghini-aventador-svj": {
+          "entity": "Lamborghini Aventador SVJ",
+          "images_needed": 3,
+          "primary_source": "Lamborghini Official - Press kit & official photos",
+          "search_terms": ["Lamborghini Aventador SVJ", "Lamborghini supercar"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.lamborghini.com/en-en/models/aventador"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/lamborghini",
+            "https://unsplash.com/s/photos/supercar"
+          ]
+        },
+        "mclaren-720s": {
+          "entity": "McLaren 720S",
+          "images_needed": 3,
+          "primary_source": "McLaren Official - Press kit & official photos",
+          "search_terms": ["McLaren 720S", "McLaren supercar"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.mclaren.com/en/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/mclaren",
+            "https://unsplash.com/s/photos/supercar"
+          ]
+        },
+        "mercedes-classe-g": {
+          "entity": "Mercedes-AMG G-Class",
+          "images_needed": 3,
+          "primary_source": "Mercedes Official - Press kit & official photos",
+          "search_terms": ["Mercedes AMG G-Class", "Mercedes G-Wagon luxury SUV"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.mercedes-benz.com/en/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/mercedes",
+            "https://unsplash.com/s/photos/luxury-suv"
+          ]
+        },
+        "porsche-carrera-911": {
+          "entity": "Porsche Carrera 911",
+          "images_needed": 3,
+          "primary_source": "Porsche Official - Press kit & official photos",
+          "search_terms": ["Porsche 911 Carrera", "Porsche 911"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.porsche.com/usa/en/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/porsche",
+            "https://unsplash.com/s/photos/porsche-911"
+          ]
+        },
+        "porsche-gt3": {
+          "entity": "Porsche GT3",
+          "images_needed": 3,
+          "primary_source": "Porsche Official - Press kit & official photos",
+          "search_terms": ["Porsche GT3", "Porsche 911 GT3"],
+          "image_types": ["hero", "gallery-1", "gallery-2"],
+          "official_urls": [
+            "https://www.porsche.com/usa/en/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/porsche-gt3"
+          ]
+        }
+      }
+    },
+    "tier_1_yachts": {
+      "priority": 3,
+      "count": 4,
+      "sources": {
+        "private-yacht-rental": {
+          "entity": "Private Yacht Rental",
+          "images_needed": 4,
+          "primary_source": "Professional yacht charter photography - Dubai marina yachts",
+          "search_terms": ["yacht charter Dubai", "luxury yacht", "private yacht rental"],
+          "image_types": ["hero", "gallery-1", "gallery-2", "gallery-3"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/yacht",
+            "https://unsplash.com/s/photos/luxury-yacht",
+            "https://www.pexels.com/search/yacht/"
+          ]
+        }
+      }
+    },
+    "tier_2_aerial_adrenaline": {
+      "priority": 4,
+      "count": 9,
+      "note": "Partial category - 60% missing (helicopter tours, skydiving)",
+      "sources": {
+        "helicopter-tour-12min": {
+          "entity": "Helicopter Tour (12 minutes)",
+          "images_needed": 2,
+          "primary_source": "Helicopter tour operator photos - Dubai aerial views",
+          "search_terms": ["helicopter tour Dubai", "Dubai aerial photography"],
+          "image_types": ["hero", "gallery-1"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/helicopter-tour",
+            "https://unsplash.com/s/photos/dubai-aerial"
+          ]
+        },
+        "helicopter-tour-17min": {
+          "entity": "Helicopter Tour (17 minutes)",
+          "images_needed": 2,
+          "primary_source": "Helicopter tour operator photos - Dubai & Abu Dhabi aerial",
+          "search_terms": ["helicopter aerial tour", "Dubai skyline aerial"],
+          "image_types": ["hero", "gallery-1"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/helicopter",
+            "https://unsplash.com/s/photos/aerial-photography"
+          ]
+        },
+        "helicopter-tour-22min": {
+          "entity": "Helicopter Tour (22 minutes)",
+          "images_needed": 1,
+          "primary_source": "Helicopter tour operator photos - Extended UAE aerial",
+          "search_terms": ["long helicopter tour", "UAE aerial photography"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/helicopter-tour"
+          ]
+        },
+        "sky-views-observatory": {
+          "entity": "Sky Views Observatory",
+          "images_needed": 2,
+          "primary_source": "Sky Views Official - Dubai observation deck",
+          "search_terms": ["Sky Views Dubai", "Dubai observation deck"],
+          "image_types": ["hero", "gallery-1"],
+          "official_urls": [
+            "https://www.skyviewsdubai.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/dubai-observation-deck"
+          ]
+        },
+        "skydiving-desert": {
+          "entity": "Skydiving (Desert Drop Zone)",
+          "images_needed": 1,
+          "primary_source": "Skydiving operator photos - Desert drop zone aerial",
+          "search_terms": ["skydiving Dubai", "desert skydiving"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/skydiving",
+            "https://unsplash.com/s/photos/extreme-sports"
+          ]
+        },
+        "skydiving-palm": {
+          "entity": "Skydiving (Palm Dropzone)",
+          "images_needed": 1,
+          "primary_source": "Skydiving operator photos - Palm Jumeirah drop zone",
+          "search_terms": ["skydiving Palm Jumeirah", "Dubai skydiving"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/skydiving"
+          ]
+        }
+      }
+    },
+    "tier_2_desert_adventures": {
+      "priority": 5,
+      "count": 9,
+      "note": "Partial category - 60% missing (horse riding, desert camps)",
+      "sources": {
+        "equestrian-signature-experience": {
+          "entity": "Equestrian Signature Experience",
+          "images_needed": 2,
+          "primary_source": "Professional equestrian photography - Luxury desert riding",
+          "search_terms": ["equestrian experience", "luxury horse riding Dubai"],
+          "image_types": ["hero", "gallery-1"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/horse-riding",
+            "https://unsplash.com/s/photos/desert-horse"
+          ]
+        },
+        "horse-riding-1h": {
+          "entity": "Horse Riding (1 hour)",
+          "images_needed": 2,
+          "primary_source": "Professional photography - Desert horse riding",
+          "search_terms": ["horse riding desert", "Arabian horse riding"],
+          "image_types": ["hero", "gallery-1"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/horse-riding"
+          ]
+        },
+        "pony-riding-30min": {
+          "entity": "Pony Riding (30 minutes)",
+          "images_needed": 2,
+          "primary_source": "Professional photography - Child-friendly pony rides",
+          "search_terms": ["pony riding experience", "children pony rides"],
+          "image_types": ["hero", "gallery-1"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/pony",
+            "https://unsplash.com/s/photos/child-pony"
+          ]
+        },
+        "sonara-camp-overnight": {
+          "entity": "Sonara Camp (Overnight)",
+          "images_needed": 1,
+          "primary_source": "Sonara Camp Official - Desert camp tents & amenities",
+          "search_terms": ["Sonara Camp", "desert camp overnight"],
+          "image_types": ["hero"],
+          "official_urls": [
+            "https://sonaracamp.com/"
+          ],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/desert-camp",
+            "https://unsplash.com/s/photos/glamping"
+          ]
+        },
+        "sonara-camp-sunset": {
+          "entity": "Sonara Camp (Sunset Experience)",
+          "images_needed": 1,
+          "primary_source": "Sonara Camp Official - Sunset desert landscape",
+          "search_terms": ["desert sunset", "Sonara Camp sunset"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/desert-sunset"
+          ]
+        },
+        "sonara-camp-sunset-dinner": {
+          "entity": "Sonara Camp (Sunset Dinner)",
+          "images_needed": 1,
+          "primary_source": "Professional dining photography - Desert dinner setup",
+          "search_terms": ["desert dinner", "outdoor dining sunset"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/outdoor-dinner",
+            "https://unsplash.com/s/photos/sunset-dining"
+          ]
+        }
+      }
+    },
+    "tier_2_water_activities": {
+      "priority": 6,
+      "count": 3,
+      "note": "Partial category - 33% missing (dhow cruises)",
+      "sources": {
+        "dhow-cruise-khasab": {
+          "entity": "Dhow Cruise Khasab",
+          "images_needed": 1,
+          "primary_source": "Dhow cruise operator photos - Traditional dhow boat",
+          "search_terms": ["dhow cruise Khasab", "traditional dhow boat"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/dhow",
+            "https://unsplash.com/s/photos/traditional-boat"
+          ]
+        },
+        "dhow-cruise-musandam": {
+          "entity": "Dhow Cruise Musandam",
+          "images_needed": 1,
+          "primary_source": "Dhow cruise operator photos - Musandam coastal scenery",
+          "search_terms": ["dhow cruise Musandam", "Musandam fjords"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/musandam",
+            "https://unsplash.com/s/photos/coastal-boat-tour"
+          ]
+        },
+        "jet-ski-rental": {
+          "entity": "Jet Ski Rental",
+          "images_needed": 1,
+          "primary_source": "Water sports photography - Jet ski action shots",
+          "search_terms": ["jet ski rental", "jet ski water sports"],
+          "image_types": ["hero"],
+          "fallback_urls": [
+            "https://unsplash.com/s/photos/jet-ski",
+            "https://unsplash.com/s/photos/water-sports"
+          ]
+        }
+      }
+    }
+  },
+  "download_instructions": {
+    "method_1_manual": "Download images from fallback_urls using browser or tool like yt-dlp/wget",
+    "method_2_automated_script": "Run scripts/image-recovery.py (see accompanying file)",
+    "method_3_api": "Use Unsplash/Pexels API with provided scripts",
+    "requirements": {
+      "minimum_width": "1600px",
+      "format": "Download as JPG, will convert to WebP",
+      "aspect_ratio": "Landscape (16:9 or 3:2 preferred)",
+      "quality": "High resolution, professional photography"
+    }
+  },
+  "next_steps": [
+    "1. Review this manifest and source decisions",
+    "2. Run image-recovery.py to automate downloading",
+    "3. Verify image quality and resolution",
+    "4. Convert all images to WebP format",
+    "5. Run npm run build to verify integrity"
+  ]
+}

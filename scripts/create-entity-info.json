@@ -1,0 +1,94 @@
+{
+  "template": {
+    "entity_info": {
+      "id": "unique-identifier",
+      "slug": "kebab-case-slug",
+      "name": "Display Name",
+      "description": "Entity description",
+      "category": "Category/Vertical",
+      "subsection": "deprecated-subsection-or-new-slug",
+      "imageFolder": "public/images/category/entity-slug",
+      "coverImage": {
+        "filename": "hero.webp",
+        "width": 1920,
+        "height": 1080,
+        "format": "webp",
+        "alt": "Descriptive alt text for accessibility",
+        "source": "Unsplash/Pexels/Official/etc",
+        "sourceUrl": "https://...",
+        "lastVerified": "2026-06-17"
+      },
+      "gallery": [
+        {
+          "filename": "gallery-1.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "alt": "Gallery image 1 description",
+          "source": "Source attribution",
+          "sourceUrl": "https://...",
+          "lastVerified": "2026-06-17"
+        },
+        {
+          "filename": "gallery-2.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "alt": "Gallery image 2 description",
+          "source": "Source attribution",
+          "sourceUrl": "https://...",
+          "lastVerified": "2026-06-17"
+        },
+        {
+          "filename": "gallery-3.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "alt": "Gallery image 3 description",
+          "source": "Source attribution",
+          "sourceUrl": "https://...",
+          "lastVerified": "2026-06-17"
+        }
+      ],
+      "fallbackFormat": "jpg",
+      "useWebPWithFallback": true,
+      "metadata": {
+        "assetCount": 4,
+        "totalSize": "2.4MB (approx)",
+        "lastUpdated": "2026-06-17",
+        "status": "production-ready",
+        "optimizationNotes": "All images converted to WebP with JPG fallback for older browsers"
+      }
+    },
+    "notes": "This template should be populated for each entity with empty image folders. Use this as the base to update existing info.json files or create new ones.",
+    "usage_example": "For public/images/experiences/entertainment/abu-dhabi-city-tour-standard/"
+  },
+  "field_descriptions": {
+    "id": "Unique identifier from data catalog (often same as slug)",
+    "slug": "URL-friendly identifier (kebab-case)",
+    "name": "Human-readable display name",
+    "description": "Brief entity description for SEO/metadata",
+    "category": "Vertical or service category",
+    "subsection": "Sub-categorization within vertical (matches database)",
+    "imageFolder": "Path to images directory from project root",
+    "coverImage": "Primary hero image (used for listings, cards, OG tags)",
+    "gallery": "Array of additional images (minimum 3 recommended)",
+    "fallbackFormat": "Legacy format for browsers without WebP support",
+    "useWebPWithFallback": "If true, serve WebP with JPG fallback via <picture> tag",
+    "metadata.assetCount": "Total number of images (hero + gallery + optional menu)",
+    "metadata.totalSize": "Approximate total size of all images",
+    "metadata.lastUpdated": "ISO 8601 date of last image update",
+    "metadata.status": "Status: 'draft', 'in-review', or 'production-ready'",
+    "metadata.optimizationNotes": "Any notes about optimization or conversion process"
+  },
+  "validation_checklist": [
+    "☐ All image files exist and are > 0 bytes",
+    "☐ All WebP images are >= 1600px width",
+    "☐ JPG fallbacks exist if useWebPWithFallback is true",
+    "☐ All alt texts are descriptive and SEO-optimized",
+    "☐ Source URLs are valid and point to official or CC-licensed content",
+    "☐ lastVerified dates are recent (within 30 days)",
+    "☐ image folder path exists on disk",
+    "☐ No 0-byte files in directory"
+  ]
+}

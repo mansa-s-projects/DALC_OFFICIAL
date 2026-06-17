@@ -35,7 +35,18 @@
       "Bash(cat src/explore/hooks/*.ts)",
       "Bash(cat src/app/explore/[emirate]/page.tsx)",
       "Bash(cat src/app/explore/[emirate]/[category]/page.tsx)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\\" -Directory | Select-Object Name)",
+      "Bash(cat)",
+      "Bash(chmod +x /tmp/detailed_audit.sh)",
+      "Bash(/tmp/detailed_audit.sh)",
+      "Bash(chmod +x /tmp/comprehensive_audit.sh)",
+      "Bash(/tmp/comprehensive_audit.sh)",
+      "PowerShell(python scripts/image-recovery.py --tier 1 --dry-run 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --dry-run 2>&1 | Select-Object -First 100)",
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -First 50)",
+      "PowerShell(Get-ChildItem \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\\\\experiences\\\\entertainment\" -Recurse -File 2>$null | Measure-Object -Property Length -Sum | Select-Object Count, @{Name=\"TotalSize\";Expression={$_.Sum}})",
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -Last 50)"
     ]
   },
   "enabledMcpjsonServers": [

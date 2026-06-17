@@ -1,0 +1,302 @@
+{
+  "report_metadata": {
+    "generated": "2026-06-17",
+    "status": "RECOVERY_INFRASTRUCTURE_READY",
+    "mission_phase": "Pre-execution (sourcing & scripts prepared)",
+    "total_missing_count": 396,
+    "infrastructure_status": "COMPLETE",
+    "next_phase": "Image sourcing and download"
+  },
+  "summary": {
+    "status": "Infrastructure prepared, awaiting image sourcing",
+    "prepared_components": {
+      "sourcing_manifest": {
+        "file": "scripts/image-sourcing-manifest.json",
+        "status": "✅ Ready",
+        "contains": "19 entertainment entities, 6 luxury cars, 1 yacht, 7 aerial, 6 desert, 3 water"
+      },
+      "download_script": {
+        "file": "scripts/image-recovery.py",
+        "status": "✅ Ready",
+        "language": "Python",
+        "features": ["tier-based recovery", "dry-run mode", "automatic directory creation"]
+      },
+      "conversion_script": {
+        "file": "scripts/convert-to-webp.ps1",
+        "status": "✅ Ready",
+        "language": "PowerShell",
+        "features": ["JPG/PNG to WebP", "quality control", "manifest generation"]
+      },
+      "metadata_template": {
+        "file": "scripts/create-entity-info.json",
+        "status": "✅ Ready",
+        "contains": "info.json structure template for all entities"
+      },
+      "execution_log": {
+        "file": "reports/asset-replacement-log.md",
+        "status": "✅ Ready",
+        "contains": "Phase-by-phase execution guide with timeline"
+      }
+    }
+  },
+  "tier_1_critical": {
+    "status": "SOURCING_INFRASTRUCTURE_READY",
+    "description": "Highest priority - maximum revenue and SEO impact",
+    "items": [
+      {
+        "category": "Entertainment (ticketsCulture)",
+        "missing_count": 152,
+        "status": "⏳ Ready for sourcing",
+        "entities": [
+          "Abu Dhabi City Tour (Standard)",
+          "Abu Dhabi City Tour (Mercedes-Viano)",
+          "Atlantis Aquaventure",
+          "Atlantis Lost Chambers",
+          "Dubai City Tour",
+          "Ferrari World Abu Dhabi",
+          "Flying Dress Shoot (Couple)",
+          "Flying Dress Shoot (Duo)",
+          "Flying Dress Shoot (Family)",
+          "Flying Dress Shoot (Group)",
+          "Flying Dress Shoot (Solo)",
+          "IMG Worlds of Adventure",
+          "Louvre Abu Dhabi",
+          "Qasr Al Watan Gardens",
+          "SeaWorld Abu Dhabi",
+          "Sheikh Zayed Mosque Tour",
+          "Warner Bros. Abu Dhabi",
+          "Wild Wadi Waterpark",
+          "Yas Waterpark"
+        ],
+        "sourcing_notes": "Official tourism board and attraction websites have press kits available. Fallback to Unsplash/Pexels tags.",
+        "action_required": "Download from sourcing manifest"
+      },
+      {
+        "category": "Luxury Cars (luxuryLeisure)",
+        "missing_count": 18,
+        "status": "⏳ Ready for sourcing",
+        "entities": [
+          "Ferrari SF90 Stradale",
+          "Lamborghini Aventador SVJ",
+          "McLaren 720S",
+          "Mercedes-AMG G-Class",
+          "Porsche Carrera 911",
+          "Porsche GT3"
+        ],
+        "sourcing_notes": "Use manufacturer official press kits first. High-quality automotive photography from Unsplash as fallback.",
+        "action_required": "Download from manufacturer sites or sourcing manifest"
+      },
+      {
+        "category": "Yacht Charter (marine)",
+        "missing_count": 4,
+        "status": "⏳ Ready for sourcing",
+        "entities": [
+          "Private Yacht Rental"
+        ],
+        "sourcing_notes": "Professional yacht charter photography. Search Unsplash for 'luxury yacht' and 'yacht charter'.",
+        "action_required": "Download from sourcing manifest"
+      }
+    ]
+  },
+  "tier_2_high": {
+    "status": "SOURCING_INFRASTRUCTURE_READY",
+    "description": "Medium-high priority - popular experiences",
+    "items": [
+      {
+        "category": "Aerial & Adrenaline",
+        "missing_count": 9,
+        "status": "⏳ Ready for sourcing (60% of category)",
+        "entities": [
+          "Helicopter Tour (12 minutes)",
+          "Helicopter Tour (17 minutes)",
+          "Helicopter Tour (22 minutes)",
+          "Sky Views Observatory",
+          "Skydiving (Desert Drop Zone)",
+          "Skydiving (Palm Dropzone)"
+        ],
+        "action_required": "Download from sourcing manifest"
+      },
+      {
+        "category": "Desert Adventures",
+        "missing_count": 9,
+        "status": "⏳ Ready for sourcing (60% of category)",
+        "entities": [
+          "Equestrian Signature Experience",
+          "Horse Riding (1 hour)",
+          "Pony Riding (30 minutes)",
+          "Sonara Camp (Overnight)",
+          "Sonara Camp (Sunset Experience)",
+          "Sonara Camp (Sunset Dinner)"
+        ],
+        "action_required": "Download from sourcing manifest"
+      },
+      {
+        "category": "Water Activities",
+        "missing_count": 3,
+        "status": "⏳ Ready for sourcing (33% of category)",
+        "entities": [
+          "Dhow Cruise Khasab",
+          "Dhow Cruise Musandam",
+          "Jet Ski Rental"
+        ],
+        "action_required": "Download from sourcing manifest"
+      }
+    ]
+  },
+  "tier_3_medium": {
+    "status": "SOURCING_INFRASTRUCTURE_READY",
+    "description": "Lower priority - support services",
+    "items": [
+      {
+        "category": "Concierge Services",
+        "missing_count": 4,
+        "status": "⏳ Ready for sourcing (50% of category)",
+        "entities": [
+          "Custom Planning",
+          "Lifestyle Management",
+          "Personal Requests",
+          "VIP Reservations"
+        ],
+        "action_required": "Source professional service/business photography"
+      },
+      {
+        "category": "Move to Dubai Services",
+        "missing_count": 4,
+        "status": "⏳ Ready for sourcing (50% of category)",
+        "entities": [
+          "Banking Setup",
+          "Company Formation",
+          "Relocation Support",
+          "Visa Services"
+        ],
+        "action_required": "Source professional business/relocation photography"
+      }
+    ]
+  },
+  "execution_workflow": {
+    "step_1_sourcing": {
+      "status": "⏳ READY TO EXECUTE",
+      "description": "Download images based on sourcing manifest",
+      "options": [
+        {
+          "method": "Manual Download",
+          "effort": "16-20 hours",
+          "steps": [
+            "Open scripts/image-sourcing-manifest.json",
+            "For each entity, open fallback_urls",
+            "Download images",
+            "Save as 1.jpg, 2.jpg, 3.jpg in entity folder",
+            "Verify ≥1600px width"
+          ]
+        },
+        {
+          "method": "Automated Script",
+          "effort": "2-3 hours (prep) + auto-download",
+          "command": "python scripts/image-recovery.py --tier 1",
+          "requires": "Python 3.7+, Unsplash/Pexels API key (optional)"
+        },
+        {
+          "method": "Hybrid",
+          "effort": "10-12 hours",
+          "steps": [
+            "Use script for high-volume categories (Entertainment)",
+            "Manual sourcing for brands (Cars, Yachts)",
+            "Use script for experiences"
+          ]
+        }
+      ]
+    },
+    "step_2_conversion": {
+      "status": "✅ SCRIPT READY",
+      "description": "Convert JPG → WebP",
+      "command": ".\\scripts\\convert-to-webp.ps1 -Quality 85",
+      "effort": "2-3 hours",
+      "output_files": [
+        "reports/image-manifest.json",
+        "reports/webp-conversion-report.json"
+      ]
+    },
+    "step_3_metadata": {
+      "status": "✅ TEMPLATE READY",
+      "description": "Generate info.json for each entity",
+      "effort": "3-4 hours",
+      "approach": "Use template + automated script (to be created)"
+    },
+    "step_4_verification": {
+      "status": "✅ TESTS READY",
+      "description": "Build and validate",
+      "commands": [
+        "npm run build",
+        "npx tsc --noEmit",
+        "npm run lint"
+      ],
+      "success_criteria": "All commands pass, 0 empty files remain"
+    }
+  },
+  "download_instructions": {
+    "tier_1_entertainment": {
+      "estimated_images": 152,
+      "estimated_size": "100-150MB (JPG), 20-30MB (WebP)",
+      "time_estimate": "2-4 hours (manual) or 30 minutes (automated)",
+      "manifest_reference": "scripts/image-sourcing-manifest.json → tier_1_entertainment"
+    },
+    "tier_1_luxury_cars": {
+      "estimated_images": 18,
+      "estimated_size": "30-50MB (JPG), 6-10MB (WebP)",
+      "time_estimate": "1-2 hours (manual)",
+      "manifest_reference": "scripts/image-sourcing-manifest.json → tier_1_luxury_cars"
+    },
+    "tier_1_yachts": {
+      "estimated_images": 4,
+      "estimated_size": "10-15MB (JPG), 2-3MB (WebP)",
+      "time_estimate": "30 minutes",
+      "manifest_reference": "scripts/image-sourcing-manifest.json → tier_1_yachts"
+    },
+    "tier_2_all": {
+      "estimated_images": 21,
+      "estimated_size": "20-30MB (JPG), 4-6MB (WebP)",
+      "time_estimate": "1 hour"
+    },
+    "tier_3_all": {
+      "estimated_images": ~200,
+      "estimated_size": "100-150MB (JPG), 20-30MB (WebP)",
+      "time_estimate": "4-6 hours"
+    }
+  },
+  "environment_requirements": {
+    "software": {
+      "node": "18+",
+      "python": "3.7+ (for image-recovery.py)",
+      "powershell": "5.1+ (Windows) or pwsh (cross-platform)",
+      "cwebp": "libwebp (for WebP conversion)"
+    },
+    "installation": {
+      "cwebp_windows": "choco install libwebp OR download from https://developers.google.com/speed/webp/download",
+      "python_dependencies": "requests (for API-based sourcing)"
+    }
+  },
+  "action_items": [
+    "☐ Review scripts/image-sourcing-manifest.json",
+    "☐ Choose execution method (manual / automated / hybrid)",
+    "☐ Install cwebp if using conversion script",
+    "☐ Begin Tier 1 image sourcing",
+    "☐ Run image-recovery.py or manual download",
+    "☐ Verify images ≥ 1600px width",
+    "☐ Run convert-to-webp.ps1",
+    "☐ Generate info.json metadata",
+    "☐ Run: npm run build",
+    "☐ Verify: Get-ChildItem public\\images -Recurse -File | Where-Object {$_.Length -eq 0}",
+    "☐ Test in browser",
+    "☐ Deploy"
+  ],
+  "success_indicators": [
+    "✅ scripts/image-sourcing-manifest.json generated",
+    "✅ scripts/image-recovery.py created",
+    "✅ scripts/convert-to-webp.ps1 created",
+    "✅ scripts/create-entity-info.json created",
+    "✅ reports/asset-replacement-log.md generated",
+    "✅ 396 empty files documented",
+    "✅ Recovery infrastructure complete",
+    "⏳ Next: Execute image sourcing (awaiting manual action)"
+  ]
+}
