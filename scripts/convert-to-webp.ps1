@@ -282,7 +282,7 @@ function Main {
 
     Write-Host "`nNext Steps:"
     Write-Host "  1. Verify build: npm run build"
-    Write-Host "  2. Check for 0-byte files: Get-ChildItem public\images -Recurse -File | Where-Object {`$_.Length -eq 0}"
+    Write-Host "  2. Check for 0-byte files: Get-ChildItem public\images -Recurse -File | Where-Object {`$_.Length -eq 0} | Measure-Object"
     Write-Host "  3. Test in browser"
     Write-Host ""
 }
