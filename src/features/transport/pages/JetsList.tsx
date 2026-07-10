@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowRight, X, Plane } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/transport/ServiceCard';
 import TransportFilters from '../../../components/transport/TransportFilters';
@@ -170,7 +169,6 @@ export default function JetsList() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Hero ───────────────────────────────────────────────────────────────── */}
       <section className="relative h-[50vh] min-h-[400px] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">

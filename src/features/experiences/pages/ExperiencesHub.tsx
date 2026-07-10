@@ -19,7 +19,6 @@ import {
   Map,
   Zap,
 } from "lucide-react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import { DALC_EXPERIENCE_CATEGORIES } from "../catalog";
 import UpcomingEventsStrip from "../components/UpcomingEventsStrip";
@@ -196,7 +195,6 @@ const BADGE_STYLES: Record<string, string> = {
 export default function ExperiencesHub() {
   return (
     <div className="min-h-screen bg-cipher-void">
-      <Navbar />
 
       <section className="relative min-h-[52vh] flex items-center justify-center px-4 pt-24 pb-16 text-center overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">

@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import { ArrowLeft, FileQuestion } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import IntakeForm from '../../../components/relocation/IntakeForm';
 
@@ -11,7 +10,6 @@ export default function Intake() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Header ───────────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-12 px-4 md:px-8">

@@ -20,7 +20,6 @@ import {
   Heart,
   Share2,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import AmenityList from '../../../components/stays/AmenityList';
 import AvailabilityCalendar from '../../../components/stays/AvailabilityCalendar';
@@ -44,7 +43,6 @@ export default function PropertyDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="pt-24 px-4 md:px-8 max-w-7xl mx-auto">
           <div className="h-96 bg-white/5 animate-pulse mb-8" />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -63,7 +61,6 @@ export default function PropertyDetail() {
   if (error || !property) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="pt-24 px-4 md:px-8 max-w-7xl mx-auto text-center py-20">
           <h2 className="text-2xl font-display text-white mb-4">Property Not Found</h2>
           <p className="text-gray-400 mb-8">The property you're looking for doesn't exist.</p>
@@ -91,7 +88,6 @@ export default function PropertyDetail() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Breadcrumb & Actions ────────────────────────────────────────────── */}
       <div className="pt-24 pb-4 px-4 md:px-8 max-w-7xl mx-auto">

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -921,7 +920,6 @@ export default function Restaurants() {
 
   return (
     <div className="min-h-screen bg-[#080706] text-[#F5EDD8]">
-      <Navbar />
 
       {/* ── CINEMATIC HERO ── */}
       <section className="relative h-[90vh] flex flex-col items-center justify-center overflow-hidden">

@@ -13,7 +13,6 @@ import {
   TrendingUp,
   Wallet,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import CostBreakdown from '../../../components/relocation/CostBreakdown';
 import { useCostSummary, useAddCostEstimate } from '../hooks/useRelocationCost';
@@ -221,7 +220,6 @@ export default function CostEstimator() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Header ───────────────────────────────────────────────────────────── */}
       <section className="pt-28 pb-12 px-4 md:px-8">

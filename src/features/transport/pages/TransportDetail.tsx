@@ -18,7 +18,6 @@ import {
   Plane,
   Calendar,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import SpecTable from '../../../components/transport/SpecTable';
 import BookingForm from '../../../components/transport/BookingForm';
@@ -84,7 +83,6 @@ export default function TransportDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="space-y-4 w-full max-w-4xl px-8">
             <div className="h-96 bg-white/5 animate-pulse" />
@@ -100,7 +98,6 @@ export default function TransportDetail() {
   if (error || !service) {
     return (
       <div className="min-h-screen bg-luxury-black flex flex-col">
-        <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Service not found.</p>
           <Link
@@ -129,7 +126,6 @@ export default function TransportDetail() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Hero Gallery ───────────────────────────────────────────────────────── */}
       <section className="relative h-[62vh] min-h-[420px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden">

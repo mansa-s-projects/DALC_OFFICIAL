@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import EditorialCard from '../../../components/cards/EditorialCard';
 import { useVenues } from '../hooks/useVenues';
@@ -12,7 +11,6 @@ export default function DiningEntertainment() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">

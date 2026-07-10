@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import { ArrowUpRight, Star, X, MapPin, Clock, Music } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 
 interface Club {
@@ -409,7 +408,6 @@ export default function NightClubs() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <section className="relative h-[60vh] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">

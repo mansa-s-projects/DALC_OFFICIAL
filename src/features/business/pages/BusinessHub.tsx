@@ -13,7 +13,6 @@ import {
   MapPin,
   Briefcase,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/business/ServiceCard';
 import { MOCK_SERVICES } from '../../../lib/business';
@@ -141,7 +140,6 @@ export default function BusinessHub() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">

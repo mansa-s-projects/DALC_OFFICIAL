@@ -9,7 +9,6 @@ import {
   AlertCircle,
   Loader2,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import DocumentUploader from '../../../components/relocation/DocumentUploader';
 import { useUserDocuments } from '../hooks/useRelocationDocs';
@@ -70,7 +69,6 @@ export default function Documents() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Header ───────────────────────────────────────────────────────────── */}
       <section className="pt-28 pb-12 px-4 md:px-8">

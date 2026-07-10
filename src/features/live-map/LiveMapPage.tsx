@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { MapPin, Bell, ArrowRight, Wifi, Navigation, Layers } from 'lucide-react';
-import Navbar from '../../components/navigation/Navbar';
 import Footer from '../../components/navigation/Footer';
 
 const FEATURES = [
@@ -83,7 +82,6 @@ export default function LiveMapPage() {
 
   return (
     <div className="min-h-screen bg-[#080706] flex flex-col">
-      <Navbar />
 
       <section className="relative flex-1 flex flex-col items-center justify-center pt-24 pb-16 px-4 text-center overflow-hidden min-h-[75vh]">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />

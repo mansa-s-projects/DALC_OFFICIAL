@@ -15,7 +15,6 @@ import {
   Landmark,
   ShieldCheck,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ProcessTimeline from '../../../components/business/ProcessTimeline';
 import DocumentRequirements from '../../../components/business/DocumentRequirements';
@@ -64,7 +63,6 @@ export default function ServiceDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="space-y-4 w-full max-w-4xl px-8">
             <div className="h-72 bg-white/5 animate-pulse" />
@@ -79,7 +77,6 @@ export default function ServiceDetail() {
   if (error || !service) {
     return (
       <div className="min-h-screen bg-luxury-black flex flex-col">
-        <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Service not found.</p>
           <Link href={`/business/${subcategory}`} className="text-luxury-gold text-sm underline">
@@ -102,7 +99,6 @@ export default function ServiceDetail() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
         {service.hero_image ? (

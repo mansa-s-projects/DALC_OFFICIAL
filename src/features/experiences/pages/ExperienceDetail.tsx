@@ -21,7 +21,6 @@ import {
   AlertCircle,
   ImageOff
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { getExperienceCategory, getExperienceItem } from '../catalog';
 import { useCheckCapacity, useCreateExperienceBooking, useAvailableSlots } from '../hooks/useExperienceBooking';
@@ -115,7 +114,6 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
   if (!category || !item) {
     return (
       <div className="min-h-screen bg-luxury-black text-white">
-        <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-gray-400 mb-6">Experience detail not found.</p>
           <Link href="/experiences" className="text-luxury-gold text-sm uppercase tracking-widest">
@@ -162,7 +160,6 @@ export default function ExperienceDetailPage({ params }: ExperienceDetailPagePro
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-20">
         {/* Breadcrumb */}

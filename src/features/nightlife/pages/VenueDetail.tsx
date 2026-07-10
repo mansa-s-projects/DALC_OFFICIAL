@@ -8,7 +8,6 @@ import { useVenue } from "../hooks/useVenue";
 import { useVenues } from "../hooks/useVenues";
 import { useRequests } from "../../../hooks/useRequests";
 import { useAppStore } from "../../../store/useAppStore";
-import Navbar from "../../../components/navigation/Navbar";
 import {
   getVenueCategoryHref,
   getVenueRecommendations,
@@ -193,7 +192,6 @@ export default function VenueDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="h-[80vh] bg-white/5 animate-pulse" />
       </div>
     );
@@ -216,7 +214,6 @@ export default function VenueDetail() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* Hero Carousel */}
       <div className="relative h-[80vh] w-full overflow-hidden group">

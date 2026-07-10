@@ -19,7 +19,6 @@ import {
   Waves,
   Zap,
 } from "lucide-react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 
 const IMAGES = [
@@ -178,7 +177,6 @@ export default function VillasList() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative h-[75vh] flex flex-col items-center justify-center pt-20 text-center overflow-hidden">

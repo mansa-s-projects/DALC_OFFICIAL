@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { motion } from 'motion/react';
 import Link from 'next/link';
@@ -45,7 +44,6 @@ export default function Nightlife() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
       
       {/* Nightlife Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">

@@ -13,7 +13,6 @@ import {
   ChevronUp,
   MessageCircle,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { getDesertProduct, getDesertSubcategory, type DesertFaq } from '../desertData';
 
@@ -53,7 +52,6 @@ export default function DesertProductDetailPage({ params }: Props) {
   if (!product || !subcategory) {
     return (
       <div className="min-h-screen bg-cipher-void text-cipher-white">
-        <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-cipher-muted mb-6">Experience not found.</p>
           <Link
@@ -77,7 +75,6 @@ export default function DesertProductDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-cipher-void">
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-20">
         <nav className="flex items-center gap-2 text-xs text-cipher-muted uppercase tracking-widest mb-8">

@@ -4,7 +4,6 @@ import { use, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Clock, Users, ChevronDown, ChevronUp } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import {
   getDesertSubcategory,
@@ -132,7 +131,6 @@ export default function DesertSubcategoryPage({ params }: Props) {
   if (!subcategory) {
     return (
       <div className="min-h-screen bg-cipher-void text-cipher-white">
-        <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-cipher-muted mb-6">Activity not found.</p>
           <Link href="/experiences/desertAdventure" className="text-cipher-gold text-sm uppercase tracking-widest">
@@ -146,7 +144,6 @@ export default function DesertSubcategoryPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-cipher-void">
-      <Navbar />
 
       <section className="relative h-[55vh] min-h-[380px] overflow-hidden">
         <img

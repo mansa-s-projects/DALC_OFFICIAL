@@ -9,7 +9,6 @@ import {
   MapPin,
   Calendar,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import type { StaysSubcategory } from '../types';
 import { SUBCATEGORY_LABELS, SUBCATEGORY_DESCRIPTIONS } from '../types';
@@ -37,7 +36,7 @@ const CATEGORIES: CategoryConfig[] = [
     label: SUBCATEGORY_LABELS.residences,
     icon: <Building2 className="w-7 h-7" />,
     gradient: 'from-emerald-900/40 to-luxury-black',
-    image: '/images/hotels/address-downtown.jpg',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop',
   },
 ];
 
@@ -56,7 +55,6 @@ export default function StaysHub() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
@@ -85,7 +83,7 @@ export default function StaysHub() {
             <span className="text-luxury-gold">Dubai</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">
-            From premium hotels to beachfront villas and furnished residences â€” 
+            From premium hotels to beachfront villas and furnished residences — 
             discover the perfect stay for your Dubai journey, whether for a night or a year.
           </p>
 

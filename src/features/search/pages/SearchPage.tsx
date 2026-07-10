@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Search, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import SearchResultItem from "@/components/search/SearchResultItem";
 import { useAppStore } from "@/store/useAppStore";
@@ -86,7 +85,6 @@ function SearchPageContent() {
 
   return (
     <div className="min-h-screen" style={{ background: "#080706" }}>
-      <Navbar />
 
       <section
         className="pt-32 pb-8 px-4"

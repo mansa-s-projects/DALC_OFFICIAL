@@ -3,7 +3,6 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { SlidersHorizontal, ChevronDown, X, ArrowRight } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/business/ServiceCard';
 import { MOCK_SERVICES } from '../../../lib/business';
@@ -112,7 +111,6 @@ export default function SubcategoryList() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <section className="relative flex h-[45vh] min-h-[320px] flex-col items-center justify-center overflow-hidden px-4 pt-20 text-center">
         <div className="absolute inset-0 z-0">

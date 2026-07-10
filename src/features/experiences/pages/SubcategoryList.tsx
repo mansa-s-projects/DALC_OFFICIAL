@@ -3,7 +3,6 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ImageOff } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { getExperienceCategory, type ExperienceCatalogItem } from '../catalog';
 import { EXPERIENCE_CATEGORY_FALLBACK_IMAGES } from '../constants';
@@ -144,7 +143,6 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
     const jetCars = WATER_MODELS.filter((m) => m.group === 'jet-car');
     return (
       <div className="min-h-screen bg-cipher-void">
-        <Navbar />
         <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-20">
           <Link
             href="/experiences"
@@ -191,7 +189,6 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
   if (categorySlug === 'desertAdventure') {
     return (
       <div className="min-h-screen bg-cipher-void">
-        <Navbar />
         <section className="relative h-[56vh] min-h-[380px] overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=2070&auto=format&fit=crop"
@@ -238,7 +235,6 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
   if (!category) {
     return (
       <div className="min-h-screen bg-luxury-black text-white">
-        <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-gray-400 mb-6">Category not found.</p>
           <Link href="/experiences" className="text-luxury-gold text-sm uppercase tracking-widest">
@@ -252,7 +248,6 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-20">
         <Link

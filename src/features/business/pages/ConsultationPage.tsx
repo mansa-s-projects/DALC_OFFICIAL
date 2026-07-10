@@ -16,7 +16,6 @@ import {
   CalendarCheck,
   X,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ConsultationScheduler from '../../../components/business/ConsultationScheduler';
 import { useUserConsultations, useScheduleConsultation } from '../hooks/useConsultation';
@@ -110,7 +109,6 @@ export default function ConsultationPage() {
     const dt = new Date(scheduledDetails.slot.time);
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
         <div className="flex items-center justify-center min-h-screen px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
@@ -167,7 +165,6 @@ export default function ConsultationPage() {
   if (isNew) {
     return (
       <div className="min-h-screen bg-luxury-black">
-        <Navbar />
 
         <section className="relative pt-32 pb-16 px-4 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.06),transparent_70%)]" />
@@ -225,7 +222,6 @@ export default function ConsultationPage() {
   if (!consultation) {
     return (
       <div className="min-h-screen bg-luxury-black flex flex-col">
-        <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <p className="text-gray-400">Consultation not found.</p>
           <Link href="/business" className="text-luxury-gold text-sm underline">
@@ -243,7 +239,6 @@ export default function ConsultationPage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* Header */}
       <section className="pt-32 pb-12 px-4 md:px-8 max-w-4xl mx-auto">

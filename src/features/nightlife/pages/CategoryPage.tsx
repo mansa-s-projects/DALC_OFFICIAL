@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
 import EditorialCard from "../../../components/cards/EditorialCard";
 import { useVenues } from "../hooks/useVenues";
@@ -179,7 +178,6 @@ export default function CategoryPage({ category }: CategoryPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar />
 
       {/* Hero */}
       <section className="relative h-[60vh] flex flex-col items-center justify-center overflow-hidden">

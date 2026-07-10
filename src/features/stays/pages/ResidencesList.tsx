@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowLeft, Building2, Clock, Check, Filter, X } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import PropertyCard from '../../../components/stays/PropertyCard';
 import StaysFilters from '../../../components/stays/StaysFilters';
@@ -79,7 +78,6 @@ export default function ResidencesList() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">

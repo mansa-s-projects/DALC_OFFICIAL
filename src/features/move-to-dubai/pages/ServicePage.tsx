@@ -9,7 +9,6 @@ import {
   Check,
   ChevronRight,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FloatingWhatsApp, InlineWhatsApp } from '../components/WhatsAppButton';
@@ -35,7 +34,6 @@ export default function ServicePage() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
       <FloatingWhatsApp
         message={data.whatsappText}
         onClick={() =>

@@ -4,7 +4,6 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Clock, MapPin, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { getWaterModel, getWaterProduct, type WaterFaq } from '../waterData';
 
@@ -44,7 +43,6 @@ export default function WaterDurationDetailPage({ params }: Props) {
   if (!model || !product) {
     return (
       <div className="min-h-screen bg-cipher-void text-cipher-white">
-        <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-cipher-muted mb-6">Experience not found.</p>
           <Link href="/experiences/water-activities" className="text-cipher-gold text-sm uppercase tracking-widest">
@@ -68,7 +66,6 @@ export default function WaterDurationDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-cipher-void">
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-20">
         <nav className="mb-8 flex items-center gap-2 text-xs text-cipher-muted uppercase tracking-widest">

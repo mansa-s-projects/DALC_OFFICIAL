@@ -21,7 +21,6 @@ import {
   TrendingUp,
   Star,
 } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -378,7 +377,6 @@ export default function CompanyFormationPage() {
 
   return (
     <div className="min-h-screen bg-cipher-void font-body">
-      <Navbar />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative flex min-h-[72vh] flex-col items-center justify-center overflow-hidden px-4 pt-28 pb-20 text-center">

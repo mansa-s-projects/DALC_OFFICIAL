@@ -11,7 +11,6 @@ import {
   Clock,
   Shield,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import ServiceCard from '../../../components/transport/ServiceCard';
 import { useFeaturedTransport } from '../hooks/useTransport';
@@ -93,7 +92,6 @@ export default function TransportHub() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">

@@ -10,7 +10,6 @@ import {
   AlertCircle,
   Sparkles,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import WorkflowTimeline from '../../../components/relocation/WorkflowTimeline';
 import StepCard from '../../../components/relocation/StepCard';
@@ -92,7 +91,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
 
       {/* ── Header ───────────────────────────────────────────────────────────── */}
       <section className="pt-28 pb-12 px-4 md:px-8">

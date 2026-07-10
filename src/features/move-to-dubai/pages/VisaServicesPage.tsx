@@ -15,7 +15,6 @@ import {
   Landmark,
   MapPin,
 } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FloatingWhatsApp, InlineWhatsApp } from '../components/WhatsAppButton';
@@ -219,7 +218,6 @@ export default function VisaServicesPage() {
         style={{ background: `radial-gradient(circle, ${C.goldOrb} 0%, rgba(212,195,150,0.03) 50%, transparent 65%)`, filter: 'blur(80px)', zIndex: 0 }}
       />
 
-      <Navbar />
       <FloatingWhatsApp
         message="Hi DALC — I'd like to learn more about UAE Visa Services for my relocation."
         onClick={() => trackMoveToDubaiEvent(MOVE_TO_DUBAI_EVENTS.SERVICE_WHATSAPP_FLOATING_CLICK, {

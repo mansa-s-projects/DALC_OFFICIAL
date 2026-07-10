@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronRight, Plane } from 'lucide-react';
-import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FloatingWhatsApp, InlineWhatsApp } from '../components/WhatsAppButton';
@@ -35,7 +34,6 @@ export default function MoveToDubai() {
 
   return (
     <div className="min-h-screen bg-luxury-black">
-      <Navbar />
       <FloatingWhatsApp
         onClick={() =>
           trackMoveToDubaiEvent(MOVE_TO_DUBAI_EVENTS.LANDING_WHATSAPP_FLOATING_CLICK, {
