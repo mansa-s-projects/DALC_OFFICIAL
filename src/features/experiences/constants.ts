@@ -6,8 +6,10 @@ export const EXPERIENCE_CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
   entertainment: "/images/experiences/entertainment/hero.jpg",
   wellness:
     "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop",
-  "abu-dhabi-tours": "/images/explore/abu-dhabi-hero.jpg",
-  "oman-tours": "/images/explore/oman-tours-hero.jpg",
+  "abu-dhabi-tours":
+    "https://images.unsplash.com/photo-1512366850919-0592b2b3b94d?q=80&w=1200&auto=format&fit=crop",
+  "oman-tours":
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
   "tickets-and-culture":
     "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop",
   "luxury-leisure":

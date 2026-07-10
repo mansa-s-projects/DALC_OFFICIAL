@@ -26,7 +26,7 @@ function EventCard({ event, index }: { event: ExperienceService; index: number }
         {/* Image */}
         <div className="relative h-40 overflow-hidden">
           <img
-            src={event.hero_image || '/images/placeholder-experience.jpg'}
+            src={event.hero_image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop'}
             alt={event.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />

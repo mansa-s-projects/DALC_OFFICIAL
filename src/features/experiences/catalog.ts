@@ -1,4 +1,4 @@
-import { CAR_CATEGORIES, getCarImage } from '../../data/transport/carsData';
+﻿import { CAR_CATEGORIES, getCarImage } from '../../data/transport/carsData';
 import { MOCK_EXPERIENCES } from '../../lib/experiences';
 
 export type ExperienceCategorySlug =
@@ -469,28 +469,28 @@ function getSignatureDiningItems(): ExperienceCatalogItem[] {
       slug: 'experience-signature-dinner',
       title: 'Gourmet Dinner on Embers',
       description: 'Exclusive gourmet dinner at the stud farm or in the desert, prepared over open embers  Price on request',
-      image: '/images/Signature Dining/Gourmet Dinner on Embers.png',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop',
       ctaLabel: 'Request Experience',
     },
     {
       slug: 'desert-dinner-experience',
       title: 'Private Desert Dinner Experience',
       description: 'Intimate dinner under the stars in the Dubai desert â private setup, curated menu  3 hours  From AED 735',
-      image: '/images/Signature Dining/Private Desert Dinner Experience.png',
+      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop',
       ctaLabel: 'Reserve Now',
     },
     {
       slug: 'luxury-dinner-in-the-sky',
       title: 'Dinner in the Sky – Dubai',
       description: 'Suspended dining table 50m above the city skyline â an unmissable spectacle  1.5 hours  From AED 918',
-      image: '/images/Signature Dining/Dinner in the Sky – Dubai.png',
+      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop',
       ctaLabel: 'Reserve Now',
     },
     {
       slug: 'dhow-cruise-dinner',
       title: 'Dhow Cruise Dinner – Dubai Marina',
       description: 'Traditional dhow dinner cruise through Dubai Marina with skyline views  2 hours  From AED 330',
-      image: '/images/Signature Dining/Dhow Cruise Dinner.png',
+      image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=1200&auto=format&fit=crop',
       ctaLabel: 'Book Cruise',
     },
   ];

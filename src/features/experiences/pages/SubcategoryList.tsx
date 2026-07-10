@@ -188,7 +188,7 @@ export default function SubcategoryListPage({ params }: { params: Promise<{ cate
     );
   }
 
-  if (categorySlug === 'desert-adventures') {
+  if (categorySlug === 'desertAdventure') {
     return (
       <div className="min-h-screen bg-cipher-void">
         <Navbar />

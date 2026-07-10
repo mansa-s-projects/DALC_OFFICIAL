@@ -9,7 +9,7 @@ type PageProps = { params: Promise<{ category: string; item: string; slug: strin
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, item, slug } = await params;
 
-  if (category === 'desert-adventures') {
+  if (category === 'desertAdventure') {
     const product = getDesertProduct(item, slug);
     const sub = getDesertSubcategory(item);
     if (product && sub) {

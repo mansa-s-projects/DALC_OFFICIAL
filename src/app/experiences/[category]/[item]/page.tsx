@@ -11,7 +11,7 @@ type PageProps = { params: Promise<{ category: string; item: string }> };
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, item } = await params;
 
-  if (category === 'desert-adventures' && isDesertSubcategorySlug(item)) {
+  if (category === 'desertAdventure' && isDesertSubcategorySlug(item)) {
     const sub = getDesertSubcategory(item);
     if (sub) {
       return {
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ExperiencesCategoryItemPage({ params }: PageProps) {
   const { category, item } = await params;
 
-  if (category === 'desert-adventures' && isDesertSubcategorySlug(item)) {
+  if (category === 'desertAdventure' && isDesertSubcategorySlug(item)) {
     return <DesertSubcategoryPage params={params} />;
   }
 
