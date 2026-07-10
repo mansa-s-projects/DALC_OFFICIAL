@@ -2,29 +2,27 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../../../lib/supabase';
 import type { Notification, CreateNotificationInput } from '../types';
 
-// Fetch user's notifications
+// Fetch user's notifications.
+// Real-time invalidation is handled by NotificationsProvider (app-level channel).
 export function useNotifications(userId: string | undefined) {
   return useQuery({
     queryKey: ['notifications', userId],
     queryFn: async (): Promise<Notification[]> => {
       if (!userId || !supabase) return [];
-      
       const { data, error } = await supabase
         .from('notifications')
         .select('id, user_id, type, title, message, priority, is_read, action_url, metadata, created_at, read_at')
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
         .limit(50);
-      
       if (error) {
         console.error('Error fetching notifications:', error);
         return [];
       }
-      
       return data || [];
     },
     enabled: !!userId,
-    staleTime: 30000, // 30 seconds
+    staleTime: 30000,
   });
 }
 

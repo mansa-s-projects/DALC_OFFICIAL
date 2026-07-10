@@ -51,6 +51,17 @@ interface AppState {
   // UI
   isTrendingStripPaused: boolean;
   setTrendingStripPaused: (paused: boolean) => void;
+
+  // Requests
+  activeRequests: Array<{
+    id: string;
+    title: string;
+    status: string;
+    category: string;
+    created_at: string;
+  }>;
+  setActiveRequests: (requests: AppState['activeRequests']) => void;
+  addRequest: (request: AppState['activeRequests'][0]) => void;
 }
 
 const DEFAULT_FILTERS: FilterState = {
@@ -133,6 +144,14 @@ export const useAppStore = create<AppState>()(
       // UI
       isTrendingStripPaused: false,
       setTrendingStripPaused: (paused) => set({ isTrendingStripPaused: paused }),
+
+      // Requests
+      activeRequests: [],
+      setActiveRequests: (requests) => set({ activeRequests: requests }),
+      addRequest: (request) =>
+        set((state) => ({
+          activeRequests: [request, ...state.activeRequests],
+        })),
     }),
     {
       name: 'dalc-app-store',

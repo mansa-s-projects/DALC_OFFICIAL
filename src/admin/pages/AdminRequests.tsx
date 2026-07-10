@@ -1,12 +1,88 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
-import { useAllRequests, useUpdateRequestStatus } from '../../hooks/useRequests';
+import { useAllRequests, useUpdateRequestStatus, useCreateQuote } from '../../hooks/useRequests';
 import { RequestStatus, REQUEST_STATUS_LABELS } from '../../types';
 import { getAllowedNextStatuses } from '../../platform/requests/lifecycle';
 import RequestStatusBadge from '../../components/requests/RequestStatusBadge';
 import { AdminEmptyState, AdminLoadingRows, AdminPageHeader, AdminSearchInput, AdminSelectFilter } from '../components';
 import { useAdminDisclosure } from '../hooks';
+
+function QuoteForm({ requestId, onDone }: { requestId: string; onDone: () => void }) {
+  const createQuote = useCreateQuote();
+  const [amount, setAmount] = useState('');
+  const [notes, setNotes] = useState('');
+  const [expiresAt, setExpiresAt] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    const aed = parseFloat(amount);
+    if (!aed || aed <= 0) { setError('Enter a valid amount'); return; }
+    try {
+      await createQuote.mutateAsync({
+        request_id: requestId,
+        amount_aed: aed,
+        notes: notes || undefined,
+        expires_at: expiresAt ? new Date(expiresAt).toISOString() : undefined,
+      });
+      onDone();
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 border-t border-white/5 pt-4">
+      <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Create Quote</p>
+      <div className="grid grid-cols-3 gap-3 mb-3">
+        <div>
+          <label className="text-xs text-gray-400 block mb-1">Amount (AED)</label>
+          <input
+            type="number"
+            min="1"
+            step="0.01"
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+            placeholder="e.g. 4500"
+            className="w-full bg-black/40 border border-white/10 rounded px-3 py-1.5 text-white text-sm focus:border-[#C8A96E] outline-none"
+            required
+          />
+        </div>
+        <div>
+          <label className="text-xs text-gray-400 block mb-1">Valid Until</label>
+          <input
+            type="date"
+            value={expiresAt}
+            onChange={e => setExpiresAt(e.target.value)}
+            className="w-full bg-black/40 border border-white/10 rounded px-3 py-1.5 text-white text-sm focus:border-[#C8A96E] outline-none"
+          />
+        </div>
+        <div className="flex items-end">
+          <button
+            type="submit"
+            disabled={createQuote.isPending}
+            className="w-full bg-[#C8A96E] text-black font-bold px-4 py-1.5 rounded text-sm hover:bg-[#D4B886] transition disabled:opacity-50"
+          >
+            {createQuote.isPending ? 'Sending...' : 'Send Quote'}
+          </button>
+        </div>
+      </div>
+      <div>
+        <label className="text-xs text-gray-400 block mb-1">Notes (optional)</label>
+        <textarea
+          value={notes}
+          onChange={e => setNotes(e.target.value)}
+          rows={2}
+          placeholder="What's included, special terms..."
+          className="w-full bg-black/40 border border-white/10 rounded px-3 py-1.5 text-white text-sm focus:border-[#C8A96E] outline-none resize-none"
+        />
+      </div>
+      {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
+    </form>
+  );
+}
 
 const STATUS_OPTIONS: RequestStatus[] = [
   'pending',
@@ -28,6 +104,7 @@ export default function AdminRequests() {
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [search, setSearch] = useState('');
   const { openId: expandedId, toggle } = useAdminDisclosure<string>();
+  const [quotedIds, setQuotedIds] = useState<Set<string>>(new Set());
 
   const filtered = requests.filter((r) => {
     if (filterStatus !== 'all' && r.status !== filterStatus) return false;
@@ -149,6 +226,20 @@ export default function AdminRequests() {
                       ))}
                     </div>
                   </div>
+
+                  {/* Quote Creation */}
+                  {!['quoted', 'confirmed', 'completed', 'declined', 'cancelled'].includes(request.status) && (
+                    quotedIds.has(request.id) ? (
+                      <div className="mt-4 border-t border-white/5 pt-4">
+                        <p className="text-green-400 text-sm">✓ Quote sent — customer has been notified.</p>
+                      </div>
+                    ) : (
+                      <QuoteForm
+                        requestId={request.id}
+                        onDone={() => setQuotedIds(prev => new Set([...prev, request.id]))}
+                      />
+                    )
+                  )}
                 </div>
               )}
             </motion.div>

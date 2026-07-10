@@ -204,24 +204,55 @@ export interface UpdateRequestStatusInput {
   changedBy?: string;
 }
 
-// Admin: update request status with lifecycle validation + log entry
+// Admin: update request status — routes through PATCH /api/requests/[id]
+// so server-side notifications and status logging fire automatically.
 export function useUpdateRequestStatus() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, status, fromStatus, notes, changedBy }: UpdateRequestStatusInput) => {
-      const { request } = await transitionRequestStatus({
-        requestId: id,
-        fromStatus,
-        toStatus: status,
-        changedBy,
-        notes,
+    mutationFn: async ({ id, status }: UpdateRequestStatusInput) => {
+      const res = await fetch(`/api/requests/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
       });
-      return request;
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(body.error ?? 'Status update failed');
+      }
+      return res.json() as Promise<Request>;
     },
     onSuccess: (_data: Request, variables: UpdateRequestStatusInput) => {
       queryClient.invalidateQueries({ queryKey: ['requests'] });
       queryClient.invalidateQueries({ queryKey: ['requests', 'detail', variables.id] });
+    },
+  });
+}
+
+export interface CreateQuoteInput {
+  request_id: string;
+  amount_aed: number;
+  notes?: string;
+  expires_at?: string;
+}
+
+// Admin: create a quote for a request (auto-advances status to quoted + notifies user)
+export function useCreateQuote() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (input: CreateQuoteInput) => {
+      const res = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input),
+      });
+      const body = await res.json() as { quote?: unknown; error?: string };
+      if (!res.ok) throw new Error(body.error ?? 'Failed to create quote');
+      return body.quote;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['requests'] });
     },
   });
 }

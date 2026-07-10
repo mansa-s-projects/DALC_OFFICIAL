@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseMiddlewareClient, ADMIN_ROLES, getRoleFromUser } from './src/lib/supabase-server';
+import { createSupabaseMiddlewareClient, ADMIN_ROLES, getRoleFromUser } from './src/lib/supabase-middleware';
 import { hasPermission, normalizeRole } from './src/lib/rbac';
 import { VENUE_SLUG_MAP } from './src/lib/venueSlugMap';
 
@@ -29,9 +29,15 @@ export async function middleware(request: NextRequest) {
   // Cryptographic JWT validation — getUser() calls Supabase Auth servers,
   // unlike getSession() which only reads the cookie without verification.
   const supabase = createSupabaseMiddlewareClient(request, response);
-  const { data: { user }, error } = await supabase.auth.getUser();
+  let user = null;
+  try {
+    const { data, error } = await supabase.auth.getUser();
+    if (!error) user = data.user;
+  } catch {
+    // getUser threw — treat as unauthenticated
+  }
 
-  if (error || !user) {
+  if (!user) {
     if (isAdminPath) {
       const loginUrl = new URL('/auth/login', request.url);
       loginUrl.searchParams.set('from', pathname);

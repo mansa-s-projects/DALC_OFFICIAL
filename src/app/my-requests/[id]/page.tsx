@@ -1,311 +1,273 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { use, useCallback, useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
+import { format } from 'date-fns'
+import Link from 'next/link'
 
-type Quote = {
-  id: string;
-  amount_aed: number;
-  status: string;
-  notes: string | null;
-  expires_at: string | null;
-  created_at: string;
-};
-
-type Payment = {
-  id: string;
-  amount_aed: number;
-  status: string;
-  payment_type: string;
-  created_at: string;
-};
-
-type RequestDetail = {
-  id: string;
-  category: string;
-  status: string;
-  priority: "HIGH" | "NORMAL" | "LOW";
-  title: string | null;
-  description: string | null;
-  created_at: string;
-  updated_at: string;
-  quotes: Quote[];
-  payments: Payment[];
-};
-
-const STATUS_LABELS: Record<string, string> = {
-  pending: "Pending",
-  submitted: "Submitted",
-  in_progress: "In Progress",
-  quoted: "Quoted",
-  confirmed: "Confirmed",
-  completed: "Completed",
-  cancelled: "Cancelled",
-};
+interface Request {
+  id: string
+  category: string
+  request_type?: string
+  venue_name?: string
+  status: string
+  priority?: string
+  priority_score?: number
+  party_size?: number
+  date_time?: string
+  contact_name?: string
+  contact_info?: string
+  notes?: string
+  internal_notes?: string
+  assigned_to?: string
+  created_at: string
+  updated_at?: string
+  quotes?: Array<{
+    id: string
+    amount_aed: number
+    status: string
+    notes?: string
+    expires_at?: string
+  }>
+  payments?: Array<{
+    id: string
+    amount_aed: number
+    status: string
+    payment_type: string
+    created_at: string
+  }>
+  request_status_log?: Array<{
+    new_status: string
+    created_at: string
+    notes?: string
+  }>
+}
 
 const STATUS_COLORS: Record<string, string> = {
-  pending: "text-amber-400 bg-amber-400/10 border-amber-400/30",
-  submitted: "text-amber-400 bg-amber-400/10 border-amber-400/30",
-  in_progress: "text-blue-400 bg-blue-400/10 border-blue-400/30",
-  quoted: "text-purple-400 bg-purple-400/10 border-purple-400/30",
-  confirmed: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
-  completed: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
-  cancelled: "text-red-400 bg-red-400/10 border-red-400/30",
-};
+  submitted: 'bg-gray-700 text-gray-200',
+  assigned: 'bg-blue-900 text-blue-200',
+  quoted: 'bg-amber-900 text-amber-200',
+  confirmed: 'bg-green-900 text-green-200',
+  completed: 'bg-emerald-900 text-emerald-200',
+  declined: 'bg-red-900 text-red-200',
+}
 
-const PRIORITY_COLORS: Record<string, string> = {
-  HIGH: "text-red-400",
-  NORMAL: "text-amber-400",
-  LOW: "text-zinc-400",
-};
+const STATUS_LABELS: Record<string, string> = {
+  submitted: 'Pending Review',
+  assigned: 'Assigned to Concierge',
+  quoted: 'Quote Ready',
+  confirmed: 'Confirmed',
+  completed: 'Completed',
+  declined: 'Declined',
+}
 
-const PAYMENT_STATUS_COLORS: Record<string, string> = {
-  pending: "text-zinc-400",
-  processing: "text-blue-400",
-  succeeded: "text-emerald-400",
-  failed: "text-red-400",
-  refunded: "text-purple-400",
-};
+const StatusBadge = ({ status }: { status: string }) => (
+  <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${STATUS_COLORS[status] ?? STATUS_COLORS.submitted}`}>
+    {STATUS_LABELS[status] ?? status}
+  </span>
+)
 
-const PAYMENTS_ENABLED = process.env.NEXT_PUBLIC_PAYMENTS_ENABLED === "true";
+const StatusTimeline = ({ logs }: { logs: NonNullable<Request['request_status_log']> }) => {
+  if (!logs.length) return null
+  return (
+    <div className="mt-8 border-l-2 border-[#C8A96E] pl-6 space-y-4">
+      <h3 className="text-lg font-semibold text-[#C8A96E] mb-4">Activity Timeline</h3>
+      {logs.map((log, idx) => (
+        <div key={idx} className="relative pb-4">
+          <div className="absolute -left-8 w-4 h-4 bg-[#C8A96E] rounded-full mt-1" />
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-3">
+            <p className="text-sm font-medium text-white">{STATUS_LABELS[log.new_status] ?? log.new_status}</p>
+            <p className="text-xs text-gray-400 mt-1">
+              {format(new Date(log.created_at), 'MMM dd, yyyy h:mm a')}
+            </p>
+            {log.notes && <p className="text-xs text-gray-500 mt-1">{log.notes}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
-export default function RequestDetailPage() {
-  const params = useParams();
-  const searchParams = useSearchParams();
-  const id = typeof params.id === "string" ? params.id : null;
+export default function RequestDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const searchParams = useSearchParams()
+  const paymentStatus = searchParams.get('payment')
+  const [request, setRequest] = useState<Request | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [notFound, setNotFound] = useState(false)
 
-  const [request, setRequest] = useState<RequestDetail | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [checkoutLoading, setCheckoutLoading] = useState(false);
-
-  const paymentStatus = searchParams.get("payment");
+  const fetchRequest = useCallback(async () => {
+    const res = await fetch(`/api/requests/${id}`)
+    if (!res.ok) {
+      setNotFound(true)
+      setLoading(false)
+      return
+    }
+    const data: Request = await res.json()
+    if (data.request_status_log) {
+      data.request_status_log.sort((a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      )
+    }
+    setRequest(data)
+    setLoading(false)
+  }, [id])
 
   useEffect(() => {
-    if (!id) return;
+    fetchRequest()
 
-    fetch(`/api/requests/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json() as Promise<RequestDetail>;
-      })
-      .then(setRequest)
-      .catch((err: Error) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [id]);
+    const channel = supabase
+      .channel(`req_detail_${id}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'requests', filter: `id=eq.${id}` }, () => fetchRequest())
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'quotes', filter: `request_id=eq.${id}` }, () => fetchRequest())
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'request_status_log', filter: `request_id=eq.${id}` }, () => fetchRequest())
+      .subscribe()
 
-  async function handleCheckout(quoteId: string) {
-    if (!id) return;
-    setCheckoutLoading(true);
-    try {
-      const res = await fetch("/api/payments/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ request_id: id, quote_id: quoteId }),
-      });
-      const data = (await res.json()) as { url?: string; error?: string };
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert(data.error ?? "Could not initiate checkout");
-      }
-    } catch {
-      alert("Checkout failed. Please try again.");
-    } finally {
-      setCheckoutLoading(false);
-    }
-  }
+    return () => { supabase.removeChannel(channel) }
+  }, [id, fetchRequest])
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#080706] flex items-center justify-center">
-        <div className="w-6 h-6 rounded-full border-2 border-[#C9A84C] border-t-transparent animate-spin" />
+      <div className="min-h-screen bg-[#070707] flex items-center justify-center">
+        <div className="text-[#C8A96E]">Loading...</div>
       </div>
-    );
+    )
   }
 
-  if (error || !request) {
+  if (notFound || !request) {
     return (
-      <div className="min-h-screen bg-[#080706] flex flex-col items-center justify-center gap-4">
-        <p className="text-red-400 font-mono text-sm">{error ?? "Request not found"}</p>
-        <Link href="/profile" className="text-[#C9A84C] text-sm underline underline-offset-4">
-          Back to profile
-        </Link>
+      <div className="min-h-screen bg-[#070707] flex items-center justify-center">
+        <div className="text-red-500">Request not found</div>
       </div>
-    );
+    )
   }
 
-  const activeQuote = request.quotes.find(
-    (q) => q.status === "sent" || q.status === "accepted",
-  );
-  const latestPayment = request.payments[0] ?? null;
+  const displayTitle = request.venue_name ?? request.category
+  const activeQuote = request.quotes?.find(q => ['sent', 'draft'].includes(q.status)) ?? request.quotes?.[0]
 
   return (
-    <div className="min-h-screen bg-[#080706] text-[#F5EDD8]">
-      <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="min-h-screen bg-[#070707] text-white">
+      <div className="max-w-3xl mx-auto px-6 py-12">
+        <Link href="/my-requests" className="text-[#C8A96E] text-sm hover:underline mb-8 inline-block">
+          ← Back to Requests
+        </Link>
 
-        <div className="mb-8">
-          <Link
-            href="/profile"
-            className="text-xs text-[#C9A84C]/70 hover:text-[#C9A84C] tracking-widest uppercase mb-6 inline-block transition-colors"
-          >
-            ← My Requests
-          </Link>
-          <div className="flex items-start justify-between gap-4">
+        {/* Payment result banners */}
+        {paymentStatus === 'success' && (
+          <div className="bg-green-900/30 border border-green-700 rounded-xl p-4 mb-8 flex items-center gap-3">
+            <span className="text-2xl">✅</span>
             <div>
-              <p className="text-xs tracking-widest uppercase text-[#C9A84C]/60 mb-1 font-mono">
-                {request.category}
-              </p>
-              <h1 className="text-2xl font-display font-light text-[#F5EDD8]">
-                {request.title ?? "Concierge Request"}
-              </h1>
+              <p className="text-green-300 font-semibold">Payment confirmed</p>
+              <p className="text-green-400/70 text-sm">Your concierge will be in touch shortly.</p>
             </div>
-            <span
-              className={`text-xs px-3 py-1 rounded-full border font-mono ${STATUS_COLORS[request.status] ?? "text-zinc-400 bg-zinc-400/10 border-zinc-400/30"}`}
-            >
-              {STATUS_LABELS[request.status] ?? request.status}
-            </span>
           </div>
+        )}
+        {paymentStatus === 'cancelled' && (
+          <div className="bg-amber-900/30 border border-amber-700 rounded-xl p-4 mb-8 flex items-center gap-3">
+            <span className="text-2xl">⚠️</span>
+            <div>
+              <p className="text-amber-300 font-semibold">Payment was not completed</p>
+              <p className="text-amber-400/70 text-sm">You can try again or contact your concierge.</p>
+            </div>
+          </div>
+        )}
+
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-[#C8A96E] mb-2">{displayTitle}</h1>
+              <p className="text-gray-400 text-sm">{request.category.toUpperCase()} • {request.id}</p>
+            </div>
+            <StatusBadge status={request.status} />
+          </div>
+          {request.notes && <p className="text-gray-300 mt-4">{request.notes}</p>}
         </div>
 
-        {paymentStatus === "success" && (
-          <div className="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm">
-            Payment confirmed. Our team will be in touch shortly.
-          </div>
-        )}
-        {paymentStatus === "cancelled" && (
-          <div className="mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
-            Payment was not completed.
-          </div>
-        )}
-
-        <div className="rounded-2xl border border-[#2A2518] bg-[#111009] p-6 mb-6 space-y-4">
-          <h2 className="text-xs tracking-widest uppercase text-[#C9A84C]/60 font-mono">
-            Request Details
-          </h2>
-
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-[#F5EDD8]/40 text-xs mb-1">Priority</p>
-              <p className={`font-mono font-medium ${PRIORITY_COLORS[request.priority]}`}>
-                {request.priority}
+        {/* Request Details Grid */}
+        <div className="grid grid-cols-2 gap-4 mb-8">
+          {request.date_time && (
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+              <p className="text-gray-400 text-sm">Date & Time</p>
+              <p className="text-white font-medium mt-1">
+                {format(new Date(request.date_time), 'MMM dd, yyyy h:mm a')}
               </p>
-            </div>
-            <div>
-              <p className="text-[#F5EDD8]/40 text-xs mb-1">Created</p>
-              <p className="font-mono">
-                {new Date(request.created_at).toLocaleDateString("en-GB", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
-          </div>
-
-          {request.description && (
-            <div>
-              <p className="text-[#F5EDD8]/40 text-xs mb-1">Description</p>
-              <p className="text-sm text-[#F5EDD8]/80 leading-relaxed">{request.description}</p>
             </div>
           )}
-
-          <div>
-            <p className="text-[#F5EDD8]/40 text-xs mb-1">Reference</p>
-            <p className="font-mono text-xs text-[#F5EDD8]/50">{request.id}</p>
-          </div>
+          {request.party_size && (
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+              <p className="text-gray-400 text-sm">Party Size</p>
+              <p className="text-white font-medium mt-1">{request.party_size} people</p>
+            </div>
+          )}
+          {request.priority && (
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+              <p className="text-gray-400 text-sm">Priority</p>
+              <p className="text-white font-medium mt-1">{request.priority}</p>
+            </div>
+          )}
+          {request.contact_name && (
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+              <p className="text-gray-400 text-sm">Contact</p>
+              <p className="text-white font-medium mt-1">{request.contact_name}</p>
+            </div>
+          )}
         </div>
 
-        <div className="rounded-2xl border border-[#2A2518] bg-[#111009] p-6 mb-6">
-          <h2 className="text-xs tracking-widest uppercase text-[#C9A84C]/60 font-mono mb-4">
-            Quote
-          </h2>
-
-          {activeQuote ? (
-            <div className="space-y-4">
-              <div className="flex items-end justify-between">
+        {/* Active Quote Card */}
+        {activeQuote && (
+          <div className="bg-gradient-to-br from-[#C8A96E]/10 to-transparent border border-[#C8A96E]/30 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold text-[#C8A96E] mb-4">Quote</h3>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-gray-400 text-sm">Amount</p>
+                <p className="text-2xl font-bold text-white mt-2">
+                  AED {activeQuote.amount_aed.toLocaleString()}
+                </p>
+              </div>
+              {activeQuote.expires_at && (
                 <div>
-                  <p className="text-[#F5EDD8]/40 text-xs mb-1">Amount</p>
-                  <p className="text-3xl font-display font-light">
-                    AED{" "}
-                    <span className="text-[#C9A84C]">
-                      {activeQuote.amount_aed.toLocaleString("en-AE", {
-                        minimumFractionDigits: 2,
-                      })}
-                    </span>
+                  <p className="text-gray-400 text-sm">Valid Until</p>
+                  <p className="text-white font-medium mt-2">
+                    {format(new Date(activeQuote.expires_at), 'MMM dd, yyyy')}
                   </p>
                 </div>
-                <span
-                  className={`text-xs px-3 py-1 rounded-full border font-mono ${activeQuote.status === "accepted" ? "text-emerald-400 bg-emerald-400/10 border-emerald-400/30" : "text-purple-400 bg-purple-400/10 border-purple-400/30"}`}
+              )}
+              <div className="flex items-end">
+                <Link
+                  href={`/my-requests/${request.id}/pay`}
+                  className="w-full bg-[#C8A96E] text-[#070707] font-semibold py-3 rounded-lg hover:bg-[#D4B886] transition text-center block"
                 >
-                  {activeQuote.status}
-                </span>
+                  Pay Now
+                </Link>
               </div>
-
-              {activeQuote.notes && (
-                <p className="text-sm text-[#F5EDD8]/60 border-t border-[#2A2518] pt-3">
-                  {activeQuote.notes}
-                </p>
-              )}
-
-              {activeQuote.expires_at && (
-                <p className="text-xs text-[#F5EDD8]/40 font-mono">
-                  Expires{" "}
-                  {new Date(activeQuote.expires_at).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "short",
-                  })}
-                </p>
-              )}
-
-              {activeQuote.status === "sent" && latestPayment?.status !== "succeeded" && PAYMENTS_ENABLED && (
-                <button
-                  onClick={() => handleCheckout(activeQuote.id)}
-                  disabled={checkoutLoading}
-                  className="w-full mt-2 py-3 px-6 rounded-xl bg-[#C9A84C] text-[#080706] text-sm font-medium tracking-wide hover:bg-[#d4b660] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {checkoutLoading ? "Redirecting…" : "Pay Now"}
-                </button>
-              )}
-              {activeQuote.status === "sent" && latestPayment?.status !== "succeeded" && !PAYMENTS_ENABLED && (
-                <p className="text-sm text-[#F5EDD8]/50 border border-[#2A2518] rounded-xl px-4 py-3">
-                  Payments are temporarily paused. Our team will assist you directly.
-                </p>
-              )}
             </div>
-          ) : (
-            <p className="text-sm text-[#F5EDD8]/40">
-              Our team is preparing your quote. You will be notified when it is ready.
-            </p>
-          )}
-        </div>
-
-        {latestPayment && (
-          <div className="rounded-2xl border border-[#2A2518] bg-[#111009] p-6">
-            <h2 className="text-xs tracking-widest uppercase text-[#C9A84C]/60 font-mono mb-4">
-              Payment
-            </h2>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[#F5EDD8]/40 text-xs mb-1">{latestPayment.payment_type}</p>
-                <p className="text-xl font-display font-light">
-                  AED{" "}
-                  {latestPayment.amount_aed.toLocaleString("en-AE", {
-                    minimumFractionDigits: 2,
-                  })}
-                </p>
-              </div>
-              <span
-                className={`text-sm font-mono font-medium ${PAYMENT_STATUS_COLORS[latestPayment.status]}`}
-              >
-                {latestPayment.status}
-              </span>
-            </div>
+            {activeQuote.notes && (
+              <p className="text-gray-300 text-sm mt-4">{activeQuote.notes}</p>
+            )}
           </div>
         )}
+
+        {/* Concierge Contact */}
+        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-semibold text-white mb-4">Need Help?</h3>
+          <div className="flex gap-4">
+            <a
+              href={`https://wa.me/${request.contact_info ?? ''}?text=Hi%20DALC%2C%20about%20my%20request%20${request.id}`}
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition text-center"
+            >
+              💬 WhatsApp
+            </a>
+            <button className="flex-1 border border-[#C8A96E] text-[#C8A96E] hover:bg-[#C8A96E]/10 font-semibold py-3 rounded-lg transition">
+              📞 Call Concierge
+            </button>
+          </div>
+        </div>
+
+        {/* Activity Timeline */}
+        <StatusTimeline logs={request.request_status_log ?? []} />
       </div>
     </div>
-  );
+  )
 }

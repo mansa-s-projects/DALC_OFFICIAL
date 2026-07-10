@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import "server-only";
+import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdminClient } from "@/lib/supabase-admin";
 
 interface CreateRequestBody {
@@ -12,6 +13,24 @@ interface CreateRequestBody {
   contact_name?: string;
   contact_info?: string;
   notes?: string;
+}
+
+export async function GET(req: NextRequest) {
+  const token = req.headers.get("Authorization")?.replace("Bearer ", "");
+  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const admin = getSupabaseAdminClient();
+  const { data: { user }, error: authError } = await admin.auth.getUser(token);
+  if (authError || !user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const { data, error } = await admin
+    .from("requests")
+    .select("id, category, request_type, venue_name, status, priority, party_size, date_time, notes, created_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+
+  if (error) return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+  return NextResponse.json(data ?? []);
 }
 
 export async function POST(request: Request) {

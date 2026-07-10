@@ -1,10 +1,3 @@
-/**
- * src/platform/notifications/requestNotifications.ts
- *
- * Platform-layer notification dispatcher for request lifecycle events.
- * Currently logs to console; wire to Supabase realtime / email / push here.
- */
-
 import type { RequestStatus } from '../../types';
 
 export interface RequestNotificationPayload {
@@ -29,28 +22,49 @@ const EVENT_MESSAGES: Partial<Record<RequestStatus, string>> = {
   cancelled:          'Your request has been cancelled.',
 };
 
+const STATUS_TITLES: Partial<Record<RequestStatus, string>> = {
+  acknowledged:       'Request Received',
+  assigned:           'Concierge Assigned',
+  supplier_contacted: 'Suppliers Contacted',
+  in_progress:        'Request In Progress',
+  quoted:             'Your Quote Is Ready',
+  confirmed:          'Request Confirmed',
+  completed:          'Request Completed',
+  declined:           'Request Declined',
+  cancelled:          'Request Cancelled',
+};
+
 /**
  * Dispatch a notification for a request lifecycle transition.
- * In production, swap the console.info calls with Supabase inserts,
- * push notification calls, or email triggers as required.
+ * Writes to the notifications table via /api/notifications (server-side admin client).
+ * Fire-and-forget — never throws so the lifecycle transition always succeeds.
  */
 export async function notifyRequestEvent(
   payload: RequestNotificationPayload
 ): Promise<void> {
-  const { requestId, userId, venueName, category, fromStatus, toStatus } = payload;
+  const { requestId, userId, venueName, category, toStatus } = payload;
+  if (!userId) return;
+
   const message = EVENT_MESSAGES[toStatus];
+  const title = STATUS_TITLES[toStatus];
+  if (!message || !title) return;
 
-  console.info('[RequestNotification]', {
-    requestId,
-    userId,
-    venueName,
-    category,
-    transition: `${fromStatus} → ${toStatus}`,
-    message,
-  });
+  const label = venueName ?? category ?? 'your request';
 
-  // TODO: Insert into `notifications` table
-  // TODO: Send push notification via OneSignal/FCM if user has opted in
-  // TODO: Trigger email via Resend/SendGrid for high-importance transitions
-  //       (quoted, confirmed, declined, completed)
+  try {
+    await fetch('/api/notifications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: userId,
+        type: toStatus === 'quoted' ? 'quote_ready' : 'request_update',
+        title,
+        message: `${label}: ${message}`,
+        action_url: `/my-requests/${requestId}`,
+        metadata: { requestId, transition: toStatus },
+      }),
+    });
+  } catch {
+    // Never block the lifecycle transition
+  }
 }

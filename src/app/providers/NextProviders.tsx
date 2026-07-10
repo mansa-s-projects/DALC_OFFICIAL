@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import AuthListener from "@/components/auth/AuthListener";
 import SearchModal from "@/components/search/SearchModal";
+import { NotificationsProvider } from "@/features/notifications/context/NotificationsContext";
 
 export function NextProviders({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -28,7 +29,9 @@ export function NextProviders({ children }: { children: React.ReactNode }) {
       >
         <AuthListener />
         <SearchModal />
-        {children}
+        <NotificationsProvider>
+          {children}
+        </NotificationsProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

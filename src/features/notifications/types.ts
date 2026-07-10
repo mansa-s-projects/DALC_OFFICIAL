@@ -1,10 +1,13 @@
-export type NotificationType = 
+export type NotificationType =
   | 'booking_confirmed'
   | 'booking_cancelled'
   | 'request_update'
+  | 'request_assigned'
+  | 'quote_ready'
+  | 'payment_confirmed'
+  | 'payment_received'
   | 'message_received'
   | 'document_status'
-  | 'payment_received'
   | 'reminder'
   | 'system';
 
@@ -38,9 +41,12 @@ export const NOTIFICATION_ICONS: Record<NotificationType, string> = {
   booking_confirmed: '✓',
   booking_cancelled: '✕',
   request_update: '↻',
+  request_assigned: '👤',
+  quote_ready: '💬',
+  payment_confirmed: '✅',
+  payment_received: '💳',
   message_received: '✉',
   document_status: '📄',
-  payment_received: '💳',
   reminder: '⏰',
   system: '⚙',
 };
