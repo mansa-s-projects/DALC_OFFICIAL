@@ -1,3 +1,5 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-export { default } from '@/features/transport/pages/YachtsList';
+export default function YachtsRedirect() {
+  redirect('/experiences/yacht-charter');
+}
