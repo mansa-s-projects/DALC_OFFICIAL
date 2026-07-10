@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { StepId, VisaFormData, TravelReport } from './_lib/types';
 import { generateReport } from './_lib/intelligence';
+import { COUNTRIES } from './_lib/countries';
 import StepNationality from './_components/StepNationality';
 import StepResidence from './_components/StepResidence';
 import StepDestination from './_components/StepDestination';
@@ -51,6 +52,27 @@ export default function VisaFinderPage() {
   const [data, setData] = useState<VisaFormData>(DEFAULT_DATA);
   const [report, setReport] = useState<TravelReport | null>(null);
   const [showLead, setShowLead] = useState(false);
+
+  // Pre-populate from quick-search widget params: ?from=AE&to=JP
+  // Using window.location.search avoids useSearchParams Suspense requirement
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromCode = params.get('from');
+    const toCode   = params.get('to');
+    if (!fromCode && !toCode) return;
+
+    const fromCountry = fromCode ? COUNTRIES.find(c => c.code === fromCode) : undefined;
+    const toCountry   = toCode   ? COUNTRIES.find(c => c.code === toCode)   : undefined;
+
+    if (fromCountry && toCountry) {
+      setData(d => ({ ...d, nationalities: [fromCountry], destination: toCountry }));
+      setStep('purpose');
+    } else if (fromCountry) {
+      setData(d => ({ ...d, nationalities: [fromCountry] }));
+      setStep('residence');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const currentIdx = STEP_ORDER.indexOf(step);
   const visibleSteps = STEP_ORDER.filter(s => s !== 'generating' && s !== 'report');
