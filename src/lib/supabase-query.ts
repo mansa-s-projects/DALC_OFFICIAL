@@ -47,6 +47,9 @@ export async function queryPublished<T>(config: QueryConfig): Promise<T[]> {
   if (config.limit) query = query.limit(config.limit);
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[queryPublished] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as T[];
 }

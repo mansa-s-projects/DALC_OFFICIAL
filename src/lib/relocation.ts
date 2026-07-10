@@ -141,7 +141,10 @@ export async function getRelocationProfile(userId: string): Promise<RelocationPr
     .eq('user_id', userId)
     .maybeSingle();
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getRelocationProfile] Supabase error:', error.message);
+    return null;
+  }
   return data as RelocationProfile | null;
 }
 
@@ -182,7 +185,10 @@ export async function getUserWorkflows(userId: string): Promise<UserWorkflow[]> 
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserWorkflows] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as UserWorkflow[];
 }
 
@@ -204,7 +210,10 @@ export async function getWorkflowSteps(workflowId: string): Promise<UserWorkflow
     .eq('workflow_id', workflowId)
     .order('step_number', { ascending: true });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getWorkflowSteps] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as UserWorkflowStep[];
 }
 
@@ -236,7 +245,10 @@ export async function getUserDocuments(userId: string): Promise<UserDocument[]> 
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserDocuments] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as UserDocument[];
 }
 
@@ -275,7 +287,10 @@ export async function getCostEstimates(profileId: string): Promise<RelocationCos
     .eq('relocation_profile_id', profileId)
     .order('category', { ascending: true });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getCostEstimates] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as RelocationCostEstimate[];
 }
 

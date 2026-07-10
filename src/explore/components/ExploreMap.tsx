@@ -245,7 +245,7 @@ export default function ExploreMap({ locations, onLocationSelect }: ExploreMapPr
 
     const map = new mapboxgl.Map({
       container: containerRef.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL ?? 'mapbox://styles/mapbox/dark-v11',
       center: UAE_CENTER,
       zoom: DEFAULT_ZOOM,
       attributionControl: false,

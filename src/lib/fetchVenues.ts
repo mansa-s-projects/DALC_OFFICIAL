@@ -51,7 +51,10 @@ export async function fetchVenues(options: FetchVenuesOptions = {}): Promise<Ven
   }
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[fetchVenues] DB error:', error.message);
+    return [];
+  }
 
   return (data ?? []).map((raw: RawVenueRow) => {
     const flat: Record<string, unknown> = {

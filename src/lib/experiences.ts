@@ -2328,7 +2328,10 @@ export async function getExperienceBySlug(slug: string): Promise<ExperienceServi
     .in('status', ['published', 'sold_out'])
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getExperienceBySlug] Supabase error:', error.message);
+    return null;
+  }
   return data as ExperienceService | null;
 }
 
@@ -2344,7 +2347,10 @@ export async function getFeaturedExperiences(subcategory?: string): Promise<Expe
   if (subcategory) query = query.eq('subcategory', subcategory);
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[getFeaturedExperiences] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as ExperienceService[];
 }
 
@@ -2357,7 +2363,10 @@ export async function getTrendingExperiences(limit: number = 6): Promise<Experie
     .order('trending_score', { ascending: false })
     .limit(limit);
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getTrendingExperiences] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as ExperienceService[];
 }
 
@@ -2371,7 +2380,10 @@ export async function getUpcomingEvents(limit: number = 4): Promise<ExperienceSe
     .order('event_date', { ascending: true })
     .limit(limit);
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUpcomingEvents] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as ExperienceService[];
 }
 
@@ -2395,7 +2407,10 @@ export async function checkCapacity(
   }
 
   const { data: bookings, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[checkCapacity] Supabase error:', error.message);
+    return { available: true, total_capacity: 100, booked_count: 0, remaining: 100, is_filling_up: false, percent_full: 0 };
+  }
 
   let bookedCount = 0;
   if (bookings) {
@@ -2499,7 +2514,10 @@ export async function getUserExperienceBookings(userId: string): Promise<Experie
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserExperienceBookings] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as unknown as ExperienceBooking[];
 }
 
