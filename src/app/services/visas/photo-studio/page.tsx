@@ -310,7 +310,7 @@ export default function PassportPhotoStudio() {
   const currentStageIdx = STAGES.findIndex(s => s.key === stage);
 
   return (
-    <div className="min-h-screen bg-[#070707] text-white">
+    <div className="min-h-screen bg-[#070707] pt-16 text-white md:pt-[112px]">
       {/* Ambient background */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(201,168,76,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(201,168,76,0.025)_1px,transparent_1px)] bg-[size:48px_48px]" />
@@ -334,9 +334,9 @@ export default function PassportPhotoStudio() {
               </h1>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-[#C9A84C]/25 bg-[#C9A84C]/5 px-3 py-1.5">
-            <Sparkles className="h-3.5 w-3.5 text-[#C9A84C]" />
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#C9A84C]">AI-Powered</span>
+          <div className="flex items-center gap-2 rounded-full border border-[#C9A84C]/20 bg-[#C9A84C]/5 px-3 py-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-[#C9A84C]/70" />
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[#C9A84C]/70">Free · Instant · ICAO</span>
           </div>
         </div>
       </header>

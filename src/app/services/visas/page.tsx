@@ -53,8 +53,8 @@ const FEATURES = [
   {
     icon: Sparkles,
     title: 'Visa Intelligence Engine',
-    desc: 'AI analyses your passport, travel history, and purpose to give you an eligibility score, document checklist, and approval probability.',
-    badge: 'AI-Powered',
+    desc: 'Analyses your passport, travel history, and trip purpose to produce an eligibility score, document checklist, and approval probability.',
+    badge: 'Smart',
     href: '/services/visas/visa-finder',
     primary: false,
   },
@@ -201,23 +201,22 @@ export default function VisaHubPage() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(201,168,76,0.12),transparent_45%)]" />
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-[#C9A84C]/10 px-6 pb-20 pt-24">
+      <section className="relative overflow-hidden border-b border-[#C9A84C]/10 px-6 pb-20 pt-36 md:pt-40">
         <AnimatedGlobe />
 
         <div className="relative mx-auto max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.35em] text-[#C9A84C]/70">
-              DALC Global Mobility Platform
+              DALC Global Mobility
             </p>
             <h1 className="mb-4 max-w-3xl text-5xl font-light leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
-              The{' '}
+              Your visa,<br />
               <span className="bg-gradient-to-r from-[#C9A84C] via-[#E8D080] to-[#C9A84C] bg-clip-text text-transparent">
-                smarter
-              </span>{' '}
-              way to<br />handle your visa
+                handled properly
+              </span>
             </h1>
             <p className="mb-8 max-w-xl text-lg text-[#D4C9A8]/60">
-              AI-powered visa intelligence, passport photo studio, and concierge support — everything iVisa and VisaHQ don't offer.
+              Eligibility scoring, passport photo studio, document checklists, and a dedicated concierge — built for Dubai residents who expect more.
             </p>
           </motion.div>
 
@@ -288,8 +287,8 @@ export default function VisaHubPage() {
                   <span className={`rounded-full px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider ${
                     badge === 'Exclusive'
                       ? 'bg-[#C9A84C]/15 text-[#C9A84C] border border-[#C9A84C]/30'
-                      : badge === 'AI-Powered'
-                        ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20'
+                      : badge === 'Smart'
+                        ? 'bg-[#181510] text-[#C9A84C]/60 border border-[#C9A84C]/15'
                         : 'bg-[#181510] text-[#8A7D60] border border-[#C9A84C]/10'
                   }`}>
                     {badge}
@@ -319,7 +318,7 @@ export default function VisaHubPage() {
                 <span className="text-[#C9A84C]">Photo Studio</span>
               </h2>
               <p className="mb-6 text-[#8A7D60]">
-                Upload any photo — AI automatically removes the background, crops to your face, centers with biometric guides, and exports a government-compliant passport photo. Instant. Free. Precise.
+                Upload any photo — the studio removes the background, centres your face using biometric guides, and exports a government-compliant passport photo in seconds. Free, no app required.
               </p>
               <ul className="mb-7 space-y-2">
                 {[
@@ -492,7 +491,7 @@ export default function VisaHubPage() {
               <span className="text-[#C9A84C]">handled intelligently</span>
             </h2>
             <p className="mx-auto mb-8 max-w-md text-[#8A7D60]">
-              Start with the AI visa finder, generate your passport photo, and let a DALC advisor handle the rest.
+              Check your visa requirements, generate a compliant passport photo, and let a DALC advisor handle the rest.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
