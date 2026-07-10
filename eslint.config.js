@@ -3,7 +3,7 @@ import nextConfig from "eslint-config-next";
 const eslintConfig = [
   ...nextConfig,
   {
-    ignores: ["dist/**", ".next/**"],
+    ignores: ["dist/**", ".next/**", ".claude/worktrees/**"],
     rules: {
       "react/no-unescaped-entities": "off",
       "@next/next/no-img-element": "off",

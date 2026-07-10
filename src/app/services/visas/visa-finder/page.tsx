@@ -71,7 +71,6 @@ export default function VisaFinderPage() {
       setData(d => ({ ...d, nationalities: [fromCountry] }));
       setStep('residence');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const currentIdx = STEP_ORDER.indexOf(step);
