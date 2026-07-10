@@ -9,8 +9,12 @@ export function buildNightlifeMetadata(args: {
   description: string;
   path: string;
   keywords: string[];
+  ogImage?: string;
 }): Metadata {
   const url = new URL(args.path, getBaseUrl());
+  const images = args.ogImage
+    ? [{ url: args.ogImage, width: 1200, height: 630, alt: args.title }]
+    : [];
 
   return {
     title: args.title,
@@ -24,11 +28,13 @@ export function buildNightlifeMetadata(args: {
       url: url.toString(),
       siteName: 'Dubai À La Carte',
       type: 'website',
+      ...(images.length > 0 && { images }),
     },
     twitter: {
       card: 'summary_large_image',
       title: args.title,
       description: args.description,
+      ...(args.ogImage && { images: [args.ogImage] }),
     },
     keywords: args.keywords,
   };
