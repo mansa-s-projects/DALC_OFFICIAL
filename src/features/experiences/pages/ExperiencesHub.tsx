@@ -14,6 +14,10 @@ import {
   UtensilsCrossed,
   ScanEye,
   Flame,
+  Anchor,
+  Landmark,
+  Map,
+  Zap,
 } from "lucide-react";
 import Navbar from "../../../components/navigation/Navbar";
 import Footer from "../../../components/navigation/Footer";
@@ -31,11 +35,11 @@ interface CategoryMeta {
 }
 
 const CATEGORY_META: Record<string, CategoryMeta> = {
-  "desert-adventures": {
+  "desertAdventure": {
     seoTitle: "Dubai Desert Safari & Dune Buggy Experiences",
     description:
       "Dune buggies, quad bikes, camel rides and sunset safaris — the most iconic side of Dubai.",
-    image: "/images/desert-adventures/Aristodesert/image1.png",
+    image: "/images/experiences/desertAdventure/hero.jpg",
     badge: "Most Booked",
     startingFrom: "AED 160",
     cta: "Explore Desert",
@@ -45,31 +49,70 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Jet Skiing, Yachts & Water Sports Dubai",
     description:
       "Jet skis, yacht charters, scuba diving and parasailing across Dubai Marina and the Gulf coast.",
-    image: "/images/water-activities/yamaha-fx-svho.jpg",
+    image: "/images/experiences/water-activities/hero.jpg",
     badge: "Most Booked",
     startingFrom: "AED 300",
     cta: "Book Water Sport",
     urgency: "18 booked today",
   },
-  "aerial-and-adrenaline": {
+  "yacht-charter": {
+    seoTitle: "Private Yacht Charter Dubai | Luxury Cruises from AED 650/hr",
+    description:
+      "Private yacht charters from 45ft to 120ft — sunset cruises, party yachts and fishing trips from Dubai Marina.",
+    image: "/images/experiences/yachts/hero.jpg",
+    badge: "Top Picks",
+    startingFrom: "AED 650/hr",
+    cta: "Charter Now",
+    urgency: null,
+  },
+  "aerialAdrenaline": {
     seoTitle: "Skydiving, Helicopter Tours & Ziplines Dubai",
     description:
       "Skydive over Palm Jumeirah, fly by helicopter over downtown, or conquer the world's longest zipline.",
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/experiences/aerialAdrenaline/hero.jpg",
     badge: "Top Picks",
     startingFrom: "AED 220",
     cta: "Get Airborne",
+    urgency: null,
+  },
+  entertainment: {
+    seoTitle: "Theme Parks & Attractions Dubai | Aquaventure, IMG Worlds & More",
+    description:
+      "Dubai's world-class theme parks, iconic landmarks and entertainment — Aquaventure, IMG Worlds, Museum of the Future.",
+    image: "/images/experiences/entertainment/hero.jpg",
+    badge: null,
+    startingFrom: "AED 25",
+    cta: "Explore Parks",
     urgency: null,
   },
   wellness: {
     seoTitle: "Luxury Spa & Beach Club Day Passes Dubai",
     description:
       "5-star spa treatments, infinity pool access and beach club day passes at Dubai's finest resorts.",
-    image: "/images/beach_clubs/Kyma/image1.jpg",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 551",
     cta: "Restore & Relax",
+    urgency: null,
+  },
+  "abu-dhabi-tours": {
+    seoTitle: "Abu Dhabi Day Tours from Dubai | Grand Mosque, Ferrari World & More",
+    description:
+      "Private guided day tours to Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World, Warner Bros. and city tours.",
+    image: "https://images.unsplash.com/photo-1512366850919-0592b2b3b94d?q=80&w=1200&auto=format&fit=crop",
+    badge: null,
+    startingFrom: "AED 63",
+    cta: "Plan Day Trip",
+    urgency: null,
+  },
+  "oman-tours": {
+    seoTitle: "Oman Day Trips from Dubai | Musandam Fjords & Mountain Tours",
+    description:
+      "Guided day trips from Dubai to Oman's Musandam fjords — dolphin watching, snorkelling, and mountain adventures.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+    badge: null,
+    startingFrom: "AED 450",
+    cta: "Explore Oman",
     urgency: null,
   },
   "tickets-and-culture": {
@@ -87,7 +130,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Supercars, Beach Clubs & Luxury Lifestyle Dubai",
     description:
       "Lamborghinis, Ferraris and exclusive day-pass access — the highest tier of Dubai lifestyle.",
-    image: "/images/dining_entertainment/Billionaire/image1.jpg",
+    image: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1200&auto=format&fit=crop",
     badge: "Editor's Pick",
     startingFrom: "AED 500",
     cta: "Live in Luxury",
@@ -97,7 +140,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Desert & Stud Farm Photoshoots Dubai",
     description:
       "Couture dress photoshoots with horses, camels and falcons in the golden desert light.",
-    image: "/images/desert-adventures/Aristodesert/image2.png",
+    image: "/images/experiences/desertAdventure/hero.jpg",
     badge: null,
     startingFrom: "AED 1,650",
     cta: "Book a Shoot",
@@ -107,7 +150,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Private Desert Dinners & Sky Dining Dubai",
     description:
       "Dinner in the Sky at 50m, dhow cruise dinners and open-fire gourmet meals under the stars.",
-    image: "/images/Signature Dining/Dinner in the Sky – Dubai.png",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
     badge: "Top Picks",
     startingFrom: "AED 330",
     cta: "Reserve a Table",
@@ -117,7 +160,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Dubai City Views, Observatories & Hidden Gems",
     description:
       "Sky-high observatories, desert lakes, mountain drives and the UAE's most breathtaking viewpoints.",
-    image: "/images/hotels/address-downtown.jpg",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 70",
     cta: "Explore Views",
@@ -126,10 +169,14 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
 };
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
-  "desert-adventures": Mountain,
+  "desertAdventure": Mountain,
   "water-activities": Waves,
-  "aerial-and-adrenaline": Wind,
+  "yacht-charter": Anchor,
+  "aerialAdrenaline": Wind,
+  entertainment: Zap,
   wellness: Sparkles,
+  "abu-dhabi-tours": Landmark,
+  "oman-tours": Map,
   "tickets-and-culture": Ticket,
   "luxury-leisure": Crown,
   "photography-experience": Camera,
@@ -286,4 +333,3 @@ export default function ExperiencesHub() {
     </div>
   );
 }
-

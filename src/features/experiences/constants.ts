@@ -1,12 +1,15 @@
 export const EXPERIENCE_CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
-  "desert-adventures":
-    "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop",
-  "water-activities":
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
-  "aerial-and-adrenaline":
-    "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop",
+  "desertAdventure": "/images/experiences/desertAdventure/hero.jpg",
+  "water-activities": "/images/experiences/water-activities/hero.jpg",
+  "yacht-charter": "/images/experiences/yachts/hero.jpg",
+  "aerialAdrenaline": "/images/experiences/aerialAdrenaline/hero.jpg",
+  entertainment: "/images/experiences/entertainment/hero.jpg",
   wellness:
     "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop",
+  "abu-dhabi-tours":
+    "https://images.unsplash.com/photo-1512366850919-0592b2b3b94d?q=80&w=1200&auto=format&fit=crop",
+  "oman-tours":
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
   "tickets-and-culture":
     "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop",
   "luxury-leisure":
