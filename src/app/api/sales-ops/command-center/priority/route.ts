@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchViewRows, getLimitFromRequest } from '@/lib/sales-ops-dashboard-api';
+import { requireAdminAuth } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
+  const auth = await requireAdminAuth(request, 'view_reports');
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const limit = getLimitFromRequest(request, 50, 250);
 
