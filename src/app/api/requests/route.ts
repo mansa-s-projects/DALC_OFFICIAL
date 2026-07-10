@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdminClient } from "@/lib/supabase-admin";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
 
 interface CreateRequestBody {
   user_id?: string;
@@ -26,8 +27,12 @@ export async function POST(request: Request) {
       );
     }
 
+    const serverClient = await createSupabaseServerClient();
+    const { data: { session } } = await serverClient.auth.getSession();
+    const resolvedUserId = session?.user?.id ?? null;
+
     const insertPayload = {
-      user_id: body.user_id ?? null,
+      user_id: resolvedUserId,
       venue_id: body.venue_id ?? null,
       venue_name: body.venue_name ?? null,
       category: body.category,
@@ -62,7 +67,7 @@ export async function POST(request: Request) {
         request_id: created.id,
         old_status: null,
         new_status: "submitted",
-        changed_by: body.user_id ?? null,
+        changed_by: resolvedUserId,
         notes: null,
       });
 
