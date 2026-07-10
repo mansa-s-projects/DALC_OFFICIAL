@@ -1,11 +1,8 @@
 export const EXPERIENCE_CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
-  "desertAdventure":
-    "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop",
-  "water-activities":
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+  "desertAdventure": "/images/experiences/desertAdventure/hero.jpg",
+  "water-activities": "/images/experiences/water-activities/hero.jpg",
   "yacht-charter": "/images/experiences/yachts/hero.jpg",
-  "aerialAdrenaline":
-    "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop",
+  "aerialAdrenaline": "/images/experiences/aerialAdrenaline/hero.jpg",
   entertainment: "/images/experiences/entertainment/hero.jpg",
   wellness:
     "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop",

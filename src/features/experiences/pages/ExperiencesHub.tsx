@@ -35,11 +35,11 @@ interface CategoryMeta {
 }
 
 const CATEGORY_META: Record<string, CategoryMeta> = {
-  "desert-adventures": {
+  "desertAdventure": {
     seoTitle: "Dubai Desert Safari & Dune Buggy Experiences",
     description:
       "Dune buggies, quad bikes, camel rides and sunset safaris — the most iconic side of Dubai.",
-    image: "/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp",
+    image: "/images/experiences/desertAdventure/hero.jpg",
     badge: "Most Booked",
     startingFrom: "AED 160",
     cta: "Explore Desert",
@@ -49,7 +49,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Jet Skiing, Yachts & Water Sports Dubai",
     description:
       "Jet skis, yacht charters, scuba diving and parasailing across Dubai Marina and the Gulf coast.",
-    image: "/images/experiences/marine/jet-ski-rental/hero.jpg",
+    image: "/images/experiences/water-activities/hero.jpg",
     badge: "Most Booked",
     startingFrom: "AED 300",
     cta: "Book Water Sport",
@@ -59,17 +59,17 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Private Yacht Charter Dubai | Luxury Cruises from AED 650/hr",
     description:
       "Private yacht charters from 45ft to 120ft — sunset cruises, party yachts and fishing trips from Dubai Marina.",
-    image: "/images/experiences/yacht-charter-hero.jpg",
+    image: "/images/experiences/yachts/hero.jpg",
     badge: "Top Picks",
     startingFrom: "AED 650/hr",
     cta: "Charter Now",
     urgency: null,
   },
-  "aerial-and-adrenaline": {
+  "aerialAdrenaline": {
     seoTitle: "Skydiving, Helicopter Tours & Ziplines Dubai",
     description:
       "Skydive over Palm Jumeirah, fly by helicopter over downtown, or conquer the world's longest zipline.",
-    image: "/images/experiences/aerial-hero.jpg",
+    image: "/images/experiences/aerialAdrenaline/hero.jpg",
     badge: "Top Picks",
     startingFrom: "AED 220",
     cta: "Get Airborne",
@@ -79,7 +79,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Theme Parks & Attractions Dubai | Aquaventure, IMG Worlds & More",
     description:
       "Dubai's world-class theme parks, iconic landmarks and entertainment — Aquaventure, IMG Worlds, Museum of the Future.",
-    image: "/images/experiences/entertainment-hero.jpg",
+    image: "/images/experiences/entertainment/hero.jpg",
     badge: null,
     startingFrom: "AED 25",
     cta: "Explore Parks",
@@ -89,7 +89,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Luxury Spa & Beach Club Day Passes Dubai",
     description:
       "5-star spa treatments, infinity pool access and beach club day passes at Dubai's finest resorts.",
-    image: "/images/experiences/wellness-hero.jpg",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 551",
     cta: "Restore & Relax",
@@ -140,7 +140,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Desert & Stud Farm Photoshoots Dubai",
     description:
       "Couture dress photoshoots with horses, camels and falcons in the golden desert light.",
-    image: "/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp",
+    image: "/images/experiences/desertAdventure/hero.jpg",
     badge: null,
     startingFrom: "AED 1,650",
     cta: "Book a Shoot",
@@ -150,7 +150,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Private Desert Dinners & Sky Dining Dubai",
     description:
       "Dinner in the Sky at 50m, dhow cruise dinners and open-fire gourmet meals under the stars.",
-    image: "/images/Signature Dining/Dinner in the Sky – Dubai.png",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
     badge: "Top Picks",
     startingFrom: "AED 330",
     cta: "Reserve a Table",
@@ -169,10 +169,10 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
 };
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
-  "desert-adventures": Mountain,
+  "desertAdventure": Mountain,
   "water-activities": Waves,
   "yacht-charter": Anchor,
-  "aerial-and-adrenaline": Wind,
+  "aerialAdrenaline": Wind,
   entertainment: Zap,
   wellness: Sparkles,
   "abu-dhabi-tours": Landmark,
