@@ -174,7 +174,7 @@ async function runInstantResponse(supabaseAdmin: SupabaseAdmin, limit = 30) {
         templateKey: 'hot_lead_created',
         recipientPhone: row.phone || undefined,
         payload: { source: 'autopilot.instant_response' },
-        dedupeContext: `${row.lead_id}:instant:${Date.now()}`,
+        dedupeContext: `${row.lead_id}:instant-response`,
       });
 
       await createFollowUpTask(

@@ -1,6 +1,6 @@
-import "server-only";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getSupabaseAdminClient } from "@/lib/supabase-admin";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
 
 interface CreateRequestBody {
   user_id?: string;
@@ -15,24 +15,6 @@ interface CreateRequestBody {
   notes?: string;
 }
 
-export async function GET(req: NextRequest) {
-  const token = req.headers.get("Authorization")?.replace("Bearer ", "");
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const admin = getSupabaseAdminClient();
-  const { data: { user }, error: authError } = await admin.auth.getUser(token);
-  if (authError || !user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const { data, error } = await admin
-    .from("requests")
-    .select("id, category, request_type, venue_name, status, priority, party_size, date_time, notes, created_at")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
-
-  if (error) return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
-  return NextResponse.json(data ?? []);
-}
-
 export async function POST(request: Request) {
   try {
     const supabase = getSupabaseAdminClient();
@@ -45,8 +27,12 @@ export async function POST(request: Request) {
       );
     }
 
+    const serverClient = await createSupabaseServerClient();
+    const { data: { session } } = await serverClient.auth.getSession();
+    const resolvedUserId = session?.user?.id ?? null;
+
     const insertPayload = {
-      user_id: body.user_id ?? null,
+      user_id: resolvedUserId,
       venue_id: body.venue_id ?? null,
       venue_name: body.venue_name ?? null,
       category: body.category,
@@ -81,7 +67,7 @@ export async function POST(request: Request) {
         request_id: created.id,
         old_status: null,
         new_status: "submitted",
-        changed_by: body.user_id ?? null,
+        changed_by: resolvedUserId,
         notes: null,
       });
 

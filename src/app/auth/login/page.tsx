@@ -11,7 +11,8 @@ import { signIn } from '@/lib/auth';
 export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const from = searchParams?.get('from') || '/';
+  const rawFrom = searchParams?.get('from') ?? null;
+  const from = rawFrom && rawFrom.startsWith('/') && !rawFrom.startsWith('//') ? rawFrom : '/';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
