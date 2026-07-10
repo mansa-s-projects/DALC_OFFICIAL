@@ -64,7 +64,7 @@ function ExperienceCard({ item, categorySlug }: { item: ExperienceCatalogItem; c
 function DesertSubcategoryCard({ sub }: { sub: DesertSubcategory }) {
   return (
     <Link
-      href={`/experiences/desert-adventures/${sub.slug}`}
+      href={`/experiences/desertAdventure/${sub.slug}`}
       className="group relative overflow-hidden border border-cipher-rim hover:border-cipher-gold/50 transition-all duration-500 bg-cipher-ink"
     >
       <div className="relative h-64 sm:h-72 overflow-hidden">

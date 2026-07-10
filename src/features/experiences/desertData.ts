@@ -52,12 +52,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Book dune buggy rental in Dubai from AED 600. Polaris RZR, Can-Am Maverick R, X3 & Sport. Private desert track, 30-min & 1-hour sessions. Helmets & safety gear included.',
     shortDescription:
       'Tear across golden dunes at full throttle. Premium buggies — Polaris RZR, Can-Am Maverick X3 & Maverick R — on a private desert track.',
-    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+    image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
     alt: 'Dune buggy rental Dubai Lahbab desert Can-Am Maverick Polaris RZR',
     galleryImages: [
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
     ],
     badge: 'Most Popular',
     fromPrice: 600,
@@ -69,7 +69,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Polaris RZR 4-Seater — 30 Min',
         description:
           '110 HP powerhouse, 4 seats. Ideal for groups or families who want shared thrills on the most iconic buggy in the UAE.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 30,
@@ -80,7 +80,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Polaris RZR 4-Seater — 1 Hour',
         description:
           '110 HP powerhouse, 4 seats. Full hour to tackle every dune, ridge, and valley — the complete desert buggy experience.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1000,
         priceLabel: 'AED 1,000',
         durationMinutes: 60,
@@ -92,7 +92,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 2-Seater — 30 Min',
         description:
           '232 HP twin-turbo — the fastest production side-by-side ever made. 2 seats. For those who demand peak desert performance.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1150,
         priceLabel: 'AED 1,150',
         durationMinutes: 30,
@@ -104,7 +104,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 2-Seater — 1 Hour',
         description:
           '232 HP twin-turbo, 2 seats. A full hour at the absolute limit — maximum speed, maximum adrenaline.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 2000,
         priceLabel: 'AED 2,000',
         durationMinutes: 60,
@@ -115,7 +115,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 4-Seater — 30 Min',
         description:
           "232 HP twin-turbo, 4 seats. Share the Maverick R's legendary power with up to 3 passengers.",
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1250,
         priceLabel: 'AED 1,250',
         durationMinutes: 30,
@@ -126,7 +126,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick R 4-Seater — 1 Hour',
         description:
           '232 HP twin-turbo, 4 seats. The full Maverick R experience for groups — an hour of pure desert domination.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 2200,
         priceLabel: 'AED 2,200',
         durationMinutes: 60,
@@ -137,7 +137,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 2-Seater — 30 Min',
         description:
           '195 HP turbocharged, 2 seats. The benchmark desert racer — explosive acceleration and pro-grade long-travel suspension.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 800,
         priceLabel: 'AED 800',
         durationMinutes: 30,
@@ -148,7 +148,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 2-Seater — 1 Hour',
         description:
           '195 HP turbocharged, 2 seats. A full hour on the most popular desert racer in Dubai. Pure adrenaline.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1350,
         priceLabel: 'AED 1,350',
         durationMinutes: 60,
@@ -160,7 +160,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 4-Seater — 30 Min',
         description:
           '195 HP turbocharged, 4 seats. All the thrill of the X3 with room for the whole crew.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 850,
         priceLabel: 'AED 850',
         durationMinutes: 30,
@@ -171,7 +171,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick X3 4-Seater — 1 Hour',
         description:
           '195 HP turbocharged, 4 seats. An hour of desert racing with up to 3 passengers along for the ride.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 1450,
         priceLabel: 'AED 1,450',
         durationMinutes: 60,
@@ -182,7 +182,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick Sport 2-Seater — 30 Min',
         description:
           '100 HP, 2 seats. The perfect introduction to dune buggy racing — capable, controlled, and genuinely thrilling.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 30,
@@ -193,7 +193,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Can-Am Maverick Sport 2-Seater — 1 Hour',
         description:
           '100 HP, 2 seats. Full hour of desert exploration at an accessible price point — ideal for first-timers.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
         priceAED: 900,
         priceLabel: 'AED 900',
         durationMinutes: 60,
@@ -231,12 +231,12 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
       'Quad biking in Dubai from AED 300. Yamaha Raptor 700, Yamaha Grizzly 700, and Quad 570 through the Lahbab Red Sand Dunes. 30-min and 1-hour sessions. No experience needed.',
     shortDescription:
       'Conquer the Lahbab dunes on powerful ATVs. From the entry-level Quad 570 to the thundering Yamaha Raptor 700 — sessions for all levels.',
-    image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+    image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
     alt: 'Quad biking Dubai ATV desert Yamaha Raptor Grizzly Lahbab dunes',
     galleryImages: [
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
-      '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
+      '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
     ],
     badge: 'Best Value',
     fromPrice: 300,
@@ -248,7 +248,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Quad 570 — 30 Minutes',
         description:
           'The perfect starter ATV. Easy to ride, powerful enough to tackle any dune — ideal for your first desert quad experience.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 300,
         priceLabel: 'AED 300',
         durationMinutes: 30,
@@ -259,7 +259,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Quad 570 — 1 Hour',
         description:
           'Full hour on the Quad 570. Cover more ground, explore more dunes, and build real confidence on the machine.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 500,
         priceLabel: 'AED 500',
         durationMinutes: 60,
@@ -271,7 +271,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Raptor 700 — 30 Minutes',
         description:
           'Sport-spec ATV with aggressive power delivery and a lightweight frame. For riders who want to push harder on the dunes.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 350,
         priceLabel: 'AED 350',
         durationMinutes: 30,
@@ -282,7 +282,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Raptor 700 — 1 Hour',
         description:
           "An hour on Dubai's favourite sport quad. Maximum acceleration, maximum dune coverage — pure desert performance.",
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 600,
         priceLabel: 'AED 600',
         durationMinutes: 60,
@@ -294,7 +294,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Grizzly 700 — 30 Minutes',
         description:
           'All-terrain utility ATV with the smoothest ride in the fleet. Stable, capable, and confident on steep dune faces.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 380,
         priceLabel: 'AED 380',
         durationMinutes: 30,
@@ -305,7 +305,7 @@ export const DESERT_SUBCATEGORIES: DesertSubcategory[] = [
         title: 'Yamaha Grizzly 700 — 1 Hour',
         description:
           'A full hour on the Grizzly — maximising trail coverage with the stability and power to handle any terrain.',
-        image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
+        image: '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
         priceAED: 650,
         priceLabel: 'AED 650',
         durationMinutes: 60,

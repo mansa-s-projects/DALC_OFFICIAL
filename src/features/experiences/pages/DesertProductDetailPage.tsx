@@ -57,7 +57,7 @@ export default function DesertProductDetailPage({ params }: Props) {
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-cipher-muted mb-6">Experience not found.</p>
           <Link
-            href="/experiences/desert-adventures"
+            href="/experiences/desertAdventure"
             className="text-cipher-gold text-sm uppercase tracking-widest"
           >
             Back to Desert Adventures
@@ -85,12 +85,12 @@ export default function DesertProductDetailPage({ params }: Props) {
             Experiences
           </Link>
           <span className="opacity-40">/</span>
-          <Link href="/experiences/desert-adventures" className="hover:text-cipher-gold transition-colors">
+          <Link href="/experiences/desertAdventure" className="hover:text-cipher-gold transition-colors">
             Desert Adventures
           </Link>
           <span className="opacity-40">/</span>
           <Link
-            href={`/experiences/desert-adventures/${subcategorySlug}`}
+            href={`/experiences/desertAdventure/${subcategorySlug}`}
             className="hover:text-cipher-gold transition-colors"
           >
             {subcategory.title}
@@ -142,7 +142,7 @@ export default function DesertProductDetailPage({ params }: Props) {
             className="flex flex-col"
           >
             <Link
-              href={`/experiences/desert-adventures/${subcategorySlug}`}
+              href={`/experiences/desertAdventure/${subcategorySlug}`}
               className="inline-flex items-center gap-2 text-cipher-muted hover:text-cipher-gold transition-colors text-xs uppercase tracking-widest mb-6"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> {subcategory.title}

@@ -2,10 +2,10 @@ import { CAR_CATEGORIES, getCarImage } from '../../data/transport/carsData';
 import { MOCK_EXPERIENCES } from '../../lib/experiences';
 
 export type ExperienceCategorySlug =
-  | 'desert-adventures'
+  | 'desertAdventure'
   | 'water-activities'
   | 'yacht-charter'
-  | 'aerial-and-adrenaline'
+  | 'aerialAdrenaline'
   | 'entertainment'
   | 'wellness'
   | 'abu-dhabi-tours'
@@ -105,10 +105,10 @@ function getWaterActivityItems(): ExperienceCatalogItem[] {
 // Desert Adventures - Dune Buggies and ATVs with reliable images
 function getDesertAdventureItems(): ExperienceCatalogItem[] {
   const desertImages = [
-    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
-    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
-    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-5.webp',
-    '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
+    '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
+    '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
+    '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-5.webp',
+    '/images/experiences/desertAdventure/Aristodesert/fleet/aristo-fleet-4.webp',
   ];
 
   const vehicles: ExperienceCatalogItem[] = [
@@ -277,14 +277,14 @@ function getDesertAdventureItems(): ExperienceCatalogItem[] {
       slug: 'balade-a-cheval-1h',
       title: 'Balade a Cheval - 1 Hour',
       description: 'Horse ride in the desert - Mon-Thu: AED 240 / Fri-Sun: AED 280',
-      image: '/images/desert-adventures/Aristodesert/image2.png',
+      image: '/images/experiences/desertAdventure/Aristodesert/image2.png',
       ctaLabel: 'Book Ride',
     },
     {
       slug: 'balade-a-poney-30min',
       title: 'Balade a Poney - 30 Minutes',
       description: 'Pony ride for kids in the desert - AED 150',
-      image: '/images/desert-adventures/Aristodesert/image2.png',
+      image: '/images/experiences/desertAdventure/Aristodesert/image2.png',
       ctaLabel: 'Book Ride',
     },
     {
@@ -1039,7 +1039,7 @@ function getMountainAdventureItems(): ExperienceCatalogItem[] {
 
 export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
   {
-    slug: 'desert-adventures',
+    slug: 'desertAdventure',
     title: 'Desert Adventures',
     description: 'Dune buggies, ATVs, and off-road safaris in the Dubai desert.',
     items: [
@@ -1061,7 +1061,7 @@ export const DALC_EXPERIENCE_CATEGORIES: ExperienceCatalogCategory[] = [
     items: getYachtCharterItems(),
   },
   {
-    slug: 'aerial-and-adrenaline',
+    slug: 'aerialAdrenaline',
     title: 'Aerial & Adrenaline',
     description: 'Sky-focused and adrenaline-led experiences.',
     items: getAerialItems(),

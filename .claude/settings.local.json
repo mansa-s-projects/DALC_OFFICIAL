@@ -49,7 +49,13 @@
       "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -Last 50)",
       "Bash(npm run *)",
       "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Milliseconds 500; Write-Host \"Port 3000 freed\")",
-      "Bash(grep -E \"\\\\.\\(md|txt|log|json\\)$\")"
+      "Bash(grep -E \"\\\\.\\(md|txt|log|json\\)$\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(cd \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\" && sed -i 's|/experiences/desert-adventures|/experiences/desertAdventure|g' src/app/experiences/[category]/[item]/page.tsx src/app/experiences/[category]/[item]/[slug]/page.tsx src/features/experiences/pages/*.tsx src/features/home/pages/*.tsx src/features/stays/pages/*.tsx)",
+      "Bash(killall -9 node)"
+    ],
+    "additionalDirectories": [
+      "C:\\WORKSPACE\\ACTIVE\\DALC_OFFICIAL\\src\\app\\experiences\\[category]\\[item]"
     ]
   },
   "enabledMcpjsonServers": [

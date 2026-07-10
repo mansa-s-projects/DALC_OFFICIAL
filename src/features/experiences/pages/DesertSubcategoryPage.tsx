@@ -67,7 +67,7 @@ function ProductCard({ product, subcategorySlug }: { product: DesertProduct; sub
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-cipher-rim">
           <span className="text-cipher-gold font-mono text-base">{product.priceLabel}</span>
           <Link
-            href={`/experiences/desert-adventures/${subcategorySlug}/${product.slug}`}
+            href={`/experiences/desertAdventure/${subcategorySlug}/${product.slug}`}
             className="inline-flex items-center gap-1.5 text-cipher-gold text-xs uppercase tracking-widest hover:text-cipher-white transition-colors"
           >
             Book Now <ArrowRight className="w-3.5 h-3.5" />
@@ -135,7 +135,7 @@ export default function DesertSubcategoryPage({ params }: Props) {
         <Navbar />
         <main className="max-w-5xl mx-auto px-4 md:px-8 pt-32 pb-20 text-center">
           <p className="text-cipher-muted mb-6">Activity not found.</p>
-          <Link href="/experiences/desert-adventures" className="text-cipher-gold text-sm uppercase tracking-widest">
+          <Link href="/experiences/desertAdventure" className="text-cipher-gold text-sm uppercase tracking-widest">
             Back to Desert Adventures
           </Link>
         </main>
@@ -161,7 +161,7 @@ export default function DesertSubcategoryPage({ params }: Props) {
           <nav className="mb-6 flex items-center gap-2 text-xs text-cipher-muted uppercase tracking-widest">
             <Link href="/experiences" className="hover:text-cipher-gold transition-colors">Experiences</Link>
             <span className="opacity-40">/</span>
-            <Link href="/experiences/desert-adventures" className="hover:text-cipher-gold transition-colors">Desert Adventures</Link>
+            <Link href="/experiences/desertAdventure" className="hover:text-cipher-gold transition-colors">Desert Adventures</Link>
             <span className="opacity-40">/</span>
             <span className="text-cipher-gold">{subcategory.title}</span>
           </nav>
@@ -187,7 +187,7 @@ export default function DesertSubcategoryPage({ params }: Props) {
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <Link
-            href="/experiences/desert-adventures"
+            href="/experiences/desertAdventure"
             className="inline-flex items-center gap-2 text-cipher-muted hover:text-cipher-gold transition-colors text-xs uppercase tracking-widest"
           >
             <ArrowLeft className="w-4 h-4" /> All Desert Activities
@@ -255,7 +255,7 @@ export default function DesertSubcategoryPage({ params }: Props) {
             {DESERT_SUBCATEGORIES.filter((s) => s.slug !== subcategorySlug).map((s) => (
               <Link
                 key={s.slug}
-                href={`/experiences/desert-adventures/${s.slug}`}
+                href={`/experiences/desertAdventure/${s.slug}`}
                 className="group relative h-36 overflow-hidden border border-cipher-rim hover:border-cipher-rim3 transition-all duration-300"
               >
                 <img

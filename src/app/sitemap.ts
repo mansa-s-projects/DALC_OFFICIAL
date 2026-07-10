@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.85,
     })),
     ...DESERT_SUBCATEGORIES.map((sub) => ({
-      url: `${BASE}/experiences/desert-adventures/${sub.slug}`,
+      url: `${BASE}/experiences/desertAdventure/${sub.slug}`,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),

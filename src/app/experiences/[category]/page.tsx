@@ -3,7 +3,7 @@ import SubcategoryList from '@/features/experiences/pages/SubcategoryList';
 import { getExperienceCategory } from '@/features/experiences/catalog';
 
 const CATEGORY_SEO: Record<string, { title: string; description: string; keywords: string[] }> = {
-  'desert-adventures': {
+  'desertAdventure': {
     title: 'Desert Adventures Dubai | Dune Buggies, ATVs & Safari | Dubai À La Carte',
     description: 'Book desert adventures in Dubai — dune buggies, quad bikes, desert safaris and camel rides in the Lahbab Red Sand Dunes. From AED 160.',
     keywords: ['desert adventures dubai', 'dune buggy dubai', 'quad biking dubai', 'desert safari dubai', 'camel riding dubai'],
@@ -18,7 +18,7 @@ const CATEGORY_SEO: Record<string, { title: string; description: string; keyword
     description: 'Private yacht charters in Dubai from 45ft to 120ft. Sunset cruises, party yachts, fishing trips and luxury charters from Dubai Marina. Instant booking.',
     keywords: ['yacht charter dubai', 'private yacht dubai', 'luxury yacht dubai', 'sunset cruise dubai', 'boat hire dubai'],
   },
-  'aerial-and-adrenaline': {
+  'aerialAdrenaline': {
     title: 'Skydiving, Helicopter Tours & Adrenaline Experiences Dubai | Dubai À La Carte',
     description: 'Skydive over Palm Jumeirah, take a helicopter tour of Downtown Dubai, or conquer the world\'s longest zipline in Jebel Jais. From AED 220.',
     keywords: ['skydiving dubai', 'helicopter tour dubai', 'zipline dubai', 'hot air balloon dubai', 'seaplane dubai'],

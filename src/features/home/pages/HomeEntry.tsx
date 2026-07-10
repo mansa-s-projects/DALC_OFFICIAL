@@ -41,7 +41,7 @@ const CATEGORIES = [
     title: 'Desert Adventures',
     subtitle: 'Safari, quad bikes, dune buggies',
     image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-4.webp',
-    href: '/experiences/desert-adventures',
+    href: '/experiences/desertAdventure',
   },
   {
     title: 'Water Activities',
