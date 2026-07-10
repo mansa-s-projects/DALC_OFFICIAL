@@ -99,7 +99,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Abu Dhabi Day Tours from Dubai | Grand Mosque, Ferrari World & More",
     description:
       "Private guided day tours to Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World, Warner Bros. and city tours.",
-    image: "/images/experiences/abu-dhabi-hero.jpg",
+    image: "https://images.unsplash.com/photo-1512366850919-0592b2b3b94d?q=80&w=1200&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 63",
     cta: "Plan Day Trip",
@@ -109,7 +109,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Oman Day Trips from Dubai | Musandam Fjords & Mountain Tours",
     description:
       "Guided day trips from Dubai to Oman's Musandam fjords — dolphin watching, snorkelling, and mountain adventures.",
-    image: "/images/experiences/oman-tours-hero.jpg",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 450",
     cta: "Explore Oman",
@@ -130,7 +130,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Supercars, Beach Clubs & Luxury Lifestyle Dubai",
     description:
       "Lamborghinis, Ferraris and exclusive day-pass access — the highest tier of Dubai lifestyle.",
-    image: "/images/dining_entertainment/Billionaire/image1.jpg",
+    image: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1200&auto=format&fit=crop",
     badge: "Editor's Pick",
     startingFrom: "AED 500",
     cta: "Live in Luxury",
@@ -160,7 +160,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Dubai City Views, Observatories & Hidden Gems",
     description:
       "Sky-high observatories, desert lakes, mountain drives and the UAE's most breathtaking viewpoints.",
-    image: "/images/hotels/address-downtown.jpg",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
     badge: null,
     startingFrom: "AED 70",
     cta: "Explore Views",
