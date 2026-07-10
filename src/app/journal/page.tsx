@@ -98,21 +98,21 @@ const articles = [
   {
     slug: 'palm-jumeirah-guide',
     category: 'Area Guide',
-    title: 'Palm Jumeirah Guide: Hotels, Beaches & Hidden Gems',
+    title: 'Palm Jumeirah: The Insider Guide to Dubai\'s Iconic Island',
     excerpt:
-      'The iconic palm-shaped island has more to offer than Atlantis — discover the best restaurants, beach clubs, hotels, and experiences on the Palm.',
+      'Five-star hotels, private beach clubs, waterfront dining, and residential secrets — the complete guide to living and visiting the Palm.',
     image:
-      'https://images.unsplash.com/photo-1589083130544-0d6a2926e519?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=800&auto=format&fit=crop',
     href: '/journal/palm-jumeirah-guide',
   },
   {
     slug: 'dubai-marina-guide',
     category: 'Area Guide',
-    title: 'Dubai Marina: Nightlife, Dining & Waterfront Living',
+    title: 'Dubai Marina: The Complete Neighbourhood Guide',
     excerpt:
-      "Dubai Marina is the city's most vibrant waterfront neighbourhood. Here's our guide to the best restaurants, bars, beach clubs, and activities.",
+      "Waterfront dining, rooftop bars, marina walks, and yacht clubs — everything you need to know about Dubai's most vibrant waterfront district.",
     image:
-      'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=800&auto=format&fit=crop',
     href: '/journal/dubai-marina-guide',
   },
 ]
