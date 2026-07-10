@@ -1,37 +1,50 @@
-import "server-only";
-import { NextRequest, NextResponse } from "next/server";
-import { getSupabaseAdminClient } from "@/lib/supabase-admin";
+import 'server-only';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminAuth } from '@/lib/api-auth';
+import { getSupabaseAdminClient } from '@/lib/supabase-admin';
 
-interface NotifyBody {
-  user_id: string;
+interface NotificationBody {
   type: string;
-  title: string;
   message: string;
-  action_url?: string;
+  target_user_id?: string;
   metadata?: Record<string, unknown>;
 }
 
-export async function POST(req: NextRequest) {
-  const body = (await req.json()) as NotifyBody;
-  const { user_id, type, title, message, action_url, metadata } = body;
+export async function POST(request: NextRequest) {
+  const auth = await requireAdminAuth(request);
+  if (auth instanceof NextResponse) return auth;
 
-  if (!user_id || !type || !title || !message) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  try {
+    const body = (await request.json()) as NotificationBody;
+
+    if (!body.type || !body.message) {
+      return NextResponse.json({ error: 'Missing required fields: type, message' }, { status: 400 });
+    }
+
+    const supabase = getSupabaseAdminClient();
+
+    const { data, error } = await supabase
+      .from('notifications')
+      .insert({
+        type: body.type,
+        message: body.message,
+        target_user_id: body.target_user_id ?? null,
+        metadata: body.metadata ?? null,
+        created_by: auth.userId,
+        created_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true, data });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to create notification' },
+      { status: 500 }
+    );
   }
-
-  const supabase = getSupabaseAdminClient();
-  const { error } = await supabase.from("notifications").insert({
-    user_id,
-    type,
-    title,
-    message,
-    action_url: action_url ?? null,
-    metadata: metadata ?? {},
-  });
-
-  if (error) {
-    return NextResponse.json({ error: "Failed to insert notification" }, { status: 500 });
-  }
-
-  return NextResponse.json({ ok: true }, { status: 201 });
 }

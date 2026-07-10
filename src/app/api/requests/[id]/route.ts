@@ -1,19 +1,26 @@
 import "server-only";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdminClient } from "../../../../lib/supabase-admin";
-import { notifyRequestStatusChange } from "../../../../lib/notifications";
+import { requireAdminAuth } from "@/lib/api-auth";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const serverClient = await createSupabaseServerClient();
+  const { data: { user } } = await serverClient.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const { id } = await params;
 
   const supabase = getSupabaseAdminClient();
 
   const { data: request, error } = await supabase
     .from("requests")
-    .select("id, user_id, category, request_type, venue_name, status, priority, priority_score, party_size, date_time, contact_name, contact_info, notes, internal_notes, assigned_to, created_at, updated_at")
+    .select("id, category, status, priority, notes, internal_notes, created_at, updated_at, user_id")
     .eq("id", id)
     .single();
 
@@ -21,7 +28,15 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  const [quotesResult, paymentsResult, logsResult] = await Promise.all([
+  const isOwner = request.user_id === user.id;
+  const authResult = await requireAdminAuth(req);
+  const isAdmin = !(authResult instanceof NextResponse);
+
+  if (!isOwner && !isAdmin) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  const [quotesResult, paymentsResult] = await Promise.all([
     supabase
       .from("quotes")
       .select("id, amount_aed, status, notes, expires_at, created_at")
@@ -32,58 +47,75 @@ export async function GET(
       .select("id, amount_aed, status, payment_type, created_at")
       .eq("request_id", id)
       .order("created_at", { ascending: false }),
-    supabase
-      .from("request_status_log")
-      .select("id, new_status, old_status, notes, created_at")
-      .eq("request_id", id)
-      .order("created_at", { ascending: false }),
   ]);
 
   return NextResponse.json({
     ...request,
     quotes: quotesResult.data ?? [],
     payments: paymentsResult.data ?? [],
-    request_status_log: logsResult.data ?? [],
   });
+}
+
+interface PatchRequestBody {
+  status?: string;
+  priority?: string;
+  notes?: string;
+  internal_notes?: string;
+  assigned_to?: string;
 }
 
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const auth = await requireAdminAuth(req, 'edit_leads');
+  if (auth instanceof NextResponse) return auth;
+
   const { id } = await params;
+
   const supabase = getSupabaseAdminClient();
 
-  const body = await req.json();
-  const { status, assigned_to, internal_notes } = body as {
-    status?: string;
-    assigned_to?: string;
-    internal_notes?: string;
-  };
-
-  const { data: updated, error } = await supabase
+  const { data: existing, error: fetchError } = await supabase
     .from("requests")
-    .update({ status, assigned_to, internal_notes, updated_at: new Date().toISOString() })
+    .select("status")
     .eq("id", id)
-    .select("id, status, user_id")
     .single();
 
-  if (error || !updated) {
-    return NextResponse.json({ error: "Update failed" }, { status: 500 });
+  if (fetchError || !existing) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  if (status) {
+  const old_status = existing.status as string;
+
+  const body = (await req.json()) as PatchRequestBody;
+
+  const { data: updated, error: updateError } = await supabase
+    .from("requests")
+    .update({
+      ...(body.status !== undefined && { status: body.status }),
+      ...(body.priority !== undefined && { priority: body.priority }),
+      ...(body.notes !== undefined && { notes: body.notes }),
+      ...(body.internal_notes !== undefined && { internal_notes: body.internal_notes }),
+      ...(body.assigned_to !== undefined && { assigned_to: body.assigned_to }),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (updateError) {
+    return NextResponse.json({ error: updateError.message }, { status: 500 });
+  }
+
+  if (body.status && body.status !== old_status) {
     await supabase.from("request_status_log").insert({
       request_id: id,
-      old_status: null,
-      new_status: status,
-      changed_by: null,
+      old_status,
+      new_status: body.status,
+      changed_by: auth.userId,
+      notes: null,
     });
-
-    if (updated.user_id) {
-      await notifyRequestStatusChange(updated.user_id, id, status).catch(() => null);
-    }
   }
 
-  return NextResponse.json(updated);
+  return NextResponse.json({ success: true, request: updated });
 }
