@@ -5,7 +5,7 @@ import Navbar from '../../../components/navigation/Navbar';
 import Footer from '../../../components/navigation/Footer';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { ArrowRight, Utensils, Palmtree, Music, Mic2 } from 'lucide-react';
+import { ArrowRight, Utensils, Palmtree, Music } from 'lucide-react';
 import { useVenues } from '../hooks/useVenues';
 import VenueCard from '../../../components/cards/VenueCard';
 
@@ -14,7 +14,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'dining',
     label: 'Restaurants',
     sub: 'Fine Dining & Culinary Excellence',
-    image: '/images/restaurants/Bagatelle/image1.jpg',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop',
     icon: Utensils,
     desc: 'Michelin restaurants, rooftop dining, and chef-driven concepts.',
     path: '/nightlife/restaurants'
@@ -23,7 +23,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'beach-clubs',
     label: 'Beach Clubs',
     sub: 'Day to Night Sanctuaries',
-    image: '/images/beach_clubs/Nikki_Beach/image1.jpg',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop',
     icon: Palmtree,
     desc: 'Sunset lounges, pool clubs, and seaside luxury.',
     path: '/nightlife/beach-clubs'
@@ -32,7 +32,7 @@ const NIGHTLIFE_CATEGORIES = [
     id: 'nightclubs',
     label: 'Night Clubs',
     sub: 'The After Dark Elite',
-    image: '/images/nightclubs/Iris/image1.jpg',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop',
     icon: Music,
     desc: 'VIP table service, international DJs, and late-night access.',
     path: '/nightlife/clubs'
@@ -50,9 +50,9 @@ export default function Nightlife() {
       {/* Nightlife Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="/images/nightclubs/Soho_Garden/image1.jpg" 
-            alt="Dubai Nightlife" 
+          <img
+            src="https://images.unsplash.com/photo-1556035511-3168381ea4d4?q=80&w=1200&auto=format&fit=crop"
+            alt="Dubai Nightlife"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/60 to-transparent" />
@@ -130,8 +130,8 @@ export default function Nightlife() {
         {/* Featured Section: Dining & Entertainment */}
         <div className="relative w-full rounded-sm overflow-hidden bg-luxury-charcoal border border-white/5 group">
            <div className="absolute inset-0">
-              <img 
-                src="/images/dining_entertainment/Billionaire/image1.jpg" 
+              <img
+                src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1200&auto=format&fit=crop"
                 alt="Dining & Entertainment"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-30"
               />

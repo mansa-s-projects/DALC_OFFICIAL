@@ -10,7 +10,8 @@ import Footer from '../../../components/navigation/Footer';
 interface Club {
   id: string;
   name: string;
-  folder: string;
+  image: string;
+  image2?: string;
   area: string;
   vibe: string;
   description_short: string;
@@ -26,244 +27,243 @@ const CLUBS: Club[] = [
   {
     id: 'avenue',
     name: 'Avenue',
-    folder: 'Avenue',
+    image: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1200&auto=format&fit=crop',
+    image2: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop',
     area: 'Shangri-La Hotel, SZR',
     vibe: 'Superclub',
-    description_short: "Dubai's statement superclub inside the Shangri-La on Sheikh Zayed Road â€” where A-list DJs command a massive dance floor and VIP tables line the perimeter.",
+    description_short: "Dubai's statement superclub inside the Shangri-La on Sheikh Zayed Road — where A-list DJs command a massive dance floor and VIP tables line the perimeter.",
     description_long: "Avenue is one of Dubai's most celebrated superclub destinations, rising inside the iconic Shangri-La Hotel on Sheikh Zayed Road. Known for its exceptional atmosphere, world-class DJ programme, and premium bottle service, it stands as a benchmark venue in the city's elite nightlife circuit.",
     is_featured: true,
     recommend_score: 95,
-    opening_hours: 'Thu â€• Sat: 10 PM â€• 4 AM',
+    opening_hours: 'Thu – Sat: 10 PM – 4 AM',
     music: 'House · Hip-Hop · Commercial',
-    dress_code: 'Smart Elegant â€• No Sports Wear',
+    dress_code: 'Smart Elegant – No Sports Wear',
   },
   {
     id: 'babylon',
     name: 'Babylon',
-    folder: 'Babylon',
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop',
     area: 'DIFC',
     vibe: 'Lounge Club',
     description_short: 'An opulent club in the heart of DIFC, fusing bold décor with a global beats soundtrack and Miami-style energy.',
     description_long: "Babylon brings an unapologetically rich aesthetic to DIFC. Think dramatic interiors, velvet booths, and a programming slate that moves between Eastern rhythms and global house music. The venue draws a cosmopolitan crowd seeking late-night energy in DIFC's most storied district.",
     is_featured: true,
     recommend_score: 92,
-    opening_hours: 'Wed â€• Sat: 9 PM â€• 3 AM',
+    opening_hours: 'Wed – Sat: 9 PM – 3 AM',
     music: 'House · Hip-Hop · R&B',
     dress_code: 'Smart Elegant',
   },
   {
     id: 'blume-lounge',
     name: 'Blume Lounge',
-    folder: 'Blume_Lounge',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop',
     area: 'Dubai',
     vibe: 'Lounge & Club',
     description_short: 'A sophisticated lounge-club with an intimate vibe, craft cocktail programme, and a curated night of live and electronic music.',
     description_long: "Blume Lounge delivers a refined nightlife experience for those who prefer elegance over spectacle. Its interior is plush and inviting, with a dedicated bar team and a programme that runs from relaxed lounge hours through to a full late-night club set.",
     is_featured: false,
     recommend_score: 87,
-    opening_hours: 'Tue â€• Sat: 8 PM â€• 2 AM',
+    opening_hours: 'Tue – Sat: 8 PM – 2 AM',
     music: 'Deep House · Chill · Live Music',
     dress_code: 'Smart Casual',
   },
   {
     id: 'code',
     name: 'Code',
-    folder: 'Code',
+    image: 'https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?q=80&w=1200&auto=format&fit=crop',
     area: 'Soho Garden, Meydan',
     vibe: 'Underground Club',
-    description_short: 'The underground room at Soho Garden â€” dark, bass-heavy, and built for serious music lovers seeking an authentic club experience in Dubai.',
+    description_short: "The underground room at Soho Garden — dark, bass-heavy, and built for serious music lovers seeking an authentic club experience in Dubai.",
     description_long: "Code operates as Soho Garden's dedicated underground music space at Meydan. With a focus on techno, dark house, and international underground talent, it stands apart from Dubai's mainstream nightlife. A space where the music is always the headliner.",
     is_featured: true,
     recommend_score: 94,
-    opening_hours: 'Fri â€• Sat: 11 PM â€• 6 AM',
+    opening_hours: 'Fri – Sat: 11 PM – 6 AM',
     music: 'Techno · Dark House · Underground',
     dress_code: 'Dark colours preferred',
   },
   {
     id: 'epik',
     name: 'Epik',
-    folder: 'Epik',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200&auto=format&fit=crop',
     area: 'Meydan Grandstand',
     vibe: 'Arabic Nightclub',
-    description_short: "Dubai's best Arabic nightclub at Meydan Grandstand â€” DJ Bliss, DJ Kaboo, and Mr. Shef Codes bring house and Afro house energy to a dancefloor that never stops.",
-    description_long: 'EPIK Dubai fuses cutting-edge technology with unparalleled entertainment at the iconic Meydan Grandstand. Tuesdays are legendary â€” DJ Bliss, DJ Kaboo, and Mr. Shef Codes light up the dancefloor with the hottest house and Afro house beats. Expect electrifying vibes, non-stop grooves, and a night of pure energy.',
+    description_short: "Dubai's best Arabic nightclub at Meydan Grandstand — DJ Bliss, DJ Kaboo, and Mr. Shef Codes bring house and Afro house energy to a dancefloor that never stops.",
+    description_long: "EPIK Dubai fuses cutting-edge technology with unparalleled entertainment at the iconic Meydan Grandstand. Tuesdays are legendary — DJ Bliss, DJ Kaboo, and Mr. Shef Codes light up the dancefloor with the hottest house and Afro house beats. Expect electrifying vibes, non-stop grooves, and a night of pure energy.",
     is_featured: true,
     recommend_score: 96,
-    opening_hours: 'Tue & Thu â€• Sat: 10 PM â€• 4 AM',
+    opening_hours: 'Tue & Thu – Sat: 10 PM – 4 AM',
     music: 'House · Afro House · Arabic',
     dress_code: 'Smart / Elegant',
   },
   {
     id: 'iris',
     name: 'Iris',
-    folder: 'Iris',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop',
     area: 'Meydan',
     vibe: 'Outdoor Club',
     description_short: "A landmark open-air nightlife destination at Meydan with multiple terraces, international DJ bookings, and Dubai's most electric outdoor atmosphere.",
     description_long: "Iris at Meydan is one of Dubai's most enduring nightlife institutions. Set across outdoor terraces with sweeping views, it delivers a world-class DJ programme alongside premium bottle service and an atmosphere that builds from sunset through to the early hours.",
     is_featured: true,
     recommend_score: 93,
-    opening_hours: 'Wed â€• Sat: 8 PM â€• 3 AM',
+    opening_hours: 'Wed – Sat: 8 PM – 3 AM',
     music: 'Commercial House · R&B · Hip-Hop',
     dress_code: 'Smart Casual',
   },
   {
     id: 'litt',
     name: 'Litt',
-    folder: 'Litt',
+    image: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?q=80&w=1200&auto=format&fit=crop',
     area: 'KIRA, Dubai',
     vibe: 'High-Energy Club',
-    description_short: "KIRA's most electric nightlife destination â€” a high-energy club space with nightly DJ sets in a bold, immersive setting.",
+    description_short: "KIRA's most electric nightlife destination — a high-energy club space with nightly DJ sets in a bold, immersive setting.",
     description_long: "Litt brings relentless energy to its home at KIRA. The venue's striking interior and powerful sound system create an atmosphere built for maximum impact. Expect hip-hop and R&B nights alongside international guest DJ appearances.",
     is_featured: false,
     recommend_score: 88,
-    opening_hours: 'Thu â€• Sat: 10 PM â€• 4 AM',
+    opening_hours: 'Thu – Sat: 10 PM – 4 AM',
     music: 'Hip-Hop · R&B · Trap',
     dress_code: 'Smart Casual',
   },
   {
     id: 'ly-la',
     name: 'Ly-La',
-    folder: 'Ly-La',
+    image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=1200&auto=format&fit=crop',
     area: 'Alaya, DIFC',
     vibe: 'Chic Club',
     description_short: 'Tucked within Alaya in DIFC, Ly-La combines refined design, an intimate dance floor, and a seductive soundtrack for an exclusive late-night crowd.',
-    description_long: "Ly-La lives inside the Alaya venue in DIFC, carving out a space that feels entirely its own. Understated luxury meets a curated club experience â€” intimate enough to feel exclusive, electric enough to keep you until the lights come on.",
+    description_long: "Ly-La lives inside the Alaya venue in DIFC, carving out a space that feels entirely its own. Understated luxury meets a curated club experience — intimate enough to feel exclusive, electric enough to keep you until the lights come on.",
     is_featured: true,
     recommend_score: 91,
-    opening_hours: 'Wed â€• Sat: 9 PM â€• 3 AM',
+    opening_hours: 'Wed – Sat: 9 PM – 3 AM',
     music: 'Dark House · Nu-Disco · Electronic',
     dress_code: 'Smart Elegant',
   },
   {
     id: 'nyx',
     name: 'Nyx',
-    folder: 'Nyx',
+    image: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1200&auto=format&fit=crop',
     area: 'Gaia, DIFC',
     vibe: 'After-Hours Club',
-    description_short: 'The late-night extension of Gaia DIFC â€” Nyx takes over after dinner and transforms into one of the most sought-after after-hours spaces in the city.',
-    description_long: "Named for the Greek goddess of night, Nyx operates as the after-dark alter ego of Gaia in DIFC. The restaurant's guests stay as the music builds, and by midnight Nyx is fully alive â€” a sophisticated space for the city's most discerning night owls.",
+    description_short: "The late-night extension of Gaia DIFC — Nyx takes over after dinner and transforms into one of the most sought-after after-hours spaces in the city.",
+    description_long: "Named for the Greek goddess of night, Nyx operates as the after-dark alter ego of Gaia in DIFC. The restaurant's guests stay as the music builds, and by midnight Nyx is fully alive — a sophisticated space for the city's most discerning night owls.",
     is_featured: false,
     recommend_score: 92,
-    opening_hours: 'Wed â€• Sat: 11 PM â€• 4 AM',
+    opening_hours: 'Wed – Sat: 11 PM – 4 AM',
     music: 'Electronic · House · Afrobeats',
     dress_code: 'Smart Elegant',
   },
   {
     id: 'ongaku',
     name: 'Ongaku',
-    folder: 'Ongaku',
+    image: 'https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1200&auto=format&fit=crop',
     area: 'Clap, DIFC',
     vibe: 'Japanese Club',
-    description_short: 'The after-dark face of Clap DIFC â€” Ongaku ("music" in Japanese) delivers precision sound, Japanese-inspired aesthetics, and a tight programme of electronic artists.',
+    description_short: 'The after-dark face of Clap DIFC — Ongaku ("music" in Japanese) delivers precision sound, Japanese-inspired aesthetics, and a tight programme of electronic artists.',
     description_long: '"Ongaku" is Japanese for music, and this venue lives up to its name within the Clap restaurant space in DIFC. Transitioning from a renowned Japanese dining experience into a curated late-night club, Ongaku offers one of Dubai\'s most audiophile-focused club experiences.',
     is_featured: false,
     recommend_score: 90,
-    opening_hours: 'Thu â€• Sat: 11 PM â€• 4 AM',
+    opening_hours: 'Thu – Sat: 11 PM – 4 AM',
     music: 'Electronic · Japanese House · Rave',
     dress_code: 'Fashion-forward',
   },
   {
     id: 'ora',
     name: 'Ora',
-    folder: 'Ora',
+    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1200&auto=format&fit=crop',
     area: 'Habtoor City',
     vibe: 'Luxury Club',
     description_short: "An exclusive luxury club at Habtoor City, where VIP booths, premium bottle service, and a high-calibre DJ programme define Dubai's most aspirational night out.",
-    description_long: 'Ora at Habtoor City is designed for an elite tier of Dubai nightlife. Set within the magnificent W Dubai â€• Al Habtoor City, the venue blends world-class design with an expertly curated music programme â€” from commercial house to Afrohouse â€” alongside impeccable service.',
+    description_long: "Ora at Habtoor City is designed for an elite tier of Dubai nightlife. Set within the magnificent W Dubai – Al Habtoor City, the venue blends world-class design with an expertly curated music programme — from commercial house to Afrohouse — alongside impeccable service.",
     is_featured: true,
     recommend_score: 96,
-    opening_hours: 'Wed â€• Sat: 9 PM â€• 4 AM',
+    opening_hours: 'Wed – Sat: 9 PM – 4 AM',
     music: 'House · Commercial · Afrohouse',
-    dress_code: 'Cocktail Attire â€• Strict Door',
+    dress_code: 'Cocktail Attire – Strict Door',
   },
   {
     id: 'paraiso-rooftop',
     name: 'Paraiso Rooftop',
-    folder: 'Paraiso_Rooftop',
+    image: 'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?q=80&w=1200&auto=format&fit=crop',
     area: 'Amazonico, DIFC',
     vibe: 'Rooftop Club',
-    description_short: 'The rooftop extension of Amazonico in DIFC â€” a lush Latin-tropical experience with open skies, DJ sets, and an Amazonian energy above the city.',
+    description_short: "The rooftop extension of Amazonico in DIFC — a lush Latin-tropical experience with open skies, DJ sets, and an Amazonian energy above the city.",
     description_long: "Paraiso Rooftop sits atop Amazonico DIFC, bringing a rainforest energy to Dubai's skyline. Tropical décor, live percussion elements, and a soundtrack that journeys from Afrobeats to reggaeton make this one of the city's most vibrant rooftop experiences.",
     is_featured: false,
     recommend_score: 89,
-    opening_hours: 'Thu â€• Sat: 9 PM â€• 3 AM',
+    opening_hours: 'Thu – Sat: 9 PM – 3 AM',
     music: 'Reggaeton · Latin House · Afrobeats',
     dress_code: 'Tropical Chic',
   },
   {
     id: 'rasputine',
     name: 'Rasputine',
-    folder: 'Rasputine',
+    image: 'https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?q=80&w=1200&auto=format&fit=crop',
     area: 'DIFC',
     vibe: 'Imperial Club',
-    description_short: "A lavishly theatrical DIFC venue channelling Imperial Russian decadence â€” live violinists, champagne ceremonies, and an atmosphere unlike anything else in the Gulf.",
+    description_short: "A lavishly theatrical DIFC venue channelling Imperial Russian decadence — live violinists, champagne ceremonies, and an atmosphere unlike anything else in the Gulf.",
     description_long: "Rasputine reimagines Tsarist Russian opulence in the heart of DIFC. Crystal chandeliers, velvet curtains, live violinists moving between tables, and a champagne service conducted like theatre make it one of Dubai's most dramatic and memorable nightlife experiences.",
     is_featured: true,
     recommend_score: 95,
-    opening_hours: 'Wed â€• Sat: 9 PM â€• 4 AM',
+    opening_hours: 'Wed – Sat: 9 PM – 4 AM',
     music: 'Contemporary Club · Russian Pop · House',
-    dress_code: 'Formal â€• Evening Wear',
+    dress_code: 'Formal – Evening Wear',
   },
   {
     id: 'secret-room',
     name: 'Secret Room',
-    folder: 'Secret_Room',
+    image: 'https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1200&auto=format&fit=crop',
     area: 'Downtown Dubai',
     vibe: 'Speakeasy',
-    description_short: "Downtown Dubai's most discreet venue â€” entry through a hidden door, intimate capacity, and a carefully guarded guest list for those in the know.",
-    description_long: "The Secret Room is exactly what it sounds like â€” a hidden speakeasy-style club in Downtown Dubai that operates by invitation and word of mouth. No sign, no obvious entrance. Behind a concealed door lies one of Dubai's most intimate and coveted nocturnal experiences.",
+    description_short: "Downtown Dubai's most discreet venue — entry through a hidden door, intimate capacity, and a carefully guarded guest list for those in the know.",
+    description_long: "The Secret Room is exactly what it sounds like — a hidden speakeasy-style club in Downtown Dubai that operates by invitation and word of mouth. No sign, no obvious entrance. Behind a concealed door lies one of Dubai's most intimate and coveted nocturnal experiences.",
     is_featured: false,
     recommend_score: 93,
-    opening_hours: 'Fri â€• Sat: 11 PM â€• Late',
+    opening_hours: 'Fri – Sat: 11 PM – Late',
     music: 'House · Soul · Eclectic',
-    dress_code: 'Smart â€• Invitation preferred',
+    dress_code: 'Smart – Invitation preferred',
   },
   {
     id: 'shanghai-me',
     name: 'Shanghai Me',
-    folder: 'Shanghai_Me',
+    image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=1200&auto=format&fit=crop',
     area: 'DIFC',
     vibe: 'Asian Fusion Club',
-    description_short: "A DIFC icon â€” Shanghai Me's 1930s Art Deco aesthetic, acclaimed Pan-Asian kitchen, and late-night DJ programme have made it one of the most enduring venues in the city.",
+    description_short: "A DIFC icon — Shanghai Me's 1930s Art Deco aesthetic, acclaimed Pan-Asian kitchen, and late-night DJ programme have made it one of the most enduring venues in the city.",
     description_long: "Shanghai Me is one of DIFC's most storied and celebrated addresses. Inspired by 1930s Shanghai glamour, the venue moves seamlessly from one of Dubai's best Pan-Asian dining experiences into a full late-night club atmosphere, attracting a faithful, international crowd.",
     is_featured: true,
     recommend_score: 94,
-    opening_hours: 'Daily: 7 PM â€• 3 AM',
+    opening_hours: 'Daily: 7 PM – 3 AM',
     music: 'Nu-Disco · House · Oriental Fusion',
     dress_code: 'Smart Elegant',
   },
   {
     id: 'socialista',
     name: 'Socialista',
-    folder: 'Socialista',
+    image: 'https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1200&auto=format&fit=crop',
     area: 'Cipriani, Dubai',
     vibe: 'Latin Club',
-    description_short: 'The late-night chapter of Cipriani Dubai â€” Socialista channels Havana spirit with a Latin DJ programme, elaborate cocktails, and an infectious dancefloor energy.',
+    description_short: "The late-night chapter of Cipriani Dubai — Socialista channels Havana spirit with a Latin DJ programme, elaborate cocktails, and an infectious dancefloor energy.",
     description_long: "Socialista captures the vibrant spirit of revolutionary Havana within the iconic Cipriani venue in Dubai. Live Latin rhythms, expertly mixed mojitos, and a programming slate that spans salsa to reggaeton create the most joyful clubbing experience in the city.",
     is_featured: false,
     recommend_score: 88,
-    opening_hours: 'Wed â€• Sat: 9 PM â€• 3 AM',
+    opening_hours: 'Wed – Sat: 9 PM – 3 AM',
     music: 'Latin · Reggaeton · Salsa',
     dress_code: 'Smart Casual',
   },
   {
     id: 'soho-garden',
     name: 'Soho Garden',
-    folder: 'Soho_Garden',
+    image: 'https://images.unsplash.com/photo-1556035511-3168381ea4d4?q=80&w=1200&auto=format&fit=crop',
     area: 'Meydan',
     vibe: 'Festival Club',
-    description_short: "Dubai's most expansive nightlife destination at Meydan â€” multiple indoor and outdoor spaces hosting global headline acts in a festival-scale environment.",
-    description_long: "Soho Garden at Meydan is in a class entirely its own. With seven distinct spaces spread across the Meydan Racecourse grounds â€” including Code's underground room â€” it hosts everything from intimate acoustic sessions to sold-out headline acts. The closest Dubai gets to a permanent festival.",
+    description_short: "Dubai's most expansive nightlife destination at Meydan — multiple indoor and outdoor spaces hosting global headline acts in a festival-scale environment.",
+    description_long: "Soho Garden at Meydan is in a class entirely its own. With seven distinct spaces spread across the Meydan Racecourse grounds — including Code's underground room — it hosts everything from intimate acoustic sessions to sold-out headline acts. The closest Dubai gets to a permanent festival.",
     is_featured: true,
     recommend_score: 97,
-    opening_hours: 'Thu â€• Sat: 8 PM â€• 6 AM',
-    music: 'All Genres â€• Multiple Stages',
+    opening_hours: 'Thu – Sat: 8 PM – 6 AM',
+    music: 'All Genres – Multiple Stages',
     dress_code: 'Smart Casual',
   },
 ];
-
-// â”€â”€â”€ Club Detail Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function ClubModal({ club, onClose }: { club: Club; onClose: () => void }) {
   return (
@@ -283,22 +283,19 @@ function ClubModal({ club, onClose }: { club: Club; onClose: () => void }) {
           onClick={(e) => e.stopPropagation()}
           className="w-full max-w-3xl bg-[#0c0a07] border border-white/10 overflow-hidden max-h-[95vh] overflow-y-auto"
         >
-          {/* Image pair */}
           <div className="grid grid-cols-2 h-64">
             <img
-              src={`/images/nightclubs/${club.folder}/image1.jpg`}
+              src={club.image}
               alt={club.name}
               className="w-full h-full object-cover"
             />
             <img
-              src={`/images/nightclubs/${club.folder}/image2.jpg`}
+              src={club.image2 ?? club.image}
               alt={`${club.name} atmosphere`}
               className="w-full h-full object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
           </div>
 
-          {/* Content */}
           <div className="p-8">
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
@@ -321,7 +318,6 @@ function ClubModal({ club, onClose }: { club: Club; onClose: () => void }) {
               {club.description_long}
             </p>
 
-            {/* Details grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
               {[
                 { icon: Clock, label: 'Hours', value: club.opening_hours },
@@ -350,8 +346,6 @@ function ClubModal({ club, onClose }: { club: Club; onClose: () => void }) {
   );
 }
 
-// â”€â”€â”€ Club Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
 function ClubCard({ club, index, onClick }: { club: Club; index: number; onClick: () => void }) {
   return (
     <motion.button
@@ -363,11 +357,10 @@ function ClubCard({ club, index, onClick }: { club: Club; index: number; onClick
       viewport={{ once: true }}
       className="group text-left w-full"
     >
-      {/* Image */}
       <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#111] mb-4">
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500 z-10" />
         <img
-          src={`/images/nightclubs/${club.folder}/image1.jpg`}
+          src={club.image}
           alt={club.name}
           className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
         />
@@ -387,7 +380,6 @@ function ClubCard({ club, index, onClick }: { club: Club; index: number; onClick
         </div>
       </div>
 
-      {/* Info */}
       <div className="flex justify-between items-start px-1">
         <div>
           <h3 className="text-2xl md:text-3xl font-display text-white group-hover:text-luxury-gold transition-colors duration-300">
@@ -412,8 +404,6 @@ function ClubCard({ club, index, onClick }: { club: Club; index: number; onClick
   );
 }
 
-// â”€â”€â”€ Main Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
 export default function NightClubs() {
   const [activeClub, setActiveClub] = useState<Club | null>(null);
 
@@ -421,11 +411,10 @@ export default function NightClubs() {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* Hero */}
       <section className="relative h-[60vh] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/nightclubs/Nyx/image1.jpg"
+            src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1200&auto=format&fit=crop"
             alt="Dubai Night Clubs"
             className="w-full h-full object-cover opacity-40"
           />
@@ -452,7 +441,6 @@ export default function NightClubs() {
         </motion.div>
       </section>
 
-      {/* Grid */}
       <section className="pb-24 px-4 md:px-8 max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {CLUBS.map((club, index) => (
@@ -466,7 +454,6 @@ export default function NightClubs() {
         </div>
       </section>
 
-      {/* Modal */}
       {activeClub && (
         <ClubModal club={activeClub} onClose={() => setActiveClub(null)} />
       )}

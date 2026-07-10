@@ -7,7 +7,7 @@ const VENUE_DEFAULTS: Omit<Venue, 'id' | 'name' | 'category'> = {
   area: 'Dubai',
   vibe_tags: [],
   price_tier: 2,
-  hero_image: '/images/restaurants/Bagatelle/image1.jpg',
+  hero_image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop',
   gallery_images: [],
   description_short: 'Curated by Dubai A La Carte.',
   description_long: 'This venue is available through our concierge experience.',
