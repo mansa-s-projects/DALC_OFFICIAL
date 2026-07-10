@@ -18,9 +18,9 @@ const TRAVEL_CATEGORIES = [
   {
     id: 'hotels',
     title: 'Hotels',
-    description: 'World-class hotels across every destination â€” curated, rated, and bookable in seconds.',
+    description: 'World-class hotels across every destination - curated, rated, and bookable in seconds.',
     icon: <Hotel className="w-8 h-8" />,
-    image: '/images/hotels/atlantis-the-palm.jpg',
+    image: '/images/travel/hotels/atlantis-the-palm.jpg',
     link: '/travel/hotels',
     badge: 'Curated',
   },
@@ -47,11 +47,11 @@ const TRAVEL_CATEGORIES = [
 export default function TravelHub() {
   return (
     <div className="min-h-screen bg-luxury-black">
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* Hero */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/armani-hotel-dubai.jpg"
+            src="/images/travel/hotels/armani-hotel-dubai.jpg"
             alt="Dubai Travel"
             className="w-full h-full object-cover opacity-30"
           />
@@ -66,19 +66,19 @@ export default function TravelHub() {
           className="relative z-10 max-w-4xl mx-auto"
         >
           <p className="text-luxury-gold text-xs font-bold uppercase tracking-[0.5em] mb-6">
-            Dubai À La Carte
+            Dubai A La Carte
           </p>
           <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight">
             Travel<br />
             <span className="text-luxury-gold">Your Way</span>
           </h1>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Flights, hotels, private jets and car rentals â€” plan every step of your journey in one place.
+            Flights, hotels, private jets and car rentals - plan every step of your journey in one place.
           </p>
         </motion.div>
       </section>
 
-      {/* â”€â”€ Category Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* Category Grid */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24 -mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {TRAVEL_CATEGORIES.map((cat, idx) => (
@@ -129,7 +129,7 @@ export default function TravelHub() {
         </div>
       </section>
 
-      {/* â”€â”€ Concierge CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* Concierge CTA */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
