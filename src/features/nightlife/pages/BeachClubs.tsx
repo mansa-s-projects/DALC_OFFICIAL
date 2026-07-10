@@ -10,6 +10,7 @@ interface BeachClub {
   id: string;
   name: string;
   folder: string;
+  image: string;
   location: string;
   area: string;
   vibe: string;
@@ -28,7 +29,7 @@ interface BeachClub {
 
 const BEACH_CLUBS: BeachClub[] = [
   {
-    id: '1', name: 'Nikki Beach', folder: 'Nikki_Beach', location: 'Pearl Jumeirah', area: 'Jumeirah',
+    id: '1', name: 'Nikki Beach', folder: 'Nikki_Beach', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop', location: 'Pearl Jumeirah', area: 'Jumeirah',
     vibe: 'Iconic', price_tier: 4,
     tagline: 'The world\'s most famous beach club comes to Dubai',
     description: 'The globally celebrated Nikki Beach brand brings its legendary formula of sun, sand, and sophisticated socialising to Pearl Jumeirah. With a white-on-white aesthetic, world-class DJ programming, and a menu that spans from morning yoga brunches to sunset cocktail sessions, Nikki Beach Dubai is pure escapism.',
@@ -37,7 +38,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Nikki Beach Dubai Pearl Jumeirah', featured: true, trending: true,
   },
   {
-    id: '2', name: 'Drift Beach', folder: 'Drift_Beach', location: 'One&Only Royal Mirage', area: 'Dubai Marina',
+    id: '2', name: 'Drift Beach', folder: 'Drift_Beach', image: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?q=80&w=1200&auto=format&fit=crop', location: 'One&Only Royal Mirage', area: 'Dubai Marina',
     vibe: 'Chilled Luxury', price_tier: 4,
     tagline: 'One&Only\'s barefoot luxury on the Arabian Gulf',
     description: 'Drift Beach at the One&Only Royal Mirage is where barefoot luxury meets the golden sands of Dubai Marina. Private cabanas, butler-served cocktails, and a menu crafted with resort-level care — this is the art of doing nothing in extreme style.',
@@ -46,7 +47,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Drift Beach One Only Royal Mirage Dubai', featured: true,
   },
   {
-    id: '3', name: 'Gigi', folder: 'Gigi', location: 'SLS Dubai Hotel', area: 'Business Bay',
+    id: '3', name: 'Gigi', folder: 'Gigi', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop', location: 'SLS Dubai Hotel', area: 'Business Bay',
     vibe: 'Italian Riviera', price_tier: 3,
     tagline: 'La dolce vita meets Dubai\'s skyline',
     description: 'GIGI brings the dolce vita of the Italian Riviera to the heart of Business Bay. Perched above SLS Dubai with extraordinary Burj Khalifa views, Gigi\'s signature blue-and-white Riviera aesthetic, fresh Italian food, and all-day DJ sessions make it one of Dubai\'s most Instagram-worthy escapes.',
@@ -55,7 +56,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Gigi Rigatoni Dubai SLS Hotel', trending: true,
   },
   {
-    id: '4', name: 'Gitano', folder: 'Gitano', location: 'Four Seasons Resort', area: 'Jumeirah',
+    id: '4', name: 'Gitano', folder: 'Gitano', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop', location: 'Four Seasons Resort', area: 'Jumeirah',
     vibe: 'Bohemian Garden', price_tier: 4,
     tagline: 'Tulum\'s jungle magic reimagined in Dubai',
     description: 'Gitano transports the mystical bohemian energy of Tulum\'s jungle to the Four Seasons Resort Jumeirah. Lush tropical foliage, hand-carved wooden bars, mezcal rituals, and a menu celebrating Mexican soul food — all under the Dubai sun.',
@@ -64,7 +65,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Gitano Dubai Four Seasons Jumeirah', featured: true,
   },
   {
-    id: '5', name: 'Terra Solis', folder: 'Terra_Solis', location: 'Jebel Ali Desert', area: 'Jebel Ali',
+    id: '5', name: 'Terra Solis', folder: 'Terra_Solis', image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop', location: 'Jebel Ali Desert', area: 'Jebel Ali',
     vibe: 'Desert Festival', price_tier: 3,
     tagline: 'Where the desert becomes a beach club',
     description: 'Terra Solis is unlike anything else in Dubai — a Burning Man-inspired desert destination in Jebel Ali where art installations, pool parties, and electronic music collide under an open desert sky. It\'s not just a beach club; it\'s an experience for the soul.',
@@ -73,7 +74,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Terra Solis Dubai Jebel Ali', trending: true,
   },
   {
-    id: '6', name: 'Verde Beach', folder: 'Verde_Beach', location: 'Eden The Palm', area: 'Palm Jumeirah',
+    id: '6', name: 'Verde Beach', folder: 'Verde_Beach', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop', location: 'Eden The Palm', area: 'Palm Jumeirah',
     vibe: 'Organic Oasis', price_tier: 3,
     tagline: 'Sustainable luxury on Palm Jumeirah\'s shore',
     description: 'Verde Beach brings its signature organic philosophy to the Palm — a sun-drenched escape where sustainability meets luxury. Fresh cold-pressed juices, whole-food beach bites, and a zero-waste ethos delivered in a setting of breathtaking natural beauty.',
@@ -82,7 +83,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Verde Beach Palm Jumeirah Dubai',
   },
   {
-    id: '7', name: 'Baoli', folder: 'Baoli', location: 'Caesars Palace Bluewaters', area: 'Bluewaters Island',
+    id: '7', name: 'Baoli', folder: 'Baoli', image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop', location: 'Caesars Palace Bluewaters', area: 'Bluewaters Island',
     vibe: 'Mediterranean Luxe', price_tier: 4,
     tagline: 'Cannes comes to Bluewaters Island',
     description: 'Baoli arrives in Dubai from its legendary Cannes location, bringing the Côte d\'Azur glamour that made it famous worldwide. At Caesars Palace Bluewaters, that legendary Mediterranean formula — sunbeds, rosé, DJ sets, and impeccable service — delivers the ultimate daylight fantasy.',
@@ -91,7 +92,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Baoli Dubai Caesars Palace Bluewaters', featured: true, trending: true,
   },
   {
-    id: '8', name: 'Kyma', folder: 'Kyma', location: 'W Dubai - The Palm', area: 'Palm Jumeirah',
+    id: '8', name: 'Kyma', folder: 'Kyma', image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=1200&auto=format&fit=crop', location: 'W Dubai - The Palm', area: 'Palm Jumeirah',
     vibe: 'Greek Island', price_tier: 3,
     tagline: 'Mykonos energy on the Palm',
     description: 'Kyma channels the white-washed cliffs and azure waters of Mykonos at W Dubai - The Palm. Expect a menu packed with fresh Greek mezze, chargrilled seafood, and ouzo-based cocktails — all consumed to the soundtrack of Cycladic-inspired DJ sets.',
@@ -100,7 +101,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Kyma Beach Club W Dubai The Palm',
   },
   {
-    id: '9', name: 'Nobu by the Beach', folder: 'Nobu_by_the_beach', location: 'Atlantis The Palm', area: 'Palm Jumeirah',
+    id: '9', name: 'Nobu by the Beach', folder: 'Nobu_by_the_beach', image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1200&auto=format&fit=crop', location: 'Atlantis The Palm', area: 'Palm Jumeirah',
     vibe: 'Culinary Beach', price_tier: 4,
     tagline: 'Nobu\'s legendary cuisine, toes in the sand',
     description: 'Nobu by the Beach brings Chef Matsuhisa\'s world-famous Japanese-Peruvian cuisine from glittering dining room to the beachfront. Imagine sipping on yuzu cocktails and eating black cod miso with the Arabian Gulf at your feet — an entirely different way to experience a Michelin-pedigree kitchen.',
@@ -109,7 +110,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Nobu by the Beach Atlantis Dubai', trending: true,
   },
   {
-    id: '10', name: 'Maison de la Plage', folder: 'Maison_De_La_Plage', location: 'One&Only One Za\'abeel', area: 'Za\'abeel',
+    id: '10', name: 'Maison de la Plage', folder: 'Maison_De_La_Plage', image: 'https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?q=80&w=1200&auto=format&fit=crop', location: 'One&Only One Za\'abeel', area: 'Za\'abeel',
     vibe: 'French Couture', price_tier: 4,
     tagline: 'A French maison at Dubai\'s most futuristic address',
     description: 'Maison de la Plage redefines what a beach club can be at One&Only One Za\'abeel — Dubai\'s most architecturally daring hotel. French Riviera cuisine, Hermès-level attention to detail, and views across the city skyline make this the epitome of couture beach culture.',
@@ -118,7 +119,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Maison de la Plage One Za\'abeel Dubai', featured: true,
   },
   {
-    id: '11', name: 'Lucky Fish', folder: 'Lucky_Fish', location: 'Bluewaters Island', area: 'Bluewaters Island',
+    id: '11', name: 'Lucky Fish', folder: 'Lucky_Fish', image: 'https://images.unsplash.com/photo-1560184611-ff3e53f00e8f?q=80&w=1200&auto=format&fit=crop', location: 'Bluewaters Island', area: 'Bluewaters Island',
     vibe: 'Maximalist', price_tier: 3,
     tagline: 'Dubai\'s most colourful beach party',
     description: 'Lucky Fish is Bluewaters Island\'s most exuberant party-beach destination. Think maximalist décor bursting with colour, a menu of fresh seafood served with abandon, and a party atmosphere that cranks up as the sun goes down over the Dubai Eye.',
@@ -127,7 +128,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Lucky Fish Beach Club Bluewaters Dubai', trending: true,
   },
   {
-    id: '12', name: 'BCH', folder: 'BCH', location: 'Address Beach Resort', area: 'JBR',
+    id: '12', name: 'BCH', folder: 'BCH', image: 'https://images.unsplash.com/photo-1551882547-ff40c4a49f5d?q=80&w=1200&auto=format&fit=crop', location: 'Address Beach Resort', area: 'JBR',
     vibe: 'Sky Pool', price_tier: 3,
     tagline: 'Dubai\'s highest infinity pool experience',
     description: 'BCH at Address Beach Resort JBR features the highest infinity pool in the world. Perched 77 storeys above the Arabian Gulf, the pool terrace, beach club, and restaurant offer unmatched panoramas. It\'s not just a beach club — it\'s a feat of engineering turned luxury escape.',
@@ -136,7 +137,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'BCH Beach Club Address Beach Resort JBR Dubai',
   },
   {
-    id: '13', name: 'Playa', folder: 'Playa', location: 'The Palm Tower', area: 'Palm Jumeirah',
+    id: '13', name: 'Playa', folder: 'Playa', image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200&auto=format&fit=crop', location: 'The Palm Tower', area: 'Palm Jumeirah',
     vibe: 'Tropical Ibiza', price_tier: 3,
     tagline: 'Ibiza tropicana at the top of Palm Tower',
     description: 'Playa at The Palm Tower brings the hedonistic energy of Ibiza to the very top of the Palm. Rooftop lagoon pool, international DJs, and a Latin-infused menu combine for an experience that has rapidly become one of the Palm\'s most coveted day-party destinations.',
@@ -145,7 +146,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Playa Beach Club Palm Tower Dubai', trending: true,
   },
   {
-    id: '14', name: 'Ina', folder: 'Ina', location: 'FIVE Palm Jumeirah', area: 'Palm Jumeirah',
+    id: '14', name: 'Ina', folder: 'Ina', image: 'https://images.unsplash.com/photo-1473496169904-658ba7574b0d?q=80&w=1200&auto=format&fit=crop', location: 'FIVE Palm Jumeirah', area: 'Palm Jumeirah',
     vibe: 'Boho Tropical', price_tier: 3,
     tagline: 'Barefoot bohemian luxury on the Palm',
     description: 'Ina is FIVE Palm\'s most intimate beach offering — a barefoot boho escape serving fresh Asian-inspired bites and natural cocktails in a setting of driftwood textures and tropical greenery. The name says it all: sophisticated, natural, and utterly free.',
@@ -154,7 +155,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Ina Beach Club FIVE Palm Dubai',
   },
   {
-    id: '15', name: 'CasaBlanca Beach', folder: 'CasaBlanca_Beach', location: 'Jumeirah Zabeel Saray', area: 'Palm Jumeirah',
+    id: '15', name: 'CasaBlanca Beach', folder: 'CasaBlanca_Beach', image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop', location: 'Jumeirah Zabeel Saray', area: 'Palm Jumeirah',
     vibe: 'Moroccan Splendour', price_tier: 3,
     tagline: 'Moroccan exoticism on Palm Jumeirah\'s crescent',
     description: 'CasaBlanca Beach evokes the romantic mystery of Casablanca\'s golden-age Moorish architecture. Ornate lanterns, Moroccan-tiled mosaics, hand-hammered copper, and a menu celebrating North African flavours make this Palm Jumeirah\'s most exotic escape.',
@@ -163,7 +164,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'CasaBlanca Beach Club Jumeirah Zabeel Saray Dubai',
   },
   {
-    id: '16', name: 'Casa Amor', folder: 'Casa_Amor', location: 'Vida Beach Resort', area: 'Umm Suqeim',
+    id: '16', name: 'Casa Amor', folder: 'Casa_Amor', image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop', location: 'Vida Beach Resort', area: 'Umm Suqeim',
     vibe: 'Spanish Flair', price_tier: 2,
     tagline: 'Spanish passion meets Arabian sunset',
     description: 'Casa Amor at Vida Beach Resort Umm Suqeim is a warm Spanish beach bar with flamenco energy, tapas served generously, and a rosé list to rival the Costa Brava. The Burj Al Arab watches over every sunset as Spanish guitars set the late-afternoon mood.',
@@ -172,7 +173,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Casa Amor Beach Club Vida Beach Resort Dubai',
   },
   {
-    id: '17', name: 'Sakhalin', folder: 'Sakhalin', location: 'Atlantis The Royal', area: 'Palm Jumeirah',
+    id: '17', name: 'Sakhalin', folder: 'Sakhalin', image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200&auto=format&fit=crop', location: 'Atlantis The Royal', area: 'Palm Jumeirah',
     vibe: 'Avant-Garde', price_tier: 4,
     tagline: 'The Royal\'s most enigmatic poolside address',
     description: 'Sakhalin at Atlantis The Royal is the mysterious, art-forward pool and beach experience of Dubai\'s most iconic hotel. Sculptural sun loungers, enigmatic artwork, and a Japanese-Slavic inspired menu converge in one of the Palm\'s most talked-about venues.',
@@ -181,7 +182,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Sakhalin Beach Club Atlantis The Royal Dubai', trending: true,
   },
   {
-    id: '18', name: 'Surf', folder: 'Surf', location: 'Kite Beach', area: 'Umm Suqeim',
+    id: '18', name: 'Surf', folder: 'Surf', image: 'https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?q=80&w=1200&auto=format&fit=crop', location: 'Kite Beach', area: 'Umm Suqeim',
     vibe: 'Active Beach', price_tier: 1,
     tagline: 'Dubai\'s coolest kitesurfing hangout',
     description: 'Surf at Kite Beach is where Dubai\'s active, sun-loving crowd converges. Steps from the kite surfing action, this casual beach café serves up hearty açaï bowls, cold-brew coffee, loaded sandwiches, and cold beers — all with salty hair, bare feet, and zero pretension.',
@@ -190,7 +191,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Surf Beach Cafe Kite Beach Dubai',
   },
   {
-    id: '19', name: 'African Queen', folder: 'African_Queen', location: 'La Mer', area: 'La Mer',
+    id: '19', name: 'African Queen', folder: 'African_Queen', image: 'https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1200&auto=format&fit=crop', location: 'La Mer', area: 'La Mer',
     vibe: 'African Luxe', price_tier: 2,
     tagline: 'Safari-chic meets the Arabian Sea',
     description: 'African Queen brings the romance of an East African safari to La Mer\'s cosmopolitan beachfront. Think raw timber, brass lanterns, zebra-print accessories, and a menu celebrating the bold flavours of the African continent in a setting that\'s equal parts wild and refined.',
@@ -199,7 +200,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'African Queen Restaurant La Mer Dubai',
   },
   {
-    id: '20', name: 'Gallery 7:40', folder: 'Gallery_7_40', location: 'JA Ocean View Hotel', area: 'JBR',
+    id: '20', name: 'Gallery 7:40', folder: 'Gallery_7_40', image: 'https://images.unsplash.com/photo-1464347744102-11db6282f854?q=80&w=1200&auto=format&fit=crop', location: 'JA Ocean View Hotel', area: 'JBR',
     vibe: 'Sunset Art', price_tier: 2,
     tagline: 'Art gallery meets sundowner paradise',
     description: 'Gallery 7:40 is named for Dubai\'s golden hour — the magical 7:40pm sunset that paints the Arabian Gulf in fire. Part beach bar, part art gallery, this JBR favourite curates rotating exhibitions alongside a thoughtful drinks list and light Mediterranean bites.',
@@ -208,7 +209,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Gallery 7:40 JBR Dubai', has_secondary_image: false,
   },
   {
-    id: '21', name: 'Ninive Beach', folder: 'Ninive_Beach', location: 'Anantara World Islands', area: 'World Islands',
+    id: '21', name: 'Ninive Beach', folder: 'Ninive_Beach', image: 'https://images.unsplash.com/photo-1439130490301-25e322d88054?q=80&w=1200&auto=format&fit=crop', location: 'Anantara World Islands', area: 'World Islands',
     vibe: 'Secluded Oasis', price_tier: 4,
     tagline: 'The world\'s most exclusive beach, literally',
     description: 'Ninive Beach on the World Islands is about as secluded as Dubai gets. Accessible only by speedboat, this exclusive beach club delivers Mediterranean cuisine, free-form pools, and absolute privacy on the shores of a man-made island. The ultimate flex.',
@@ -217,7 +218,7 @@ const BEACH_CLUBS: BeachClub[] = [
     map_query: 'Ninive Beach Club World Islands Dubai', featured: true,
   },
   {
-    id: '22', name: 'Maison Revka', folder: 'Maison_Revka', location: 'Palm West Beach', area: 'Palm Jumeirah',
+    id: '22', name: 'Maison Revka', folder: 'Maison_Revka', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop', location: 'Palm West Beach', area: 'Palm Jumeirah',
     vibe: 'French Pastoral', price_tier: 3,
     tagline: 'A Provençal house on Palm West Beach',
     description: 'Maison Revka brings the lavender-and-linen spirit of Provence to Palm West Beach. Imagine wicker sun loungers, raw linen parasols, chilled pétanque in the afternoon, and a menu of Provençal rosé and Mediterranean sharing plates as the sun melts into the Gulf.',
@@ -272,7 +273,7 @@ export default function BeachClubs() {
       <section className="relative h-[90vh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/beach_clubs/Nikki_Beach/image1.jpg"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
             alt="Dubai Beach Clubs"
             className={`w-full h-full object-cover transition-opacity duration-1000 ${heroLoaded ? 'opacity-50' : 'opacity-0'}`}
             onLoad={() => setHeroLoaded(true)}
@@ -341,7 +342,7 @@ export default function BeachClubs() {
               onClick={() => openModal(c, 'blog')}
             >
               <img
-                src={`/images/beach_clubs/${c.folder}/image1.jpg`}
+                src={c.image}
                 alt={c.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -466,10 +467,9 @@ function BeachClubCard({ club: c, index, priceTierLabel, onBlog, onMenu }: {
     >
       <div className="relative overflow-hidden rounded-2xl mb-5" style={{ aspectRatio: '4/3' }}>
         <img
-          src={`/images/beach_clubs/${c.folder}/image1.jpg`}
+          src={c.image}
           alt={c.name}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080706]/80 via-transparent to-transparent" />
 
@@ -478,17 +478,6 @@ function BeachClubCard({ club: c, index, priceTierLabel, onBlog, onMenu }: {
             <span className="bg-[#C9A84C] text-[#080706] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
               Trending
             </span>
-          </div>
-        )}
-
-        {hasSecondaryImage && !img2Error && (
-          <div className="absolute bottom-4 left-4 w-20 h-16 rounded-xl overflow-hidden border-2 border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl">
-            <img
-              src={`/images/beach_clubs/${c.folder}/image2.jpg`}
-              alt={`${c.name} atmosphere`}
-              onError={() => setImg2Error(true)}
-              className="w-full h-full object-cover"
-            />
           </div>
         )}
 
@@ -581,23 +570,12 @@ function BlogModal({ club: c, onClose, priceTierLabel, onMenuOpen }: {
       >
         <div className="relative h-72 overflow-hidden rounded-t-3xl">
           <img
-            src={`/images/beach_clubs/${c.folder}/image1.jpg`}
+            src={c.image}
             alt={c.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f0d0b] via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0f0d0b]/30 to-transparent" />
-
-          {hasSecondaryImage && (
-            <div className="absolute top-4 right-16 w-24 h-20 rounded-xl overflow-hidden border border-white/20 shadow-xl">
-              <img
-                src={`/images/beach_clubs/${c.folder}/image2.jpg`}
-                alt={`${c.name} atmosphere`}
-                className="w-full h-full object-cover"
-                onError={e => { (e.target as HTMLElement).parentElement!.style.display = 'none'; }}
-              />
-            </div>
-          )}
 
           <button
             onClick={onClose}

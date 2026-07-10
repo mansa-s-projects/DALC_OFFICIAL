@@ -18,8 +18,8 @@ export default function DiningEntertainment() {
       <section className="relative h-[60vh] flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
          {/* Background video or image suggestion */}
          <div className="absolute inset-0 z-0">
-            <img 
-               src="/images/dining_entertainment/Gatsby/image1.jpg" 
+            <img
+               src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?q=80&w=1200&auto=format&fit=crop"
                alt="Dining Entertainment"
                className="w-full h-full object-cover opacity-30"
             />

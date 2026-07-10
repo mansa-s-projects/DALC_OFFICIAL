@@ -25,7 +25,7 @@ const CATEGORY_CONFIG: Record<
 > = {
   "beach-clubs": {
     label: "Beach Clubs",
-    hero: "/images/beach_clubs/Verde_Beach/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
     tagline: "Sun, Sand & Sanctuary",
     description:
       "From bohemian shores of Palm West Beach to the high-octane energy of J1.",
@@ -34,7 +34,7 @@ const CATEGORY_CONFIG: Record<
   },
   restaurants: {
     label: "Restaurants",
-    hero: "/images/restaurants/Bagatelle/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     tagline: "Culinary Excellence",
     description:
       "From Michelin-starred chefs to rooftop dining with skyline views.",
@@ -43,7 +43,7 @@ const CATEGORY_CONFIG: Record<
   },
   nightlife: {
     label: "Nightlife",
-    hero: "/images/nightclubs/Soho_Garden/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1556035511-3168381ea4d4?q=80&w=1200&auto=format&fit=crop",
     tagline: "After Dark Excellence",
     description: "From DIFC rooftop bars to beachfront superclubs in JBR.",
     seoText:
@@ -51,7 +51,7 @@ const CATEGORY_CONFIG: Record<
   },
   "night-clubs": {
     label: "Night Clubs",
-    hero: "/images/nightclubs/Iris/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop",
     tagline: "The After Dark Elite",
     description: "VIP table service, international DJs, and late-night access.",
     seoText:
@@ -59,7 +59,7 @@ const CATEGORY_CONFIG: Record<
   },
   "dining-entertainment": {
     label: "Dining & Entertainment",
-    hero: "/images/dining_entertainment/Black_Tap/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?q=80&w=1200&auto=format&fit=crop",
     tagline: "Beyond the Table",
     description: "Where gastronomy meets spectacle.",
     seoText:
@@ -67,7 +67,7 @@ const CATEGORY_CONFIG: Record<
   },
   dining: {
     label: "Fine Dining",
-    hero: "/images/restaurants/Bagatelle/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     tagline: "Culinary Mastery",
     description:
       "Chef-driven concepts and tasting menus in a city built for superlatives.",
@@ -76,7 +76,7 @@ const CATEGORY_CONFIG: Record<
   },
   experiences: {
     label: "Experiences",
-    hero: "/images/beach_clubs/Verde_Beach/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
     tagline: "Beyond the Ordinary",
     description:
       "Curated adventures designed for those who demand the exceptional.",
@@ -85,7 +85,7 @@ const CATEGORY_CONFIG: Record<
   },
   wellness: {
     label: "Wellness",
-    hero: "/images/beach_clubs/Verde_Beach/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop",
     tagline: "Restore & Elevate",
     description: "World-class spas, holistic retreats, and performance wellness.",
     seoText:
@@ -104,7 +104,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
     label: category
       .replace(/-/g, " ")
       .replace(/\b\w/g, (c) => c.toUpperCase()),
-    hero: "/images/restaurants/Bagatelle/image1.jpg",
+    hero: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     tagline: "Curated Selection",
     description: "The finest venues in Dubai, curated for you.",
     seoText: `Discover the best ${category.replace(/-/g, " ")} venues in Dubai, personally curated by our concierge team.`,

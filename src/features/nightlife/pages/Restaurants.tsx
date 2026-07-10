@@ -20,6 +20,7 @@ interface Restaurant {
   id: string;
   name: string;
   folder: string;
+  image: string;
   location: string;
   area: string;
   cuisine: string;
@@ -41,6 +42,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "1",
     name: "Nobu",
     folder: "Nobu",
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1200&auto=format&fit=crop",
     location: "Atlantis The Palm",
     area: "Palm Jumeirah",
     cuisine: "Japanese",
@@ -66,6 +68,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "2",
     name: "Bagatelle",
     folder: "Bagatelle",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     location: "Fairmont SZR",
     area: "Sheikh Zayed Road",
     cuisine: "French Mediterranean",
@@ -90,6 +93,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "3",
     name: "Hakkasan",
     folder: "Hakkasan",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
     location: "Atlantis The Palm",
     area: "Palm Jumeirah",
     cuisine: "Chinese",
@@ -113,6 +117,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "4",
     name: "Coya",
     folder: "Coya",
+    image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1200&auto=format&fit=crop",
     location: "Four Seasons DIFC",
     area: "DIFC",
     cuisine: "Peruvian",
@@ -136,6 +141,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "5",
     name: "Amazonico",
     folder: "Amazonico",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC",
     area: "DIFC",
     cuisine: "Latin American",
@@ -160,6 +166,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "6",
     name: "Salvaje",
     folder: "Salvaje",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC",
     area: "DIFC",
     cuisine: "Spanish",
@@ -183,6 +190,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "7",
     name: "Sexy Fish",
     folder: "Sexy_Fish",
+    image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC",
     area: "DIFC",
     cuisine: "Asian",
@@ -207,6 +215,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "8",
     name: "Nammos",
     folder: "Nammos",
+    image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=1200&auto=format&fit=crop",
     location: "Four Seasons Resort",
     area: "Jumeirah",
     cuisine: "Mediterranean",
@@ -230,6 +239,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "9",
     name: "Ce La Vi",
     folder: "Ce_La_Vi",
+    image: "https://images.unsplash.com/photo-1519449556851-5720b33024e7?q=80&w=1200&auto=format&fit=crop",
     location: "Address Sky View",
     area: "Downtown",
     cuisine: "Asian Contemporary",
@@ -254,6 +264,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "10",
     name: "Shanghai Me",
     folder: "Shanghai_Me",
+    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC",
     area: "DIFC",
     cuisine: "Chinese",
@@ -277,6 +288,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "11",
     name: "Nazcaa",
     folder: "Nazcaa",
+    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1200&auto=format&fit=crop",
     location: "FIVE Palm Jumeirah",
     area: "Palm Jumeirah",
     cuisine: "Peruvian-Japanese",
@@ -301,6 +313,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "12",
     name: "Krasota",
     folder: "Krasota",
+    image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC",
     area: "DIFC",
     cuisine: "Russian-European",
@@ -325,6 +338,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "13",
     name: "1920",
     folder: "1920",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
     location: "Burj Al Arab",
     area: "Jumeirah",
     cuisine: "Lebanese",
@@ -348,6 +362,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "14",
     name: "Tattu",
     folder: "Tattu",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
     location: "Address Montgomerie",
     area: "Emirates Hills",
     cuisine: "Chinese",
@@ -372,6 +387,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "15",
     name: "Clap",
     folder: "Clap",
+    image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1200&auto=format&fit=crop",
     location: "ME Dubai Hotel",
     area: "Downtown",
     cuisine: "Japanese",
@@ -395,6 +411,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "16",
     name: "Sushi Samba",
     folder: "Sushi_Samba",
+    image: "https://images.unsplash.com/photo-1617196034183-421b4040ed20?q=80&w=1200&auto=format&fit=crop",
     location: "DIFC Gate Village",
     area: "DIFC",
     cuisine: "Japanese-Brazilian",
@@ -418,6 +435,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "17",
     name: "La Mar",
     folder: "La_Mar",
+    image: "https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=1200&auto=format&fit=crop",
     location: "Four Seasons DIFC",
     area: "DIFC",
     cuisine: "Peruvian",
@@ -441,6 +459,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "18",
     name: "Opa",
     folder: "Opa",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
     location: "Habtoor Grand",
     area: "Dubai Marina",
     cuisine: "Greek",
@@ -464,6 +483,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "19",
     name: "Amelia",
     folder: "Amelia",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     location: "W Dubai - Mina Seyahi",
     area: "JBR",
     cuisine: "European",
@@ -487,6 +507,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "20",
     name: "Ling Ling",
     folder: "Ling_Ling",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop",
     location: "Atlantis The Palm",
     area: "Palm Jumeirah",
     cuisine: "Pan-Asian",
@@ -511,6 +532,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "21",
     name: "Verde",
     folder: "Verde",
+    image: "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1200&auto=format&fit=crop",
     location: "Eden The Palm",
     area: "Palm Jumeirah",
     cuisine: "Italian",
@@ -534,6 +556,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "22",
     name: "Tang",
     folder: "Tang",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
     location: "Burj Al Arab",
     area: "Jumeirah",
     cuisine: "Cantonese",
@@ -557,6 +580,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "23",
     name: "Urla",
     folder: "Urla",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop",
     location: "InterContintental DIFC",
     area: "DIFC",
     cuisine: "Turkish",
@@ -580,6 +604,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "24",
     name: "Woohoo",
     folder: "Woohoo",
+    image: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1200&auto=format&fit=crop",
     location: "City Walk",
     area: "City Walk",
     cuisine: "Pan-Asian",
@@ -603,6 +628,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "25",
     name: "Cou Cou",
     folder: "CouCou",
+    image: "https://images.unsplash.com/photo-1551882547-ff40c4a49f5d?q=80&w=1200&auto=format&fit=crop",
     location: "Jumeirah Al Naseem",
     area: "Jumeirah",
     cuisine: "Mediterranean-Italian",
@@ -626,6 +652,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "26",
     name: "Gal",
     folder: "Gal",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     location: "Palazzo Versace",
     area: "Culture Village",
     cuisine: "Mediterranean",
@@ -650,6 +677,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "27",
     name: "Il Gattopardo",
     folder: "Il_Gattopardo",
+    image: "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1200&auto=format&fit=crop",
     location: "Four Seasons DIFC",
     area: "DIFC",
     cuisine: "Italian",
@@ -673,6 +701,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "28",
     name: "Mambaella",
     folder: "Mambaella",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     location: "JW Marriott Marquis",
     area: "Business Bay",
     cuisine: "Spanish",
@@ -697,6 +726,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "29",
     name: "Nahate",
     folder: "Nahate",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
     location: "Al Habtoor City",
     area: "Al Habtoor City",
     cuisine: "Contemporary Arabic",
@@ -720,6 +750,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "30",
     name: "Bar de Prés",
     folder: "Bar_de_Pres",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     location: "St. Regis The Palm",
     area: "Palm Jumeirah",
     cuisine: "French Bistro",
@@ -743,6 +774,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "31",
     name: "Ram & Roll",
     folder: "Ram___Roll",
+    image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1200&auto=format&fit=crop",
     location: "Dubai Hills",
     area: "Dubai Hills",
     cuisine: "Indian",
@@ -766,6 +798,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "32",
     name: "Jumeirah",
     folder: "Jumeirah",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
     location: "Jumeirah Beach Hotel",
     area: "Jumeirah",
     cuisine: "International",
@@ -790,6 +823,7 @@ const RESTAURANTS: Restaurant[] = [
     id: "34",
     name: "Villa Coconut",
     folder: "Villa_Coconut",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
     location: "Jumeirah",
     area: "Jumeirah",
     cuisine: "Tropical Fusion",
@@ -893,7 +927,7 @@ export default function Restaurants() {
       <section className="relative h-[90vh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/restaurants/Nobu/image1.jpg"
+            src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1200&auto=format&fit=crop"
             alt="Dubai Fine Dining"
             className={`w-full h-full object-cover transition-opacity duration-1000 ${heroLoaded ? "opacity-50" : "opacity-0"}`}
             onLoad={() => setHeroLoaded(true)}
@@ -971,7 +1005,7 @@ export default function Restaurants() {
               onClick={() => openModal(r, "blog")}
             >
               <img
-                src={`/images/restaurants/${r.folder}/image1.jpg`}
+                src={r.image}
                 alt={r.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -1104,8 +1138,6 @@ function RestaurantCard({
   onBlog: () => void;
   onMenu: () => void;
 }) {
-  const [imgError, setImgError] = useState(false);
-  const [img2Error, setImg2Error] = useState(false);
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.map_query)}`;
 
   return (
@@ -1125,18 +1157,11 @@ function RestaurantCard({
         className="relative overflow-hidden rounded-2xl mb-5"
         style={{ aspectRatio: "4/3" }}
       >
-        {!imgError ? (
-          <img
-            src={`/images/restaurants/${r.folder}/image1.jpg`}
-            alt={r.name}
-            onError={() => setImgError(true)}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-[#1a1610] flex items-center justify-center">
-            <UtensilsCrossed className="w-12 h-12 text-[#C9A84C]/20" />
-          </div>
-        )}
+        <img
+          src={r.image}
+          alt={r.name}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#080706]/80 via-transparent to-transparent" />
 
@@ -1145,18 +1170,6 @@ function RestaurantCard({
             <span className="bg-[#C9A84C] text-[#080706] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
               Trending
             </span>
-          </div>
-        )}
-
-        {/* Second image peek — bottom corner */}
-        {!img2Error && (
-          <div className="absolute bottom-4 left-4 w-20 h-16 rounded-xl overflow-hidden border-2 border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl">
-            <img
-              src={`/images/restaurants/${r.folder}/image2.jpg`}
-              alt={`${r.name} interior`}
-              onError={() => setImg2Error(true)}
-              className="w-full h-full object-cover"
-            />
           </div>
         )}
 
@@ -1266,24 +1279,12 @@ function BlogModal({
         {/* Hero image */}
         <div className="relative h-72 overflow-hidden rounded-t-3xl md:rounded-t-3xl">
           <img
-            src={`/images/restaurants/${r.folder}/image1.jpg`}
+            src={r.image}
             alt={r.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f0d0b] via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0f0d0b]/30 to-transparent" />
-
-          {/* Second image */}
-          <div className="absolute top-4 right-16 w-24 h-20 rounded-xl overflow-hidden border border-white/20 shadow-xl">
-            <img
-              src={`/images/restaurants/${r.folder}/image2.jpg`}
-              alt={`${r.name} atmosphere`}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLElement).parentElement!.style.display = "none";
-              }}
-            />
-          </div>
 
           <button
             onClick={onClose}
