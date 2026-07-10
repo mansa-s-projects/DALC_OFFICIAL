@@ -5,7 +5,15 @@
       "PowerShell($empty = Get-ChildItem -Path \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\" -Recurse -File | Where-Object {$_.Length -eq 0} | Select-Object @{Name='Path'; Expression={$_.FullName.Replace\\(\"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\\", \"\"\\)}}; $empty | ForEach-Object { $_.Path } | Set-Content \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\missing-images-list.txt\"; Write-Host \"✅ Saved all 407 missing files to: missing-images-list.txt\"; Write-Host \"`nTotal count: $\\($empty.Count\\)\"; Write-Host \"`nFirst 50:`n\"; $empty | Select-Object -First 50 | ForEach-Object { $_.Path })",
       "PowerShell($path = \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\\\\beach_clubs\"; $files = Get-ChildItem -Path $path -Recurse -File; Write-Host \"✅ beach_clubs directory contents:`n\"; $files | Select-Object @{Name='Path'; Expression={$_.FullName.Replace\\($path, \"\"\\).TrimStart\\('\\\\'\\)}} | ForEach-Object { $_.Path }; Write-Host \"`nTotal files: $\\($files.Count\\)\"; Write-Host \"`nNon-empty files: $\\($files | Where-Object {$_.Length -gt 0} | Measure-Object\\).Count\")",
       "PowerShell($path = \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\\\\beach_clubs\"; $files = Get-ChildItem -Path $path -Recurse -File; $nonEmpty = $files | Where-Object {$_.Length -gt 0}; Write-Host \"Total: $\\($files.Count\\) files\"; Write-Host \"Non-empty: $\\($nonEmpty.Count\\) files\"; Write-Host \"Empty: $\\($files | Where-Object {$_.Length -eq 0} | Measure-Object\\).Count files`n\"; $nonEmpty | Select-Object -First 10 | ForEach-Object { Write-Host \"$\\($_.Name\\): $\\($_.Length\\) bytes\" })",
-      "PowerShell($imageDir = \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\"; $dirs = Get-ChildItem -Path $imageDir -Directory; Write-Host \"Checking all directories for real images:`n\" -ForegroundColor Cyan; foreach \\($dir in $dirs\\) { $files = @\\(Get-ChildItem -Path $dir.FullName -Recurse -File\\); $nonEmpty = @\\($files | Where-Object {$_.Length -gt 0}\\); $empty = @\\($files | Where-Object {$_.Length -eq 0}\\); if \\($files.Count -gt 0\\) { Write-Host \"$\\($dir.Name\\): $\\($nonEmpty.Count\\) non-empty, $\\($empty.Count\\) empty \\(Total: $\\($files.Count\\)\\)\" -ForegroundColor Yellow } })"
+      "PowerShell($imageDir = \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\"; $dirs = Get-ChildItem -Path $imageDir -Directory; Write-Host \"Checking all directories for real images:`n\" -ForegroundColor Cyan; foreach \\($dir in $dirs\\) { $files = @\\(Get-ChildItem -Path $dir.FullName -Recurse -File\\); $nonEmpty = @\\($files | Where-Object {$_.Length -gt 0}\\); $empty = @\\($files | Where-Object {$_.Length -eq 0}\\); if \\($files.Count -gt 0\\) { Write-Host \"$\\($dir.Name\\): $\\($nonEmpty.Count\\) non-empty, $\\($empty.Count\\) empty \\(Total: $\\($files.Count\\)\\)\" -ForegroundColor Yellow } })",
+      "Bash(killall -9 node)",
+      "Bash(npm run *)",
+      "Bash(rm -rf .next .turbo)",
+      "Bash(tail -100 /tmp/dev-server.log 2>/dev/null | grep -A 20 \"error\\\\|Error\\\\|failed\" | head -50)",
+      "Read(//tmp/**)",
+      "Bash(rm -rf .next .turbo node_modules/.cache)",
+      "Bash(curl -s http://localhost:3000/experiences)",
+      "Bash(curl -s http://localhost:3000)"
     ]
   }
 }
