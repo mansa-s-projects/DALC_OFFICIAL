@@ -102,7 +102,7 @@ function FreezoneGrid({ title, items }: { title: string; items: FreezoneItem[] }
               <div>
                 <p className="text-white font-display text-xl leading-tight">{zone.name}</p>
                 <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">
-                  {zone.emirate} â€¢ {zone.type}
+                  {zone.emirate} &bull; {zone.type}
                 </p>
               </div>
               <MapPin className="w-4 h-4 text-luxury-gold/70 flex-shrink-0 mt-1" />

@@ -11,7 +11,7 @@ import type {
   TimeSlot,
 } from '../types/business';
 
-// â”€â”€â”€ Mock Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Mock Data ────────────────────────────────────────────────────────────────
 
 export const MOCK_SERVICES: BusinessService[] = [
   {
@@ -20,7 +20,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     sub_subcategory: 'Free Zone',
     name: 'DMCC Free Zone Company Setup',
     slug: 'dmcc-free-zone-company-setup',
-    description_short: "Full-service company formation in DMCC â€” one of Dubai's most prestigious free zones.",
+    description_short: "Full-service company formation in DMCC — one of Dubai's most prestigious free zones.",
     description_long: 'Establish your business in the Dubai Multi Commodities Centre (DMCC), the world-ranked free zone offering 100% foreign ownership, zero corporate tax, and a global business community. Our team handles every step from name reservation to licence issuance.',
     hero_image: '/images/hotels/four-seasons-difc.jpg',
     gallery_images: [],
@@ -76,7 +76,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Passport copies (all shareholders)', 'Emirates ID (if resident)', 'NOC from sponsor (if applicable)', 'Tenancy contract for office'],
     eligibility_criteria: ['Any nationality', 'Minimum 1 shareholder', 'Local service agent required for some activities'],
     government_fees: 6800,
-    government_authority: 'DED â€” Dubai Economy & Tourism',
+    government_authority: 'DED — Dubai Economy & Tourism',
     compliance_checklist: [
       { id: 'cc-1', label: 'Activity approved by DED', required: true, completed: false },
       { id: 'cc-2', label: 'MOA notarised', required: true, completed: false },
@@ -103,7 +103,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     sub_subcategory: 'Corporate Account',
     name: 'UAE Corporate Bank Account Opening',
     slug: 'uae-corporate-bank-account-opening',
-    description_short: 'Open a corporate account with a leading UAE bank â€” we handle introductions and applications.',
+    description_short: 'Open a corporate account with a leading UAE bank — we handle introductions and applications.',
     description_long: 'Banking setup is a critical step for any new business in the UAE. We leverage established relationships with major UAE banks to streamline your application and increase approval chances.',
     hero_image: '/images/hotels/the-ritz-carlton-difc.jpg',
     gallery_images: [],
@@ -141,7 +141,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     id: 'mock-svc-4',
     subcategory: 'residency-investment',
     sub_subcategory: 'Golden Visa',
-    name: 'UAE Golden Visa â€” Investor Pathway',
+    name: 'UAE Golden Visa — Investor Pathway',
     slug: 'uae-golden-visa-investor-pathway',
     description_short: '10-year UAE residency visa through property investment or business investment.',
     description_long: 'The UAE Golden Visa offers long-term residency for investors, entrepreneurs and exceptional talents. The investor pathway requires AED 2M in qualifying assets. We guide you through every step of the application and ICA submission.',
@@ -156,7 +156,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Valid passport', 'Emirates ID (if applicable)', 'Title deed or investment certificate', 'Medical fitness certificate', 'Emirates ID application form'],
     eligibility_criteria: ['AED 2M+ property investment OR AED 2M+ business investment', 'Valid passport with 6+ months validity', 'No criminal record'],
     government_fees: 4200,
-    government_authority: 'ICA â€” Federal Authority for Identity & Citizenship',
+    government_authority: 'ICA — Federal Authority for Identity & Citizenship',
     compliance_checklist: [
       { id: 'cc-1', label: 'Investment proof verified', required: true, completed: false },
       { id: 'cc-2', label: 'Medical fitness test completed', required: true, completed: false },
@@ -198,7 +198,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Trade licence', 'Emirates ID of owner', 'Bank statements (12 months)', 'Sales invoices', 'Customs declarations (if applicable)'],
     eligibility_criteria: ['Annual taxable supplies ≥ AED 375,000 (mandatory)', 'Annual taxable supplies ≥ AED 187,500 (voluntary)'],
     government_fees: 0,
-    government_authority: 'FTA â€” Federal Tax Authority',
+    government_authority: 'FTA — Federal Tax Authority',
     compliance_checklist: [
       { id: 'cc-1', label: 'FTA e-services account created', required: true, completed: false },
       { id: 'cc-2', label: 'VAT registration submitted', required: true, completed: false },
@@ -237,7 +237,7 @@ export const MOCK_SERVICES: BusinessService[] = [
     required_documents: ['Valid passport', 'Emirates ID (or passport + valid UAE visa/talent agency sponsorship for non-residents)', 'Trade license for electronic media (from Invest in Dubai or relevant authority)', 'Good Conduct Certificate (police clearance) from Dubai Police', 'Portfolio or social media account links'],
     eligibility_criteria: ['Minimum age 18 years', 'Clean criminal record', 'UAE resident or citizen (non-residents require talent management agency)', 'Active social media presence'],
     government_fees: 0,
-    government_authority: 'UAE Media Council â€” National Media Authority',
+    government_authority: 'UAE Media Council — National Media Authority',
     compliance_checklist: [
       { id: 'cc-1', label: 'Electronic media trade license obtained', description: 'Trade license specifically for electronic media activities', required: true, completed: false },
       { id: 'cc-2', label: 'Good Conduct Certificate obtained', description: 'Police clearance from Dubai Police', required: true, completed: false },
@@ -262,7 +262,7 @@ export const MOCK_SERVICES: BusinessService[] = [
   },
 ];
 
-// â”€â”€â”€ Service Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Service Functions ────────────────────────────────────────────────────────
 
 export async function getBusinessServices(filters?: BusinessFilters): Promise<BusinessService[]> {
   return queryPublished<BusinessService>({
