@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const SERVICES = [
   {
     icon: Heart,
     label: 'Luxury Spa & Treatments',
-    desc: 'Priority bookings at Dubai\'s most exclusive spas â€” Talise Ottoman, Waldorf Astoria, ESPA at DIFC, and private therapist arrangements.',
+    desc: 'Priority bookings at Dubai\'s most exclusive spas — Talise Ottoman, Waldorf Astoria, ESPA at DIFC, and private therapist arrangements.',
   },
   {
     icon: Shield,
@@ -40,7 +40,7 @@ const SERVICES = [
   {
     icon: Zap,
     label: 'Fitness & Personal Training',
-    desc: 'Elite personal trainers who come to you â€” hotel, villa, or private gym. Customised programmes for every goal.',
+    desc: 'Elite personal trainers who come to you — hotel, villa, or private gym. Customised programmes for every goal.',
   },
   {
     icon: Sun,
@@ -55,7 +55,7 @@ const SERVICES = [
   {
     icon: Users,
     label: 'Group Wellness Retreats',
-    desc: 'Corporate and social group wellness experiences â€” yoga retreats, desert sound baths, and bespoke team wellbeing days.',
+    desc: 'Corporate and social group wellness experiences — yoga retreats, desert sound baths, and bespoke team wellbeing days.',
   },
 ];
 
@@ -72,7 +72,7 @@ const PACKAGES = [
   {
     name: 'Day Wellness',
     price: 'From AED 3,500',
-    desc: 'A complete day of restorative luxury â€” spa, nutrition, and mindfulness.',
+    desc: 'A complete day of restorative luxury — spa, nutrition, and mindfulness.',
     includes: [
       'Full-day spa access (luxury property)',
       'Signature massage (90 minutes)',
@@ -85,7 +85,7 @@ const PACKAGES = [
   {
     name: 'Weekend Retreat',
     price: 'From AED 12,000',
-    desc: 'Two full days of transformative wellness â€” mind, body, and spirit.',
+    desc: 'Two full days of transformative wellness — mind, body, and spirit.',
     includes: [
       'Private villa or spa hotel (2 nights)',
       'Daily personal training sessions',
@@ -100,7 +100,7 @@ const PACKAGES = [
   {
     name: 'Monthly Programme',
     price: 'From AED 8,000 / mo',
-    desc: 'Ongoing luxury wellness management â€” the lifestyle upgrade that lasts.',
+    desc: 'Ongoing luxury wellness management — the lifestyle upgrade that lasts.',
     includes: [
       'Weekly PT sessions (4 per month)',
       '4 premium spa bookings/month',
@@ -123,7 +123,7 @@ export default function WellnessPage() {
     e.preventDefault();
     if (!form.name || !form.phone) return;
     const msg = encodeURIComponent(
-      `Hi DALC â€” Wellness Inquiry\nInterest: ${form.interest || 'General'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}`
+      `Hi DALC — Wellness Inquiry\nInterest: ${form.interest || 'General'}\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}`
     );
     window.open(`https://wa.me/971585987600?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -135,7 +135,7 @@ export default function WellnessPage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/beach_clubs/Kyma/image1.jpg"
+            src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2940&auto=format&fit=crop"
             alt="Luxury wellness spa Dubai"
             className="w-full h-full object-cover opacity-20"
           />
@@ -169,7 +169,7 @@ export default function WellnessPage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              Dubai's finest spas, elite trainers, private physicians, and wellness experiences â€”
+              Dubai's finest spas, elite trainers, private physicians, and wellness experiences —
               curated and delivered through your DALC concierge.
             </p>
 
@@ -303,7 +303,7 @@ export default function WellnessPage() {
                 Book a Wellness<br />Experience
               </h2>
               <p className="text-gray-400 leading-relaxed">
-                Tell us what you need and we'll curate the perfect wellness experience â€” whether it's
+                Tell us what you need and we'll curate the perfect wellness experience — whether it's
                 a single afternoon or an ongoing programme.
               </p>
             </motion.div>

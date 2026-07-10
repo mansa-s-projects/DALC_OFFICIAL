@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ const BENEFITS = [
   {
     icon: Shield,
     title: 'No Sponsor Required',
-    desc: 'Full independence â€” live, work, and travel without any local sponsor or employer.',
+    desc: 'Full independence "” live, work, and travel without any local sponsor or employer.',
   },
   {
     icon: Clock,
@@ -146,7 +146,7 @@ const PRICING = [
   {
     tier: 'Managed',
     price: 'AED 14,500',
-    description: 'Fully managed service â€” we handle everything end to end.',
+    description: 'Fully managed service "” we handle everything end to end.',
     features: [
       'Everything in Assisted',
       'Full document collection & notarization',
@@ -222,7 +222,7 @@ export default function GoldenVisaPage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/address-downtown.jpg"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop"
             alt="UAE skyline"
             className="w-full h-full object-cover opacity-20"
           />
@@ -258,7 +258,7 @@ export default function GoldenVisaPage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              The UAE Golden Visa grants 10-year renewable residency â€” no employer, no sponsor,
+              The UAE Golden Visa grants 10-year renewable residency "” no employer, no sponsor,
               no limits. We manage the entire process for you.
             </p>
 
@@ -299,13 +299,13 @@ export default function GoldenVisaPage() {
               programme designed to attract global talent, investors, and visionaries to the Emirates.
             </p>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Unlike standard UAE residency tied to employment, the Golden Visa is self-sponsored â€”
+              Unlike standard UAE residency tied to employment, the Golden Visa is self-sponsored "”
               it does not expire if you travel abroad, and it can be renewed indefinitely as long as
               the qualifying conditions are maintained.
             </p>
             <p className="text-gray-400 leading-relaxed">
               Over 150,000 Golden Visas have been issued since launch. Join the world's most dynamic
-              global community â€” from Dubai.
+              global community "” from Dubai.
             </p>
           </motion.div>
 
@@ -324,10 +324,10 @@ export default function GoldenVisaPage() {
                 {[
                   { label: 'Validity', value: '10 years (renewable)' },
                   { label: 'Sponsorship', value: 'Self-sponsored' },
-                  { label: 'Family included', value: 'Yes â€” spouse, children, parents' },
+                  { label: 'Family included', value: 'Yes "” spouse, children, parents' },
                   { label: 'Minimum investment', value: 'AED 2,000,000' },
-                  { label: 'Processing time', value: '4â€“8 weeks' },
-                  { label: 'Exit requirement', value: 'None â€” travel freely' },
+                  { label: 'Processing time', value: '4"“8 weeks' },
+                  { label: 'Exit requirement', value: 'None "” travel freely' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center justify-between border-b border-white/[0.06] pb-4 last:border-0 last:pb-0">
                     <span className="text-gray-500 text-sm">{item.label}</span>
@@ -487,7 +487,7 @@ export default function GoldenVisaPage() {
               {
                 route: 'Exceptional Talent',
                 amount: 'By merit',
-                desc: 'Demonstrated excellence in science, arts, culture, sport, or innovative fields â€” endorsed by a relevant UAE federal authority.',
+                desc: 'Demonstrated excellence in science, arts, culture, sport, or innovative fields "” endorsed by a relevant UAE federal authority.',
                 features: ['Government endorsement required', 'No financial requirement', 'Renewable based on activity'],
               },
             ].map((route, idx) => (

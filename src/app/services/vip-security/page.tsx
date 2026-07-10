@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
@@ -38,7 +38,7 @@ const SERVICES = [
   {
     icon: Eye,
     label: 'Advance Team',
-    desc: 'Pre-event site surveys, threat assessment, route planning, and venue security sweeps â€” before you arrive anywhere.',
+    desc: 'Pre-event site surveys, threat assessment, route planning, and venue security sweeps "” before you arrive anywhere.',
   },
   {
     icon: Users,
@@ -48,12 +48,12 @@ const SERVICES = [
   {
     icon: Home,
     label: 'Residential Security',
-    desc: 'Villa and estate security â€” manned guarding, CCTV monitoring, access management, and domestic staff vetting.',
+    desc: 'Villa and estate security "” manned guarding, CCTV monitoring, access management, and domestic staff vetting.',
   },
   {
     icon: Lock,
     label: 'Executive Travel Security',
-    desc: 'Comprehensive security for international travel â€” airport assistance, hotel safety review, and in-country protection throughout the UAE and region.',
+    desc: 'Comprehensive security for international travel "” airport assistance, hotel safety review, and in-country protection throughout the UAE and region.',
   },
 ];
 
@@ -81,9 +81,9 @@ const WHY_US = [
 ];
 
 const PROCESS = [
-  { num: '01', title: 'Consultation', desc: 'A confidential discussion about your needs, schedule, exposure level, and concerns â€” no obligation.' },
+  { num: '01', title: 'Consultation', desc: 'A confidential discussion about your needs, schedule, exposure level, and concerns "” no obligation.' },
   { num: '02', title: 'Risk Assessment', desc: 'Our security analysts conduct a threat and vulnerability assessment tailored to your profile and itinerary.' },
-  { num: '03', title: 'Deployment Plan', desc: 'We design a comprehensive protection plan â€” team composition, vehicles, communication protocols, and contingencies.' },
+  { num: '03', title: 'Deployment Plan', desc: 'We design a comprehensive protection plan "” team composition, vehicles, communication protocols, and contingencies.' },
   { num: '04', title: '24/7 Coverage', desc: 'Your protection team is deployed. Continuous communication, daily briefings, and instant incident response.' },
 ];
 
@@ -96,7 +96,7 @@ export default function VipSecurityPage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/address-downtown.jpg"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2940&auto=format&fit=crop"
             alt="VIP security Dubai"
             className="w-full h-full object-cover opacity-15"
           />
@@ -132,7 +132,7 @@ export default function VipSecurityPage() {
               and executives in Dubai and across the region.
             </p>
 
-            {/* Privacy-first CTA â€” WhatsApp only */}
+            {/* Privacy-first CTA "” WhatsApp only */}
             <div className="flex justify-center">
               <a
                 href="https://wa.me/971585987600?text=Hi%20DALC%20%E2%80%94%20I%27d%20like%20a%20confidential%20security%20consultation."
@@ -146,7 +146,7 @@ export default function VipSecurityPage() {
             </div>
 
             <p className="text-gray-600 text-xs uppercase tracking-widest mt-5">
-              WhatsApp only â€” no public contact form â€” your privacy is paramount
+              WhatsApp only "” no public contact form "” your privacy is paramount
             </p>
           </motion.div>
         </div>
@@ -231,7 +231,7 @@ export default function VipSecurityPage() {
             </h2>
             <p className="text-gray-400 leading-relaxed mb-5">
               The best security is the kind no one knows is there. Our officers are trained to blend
-              seamlessly into any environment â€” whether a Michelin-starred restaurant, a royal gathering,
+              seamlessly into any environment "” whether a Michelin-starred restaurant, a royal gathering,
               or a corporate board meeting.
             </p>
             <p className="text-gray-400 leading-relaxed mb-5">
@@ -240,7 +240,7 @@ export default function VipSecurityPage() {
               begins with a mutual NDA.
             </p>
             <p className="text-gray-400 leading-relaxed">
-              Our team has operated at the highest levels â€” protecting heads of state, major business
+              Our team has operated at the highest levels "” protecting heads of state, major business
               figures, and prominent families across the Gulf, Europe, and beyond.
             </p>
           </motion.div>

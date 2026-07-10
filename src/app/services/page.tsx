@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
@@ -39,7 +39,7 @@ const SERVICES = [
   {
     icon: Building2,
     label: 'Business Setup',
-    description: 'Mainland, Free Zone, and Offshore company formation â€” fully handled.',
+    description: 'Mainland, Free Zone, and Offshore company formation "” fully handled.',
     href: '/services/business-setup',
     accent: 'from-zinc-800/40 to-luxury-black',
     tag: 'Corporate',
@@ -55,7 +55,7 @@ const SERVICES = [
   {
     icon: Plane,
     label: 'Personal Concierge',
-    description: 'Your private command centre â€” any request, any time, with total discretion.',
+    description: 'Your private command centre "” any request, any time, with total discretion.',
     href: '/request',
     accent: 'from-rose-900/40 to-luxury-black',
     tag: 'Lifestyle',
@@ -63,7 +63,7 @@ const SERVICES = [
   {
     icon: MapPin,
     label: 'Relocation',
-    description: 'End-to-end relocation management â€” visas, home, banking, and beyond.',
+    description: 'End-to-end relocation management "” visas, home, banking, and beyond.',
     href: '/move-to-dubai',
     accent: 'from-sky-900/40 to-luxury-black',
     tag: 'Moving',
@@ -71,7 +71,7 @@ const SERVICES = [
   {
     icon: Calendar,
     label: 'Event Planning',
-    description: 'Private dinners, yacht parties, weddings, and corporate events â€” flawlessly executed.',
+    description: 'Private dinners, yacht parties, weddings, and corporate events "” flawlessly executed.',
     href: '/services/event-planning',
     accent: 'from-purple-900/40 to-luxury-black',
     tag: 'Events',
@@ -121,7 +121,7 @@ export default function ServicesHub() {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/address-downtown.jpg"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop"
             alt="Dubai skyline luxury"
             className="w-full h-full object-cover opacity-20"
           />
@@ -143,7 +143,7 @@ export default function ServicesHub() {
             <div className="inline-flex items-center gap-2 px-5 py-2 border border-luxury-gold/30 bg-luxury-gold/5 mb-10">
               <span className="w-1 h-1 rounded-full bg-luxury-gold" />
               <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.45em]">
-                Dubai Ã€ La Carte â€” Services
+                Dubai À La Carte — Services
               </span>
             </div>
 
@@ -154,7 +154,7 @@ export default function ServicesHub() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              From Golden Visa to private security â€” DALC delivers every facet of Dubai life
+              From Golden Visa to private security "” DALC delivers every facet of Dubai life
               through a single, white-glove concierge experience.
             </p>
 

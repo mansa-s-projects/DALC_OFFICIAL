@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -31,7 +31,7 @@ const SERVICE_TYPES = [
   {
     icon: Home,
     label: 'Buy',
-    desc: 'Apartments, villas, penthouses â€” we source the finest properties across Dubai and negotiate on your behalf.',
+    desc: 'Apartments, villas, penthouses "” we source the finest properties across Dubai and negotiate on your behalf.',
   },
   {
     icon: MapPin,
@@ -46,7 +46,7 @@ const SERVICE_TYPES = [
   {
     icon: Building2,
     label: 'Off-Plan',
-    desc: 'Access to pre-launch prices from Dubai\'s top developers â€” EMAAR, Nakheel, Aldar, and beyond.',
+    desc: 'Access to pre-launch prices from Dubai\'s top developers "” EMAAR, Nakheel, Aldar, and beyond.',
   },
 ];
 
@@ -55,52 +55,52 @@ const AREAS = [
     name: 'Downtown Dubai',
     description: 'Home to the Burj Khalifa and Dubai Mall. The most iconic address in the city.',
     priceFrom: 'AED 1.8M',
-    yield: '5â€“7%',
+    yield: '5"“7%',
   },
   {
     name: 'Palm Jumeirah',
     description: 'Dubai\'s iconic palm island. Luxury villas, beach apartments, and unmatched lifestyle.',
     priceFrom: 'AED 3.5M',
-    yield: '4â€“6%',
+    yield: '4"“6%',
   },
   {
     name: 'Dubai Marina',
     description: 'Waterfront living with a vibrant promenade, dining, and direct beach access.',
     priceFrom: 'AED 1.2M',
-    yield: '6â€“8%',
+    yield: '6"“8%',
   },
   {
     name: 'Business Bay',
-    description: 'Dubai\'s central business district â€” close to Downtown with strong rental demand.',
+    description: 'Dubai\'s central business district "” close to Downtown with strong rental demand.',
     priceFrom: 'AED 900K',
-    yield: '6â€“8%',
+    yield: '6"“8%',
   },
   {
     name: 'JBR / JBR Beach',
-    description: 'Jumeirah Beach Residence â€” a premium beachfront community with hotel-style living.',
+    description: 'Jumeirah Beach Residence "” a premium beachfront community with hotel-style living.',
     priceFrom: 'AED 1.5M',
-    yield: '6â€“7%',
+    yield: '6"“7%',
   },
   {
     name: 'Emaar Beachfront',
     description: 'New development between Dubai Marina and Palm. Limited supply, high demand.',
     priceFrom: 'AED 2.1M',
-    yield: '5â€“7%',
+    yield: '5"“7%',
   },
 ];
 
 const WHY_INVEST = [
   { value: '0%', label: 'Capital Gains Tax' },
   { value: '0%', label: 'Rental Income Tax' },
-  { value: '6â€“10%', label: 'Average Net Yield' },
+  { value: '6"“10%', label: 'Average Net Yield' },
   { value: 'AED 2M+', label: 'Golden Visa Eligibility' },
 ];
 
 const OUR_SERVICES = [
   { icon: MapPin, label: 'Property Search', desc: 'We source the best properties matching your criteria from our developer and agent network.' },
-  { icon: Shield, label: 'Legal Support', desc: 'Contract review, title deed verification, and DLD registration â€” all handled for you.' },
+  { icon: Shield, label: 'Legal Support', desc: 'Contract review, title deed verification, and DLD registration "” all handled for you.' },
   { icon: DollarSign, label: 'Mortgage Assistance', desc: 'Connections to the best UAE mortgage brokers for residents and non-residents alike.' },
-  { icon: Building2, label: 'Property Management', desc: 'Tenant sourcing, rent collection, maintenance â€” passive income without the hassle.' },
+  { icon: Building2, label: 'Property Management', desc: 'Tenant sourcing, rent collection, maintenance "” passive income without the hassle.' },
   { icon: TrendingUp, label: 'Investment Analysis', desc: 'ROI calculations, market comparables, and area trend reports before you commit.' },
   { icon: Users, label: 'Developer Access', desc: 'Early access to off-plan launches and payment plan negotiations with major developers.' },
 ];
@@ -115,7 +115,7 @@ export default function RealEstatePage() {
     e.preventDefault();
     if (!consultForm.name || !consultForm.phone) return;
     const msg = encodeURIComponent(
-      `Hi DALC â€” I'd like a property consultation.\nInterest: ${consultForm.interest || 'General'}\nName: ${consultForm.name}\nEmail: ${consultForm.email}\nPhone: ${consultForm.phone}`
+      `Hi DALC "” I'd like a property consultation.\nInterest: ${consultForm.interest || 'General'}\nName: ${consultForm.name}\nEmail: ${consultForm.email}\nPhone: ${consultForm.phone}`
     );
     window.open(`https://wa.me/971585987600?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -127,7 +127,7 @@ export default function RealEstatePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/armani-hotel-dubai.jpg"
+            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2940&auto=format&fit=crop"
             alt="Dubai real estate"
             className="w-full h-full object-cover opacity-20"
           />
@@ -159,7 +159,7 @@ export default function RealEstatePage() {
             </h1>
 
             <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
-              Buy, rent, invest, or develop â€” we navigate Dubai's property market with unmatched
+              Buy, rent, invest, or develop "” we navigate Dubai's property market with unmatched
               access and expert local knowledge.
             </p>
 
@@ -225,7 +225,7 @@ export default function RealEstatePage() {
               <span className="text-luxury-gold">property market.</span>
             </h2>
             <p className="text-gray-400 leading-relaxed mb-5">
-              Dubai offers net rental yields of 6â€“10% â€” higher than London, New York, Paris, and Singapore.
+              Dubai offers net rental yields of 6"“10% "” higher than London, New York, Paris, and Singapore.
               With zero capital gains tax and zero rental income tax, every dirham of return stays with you.
             </p>
             <p className="text-gray-400 leading-relaxed mb-5">
@@ -244,7 +244,7 @@ export default function RealEstatePage() {
                 'Zero capital gains tax on property sales',
                 'Zero rental income tax',
                 'Freehold ownership for foreigners in designated areas',
-                'DLD-regulated â€” fully transparent transactions',
+                'DLD-regulated "” fully transparent transactions',
                 'Strong currency pegged to USD',
                 'Golden Visa eligibility at AED 2M+',
                 'World\'s busiest international airport drives demand',

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'motion/react';
 import { ArrowRight, Clock3, MessageSquare, Shield, Sparkles } from 'lucide-react';
-import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 import { useRequests } from '@/hooks/useRequests';
 import { useAppStore } from '@/store/useAppStore';
@@ -73,8 +72,6 @@ export default function RequestPage() {
 
   return (
     <div className="min-h-screen bg-[#080706] text-white">
-      <Navbar />
-
       <section className="border-b border-white/5 bg-[linear-gradient(180deg,#120F0A_0%,#080706_100%)] px-4 pb-12 pt-32">
         <div className="mx-auto max-w-6xl">
           <p className="mb-4 text-[11px] uppercase tracking-[0.28em] text-[#C9A84C]/70">DALC Concierge Intake</p>

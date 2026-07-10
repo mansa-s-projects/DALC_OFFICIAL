@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -141,7 +141,7 @@ export default function BusinessSetupPage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hotels/address-downtown.jpg"
+            src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2787&auto=format&fit=crop"
             alt="Dubai business district"
             className="w-full h-full object-cover opacity-20"
           />
