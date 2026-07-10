@@ -20,7 +20,7 @@ const TRAVEL_CATEGORIES = [
     title: 'Hotels',
     description: 'World-class hotels across every destination â€” curated, rated, and bookable in seconds.',
     icon: <Hotel className="w-8 h-8" />,
-    image: '/images/hotels/atlantis-the-palm.jpg',
+    image: '/images/travel/hotels/atlantis-the-palm.jpg',
     link: '/travel/hotels',
     badge: 'Curated',
   },

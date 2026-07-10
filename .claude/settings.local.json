@@ -46,7 +46,10 @@
       "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --dry-run 2>&1 | Select-Object -First 100)",
       "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -First 50)",
       "PowerShell(Get-ChildItem \"C:\\\\WORKSPACE\\\\ACTIVE\\\\DALC_OFFICIAL\\\\public\\\\images\\\\experiences\\\\entertainment\" -Recurse -File 2>$null | Measure-Object -Property Length -Sum | Select-Object Count, @{Name=\"TotalSize\";Expression={$_.Sum}})",
-      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -Last 50)"
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; python scripts/image-recovery.py --tier 1 --category entertainment 2>&1 | Select-Object -Last 50)",
+      "Bash(npm run *)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Milliseconds 500; Write-Host \"Port 3000 freed\")",
+      "Bash(grep -E \"\\\\.\\(md|txt|log|json\\)$\")"
     ]
   },
   "enabledMcpjsonServers": [

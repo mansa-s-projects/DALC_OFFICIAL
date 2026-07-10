@@ -66,7 +66,7 @@ const CATEGORIES: CategoryConfig[] = [
     label: 'Tax & Accounting',
     icon: <Receipt className="w-7 h-7" />,
     gradient: 'from-emerald-900/40 to-luxury-black',
-    image: '/images/hotels/atlantis-the-palm.jpg',
+    image: '/images/travel/hotels/atlantis-the-palm.jpg',
   },
   {
     subcategory: 'residency-investment',

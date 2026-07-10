@@ -49,7 +49,7 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     seoTitle: "Jet Skiing, Yachts & Water Sports Dubai",
     description:
       "Jet skis, yacht charters, scuba diving and parasailing across Dubai Marina and the Gulf coast.",
-    image: "/images/water-activities/yamaha-fx-svho.jpg",
+    image: "/images/experiences/marine/jet-ski-rental/hero.jpg",
     badge: "Most Booked",
     startingFrom: "AED 300",
     cta: "Book Water Sport",

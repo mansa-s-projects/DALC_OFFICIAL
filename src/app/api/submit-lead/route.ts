@@ -6,6 +6,7 @@ import { enqueueCrmSyncJob, mapLeadToCrmFields } from '@/lib/crm-sync';
 import { enqueueLeadEnrichmentJob } from '@/lib/lead-enrichment';
 import { enqueueWhatsAppJob } from '@/lib/whatsapp-automation';
 import { recordApiFailure } from '@/lib/monitoring';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
 
 const submitLeadSchema = z.object({
   name: z.string().min(1),
@@ -29,6 +30,16 @@ const submitLeadSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = getClientIP(request);
+    const rl = checkRateLimit(`submit:${ip}`, RATE_LIMITS.submit);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { ok: false, error: 'Too many submissions. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfterSec) } },
+      );
+    }
+
     const json = await request.json();
     const parsed = submitLeadSchema.safeParse(json);
 

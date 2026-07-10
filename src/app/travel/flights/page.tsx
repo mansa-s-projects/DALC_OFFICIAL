@@ -388,6 +388,7 @@ export default function FlightsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative z-20 w-full max-w-6xl mx-auto px-4"
+          suppressHydrationWarning
         >
           <div className="bg-luxury-black/95 border border-white/10 p-6 backdrop-blur-md">
             {/* Flight type tabs */}

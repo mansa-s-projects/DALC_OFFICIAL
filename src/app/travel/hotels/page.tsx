@@ -273,6 +273,7 @@ export default function HotelsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-[#0f0d0a] border border-white/15 p-4 shadow-2xl"
+          suppressHydrationWarning
         >
           {/* Row 1: destination + dates */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">

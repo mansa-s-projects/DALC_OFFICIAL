@@ -2208,7 +2208,6 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
     updated_at: new Date().toISOString(),
   },
 
-  // â”€â”€â”€ Musandam / Khasab Tours â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'mock-exp-musandam-day',
     subcategory: 'adventure',
@@ -2302,77 +2301,144 @@ export const MOCK_EXPERIENCES: ExperienceService[] = [
 // â”€â”€â”€ Service Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function getExperiences(filters?: ExperienceFilters): Promise<ExperienceService[]> {
-  return queryPublished<ExperienceService>({
-    table: 'experience_services',
-    statusValues: ['published', 'sold_out'],
-    orderBy: { column: 'trending_score', ascending: false },
-    filters: {
-      subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
-      sub_subcategory: filters?.sub_subcategory ? { op: 'eq', value: filters.sub_subcategory } : undefined,
-      service_type: filters?.service_type ? { op: 'eq', value: filters.service_type } : undefined,
-      pricing_model: filters?.pricing_model ? { op: 'eq', value: filters.pricing_model } : undefined,
-      price_from_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'price_from' } : undefined,
-      price_from_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'price_from' } : undefined,
-      is_featured: filters?.is_featured != null ? { op: 'eq', value: filters.is_featured } : undefined,
-      is_trending: filters?.is_trending != null ? { op: 'eq', value: filters.is_trending } : undefined,
-      location: filters?.location ? { op: 'ilike', value: filters.location } : undefined,
-    },
-  });
+  try {
+    return await queryPublished<ExperienceService>({
+      table: 'experience_services',
+      statusValues: ['published', 'sold_out'],
+      orderBy: { column: 'trending_score', ascending: false },
+      filters: {
+        subcategory: filters?.subcategory ? { op: 'eq', value: filters.subcategory } : undefined,
+        sub_subcategory: filters?.sub_subcategory ? { op: 'eq', value: filters.sub_subcategory } : undefined,
+        service_type: filters?.service_type ? { op: 'eq', value: filters.service_type } : undefined,
+        pricing_model: filters?.pricing_model ? { op: 'eq', value: filters.pricing_model } : undefined,
+        price_from_min: filters?.price_min != null ? { op: 'gte', value: filters.price_min, column: 'price_from' } : undefined,
+        price_from_max: filters?.price_max != null ? { op: 'lte', value: filters.price_max, column: 'price_from' } : undefined,
+        is_featured: filters?.is_featured != null ? { op: 'eq', value: filters.is_featured } : undefined,
+        is_trending: filters?.is_trending != null ? { op: 'eq', value: filters.is_trending } : undefined,
+        location: filters?.location ? { op: 'ilike', value: filters.location } : undefined,
+      },
+    });
+  } catch (error) {
+    let items = [...MOCK_EXPERIENCES];
+    if (filters) {
+      if (filters.subcategory) {
+        items = items.filter(item => item.subcategory === filters.subcategory);
+      }
+      if (filters.sub_subcategory) {
+        items = items.filter(item => item.sub_subcategory === filters.sub_subcategory);
+      }
+      if (filters.service_type) {
+        items = items.filter(item => item.service_type === filters.service_type);
+      }
+      if (filters.pricing_model) {
+        items = items.filter(item => item.pricing_model === filters.pricing_model);
+      }
+      if (filters.price_min != null) {
+        items = items.filter(item => (item.price_from ?? 0) >= filters.price_min!);
+      }
+      if (filters.price_max != null) {
+        items = items.filter(item => (item.price_from ?? 0) <= filters.price_max!);
+      }
+      if (filters.is_featured != null) {
+        items = items.filter(item => item.is_featured === filters.is_featured);
+      }
+      if (filters.is_trending != null) {
+        items = items.filter(item => item.is_trending === filters.is_trending);
+      }
+      if (filters.location) {
+        const loc = filters.location.toLowerCase();
+        items = items.filter(item => item.location.toLowerCase().includes(loc));
+      }
+    }
+    return items.sort((a, b) => (b.trending_score ?? 0) - (a.trending_score ?? 0));
+  }
 }
 
 export async function getExperienceBySlug(slug: string): Promise<ExperienceService | null> {
-  const { data, error } = await supabase
-    .from('experience_services')
-    .select('*')
-    .eq('slug', slug)
-    .in('status', ['published', 'sold_out'])
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from('experience_services')
+      .select('*')
+      .eq('slug', slug)
+      .in('status', ['published', 'sold_out'])
+      .single();
 
-  if (error) throw error;
-  return data as ExperienceService | null;
+    if (error) throw error;
+    return data as ExperienceService | null;
+  } catch (error) {
+    return MOCK_EXPERIENCES.find(item => item.slug === slug) ?? null;
+  }
 }
 
 export async function getFeaturedExperiences(subcategory?: string): Promise<ExperienceService[]> {
-  let query = supabase
-    .from('experience_services')
-    .select('*')
-    .eq('status', 'published')
-    .eq('is_featured', true)
-    .order('trending_score', { ascending: false })
-    .limit(6);
+  try {
+    let query = supabase
+      .from('experience_services')
+      .select('*')
+      .eq('status', 'published')
+      .eq('is_featured', true)
+      .order('trending_score', { ascending: false })
+      .limit(6);
 
-  if (subcategory) query = query.eq('subcategory', subcategory);
+    if (subcategory) query = query.eq('subcategory', subcategory);
 
-  const { data, error } = await query;
-  if (error) throw error;
-  return (data ?? []) as ExperienceService[];
+    const { data, error } = await query;
+    if (error) throw error;
+    return (data ?? []) as ExperienceService[];
+  } catch (error) {
+    let items = MOCK_EXPERIENCES.filter(item => item.status === 'published' && item.is_featured);
+    if (subcategory) {
+      items = items.filter(item => item.subcategory === subcategory);
+    }
+    return items.sort((a, b) => (b.trending_score ?? 0) - (a.trending_score ?? 0)).slice(0, 6);
+  }
 }
 
 export async function getTrendingExperiences(limit: number = 6): Promise<ExperienceService[]> {
-  const { data, error } = await supabase
-    .from('experience_services')
-    .select('*')
-    .eq('status', 'published')
-    .eq('is_trending', true)
-    .order('trending_score', { ascending: false })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from('experience_services')
+      .select('*')
+      .eq('status', 'published')
+      .eq('is_trending', true)
+      .order('trending_score', { ascending: false })
+      .limit(limit);
 
-  if (error) throw error;
-  return (data ?? []) as ExperienceService[];
+    if (error) throw error;
+    return (data ?? []) as ExperienceService[];
+  } catch (error) {
+    const items = MOCK_EXPERIENCES.filter(item => item.status === 'published' && item.is_trending);
+    return items.sort((a, b) => (b.trending_score ?? 0) - (a.trending_score ?? 0)).slice(0, limit);
+  }
 }
 
 export async function getUpcomingEvents(limit: number = 4): Promise<ExperienceService[]> {
-  const { data, error } = await supabase
-    .from('experience_services')
-    .select('*')
-    .eq('status', 'published')
-    .eq('service_type', 'event')
-    .gt('event_date', new Date().toISOString())
-    .order('event_date', { ascending: true })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from('experience_services')
+      .select('*')
+      .eq('status', 'published')
+      .eq('service_type', 'event')
+      .gt('event_date', new Date().toISOString())
+      .order('event_date', { ascending: true })
+      .limit(limit);
 
-  if (error) throw error;
-  return (data ?? []) as ExperienceService[];
+    if (error) throw error;
+    return (data ?? []) as ExperienceService[];
+  } catch (error) {
+    const nowStr = new Date().toISOString();
+    const items = MOCK_EXPERIENCES.filter(item => 
+      item.status === 'published' && 
+      item.service_type === 'event' && 
+      item.event_date && 
+      item.event_date > nowStr
+    );
+    return items.sort((a, b) => {
+      const ad = a.event_date ? new Date(a.event_date).getTime() : 0;
+      const bd = b.event_date ? new Date(b.event_date).getTime() : 0;
+      return ad - bd;
+    }).slice(0, limit);
+  }
 }
 
 // â”€â”€â”€ Capacity & Availability â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2383,32 +2449,61 @@ export async function checkCapacity(
   timeSlot?: string
 ): Promise<CapacityResult> {
   const dateStr = date.toISOString().split('T')[0];
-  const query = supabase
-    .from('experience_bookings')
-    .select('party_size')
-    .eq('service_id', serviceId)
-    .eq('booking_date', dateStr)
-    .neq('status', 'cancelled');
-
-  if (timeSlot) {
-    query.eq('time_slot', timeSlot);
-  }
-
-  const { data: bookings, error } = await query;
-  if (error) throw error;
-
   let bookedCount = 0;
-  if (bookings) {
-    for (const b of bookings) bookedCount += (b.party_size || 1);
+
+  try {
+    const query = supabase
+      .from('experience_bookings')
+      .select('party_size')
+      .eq('service_id', serviceId)
+      .eq('booking_date', dateStr)
+      .neq('status', 'cancelled');
+
+    if (timeSlot) {
+      query.eq('time_slot', timeSlot);
+    }
+
+    const { data: bookings, error } = await query;
+    if (error) throw error;
+
+    if (bookings) {
+      for (const b of bookings) bookedCount += (b.party_size || 1);
+    }
+  } catch (e) {
   }
 
-  const { data: service } = await supabase
-    .from('activities')
-    .select('max_capacity')
-    .eq('slug', serviceId)
-    .maybeSingle();
+  let totalCapacity = 100;
+  try {
+    const { data: service, error } = await supabase
+      .from('activities')
+      .select('max_capacity')
+      .eq('id', serviceId)
+      .maybeSingle();
 
-  const totalCapacity = service?.max_capacity || 100;
+    if (!error && service?.max_capacity) {
+      totalCapacity = service.max_capacity;
+    } else {
+      const { data: serviceBySlug } = await supabase
+        .from('activities')
+        .select('max_capacity')
+        .eq('slug', serviceId)
+        .maybeSingle();
+      if (serviceBySlug?.max_capacity) {
+        totalCapacity = serviceBySlug.max_capacity;
+      } else {
+        const mock = MOCK_EXPERIENCES.find(m => m.id === serviceId || m.slug === serviceId);
+        if (mock?.max_capacity) {
+          totalCapacity = mock.max_capacity;
+        }
+      }
+    }
+  } catch (e) {
+    const mock = MOCK_EXPERIENCES.find(m => m.id === serviceId || m.slug === serviceId);
+    if (mock?.max_capacity) {
+      totalCapacity = mock.max_capacity;
+    }
+  }
+
   const remaining = Math.max(0, totalCapacity - bookedCount);
   const percentFull = (bookedCount / totalCapacity) * 100;
 

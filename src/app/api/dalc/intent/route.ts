@@ -2,9 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { handleIntent } from "../../../../lib/intentService";
 import { getSupabaseAdminClient } from "../../../../lib/supabase-admin";
 import { createRequestFromIntent } from "../../../../lib/requestService";
+import { checkRateLimit, getClientIP, RATE_LIMITS } from "../../../../lib/rateLimit";
 
 export async function POST(req: NextRequest) {
   try {
+    // Rate limiting
+    const ip = getClientIP(req);
+    const rl = checkRateLimit(`intent:${ip}`, RATE_LIMITS.intent);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(rl.retryAfterSec) } },
+      );
+    }
+
     const body = (await req.json()) as { user_input?: unknown; user_id?: unknown };
     const userInput = body.user_input;
     const userId = typeof body.user_id === "string" ? body.user_id : null;

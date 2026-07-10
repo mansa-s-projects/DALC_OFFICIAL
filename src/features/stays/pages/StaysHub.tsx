@@ -30,7 +30,7 @@ const CATEGORIES: CategoryConfig[] = [
     label: SUBCATEGORY_LABELS.hotels,
     icon: <Hotel className="w-7 h-7" />,
     gradient: 'from-amber-900/60 to-luxury-black',
-    image: '/images/hotels/atlantis-the-palm.jpg',
+    image: '/images/travel/hotels/atlantis-the-palm.jpg',
   },
   {
     subcategory: 'residences',

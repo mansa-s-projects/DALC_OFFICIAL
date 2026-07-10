@@ -46,13 +46,13 @@ const CATEGORIES = [
   {
     title: 'Water Activities',
     subtitle: 'Jet Ski, Jetcar, Flyboard',
-    image: '/images/water-activities/yamaha-gp-ho.jpg',
+    image: '/images/experiences/marine/jet-ski-rental/hero.jpg',
     href: '/experiences/water-activities',
   },
   {
     title: 'Villa Experience',
     subtitle: 'Private pools and luxury stays',
-    image: '/images/hotels/atlantis-the-palm.jpg',
+    image: '/images/travel/hotels/atlantis-the-palm.jpg',
     href: '/travel/villas',
   },
   {
@@ -88,7 +88,7 @@ const CATEGORIES = [
 ];
 
 const EXPERIENCES = [
-  { name: 'Jet Ski', tag: 'Water', image: '/images/water-activities/yamaha-fx-svho.jpg' },
+  { name: 'Jet Ski', tag: 'Water', image: '/images/experiences/marine/jet-ski-rental/hero.jpg' },
   { name: 'Evening Desert Safari', tag: 'Desert', image: '/images/desert-adventures/Aristodesert/fleet/aristo-fleet-1.webp' },
   { name: 'Polaris RZR Ride', tag: 'Adventure', image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop' },
   { name: 'Private Villa Pool', tag: 'Leisure', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600&auto=format&fit=crop' },
