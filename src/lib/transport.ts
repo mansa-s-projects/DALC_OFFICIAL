@@ -440,8 +440,11 @@ export async function getTransportServiceBySlug(slug: string): Promise<Transport
     const mockService = MOCK_SERVICES.find(s => s.slug === slug);
     if (mockService) return mockService;
   }
-  
-  if (error) throw error;
+
+  if (error) {
+    console.error('[getTransportServiceBySlug] Supabase error:', error.message);
+    return null;
+  }
   return data as TransportService | null;
 }
 
@@ -457,18 +460,27 @@ export async function getFeaturedTransport(subcategory?: string): Promise<Transp
   if (subcategory) query = query.eq('subcategory', subcategory);
 
   const { data, error } = await query;
-  
-  // Fallback to mock data
-  if (error?.code === '42P01' || !data || data.length === 0) {
+
+  if (error) {
+    if (error.code !== '42P01') {
+      console.error('[getFeaturedTransport] Supabase error:', error.message);
+    }
     let mockData = MOCK_SERVICES.filter(s => s.is_featured);
     if (subcategory) {
       mockData = mockData.filter(s => s.subcategory === subcategory);
     }
     return mockData.slice(0, 6);
   }
-  
-  if (error) throw error;
-  return (data ?? []) as TransportService[];
+
+  if (!data || data.length === 0) {
+    let mockData = MOCK_SERVICES.filter(s => s.is_featured);
+    if (subcategory) {
+      mockData = mockData.filter(s => s.subcategory === subcategory);
+    }
+    return mockData.slice(0, 6);
+  }
+
+  return data as TransportService[];
 }
 
 export async function createTransportBooking(input: TransportBookingInput): Promise<TransportBooking> {
@@ -505,7 +517,10 @@ export async function getUserTransportBookings(userId: string): Promise<Transpor
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserTransportBookings] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as unknown as TransportBooking[];
 }
 

@@ -288,7 +288,10 @@ export async function getServiceBySlug(slug: string): Promise<BusinessService | 
     .eq('status', 'published')
     .maybeSingle();
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getServiceBySlug] Supabase error:', error.message);
+    return null;
+  }
   return data as BusinessService | null;
 }
 
@@ -304,7 +307,10 @@ export async function getFeaturedServices(subcategory?: string): Promise<Busines
   if (subcategory) query = query.eq('subcategory', subcategory);
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[getFeaturedServices] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as BusinessService[];
 }
 
@@ -341,7 +347,10 @@ export async function getUserBusinessBookings(userId: string): Promise<BusinessB
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserBusinessBookings] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as unknown as BusinessBooking[];
 }
 
@@ -372,7 +381,10 @@ export async function getUserConsultations(userId: string): Promise<BusinessCons
     .eq('user_id', userId)
     .order('scheduled_at', { ascending: true });
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserConsultations] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as BusinessConsultation[];
 }
 
@@ -418,7 +430,10 @@ export async function getAvailableSlots(serviceId: string, date: string): Promis
     .lt('scheduled_at', dayEnd.toISOString())
     .in('status', ['scheduled', 'confirmed', 'in_progress']);
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getAvailableSlots] Supabase error:', error.message);
+    return createBusinessSlots(date, new Set<number>());
+  }
 
   const occupiedHours = new Set<number>();
   const consultations = (data ?? []) as Array<Pick<BusinessConsultation, 'scheduled_at' | 'duration_minutes'>>;
@@ -453,7 +468,10 @@ export async function getComplianceChecklist(serviceId: string): Promise<Complia
     .eq('id', serviceId)
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('[getComplianceChecklist] Supabase error:', error.message);
+    return [];
+  }
   return (data?.compliance_checklist ?? []) as ComplianceItem[];
 }
 

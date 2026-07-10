@@ -18,7 +18,9 @@ const _supabase =
     ? createClient(supabaseUrl, supabaseAnonKey)
     : (reportMissingSupabaseEnv(), null);
 
-// Non-null assertion: supabase is always initialised in production (env vars
-// are required). Call sites that need graceful degradation can check
-// `process.env.NEXT_PUBLIC_SUPABASE_URL` directly before calling.
-export const supabase = _supabase!;
+if (!_supabase) {
+  throw new Error(
+    'Supabase client failed to initialize. Check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+  );
+}
+export const supabase = _supabase;

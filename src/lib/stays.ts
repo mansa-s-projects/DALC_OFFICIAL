@@ -493,13 +493,19 @@ export async function getProperties(filters?: StaysFilters): Promise<StaysProper
 
 export async function getPropertyBySlug(slug: string): Promise<StaysProperty | null> {
   const { data, error } = await supabase.from('stays_properties').select('*').eq('slug', slug).eq('status', 'published').single();
-  if (error) throw error;
+  if (error) {
+    console.error('[getPropertyBySlug] Supabase error:', error.message);
+    return null;
+  }
   return data as StaysProperty | null;
 }
 
 export async function getPropertyById(id: string): Promise<StaysProperty | null> {
   const { data, error } = await supabase.from('stays_properties').select('*').eq('id', id).single();
-  if (error) throw error;
+  if (error) {
+    console.error('[getPropertyById] Supabase error:', error.message);
+    return null;
+  }
   return data as StaysProperty | null;
 }
 
@@ -507,14 +513,20 @@ export async function getFeaturedProperties(subcategory?: string): Promise<Stays
   let query = supabase.from('stays_properties').select('*').eq('status', 'published').eq('is_featured', true).order('popularity_score', { ascending: false }).limit(6);
   if (subcategory) query = query.eq('subcategory', subcategory);
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('[getFeaturedProperties] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as StaysProperty[];
 }
 
 export async function getAvailability(propertyId: string, startDate: string, endDate: string): Promise<StaysAvailability[]> {
   const { data, error } = await supabase.from('stays_availability').select('*').eq('property_id', propertyId).gte('date', startDate).lte('date', endDate).order('date', { ascending: true });
-  if (error) throw error;
-  return (data ?? []) as StaysAvailability[] ;
+  if (error) {
+    console.error('[getAvailability] Supabase error:', error.message);
+    return [];
+  }
+  return (data ?? []) as StaysAvailability[];
 }
 
 export async function checkAvailability(propertyId: string, checkIn: string, checkOut: string): Promise<{ available: boolean; message?: string }> {
@@ -596,6 +608,9 @@ export async function getUserBookings(userId: string): Promise<StaysBooking[]> {
     .select('id,property_id,user_id,check_in,check_out,guests,guest_name,guest_email,guest_phone,special_requests,nights,base_price_total,seasonal_adjustment,cleaning_fee,service_fee,security_deposit,discount_amount,total_price,currency,status,confirmation_code,cancellation_reason,cancelled_at,created_at,updated_at,confirmed_at,checked_in_at,checked_out_at,property:stays_properties(id,name,slug,subcategory,location,area,hero_image,base_price,price_currency,price_display,status)')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
-  if (error) throw error;
+  if (error) {
+    console.error('[getUserBookings] Supabase error:', error.message);
+    return [];
+  }
   return (data ?? []) as unknown as StaysBooking[];
 }
