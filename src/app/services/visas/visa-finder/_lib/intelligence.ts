@@ -589,6 +589,35 @@ function computeDALCServices(data: VisaFormData): DALCService[] {
   return services;
 }
 
+// ── Public Helpers ───────────────────────────────────────────────────────────────
+
+export interface VisaQuickInfo {
+  category: VisaCategory;
+  label: string;
+  maxStay: string;
+  processingDays: [number, number];
+  govFeeAED: [number, number];
+}
+
+export function getVisaQuickInfo(fromCode: string, toCode: string): VisaQuickInfo {
+  const rule = resolveRule(fromCode, toCode, null);
+  const LABELS: Record<VisaCategory, string> = {
+    visa_free: 'Visa Free',
+    visa_on_arrival: 'Visa on Arrival',
+    evisa: 'eVisa',
+    embassy_visa: 'Embassy Visa',
+    eta: 'ETA',
+    not_allowed: 'Not Permitted',
+  };
+  return {
+    category: rule.category,
+    label: LABELS[rule.category],
+    maxStay: rule.maxStay,
+    processingDays: rule.processingDays,
+    govFeeAED: rule.govFeeAED,
+  };
+}
+
 // ── Main Export ─────────────────────────────────────────────────────────────────
 
 export function generateReport(data: VisaFormData): TravelReport {

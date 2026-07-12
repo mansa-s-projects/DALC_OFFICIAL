@@ -8,23 +8,23 @@ import {
   Sparkles, ArrowRight, CheckCircle2, TrendingUp, Users, Award,
 } from 'lucide-react';
 import { COUNTRIES } from './visa-finder/_lib/countries';
+import { getVisaQuickInfo } from './visa-finder/_lib/intelligence';
+import type { VisaCategory } from './visa-finder/_lib/types';
 
-// ── Quick Destination Data ──────────────────────────────────────────────────────
+// ── Quick Destination Data — derived from the engine ───────────────────────────
 
-const QUICK_DESTINATIONS = [
-  { code: 'JP', flag: '🇯🇵', name: 'Japan',        badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'FR', flag: '🇫🇷', name: 'France',       badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'TH', flag: '🇹🇭', name: 'Thailand',     badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'SG', flag: '🇸🇬', name: 'Singapore',    badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'TR', flag: '🇹🇷', name: 'Turkey',       badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'MA', flag: '🇲🇦', name: 'Morocco',      badge: 'Visa Free',        color: 'emerald', days: null,    fee: null },
-  { code: 'AU', flag: '🇦🇺', name: 'Australia',    badge: 'ETA',              color: 'violet',  days: '24h',   fee: 'AED 60' },
-  { code: 'CA', flag: '🇨🇦', name: 'Canada',       badge: 'eVisa',            color: 'sky',     days: '1–3d',  fee: 'AED 70' },
-  { code: 'KE', flag: '🇰🇪', name: 'Kenya',        badge: 'eVisa',            color: 'sky',     days: '1–3d',  fee: 'AED 200' },
-  { code: 'EG', flag: '🇪🇬', name: 'Egypt',        badge: 'On Arrival',       color: 'amber',   days: null,    fee: 'AED 100' },
-  { code: 'GB', flag: '🇬🇧', name: 'UK',           badge: 'Embassy Visa',     color: 'red',     days: '15–30d',fee: 'AED 500' },
-  { code: 'US', flag: '🇺🇸', name: 'USA',          badge: 'Embassy Visa',     color: 'red',     days: '21–90d',fee: 'AED 600' },
+const DESTINATION_CODES = [
+  'JP', 'GB', 'FR', 'TH', 'SG', 'TR', 'MA', 'GE', 'AU', 'CA', 'KE', 'EG', 'US', 'DE', 'IT', 'ID',
 ] as const;
+
+const CATEGORY_COLOR: Record<VisaCategory, string> = {
+  visa_free:     'emerald',
+  visa_on_arrival: 'amber',
+  evisa:         'sky',
+  eta:           'violet',
+  embassy_visa:  'red',
+  not_allowed:   'red',
+};
 
 const BADGE_STYLES: Record<string, string> = {
   emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/25',
@@ -33,6 +33,21 @@ const BADGE_STYLES: Record<string, string> = {
   amber:   'bg-amber-500/10   text-amber-400   border-amber-500/25',
   red:     'bg-red-500/10     text-red-400     border-red-500/25',
 };
+
+function buildQuickDestinations() {
+  return DESTINATION_CODES.map(code => {
+    const country = COUNTRIES.find(c => c.code === code);
+    const info = getVisaQuickInfo('AE', code);
+    const color = CATEGORY_COLOR[info.category];
+    const [dMin, dMax] = info.processingDays;
+    const [fMin] = info.govFeeAED;
+    const days = dMin === 0 ? null : dMax === dMin ? `${dMin}d` : `${dMin}–${dMax}d`;
+    const fee = fMin === 0 ? null : `AED ${fMin}`;
+    return { code, flag: country?.flag ?? '🌍', name: country?.name ?? code, badge: info.label, color, days, fee };
+  });
+}
+
+const QUICK_DESTINATIONS = buildQuickDestinations();
 
 const STATS = [
   { value: '195', label: 'Countries covered', icon: Globe },
