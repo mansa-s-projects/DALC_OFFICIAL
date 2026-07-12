@@ -56,6 +56,7 @@ export default function Navbar() {
     { label: "Experiences", path: "/experiences" },
     { label: "Nightlife", path: "/nightlife" },
     { label: "Travel", path: "/travel" },
+    { label: "Visas", path: "/services/visas" },
     { label: "Business", path: "/business" },
     { label: "Move To Dubai", path: "/move-to-dubai" },
     { label: "Concierge", path: "/request" },
