@@ -62,7 +62,7 @@ const FEATURES = [
     title: 'AI Passport Photo Studio',
     desc: 'Upload any selfie — our AI removes the background, crops to face, and exports a biometric-compliant passport photo in seconds.',
     badge: 'Exclusive',
-    href: '/services/visas/photo-studio',
+    href: '/services/visas/ai-advisor',
     primary: true,
   },
   {
@@ -70,7 +70,7 @@ const FEATURES = [
     title: 'Visa Intelligence Engine',
     desc: 'Analyses your passport, travel history, and trip purpose to produce an eligibility score, document checklist, and approval probability.',
     badge: 'Smart',
-    href: '/services/visas/visa-finder',
+    href: '/services/visas/ai-advisor',
     primary: false,
   },
   {
@@ -190,7 +190,7 @@ function QuickSearch() {
 
         <div className="pt-4">
           <Link
-            href={to ? `/services/visas/visa-finder?from=${from}&to=${to}` : '/services/visas/visa-finder'}
+            href={to ? `/services/visas/ai-advisor?from=${from}&to=${to}` : '/services/visas/ai-advisor'}
             className="flex items-center justify-center gap-2 rounded-xl bg-[#C9A84C] px-6 py-2.5 text-sm font-semibold text-[#080706] transition-all hover:bg-[#E8CC70] whitespace-nowrap"
           >
             Check Visa <ChevronRight className="h-4 w-4" />
@@ -397,7 +397,7 @@ export default function VisaHubPage() {
               <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-[#C9A84C]/60">UAE Passport Holders</p>
               <h2 className="text-2xl font-light text-white">Popular destinations</h2>
             </div>
-            <Link href="/services/visas/visa-finder" className="flex items-center gap-1.5 text-sm text-[#C9A84C]/70 hover:text-[#C9A84C]">
+            <Link href="/services/visas/ai-advisor" className="flex items-center gap-1.5 text-sm text-[#C9A84C]/70 hover:text-[#C9A84C]">
               All countries <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
@@ -406,7 +406,7 @@ export default function VisaHubPage() {
             {QUICK_DESTINATIONS.map(({ code, flag, name, badge, color, days, fee }) => (
               <Link
                 key={code}
-                href={`/services/visas/visa-finder?from=AE&to=${code}`}
+                href={`/services/visas/ai-advisor?from=AE&to=${code}`}
                 className="group rounded-2xl border border-[#C9A84C]/10 bg-[#0D0B08] p-4 transition-all hover:-translate-y-0.5 hover:border-[#C9A84C]/30"
               >
                 <div className="mb-3 flex items-center justify-between">
@@ -510,7 +510,7 @@ export default function VisaHubPage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/services/visas/visa-finder"
+                href="/services/visas/ai-advisor"
                 className="flex items-center gap-2 rounded-xl bg-[#C9A84C] px-7 py-3 font-medium text-[#080706] transition-all hover:bg-[#E8CC70]"
               >
                 <Zap className="h-4 w-4" />
