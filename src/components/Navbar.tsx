@@ -28,7 +28,6 @@ const TRAVEL_ITEMS = [
   { label: "Visa Services",  path: "/services/visas" },
   { label: "Flights",        path: "/travel/flights" },
   { label: "Hotels",         path: "/travel/hotels" },
-  { label: "Yachts",         path: "/travel/yachts" },
   { label: "Private Jets",   path: "/travel/jets" },
   { label: "Car Rental",     path: "/travel/car-rental" },
 ];
