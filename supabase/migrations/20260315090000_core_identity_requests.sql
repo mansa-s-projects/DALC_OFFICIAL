@@ -118,6 +118,9 @@ ALTER TABLE public.requests ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.suppliers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.request_status_log ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can view own profile" ON public.profiles;
+DROP POLICY IF EXISTS "Users can update own profile" ON public.profiles;
+DROP POLICY IF EXISTS "Staff can view all profiles" ON public.profiles;
 CREATE POLICY "Users can view own profile" ON public.profiles
   FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Users can update own profile" ON public.profiles
@@ -127,6 +130,8 @@ CREATE POLICY "Staff can view all profiles" ON public.profiles
     COALESCE(auth.jwt() -> 'app_metadata' ->> 'role', '') IN ('admin', 'sales_manager', 'concierge')
   );
 
+DROP POLICY IF EXISTS "Anyone can view published venues" ON public.venues;
+DROP POLICY IF EXISTS "Admins can manage all venues" ON public.venues;
 CREATE POLICY "Anyone can view published venues" ON public.venues
   FOR SELECT USING (status = 'published');
 CREATE POLICY "Admins can manage all venues" ON public.venues
@@ -134,6 +139,10 @@ CREATE POLICY "Admins can manage all venues" ON public.venues
     COALESCE(auth.jwt() -> 'app_metadata' ->> 'role', '') = 'admin'
   );
 
+DROP POLICY IF EXISTS "Users can view own requests" ON public.requests;
+DROP POLICY IF EXISTS "Users can create requests" ON public.requests;
+DROP POLICY IF EXISTS "Staff can view all requests" ON public.requests;
+DROP POLICY IF EXISTS "Staff can update requests" ON public.requests;
 CREATE POLICY "Users can view own requests" ON public.requests
   FOR SELECT USING (user_id = auth.uid());
 CREATE POLICY "Users can create requests" ON public.requests
@@ -147,11 +156,14 @@ CREATE POLICY "Staff can update requests" ON public.requests
     COALESCE(auth.jwt() -> 'app_metadata' ->> 'role', '') IN ('admin', 'sales_manager', 'concierge')
   );
 
+DROP POLICY IF EXISTS "Admins can manage suppliers" ON public.suppliers;
 CREATE POLICY "Admins can manage suppliers" ON public.suppliers
   FOR ALL USING (
     COALESCE(auth.jwt() -> 'app_metadata' ->> 'role', '') = 'admin'
   );
 
+DROP POLICY IF EXISTS "Users can view own request log" ON public.request_status_log;
+DROP POLICY IF EXISTS "Staff can view request log" ON public.request_status_log;
 CREATE POLICY "Users can view own request log" ON public.request_status_log
   FOR SELECT USING (
     EXISTS (
