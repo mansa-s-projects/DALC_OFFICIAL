@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import {
   ArrowLeft,
@@ -52,6 +53,7 @@ export default function HotelBookingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingComplete, setBookingComplete] = useState(false);
   const [bookingId, setBookingId] = useState("");
+  const [submittedTotal, setSubmittedTotal] = useState<number | null>(null);
   const [bookingError, setBookingError] = useState<string | null>(null);
 
   const [form, setForm] = useState<GuestForm>({
@@ -75,7 +77,7 @@ export default function HotelBookingPage() {
         )
       : 1;
 
-  const subtotal = (hotel?.price_from || 0) + room.base_price * nights;
+  const subtotal = ((hotel?.price_from || 0) + room.base_price) * nights;
   const taxes = Math.round(subtotal * 0.1);
   const total = subtotal + taxes;
 
@@ -104,20 +106,23 @@ export default function HotelBookingPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           hotel_id: hotelId,
-          hotel_name: hotel?.name,
-          room_type: room.name,
+          room_type: room.id,
           check_in: checkIn,
           check_out: checkOut,
           guests,
-          total_price: total,
-          currency: "AED",
           guest: form,
         }),
       });
 
       if (response.ok) {
-        const data = await response.json();
+        const data = (await response.json()) as {
+          booking_id?: string;
+          total_price?: number;
+        };
         setBookingId(data.booking_id || `HTL-${Date.now()}`);
+        setSubmittedTotal(
+          typeof data.total_price === "number" ? data.total_price : total,
+        );
         setBookingComplete(true);
       } else {
         const errorBody = await response.json().catch(() => null);
@@ -164,10 +169,11 @@ export default function HotelBookingPage() {
               <Check className="w-10 h-10 text-luxury-gold" />
             </div>
             <h1 className="text-3xl font-display text-white mb-2">
-              Booking Confirmed!
+              Booking Request Received
             </h1>
             <p className="text-gray-400 mb-6">
-              Your reservation has been confirmed.
+              Our concierge team will verify availability and contact you before
+              any payment is collected.
             </p>
 
             <div className="bg-white/5 border border-white/10 p-6 text-left mb-8">
@@ -199,16 +205,17 @@ export default function HotelBookingPage() {
                   <span className="text-white">{guests}</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t border-white/10">
-                  <span className="text-white font-bold">Total Paid</span>
+                  <span className="text-white font-bold">Estimated Total</span>
                   <span className="text-luxury-gold font-bold">
-                    AED {total.toLocaleString()}
+                    AED {(submittedTotal ?? total).toLocaleString()}
                   </span>
                 </div>
               </div>
             </div>
 
             <p className="text-gray-500 text-sm mb-6">
-              A confirmation email has been sent to {form.email}
+              This request is pending. It is not a confirmed reservation and no
+              payment has been taken.
             </p>
 
             <Link
@@ -357,7 +364,7 @@ export default function HotelBookingPage() {
                     </>
                   ) : (
                     <>
-                      Confirm Booking <ArrowRight className="w-5 h-5" />
+                      Request Booking <ArrowRight className="w-5 h-5" />
                     </>
                   )}
                 </button>
@@ -371,9 +378,11 @@ export default function HotelBookingPage() {
                 </h3>
 
                 <div className="flex gap-4 pb-4 border-b border-white/10">
-                  <img
+                  <Image
                     src={hotel.image}
                     alt={hotel.name}
+                    width={80}
+                    height={64}
                     className="w-20 h-16 object-cover"
                   />
                   <div>
@@ -426,7 +435,7 @@ export default function HotelBookingPage() {
 
                 <div className="mt-4 flex items-center gap-2 text-gray-500 text-xs">
                   <Shield className="w-4 h-4" />
-                  <span>Secure payment processing</span>
+                  <span>No payment is taken until availability is verified</span>
                 </div>
               </div>
 
@@ -442,4 +451,3 @@ export default function HotelBookingPage() {
     </div>
   );
 }
-

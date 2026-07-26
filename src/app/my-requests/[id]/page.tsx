@@ -85,14 +85,22 @@ export default function RequestDetailPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`/api/requests/${id}`)
+    const controller = new AbortController();
+
+    fetch(`/api/requests/${id}`, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json() as Promise<RequestDetail>;
       })
       .then(setRequest)
-      .catch((err: Error) => setError(err.message))
-      .finally(() => setLoading(false));
+      .catch((err: Error) => {
+        if (err.name !== "AbortError") setError(err.message);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+
+    return () => controller.abort();
   }, [id]);
 
   async function handleCheckout(quoteId: string) {
@@ -169,9 +177,10 @@ export default function RequestDetailPage() {
           </div>
         </div>
 
-        {paymentStatus === "success" && (
-          <div className="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm">
-            Payment confirmed. Our team will be in touch shortly.
+        {paymentStatus === "processing" && (
+          <div className="mb-6 p-4 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm">
+            Payment submitted. We are verifying it securely with the payment
+            provider. The status below updates only after server verification.
           </div>
         )}
         {paymentStatus === "cancelled" && (

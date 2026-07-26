@@ -2,19 +2,21 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Dubai À La Carte
 
-This contains everything you need to run your app locally.
+Luxury concierge platform built with Next.js, Supabase, and Stripe.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1W_M6fj0FepT639ff2OjNqiiyZoHJiVE0
+## Run locally
 
-## Run Locally
+Prerequisites: Node.js 22 and npm.
 
-**Prerequisites:**  Node.js
+1. Install dependencies with `npm ci`.
+2. Copy `.env.example` to `.env.local` and configure the required Supabase values.
+3. Run the application with `npm run dev`.
 
+## Validation
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Run `npm run lint`, `npm run typecheck`, `npm test`, and `npm run build`.
+
+Payment checkout remains disabled until both payment feature flags, Stripe
+credentials, and the verified webhook endpoint are configured.

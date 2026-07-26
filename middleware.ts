@@ -21,9 +21,21 @@ export async function middleware(request: NextRequest) {
   // Only run auth checks on protected paths
   const isAdminPath = pathname.startsWith('/admin');
   const isSalesOpsPath = pathname.startsWith('/api/sales-ops');
+  const isWorkerPath =
+    pathname === '/api/sales-ops/workers/process-queues' ||
+    pathname === '/api/sales-ops/command-center/autopilot';
 
   if (!isAdminPath && !isSalesOpsPath) {
     return response;
+  }
+
+  if (isWorkerPath) {
+    const expectedToken = process.env.WORKER_CRON_TOKEN;
+    const providedToken = request.headers.get('x-worker-token');
+
+    if (expectedToken && providedToken === expectedToken) {
+      return response;
+    }
   }
 
   // Cryptographic JWT validation — getUser() calls Supabase Auth servers,
@@ -64,9 +76,12 @@ export async function middleware(request: NextRequest) {
 
   // Forward verified role in a server-set header for downstream route handlers.
   // This header is set by the server — not readable from the client.
-  const forwardedResponse = NextResponse.next({ request });
-  forwardedResponse.headers.set('x-dalc-verified-role', role);
-  forwardedResponse.headers.set('x-dalc-verified-uid', user.id);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-dalc-verified-role', role);
+  requestHeaders.set('x-dalc-verified-uid', user.id);
+  const forwardedResponse = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
 
   // Propagate any session cookie refreshes from @supabase/ssr
   response.cookies.getAll().forEach((cookie) => {

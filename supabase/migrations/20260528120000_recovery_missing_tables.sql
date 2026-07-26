@@ -320,6 +320,30 @@ ALTER TABLE public.stays_properties ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.stays_availability ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.stays_bookings ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public can view active emirates" ON public.emirates;
+DROP POLICY IF EXISTS "Public can view active venue categories" ON public.venue_categories;
+DROP POLICY IF EXISTS "Public can view explore locations" ON public.explore_locations;
+DROP POLICY IF EXISTS "Public can view published transport services" ON public.transport_services;
+DROP POLICY IF EXISTS "Public can view published stays properties" ON public.stays_properties;
+DROP POLICY IF EXISTS "Users can view own transport bookings" ON public.transport_bookings;
+DROP POLICY IF EXISTS "Staff can view all transport bookings" ON public.transport_bookings;
+DROP POLICY IF EXISTS "Users can view own stays bookings" ON public.stays_bookings;
+DROP POLICY IF EXISTS "Staff can view all stays bookings" ON public.stays_bookings;
+DROP POLICY IF EXISTS "Users can view own bookings" ON public.bookings;
+DROP POLICY IF EXISTS "Staff can view all bookings" ON public.bookings;
+DROP POLICY IF EXISTS "Users can view own payments" ON public.payments;
+DROP POLICY IF EXISTS "Staff can view all payments" ON public.payments;
+DROP POLICY IF EXISTS "Users can view own quotes" ON public.quotes;
+DROP POLICY IF EXISTS "Staff can view all quotes" ON public.quotes;
+DROP POLICY IF EXISTS "Server can insert leads" ON public.leads;
+DROP POLICY IF EXISTS "Server can insert events" ON public.events;
+DROP POLICY IF EXISTS "Server can insert intents" ON public.intents;
+DROP POLICY IF EXISTS "Admins can manage transport services" ON public.transport_services;
+DROP POLICY IF EXISTS "Admins can manage stays properties" ON public.stays_properties;
+DROP POLICY IF EXISTS "Admins can manage explore locations" ON public.explore_locations;
+DROP POLICY IF EXISTS "Admins can manage emirates" ON public.emirates;
+DROP POLICY IF EXISTS "Admins can manage venue categories" ON public.venue_categories;
+
 -- Public read policies for published and active editorial tables
 CREATE POLICY "Public can view active emirates" ON public.emirates
   FOR SELECT USING (is_active = true);
