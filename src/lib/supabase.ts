@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js';
+﻿import { createBrowserClient } from '@supabase/ssr';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -15,7 +15,7 @@ function reportMissingSupabaseEnv() {
 
 const _supabase =
   supabaseUrl && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey)
+    ? createBrowserClient(supabaseUrl, supabaseAnonKey)
     : (reportMissingSupabaseEnv(), null);
 
 // Non-null assertion: supabase is always initialised in production (env vars

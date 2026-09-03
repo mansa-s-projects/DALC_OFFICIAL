@@ -8,10 +8,23 @@ import Image from 'next/image';
 import { Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react';
 import { signIn } from '@/lib/auth';
 
+function getSafeRedirect(value: string | null) {
+  if (!value?.startsWith('/') || value.startsWith('//')) return '/';
+
+  try {
+    const url = new URL(value, 'https://dalc.local');
+    return url.origin === 'https://dalc.local'
+      ? `${url.pathname}${url.search}${url.hash}`
+      : '/';
+  } catch {
+    return '/';
+  }
+}
+
 export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const from = searchParams?.get('from') || '/';
+  const from = getSafeRedirect(searchParams?.get('from'));
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -67,12 +80,16 @@ export default function Login() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">
+            <label
+              htmlFor="login-email"
+              className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider"
+            >
               Email
             </label>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
+                id="login-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -84,12 +101,16 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">
+            <label
+              htmlFor="login-password"
+              className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider"
+            >
               Password
             </label>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
+                id="login-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

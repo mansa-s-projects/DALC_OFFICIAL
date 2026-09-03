@@ -6,7 +6,7 @@ const routerCompatAlias = './src/lib/router.tsx';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
   webpack: (config) => {
     config.resolve.alias = {

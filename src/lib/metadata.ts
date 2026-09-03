@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 function getBaseUrl() {
-  return new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
+  return new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dubaialacharte.com');
 }
 
 export function buildPageMetadata(args: {

@@ -265,9 +265,10 @@ Eliminate direct table-string drift and spread of schema assumptions by centrali
    - align select with production table columns
 4. Create shared `src/lib/db/types.ts` aliases and begin repository extraction
 5. Run full validation:
-   - `npx tsc --noEmit`
+   - `npm run typecheck`
    - `npm run build`
-   - `npx next lint`
+   - `npm run lint`
+   - `npm test`
 
 ---
 

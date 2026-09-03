@@ -8,6 +8,33 @@ export interface AuthResult {
   role: string;
 }
 
+export async function requireUserAuth(): Promise<AuthResult | NextResponse> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+
+    if (error || !user) {
+      return NextResponse.json(
+        { ok: false, error: 'Unauthorized' },
+        { status: 401 },
+      );
+    }
+
+    return {
+      userId: user.id,
+      role: getRoleFromUser(user) ?? 'user',
+    };
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: 'Internal server error' },
+      { status: 500 },
+    );
+  }
+}
+
 /**
  * Validates the caller's JWT server-side and checks role.
  * Returns { userId, role } on success or a NextResponse error to return immediately.

@@ -29,15 +29,16 @@
 | **npm**        | 11.11.1                                                                                                              |
 | **TypeScript** | ✅ Passes (`npx tsc --noEmit` — no errors)                                                                           |
 | **Build**      | ✅ Passes (`npm run build` — 92 routes compiled)                                                                     |
-| **Lint**       | ⚠️ `npm run lint` broken on Next.js 16 (tries to open "lint" directory). Use `npx next lint` directly or ESLint CLI. |
+| **Lint**       | ✅ ESLint CLI via `npm run lint`                                                                                     |
 | **Git**        | Clean, on `master`, up to date with origin                                                                           |
 
 ### Verified Commands
 
 ```bash
-npx tsc --noEmit          # TypeScript type check
+npm run typecheck          # TypeScript type check
 npm run build              # Full production build (Turbopack)
-npx next lint              # Lint (do NOT use npm run lint)
+npm run lint               # ESLint
+npm test                   # Vitest unit suite
 npm run dev                # Dev server on 0.0.0.0:3000
 ```
 
@@ -147,12 +148,11 @@ Load via the Skill tool when a task matches:
 Always run these after making code changes:
 
 ```bash
-npx tsc --noEmit     # Type check
+npm run typecheck    # Type check
 npm run build         # Full build verification
-npx next lint         # Lint check
+npm run lint          # Lint check
+npm test              # Unit tests
 ```
-
-Do NOT use `npm run lint` — it is broken on Next.js 16 (resolves to a directory lookup instead of the lint command).
 
 ---
 
